@@ -4,7 +4,7 @@
 <title>JSON-LD 1.1 Processing Algorithms and API</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
-<script type="text/javascript" src="../common/common.js" class="remove"></script>
+<script type="text/javascript" src="../json-ld-wg/common/common.js" class="remove"></script>
 <script type="text/javascript" class="remove">
 //<![CDATA[
   var respecConfig = {
@@ -12,14 +12,14 @@
       localBiblio:          jsonld.localBiblio,
 
       // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
-      specStatus:           "CG-DRAFT",
+      specStatus:           "ED",
 
       // if you wish the publication date to be other than today, set this
       //publishDate:          "2013-11-05",
       copyrightStart:       "2010",
 
       // the specification's short name, as in http://www.w3.org/TR/short-name/
-      shortName:            "json-ld11cg-api",
+      shortName:            "json-ld11-api",
 
       // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
       // and its maturity status
@@ -28,7 +28,7 @@
       previousMaturity:     "REC",
 
       // if there a publicly available Editor's Draft, this is the link
-      edDraftURI:           "https://json-ld.org/spec/latest/json-ld-api/",
+      edDraftURI:           "https://w3c.github.io/json-ld-api/",
       testSuiteURI:         "https://json-ld.org/test-suite/",
 
       // if you want to have extra CSS, append them to this list
@@ -36,7 +36,6 @@
       // extraCSS: [],
 
       includePermalinks:      true,
-      noRecTrack:             true,
       doJsonLd:               true,
       highlightVars:          true,
       testSuiteURIkey:       "https://json-ld.org/test-suite/",
@@ -98,23 +97,23 @@
           note:       "v1.0" }
       ],
 
-      github:    "https://github.com/json-ld/json-ld.org/",
+      github:    "https://github.com/w3c/json-ld-api/",
 
       // name of the WG
-      wg:                     "JSON for Linking Data W3C Community Group",
+      wg:                     "JSON-LD Working Group",
 
       // URI of the public WG page
-      wgURI:                  "https://www.w3.org/community/json-ld/",
+      wgURI:                  "https://www.w3.org/2018/json-ld-wg/",
 
       // name (with the @w3c.org) of the public mailing to which comments are due
-      wgPublicList:           "public-linked-json",
+      wgPublicList:           "public-json-ld-wg",
 
       // URI of the patent status for this WG, for Rec-track documents
       // !!!! IMPORTANT !!!!
       // This is important for Rec-track documents, do not copy a patent URI from a random
       // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
       // Team Contact.
-      //wgPatentURI:            "https://www.w3.org/2004/01/pp-impl/46168/status",
+      wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status",
       maxTocLevel:            2
       ///alternateFormats: [ {uri: "diff-20140116.html", label: "diff to previous version"} ]
   };
@@ -166,27 +165,23 @@
 
 <section id="sotd">
   <p>This document has been developed by the
-    <a href="https://www.w3.org/community/json-ld/">JSON for Linking Data W3C Community Group</a>
-    as an update to the 1.0 recommendation [[JSON-LD-API]] developed
-    by the <a href="https://www.w3.org/2011/rdf-wg/wiki/Main_Page">RDF Working Group</a>.
-    The specification has undergone
-    significant development, review, and changes during the course of several years.</p>
+    <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a>.</p>
 
-  <p>There are several independent
+  <!--p>There are several independent
     <a href="https://json-ld.org/test-suite/reports/">interoperable implementations</a> of
     this specification, a test suite [[JSON-LD-TESTS]] and a
     <a href="https://json-ld.org/playground/">live JSON-LD playground</a> that is capable
-    of demonstrating the features described in this document.</p>
+    of demonstrating the features described in this document.</p-->
 
   <section>
     <h2>Set of Documents</h2>
     <p>This document is one of three JSON-LD 1.1 Recommendations produced by the
-      <a href="https://www.w3.org/community/json-ld/">JSON for Linking Data W3C Community Group</a>:</p>
+      <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a>:</p>
 
     <ul>
-      <li><a data-cite="JSON-LD11CG">JSON-LD 1.1</a></li>
-      <li><a data-cite="JSON-LD11CG-API">JSON-LD 1.1 Processing Algorithms and API</a></li>
-      <li><a data-cite="JSON-LD11CG-FRAMING">JSON-LD 1.1 Framing</a></li>
+      <li><a data-cite="JSON-LD11">JSON-LD 1.1</a></li>
+      <li><a data-cite="JSON-LD11-API">JSON-LD 1.1 Processing Algorithms and API</a></li>
+      <li><a data-cite="JSON-LD11-FRAMING">JSON-LD 1.1 Framing</a></li>
     </ul>
   </section>
 </section>
@@ -208,7 +203,7 @@
 
   <p>To understand the basics in this specification you must first be familiar with
     <a data-cite="RFC7159">JSON</a>, which is detailed in [[!RFC7159]]. You must also understand the
-    <a data-cite="JSON-LD11CG">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [[!JSON-LD11CG]], which is the base syntax used by all
+    <a data-cite="JSON-LD11">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [[!JSON-LD11]], which is the base syntax used by all
     of the algorithms in this document. To understand the API and how it is
     intended to operate in a programming environment, it is useful to have working
     knowledge of the JavaScript programming language [[ECMASCRIPT-6.0]] and
@@ -223,13 +218,13 @@
 
     <ul>
       <li>Technical discussion typically occurs on the public mailing list:
-        <a href="https://lists.w3.org/Archives/Public/public-linked-json/">public-linked-json@w3.org</a></li>
+        <a href="https://lists.w3.org/Archives/Public/public-json-ld-wg/">public-json-ld-wg@w3.org</a></li>
 
       <!--<li><a href="https://json-ld.org/minutes/">Public teleconferences</a> are held
         on Tuesdays at 1500UTC on the second and fourth week of each month.</li> -->
 
-      <li>The <a href="https://webchat.freenode.net/?channels=json-ld">#json-ld</a>
-        IRC channel is available for real-time discussion on irc.freenode.net.</li>
+      <li>The #json-ld
+        IRC channel is available for real-time discussion on <a href="http://irc.w3.org">irc.w3c.org</a>.</li>
     </ul>
 
   </section>
@@ -240,7 +235,7 @@
     <p>This document uses the following terms as defined in JSON [[!RFC7159]]. Refer
       to the <a data-cite="RFC7159#section-2">JSON Grammar section</a> in [[!RFC7159]] for formal definitions.</p>
 
-    <div data-include="../common/terms.html"
+    <div data-include="../json-ld-wg/common/terms.html"
          data-oninclude="restrictReferences">
     </div>
 
@@ -249,7 +244,7 @@
 
     <p>The Following terms are used within specific algorithms.</p>
 
-    <div data-include="../common/algorithm-terms.html"
+    <div data-include="../json-ld-wg/common/algorithm-terms.html"
          data-oninclude="restrictReferences">
     </div>
   </section>
@@ -258,7 +253,7 @@
 
   <section>
     <h2>Typographical conventions</h2>
-    <div data-include="../common/typographical-conventions.html"></div>
+    <div data-include="../json-ld-wg/common/typographical-conventions.html"></div>
   </section>
 
   <section>
@@ -302,7 +297,7 @@
 <section class="informative">
   <h1>Features</h1>
 
-  <p>The JSON-LD 1.1 Syntax specification [[!JSON-LD11CG]] defines a syntax to
+  <p>The JSON-LD 1.1 Syntax specification [[!JSON-LD11]] defines a syntax to
     express Linked Data in JSON. Because there is more than one way to
     express Linked Data using this syntax, it is often useful to be able to
     transform JSON-LD documents so that they may be more easily consumed by
@@ -1433,7 +1428,7 @@
         The required inputs are an <var>active context</var>,
         an <var>active property</var>, and an <var>element</var> to be expanded.
         <span class="changed">The optional input is the flag <var>frame expansion</var> the allows
-          special forms of input used for <a data-cite="JSON-LD11CG-FRAMING#dfn-framing">frame expansion</a></span>.
+          special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a></span>.
         To begin, the <var>active property</var> is set to <code>null</code>,
         and <var>element</var> is set to the <a>JSON-LD input</a>.
         <span class="changed">If not passed, the <var>frame expansion</var> flag is set to <code>false</code></span>.</p>
@@ -3354,7 +3349,7 @@
         which collects all properties of a <a>node</a> in a single
         <a class="changed">dictionary</a>. In the next step, the <var>node map</var> is
         converted to a JSON-LD document in
-        <a data-cite="JSON-LD11CG#flattened-document-form">flattened document form</a>.
+        <a data-cite="JSON-LD11#flattened-document-form">flattened document form</a>.
         Finally, if a <a>context</a> has been passed, the flattened document
         is compacted using the <a href="#compaction-algorithm">Compaction algorithm</a>
         before being returned.</p>
@@ -5034,28 +5029,10 @@
 <section class="appendix informative">
   <h2>Open Issues</h2>
   <p>The following is a list of issues open at the time of publication.</p>
-  <p class="issue defer" data-number="246"></p>
-  <p class="issue defer" data-number="333"></p>
-  <p class="issue defer" data-number="338"></p>
-  <p class="issue" data-number="357"></p>
-  <p class="issue defer" data-number="368"></p>
-  <p class="issue defer" data-number="371"></p>
-  <p class="issue defer" data-number="397"></p>
-  <p class="issue defer" data-number="402"></p>
-  <p class="issue defer" data-number="434"></p>
-  <p class="issue defer" data-number="460"></p>
-  <p class="issue defer" data-number="507"></p>
-  <p class="issue" data-number="512"></p>
-  <p class="issue defer" data-number="526"></p>
-  <p class="issue" data-number="530"></p>
-  <p class="issue defer" data-number="542"></p>
-  <p class="issue defer" data-number="548"></p>
-  <p class="issue defer" data-number="583"></p>
-  <p class="issue defer" data-number="595"></p>
-  <p class="issue defer" data-number="589"></p>
+  <!--p class="issue defer" data-number="246"></p-->
 </section>
 
-<section class="appendix informative">
+<!--section class="appendix informative">
   <h2>Acknowledgements</h2>
 
   <p>A large amount of thanks goes out to the JSON-LD Community Group
@@ -5071,7 +5048,7 @@
     Danny Ayers, Ted Thibodeau Jr., Olivier Grisel, Josh Mandel, Eric Prud'hommeaux,
     David Wood, Guus Schreiber, Pat Hayes, Sandro Hawke, and Richard Cyganiak
     for their input on the specification.</p>
-</section>
+</section-->
 
 </body>
 </html>
