@@ -1,0 +1,4 @@
+{
+  "@context": "expand-e002-in.jsonld",
+  "@id": "http://example/test#example"
+}
