@@ -21,6 +21,8 @@ Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, 
 
 Unless `processingMode` is set explicitly in a test entry, `processingMode` is compatible with both `json-ld-1.0` and `json-ld-1.1`.
 
+Test results that include a context input presume that the context is provided locally, and not from the referenced location, thus the results will include the content of the context file, rather than a reference.
+
 # Contributing
 
 If you would like to contribute a new test or a fix to an existing test,

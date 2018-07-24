@@ -78,7 +78,7 @@
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Non-existant file (404)",
       "purpose": "Loading a non-existant file raises loading document failed error",
-      "input": "remote-doc/0008-in.jsonld",
+      "input": "remote-doc/missing-in.jsonld",
       "expect": "loading document failed"
     }, {
       "@id": "#t0009",

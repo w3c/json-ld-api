@@ -1,6 +1,6 @@
 {
   "@context": {
-    "@vocab":   "https://w3c.github.io/json-ld-api/vocab#",
+    "@vocab":   "https://json-ld.org/test-suite/vocab#",
     "dc":       "http://purl.org/dc/terms/",
     "jld":      "https://w3c.github.io/json-ld-api/vocab#",
     "mf":       "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#",
