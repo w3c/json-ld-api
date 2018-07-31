@@ -3468,7 +3468,7 @@
           member of <var>node map</var> using the variable <var>graph</var>. If the
           <var>active subject</var> is <code>null</code>, set <var>node</var> to <code>null</code>
           otherwise reference the <var>active subject</var> member of <var>graph</var> using the
-          variable <var>node</var>.</li>
+          variable <var>subject node</var>.</li>
         <li>If <var>element</var> has an <code>@type</code> member, perform for each
           <var>item</var> the following steps:
           <ol>
@@ -3481,12 +3481,12 @@
           <ol>
             <li>If <var>list</var> is <code>null</code>:
               <ol>
-                <li>If <var>node</var> does not have an <var>active property</var> member,
+                <li>If <var>subject node</var> does not have an <var>active property</var> member,
                   create one and initialize its value to an <a>array</a>
                   containing <var>element</var>.</li>
                 <li>Otherwise, compare <var>element</var> against every item in the
                   <a>array</a> associated with the <var>active property</var>
-                  member of <var>node</var>. If there is no item equivalent to <var>element</var>,
+                  member of <var>subject node</var>. If there is no item equivalent to <var>element</var>,
                   append <var>element</var> to the <a>array</a>. Two
                   <a class="changed">dictionaries</a> are considered
                   equal if they have equivalent key-value pairs.</li>
@@ -3505,7 +3505,7 @@
               <var>active subject</var>, <var>active property</var>, and
               <var>result</var> for <var>list</var>.</li>
             <li>Append <var>result</var> to the value of the <var>active property</var> member
-              of <var>node</var>.</li>
+              of <var>subject node</var>.</li>
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a>node object</a>, perform
@@ -3544,12 +3544,12 @@
                   <code>@id</code> whose value is <var>id</var>.</li>
                 <li>If <var>list</var> is <code>null</code>:
                   <ol>
-                    <li>If <var>node</var> does not have an <var>active property</var> member,
+                    <li>If <var>subject node</var> does not have an <var>active property</var> member,
                       create one and initialize its value to an <a>array</a>
                       containing <var>reference</var>.</li>
                     <li>Otherwise, compare <var>reference</var> against every item in the
                       <a>array</a> associated with the <var>active property</var>
-                      member of <var>node</var>. If there is no item equivalent to <var>reference</var>,
+                      member of <var>subject node</var>. If there is no item equivalent to <var>reference</var>,
                       append <var>reference</var> to the <a>array</a>. Two
                       <a class="changed">dictionaries</a> are considered
                       equal if they have equivalent key-value pairs.</li>
