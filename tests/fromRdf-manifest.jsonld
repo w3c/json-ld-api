@@ -59,9 +59,10 @@
       "@id": "#t0008",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "List conversion",
-      "purpose": "Conversion of lists of lists (the triples in the input are only partially ordered on purpose",
+      "purpose": "Conversion of lists of lists (the triples in the input are only partially ordered on purpose (1.0 semantics)",
       "input": "fromRdf/0008-in.nq",
-      "expect": "fromRdf/0008-out.jsonld"
+      "expect": "fromRdf/0008-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0009",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
@@ -173,6 +174,30 @@
       "purpose": "Test triple with RDF nil subject",
       "input": "fromRdf/0023-in.nq",
       "expect": "fromRdf/0023-out.jsonld"
+    }, {
+      "@id": "#tli01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "@list containing empty @list",
+      "purpose": "List of lists",
+      "input": "fromRdf/li01-in.nq",
+      "expect": "fromRdf/li01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "@list containing multiple lists",
+      "purpose": "List of lists",
+      "input": "fromRdf/li02-in.nq",
+      "expect": "fromRdf/li02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "t0008 as interpreted for 1.1. ",
+      "purpose": "List of lists",
+      "input": "fromRdf/li02-in.nq",
+      "expect": "fromRdf/li02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
     }
   ]
 }

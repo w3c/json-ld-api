@@ -982,6 +982,7 @@
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Compaction to list of lists",
       "purpose": "Verifies that an exception is raised in Compaction when attempting to compact a list of lists",
+      "option": {"specVersion": "json-ld-1.0"},
       "input": "compact/e001-in.jsonld",
       "context": "compact/e001-context.jsonld",
       "expect": "compaction to list of lists"
@@ -1474,6 +1475,51 @@
       "context": "compact/s002-context.jsonld",
       "expect": "compact/s002-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli01",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "coerced @list containing an empty list",
+      "purpose": "Lists of Lists",
+      "input": "compact/li01-in.jsonld",
+      "context": "compact/li01-context.jsonld",
+      "expect": "compact/li01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli02",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "coerced @list containing a list",
+      "purpose": "Lists of Lists",
+      "input": "compact/li02-in.jsonld",
+      "context": "compact/li02-context.jsonld",
+      "expect": "compact/li02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli03",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "coerced @list containing an deep list",
+      "purpose": "Lists of Lists",
+      "input": "compact/li03-in.jsonld",
+      "context": "compact/li03-context.jsonld",
+      "expect": "compact/li03-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli04",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "coerced @list containing multiple lists",
+      "purpose": "Lists of Lists",
+      "input": "compact/li04-in.jsonld",
+      "context": "compact/li04-context.jsonld",
+      "expect": "compact/li04-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli05",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "coerced @list containing mixed list values",
+      "purpose": "Lists of Lists",
+      "input": "compact/li05-in.jsonld",
+      "context": "compact/li05-context.jsonld",
+      "expect": "compact/li05-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
     }
   ]
 }

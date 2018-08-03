@@ -877,6 +877,22 @@
       "purpose": "IRI resolution according to RFC3986.",
       "input": "toRdf/0129-in.jsonld",
       "expect": "toRdf/0129-out.nq"
+    }, {
+      "@id": "#tli01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@list containing @list",
+      "purpose": "List of lists.",
+      "input": "toRdf/li01-in.jsonld",
+      "expect": "toRdf/li01-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tli02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@list containing empty @list",
+      "purpose": "List of lists.",
+      "input": "toRdf/li02-in.jsonld",
+      "expect": "toRdf/li02-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
     }
   ]
 }

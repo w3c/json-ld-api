@@ -1058,7 +1058,8 @@
       "name": "List of lists (from array)",
       "purpose": "Verifies that an exception is raised in Expansion when a list of lists is found",
       "input": "expand/e024-in.jsonld",
-      "expect": "list of lists"
+      "expect": "list of lists",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te025",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1114,7 +1115,8 @@
       "name": "List of lists (from array)",
       "purpose": "Verifies that an exception is raised in Expansion when a list of lists is found",
       "input": "expand/e032-in.jsonld",
-      "expect": "list of lists"
+      "expect": "list of lists",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te033",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1506,6 +1508,86 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/l001-in.jsonld",
       "expect": "expand/l001-out.jsonld"
+   }, {
+      "@id": "#tli01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@list containing @list",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li01-in.jsonld",
+      "expect": "expand/li01-out.jsonld"
+   }, {
+      "@id": "#tli02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@list containing empty @list",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li02-in.jsonld",
+      "expect": "expand/li02-out.jsonld"
+   }, {
+      "@id": "#tli03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@list containing @list (with coercion)",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li03-in.jsonld",
+      "expect": "expand/li03-out.jsonld"
+   }, {
+      "@id": "#tli04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@list containing empty @list (with coercion)",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li04-in.jsonld",
+      "expect": "expand/li04-out.jsonld"
+   }, {
+      "@id": "#tli05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "coerced @list containing an array",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li05-in.jsonld",
+      "expect": "expand/li05-out.jsonld"
+   }, {
+      "@id": "#tli06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "coerced @list containing an empty array",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li06-in.jsonld",
+      "expect": "expand/li06-out.jsonld"
+   }, {
+      "@id": "#tli07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "coerced @list containing deep arrays",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li07-in.jsonld",
+      "expect": "expand/li07-out.jsonld"
+   }, {
+      "@id": "#tli08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "coerced @list containing deep empty arrays",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li08-in.jsonld",
+      "expect": "expand/li08-out.jsonld"
+   }, {
+      "@id": "#tli09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "coerced @list containing multiple lists",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li09-in.jsonld",
+      "expect": "expand/li09-out.jsonld"
+   }, {
+      "@id": "#tli10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "coerced @list containing mixed list values",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/li10-in.jsonld",
+      "expect": "expand/li10-out.jsonld"
     }
   ]
 }
