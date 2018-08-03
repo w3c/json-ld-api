@@ -334,6 +334,13 @@
       "input": "flatten/0047-in.jsonld",
       "expect": "flatten/0047-out.jsonld"
     }, {
+      "@id": "#t0048",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
+      "name": "@list with embedded object",
+      "purpose": "Node definitions contained within lists are flattend to top level.",
+      "input": "flatten/0048-in.jsonld",
+      "expect": "flatten/0048-out.jsonld"
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:FlattenTest" ],
       "name": "Conflicting indexes",
@@ -341,6 +348,30 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "flatten/e001-in.jsonld",
       "expect": "conflicting indexes"
+    }, {
+      "@id": "#tli01",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:FlattenTest" ],
+      "name": "@list containing an deep list",
+      "purpose": "Lists of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "flatten/li01-in.jsonld",
+      "expect": "flatten/li01-out.jsonld"
+    }, {
+      "@id": "#tli02",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:FlattenTest" ],
+      "name": "@list containing empty @list",
+      "purpose": "Lists of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "flatten/li02-in.jsonld",
+      "expect": "flatten/li02-out.jsonld"
+    }, {
+      "@id": "#tli03",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:FlattenTest" ],
+      "name": "@list containing mixed list values",
+      "purpose": "Lists of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "flatten/li03-in.jsonld",
+      "expect": "flatten/li03-out.jsonld"
     }
   ]
 }

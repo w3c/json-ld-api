@@ -29,7 +29,9 @@
 
       // if there a publicly available Editor's Draft, this is the link
       edDraftURI:           "https://w3c.github.io/json-ld-api/",
-      testSuiteURI:         "https://w3c.github.io/json-ld-api/",
+      testSuiteURI:         "https://w3c.github.io/json-ld-api/tests/",
+      github:               "https://github.com/w3c/json-ld-api/",
+      issueBase:            "https://github.com/w3c/json-ld-api/issues/",
 
       // if you want to have extra CSS, append them to this list
       // it is recommended that the respec.css stylesheet be kept
@@ -38,7 +40,6 @@
       includePermalinks:      true,
       doJsonLd:               true,
       highlightVars:          true,
-      testSuiteURIkey:       "https://w3c.github.io/json-ld-api/",
       postProcess:            [internalizeTermListReferences],
 
       // editors, add as many as you like
@@ -96,8 +97,6 @@
           url:        "http://neverspace.net/",
           note:       "v1.0" }
       ],
-
-      github:    "https://github.com/w3c/json-ld-api/",
 
       // name of the WG
       wg:                     "JSON-LD Working Group",
@@ -1469,12 +1468,13 @@
                   algorithm recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>item</var> as <var>element</var>,
                   <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
-                <li>If the <var>active property</var> is <code>@list</code> or its
-                  <a>container mapping</a> <span class="changed">includes</span> <code>@list</code>, the
-                  <var>expanded item</var> must not be an <a>array</a> or a
-                  <a>list object</a>, otherwise a
-                  <a data-link-for="JsonLdErrorCode">list of lists</a>
-                  error has been detected and processing is aborted.</li>
+                <li class="changed">If <var>active property</var>
+                  is <code>@list</code>, or its <a>container mapping</a> is set
+                  to <code>@list</code>, and <var>expanded item</var> is an
+                  <a>array</a>, set <var>expanded item</var> to a new
+                  <a>dictionary</a> containing the key-value pair
+                  <code>@list</code> where the value is the original
+                  <var>expanded item</var>.</li>
                 <li>If <var>expanded item</var> is an <a>array</a>, append each
                   of its items to <var>result</var>. Otherwise, if
                   <var>expanded item</var> is not null, append it to <var>result</var>.</li>
@@ -1599,9 +1599,6 @@
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
                       <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
-                    <li>If <var>expanded value</var> is a <a>list object</a>, a
-                      <a data-link-for="JsonLdErrorCode">list of lists</a>
-                      error has been detected and processing is aborted.</li>
                   </ol>
                 </li>
                 <li>If <var>expanded property</var> is <code>@set</code>, set
@@ -1711,7 +1708,7 @@
                           <var>language</var>),
                           <span class="changed">unless <var>item</var> is <code>null</code></span>.
                           <span class="changed">If <var>language</var> is <code>@none</code>,
-                            or expands to <code>@none</code>, do not set the <code>@language</code> member.</span>
+                            or expands to <code>@none</code>, do not set the <code>@language</code> member.</span></li>
                       </ol>
                     </li>
                   </ol>
@@ -1813,6 +1810,7 @@
                   pair <code>@graph</code>-<var>ev</var>
                   where <var>ev</var> is represented as an <a>array</a>.</li>
               </ol>
+            </li>
             <li>Otherwise, if the <a>term definition</a> associated to
               <var>key</var> indicates that it is a <a>reverse property</a>
               <ol>
@@ -2145,6 +2143,13 @@
           passing <var>active context</var>, <var>inverse context</var>,
           <var>active property</var>,and <var>element</var> as <var>value</var> is
           a <a>scalar</a>, return that result.</li>
+        <li class="changed">If <var>element</var> is a
+          <a>list object</a>, and the <a>container mapping</a> for <var>active
+          property</var> in <var>active context</var> is <code>@list</code>,
+          return the esult of using this algorithm recursively, passing
+          <var>active context</var>, <var>inverse context</var>,
+          <var>active property</var>, and value of <code>@list</code>
+          in <var>element</var> for <var>element</var>.</li>
         <li>Initialize <var>inside reverse</var> to <code>true</code> if
           <var>active property</var> equals <code>@reverse</code>,
           otherwise to <code>false</code>.</li>
@@ -2393,13 +2398,11 @@
                           <code>@index</code> key in <var>expanded item</var> as <var>value</var>.</li>
                       </ol>
                     </li>
-                    <li>Otherwise, <var>item active property</var> must not be a key
-                      in <var class="changed">nest result</var> because there cannot be two
-                      <a>list objects</a> associated
-                      with an <var>active property</var> that has a
-                      <a>container mapping</a>; a
-                      <a data-link-for="JsonLdErrorCode">compaction to list of lists</a>
-                      error has been detected and processing is aborted.</li>
+                    <li class="changed">Otherwise, append <var>compacted item</var>
+                      to the value associated with the key that equals
+                      <var>item active property</var> in
+                      <var>nest result</var>, initializing it to a new empty array, if
+                      necessary.</li>
                   </ol>
                 </li>
                 <li class="changed">
@@ -3504,8 +3507,10 @@
               <code>@list</code> member for <var>element</var>, <var>active graph</var>,
               <var>active subject</var>, <var>active property</var>, and
               <var>result</var> for <var>list</var>.</li>
-            <li>Append <var>result</var> to the value of the <var>active property</var> member
+            <li class="changed">If <var>list</var> is <code>null</code>,
+              append <var>result</var> to the value of the <var>active property</var> member
               of <var>subject node</var>.</li>
+            <li class="changed">Otherwise, append <var>result</var> to the <code>@list</code> member of <var>list</var>.</li>
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a>node object</a>, perform
@@ -3808,24 +3813,19 @@
                       <a>blank node identifier</a>. For each <var>item</var>
                       in <var>values</var>:
                       <ol>
-                        <li>If <var>item</var> is a <a>list object</a>, initialize
-                          <var>list triples</var> as an empty <a>array</a> and
-                          <var>list head</var> to the result of the <a
-                          href="#list-to-rdf-conversion">List Conversion algorithm</a>, passing
-                          the value associated with the <code>@list</code> key from
-                          <var>item</var> and <var>list triples</var>. Append first a
-                          <a>triple</a> composed of <var>subject</var>,
-                          <var>property</var>, and <var>list head</var> to <var>triples</var> and
-                          finally append all <a>triples</a> from
-                          <var>list triples</var> to <var>triples</var>.</li>
-                        <li>Otherwise, <var>item</var> is a <a>value object</a>
-                          or a <a>node object</a>. Append a <a>triple</a>
+                        <li><var>item</var> is a <a>value object</a>, <a class="changed">list object</a>,
+                          or a <a>node object</a>.</li>
+                        <li class="changed">Initialize <var>list triples</var> as an empty <a>array</a>.</li>
+                        <li>Append a <a>triple</a>
                           composed of <var>subject</var>, <var>property</var>, and
                           the result of using the
                           <a href="#object-to-rdf-conversion">Object to RDF Conversion algorithm</a>
-                          passing <var>item</var> to <var>triples</var>, unless the result is
-                          <code>null</code>, indicating a <a>relative IRI</a> that has
+                          passing <var>item</var>
+                          <span class="changed">and <var>list triples</var></span> to <var>triples</var>,
+                          unless the result is <code>null</code>, indicating a <a>relative IRI</a> that has
                           to be ignored.</li>
+                        <li class="changed">Append all <a>triples</a> from
+                          <var>list triples</var> to <var>triples</var>.</li>
                       </ol>
                     </li>
                   </ol>
@@ -3846,13 +3846,15 @@
   <section>
     <h3>Object to RDF Conversion</h3>
 
-    <p>This algorithm takes a <a>node object</a> or <a>value object</a>
+    <p>This algorithm takes a <a>node object</a>, <a class="changed">list object</a>, or <a>value object</a>
       and transforms it into an
       <a>RDF resource</a>
       to be used as the <a>object</a> of an <a>RDF triple</a>. If a
       <a>node object</a> containing a <a>relative IRI</a> is passed to
       the algorithm, <code>null</code> is returned which then causes the resulting
-      <a>RDF triple</a> to be ignored.</p>
+      <a>RDF triple</a> to be ignored.
+      <span class="changed">If the input is a <a>list object</a>, it will also
+        return the triples created from that input.</span></p>
 
     <section class="informative">
       <h3>Overview</h3>
@@ -3869,8 +3871,9 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes as its sole argument <var>item</var> which MUST be
-        either a <a>value object</a> or <a>node object</a>.</p>
+      <p>The algorithm takes as two arguments <var>item</var> which MUST be
+        either a <a>value object</a>, <a>list object</a>, or <a>node object</a>
+        and <var>list triples</var>, which is an empty array.</p>
 
       <ol>
         <li>If <var>item</var> is a <a>node object</a> and the value of
@@ -3879,6 +3882,12 @@
         <li>If <var>item</var> is a <a>node object</a>, return the
           <a>IRI</a> or <a>blank node identifier</a> associated
           with its <code>@id</code> member.</li>
+        <li class="changed">If <var>item</var> is a <a>list object</a>
+          return the result of the
+          <a href="#list-to-rdf-conversion">List Conversion algorithm</a>, passing
+          the value associated with the <code>@list</code> key from
+          <var>item</var> and <var>list triples</var>.
+        </li>
         <li>Otherwise, <var>item</var> is a <a>value object</a>. Initialize
           <var>value</var> to the value associated with the <code>@value</code>
           member in <var>item</var>.
@@ -3936,7 +3945,7 @@
 
       <p>For each element of the <a>list</a> a new <a>blank node identifier</a>
         is allocated which is used to generate <code>rdf:first</code> and
-        <code>rdf:rest</code> ABBR. The
+        <code>rdf:rest</code>. The
         algorithm returns the list head, which is either the first allocated
         <a>blank node identifier</a> or <code>rdf:nil</code> if the
         <a>list</a> is empty. If a list element represents a <a>relative IRI</a>,
@@ -3955,18 +3964,21 @@
         <li>Otherwise, create an <a>array</a> <var>bnodes</var> composed of a
           <a href="#generate-blank-node-identifier">newly generated blank node identifier</a>
           for each entry in <var>list</var>.</li>
-        <li>Initialize an empty <a>array</a> <var>list triples</var>.</li>
         <li>For each pair of <var>subject</var> from <var>bnodes</var> and <var>item</var> from <var>list</var>:
           <ol>
+            <li class="changed">Initialize <var>embedded triples</var> to a new empty array.</li>
             <li>Initialize <var>object</var> to the result of using the
               <a href="#object-to-rdf-conversion">Object to RDF Conversion algorithm</a>
-              passing <var>item</var> to <var>list triples</var>.</li>
+              passing <var>item</var>
+              <span class="changed">and <var>embedded triples</var> for <var>list triples</var></span>.</li>
             <li>Unless <var>object</var> is <code>null</code>, append a <a>triple</a>
-              composed of <var>subject</var>, <code>rdf:first</code>, and <var>object</var>.</li>
+              composed of <var>subject</var>, <code>rdf:first</code>, and <var>object</var>
+              to <var>list triples</var>.</li>
             <li>Set <var>rest</var> as the next entry in <var>bnodes</var>, or if that
               does not exist, <code>rdf:nil</code>. Append a
               <a>triple</a> composed of <var>subject</var>,
               <code>rdf:rest</code>, and <var>rest</var> to <var>list triples</var>.</li>
+            <li class="changed">Append all values from <var>embedded triples</var> to <var>list triples</var></li>
           </ol>
         </li>
         <li>Return the first <a>blank node</a> from <var>bnodes</var> or
@@ -4141,28 +4153,6 @@
                     <li>If the <code>@id</code> member of <var>node</var> is an
                       <a>IRI</a> instead of a <a>blank node identifier</a>,
                       exit the while loop.</li>
-                  </ol>
-                </li>
-                <li>If <var>property</var> equals <code>rdf:first</code>, i.e., the
-                  detected list is nested inside another list
-                  <ol>
-                    <li>and the value of the <code>@id</code> of <var>node</var> equals
-                      <code>rdf:nil</code>, i.e., the detected list is empty,
-                      continue with the next <var>usage</var> item. The
-                      <code>rdf:nil</code> node cannot be converted to a
-                      <a>list object</a> as it would result in a list of
-                      lists, which isn't supported.</li>
-                    <li>Otherwise, the list consists of at least one item. We preserve the
-                      head node and transform the rest of the linked list to a
-                      <a>list object</a>.</li>
-                    <li>Set <var>head id</var> to the value of the <code>@id</code>
-                      member of <var>head</var>.</li>
-                    <li>Set <var>head</var> to the value of the <var>head id</var> member of
-                      <var>graph object</var> so that all it's properties can be accessed.</li>
-                    <li>Then, set <var>head</var> to the only item in the value of the
-                      <code>rdf:rest</code> member of <var>head</var>.</li>
-                    <li>Finally, remove the last item of the <var>list</var> <a>array</a>
-                      and the last item of the <var>list nodes</var> <a>array</a>.</li>
                   </ol>
                 </li>
                 <li>Remove the <code>@id</code> member from <var>head</var>.</li>
@@ -4789,7 +4779,6 @@
       <pre class="idl" data-transform="unComment"><!--
         enum JsonLdErrorCode {
             "colliding keywords",
-            "compaction to list of lists",
             "conflicting indexes",
             "cyclic IRI mapping",
             "invalid @id value",
@@ -4822,7 +4811,6 @@
             "invalid value object value",
             "invalid vocab mapping",
             "keyword redefinition",
-            "list of lists",
             "loading document failed",
             "loading remote context failed",
             "multiple context link headers",
@@ -4836,9 +4824,6 @@
         <dd>Two properties which expand to the same keyword have been detected.
           This might occur if a <a>keyword</a> and an alias thereof
           are used at the same time.</dd>
-        <dt><dfn>compaction to list of lists</dfn></dt>
-        <dd>The compacted document contains a list of lists as multiple
-          lists have been compacted to the same term.</dd>
         <dt><dfn>conflicting indexes</dfn></dt>
         <dd>Multiple conflicting indexes have been found for the same node.</dd>
         <dt><dfn>cyclic IRI mapping</dfn></dt>
@@ -4932,9 +4917,6 @@
           it is neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
-        <dt><dfn>list of lists</dfn></dt>
-        <dd>A list of lists was detected. List of lists are not supported in
-          this version of JSON-LD due to the algorithmic complexity.</dd>
         <dt><dfn>loading document failed</dfn></dt>
         <dd>The document could not be loaded or parsed as JSON.</dd>
         <dt><dfn>loading remote context failed</dfn></dt>
@@ -5026,6 +5008,7 @@
       a context. When this is set, vocabulary-relative IRIs, such as the
       keys of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> using string concatenation.</li>
+    <li><a>Lists</a> may now have members which are themselves <a>lists</a>.</li>
   </ul>
 </section>
 
