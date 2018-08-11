@@ -893,6 +893,62 @@
       "input": "toRdf/li02-in.jsonld",
       "expect": "toRdf/li02-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid subject IRIs are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf01-in.jsonld",
+      "expect": "toRdf/wf01-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid predicate IRIs are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf02-in.jsonld",
+      "expect": "toRdf/wf02-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid object IRIs are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf03-in.jsonld",
+      "expect": "toRdf/wf03-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid type IRIs are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf04-in.jsonld",
+      "expect": "toRdf/wf04-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid language tags are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf05-in.jsonld",
+      "expect": "toRdf/wf05-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid literal datatype IRIs are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf06-in.jsonld",
+      "expect": "toRdf/wf06-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#twf06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Triples including invalid graph name IRIs are rejected",
+      "purpose": "ToRdf emits only well-formed statements.",
+      "input": "toRdf/wf07-in.jsonld",
+      "expect": "toRdf/wf07-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
     }
   ]
 }
