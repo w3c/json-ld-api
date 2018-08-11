@@ -3738,6 +3738,28 @@
       RDF triples that would have contained blank nodes as properties are
       discarded when interpreting JSON-LD as RDF.</p>
 
+
+    <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
+      <a>RDF triples</a> and <a>graph names</a>:</p>
+    <ul>
+      <li>An <a>IRI</a> is <a>well-formed</a> if it matches the
+        <a data-cite="RFC3987#section-2.2">ABNF for <strong>IRI</strong></a> as
+        described in [[RFC3987]].</li>
+      <li>A <a>blank node identifier</a> is <a>well-formed</a> if it matches the
+        <a data-cite="Turtle#sec-grammar-grammar">EBNF for
+        <strong>BLANK_NODE_LABEL</strong></a> as described in [[Turtle]].
+        <span class="note">When following the algorithm described here,
+          all blank node identiers will be normalized using the <a
+          href="#generate-blank-node-identifier">Generate Blank Node Identifier
+          algorithm</a> and automatically adhere to this form.</span>
+      </li>
+      <li>A <a>literal</a> is <a>well-formed</a> if it has the
+        <a>lexical form</a> of a <a>string</a>, any <a>datatype IRI</a> is
+        <a>well-formed</a>, and any <a>language tag</a> is <a>well-formed</a>
+        according to <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of
+        [[!BCP47]].</li>
+    </ul>
+
     <section class="informative">
       <h3>Overview</h3>
 
@@ -3787,13 +3809,15 @@
         <li>For each <var>graph name</var> and <var>graph</var> in <var>node map</var>
           ordered by <var>graph name</var>:
           <ol>
-            <li>If <var>graph name</var> is a <a>relative IRI</a>, continue
+            <li>If <var>graph name</var> is
+              <span class="changed">not <a>well-formed</a></span>, continue
               with the next <var>graph name</var>-<var>graph</var> pair.</li>
             <li>Initialize <var>triples</var> as an empty <a>array</a>.</li>
             <li>For each <var>subject</var> and <var>node</var> in <var>graph</var> ordered
               by <var>subject</var>:
               <ol>
-                <li>If <var>subject</var> is a <a>relative IRI</a>, continue
+                <li>If <var>subject</var> is
+                  <span class="changed">not <a>well-formed</a></span>, continue
                   with the next <var>subject</var>-<var>node</var> pair.</li>
                 <li>For each <var>property</var> and <var>values</var> in <var>node</var>
                   ordered by <var>property</var>:
@@ -3801,13 +3825,15 @@
                     <li>If <var>property</var> is <code>@type</code>, then for each
                       <var>type</var> in <var>values</var>, append a <a>triple</a>
                       composed of <var>subject</var>, <code>rdf:type</code>,
-                      and <var>type</var> to <var>triples</var>.</li>
+                      and <var>type</var> to <var>triples</var>.
+                      <span class="changed">unless <var>type</var> is not <a>well-formed</a></span>.</li>
                     <li>Otherwise, if <var>property</var> is a <a>keyword</a>
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
                     <li>Otherwise, if <var>property</var> is a <a>blank node identifier</a> and
                       the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option is not <code>true</code>,
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
-                    <li>Otherwise, if <var>property</var> is a <a>relative IRI</a>,
+                    <li>Otherwise, if <var>property</var> is
+                      <span class="changed">not <a>well-formed</a></span>,
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
                     <li>Otherwise, <var>property</var> is an <a>absolute IRI</a> or
                       <a>blank node identifier</a>. For each <var>item</var>
@@ -3821,9 +3847,11 @@
                           the result of using the
                           <a href="#object-to-rdf-conversion">Object to RDF Conversion algorithm</a>
                           passing <var>item</var>
-                          <span class="changed">and <var>list triples</var></span> to <var>triples</var>,
-                          unless the result is <code>null</code>, indicating a <a>relative IRI</a> that has
-                          to be ignored.</li>
+                          <span class="changed">and <var>list triples</var></span>
+                          to <var>triples</var>, unless the result is
+                          <code>null</code>, indicating a
+                          <span class="changed">non-<a>well-formed</a> <a>RDF resource</a></span>
+                          that has to be ignored.</li>
                         <li class="changed">Append all <a>triples</a> from
                           <var>list triples</var> to <var>triples</var>.</li>
                       </ol>
@@ -3877,7 +3905,8 @@
 
       <ol>
         <li>If <var>item</var> is a <a>node object</a> and the value of
-          its <code>@id</code> member is a <a>relative IRI</a>, return
+          its <code>@id</code> member is
+          <span class="changed">not <a>well-formed</a></span>, return
           <code>null</code>.</li>
         <li>If <var>item</var> is a <a>node object</a>, return the
           <a>IRI</a> or <a>blank node identifier</a> associated
@@ -3892,8 +3921,11 @@
           <var>value</var> to the value associated with the <code>@value</code>
           member in <var>item</var>.
         <li>Initialize <var>datatype</var> to the value associated with the
-          <code>@type</code> member of <var>item</var> or  <code>null</code> if
+          <code>@type</code> member of <var>item</var> or <code>null</code> if
           <var>item</var> does not have such a member.</li>
+        <li class="changed">If <var>datatype</var> is not <a>well-formed</a>, return <code>null</code>.</li>
+        <li class="changed">If <var>item</var> has a <code>@language</code>
+          member which is not <a>well-formed</a>, return <code>null</code>.</li>
         <li>If <var>value</var> is <code>true</code> or
           <code>false</code>, set <var>value</var> to the <a>string</a>
           <code>true</code> or <code>false</code> which is the
@@ -5009,6 +5041,10 @@
       keys of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> using string concatenation.</li>
     <li><a>Lists</a> may now have members which are themselves <a>lists</a>.</li>
+    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF algorithm</a>
+      has been updated to ensure that only <a>well-formed</a> <a>triples</a>
+      are emitted; previously, it only ensured that <a>triples</a> containing
+      <a>relative IRIs</a> were excluded.</li>
   </ul>
 </section>
 
