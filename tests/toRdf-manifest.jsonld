@@ -4,7 +4,7 @@
   "@type": "mf:Manifest",
   "name": "Transform JSON-LD to RDF",
   "description": "JSON-LD to RDF tests generate RDF Datasets and use RDF Dataset Isomorphism comparison.",
-  "baseIri": "https://w3c.github.io/json-ld-api/tests/toRdf/",
+  "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {
       "@id": "#t0001",
