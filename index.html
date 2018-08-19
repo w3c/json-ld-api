@@ -371,7 +371,9 @@
     -->
     </pre>
 
-    <script type="application/ld+json" data-api="expand">
+    <script class="example" 
+            data-result-for="JSON-LD documenet using only terms"
+            title="JSON-LD document using only terms (expanded)">
       [
         {
           "@id": "http://me.markus-lanthaler.com/",
@@ -426,6 +428,7 @@
       operation) against the above examples results in the following output:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property"
          title="Expanded JSON-LD document using an IRI">
     <!--
     [
@@ -479,6 +482,7 @@
     <p>For example, assume the following expanded JSON-LD input document:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property"
          title="Expanded sample document">
     <!--
     [
@@ -499,6 +503,7 @@
       <a>context</a>:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-context-for="Expanded sample document"
          title="JSON-LD context">
     <!--
     {
@@ -519,6 +524,9 @@
       document provided above would result in the following output:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-result-for="Expanded sample document"
+         data-context="JSON-LD context"
+         data-compact
          title="Compacted sample document">
     <!--
     {
@@ -590,11 +598,13 @@
       returns the following document:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-result-for="JSON-LD document in compact form"
+         data-flatten
          title="Flattened sample document in expanded form">
     <!--
     [
       {
-        "@id": "_:t0",
+        "@id": "_:b0",
         "http://xmlns.com/foaf/0.1/name": [
           { "@value": "Dave Longley" }
         ]
@@ -605,7 +615,7 @@
           { "@value": "Markus Lanthaler" }
         ],
         "http://xmlns.com/foaf/0.1/knows": [
-          { "@id": "_:t0" }
+          { "@id": "_:b0" }
         ]
       }
     ]
@@ -619,7 +629,7 @@
     <p>Note how in the output above all properties of a <a>node</a> are collected in a
       single <a class="changed">dictionary</a> and how the <a>blank node</a> representing
       &quot;Dave Longley&quot; has been assigned the <a>blank node identifier</a>
-      <code>_:t0</code>.</p>
+      <code>_:b0</code>.</p>
 
     <p>To make it easier for humans to read or for certain applications to
       process it, a flattened document can be compacted by passing a context. Using
@@ -627,6 +637,9 @@
       looks as follows:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-result-for="JSON-LD document in compact form"
+         data-flatten
+         data-context="JSON-LD document in compact form"
          title="Flattened and compacted sample document">
     <!--
     {
@@ -636,12 +649,12 @@
       },
       "@graph": [
         {
-          "@id": "_:t0",
+          "@id": "_:b0",
           "name": "Dave Longley"
         }, {
           "@id": "http://me.markus-lanthaler.com/",
           "name": "Markus Lanthaler",
-          "knows": { "@id": "_:t0" }
+          "knows": { "@id": "_:b0" }
         }
       ]
     }
@@ -666,6 +679,7 @@
 
     <pre class="example nohighlight" data-transform="updateExample"
          data-content-type="text/turtle"
+         data-from-rdf
          title="Sample Turtle document">
     <!--
     <http://me.markus-lanthaler.com/> <http://xmlns.com/foaf/0.1/name> "Markus Lanthaler" .
@@ -677,6 +691,8 @@
       a developer could transform this document into expanded JSON-LD:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
+         data-result-for="Sample Turtle document"
+         data-from-rdf
          title="Sample Turtle document converted to JSON-LD">
     <!--
     [
@@ -740,6 +756,24 @@
     suite [[JSON-LD-TESTS]]. Note, however, that passing all the tests in the test
     suite does not imply complete conformance to this specification. It only implies
     that the implementation conforms to aspects tested by the test suite.</p>
+
+  <p>This specification makes use of the following namespace prefixes:</p>
+  <table class="simple">
+    <thead><tr>
+      <th>Prefix</th>
+      <th>IRI</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>rdf</td>
+        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+      </tr>
+      <tr>
+        <td>xsd</td>
+        <td>http://www.w3.org/2001/XMLSchema#</td>
+      </tr>
+    </tbody>
+  </table>
 </section> <!-- end of Conformance section -->
 
 <section>
@@ -3134,22 +3168,22 @@
           <a>value object</a> having no <code>@type</code>.</p>
         <pre class="example" title="Term definition with language map">
           {
-            "@context": {"t": {"@id": "http://example/t", "@container": "@language"}}
+            "@context": {"t": {"@id": "http://example.org/t", "@container": "@language"}}
           }
         </pre>
         <p>The inverse context will contain the following:</p>
         <pre>
-{
-  "@language": {
-    "@language": {"@none": "t"},
-    "@type": {"@none": "t"},
-    "@any": {"@none": "t"}
-  }
-}
+        {
+          "@language": {
+            "@language": {"@none": "t"},
+            "@type": {"@none": "t"},
+            "@any": {"@none": "t"}
+          }
+        }
         </pre>
 
         <aside class="example" data-ignore title="Language map term with language value">
-          <p>Given the member <code>{"http://example/t": {"@value": "foo", "@type": "http:/example/type"}}</code>,
+          <p>Given the member <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3169,24 +3203,24 @@
         <h4>Datatyped Term</h4>
         <p>If the term definition has a datatype, it will only match a
           <a>value object</a> having a matching datatype.</p>
-        <pre class="example" data-ignore title="Term definition with datatype">
+        <pre class="example" title="Term definition with datatype">
           {
-            "@context": {"t": {"@id": "http://example/t", "@type": "http:/example/type"}}
+            "@context": {"t": {"@id": "http://example.org/t", "@type": "http:/example.org/type"}}
           }
         </pre>
         <p>The inverse context will contain the following:</p>
         <pre>
-{
-  "@none": {
-    "@language": {},
-    "@type": {"http:/example/type": "t"},
-    "@any": {"@none": "t"}
-  }
-}
+          {
+            "@none": {
+              "@language": {},
+              "@type": {"http:/example.org/type": "t"},
+              "@any": {"@none": "t"}
+            }
+          }
         </pre>
 
         <aside class="example" data-ignore title="Datatyped term with datatyped value">
-          <p>Given the member <code>{"http://example/t": {"@value": "foo", "@type": "http:/example/type"}}</code>,
+          <p>Given the member <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3194,15 +3228,15 @@
             <dt><var>type/language</var></dt>
             <dd><code>@type</code></dd>
             <dt><var>preferred values</var></dt>
-            <dd><code>["http:/example/type", "@none"]</code></dd>
+            <dd><code>["http:/example.org/type", "@none"]</code></dd>
           </dl>
-          <p>The <var>value map</var> will be set to <code>{"http:/example/type": "t"}</code>,
-            as <var>preferred values</var> contains <code>"http:/example/type"</code>,
+          <p>The <var>value map</var> will be set to <code>{"http:/example.org/type": "t"}</code>,
+            as <var>preferred values</var> contains <code>"http:/example.org/type"</code>,
             the algorithm returns <code>"t"</code> as the term to use for compaction.</p>
         </aside>
 
         <aside class="example" data-ignore title="Datatyped term with simple value">
-          <p>Given the member <code>{"http://example/t": {"@value": "foo"}}</code>,
+          <p>Given the member <code>{"http://example.org/t": {"@value": "foo"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3218,7 +3252,7 @@
         </aside>
 
         <aside class="example" data-ignore title="Datatyped term with object value">
-          <p>Given the member <code>{"http://example/t": {"@id": "http://example/id"}}</code>,
+          <p>Given the member <code>{"http://example.org/t": {"@id": "http://example.org/id"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3228,7 +3262,7 @@
             <dt><var>preferred values</var></dt>
             <dd><code>["@id", "@vocab", "@none"]</code></dd>
           </dl>
-          <p>The <var>value map</var> will be set to <code>{"http:/example/type": "t"}</code>,
+          <p>The <var>value map</var> will be set to <code>{"http:/example.org/type": "t"}</code>,
             as no key in <var>preferred values</var> matches a key in <var>value map</var>,
             the algorithm returns <code>null</code> and no term is found.</p>
         </aside>
@@ -3703,31 +3737,6 @@
   <p>This section describes algorithms to deserialize a JSON-LD document to an
     <a>RDF dataset</a> and vice versa. The algorithms are designed for in-memory
     implementations with random access to <a class="changed">dictionary</a> elements.</p>
-
-  <p>Throughout this section, the following vocabulary
-    <a>prefixes</a> are used in
-    <a>compact IRIs</a>:</p>
-
-  <table class="simple">
-    <thead><tr>
-      <th>Prefix</th>
-      <th>IRI</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>rdf</td>
-        <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-      </tr>
-      <tr>
-        <td>rdfs</td>
-        <td> http://www.w3.org/2000/01/rdf-schema#</td>
-      </tr>
-      <tr>
-        <td>xsd</td>
-        <td>http://www.w3.org/2001/XMLSchema#</td>
-      </tr>
-    </tbody>
-  </table>
 
   <section>
     <h2>Deserialize JSON-LD to RDF algorithm</h2>
