@@ -1,0 +1,2 @@
+<http://me.markus-lanthaler.com/> <http://xmlns.com/foaf/0.1/name> "Markus Lanthaler" .
+<http://me.markus-lanthaler.com/> <http://xmlns.com/foaf/0.1/homepage> <http://www.markus-lanthaler.com/> .

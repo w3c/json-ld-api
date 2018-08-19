@@ -1,0 +1,6 @@
+Example 016: Term definition with datatype
+---
+"@context":
+  t:
+    "@id": http://example.org/t
+    "@type": http:/example.org/type
