@@ -942,7 +942,7 @@
       "expect": "toRdf/wf06-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#twf06",
+      "@id": "#twf07",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Triples including invalid graph name IRIs are rejected",
       "purpose": "ToRdf emits only well-formed statements.",
