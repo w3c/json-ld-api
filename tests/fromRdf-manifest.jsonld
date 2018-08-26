@@ -198,6 +198,125 @@
       "input": "fromRdf/li02-in.nq",
       "expect": "fromRdf/li02-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tnt01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_ascii_boundaries",
+      "purpose": "literal_ascii_boundaries '\\x00\\x26\\x28...' from N-Triples",
+      "input": "fromRdf/nt01-in.nq",
+      "expect": "fromRdf/nt01-out.jsonld"
+    }, {
+      "@id": "#tnt02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_UTF8_boundaries",
+      "purpose": "literal_with_UTF8_boundaries '\\x80\\x7ff\\x800\\xfff...' from N-Triples",
+      "input": "fromRdf/nt02-in.nq",
+      "expect": "fromRdf/nt02-out.jsonld"
+    }, {
+      "@id": "#tnt03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_all_controls",
+      "purpose": "literal_all_controls '\\x00\\x01\\x02\\x03\\x04...' from N-Triples",
+      "input": "fromRdf/nt03-in.nq",
+      "expect": "fromRdf/nt03-out.jsonld"
+    }, {
+      "@id": "#tnt04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_all_punctuation",
+      "purpose": "literal_all_punctuation '!\"#$%&()...' from N-Triples",
+      "input": "fromRdf/nt04-in.nq",
+      "expect": "fromRdf/nt04-out.jsonld"
+    }, {
+      "@id": "#tnt05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_squote",
+      "purpose": "literal with squote \"x'y\" from N-Triples",
+      "input": "fromRdf/nt05-in.nq",
+      "expect": "fromRdf/nt05-out.jsonld"
+    }, {
+      "@id": "#tnt06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_2_squotes",
+      "purpose": "literal with 2 squotes \"x''y\" from N-Triples",
+      "input": "fromRdf/nt06-in.nq",
+      "expect": "fromRdf/nt06-out.jsonld"
+    }, {
+      "@id": "#tnt07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_dquote",
+      "purpose": "literal with dquote \"x\"y\" from N-Triples",
+      "input": "fromRdf/nt07-in.nq",
+      "expect": "fromRdf/nt07-out.jsonld"
+    }, {
+      "@id": "#tnt08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_2_dquotes",
+      "purpose": "literal with 2 dquotes \"\"\"a\"\"b\"\"\" from N-Triples",
+      "input": "fromRdf/nt08-in.nq",
+      "expect": "fromRdf/nt08-out.jsonld"
+    }, {
+      "@id": "#tnt09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_REVERSE_SOLIDUS2",
+      "purpose": "REVERSE SOLIDUS at end of literal from N-Triples",
+      "input": "fromRdf/nt09-in.nq",
+      "expect": "fromRdf/nt09-out.jsonld"
+    }, {
+      "@id": "#tnt10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_CHARACTER_TABULATION",
+      "purpose": "literal with CHARACTER TABULATION from N-Triples",
+      "input": "fromRdf/nt10-in.nq",
+      "expect": "fromRdf/nt10-out.jsonld"
+    }, {
+      "@id": "#tnt11",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_BACKSPACE",
+      "purpose": "literal with BACKSPACE from N-Triples",
+      "input": "fromRdf/nt11-in.nq",
+      "expect": "fromRdf/nt11-out.jsonld"
+    }, {
+      "@id": "#tnt12",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_LINE_FEED",
+      "purpose": "literal with LINE FEED from N-Triples",
+      "input": "fromRdf/nt12-in.nq",
+      "expect": "fromRdf/nt12-out.jsonld"
+    }, {
+      "@id": "#tnt13",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_CARRIAGE_RETURN",
+      "purpose": "literal with CARRIAGE RETURN from N-Triples",
+      "input": "fromRdf/nt13-in.nq",
+      "expect": "fromRdf/nt13-out.jsonld"
+    }, {
+      "@id": "#tnt14",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_FORM_FEED",
+      "purpose": "literal with FORM FEED from N-Triples",
+      "input": "fromRdf/nt14-in.nq",
+      "expect": "fromRdf/nt14-out.jsonld"
+    }, {
+      "@id": "#tnt15",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_REVERSE_SOLIDUS",
+      "purpose": "literal with REVERSE SOLIDUS from N-Triples",
+      "input": "fromRdf/nt15-in.nq",
+      "expect": "fromRdf/nt15-out.jsonld"
+    }, {
+      "@id": "#tnt16",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_numeric_escape4",
+      "purpose": "literal with numeric escape4 \\u from N-Triples",
+      "input": "fromRdf/nt16-in.nq",
+      "expect": "fromRdf/nt16-out.jsonld"
+    }, {
+      "@id": "#tnt17",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "literal_with_numeric_escape8",
+      "purpose": "literal with numeric escape8 \\U from N-Triples",
+      "input": "fromRdf/nt17-in.nq",
+      "expect": "fromRdf/nt17-out.jsonld"
     }
   ]
 }
