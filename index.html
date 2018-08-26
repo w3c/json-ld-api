@@ -1586,7 +1586,14 @@
                   or each of its items.
                   <span class="changed">
                     When the <var>frame expansion</var> flag is set, <var>value</var>
-                    may also be an empty <a>dictionary</a>.</span></li>
+                    may also be an empty <a>dictionary</a>.
+                  </span>
+                  <div class="note">
+                    No transformation from a <a>string</a> <var>value</var> to an <a>array</a>
+                    <var>expanded value</var> is implied, and the form or <var>value</var>
+                    should be preserved in <var>expanded value</var>.
+                  </div>
+                </li>
                 <li>If <var>expanded property</var> is <code>@graph</code>, set
                   <var>expanded value</var> to the result of using this algorithm
                   recursively passing <var>active context</var>, <code>@graph</code>
