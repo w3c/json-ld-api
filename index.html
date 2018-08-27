@@ -1479,6 +1479,16 @@
         Special processing for a <a>JSON-LD Frame</a> is invoked when the
         <var>frame expansion</var> flag is set to <code>true</code>.</p>
 
+      <p class="note">As mentioned in <a data-cite="JSON-LD11#terms-0">Terms</a> [[JSON-LD11]],
+        to avoid forward-compatibility issues, <a>terms</a> SHOULD NOT start with an
+        <code>@</code> character as future versions of JSON-LD may introduce
+        additional <a>keywords</a>. This step will treat such terms like any
+        other term, i.e., they are ignored unless mapped to an <a>IRI</a>.
+        Furthermore, the use of empty <a>terms</a> (<code>""</code>) is not
+        allowed as not all programming languages are able to handle empty JSON
+        keys. Implementations of this algorithm may consider providing a
+        runtime flag to show a warning if such terms are encountered.</p>
+
         <ol>
         <li>If <var>element</var> is <code>null</code>, return <code>null</code>.</li>
         <li class="changed">If <var>active property</var> is <code>@default</code>,
@@ -5124,8 +5134,7 @@
     Rego Gmür,
     Rob Trainer,
     Ted Thibodeau Jr.,
-    and Victor Charpenay.
-    .</p>
+    and Victor Charpenay.</p>
 
   <p>For the 1.0 version of the specification, the editors would like to thank Mark Birbeck, who provided a great deal of
     the initial push behind the JSON-LD work via his work on RDFj.
