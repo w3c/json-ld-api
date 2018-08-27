@@ -1245,7 +1245,7 @@
             <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
-            <li>Initialize <a>nest value</a> in <var>defined</var> to the value associated with the
+            <li>Initialize <a>nest value</a> in <var>definition</var> to the value associated with the
               <code>@nest</code> key, which must be a <a>string</a> and
               must not be a keyword other than <code>@nest</code>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
@@ -1266,7 +1266,7 @@
         </li>
         <li>If the value contains any key other than <code>@id</code>,
           <code>@reverse</code>, <code>@container</code>,
-          <code class="changed">@context</code>, <code class="changed">@nest</code>,
+          <code class="changed">@context</code>, <code>@language</code>, <code class="changed">@nest</code>,
           <code class="changed">@prefix</code>, or <code>@type</code>, an
           <a data-link-for="JsonLdErrorCode">invalid term definition</a> error has
           been detected and processing is aborted.</li>
