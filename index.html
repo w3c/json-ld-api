@@ -284,7 +284,7 @@
     -->
     </pre>
     <p>In the <a>internal representation</a>, the example above would be of a
-      <a>dictionary</a> containing <code>@context</code>, <code>@id</code>, <code>name</code>, and <code>knows</code> keys,
+      <a>dictionary</a> containing <code>@context</code>, <code>@id</code>, <code>name</code>, and <code>knows</code> <a>members</a>,
       with either <a>dictionaries</a>, <a>strings</a>, or <a>arrays</a> of
       dictionaries or strings values. In the JSON serialization, <a>JSON objects</a> are used
       for dictionaries, while arrays and strings are serialized using a
@@ -335,7 +335,7 @@
     In order to detect this JSON-LD 1.1 requires that the <a>processing
     mode</a> be explicitly set to <code>json-ld-1.1</code>, either through the
     <a data-link-for="JsonLdOptions">processingMode</a> API option, or using the
-    <code>@version</code> member within a <a>context</a>.</p>
+    <code>@version</code> <a>dictionary member</a> within a <a>context</a>.</p>
 
   <p>There are four major types of transformation that are discussed in this
     document: expansion, compaction, flattening, and RDF serialization/deserialization.</p>
@@ -391,7 +391,7 @@
       ]
     </script>
 
-    <p>The next input example uses one <a>IRI</a> to express a property
+    <p>The next input example uses one <a>IRI</a> to express a <a>property</a>
     and an <a>array</a> to encapsulate another, but
     leaves the rest of the information untouched.</p>
 
@@ -417,7 +417,7 @@
 
     <p><a>Expansion</a> has two important goals: removing any contextual
       information from the document, and ensuring all values are represented
-      in a regular form. These goals are accomplished by expanding all properties
+      in a regular form. These goals are accomplished by expanding all <a>member</a> keys
       to <a>absolute IRIs</a> and by expressing all
       values in <a>arrays</a> in
       <a>expanded form</a>. <a>Expanded form</a> is the most verbose
@@ -563,10 +563,10 @@
 
     <p>While expansion ensures that a document is in a uniform structure,
       <dfn data-lt="flattened">flattening</dfn> goes a step further to ensure that the shape of the data
-      is deterministic. In expanded documents, the properties of a single
+      is deterministic. In expanded documents, the <a>properties</a> of a single
       <a>node</a> may be spread across a number of different
       <a class="changed">dictionaries</a>. By flattening a
-      document, all properties of a <a>node</a> are collected in a single
+      document, all <a>properties</a> of a <a>node</a> are collected in a single
       <a class="changed">dictionary</a> and all <a>blank nodes</a>
       are labeled with a <a>blank node identifier</a>. This may drastically
       simplify the code required to process JSON-LD data in certain applications.</p>
@@ -626,7 +626,7 @@
       <a href="#flattening-algorithm">flattening algorithm</a>,
       where the algorithm's use of <a>dictionaries</a> are replaced with <a>JSON objects</a>.</p>
 
-    <p>Note how in the output above all properties of a <a>node</a> are collected in a
+    <p>Note how in the output above all <a>properties</a> of a <a>node</a> are collected in a
       single <a class="changed">dictionary</a> and how the <a>blank node</a> representing
       &quot;Dave Longley&quot; has been assigned the <a>blank node identifier</a>
       <code>_:b0</code>.</p>
@@ -665,7 +665,7 @@
       is always a <a class="changed">dictionary</a>,
       <span class="changed">(represented as a <a>JSON object</a> when serialized)</span>,
       which contains an <code>@graph</code>
-      member that represents the <a>default graph</a>.</p>
+      <a>member</a> that represents the <a>default graph</a>.</p>
   </section> <!-- end of Flattening -->
 
   <section class="informative">
@@ -788,7 +788,7 @@
 
     <p>The <a>active context</a> contains the active
       <a>term definitions</a> which specify how
-      properties and values have to be interpreted as well as the current <a>base IRI</a>,
+      keys and values have to be interpreted as well as the current <a>base IRI</a>,
       the <a>vocabulary mapping</a> and the <a>default language</a>. Each
       <a>term definition</a> consists of an <dfn data-lt="IRI mappings">IRI mapping</dfn>, a boolean
       flag <dfn data-lt="reverse properties">reverse property</dfn>, an optional <dfn data-lt="type mappings">type mapping</dfn>
@@ -824,14 +824,14 @@
 
       <p class="changed">Unless specified using
         <a data-link-for="JsonLdOptions">processingMode</a> API option,
-        the <a>processing mode</a> is set using the <code>@version</code> member
+        the <a>processing mode</a> is set using the <code>@version</code> <a>member</a>
         in a local <a>context</a> and
         affects the behavior of algorithms including <a>expansion</a> and <a>compaction</a>.</p>
 
       <p>If <a>context</a> is a <a>string</a>, it represents a reference to
         a remote context. We dereference the remote context and replace <a>context</a>
-        with the value of the <code>@context</code> key of the top-level object in the
-        retrieved JSON-LD document. If there's no such key, an
+        with the value of the <code>@context</code> <a>member</a> of the top-level object in the
+        retrieved JSON-LD document. If there's no such <a>member</a>, an
         <a data-link-for="JsonLdErrorCode">invalid remote context</a>
         has been detected. Otherwise, we process <a>context</a> by recursively using
         this algorithm ensuring that there is no cyclical reference.</p>
@@ -840,11 +840,11 @@
         <a>base IRI</a>, the <a>vocabulary mapping</a>, <a>processing mode</a>, and the
         <a>default language</a> by processing three specific keywords:
         <code>@base</code>, <code>@vocab</code>, <code>@version</code>, and <code>@language</code>.
-        These are handled before any other keys in the <a>local context</a> because
-        they affect how the other keys are processed. Please note that <code>@base</code> is
+        These are handled before any other <a>members</a> in the <a>local context</a> because
+        they affect how the other <a>members</a> are processed. Please note that <code>@base</code> is
         ignored when processing remote contexts.</p>
 
-      <p>Then, for every other key in <a>local context</a>, we update
+      <p>Then, for every other <a>member</a> in <a>local context</a>, we update
         the <a>term definition</a> in <var>result</var>. Since
         <a>term definitions</a> in a <a>local context</a>
         may themselves contain <a>terms</a> or
@@ -911,10 +911,10 @@
                   <span class="changed">or cannot be transformed into the <a>internal representation</a></span>,
                   a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
                   error has been detected and processing is aborted. If the dereferenced document has no
-                  top-level <a class="changed">dictionary</a> with an <code>@context</code> member, an
+                  top-level <a class="changed">dictionary</a> with an <code>@context</code> <a>member</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid remote context</a>
                   has been detected and processing is aborted; otherwise,
-                  set <var>context</var> to the value of that member.</li>
+                  set <var>context</var> to the value of that <a>member</a>.</li>
                 <li>Set <var>result</var> to the result of recursively calling this algorithm,
                   passing <var>result</var> for <var>active context</var>,
                   <var>context</var> for <var>local context</var>, and <span class="changed">a copy of</span> <var>remote contexts</var>.</li>
@@ -924,11 +924,11 @@
             <li>If <var>context</var> is not a <a class="changed">dictionary</a>, an
               <a data-link-for="JsonLdErrorCode">invalid local context</a>
               error has been detected and processing is aborted.</li>
-            <li>If <var>context</var> has an <code>@base</code> key and <var>remote contexts</var> is empty, i.e., the currently
+            <li>If <var>context</var> has an <code>@base</code> <a>member</a> and <var>remote contexts</var> is empty, i.e., the currently
               being processed context is not a remote context:
               <ol>
                 <li>Initialize <var>value</var> to the value associated with the
-                  <code>@base</code> key.</li>
+                  <code>@base</code> <a>member</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove the
                   <a>base IRI</a> of <var>result</var>.</li>
                 <li>Otherwise, if <var>value</var> is an <a>absolute IRI</a>,
@@ -943,7 +943,7 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
-            <li class="changed">If <var>context</var> has an <code>@version</code> key:
+            <li class="changed">If <var>context</var> has an <code>@version</code> <a>member</a>:
               <ol>
                 <li>If the associated value is not <code>1.1</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
@@ -956,10 +956,10 @@
                   to <code>json-ld-1.1</code>, if not already set.</li>
               </ol>
             </li>
-            <li>If <var>context</var> has an <code>@vocab</code> key:
+            <li>If <var>context</var> has an <code>@vocab</code> <a>member</a>:
               <ol>
                 <li>Initialize <var>value</var> to the value associated with the
-                  <code>@vocab</code> key.</li>
+                  <code>@vocab</code> <a>member</a>.</li>
                 <li>If <var>value</var> is <a>null</a>, remove
                   any <a>vocabulary mapping</a> from <var>result</var>.</li>
                 <li class="changed">Otherwise, if <var>value</var>
@@ -974,10 +974,10 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
-            <li>If <var>context</var> has an <code>@language</code> key:
+            <li>If <var>context</var> has an <code>@language</code> <a>member</a>:
               <ol>
                 <li>Initialize <var>value</var> to the value associated with the
-                  <code>@language</code> key.</li>
+                  <code>@language</code> <a>member</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove
                   any <a>default language</a> from <var>result</var>.</li>
                 <li>Otherwise, if <var>value</var> is <a>string</a>, the
@@ -1021,7 +1021,7 @@
         <a>compact IRI</a>, it may omit an <a>IRI mapping</a> by
         depending on its <a>prefix</a> having its own
         <a>term definition</a>. If the <a>prefix</a> is
-        a key in the <a>local context</a>, then its <a>term definition</a>
+        a <a>member</a> in the <a>local context</a>, then its <a>term definition</a>
         must first be created, through recursion, before continuing. Because a
         <a>term definition</a> can depend on other
         <a>term definitions</a>, a mechanism must
@@ -1046,13 +1046,13 @@
         a <var>term</var>, and a map <var>defined</var>.</p>
 
       <ol>
-        <li>If <var>defined</var> contains the key <var>term</var> and the associated
+        <li>If <var>defined</var> contains the <a>member</a> <var>term</var> and the associated
           value is <code>true</code> (indicating that the
           <a>term definition</a> has already been created), return. Otherwise,
           if the value is <code>false</code>, a
           <a data-link-for="JsonLdErrorCode">cyclic IRI mapping</a>
           error has been detected and processing is aborted.</li>
-        <li>Set the value associated with <var>defined</var>'s <var>term</var> key to
+        <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>member</a> to
           <code>false</code>. This indicates that the <a>term definition</a>
           is now being created but is not yet complete.</li>
         <li>Since <a>keywords</a> cannot be overridden,
@@ -1061,16 +1061,16 @@
           error has been detected and processing is aborted.</li>
         <li>Remove any existing <a>term definition</a> for <var>term</var> in
           <var>active context</var>.</li>
-        <li>Initialize <var>value</var> to a copy of the value associated with the key
+        <li>Initialize <var>value</var> to a copy of the value associated with the <a>member</a>
           <var>term</var> in <var>local context</var>.</li>
         <li>If <var>value</var> is <code>null</code> or <var>value</var>
           is a <a class="changed">dictionary</a> containing the key-value pair
           <code>@id</code>-<code>null</code>, set the
           <a>term definition</a> in <var>active context</var> to
           <code>null</code>, set the value associated with <var>defined</var>'s
-          key <var>term</var> to <code>true</code>, and return.</li>
+          <a>member</a> <var>term</var> to <code>true</code>, and return.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>, convert it
-          to a <a class="changed">dictionary</a> consisting of a single member whose
+          to a <a class="changed">dictionary</a> consisting of a single <a>member</a> whose
           key is <code>@id</code> and whose value is <var>value</var>.
           <span class="changed">Set <var>simple term</var> to <code>true</code></span>.</li>
         <li>Otherwise, <var>value</var> must be a <a class="changed">dictionary</a>, if not, an
@@ -1078,10 +1078,10 @@
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
         <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
-        <li>If <var>value</var> contains the key <code>@type</code>:
+        <li>If <var>value</var> contains the <a>member</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>type</var> to the value associated with the
-              <code>@type</code> key, which must be a <a>string</a>. Otherwise, an
+              <code>@type</code> <a>member</a>, which must be a <a>string</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set <var>type</var> to the result of using the
@@ -1095,26 +1095,26 @@
             <li>Set the <a>type mapping</a> for <var>definition</var> to <var>type</var>.</li>
           </ol>
         </li>
-        <li>If <var>value</var> contains the key <code>@reverse</code>:
+        <li>If <var>value</var> contains the <a>member</a> <code>@reverse</code>:
           <ol>
-            <li>If <var>value</var> contains <code>@id</code> or <code>@nest</code>, members, an
+            <li>If <var>value</var> contains <code>@id</code> or <code>@nest</code>, <a>members</a>, an
               <a data-link-for="JsonLdErrorCode">invalid reverse property</a>
               error has been detected and processing is aborted.</li>
-            <li>If the value associated with the <code>@reverse</code> key
+            <li>If the value associated with the <code>@reverse</code> <a>member</a>
               is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
               passing <var>active context</var>, the value associated with
-              the <code>@reverse</code> key for <var>value</var>, <code>true</code>
+              the <code>@reverse</code> <a>member</a> for <var>value</var>, <code>true</code>
               for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the result
               is neither an <a>absolute IRI</a> nor a <a>blank node identifier</a>,
               i.e., it contains no colon (<code>:</code>), an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
-            <li>If <var>value</var> contains an <code>@container</code> member,
+            <li>If <var>value</var> contains an <code>@container</code> <a>member</a>,
               set the <a>container mapping</a> of <var>definition</var>
               to its value; if its value is neither <code>@set</code>, nor
               <code>@index</code>, nor <code>null</code>, an
@@ -1125,21 +1125,21 @@
               to <code>true</code>.</li>
             <li>Set the <a>term definition</a> of <var>term</var> in
               <var>active context</var> to <var>definition</var> and the
-              value associated with <var>defined</var>'s key <var>term</var> to
+              value associated with <var>defined</var>'s <a>member</a> <var>term</var> to
               <code>true</code> and return.</li>
           </ol>
         </li>
         <li>Set the <a>reverse property</a> flag of <var>definition</var>
           to <code>false</code>.</li>
-        <li>If <var>value</var> contains the key <code>@id</code> and its value
+        <li>If <var>value</var> contains the <a>member</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
-            <li>If the value associated with the <code>@id</code> key is not a <a>string</a>, an
+            <li>If the value associated with the <code>@id</code> <a>member</a> is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-              <var>active context</var>, the value associated with the <code>@id</code> key for
+              <var>active context</var>, the value associated with the <code>@id</code> <a>member</a> for
               <var>value</var>, <code>true</code> for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the resulting
               <a>IRI mapping</a> is neither a <a>keyword</a>, nor an
@@ -1159,14 +1159,14 @@
           Otherwise if the <var>term</var> contains a colon (<code>:</code>):
           <ol>
             <li>If <var>term</var> is a <a>compact IRI</a> with a
-              <a>prefix</a> that is a key in <var>local context</var>
+              <a>prefix</a> that is a <a>member</a> in <var>local context</var>
               a dependency has been found. Use this algorithm recursively passing
               <var>active context</var>, <var>local context</var>, the
               <a>prefix</a> as <var>term</var>, and <var>defined</var>.</li>
             <li>If <var>term</var>'s <a>prefix</a> has a
               <a>term definition</a> in <var>active context</var>, set
               the <a>IRI mapping</a> of <var>definition</var> to the result of
-              concatenating the value associated with the <a>prefix</a>'s
+              concatenating the value associated with the <a data-lt="prefix">prefix's</a>
               <a>IRI mapping</a> and the <var>term</var>'s <var>suffix</var>.</li>
             <li>Otherwise, <var>term</var> is an <a>absolute IRI</a> or
               <a>blank node identifier</a>. Set the <a>IRI mapping</a>
@@ -1180,10 +1180,10 @@
           If it does not have a <a>vocabulary mapping</a>, an
           <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
           error been detected and processing is aborted.</li>
-        <li>If <var>value</var> contains the key <code>@container</code>:
+        <li>If <var>value</var> contains the <a>member</a> <code>@container</code>:
           <ol>
             <li>Initialize <var>container</var> to the value associated with the
-              <code>@container</code> key, which must be either
+              <code>@container</code> <a>member</a>, which must be either
               <code class="changed">@graph</code>,
               <code class="changed">@id</code>,
               <code>@index</code>,
@@ -1212,13 +1212,13 @@
               <var>container</var>.</li>
           </ol>
         </li>
-        <li class="changed">If <var>value</var> contains the key <code>@context</code>:
+        <li class="changed">If <var>value</var> contains the <a>member</a> <code>@context</code>:
           <ol>
             <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <var>context</var> to the value associated with the
-              <code>@context</code> key, which is treated as a <var>local context</var>.</li>
+              <code>@context</code> <a>member</a>, which is treated as a <var>local context</var>.</li>
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
               using the <var>active context</var> and <var>context</var> as <var>local context</var>.
               If any error is detected, an
@@ -1227,11 +1227,11 @@
             <li>Set the <var>local context</var> of <var>definition</var> to <var>context</var>.</li>
           </ol>
         </li>
-        <li>If <var>value</var> contains the key <code>@language</code> and
-          does not contain the key <code>@type</code>:
+        <li>If <var>value</var> contains the <a>member</a> <code>@language</code> and
+          does not contain the <a>member</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>language</var> to the value associated with the
-              <code>@language</code> key, which must be either <code>null</code>
+              <code>@language</code> <a>member</a>, which must be either <code>null</code>
               or a <a>string</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1240,31 +1240,31 @@
               of <var>definition</var> to <var>language</var>.</li>
           </ol>
         </li>
-        <li class="changed">If <var>value</var> contains the key <code>@nest</code>:
+        <li class="changed">If <var>value</var> contains the <a>member</a> <code>@nest</code>:
           <ol>
             <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <a>nest value</a> in <var>definition</var> to the value associated with the
-              <code>@nest</code> key, which must be a <a>string</a> and
+              <code>@nest</code> <a>member</a>, which must be a <a>string</a> and
               must not be a keyword other than <code>@nest</code>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
               error has been detected and processing is aborted.</li>
           </ol>
         </li>
-        <li class="changed">If <var>value</var> contains the key <code>@prefix</code>:
+        <li class="changed">If <var>value</var> contains the <a>member</a> <code>@prefix</code>:
           <ol>
             <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, or if
               <var>term</var> contains a colon (<code>:</code>), an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize the <a>prefix flag</a> to the value associated with the
-              <code>@prefix</code> key, which must be a <a>boolean</a>. Otherwise, an
+              <code>@prefix</code> <a>member</a>, which must be a <a>boolean</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @prefix value</a>
               error has been detected and processing is aborted.</li>
           </ol>
         </li>
-        <li>If the value contains any key other than <code>@id</code>,
+        <li>If the value contains any <a>member</a> other than <code>@id</code>,
           <code>@reverse</code>, <code>@container</code>,
           <code class="changed">@context</code>, <code>@language</code>, <code class="changed">@nest</code>,
           <code class="changed">@prefix</code>, or <code>@type</code>, an
@@ -1272,7 +1272,7 @@
           been detected and processing is aborted.</li>
         <li>Set the <a>term definition</a> of <var>term</var> in
           <var>active context</var> to <var>definition</var> and set the value
-          associated with <var>defined</var>'s key <var>term</var> to
+          associated with <var>defined</var>'s <a>member</a> <var>term</var> to
           <code>true</code>.</li>
       </ol>
     </section>
@@ -1312,8 +1312,8 @@
         checking <a>local context</a> against <code>null</code>.
         We know we need to create a <a>term definition</a> in the
         <a>active context</a> when <var>value</var> is
-        a key in the <a>local context</a> and the <var>defined</var> map
-        does not have a key for <var>value</var> with an associated value of
+        a <a>member</a> in the <a>local context</a> and the <var>defined</var> map
+        does not have a <a>member</a> for <var>value</var> with an associated value of
         <code>true</code>. The <var>defined</var> map is used during
         <a href="#context-processing-algorithm">Context Processing</a> to keep track of
         which <a>terms</a> have already been defined or are
@@ -1342,8 +1342,8 @@
         <li>If <var>value</var> is a <a>keyword</a> or <code>null</code>,
           return <var>value</var> as is.</li>
         <li>If <a>local context</a> is not <code>null</code>, it contains
-          a key that equals <var>value</var>, and the value associated with the key
-          that equals <var>value</var> in <var>defined</var> is not <code>true</code>,
+          a <a>member</a> with a key that equals <var>value</var>, and the value of the <a>member</a>
+          for <var>value</var> in <var>defined</var> is not <code>true</code>,
           invoke the <a href="#create-term-definition">Create Term Definition algorithm</a>,
           passing <var>active context</var>, <a>local context</a>,
           <var>value</var> as <var>term</var>, and <var>defined</var>. This will ensure that
@@ -1367,8 +1367,8 @@
               (<code>//</code>), return <var>value</var> as it is already an
               <a>absolute IRI</a> or a <a>blank node identifier</a>.</li>
             <li>If <a>local context</a> is not <code>null</code>, it
-              contains a key that equals <var>prefix</var>, and the value
-              associated with the key that equals <var>prefix</var> in <var>defined</var>
+              contains a <var>prefix</var> <a>member</a>, and the value
+              of the <var>prefix</var> <a>member</a> in <var>defined</var>
               is not <code>true</code>, invoke the
               <a href="#create-term-definition">Create Term Definition algorithm</a>,
               passing <var>active context</var>,
@@ -1440,8 +1440,8 @@
           each of its items recursively and return them in a new
           <a>array</a>.</li>
         <li>Otherwise, <var>element</var> is a <a class="changed">dictionary</a>. We expand
-          each of its keys, adding them to our <var>result</var>, and then we expand
-          each value for each key recursively. Some of the keys will be
+          each of its <a>members</a>, adding them to our <var>result</var>, and then we expand
+          each value for each <a>member</a> recursively. Some of the <a>member</a> keys will be
           <a>terms</a> or
           <a>compact IRIs</a> and others will be
           <a>keywords</a> or simply ignored because
@@ -1469,10 +1469,10 @@
 
       <p class="changed">The algorithm also performs processing steps specific to expanding
         a <a>JSON-LD Frame</a>. For a <a>frame</a>, the <code>@id</code> and
-        <code>@type</code> properties can accept an array of <a>IRIs</a> or
-        an empty <a>dictionary</a>. The properties of a <a>value object</a> can also
+        <code>@type</code> <a>members</a> can accept an array of <a>IRIs</a> or
+        an empty <a>dictionary</a>. The <a>members</a> of a <a>value object</a> can also
         accept an <a>array</a> of <a>strings</a>, or an empty <a>dictionary</a>.
-        Framing also uses additional keyword properties:
+        Framing also uses additional keyword <a>members</a>:
         (<code>@explicit</code>, <code>@default</code>,
         <code>@embed</code>, <code>@explicit</code>, <code>@omitDefault</code>, or
         <code>@requireAll</code>) which are preserved through expansion.
@@ -1516,7 +1516,7 @@
                   is <code>@list</code>, or its <a>container mapping</a> is set
                   to <code>@list</code>, and <var>expanded item</var> is an
                   <a>array</a>, set <var>expanded item</var> to a new
-                  <a>dictionary</a> containing the key-value pair
+                  <a>dictionary</a> containing the <a>member</a>
                   <code>@list</code> where the value is the original
                   <var>expanded item</var>.</li>
                 <li>If <var>expanded item</var> is an <a>array</a>, append each
@@ -1528,11 +1528,11 @@
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>.</li>
-        <li>If <var>element</var> contains the key <code>@context</code>, set
+        <li>If <var>element</var> contains the <a>member</a> <code>@context</code>, set
           <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
           passing <var>active context</var> and the value of the
-          <code>@context</code> key as <var>local context</var>.</li>
+          <code>@context</code> <a>member</a> as <var>local context</var>.</li>
         <li class="changed">For each <var>key</var>/<var>value</var> pair in <var>element</var>
           where <var>key</var> expands to <code>@type</code> using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
@@ -1566,7 +1566,7 @@
                 <li>If <var>active property</var> equals <code>@reverse</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
-                <li>If <var>result</var> has already an <var>expanded property</var> member, a
+                <li>If <var>result</var> has already an <var>expanded property</var> <a>member</a>, a
                   <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
@@ -1617,10 +1617,10 @@
                   error has been detected and processing is aborted. Otherwise,
                   set <var>expanded value</var> to <var>value</var>. If <var>expanded value</var>
                   is <code>null</code>, set the <code>@value</code>
-                  member of <var>result</var> to <code>null</code> and continue with the
+                  <a>member</a> of <var>result</var> to <code>null</code> and continue with the
                   next <var>key</var> from <var>element</var>. Null values need to be preserved
-                  in this case as the meaning of an <code>@type</code> member depends
-                  on the existence of an <code>@value</code> member.
+                  in this case as the meaning of an <code>@type</code> <a>member</a> depends
+                  on the existence of an <code>@value</code> <a>member</a>.
                   <span class="changed">
                     When the <var>frame expansion</var> flag is set, <var>value</var>
                     may also be an empty <a>dictionary</a> or an array of
@@ -1667,21 +1667,21 @@
                       <code>@reverse</code> as <var>active property</var>,
                       <var>value</var> as <var>element</var>,
                       <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
-                    <li>If <var>expanded value</var> contains an <code>@reverse</code> member,
-                      i.e., properties that are reversed twice, execute for each of its
+                    <li>If <var>expanded value</var> contains an <code>@reverse</code> <a>member</a>,
+                      i.e., <a>properties</a> that are reversed twice, execute for each of its
                       <var>property</var> and <var>item</var> the following steps:
                       <ol>
-                        <li>If <var>result</var> does not have a <var>property</var> member, create
+                        <li>If <var>result</var> does not have a <var>property</var> <a>member</a>, create
                           one and set its value to an empty <a>array</a>.</li>
-                        <li>Append <var>item</var> to the value of the <var>property</var> member
+                        <li>Append <var>item</var> to the value of the <var>property</var> <a>member</a>
                           of <var>result</var>.</li>
                       </ol>
                     </li>
-                    <li>If <var>expanded value</var> contains members other than <code>@reverse</code>:
+                    <li>If <var>expanded value</var> contains <a>member</a> other than <code>@reverse</code>:
                       <ol>
-                        <li>If <var>result</var> does not have an <code>@reverse</code> member, create
+                        <li>If <var>result</var> does not have an <code>@reverse</code> <a>member</a>, create
                           one and set its value to an empty <a class="changed">dictionary</a>.</li>
-                        <li>Reference the value of the <code>@reverse</code> member in <var>result</var>
+                        <li>Reference the value of the <code>@reverse</code> <a>member</a> in <var>result</var>
                           using the variable <var>reverse map</var>.</li>
                         <li>For each <var>property</var> and <var>items</var> in <var>expanded value</var>
                           other than <code>@reverse</code>:
@@ -1691,10 +1691,10 @@
                                 <li>If <var>item</var> is a <a>value object</a> or <a>list object</a>, an
                                   <a data-link-for="JsonLdErrorCode">invalid reverse property value</a>
                                   has been detected and processing is aborted.</li>
-                                <li>If <var>reverse map</var> has no <var>property</var> member, create one
+                                <li>If <var>reverse map</var> has no <var>property</var> <a>member</a>, create one
                                   and initialize its value to an empty <a>array</a>.</li>
                                 <li>Append <var>item</var> to the value of the <var>property</var>
-                                  member in <var>reverse map</var>.</li>
+                                  <a>member</a> in <var>reverse map</var>.</li>
                               </ol>
                             </li>
                           </ol>
@@ -1719,7 +1719,7 @@
                   <var>active property</var>, <var>value</var> for <var>element</var>,
                   <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
                 <li>Unless <var>expanded value</var> is <code>null</code>, set
-                  the <var>expanded property</var> member of <var>result</var> to
+                  the <var>expanded property</var> <a>member</a> of <var>result</var> to
                   <var>expanded value</var>.</li>
                 <li>Continue with the next <var>key</var> from <var>element</var>.</li>
               </ol>
@@ -1759,7 +1759,7 @@
                           <var>language</var>),
                           <span class="changed">unless <var>item</var> is <code>null</code></span>.
                           <span class="changed">If <var>language</var> is <code>@none</code>,
-                            or expands to <code>@none</code>, do not set the <code>@language</code> member.</span></li>
+                            or expands to <code>@none</code>, do not set the <code>@language</code> <a>member</a>.</span></li>
                       </ol>
                     </li>
                   </ol>
@@ -1808,12 +1808,12 @@
                           <code>@graph</code>-<var>item</var>, ensuring that the
                           value is represented using an <a>array</a>.</li>
                         <li>If <var>container mapping</var> includes <code>@index</code>
-                          and <var>item</var> does not have the key
+                          and <var>item</var> does not have the <a>member</a>
                           <code>@index</code> and <var>expanded index</var> is not <code>@none</code>,
                           add the key-value pair
                           (<code>@index</code>-<var>index</var>) to <var>item</var>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@id</code>
-                          and <var>item</var> does not have the key
+                          and <var>item</var> does not have the <a>member</a>
                           <code>@id</code>, add the key-value pair
                           (<code>@id</code>-<var>expanded index</var>) to
                           <var>item</var>, where <var>expanded index</var> is set to the result of
@@ -1865,9 +1865,9 @@
             <li>Otherwise, if the <a>term definition</a> associated to
               <var>key</var> indicates that it is a <a>reverse property</a>
               <ol>
-                <li>If <var>result</var> has no <code>@reverse</code> member, create
+                <li>If <var>result</var> has no <code>@reverse</code> <a>member</a>, create
                   one and initialize its value to an empty <a class="changed">dictionary</a>.</li>
-                <li>Reference the value of the <code>@reverse</code> member in <var>result</var>
+                <li>Reference the value of the <code>@reverse</code> <a>member</a> in <var>result</var>
                   using the variable <var>reverse map</var>.</li>
                 <li>If <var>expanded value</var> is not an <a>array</a>, set
                   it to an <a>array</a> containing <var>expanded value</var>.</li>
@@ -1876,10 +1876,10 @@
                     <li>If <var>item</var> is a <a>value object</a> or <a>list object</a>, an
                       <a data-link-for="JsonLdErrorCode">invalid reverse property value</a>
                       has been detected and processing is aborted.</li>
-                    <li>If <var>reverse map</var> has no <var>expanded property</var> member,
+                    <li>If <var>reverse map</var> has no <var>expanded property</var> <a>member</a>,
                       create one and initialize its value to an empty <a>array</a>.</li>
                     <li>Append <var>item</var> to the value of the <var>expanded property</var>
-                      member of <var>reverse map</var>.</li>
+                      <a>member</a> of <var>reverse map</var>.</li>
                   </ol>
                 </li>
               </ol>
@@ -1887,10 +1887,10 @@
             <li>Otherwise, if <var>key</var> is not a <a>reverse property</a>:
               <ol>
                 <li>If <var>result</var> does not have an <var>expanded property</var>
-                  member, create one and initialize its value to an empty
+                  <a>member</a>, create one and initialize its value to an empty
                   <a>array</a>.</li>
                 <li>Append <var>expanded value</var> to value of the <var>expanded property</var>
-                  member of <var>result</var>.</li>
+                  <a>member</a> of <var>result</var>.</li>
               </ol>
             </li>
             <li class="changed">For each key <var>nesting-key</var> in <var>nests</var>
@@ -1911,63 +1911,63 @@
             </li>
           </ol>
         </li>
-        <li>If <var>result</var> contains the key <code>@value</code>:
+        <li>If <var>result</var> contains the <a>member</a> <code>@value</code>:
           <ol>
-            <li>The <var>result</var> must not contain any keys other than
+            <li>The <var>result</var> must not contain any <a>members</a> other than
               <code>@value</code>, <code>@language</code>, <code>@type</code>,
-              and <code>@index</code>. It must not contain both the
-              <code>@language</code> key and the <code>@type</code> key.
+              and <code>@index</code>. It must not contain both a
+              <code>@language</code> <a>member</a> and a <code>@type</code> <a>member</a>.
               Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid value object</a>
               error has been detected and processing is aborted.</li>
-            <li>If the value of <var>result</var>'s <code>@value</code> key is
+            <li>If the value of <var>result</var>'s <code>@value</code> <a>member</a> is
               <code>null</code>, then set <var>result</var> to <code>null</code>.</li>
-            <li>Otherwise, if the value of <var>result</var>'s <code>@value</code> member
-              is not a <a>string</a> and <var>result</var> contains the key
+            <li>Otherwise, if the value of <var>result</var>'s <code>@value</code> <a>member</a>
+              is not a <a>string</a> and <var>result</var> contains the <a>member</a>
               <code>@language</code>, an
               <a data-link-for="JsonLdErrorCode">invalid language-tagged value</a>
               error has been detected (only <a>strings</a>
               can be language-tagged) and processing is aborted.</li>
-            <li>Otherwise, if the <var>result</var> has an <code>@type</code> member
+            <li>Otherwise, if the <var>result</var> has an <code>@type</code> <a>member</a>
               and its value is not an <a>IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid typed value</a>
               error has been detected and processing is aborted.</li>
           </ol>
         </li>
-        <li>Otherwise, if <var>result</var> contains the key <code>@type</code>
+        <li>Otherwise, if <var>result</var> contains the <a>member</a> <code>@type</code>
           and its associated value is not an <a>array</a>, set it to
           an <a>array</a> containing only the associated value.</li>
-        <li>Otherwise, if <var>result</var> contains the key <code>@set</code>
+        <li>Otherwise, if <var>result</var> contains the <a>member</a> <code>@set</code>
           or <code>@list</code>:
           <ol>
-            <li>The <var>result</var> must contain at most one other key and that
-              key must be <code>@index</code>. Otherwise, an
+            <li>The <var>result</var> must contain at most one other <a>member</a>
+              which must be <code>@index</code>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid set or list object</a>
               error has been detected and processing is aborted.</li>
-            <li>If <var>result</var> contains the key <code>@set</code>, then
-              set <var>result</var> to the key's associated value.</li>
+            <li>If <var>result</var> contains the <a>member</a> <code>@set</code>, then
+              set <var>result</var> to the <a data-lt="member">member's</a> associated value.</li>
           </ol>
         </li>
-        <li>If <var>result</var> contains only the key
+        <li>If <var>result</var> contains only the <a>member</a>
           <code>@language</code>, set <var>result</var> to <code>null</code>.</li>
         <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
           drop free-floating values as follows:
           <ol>
             <li>If <var>result</var> is an empty <a class="changed">dictionary</a> or contains
-              the keys <code>@value</code> or <code>@list</code>, set <var>result</var> to
+              the <a>members</a> <code>@value</code> or <code>@list</code>, set <var>result</var> to
               <code>null</code>.</li>
             <li>Otherwise, if <var>result</var> is a <a class="changed">dictionary</a> whose only
-              key is <code>@id</code>, set <var>result</var> to <code>null</code>.
+              <a>member</a> is <code>@id</code>, set <var>result</var> to <code>null</code>.
               <span class="changed">
                 When the <var>frame expansion</var> flag is set, a <a>dictionary</a>
-                containing only the <code>@id</code> key is retained.</span></li>
+                containing only the <code>@id</code> <a>member</a> is retained.</span></li>
           </ol>
         </li>
         <li>Return <var>result</var>.</li>
       </ol>
 
       <p>If, after the above algorithm is run, the result is a
-        <a class="changed">dictionary</a> that contains only an <code>@graph</code> key, set the
+        <a class="changed">dictionary</a> that contains only an <code>@graph</code> <a>member</a>, set the
         result to the value of <code>@graph</code>'s value. Otherwise, if the result
         is <code>null</code>, set it to an empty <a>array</a>. Finally, if
         the result is not an <a>array</a>, then set the result to an
@@ -1991,22 +1991,22 @@
       <p>If <a>active property</a> has a <a>type mapping</a> in the
         <a>active context</a> set to <code>@id</code> or <code>@vocab</code>,
         <span class="changed">and the value is a <a>string</a>,</span>
-        a <a class="changed">dictionary</a> with a single member <code>@id</code> whose
+        a <a class="changed">dictionary</a> with a single <a>member</a> <code>@id</code> whose
         value is the result of using the
         <a href="#iri-expansion">IRI Expansion algorithm</a> on <var>value</var>
         is returned.</p>
 
       <p>Otherwise, the result will be a <a class="changed">dictionary</a> containing
-        an <code>@value</code> member whose value is the passed <var>value</var>.
-        Additionally, an <code>@type</code> member will be included if there is a
+        an <code>@value</code> <a>member</a> whose value is the passed <var>value</var>.
+        Additionally, an <code>@type</code> <a>member</a> will be included if there is a
         <a>type mapping</a> associated with the <a>active property</a>
-        or an <code>@language</code> member if <var>value</var> is a
+        or an <code>@language</code> <a>member</a> if <var>value</var> is a
         <a>string</a> and there is <a>language mapping</a> associated
         with the <a>active property</a>.</p>
 
       <p>Note that values interpreted as <a>IRIs</a> fall into two categories:
         those that are <var>document relative</var>, and those that are
-        <em>vocabulary relative</em>. Properties and values of <code>@type</code>,
+        <em>vocabulary relative</em>. <a>Properties</a> and values of <code>@type</code>,
         along with terms marked as <code>"@type": "@vocab"</code>
         are <em>vocabulary relative</em>, meaning that they need to be either
         a defined <a>term</a>, a <a>compact IRI</a>
@@ -2026,7 +2026,7 @@
           in <var>active context</var> that is <code>@id</code>,
           <span class="changed">and the <var>value</var> is a <a>string</a>,</span>
           return a new
-          <a class="changed">dictionary</a> containing a single key-value pair where the
+          <a class="changed">dictionary</a> containing a single <a>member</a> where the
           key is <code>@id</code> and the value is the result of using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
           <var>active context</var>, <var>value</var>, and <code>true</code> for
@@ -2035,19 +2035,19 @@
           <var>active context</var> that is <code>@vocab</code>,
           <span class="changed">and the <var>value</var> is a <a>string</a>,</span>
           return a new
-          <a class="changed">dictionary</a> containing a single key-value pair where the
+          <a class="changed">dictionary</a> containing a single <a>member</a> where the
           key is <code>@id</code> and the value is the result of using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
           <var>active context</var>, <var>value</var>, <code>true</code> for
           <var>vocab</var>, and <code>true</code> for
           <var>document relative</var>.</li>
         <li>Otherwise, initialize <var>result</var> to a <a class="changed">dictionary</a>
-          with an <code>@value</code> member whose value is set to
+          with an <code>@value</code> <a>member</a> whose value is set to
           <var>value</var>.</li>
         <li>If <var>active property</var> has a <a>type mapping</a> in
           <var>active context</var>,
           <span class="changed">other than <code>@id</code> or <code>@vocab</code>,</span>
-          add an <code>@type</code> member to
+          add an <code>@type</code> <a>member</a> to
           <var>result</var> and set its value to the value associated with the
           <a>type mapping</a>.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>:
@@ -2058,7 +2058,7 @@
               value to the language code associated with the
               <a>language mapping</a>; unless the
               <a>language mapping</a> is set to <code>null</code> in
-              which case no member is added.</li>
+              which case no such <a>member</a> is added.</li>
             <li>Otherwise, if the <var>active context</var> has a
               <a>default language</a>, add an <code>@language</code>
               to <var>result</var> and set its value to the
@@ -2108,7 +2108,7 @@
           each of its items recursively and return them in a new
           <a>array</a>.</li>
         <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>. The value
-          of each key in element is compacted recursively. Some of the keys will be
+          of each <a>member</a> in element is compacted recursively. Some of the <a>member</a> keys will be
           compacted, using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
           to <a>terms</a> or <a>compact IRIs</a>
           and others will be compacted from <a>keywords</a> to
@@ -2122,9 +2122,9 @@
       </ol>
 
       <p>The final output is a <a class="changed">dictionary</a> with an <code>@context</code>
-        key, if a non-empty <a>context</a> was given, where the <a class="changed">dictionary</a>
+        <a>member</a>, if a non-empty <a>context</a> was given, where the <a class="changed">dictionary</a>
         is either <var>result</var> or a wrapper for it where <var>result</var> appears
-        as the value of an (aliased) <code>@graph</code> key because <var>result</var>
+        as the value of an (aliased) <code>@graph</code> <a>member</a> because <var>result</var>
         contained two or more items in an <a>array</a>.</p>
     </section>
 
@@ -2189,14 +2189,14 @@
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>.
           If <var>element</var> has an <code>@value</code> or <code>@id</code>
-          member and the result of using the
+          <a>member</a> and the result of using the
           <a href="#value-compaction">Value Compaction algorithm</a>,
           passing <var>active context</var>, <var>inverse context</var>,
           <var>active property</var>,and <var>element</var> as <var>value</var> is
           a <a>scalar</a>, return that result.</li>
         <li class="changed">If <var>element</var> is a
-          <a>list object</a>, and the <a>container mapping</a> for <var>active
-          property</var> in <var>active context</var> is <code>@list</code>,
+          <a>list object</a>, and the <a>container mapping</a> for
+          <var>active property</var> in <var>active context</var> is <code>@list</code>,
           return the esult of using this algorithm recursively, passing
           <var>active context</var>, <var>inverse context</var>,
           <var>active property</var>, and value of <code>@list</code>
@@ -2205,9 +2205,9 @@
           <var>active property</var> equals <code>@reverse</code>,
           otherwise to <code>false</code>.</li>
         <li>Initialize <var>result</var> to an empty <a class="changed">dictionary</a>.</li>
-        <li class="changed">If <var>element</var> has a <code>@type</code> member,
+        <li class="changed">If <var>element</var> has a <code>@type</code> <a>member</a>,
           create a new array <var>compacted types</var> initialized
-          by transforming each <var>expanded type</var> of that member
+          by transforming each <var>expanded type</var> of that <a>member</a>
           into it's compacted form using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
           passing <var>active context</var>, <var>inverse context</var>,
           <var>expanded type</var> for <var>var</var>, and
@@ -2268,7 +2268,7 @@
                     passing <var>active context</var>, <var>inverse context</var>,
                     <var>expanded property</var> for <var>var</var>,
                     and <code>true</code> for <var>vocab</var>.</li>
-                  <li>Add a member <var>alias</var> to <var>result</var> whose value is
+                  <li>Add a <a>member</a> <var>alias</var> to <var>result</var> whose value is
                     set to <var>compacted value</var> and continue to the next
                     <var>expanded property</var>.</li>
                 </ol>
@@ -2293,21 +2293,21 @@
                           is <code>false</code>, and <var>value</var> is not an
                           <a>array</a>, set <var>value</var> to a new
                           <a>array</a> containing only <var>value</var>.</li>
-                        <li>If <var>property</var> is not a member of
+                        <li>If <var>property</var> is not a <a>member</a> of
                           <var>result</var>, add one and set its value to <var>value</var>.</li>
-                        <li>Otherwise, if the value of the <var>property</var> member of
+                        <li>Otherwise, if the value of the <var>property</var> <a>member</a> of
                           <var>result</var> is not an <a>array</a>, set it to a new
                           <a>array</a> containing only the value. Then
                           append <var>value</var> to its value if <var>value</var>
                           is not an <a>array</a>, otherwise append each
                           of its items.</li>
-                        <li>Remove the <var>property</var> member from
+                        <li>Remove the <var>property</var> <a>member</a> from
                           <var>compacted value</var>.</li>
                       </ol>
                     </li>
                   </ol>
                 </li>
-                <li>If <var>compacted value</var> has some remaining members, i.e.,
+                <li>If <var>compacted value</var> has some remaining <a>dictionary members</a>, i.e.,
                   it is not an empty <a class="changed">dictionary</a>:
                   <ol>
                     <li>Initialize <var>alias</var> to the result of using the
@@ -2315,7 +2315,7 @@
                       passing <var>active context</var>, <var>inverse context</var>,
                       <code>@reverse</code> for <var>var</var>,
                       and <code>true</code> for <var>vocab</var>.</li>
-                    <li>Set the value of the <var>alias</var> member of <var>result</var> to
+                    <li>Set the value of the <var>alias</var> <a>member</a> of <var>result</var> to
                       <var>compacted value</var>.</li>
                   </ol>
                 </li>
@@ -2338,7 +2338,7 @@
               <var>active property</var> has a <a>container mapping</a>
               in <var>active context</var> that <span class="changed">includes</span> <code>@index</code>,
               then the compacted result will be inside of an <code>@index</code>
-              container, drop the <code>@index</code> property by continuing
+              container, drop the <code>@index</code> <a>member</a> by continuing
               to the next <var>expanded property</var>.</li>
             <li>Otherwise, if <var>expanded property</var> is <code>@index</code>,
               <code>@value</code>, or <code>@language</code>:
@@ -2348,7 +2348,7 @@
                   passing <var>active context</var>, <var>inverse context</var>,
                   <var>expanded property</var> for <var>var</var>,
                   and <code>true</code> for <var>vocab</var>.</li>
-                <li>Add a member <var>alias</var> to <var>result</var> whose value is
+                <li>Add a <a>member</a> <var>alias</var> to <var>result</var> whose value is
                   set to <var>expanded value</var> and continue with the next
                   <var>expanded property</var>.</li>
               </ol>
@@ -2368,18 +2368,17 @@
                   <var>active context</var> that expands to <code>@nest</code>,
                   otherwise an <a data-link-for="JsonLdErrorCode">invalid @nest
                   value</a> error has been detected, and processing is aborted.
-                  If <var>result</var> does not have the key that equals <var>nest
-                  term</var>, initialize it to an empty JSON object (<var>nest
-                  object</var>). If <var>nest object</var> does not have the key
-                  that equals <var>item active property</var>, set this key's
+                  If <var>result</var> does not have a <var>nest term</var> <a>member</a>,
+                  initialize it to an empty <a>dictionary</a> (<var>nest object</var>).
+                  If <var>nest object</var> does not have an <var>item active property</var> <a>member</a>,
+                  set this <a data-lt="member">member's</a>
                   value in <var>nest object</var> to an empty
-                  <a>array</a>.Otherwise, if the key's value is not an
-                  <a>array</a>, then set it to one containing only the
-                  value.</li>
-                <li>Otherwise, if <var>result</var> does not have the key that equals
-                  <var>item active property</var>, set this key's value in
+                  <a>array</a>.Otherwise, if the <a data-lt="member">member's</a> value is not an
+                  <a>array</a>, then set it to one containing only the value.</li>
+                <li>Otherwise, if <var>result</var> does not have an
+                  <var>item active property</var> <a>member</a>, set this <a data-lt="member">member's</a> value in
                   <var>result</var> to an empty <a>array</a>. Otherwise, if
-                  the key's value is not an <a>array</a>, then set it
+                  the <a data-lt="member">member's</a> value is not an <a>array</a>, then set it
                   to one containing only the value.</li>
               </ol>
             </li>
@@ -2398,7 +2397,7 @@
                   <var>inside reverse</var>.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
                   in the <var>active context</var> has a <a>nest value</a>
-                  member, that value (<var>nest term</var>) must be
+                  <a>member</a>, that value (<var>nest term</var>) must be
                   <code>@nest</code>, or a <a>term</a> in the
                   <var>active context</var> that expands to <code>@nest</code>,
                   otherwise an <a data-link-for="JsonLdErrorCode">invalid @nest
@@ -2421,9 +2420,9 @@
                   <var>active context</var>, <var>inverse context</var>,
                   <var>item active property</var> for <var>active property</var>,
                   <var>expanded item</var> for <var>element</var> if it does
-                  not contain the key <code>@list</code>
+                  not contain the <a>member</a> <code>@list</code>
                   <span class="changed">and is not a <a>graph object</a> containing <code>@list</code></span>,
-                  otherwise pass the key's associated value for <var>element</var>.</li>
+                  otherwise pass the value of the <a>member</a> for <var>element</var>.</li>
                 <li>
                   If <var>expanded item</var> is a <a>list object</a>:
                   <ol>
@@ -2434,25 +2433,25 @@
                       <ol>
                         <li>Convert <var>compacted item</var> to a
                           <a>list object</a> by setting it to a
-                          <a class="changed">dictionary</a> containing key-value pair
+                          <a class="changed">dictionary</a> containing a <a>member</a>
                           where the key is the result of the
                           <a href="#iri-compaction">IRI Compaction algorithm</a>,
                           passing <var>active context</var>, <var>inverse context</var>,
                           <code>@list</code> for <var>var</var>, and <var>compacted item</var>
                           for <var>value</var> and the value is the original <var>compacted item</var>.</li>
-                        <li>If <var>expanded item</var> contains the key
-                          <code>@index</code>, then add a key-value pair
+                        <li>If <var>expanded item</var> contains the <a>member</a>
+                          <code>@index</code>, then add a <a>member</a>
                           to <var>compacted item</var> where the key is the
                           result of the <a href="#iri-compaction">IRI Compaction algorithm</a>,
                           passing <var>active context</var>, <var>inverse context</var>,
                           <code>@index</code> as <var>var</var>, and the value associated with the
-                          <code>@index</code> key in <var>expanded item</var> as <var>value</var>.</li>
+                          <code>@index</code> <a>member</a> in <var>expanded item</var> as <var>value</var>.</li>
                       </ol>
                     </li>
                     <li class="changed">Otherwise, append <var>compacted item</var>
-                      to the value associated with the key that equals
-                      <var>item active property</var> in
-                      <var>nest result</var>, initializing it to a new empty array, if
+                      to the value associated with the
+                      <var>item active property</var> <a>member</a> in
+                      <var>nest result</var>, initializing it to a new empty <a>array</a>, if
                       necessary.</li>
                   </ol>
                 </li>
@@ -2467,12 +2466,12 @@
                           <a href="#iri-compaction">IRI Compaction algorithm</a>
                           passing <var>active context</var> and the value of <code>@id</code> in <var>expanded item</var>
                           or <code>@none</code> if no such value exists as <var>var</var>, with <var>vocab</var> set to <code>true</code>
-                          if there is no <code>@id</code> member in <var>expanded item</var>.</li>
+                          if there is no <code>@id</code> <a>member</a> in <var>expanded item</var>.</li>
                         <li class="changed">If <var>compacted item</var> is not an
                           <a>array</a> and <var>as array</var> is <code>true</code>,
                           set <var>compacted item</var> to an <a>array</a> containing that value.</li>
-                        <li>If <var>map key</var> is not a key in <var>map object</var>,
-                          then set this key's value in <var>map object</var>
+                        <li>If <var>map key</var> is not a <a>member</a> in <var>map object</var>,
+                          then set this <a data-lt="member">member's</a> value in <var>map object</var>
                           to <var>compacted item</var>. Otherwise, if the value
                           is not an <a>array</a>, then set it to one
                           containing only the value and then append
@@ -2490,8 +2489,8 @@
                         <li class="changed">If <var>compacted item</var> is not an
                           <a>array</a> and <var>as array</var> is <code>true</code>,
                           set <var>compacted item</var> to an <a>array</a> containing that value.</li>
-                        <li>If <var>map key</var> is not a key in <var>map object</var>,
-                          then set this key's value in <var>map object</var>
+                        <li>If <var>map key</var> is not a <a>member</a> in <var>map object</var>,
+                          then set this <a data-lt="member">member's</a> value in <var>map object</var>
                           to <var>compacted item</var>. Otherwise, if the value
                           is not an <a>array</a>, then set it to one
                           containing only the value and then append
@@ -2504,8 +2503,7 @@
                       object. If <var>compacted item</var> is not an <a>array</a>
                       and <var>as array</var> is <code>true</code>, set
                       <var>compacted item</var> to an <a>array</a> containing
-                      that value. If the value associated with the key that
-                      equals <var>item active property</var> in
+                      that value. If the value of an <var>item active property</var> <a>member</a> in
                       <var class="changed">nest result</var> is not an <a>array</a>,
                       set it to a new <a>array</a> containing only the value.
                       Then append <var>compacted item</var> to the value if
@@ -2522,7 +2520,7 @@
                           <var>var</var>, and <code>true</code> for
                           <var>vocab</var> using the original
                           <var>compacted item</var> as a value.</li>
-                        <li>If expanded item contains the key <code>@id</code>,
+                        <li>If expanded item contains an <code>@id</code> <a>member</a>,
                           add the key resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
                           passing <var>active context</var>, <code>@id</code> as
@@ -2532,7 +2530,7 @@
                           passing <var>active context</var>, the value of <code>@id</code>
                           in <var>expanded item</var> as
                           <var>var</var>.</li>
-                        <li>If expanded item contains the key <code>@index</code>,
+                        <li>If expanded item contains an <code>@index</code> <a>member</a>,
                           add the key resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
                           passing <var>active context</var>, <code>@index</code> as
@@ -2555,7 +2553,7 @@
                     or <code>@type</code></span>
                     <span class="changed">and <var>container</var> does not include <code>@graph</code></span>:
                   <ol>
-                    <li>If <var>item active property</var> is not a key in
+                    <li>If <var>item active property</var> is not a <a>member</a> in
                       <var class="changed">nest result</var>, initialize it to an empty <a class="changed">dictionary</a>.
                       Initialize <var>map object</var> to the value of <var>item active property</var>
                       in <var class="changed">nest result</var>.</li>
@@ -2566,9 +2564,9 @@
                       based on the contents of <var>container</var>, as <var>var</var>, and <code>true</code>
                       for <var>vocab</var>.</li>
                     <li>If <var>container</var> includes <code>@language</code> and
-                      <var>expanded item</var> contains the key
-                      <code>@value</code>, then set <var>compacted item</var>
-                      to the value associated with its <code>@value</code> key.
+                      <var>expanded item</var> contains a
+                      <code>@value</code> <a>member</a>, then set <var>compacted item</var>
+                      to the value associated with its <code>@value</code> <a>member</a>.
                       Set <var>map key</var> to the value of <code>@language</code> in <var>expanded item</var>, if any.</li>
                     <li>If <var>container</var> includes <code>@index</code> set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any,
                       and remove <var>container key</var> from <var>compacted item</var>.</li>
@@ -2581,7 +2579,7 @@
                       for <var>compacted container</var>, set the value of
                       <var>compacted container</var> in <var>compacted value</var>
                       to those remaining values. Otherwise, remove that
-                      key-value pair from <var>compacted item</var>.</li>
+                      <a>member</a> from <var>compacted item</var>.</li>
                     <li class="changed">If <var>compacted item</var> is not an
                       <a>array</a> and <var>as array</var> is <code>true</code>,
                       set <var>compacted item</var> to an <a>array</a> containing that value.</li>
@@ -2590,8 +2588,8 @@
                       passing <var>active context</var>, <code>@none</code> as
                       <var>var</var>, and <code>true</code> for
                       <var>vocab</var>.</li>
-                    <li>If <var>map key</var> is not a key in <var>map object</var>,
-                      then set this key's value in <var>map object</var>
+                    <li>If <var>map key</var> is not a <a>member</a> of <var>map object</var>,
+                      then set this <a data-lt="member">member's</a> value in <var>map object</var>
                       to <var>compacted item</var>. Otherwise, if the value
                       is not an <a>array</a>, then set it to one
                       containing only the value and then append
@@ -2607,12 +2605,12 @@
                       <var>compacted item</var> is not an <a>array</a>,
                       set it to a new <a>array</a>
                       containing only <var>compacted item</var>.</li>
-                    <li>If <var>item active property</var> is not a key in
-                      <var>result</var> then add the key-value pair,
+                    <li>If <var>item active property</var> is not a <a>member</a> in
+                      <var>result</var> then add the <a>member</a>,
                       (<var>item active property</var>-<var>compacted item</var>),
                       to <var class="changed">nest result</var>.</li>
-                    <li>Otherwise, if the value associated with the key that
-                      equals <var>item active property</var> in <var class="changed">nest result</var>
+                    <li>Otherwise, if the value associated with the 
+                      <var>item active property</var> <a>member</a> in <var class="changed">nest result</var>
                       is not an <a>array</a>, set it to a new
                       <a>array</a> containing only the value. Then
                       append <var>compacted item</var> to the value if
@@ -2630,13 +2628,13 @@
       <p>If, after the algorithm outlined above is run, <var>result</var>
         <span class="changed">is an empty <a>array</a>, replace it with a new <a>dictionary</a></span>.
         Otherwise, if <var>result</var> is an <a>array</a>, replace it with a new
-        <a class="changed">dictionary</a> with a single member whose key is the result
+        <a class="changed">dictionary</a> with a single <a>member</a> whose key is the result
         of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
         passing <var>active context</var>, <var>inverse context</var>, and
         <code>@graph</code> as <var>var</var> and whose value is the <a>array</a>
         <var>result</var>.</p>
       <p>Finally, if a non-empty <var>context</var> has been passed,
-        add an <code>@context</code> member to <var>result</var> and set its value
+        add an <code>@context</code> <a>member</a> to <var>result</var> and set its value
         to the passed <var>context</var>.</p>
     </section>
   </section> <!-- end of Compaction -->
@@ -2718,30 +2716,30 @@
               </span>.</li>
             <li>Initialize <var>var</var> to the value of the <a>IRI mapping</a>
               for the <a>term definition</a>.</li>
-            <li>If <var>var</var> is not a key in <var>result</var>, add
-              a key-value pair where the key is <var>var</var> and the value
+            <li>If <var>var</var> is not a <a>member</a> of <var>result</var>, add
+              a <a>member</a> where the key is <var>var</var> and the value
               is an empty <a class="changed">dictionary</a> to <var>result</var>.</li>
-            <li>Reference the value associated with the <var>var</var> member in
+            <li>Reference the value associated with the <var>var</var> <a>member</a> in
               <var>result</var> using the variable <var>container map</var>.</li>
-            <li>If <var>container map</var> has no <var>container</var> member,
+            <li>If <var>container map</var> has no <var>container</var> <a>member</a>,
               create one and set its value to a new
-              <a class="changed">dictionary</a> with <span class="changed">three</span> members.
-              The first member is <code>@language</code> and its value is a new empty
-              <a class="changed">dictionary</a>, the second member is <code>@type</code>
+              <a class="changed">dictionary</a> with <span class="changed">three</span> <a>member</a>s.
+              The first <a>member</a> is <code>@language</code> and its value is a new empty
+              <a class="changed">dictionary</a>, the second <a>member</a> is <code>@type</code>
               and its value is a new empty <a class="changed">dictionary</a>,
-              <span class="changed">and the third member is <code>@any</code>
-                and its value is a new <a>dictionary</a> with the member
+              <span class="changed">and the third <a>member</a> is <code>@any</code>
+                and its value is a new <a>dictionary</a> with the <a>member</a>
                 <code>@none</code> set to the <a>term</a> being processed</span>.</li>
-            <li>Reference the value associated with the <var>container</var> member
+            <li>Reference the value associated with the <var>container</var> <a>member</a>
               in <var>container map</var> using the variable <var>type/language map</var>.</li>
             <li>If the <a>term definition</a> indicates that the <a>term</a>
               represents a <a>reverse property</a>:
               <ol>
                 <li>Reference the value associated with the <code>@type</code>
-                  member in <var>type/language map</var> using the variable
+                  <a>member</a> in <var>type/language map</var> using the variable
                   <var>type map</var>.</li>
                 <li>If <var>type map</var> does not have an <code>@reverse</code>
-                  member, create one and set its value to the <a>term</a>
+                  <a>member</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
             </li>
@@ -2749,9 +2747,9 @@
               <a>type mapping</a>:
               <ol>
                 <li>Reference the value associated with the <code>@type</code>
-                  member in <var>type/language map</var> using the variable
+                  <a>member</a> in <var>type/language map</var> using the variable
                   <var>type map</var>.</li>
-                <li>If <var>type map</var> does not have a member corresponding
+                <li>If <var>type map</var> does not have a <a>member</a> corresponding
                   to the <a>type mapping</a> in <a>term definition</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -2761,12 +2759,12 @@
               <a>language mapping</a> (might be <code>null</code>):
               <ol>
                 <li>Reference the value associated with the <code>@language</code>
-                  member in <var>type/language map</var> using the variable
+                  <a>member</a> in <var>type/language map</var> using the variable
                   <var>language map</var>.</li>
                 <li>If the <a>language mapping</a> equals <code>null</code>,
                   set <var>language</var> to <code>@null</code>; otherwise set it
                   to the language code in <a>language mapping</a>.</li>
-                <li>If <var>language map</var> does not have a <var>language</var> member,
+                <li>If <var>language map</var> does not have a <var>language</var> <a>member</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
@@ -2774,19 +2772,19 @@
             <li>Otherwise:
               <ol>
                 <li>Reference the value associated with the <code>@language</code>
-                  member in <var>type/language map</var> using the variable
+                  <a>member</a> in <var>type/language map</var> using the variable
                   <var>language map</var>.</li>
                 <li>If <var>language map</var> does not have a <var>default language</var>
-                  member, create one and set its value to the <a>term</a>
+                  <a>member</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
                 <li>If <var>language map</var> does not have an <code>@none</code>
-                  member, create one and set its value to the <a>term</a>
+                  <a>member</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
                 <li>Reference the value associated with the <code>@type</code>
-                  member in <var>type/language map</var> using the variable
+                  <a>member</a> in <var>type/language map</var> using the variable
                   <var>type map</var>.</li>
                 <li>If <var>type map</var> does not have an <code>@none</code>
-                  member, create one and set its value to the <a>term</a>
+                  <a>member</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
             </li>
@@ -2860,14 +2858,14 @@
       <ol>
         <li>If <var>var</var> is <code>null</code>, return <code>null</code>.</li>
         <li>If <var>vocab</var> is <code>true</code> and <var>var</var> is a
-          key in <var>inverse context</var>:
+          <a>member</a> of <var>inverse context</var>:
           <ol>
             <li>Initialize <var>default language</var> to
               <a data-lt="active context">active context's</a>
               <a>default language</a>, if it has one, otherwise to
               <code>@none</code>.</li>
             <li class="changed">If <var>value</var> is a <a>dictionary</a> containing
-              the property <code>@preserve</code>, use the first
+              the member <code>@preserve</code>, use the first
               element from the value of <code>@preserve</code> as <var>value</var>.</li>
             <li>Initialize <var>containers</var> to an empty <a>array</a>. This
               <a>array</a> will be used to keep track of an ordered list of
@@ -2880,7 +2878,7 @@
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
             <li>If <var>value</var> is a <a class="changed">dictionary</a>,
-              that contains the key <code>@index</code>,
+              that contains the an <code>@index</code> <a>member</a>,
               <span class="changed">and <var>value</var> is not a <a>graph object</a></span>
               then append the values <code>@index</code> <span class="changed">and <code>@index@set</code></span> to <var>containers</var>.</li>
             <li>If <var>reverse</var> is <code>true</code>, set <var>type/language</var>
@@ -2891,10 +2889,10 @@
               to the most specific values that work for all items in
               the list as follows:
               <ol>
-                <li>If <code>@index</code> is a not key in <var>value</var>, then
+                <li>If <code>@index</code> is a not <a>member</a> in <var>value</var>, then
                   append <code>@list</code> to <var>containers</var>.</li>
                 <li>Initialize <var>list</var> to the <a>array</a> associated
-                  with the key <code>@list</code> in <var>value</var>.</li>
+                  with the <code>@list</code> <a>member</a> in <var>value</var>.</li>
                 <li>Initialize <var>common type</var> and <var>common language</var> to <code>null</code>. If
                   <var>list</var> is empty, set <var>common language</var> to
                   <var>default language</var>.</li>
@@ -2902,13 +2900,13 @@
                   <ol>
                     <li>Initialize <var>item language</var> to <code>@none</code> and
                       <var>item type</var> to <code>@none</code>.</li>
-                    <li>If <var>item</var> contains the key <code>@value</code>:
+                    <li>If <var>item</var> contains a <code>@value</code> <a>member</a>:
                       <ol>
-                        <li>If <var>item</var> contains the key <code>@language</code>,
+                        <li>If <var>item</var> contains the a <code>@language</code> <a>member</a>,
                           then set <var>item language</var> to its associated
                           value.</li>
-                        <li>Otherwise, if <var>item</var> contains the key
-                          <code>@type</code>, set <var>item type</var> to its
+                        <li>Otherwise, if <var>item</var> contains the a
+                          <code>@type</code> <a>member</a>, set <var>item type</var> to its
                           associated value.</li>
                         <li>Otherwise, set <var>item language</var> to
                           <code>@null</code>.</li>
@@ -2918,8 +2916,8 @@
                     <li>If <var>common language</var> is <code>null</code>, set it
                       to <var>item language</var>.</li>
                     <li>Otherwise, if <var>item language</var> does not equal
-                      <var>common language</var> and <var>item</var> contains the
-                      key <code>@value</code>, then set <var>common language</var>
+                      <var>common language</var> and <var>item</var> contains a
+                      <code>@value</code> <a>member</a>, then set <var>common language</var>
                       to <code>@none</code> because list items have conflicting
                       languages.</li>
                     <li>If <var>common type</var> is <code>null</code>, set it
@@ -2949,19 +2947,19 @@
             <li class="changed">Otherwise, if <var>value</var> is a <a>graph object</a>,
               prefer a mapping most appropriate for the particular value.
               <ol>
-                <li>If value contains the key <code>@index</code>,
+                <li>If value contains an <code>@index</code> <a>member</a>,
                   append the values <code>@graph@index</code> and <code>@graph@index@set</code>
                   to <var>containers</var>.</li>
-                <li>If the value contains the key <code>@id</code>,
+                <li>If the value contains an <code>@id</code> <a>member</a>,
                   append the values <code>@graph@id</code> and <code>@graph@id@set</code>
                   to <var>containers</var>.</li>
                 <li>Append the values <code>@graph</code> <code>@graph@set</code>,
                   and <code>@set</code>
                   to <var>containers</var>.</li>
-                <li>If value does not contain the key <code>@index</code>,
+                <li>If value does not contain an <code>@index</code> <a>member</a>,
                   append the values <code>@graph@index</code> and <code>@graph@index@set</code>
                   to <var>containers</var>.</li>
-                <li>If the value does not contain the key <code>@id</code>,
+                <li>If the value does not contain an <code>@id</code> <a>member</a>,
                   append the values <code>@graph@id</code> and <code>@graph@id@set</code>
                   to <var>containers</var>.</li>
                 <li>Append the values <code>@index</code> and <code>@index@set</code>
@@ -2972,14 +2970,14 @@
               <ol>
                 <li>If <var>value</var> is a <a>value object</a>:
                   <ol>
-                    <li>If <var>value</var> contains the key <code>@language</code>
-                      and does not contain the key <code>@index</code>,
+                    <li>If <var>value</var> contains a <code>@language</code> <a>member</a>
+                      and does not contain an <code>@index</code> <a>member</a>,
                       then set <var>type/language value</var> to its associated
                       value and, append <code>@language</code>
                       <span class="changed">and <code>@language@set</code></span> to
                       <var>containers</var>.</li>
-                    <li>Otherwise, if <var>value</var> contains the key
-                      <code>@type</code>, then set <var>type/language value</var> to
+                    <li>Otherwise, if <var>value</var> contains a
+                      <code>@type</code> <a>member</a>, then set <var>type/language value</var> to
                       its associated value and set <var>type/language</var> to
                       <code>@type</code>.</li>
                   </ol>
@@ -2997,11 +2995,11 @@
               be the last <a>container mapping</a> value to be checked as it
               is the most generic.</li>
             <li class="changed">
-              If <a>processing mode</a> is <code>json-ld-1.1</code> and value does not contain the key <code>@index</code>, append
+              If <a>processing mode</a> is <code>json-ld-1.1</code> and value does not contain an <code>@index</code> <a>member</a>, append
               <code>@index</code> and <code>@index@set</code> to <var>containers</var>.
             </li>
             <li class="changed">
-              If <a>processing mode</a> is <code>json-ld-1.1</code> and value contains only the key <code>@value</code>, append
+              If <a>processing mode</a> is <code>json-ld-1.1</code> and value contains only a <code>@value</code> <a>member</a>, append
               <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
             </li>
             <li>If <var>type/language value</var> is <code>null</code>, set it to
@@ -3014,16 +3012,16 @@
             <li>If <var>type/language value</var> is <code>@reverse</code>, append
               <code>@reverse</code> to <var>preferred values</var>.</li>
             <li>If <var>type/language value</var> is <code>@id</code> or <code>@reverse</code>
-              and <var>value</var> has an <code>@id</code> member:
+              and <var>value</var> has an <code>@id</code> <a>member</a>:
               <ol>
                 <li>If the result of using the
                   <a href="#iri-compaction">IRI compaction algorithm</a>,
                   passing <var>active context</var>, <var>inverse context</var>,
-                  the value associated with the <code>@id</code> key in <var>value</var> for
+                  the value associated with the <code>@id</code> <a>member</a> in <var>value</var> for
                   <var>var</var>, and <code>true</code> for <var>vocab</var> has a
                   <a>term definition</a> in the <var>active context</var>
                   with an <a>IRI mapping</a> that equals the value associated
-                  with the <code>@id</code> key in <var>value</var>,
+                  with the <code>@id</code> <a>member</a> in <var>value</var>,
                   then append <code>@vocab</code>, <code>@id</code>, and
                   <code>@none</code>, in that order, to <var>preferred values</var>.</li>
                 <li>Otherwise, append <code>@id</code>, <code>@vocab</code>, and
@@ -3148,22 +3146,22 @@
           <var>var</var> in the <var>inverse context</var>.</li>
         <li>For each item <var>container</var> in <var>containers</var>:
           <ol>
-            <li>If <var>container</var> is not a key in <var>container map</var>, then
+            <li>If <var>container</var> is not a <a>member</a> of <var>container map</var>, then
               there is no <a>term</a> with a matching
               <a>container mapping</a> for it, so continue to the next
               <var>container</var>.</li>
             <li>Initialize <var>type/language map</var> to the value associated
-              with the <var>container</var> member in <var>container map</var>.</li>
+              with the <var>container</var> <a>member</a> in <var>container map</var>.</li>
             <li>Initialize <var>value map</var> to the value associated
-              with <var>type/language</var> member in <var>type/language map</var>.</li>
+              with <var>type/language</var> <a>member</a> in <var>type/language map</var>.</li>
             <li>For each <var>item</var> in <var>preferred values</var>:
               <ol>
-                <li>If <var>item</var> is not a key in <var>value map</var>,
+                <li>If <var>item</var> is not a <a>member</a> of <var>value map</var>,
                   then there is no <a>term</a> with a matching
                   <a>type mapping</a> or <a>language mapping</a>,
                   so continue to the next <var>item</var>.</li>
                 <li>Otherwise, a matching term has been found, return the value
-                  associated with the <var>item</var> member in
+                  associated with the <var>item</var> <a>member</a> in
                   <var>value map</var>.</li>
               </ol>
             </li>
@@ -3200,7 +3198,7 @@
         </pre>
 
         <aside class="example" data-ignore title="Language map term with language value">
-          <p>Given the member <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
+          <p>Given the <a>member</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3237,7 +3235,7 @@
         </pre>
 
         <aside class="example" data-ignore title="Datatyped term with datatyped value">
-          <p>Given the member <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
+          <p>Given the <a>member</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3253,7 +3251,7 @@
         </aside>
 
         <aside class="example" data-ignore title="Datatyped term with simple value">
-          <p>Given the member <code>{"http://example.org/t": {"@value": "foo"}}</code>,
+          <p>Given the <a>member</a> <code>{"http://example.org/t": {"@value": "foo"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3269,7 +3267,7 @@
         </aside>
 
         <aside class="example" data-ignore title="Datatyped term with object value">
-          <p>Given the member <code>{"http://example.org/t": {"@id": "http://example.org/id"}}</code>,
+          <p>Given the <a>member</a> <code>{"http://example.org/t": {"@id": "http://example.org/id"}}</code>,
             The algorithm will be invoked as follows:</p>
           <dl>
             <dt><var>containers</var></dt>
@@ -3301,26 +3299,26 @@
       <h3>Overview</h3>
 
       <p>The <var>value</var> to compact has either an <code>@id</code> or an
-        <code>@value</code> member.</p>
+        <code>@value</code> <a>member</a>.</p>
 
       <p>For the former case, if the <a>type mapping</a> of
         <a>active property</a> is set to <code>@id</code> or <code>@vocab</code>
-        and <var>value</var> consists of only an <code>@id</code> member and, if
+        and <var>value</var> consists of only an <code>@id</code> <a>member</a> and, if
         the <a>container mapping</a> of <a>active property</a>
-        <span class="changed">includes</span> <code>@index</code>, an <code>@index</code> member, <var>value</var>
+        <span class="changed">includes</span> <code>@index</code>, an <code>@index</code> <a>member</a>, <var>value</var>
         can be compacted to a <a>string</a> by returning the result of
         using the <a href="#iri-compaction">IRI Compaction algorithm</a>
-        to compact the value associated with the <code>@id</code> member.
+        to compact the value associated with the <code>@id</code> <a>member</a>.
         Otherwise, <var>value</var> cannot be compacted and is returned as is.</p>
 
       <p>For the latter case, it might be possible to compact <var>value</var>
-        just into the value associated with the <code>@value</code> member.
+        just into the value associated with the <code>@value</code> <a>member</a>.
         This can be done if the <a>active property</a> has a matching
         <a>type mapping</a> or <a>language mapping</a> and there
-        is either no <code>@index</code> member or the <a>container mapping</a>
+        is either no <code>@index</code> <a>member</a> or the <a>container mapping</a>
         of <a>active property</a> <span class="changed">includes</span> <code>@index</code>. It can
-        also be done if <code>@value</code> is the only member in <var>value</var>
-        (apart an <code>@index</code> member in case the <a>container mapping</a>
+        also be done if <code>@value</code> is the only <a>member</a> in <var>value</var>
+        (apart an <code>@index</code> <a>member</a> in case the <a>container mapping</a>
         of <a>active property</a> <span class="changed">includes</span> <code>@index</code>) and
         either its associated value is not a <a>string</a>, there is
         no <a>default language</a>, or there is an explicit
@@ -3336,46 +3334,46 @@
         to be compacted.</p>
 
       <ol>
-        <li>Initialize <var>number members</var> to the number of members
+        <li>Initialize <var>number members</var> to the number of <a>members</a>
           <var>value</var> contains.</li>
-        <li>If <var>value</var> has an <code>@index</code> member and the
+        <li>If <var>value</var> has an <code>@index</code> <a>member</a> and the
           <a>container mapping</a> associated to <var>active property</var>
           <span class="changed">includes</span> <code>@index</code>, decrease <var>number members</var> by
           <code>1</code>.</li>
         <li>If <var>number members</var> is greater than <code>2</code>, return
           <var>value</var> as it cannot be compacted.</li>
-        <li>If <var>value</var> has an <code>@id</code> member:
+        <li>If <var>value</var> has an <code>@id</code> <a>member</a>:
           <ol>
             <li>If <var>number members</var> is <code>1</code> and
               the <a>type mapping</a> of <var>active property</var>
               is set to <code>@id</code>, return the result of using the
               <a href="#iri-compaction">IRI compaction algorithm</a>,
               passing <var>active context</var>, <var>inverse context</var>,
-              and the value of the <code>@id</code> member for <var>var</var>.</li>
+              and the value of the <code>@id</code> <a>member</a> for <var>var</var>.</li>
             <li>Otherwise, if <var>number members</var> is <code>1</code> and
               the <a>type mapping</a> of <var>active property</var>
               is set to <code>@vocab</code>, return the result of using the
               <a href="#iri-compaction">IRI compaction algorithm</a>,
               passing <var>active context</var>, <var>inverse context</var>,
-              the value of the <code>@id</code> member for <var>var</var>, and
+              the value of the <code>@id</code> <a>member</a> for <var>var</var>, and
               <code>true</code> for <var>vocab</var>.</li>
             <li>Otherwise, return <var>value</var> as is.</li>
           </ol>
         </li>
-        <li>Otherwise, if <var>value</var> has an <code>@type</code> member whose
+        <li>Otherwise, if <var>value</var> has an <code>@type</code> <a>member</a> whose
           value matches the <a>type mapping</a> of <var>active property</var>,
-          return the value associated with the <code>@value</code> member
+          return the value associated with the <code>@value</code> <a>member</a>
           of <var>value</var>.</li>
-        <li>Otherwise, if <var>value</var> has an <code>@language</code> member whose
+        <li>Otherwise, if <var>value</var> has an <code>@language</code> <a>member</a> whose
           value matches the <a>language mapping</a> of
           <var>active property</var>, return the value associated with the
-          <code>@value</code> member of <var>value</var>.</li>
+          <code>@value</code> <a>member</a> of <var>value</var>.</li>
         <li>Otherwise, if <var>number members</var> equals <code>1</code> and either
-          the value of the <code>@value</code> member is not a <a>string</a>,
+          the value of the <code>@value</code> <a>member</a> is not a <a>string</a>,
           or the <var>active context</var> has no <a>default language</a>,
           or the <a>language mapping</a> of <var>active property</var>
-          is set to <code>null</code>,, return the value associated with the
-          <code>@value</code> member.</li>
+          is set to <code>null</code>, return the value associated with the
+          <code>@value</code> <a>member</a>.</li>
         <li>Otherwise, return <var>value</var> as is.</li>
       </ol>
     </section>
@@ -3390,7 +3388,7 @@
     <h2>Flattening Algorithm</h2>
 
     <p>This algorithm flattens an expanded JSON-LD document by collecting all
-      properties of a <a>node</a> in a single <a class="changed">dictionary</a>
+      <a>properties</a> of a <a>node</a> in a single <a class="changed">dictionary</a>
       and labeling all <a>blank nodes</a> with
       <a>blank node identifiers</a>.
       This resulting uniform shape of the document, may drastically simplify
@@ -3401,7 +3399,7 @@
 
       <p>First, a <var>node map</var> is generated using the
         <a href="#node-map-generation">Node Map Generation algorithm</a>
-        which collects all properties of a <a>node</a> in a single
+        which collects all <a>properties</a> of a <a>node</a> in a single
         <a class="changed">dictionary</a>. In the next step, the <var>node map</var> is
         converted to a JSON-LD document in
         <a data-cite="JSON-LD11#flattened-document-form">flattened document form</a>.
@@ -3427,32 +3425,32 @@
 
       <ol>
         <li>Initialize <var>node map</var> to a <a class="changed">dictionary</a> consisting of
-          a single member whose key is <code>@default</code> and whose value is
+          a single <a>member</a> whose key is <code>@default</code> and whose value is
           an empty <a class="changed">dictionary</a>.</li>
         <li>Perform the <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
           <var>element</var> and <var>node map</var>.</li>
         <li>Initialize <var>default graph</var> to the value of the <code>@default</code>
-          member of <var>node map</var>, which is a <a class="changed">dictionary</a> representing
+          <a>member</a> of <var>node map</var>, which is a <a class="changed">dictionary</a> representing
           the <a>default graph</a>.</li>
         <li>For each key-value pair <var>graph name</var>-<var>graph</var> in <var>node map</var>
           where <var>graph name</var> is not <code>@default</code>,  perform the following steps:
           <ol>
-            <li>If <var>default graph</var> does not have a <var>graph name</var> member, create
+            <li>If <var>default graph</var> does not have a <var>graph name</var> <a>member</a>, create
               one and initialize its value to a <a class="changed">dictionary</a> consisting of an
-              <code>@id</code> member whose value is set to <var>graph name</var>.</li>
-            <li>Reference the value associated with the <var>graph name</var> member in
+              <code>@id</code> <a>member</a> whose value is set to <var>graph name</var>.</li>
+            <li>Reference the value associated with the <var>graph name</var> <a>member</a> in
               <var>default graph</var> using the variable <var>entry</var>.</li>
-            <li>Add an <code>@graph</code> member to <var>entry</var> and set it to an
+            <li>Add an <code>@graph</code> <a>member</a> to <var>entry</var> and set it to an
               empty <a>array</a>.</li>
             <li>For each <var>id</var>-<var>node</var> pair in <var>graph</var> ordered by <var>id</var>,
-              add <var>node</var> to the <code>@graph</code> member of <var>entry</var>,
-              unless the only member of <var>node</var> is <code>@id</code>.</li>
+              add <var>node</var> to the <code>@graph</code> <a>member</a> of <var>entry</var>,
+              unless the only <a>member</a> of <var>node</var> is <code>@id</code>.</li>
           </ol>
         </li>
         <li>Initialize an empty <a>array</a> <var>flattened</var>.</li>
         <li>For each <var>id</var>-<var>node</var> pair in <var>default graph</var> ordered by <var>id</var>,
           add <var>node</var> to <var>flattened</var>,
-          unless the only member of <var>node</var> is <code>@id</code>.</li>
+          unless the only <a>member</a> of <var>node</var> is <code>@id</code>.</li>
         <li>If <var>context</var> is <code>null</code>, return <var>flattened</var>.</li>
         <li>Otherwise, return the result of <a>compacting</a> <var>flattened</var> according the
           <a href="#compaction-algorithm">Compaction algorithm</a> passing <var>context</var>
@@ -3471,27 +3469,27 @@
       representation of the <a>graphs</a> and <a>nodes</a>
       represented in the passed expanded document. All <a>nodes</a> that are not
       uniquely identified by an IRI get assigned a (new) <a>blank node identifier</a>.
-      The resulting <var>node map</var> will have a member for every graph in the document whose
-      value is another object with a member for every <a>node</a> represented in the document.
-      The default graph is stored under the <code>@default</code> member, all other graphs are
+      The resulting <var>node map</var> will have a <a>dictionary member</a> for every graph in the document whose
+      value is another object with a <a>member</a> for every <a>node</a> represented in the document.
+      The default graph is stored under the <code>@default</code> <a>member</a>, all other graphs are
       stored under their <a>graph name</a>.</p>
 
     <section class="informative">
       <h3>Overview</h3>
 
       <p>The algorithm recursively runs over an expanded JSON-LD document to
-        collect all <a>properties</a> of a <a>node</a>
+        collect all <a>members</a> of a <a>node</a>
         in a single <a class="changed">dictionary</a>. The algorithm constructs a
         <a class="changed">dictionary</a> <var>node map</var> whose keys represent the
         <a>graph names</a> used in the document
-        (the <a>default graph</a> is stored under the key <code>@default</code>)
+        (the <a>default graph</a> is stored under the <code>@default</code> <a>member</a>)
         and whose associated values are <a class="changed">dictionaries</a>
         which index the <a>nodes</a> in the
         <a>graph</a>. If a
-        <a data-lt="property">property's</a> value is a <a>node object</a>,
+        <a data-lt="member">member's</a> value is a <a>node object</a>,
         it is replaced by a <a>node object</a> consisting of only an
-        <code>@id</code> member. If a <a>node object</a> has no <code>@id</code>
-        member or it is identified by a <a>blank node identifier</a>,
+        <code>@id</code> <a>member</a>. If a <a>node object</a> has no <code>@id</code>
+        <a>member</a> or it is identified by a <a>blank node identifier</a>,
         a new <a>blank node identifier</a> is generated. This relabeling
         of <a>blank node identifiers</a> is
         also done for <a>properties</a> and values of
@@ -3519,11 +3517,11 @@
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>. Reference the
           <a class="changed">dictionary</a> which is the value of the <a>active graph</a>
-          member of <var>node map</var> using the variable <var>graph</var>. If the
+          <a>member</a> of <var>node map</var> using the variable <var>graph</var>. If the
           <var>active subject</var> is <code>null</code>, set <var>node</var> to <code>null</code>
-          otherwise reference the <var>active subject</var> member of <var>graph</var> using the
+          otherwise reference the <var>active subject</var> <a>member</a> of <var>graph</var> using the
           variable <var>subject node</var>.</li>
-        <li>If <var>element</var> has an <code>@type</code> member, perform for each
+        <li>If <var>element</var> has an <code>@type</code> <a>member</a>, perform for each
           <var>item</var> the following steps:
           <ol>
             <li>If <var>item</var> is a <a>blank node identifier</a>, replace it with a newly
@@ -3531,105 +3529,105 @@
               passing <var>item</var> for <var>identifier</var>.</li>
           </ol>
         </li>
-        <li>If <var>element</var> has an <code>@value</code> member, perform the following steps:
+        <li>If <var>element</var> has an <code>@value</code> <a>member</a>, perform the following steps:
           <ol>
             <li>If <var>list</var> is <code>null</code>:
               <ol>
-                <li>If <var>subject node</var> does not have an <var>active property</var> member,
+                <li>If <var>subject node</var> does not have an <var>active property</var> <a>member</a>,
                   create one and initialize its value to an <a>array</a>
                   containing <var>element</var>.</li>
                 <li>Otherwise, compare <var>element</var> against every item in the
                   <a>array</a> associated with the <var>active property</var>
-                  member of <var>subject node</var>. If there is no item equivalent to <var>element</var>,
+                  <a>member</a> of <var>subject node</var>. If there is no item equivalent to <var>element</var>,
                   append <var>element</var> to the <a>array</a>. Two
                   <a class="changed">dictionaries</a> are considered
-                  equal if they have equivalent key-value pairs.</li>
+                  equal if they have equivalent <a> dictionary members</a>.</li>
               </ol>
             </li>
-            <li>Otherwise, append <var>element</var> to the <code>@list</code> member of <var>list</var>.</li>
+            <li>Otherwise, append <var>element</var> to the <code>@list</code> <a>member</a> of <var>list</var>.</li>
           </ol>
         </li>
-        <li>Otherwise, if <var>element</var> has an <code>@list</code> member, perform
+        <li>Otherwise, if <var>element</var> has an <code>@list</code> <a>member</a>, perform
           the following steps:
           <ol>
-            <li>Initialize a new <a class="changed">dictionary</a> <var>result</var> consisting of a single member
+            <li>Initialize a new <a class="changed">dictionary</a> <var>result</var> consisting of a single <a>member</a>
               <code>@list</code> whose value is initialized to an empty <a>array</a>.</li>
             <li>Recursively call this algorithm passing the value of <var>element</var>'s
-              <code>@list</code> member for <var>element</var>, <var>node map</var>, <var>active graph</var>,
+              <code>@list</code> <a>member</a> for <var>element</var>, <var>node map</var>, <var>active graph</var>,
               <var>active subject</var>, <var>active property</var>, and
               <var>result</var> for <var>list</var>.</li>
             <li class="changed">If <var>list</var> is <code>null</code>,
-              append <var>result</var> to the value of the <var>active property</var> member
+              append <var>result</var> to the value of the <var>active property</var> <a>member</a>
               of <var>subject node</var>.</li>
-            <li class="changed">Otherwise, append <var>result</var> to the <code>@list</code> member of <var>list</var>.</li>
+            <li class="changed">Otherwise, append <var>result</var> to the <code>@list</code> <a>member</a> of <var>list</var>.</li>
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a>node object</a>, perform
           the following steps:
           <ol>
-            <li>If <var>element</var> has an <code>@id</code> member, set <var>id</var>
-              to its value and remove the member from <var>element</var>. If <var>id</var>
+            <li>If <var>element</var> has an <code>@id</code> <a>member</a>, set <var>id</var>
+              to its value and remove the <a>member</a> from <var>element</var>. If <var>id</var>
               is a <a>blank node identifier</a>, replace it with a newly
               <a href="#generate-blank-node-identifier">generated blank node identifier</a>
               passing <var>id</var> for <var>identifier</var>.</li>
             <li>Otherwise, set <var>id</var> to the result of the
               <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
               passing <code>null</code> for <var>identifier</var>.</li>
-            <li>If <var>graph</var> does not contain a member <var>id</var>, create one and initialize
-              its value to a <a class="changed">dictionary</a> consisting of a single member <code>@id</code> whose
+            <li>If <var>graph</var> does not contain a <a>member</a> <var>id</var>, create one and initialize
+              its value to a <a class="changed">dictionary</a> consisting of a single <a>member</a> <code>@id</code> whose
               value is <var>id</var>.</li>
-            <li>Reference the value of the <var>id</var> member of <var>graph</var> using the
+            <li>Reference the value of the <var>id</var> <a>member</a> of <var>graph</var> using the
               variable <var>node</var>.</li>
             <li>If <var>active subject</var> is a <a class="changed">dictionary</a>, a reverse property relationship
               is being processed. Perform the following steps:
               <ol>
-                <li>If <var>node</var> does not have an <var>active property</var> member,
+                <li>If <var>node</var> does not have an <var>active property</var> <a>member</a>,
                   create one and initialize its value to an <a>array</a>
                   containing <var>active subject</var>.</li>
                 <li>Otherwise, compare <var>active subject</var> against every item in the
                   <a>array</a> associated with the <var>active property</var>
-                  member of <var>node</var>. If there is no item equivalent to <var>active subject</var>,
+                  <a>member</a> of <var>node</var>. If there is no item equivalent to <var>active subject</var>,
                   append <var>active subject</var> to the <a>array</a>. Two
                   <a class="changed">dictionaries</a> are considered
-                  equal if they have equivalent key-value pairs.</li>
+                  equal if they have equivalent <a>dictionary members</a>.</li>
               </ol>
             </li>
             <li>Otherwise, if <var>active property</var> is not <code>null</code>, perform the following steps:
               <ol>
-                <li>Create a new <a class="changed">dictionary</a> <var>reference</var> consisting of a single member
+                <li>Create a new <a class="changed">dictionary</a> <var>reference</var> consisting of a single <a>member</a>
                   <code>@id</code> whose value is <var>id</var>.</li>
                 <li>If <var>list</var> is <code>null</code>:
                   <ol>
-                    <li>If <var>subject node</var> does not have an <var>active property</var> member,
+                    <li>If <var>subject node</var> does not have an <var>active property</var> <a>member</a>,
                       create one and initialize its value to an <a>array</a>
                       containing <var>reference</var>.</li>
                     <li>Otherwise, compare <var>reference</var> against every item in the
                       <a>array</a> associated with the <var>active property</var>
-                      member of <var>subject node</var>. If there is no item equivalent to <var>reference</var>,
+                      <a>member</a> of <var>subject node</var>. If there is no item equivalent to <var>reference</var>,
                       append <var>reference</var> to the <a>array</a>. Two
                       <a class="changed">dictionaries</a> are considered
-                      equal if they have equivalent key-value pairs.</li>
+                      equal if they have equivalent <a>dictionary members</a>.</li>
                   </ol>
                 </li>
-                <li>Otherwise, append <var class="changed">reference</var> to the <code>@list</code> member of <var>list</var>.</li>
+                <li>Otherwise, append <var class="changed">reference</var> to the <code>@list</code> <a>member</a> of <var>list</var>.</li>
               </ol>
             </li>
-            <li>If <var>element</var> has an <code>@type</code> key, append
+            <li>If <var>element</var> has a <code>@type</code> <a>member</a>, append
               each item of its associated <a>array</a> to the
-              <a>array</a> associated with the <code>@type</code> key of
+              <a>array</a> associated with the <code>@type</code> <a>member</a> of
               <var>node</var> unless it is already in that <a>array</a>. Finally
-              remove the <code>@type</code> member from <var>element</var>.</li>
-            <li>If <var>element</var> has an <code>@index</code> member, set the <code>@index</code>
-              member of <var>node</var> to its value. If <a>node</a> has already an
-              <code>@index</code> member with a different value, a
+              remove the <code>@type</code> <a>member</a> from <var>element</var>.</li>
+            <li>If <var>element</var> has an <code>@index</code> <a>member</a>, set the <code>@index</code>
+              <a>member</a> of <var>node</var> to its value. If <a>node</a> has already an
+              <code>@index</code> <a>member</a> with a different value, a
               <a data-link-for="JsonLdErrorCode">conflicting indexes</a>
               error has been detected and processing is aborted. Otherwise, continue by
-              removing the <code>@index</code> member from <var>element</var>.</li>
-            <li>If <var>element</var> has an <code>@reverse</code> member:
+              removing the <code>@index</code> <a>member</a> from <var>element</var>.</li>
+            <li>If <var>element</var> has an <code>@reverse</code> <a>member</a>:
               <ol>
-                <li>Create a <a class="changed">dictionary</a> <var>referenced node</var> with a single member <code>@id</code> whose
+                <li>Create a <a class="changed">dictionary</a> <var>referenced node</var> with a single <a>member</a> <code>@id</code> whose
                   value is <var>id</var>.</li>
-                <li>Set <var>reverse map</var> to the value of the <code>@reverse</code> member of
+                <li>Set <var>reverse map</var> to the value of the <code>@reverse</code> <a>member</a> of
                   <var>element</var>.</li>
                 <li>For each key-value pair <var>property</var>-<var>values</var> in <var>reverse map</var>:
                   <ol>
@@ -3645,20 +3643,20 @@
                     </li>
                   </ol>
                 </li>
-                <li>Remove the <code>@reverse</code> member from <var>element</var>.</li>
+                <li>Remove the <code>@reverse</code> <a>member</a> from <var>element</var>.</li>
               </ol>
             </li>
-            <li>If <var>element</var> has an <code>@graph</code> member, recursively invoke this
-              algorithm passing the value of the <code>@graph</code> member for <var>element</var>,
+            <li>If <var>element</var> has an <code>@graph</code> <a>member</a>, recursively invoke this
+              algorithm passing the value of the <code>@graph</code> <a>member</a> for <var>element</var>,
               <var>node map</var>, and <var>id</var> for <var>active graph</var> before removing
-              the <code>@graph</code> member from <var>element</var>.</li>
+              the <code>@graph</code> <a>member</a> from <var>element</var>.</li>
             <li>Finally, for each key-value pair <var>property</var>-<var>value</var> in <var>element</var> ordered by
               <var>property</var> perform the following steps:
               <ol>
                 <li>If <var>property</var> is a <a>blank node identifier</a>, replace it with a newly
                   <a href="#generate-blank-node-identifier">generated blank node identifier</a>
                   passing <var>property</var> for <var>identifier</var>.</li>
-                <li>If <var>node</var> does not have a <var>property</var> member, create one and initialize
+                <li>If <var>node</var> does not have a <var>property</var> <a>member</a>, create one and initialize
                   its value to an empty <a>array</a>.</li>
                 <li>Recursively invoke this algorithm passing <var>value</var> for <var>element</var>,
                   <var>node map</var>, <var>active graph</var>, <var>id</var> for <var>active subject</var>,
@@ -3731,7 +3729,7 @@
         and for each <var>id</var> and <var>node</var> in <var>node map</var>:
         <ol>
           <li>Set <var>merged node</var> to the value for <var>id</var> in <var>result</var>, initializing it
-            with a new <a>dictionary</a> consisting of a single member <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
+            with a new <a>dictionary</a> consisting of a single <a>member</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
           <li>For each <var>property</var> and <var>values</var> in <var>node</var>:
             <ol>
               <li>If <var>property</var> is a <a>keyword</a>, add <var>property</var> and values to <var>merged node</var>.</li>
@@ -3761,9 +3759,8 @@
     <p>This algorithm deserializes a JSON-LD document to an <a>RDF dataset</a>.
       Please note that RDF does not allow a <a>blank node</a> to be used
       as a <a>property</a>, while JSON-LD does.  Therefore, by default
-      RDF triples that would have contained blank nodes as properties are
+      RDF triples that would have contained blank nodes as <a>properties</a> are
       discarded when interpreting JSON-LD as RDF.</p>
-
 
     <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
       <a>RDF triples</a> and <a>graph names</a>:</p>
@@ -3797,10 +3794,10 @@
         is processed to extract <a>RDF triple</a>,
         to which any (non-default) graph name is applied to create an
         <a>RDF dataset</a>. Each <a>node object</a> in the
-        <var>node map</var> has an <code>@id</code> member which corresponds to the
-        <a>RDF subject</a>, the other members
+        <var>node map</var> has an <code>@id</code> <a>member</a> which corresponds to the
+        <a>RDF subject</a>, the other <a>members</a>
         represent <a>RDF predicates</a>. Each
-        member value is either an <a>IRI</a> or
+        <a>member</a> value is either an <a>IRI</a> or
         <a>blank node identifier</a> or can be transformed to an
         <a>RDF literal</a>
         to generate an <a>RDF triple</a>. <a>Lists</a>
@@ -3931,27 +3928,27 @@
 
       <ol>
         <li>If <var>item</var> is a <a>node object</a> and the value of
-          its <code>@id</code> member is
+          its <code>@id</code> <a>member</a> is
           <span class="changed">not <a>well-formed</a></span>, return
           <code>null</code>.</li>
         <li>If <var>item</var> is a <a>node object</a>, return the
           <a>IRI</a> or <a>blank node identifier</a> associated
-          with its <code>@id</code> member.</li>
+          with its <code>@id</code> <a>member</a>.</li>
         <li class="changed">If <var>item</var> is a <a>list object</a>
           return the result of the
           <a href="#list-to-rdf-conversion">List Conversion algorithm</a>, passing
-          the value associated with the <code>@list</code> key from
+          the value associated with the <code>@list</code> <a>member</a> from
           <var>item</var> and <var>list triples</var>.
         </li>
         <li>Otherwise, <var>item</var> is a <a>value object</a>. Initialize
           <var>value</var> to the value associated with the <code>@value</code>
-          member in <var>item</var>.
+          <a>member</a> in <var>item</var>.
         <li>Initialize <var>datatype</var> to the value associated with the
-          <code>@type</code> member of <var>item</var> or <code>null</code> if
-          <var>item</var> does not have such a member.</li>
+          <code>@type</code> <a>member</a> of <var>item</var> or <code>null</code> if
+          <var>item</var> does not have such a <a>member</a>.</li>
         <li class="changed">If <var>datatype</var> is not <a>well-formed</a>, return <code>null</code>.</li>
         <li class="changed">If <var>item</var> has a <code>@language</code>
-          member which is not <a>well-formed</a>, return <code>null</code>.</li>
+          <a>member</a> which is not <a>well-formed</a>, return <code>null</code>.</li>
         <li>If <var>value</var> is <code>true</code> or
           <code>false</code>, set <var>value</var> to the <a>string</a>
           <code>true</code> or <code>false</code> which is the
@@ -3980,11 +3977,11 @@
           <code>xsd:integer</code>.</li>
         <li>Otherwise, if <var>datatype</var> is <code>null</code>, set it to
           <code>xsd:string</code> or <code>rdf:langString</code>, depending on if
-          item has an <code>@language</code> member.</li>
+          item has an <code>@language</code> <a>member</a>.</li>
         <li>Initialize <var>literal</var> as an <a>RDF literal</a> using
           <var>value</var> and <var>datatype</var>. If <var>item</var> has an
-          <code>@language</code> member, add the value associated with the
-          <code>@language</code> key as the <a>language tag</a> of <var>literal</var>.</li>
+          <code>@language</code> <a>member</a>, add the value associated with the
+          <code>@language</code> <a>member</a> as the <a>language tag</a> of <var>literal</var>.</li>
         <li>Return <var>literal</var>.</li>
       </ol>
     </section>
@@ -4090,7 +4087,7 @@
       <ol>
         <li>Initialize <var>default graph</var> to an empty <a class="changed">dictionary</a>.</li>
         <li>Initialize <var>graph map</var> to a <a class="changed">dictionary</a> consisting
-          of a single member <code>@default</code> whose value references
+          of a single <a>member</a> <code>@default</code> whose value references
           <var>default graph</var>.</li>
         <li class="changed">Initialize <var>referenced once</var> to an empty <a>dictionary</a>.</li>
         <li>For each <var>graph</var> in  <var>dataset</var>:
@@ -4098,67 +4095,67 @@
             <li>If <var>graph</var> is the <a>default graph</a>,
               set <var>name</var> to <code>@default</code>, otherwise to the
               <a>graph name</a> associated with <var>graph</var>.</li>
-            <li>If <var>graph map</var> has no <var>name</var> member, create one and set
+            <li>If <var>graph map</var> has no <var>name</var> <a>member</a>, create one and set
               its value to an empty <a class="changed">dictionary</a>.</li>
             <li>If <var>graph</var> is not the <a>default graph</a> and
-              <var>default graph</var> does not have a <var>name</var> member,
-              create such a member and initialize its value to a new
-              <a class="changed">dictionary</a> with a single member <code>@id</code>
+              <var>default graph</var> does not have a <var>name</var> <a>member</a>,
+              create such a <a>member</a> and initialize its value to a new
+              <a class="changed">dictionary</a> with a single <a>member</a> <code>@id</code>
               whose value is <var>name</var>.</li>
-            <li>Reference the value of the <var>name</var> member in <var>graph map</var>
+            <li>Reference the value of the <var>name</var> <a>member</a> in <var>graph map</var>
               using the variable <var>node map</var>.</li>
             <li>For each <a>RDF triple</a> in <var>graph</var>
               consisting of <var>subject</var>, <var>predicate</var>, and <var>object</var>:
               <ol>
-                <li>If <var>node map</var> does not have a <var>subject</var> member,
+                <li>If <var>node map</var> does not have a <var>subject</var> <a>member</a>,
                   create one and initialize its value to a new <a class="changed">dictionary</a>
-                  consisting of a single member <code>@id</code> whose value is
+                  consisting of a single <a>member</a> <code>@id</code> whose value is
                   set to <var>subject</var>.</li>
-                <li>Reference the value of the <var>subject</var> member in <var>node map</var>
+                <li>Reference the value of the <var>subject</var> <a>member</a> in <var>node map</var>
                   using the variable <var>node</var>.</li>
                 <li>If <var>object</var> is an <a>IRI</a> or <a>blank node identifier</a>,
-                  and <var>node map</var> does not have an <var>object</var> member,
+                  and <var>node map</var> does not have an <var>object</var> <a>member</a>,
                   create one and initialize its value to a new <a class="changed">dictionary</a>
-                  consisting of a single member <code>@id</code> whose value is
+                  consisting of a single <a>member</a> <code>@id</code> whose value is
                   set to <var>object</var>.</li>
                 <li>If <var>predicate</var> equals <code>rdf:type</code>, the
                   <i>use <code>rdf:type</code></i> flag is not <code>true</code>, and <var>object</var>
                   is an <a>IRI</a> or <a>blank node identifier</a>,
                   append <var>object</var> to the value of the <code>@type</code>
-                  member of <var>node</var>; unless such an item already exists.
-                  If no such member exists, create one
+                  <a>member</a> of <var>node</var>; unless such an item already exists.
+                  If no such <a>member</a> exists, create one
                   and initialize it to an <a>array</a> whose only item is
                   <var>object</var>. Finally, continue to the next
                   <a>RDF triple</a>.</li>
                 <li>Set <var>value</var> to the result of using the
                   <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
                   passing <var>object</var> and <var>use native types</var>.</li>
-                <li>If <var>node</var> does not have an <var>predicate</var> member, create one
+                <li>If <var>node</var> does not have an <var>predicate</var> <a>member</a>, create one
                   and initialize its value to an empty <a>array</a>.</li>
                 <li>If there is no item equivalent to <var>value</var> in the <a>array</a>
-                  associated with the <var>predicate</var> member of <var>node</var>, append a
-                  reference to <var>value</var> to the <a>array</a>. Two JSON objects
-                  are considered equal if they have equivalent key-value pairs.</li>
+                  associated with the <var>predicate</var> <a>member</a> of <var>node</var>, append a
+                  reference to <var>value</var> to the <a>array</a>. Two <a>dictionaries</a>
+                  are considered equal if they have equivalent <a>dictionary members</a>.</li>
                 <li class="changed">If <var>object</var> is <code>rdf:nil</code>, it represents
                   the termination of an <a>RDF collection</a>:
                   <ol>
-                    <li>Reference the <code>usages</code> member of the <var>object</var>
-                      member of <var>node map</var> using the variable <var>usages</var>.</li>
+                    <li>Reference the <code>usages</code> <a>member</a> of the <var>object</var>
+                      <a>member</a> of <var>node map</var> using the variable <var>usages</var>.</li>
                     <li>Append a new <a>dictionary</a> consisting of three
-                      members, <code>node</code>, <code>property</code>, and <code>value</code>
-                      to the <var>usages</var> <a>array</a>. The <code>node</code> member
+                      <a>members</a>, <code>node</code>, <code>property</code>, and <code>value</code>
+                      to the <var>usages</var> <a>array</a>. The <code>node</code> <a>member</a>
                       is set to a reference to <var>node</var>, <code>property</code> to <var>predicate</var>,
                       and <code>value</code> to a reference to <var>value</var>.</li>
                   </ol>
                 </li>
                 <li class="changed">Otherwise, if <var>referenced once</var> has an entry for <var>object</var>,
-                  set the <var>object</var> member of <var>referenced once</var> to <code>false</code>.</li>
+                  set the <var>object</var> <a>member</a> of <var>referenced once</var> to <code>false</code>.</li>
                 <li class="changed">Otherwise, if <var>object</var> is a <a>blank node identifier</a>,
                   it might represent a list node:
                   <ol>
-                    <li>Set the <var>object</var> member of <var>referenced once</var> to a new <a>dictionary</a> consisting of three
-                      members, <code>node</code>, <code>property</code>, and <code>value</code>
-                      to the <var>usages</var> <a>array</a>. The <code>node</code> member
+                    <li>Set the <var>object</var> <a>member</a> of <var>referenced once</var> to a new <a>dictionary</a> consisting of three
+                      <a>member</a>s, <code>node</code>, <code>property</code>, and <code>value</code>
+                      to the <var>usages</var> <a>array</a>. The <code>node</code> <a>member</a>
                       is set to a reference to <var>node</var>, <code>property</code> to <var>predicate</var>,
                       and <code>value</code> to a reference to <var>value</var>.</li>
                   </ol>
@@ -4169,56 +4166,56 @@
         </li>
         <li>For each <var>name</var> and <var>graph object</var> in <var>graph map</var>:
           <ol>
-            <li>If <var>graph object</var> has no <code>rdf:nil</code> member, continue
+            <li>If <var>graph object</var> has no <code>rdf:nil</code> <a>member</a>, continue
               with the next <var>name</var>-<var>graph object</var> pair as the graph does
               not contain any lists that need to be converted.</li>
-            <li>Initialize <var>nil</var> to the value of the <code>rdf:nil</code> member
+            <li>Initialize <var>nil</var> to the value of the <code>rdf:nil</code> <a>member</a>
               of <var>graph object</var>.</li>
-            <li>For each item <var>usage</var> in the <code>usages</code> member of
+            <li>For each item <var>usage</var> in the <code>usages</code> <a>member</a> of
               <var>nil</var>, perform the following steps:
               <ol>
                 <li>Initialize <var>node</var> to the value of the value of the
-                  <code>node</code> member of <var>usage</var>, <var>property</var> to
-                  the value of the <code>property</code> member of <var>usage</var>,
-                  and <var>head</var> to the value of the <code>value</code> member
+                  <code>node</code> <a>member</a> of <var>usage</var>, <var>property</var> to
+                  the value of the <code>property</code> <a>member</a> of <var>usage</var>,
+                  and <var>head</var> to the value of the <code>value</code> <a>member</a>
                   of <var>usage</var>.</li>
                 <li>Initialize two empty <a>arrays</a> <var>list</var>
                   and <var>list nodes</var>.</li>
                 <li>While <var>property</var> equals <code>rdf:rest</code>,
-                  <span class="changed">the value of the <code>@id</code> member
+                  <span class="changed">the value of the <code>@id</code> <a>member</a>
                     of <var>node</var> is a <a>blank node identifier</a>,</span>
-                  the value of the member of <var>referenced once</var> associated with the <code>@id</code>
-                  member of <code>node</code> is a <a>dictionary</a>,
-                  <var>node</var> has a <code>rdf:first</code> and <code>rdf:rest</code> property,
+                  the value of the <a>member</a> of <var>referenced once</var> associated with the <code>@id</code>
+                  <a>member</a> of <code>node</code> is a <a>dictionary</a>,
+                  <var>node</var> has <code>rdf:first</code> and <code>rdf:rest</code> <a>members</a>,
                   both of which have as value an <a>array</a> consisting of a single element,
-                  and <var>node</var> has no other members apart from an optional <code>@type</code>
-                  member whose value is an array with a single item equal to
+                  and <var>node</var> has no other <a>members</a> apart from an optional <code>@type</code>
+                  <a>member</a> whose value is an array with a single item equal to
                   <code>rdf:List</code>,
                   <var>node</var> represents a well-formed list node.
                   Perform the following steps to traverse the list backwards towards its head:
                   <ol>
-                    <li>Append the only item of <code>rdf:first</code> member of
+                    <li>Append the only item of <code>rdf:first</code> <a>member</a> of
                       <var>node</var> to the <var>list</var> <a>array</a>.</li>
-                    <li>Append the value of the <code>@id</code> member of
+                    <li>Append the value of the <code>@id</code> <a>member</a> of
                       <var>node</var> to the <var>list nodes</var> <a>array</a>.</li>
-                    <li>Initialize <var>node usage</var> to the value of the member of <var>referenced once</var> associated with the <code>@id</code>
-                      member of <code>node</code>.</li>
-                    <li>Set <var>node</var> to the value of the <code>node</code> member
+                    <li>Initialize <var>node usage</var> to the value of the <a>member</a> of <var>referenced once</var> associated with the <code>@id</code>
+                      <a>member</a> of <code>node</code>.</li>
+                    <li>Set <var>node</var> to the value of the <code>node</code> <a>member</a>
                       of <var>node usage</var>, <var>property</var> to the value of the
-                      <code>property</code> member of <var>node usage</var>, and
-                      <var>head</var> to the value of the <code>value</code> member
+                      <code>property</code> <a>member</a> of <var>node usage</var>, and
+                      <var>head</var> to the value of the <code>value</code> <a>member</a>
                       of <var>node usage</var>.</li>
-                    <li>If the <code>@id</code> member of <var>node</var> is an
+                    <li>If the <code>@id</code> <a>member</a> of <var>node</var> is an
                       <a>IRI</a> instead of a <a>blank node identifier</a>,
                       exit the while loop.</li>
                   </ol>
                 </li>
-                <li>Remove the <code>@id</code> member from <var>head</var>.</li>
+                <li>Remove the <code>@id</code> <a>member</a> from <var>head</var>.</li>
                 <li>Reverse the order of the <var>list</var> <a>array</a>.</li>
-                <li>Add an <code>@list</code> member to <var>head</var> and initialize
+                <li>Add an <code>@list</code> <a>member</a> to <var>head</var> and initialize
                   its value to the <var>list</var> <a>array</a>.</li>
                 <li>For each item <var>node id</var> in <var>list nodes</var>, remove the
-                  <var>node id</var> member from <var>graph object</var>.</li>
+                  <var>node id</var> <a>member</a> from <var>graph object</var>.</li>
               </ol>
             </li>
           </ol>
@@ -4227,19 +4224,19 @@
         <li>For each <var>subject</var> and <var>node</var> in <var>default graph</var>
           ordered by <var>subject</var>:
           <ol>
-            <li>If <var>graph map</var> has a <var>subject</var> member:
+            <li>If <var>graph map</var> has a <var>subject</var> <a>member</a>:
               <ol>
-                <li>Add an <code>@graph</code> member to <var>node</var> and initialize
+                <li>Add an <code>@graph</code> <a>member</a> to <var>node</var> and initialize
                   its value to an empty <a>array</a>.</li>
                 <li>For each key-value pair <var>s</var>-<var>n</var> in the <var>subject</var>
-                  member of <var>graph map</var> ordered by <var>s</var>, append <var>n</var>
-                  to the <code>@graph</code> member of <var>node</var> after
-                  removing its <code>usages</code> member, unless the only
-                  remaining member of <var>n</var> is <code>@id</code>.</li>
+                  <a>member</a> of <var>graph map</var> ordered by <var>s</var>, append <var>n</var>
+                  to the <code>@graph</code> <a>member</a> of <var>node</var> after
+                  removing its <code>usages</code> <a>member</a>, unless the only
+                  remaining <a>member</a> of <var>n</var> is <code>@id</code>.</li>
               </ol>
             </li>
             <li>Append <var>node</var> to <var>result</var> after removing its
-              <code>usages</code> member, unless the only remaining member of
+              <code>usages</code> <a>member</a>, unless the only remaining <a>member</a> of
               <var>node</var> is <code>@id</code>.</li>
           </ol>
         </li>
@@ -4283,7 +4280,7 @@
       <ol>
         <li>If <var>value</var> is an <a>IRI</a> or a
           <a>blank node identifier</a>, return a new <a class="changed">dictionary</a>
-          consisting of a single member <code>@id</code> whose value is set to
+          consisting of a single <a>member</a> <code>@id</code> whose value is set to
           <var>value</var>.</li>
         <li>Otherwise <var>value</var> is an
           <a>RDF literal</a>:
@@ -4321,14 +4318,14 @@
             </li>
             <li>Otherwise, if <var>value</var> is a
               <a>language-tagged string</a>
-              add a member <code>@language</code> to <var>result</var> and set its value to the
+              add a <a>member</a> <code>@language</code> to <var>result</var> and set its value to the
               <a>language tag</a> of <var>value</var>.</li>
             <li>Otherwise, set <var>type</var> to the
               <a>datatype IRI</a>
               of <var>value</var>, unless it equals <code>xsd:string</code> which is ignored.</li>
-            <li>Add a member <code>@value</code> to <var>result</var> whose value
+            <li>Add a <a>member</a> <code>@value</code> to <var>result</var> whose value
               is set to <var>converted value</var>.</li>
-            <li>If <var>type</var> is not <code>null</code>, add a member <code>@type</code>
+            <li>If <var>type</var> is not <code>null</code>, add a <a>member</a> <code>@type</code>
               to <var>result</var> whose value is set to <var>type</var>.</li>
             <li>Return <var>result</var>.</li>
           </ol>
@@ -4502,8 +4499,8 @@
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand</a>
             method using <a data-lt="jsonldprocessor-compact-input">input</a> and <a data-lt="jsonldprocessor-compact-options">options</a>.
-          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> member, set
-            <var>context</var> to that member's value, otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
+          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
+            <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
             the <a>base IRI</a> is set to
             the <a data-link-for="JsonldOptions">base</a> option from
@@ -4564,7 +4561,7 @@
             <a data-link-for="JsonldOptions">expandContext</a>
             as <var>local context</var>. If
             <a data-link-for="JsonldOptions">expandContext</a>
-            is a <a class="changed">dictionary</a> having an <code>@context</code> member, pass that member's value instead.</li>
+            is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, pass that <a data-lt="member">member's</a> value instead.</li>
           <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved, the response has an HTTP Link Header [[!RFC8288]]
             using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
             and a content type of <code>application/json</code> or any media type
@@ -4612,8 +4609,8 @@
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand</a>
             method using <a data-lt="jsonldprocessor-flatten-input">input</a> and <a data-lt="jsonldprocessor-flatten-options">options</a>.
-          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> member, set
-            <var>context</var> to that member's value, otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
+          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
+            <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
             the <a>base IRI</a> is set to
             the <a data-link-for="JsonldOptions">base</a> option from
@@ -4658,7 +4655,7 @@
       dictionary JsonLdDictionary {};
     --></pre>
     <p class="changed">The <dfn>JsonLdDictionary</dfn> is the definition of a <a>dictionary</a>
-      used to contain arbitrary key/value pairs which are the result of
+      used to contain arbitrary <a>dictionary members</a> which are the result of
       parsing a <a>JSON Object</a>.
 
     <pre class="idl changed" data-transform="unComment"><!--
@@ -4879,7 +4876,7 @@
 
       <dl data-dfn-for="JsonLdErrorCode" data-sort>
         <dt><dfn>colliding keywords</dfn></dt>
-        <dd>Two properties which expand to the same keyword have been detected.
+        <dd>Two <a>properties</a> which expand to the same keyword have been detected.
           This might occur if a <a>keyword</a> and an alias thereof
           are used at the same time.</dd>
         <dt><dfn>conflicting indexes</dfn></dt>
@@ -4887,26 +4884,26 @@
         <dt><dfn>cyclic IRI mapping</dfn></dt>
         <dd>A cycle in <a>IRI mappings</a> has been detected.</dd>
         <dt><dfn>invalid @id value</dfn></dt>
-        <dd>An <code>@id</code> member was encountered whose value was not a
+        <dd>An <code>@id</code> <a>member</a> was encountered whose value was not a
           <a>string</a>.</dd>
         <dt><dfn>invalid @index value</dfn></dt>
-        <dd>An <code>@index</code> member was encountered whose value was
+        <dd>An <code>@index</code> <a>member</a> was encountered whose value was
           not a <a>string</a>.</dd>
         <dt class="changed"><dfn>invalid @nest value</dfn></dt>
         <dd class="changed">An invalid value for <code>@nest</code> has been found.</dd>
         <dt class="changed"><dfn>invalid @prefix value</dfn></dt>
         <dd class="changed">An invalid value for <code>@prefix</code> has been found.</dd>
         <dt><dfn>invalid @reverse value</dfn></dt>
-        <dd>An invalid value for an <code>@reverse</code> member has been detected,
+        <dd>An invalid value for an <code>@reverse</code> <a>member</a> has been detected,
           i.e., the value was not a <a class="changed">dictionary</a>.</dd>
         <dt><dfn>invalid @version value</dfn></dt>
-        <dd>The <code>@version</code> key was used in a <a>context</a> with
+        <dd>The <code>@version</code> <a>member</a> was used in a <a>context</a> with
           an out of range value.</dd>
         <dt><dfn>invalid base IRI</dfn></dt>
         <dd>An invalid <a>base IRI</a> has been detected, i.e., it is
           neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid container mapping</dfn></dt>
-        <dd>An <code>@container</code> member was encountered whose value was
+        <dd>An <code>@container</code> <a>member</a> was encountered whose value was
           not one of the following <a>strings</a>:
           <code>@list</code>, <code>@set</code>, or <code>@index</code>.</dd>
         <dt><dfn>invalid default language</dfn></dt>
@@ -4923,7 +4920,7 @@
           has been detected. It has to be a <a>string</a> or an <a>array</a> of
           <a>strings</a>.</dd>
         <dt><dfn>invalid language mapping</dfn></dt>
-        <dd>An <code>@language</code> member in a <a>term definition</a>
+        <dd>An <code>@language</code> <a>member</a> in a <a>term definition</a>
           was encountered whose value was neither a <a>string</a> nor
           <code>null</code> and thus invalid.</dd>
         <dt><dfn>invalid language-tagged string</dfn></dt>
@@ -4950,24 +4947,24 @@
         <dd class="changed">The <a>local context</a> defined within a <a>term definition</a> is invalid.</dd>
         <dt><dfn>invalid set or list object</dfn></dt>
         <dd>A <a>set object</a> or <a>list object</a> with
-          disallowed members has been detected.</dd>
+          disallowed <a>members</a> has been detected.</dd>
         <dt><dfn>invalid term definition</dfn></dt>
         <dd>An invalid <a>term definition</a> has been detected.</dd>
         <dt><dfn>invalid type mapping</dfn></dt>
-        <dd>An <code>@type</code> member in a <a>term definition</a>
+        <dd>An <code>@type</code> <a>member</a> in a <a>term definition</a>
           was encountered whose value could not be expanded to an
           <a>absolute IRI</a>.</dd>
         <dt><dfn>invalid type value</dfn></dt>
-        <dd>An invalid value for an <code>@type</code> member has been detected,
+        <dd>An invalid value for an <code>@type</code> <a>member</a> has been detected,
           i.e., the value was neither a <a>string</a> nor an <a>array</a>
           of <a>strings</a>.</dd>
         <dt><dfn>invalid typed value</dfn></dt>
         <dd>A <a>typed value</a> with an invalid type was detected.</dd>
         <dt><dfn>invalid value object</dfn></dt>
-        <dd>A <a>value object</a> with disallowed members has been
+        <dd>A <a>value object</a> with disallowed <a>members</a> has been
           detected.</dd>
         <dt><dfn>invalid value object value</dfn></dt>
-        <dd>An invalid value for the <code>@value</code> member of a
+        <dd>An invalid value for the <code>@value</code> <a>member</a> of a
           <a>value object</a> has been detected, i.e., it is neither
           a <a>scalar</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid vocab mapping</dfn></dt>
@@ -5009,7 +5006,7 @@
       the <var>frame expansion</var> flag, to enable content associated with JSON-LD
       frames, which may not otherwise be valid <a>JSON-LD documents</a>.</li>
     <li>An <a>expanded term definition</a> can now have an
-      <code>@context</code> property, which defines a context used for values of
+      <code>@context</code> <a>member</a>, which defines a context used for values of
       a <a>property</a> identified with such a <a>term</a>. This context is used
       in both the <a href="#expansion-algorithm">Expansion Algorithm</a> and
       <a href="#compaction-algorithm">Compaction Algorithm</a>.</li>
@@ -5017,9 +5014,9 @@
       for framing, to create a single graph from the <a data-lt="default graph">default</a>
       and <a>named graphs</a>.</li>
     <li>An <a>expanded term definition</a> can now have an
-      <code>@nest</code> property, which identifies a term expanding to
-      <code>@nest</code> which is used for containing properties using the same
-      <code>@nest</code> mapping. When expanding, the values of a property
+      <code>@nest</code> <a>member</a>, which identifies a term expanding to
+      <code>@nest</code> which is used for containing <a>properties</a> using the same
+      <code>@nest</code> mapping. When expanding, the values of a <a>member</a>
       expanding to <code>@nest</code> are treated as if they were contained
       within the enclosing <a>node object</a> directly.</li>
     <li><code>@container</code> values within an <a>expanded term definition</a> may now
@@ -5030,11 +5027,11 @@
     <li>The JSON syntax has been abstracted into an <a>internal representation</a>
       to allow for other serialization formats that are functionally equivalent
       to JSON.</li>
-    <li>Preserved values are compacted using the properties of the referencing term.</li>
+    <li>Preserved values are compacted using the <a>properties</a> of the referencing term.</li>
     <li>The value for <code>@container</code> in an <a>expanded term definition</a>
       can also be an <a>array</a> containing any appropriate container
       keyword along with <code>@set</code> (other than <code>@list</code>).
-      This allows a way to ensure that such property values will always
+      This allows a way to ensure that such <a>member</a> values will always
       be expressed in <a>array</a> form.</li>
     <li>Added support for the <a data-link-for="JsonLdOptions">compactToRelative</a> option to allow IRI compaction (<a href="#iri-compaction" class="sectionRef"></a>)
       to document relative IRIs to be disabled.</li>
@@ -5042,14 +5039,14 @@
       when compacting only if
       a <a>simple term definition</a> is used where the value ends with a URI <a data-cite="RFC3986#section-2.2">gen-delim</a> character,
       or if their <a>expanded term definition</a> contains
-      a <code>@prefix</code> member with the value <a>true</a>. The 1.0 algorithm has
+      a <code>@prefix</code> <a>member</a> with the value <a>true</a>. The 1.0 algorithm has
       been updated to only consider terms that map to a value that ends with a URI
       <a data-cite="RFC3986#section-2.2">gen-delim</a> character.</li>
     <li>Term definitions now allow <code>@container</code> to include <code>@graph</code>,
       along with <code>@id</code>, <code>@index</code> and <code>@set</code>.
       In the <a href="#expansion-algorithm">Expansion Algorithm</a>, this is
       used to create a <a>named graph</a> from either a <a>node object</a>, or
-      objects which are values of keys in an <a>id map</a> or <a>index map</a>.
+      objects which are values of <a>members</a> in an <a>id map</a> or <a>index map</a>.
       the <a href="#compaction-algorithm">Compaction Algorithm</a> allows
       specific forms of graph objects to be compacted back to a set of <a>node
       objects</a>, or maps of <a>node objects</a>.</li>
@@ -5064,9 +5061,9 @@
       transparently.</li>
     <li>The empty string (<code>&quot;&quot;</code>) has been added as a possible value for <code>@vocab</code> in
       a context. When this is set, vocabulary-relative IRIs, such as the
-      keys of <a>node objects</a>, are expanded or compacted relative
+      <a>members</a> of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> using string concatenation.</li>
-    <li><a>Lists</a> may now have members which are themselves <a>lists</a>.</li>
+    <li><a>Lists</a> may now have <a>members</a> which are themselves <a>lists</a>.</li>
     <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF algorithm</a>
       has been updated to ensure that only <a>well-formed</a> <a>triples</a>
       are emitted; previously, it only ensured that <a>triples</a> containing
