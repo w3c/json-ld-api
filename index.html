@@ -4,7 +4,8 @@
 <title>JSON-LD 1.1 Processing Algorithms and API</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
-<script type="text/javascript" src="common/common.js" class="remove"></script>
+<script type="text/javascript" src="common/common.js" class="remove" defer></script>
+<script type="text/javascript" src="common/jsonld.js" class="remove"></script>
 <script type="text/javascript" class="remove">
 //<![CDATA[
   var respecConfig = {
@@ -40,7 +41,6 @@
       includePermalinks:      true,
       doJsonLd:               true,
       highlightVars:          true,
-      postProcess:            [internalizeTermListReferences],
 
       // editors, add as many as you like
       // only "name" is required
@@ -167,11 +167,9 @@
   <p>This document has been developed by the
     <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a>.</p>
 
-  <!--p>There are several independent
-    <a href="https://w3c.github.io/json-ld-api/reports/">interoperable implementations</a> of
-    this specification, a test suite [[JSON-LD-TESTS]] and a
+  <p>There is a
     <a href="https://json-ld.org/playground/">live JSON-LD playground</a> that is capable
-    of demonstrating the features described in this document.</p-->
+    of demonstrating the features described in this document.</p>
 
   <section>
     <h2>Set of Documents</h2>
