@@ -542,6 +542,41 @@ table.exceptions table {
 
 
 
+
+
+<style type="text/css">
+  .hl-bold {
+    font-weight: bold;
+    color: #0a3;
+  }
+  .comment {
+    color: #999;
+  }
+  .error a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+  }
+  .algorithm ol {
+    counter-reset: numsection;
+    list-style-type: none;
+  }
+  .algorithm li {
+    margin: 0.5em 0;
+  }
+  .algorithm li:before {
+    font-weight: bold;
+    counter-increment: numsection;
+    content: counters(numsection, ".") ") ";
+  }
+  .changed {
+    background-color: rgb(215, 238, 197);
+  }
+  .changed:hover {
+    color:  green;
+    background-color: inherit;
+  }
+</style>
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -819,42 +854,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style>
-
-<style type="text/css">
-  .hl-bold {
-    font-weight: bold;
-    color: #0a3;
-  }
-  .comment {
-    color: #999;
-  }
-  .error a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-  }
-  .algorithm ol {
-    counter-reset: numsection;
-    list-style-type: none;
-  }
-  .algorithm li {
-    margin: 0.5em 0;
-  }
-  .algorithm li:before {
-    font-weight: bold;
-    counter-increment: numsection;
-    content: counters(numsection, ".") ") ";
-  }
-  .changed {
-    background-color: rgb(215, 238, 197);
-  }
-  .changed:hover {
-    color:  green;
-    background-color: inherit;
-  }
-</style>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/json-ld11-api/"><script id="initialUserConfig" type="application/json">{
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><link rel="canonical" href="https://www.w3.org/TR/json-ld11-api/"><script id="initialUserConfig" type="application/json">{
   "localBiblio": {
     "JSON-LD11": {
       "title": "JSON-LD 1.1",
@@ -984,8 +984,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/107714/status",
   "processVersion": 2018,
   "maxTocLevel": 2,
-  "publishISODate": "2018-08-29T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 29 August 2018"
+  "publishDate": "2018-09-03",
+  "publishISODate": "2018-09-03T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 03 September 2018"
 }</script><meta name="description" content="This specification defines a set of algorithms for programmatic transformations
     of JSON-LD documents. Restructuring data according to the defined transformations
     often dramatically simplifies its usage. Furthermore, this document proposes
@@ -1019,7 +1020,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "name": "JSON-LD 1.1 Processing Algorithms and API",
   "inLanguage": "en",
   "license": "https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document",
-  "datePublished": "2018-08-29",
+  "datePublished": "2018-09-03",
   "copyrightHolder": {
     "name": "World Wide Web Consortium",
     "url": "https://www.w3.org/"
@@ -1191,7 +1192,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </a>
   <h1 id="title" class="title p-name">JSON-LD 1.1 Processing Algorithms and API</h1>
   
-  <h2 id="w3c-editor-s-draft-29-august-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-08-29">29 August 2018</time></h2>
+  <h2 id="w3c-editor-s-draft-03-september-2018"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time class="dt-published" datetime="2018-09-03">03 September 2018</time></h2>
   <dl>
     <dt>This version:</dt><dd><a class="u-url" href="http://www.w3.org/TR/2018/WD-json-ld-api-20180903/">http://www.w3.org/TR/2018/WD-json-ld-api-20180903/</a></dd><dt>Latest published version:</dt><dd><a href="https://www.w3.org/TR/json-ld11-api/">https://www.w3.org/TR/json-ld11-api/</a></dd>
     <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/json-ld-api/">https://w3c.github.io/json-ld-api/</a></dd>
