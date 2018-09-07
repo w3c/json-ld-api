@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="generator" content="ReSpec 22.6.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="generator" content="ReSpec 22.7.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 span.example-title {
     text-transform: none;
 }
@@ -542,6 +542,41 @@ table.exceptions table {
 
 
 
+
+
+<style type="text/css">
+  .hl-bold {
+    font-weight: bold;
+    color: #0a3;
+  }
+  .comment {
+    color: #999;
+  }
+  .error a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+  }
+  .algorithm ol {
+    counter-reset: numsection;
+    list-style-type: none;
+  }
+  .algorithm li {
+    margin: 0.5em 0;
+  }
+  .algorithm li:before {
+    font-weight: bold;
+    counter-increment: numsection;
+    content: counters(numsection, ".") ") ";
+  }
+  .changed {
+    background-color: rgb(215, 238, 197);
+  }
+  .changed:hover {
+    color:  green;
+    background-color: inherit;
+  }
+</style>
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -819,42 +854,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style>
-
-<style type="text/css">
-  .hl-bold {
-    font-weight: bold;
-    color: #0a3;
-  }
-  .comment {
-    color: #999;
-  }
-  .error a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-  }
-  .algorithm ol {
-    counter-reset: numsection;
-    list-style-type: none;
-  }
-  .algorithm li {
-    margin: 0.5em 0;
-  }
-  .algorithm li:before {
-    font-weight: bold;
-    counter-increment: numsection;
-    content: counters(numsection, ".") ") ";
-  }
-  .changed {
-    background-color: rgb(215, 238, 197);
-  }
-  .changed:hover {
-    color:  green;
-    background-color: inherit;
-  }
-</style>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"><link rel="canonical" href="https://www.w3.org/TR/json-ld11-api/"><script id="initialUserConfig" type="application/json">{
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"><link rel="canonical" href="https://www.w3.org/TR/json-ld11-api/"><script id="initialUserConfig" type="application/json">{
   "localBiblio": {
     "JSON-LD11": {
       "title": "JSON-LD 1.1",
@@ -1374,7 +1374,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <dd>Sections or phrases changed from the previous Recommendation are <span class="changed">highlighted</span>.</dd>
 </dl>
 
-<div class="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div><p class="">Notes are in light green boxes with a green left border and with a "Note" header in green. Notes are normative or informative depending on the whether they are in a normative or informative section, respectively.</p></div>
+<div class="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span></div><p class="">Notes are in light green boxes with a green left border and with a "Note" header in green. Notes are always informative.</p></div>
 
 <div class="example" id="ex-1-example-1-examples-are-in-light-khaki-boxes-with-khaki-left-border-and-with-a-numbered-example-header-in-khaki-examples-are-always-informative-the-content-of-the-example-is-in-monospace-font-and-may-be-syntax-colored">
           <div class="marker"><span>Example 1</span></div>
@@ -2131,7 +2131,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
   As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
   and notes in this specification are non-normative. Everything else in this specification is
   normative.
-</p><p id="respecRFC2119">The key words  <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em>, and <em class="rfc2119">SHOULD NOT</em> are 
+</p><p id="respecRFC2119">The key words  <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">MUST NOT</em> are 
   to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].
 </p>
   <p>There are two classes of products that can claim conformance to this
@@ -2893,7 +2893,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
         <var>frame expansion</var> flag is set to <code>true</code>.</p>
 
       <div class="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><p class="">As mentioned in <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#terms-0">Terms</a> [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>],
-        to avoid forward-compatibility issues, <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a> <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em> start with an
+        to avoid forward-compatibility issues, <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a> should not start with an
         <code>@</code> character as future versions of JSON-LD may introduce
         additional <a href="#dfn-keywords" class="internalDFN" data-link-type="dfn">keywords</a>. This step will treat such terms like any
         other term, i.e., they are ignored unless mapped to an <a href="#dfn-iris" class="internalDFN" data-link-type="dfn"><abbr title="Internationalized Resource Identifier">IRI</abbr></a>.
@@ -6212,44 +6212,44 @@ interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" da
         codes.</p>
 
       <div><pre class="def idl"><span class="idlEnum" id="idl-def-jsonlderrorcode" data-idl="" data-title="JsonLdErrorCode">enum <span class="idlEnumID"><a data-no-default="" data-link-for="" data-lt="" href="#dom-jsonlderrorcode" class="internalDFN" data-link-type="dfn"><code>JsonLdErrorCode</code></a></span> {
-    <a href="#dom-jsonlderrorcode-colliding-keywords" class="idlEnumItem">"colliding keywords"</a>,
-    <a href="#dom-jsonlderrorcode-conflicting-indexes" class="idlEnumItem">"conflicting indexes"</a>,
-    <a href="#dom-jsonlderrorcode-cyclic-iri-mapping" class="idlEnumItem">"cyclic IRI mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@id-value" class="idlEnumItem">"invalid @id value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@index-value" class="idlEnumItem">"invalid @index value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@nest-value" class="idlEnumItem">"invalid @nest value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@prefix-value" class="idlEnumItem">"invalid @prefix value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@reverse-value" class="idlEnumItem">"invalid @reverse value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@version-value" class="idlEnumItem">"invalid @version value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-base-iri" class="idlEnumItem">"invalid base IRI"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-container-mapping" class="idlEnumItem">"invalid container mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-default-language" class="idlEnumItem">"invalid default language"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-iri-mapping" class="idlEnumItem">"invalid IRI mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-keyword-alias" class="idlEnumItem">"invalid keyword alias"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-map-value" class="idlEnumItem">"invalid language map value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-mapping" class="idlEnumItem">"invalid language mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-tagged-string" class="idlEnumItem">"invalid language-tagged string"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-tagged-value" class="idlEnumItem">"invalid language-tagged value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-local-context" class="idlEnumItem">"invalid local context"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-remote-context" class="idlEnumItem">"invalid remote context"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-reverse-property" class="idlEnumItem">"invalid reverse property"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-reverse-property-map" class="idlEnumItem">"invalid reverse property map"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-reverse-property-value" class="idlEnumItem">"invalid reverse property value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-scoped-context" class="idlEnumItem">"invalid scoped context"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-set-or-list-object" class="idlEnumItem">"invalid set or list object"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-term-definition" class="idlEnumItem">"invalid term definition"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-type-mapping" class="idlEnumItem">"invalid type mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-type-value" class="idlEnumItem">"invalid type value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-typed-value" class="idlEnumItem">"invalid typed value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-value-object" class="idlEnumItem">"invalid value object"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-value-object-value" class="idlEnumItem">"invalid value object value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-vocab-mapping" class="idlEnumItem">"invalid vocab mapping"</a>,
-    <a href="#dom-jsonlderrorcode-keyword-redefinition" class="idlEnumItem">"keyword redefinition"</a>,
-    <a href="#dom-jsonlderrorcode-loading-document-failed" class="idlEnumItem">"loading document failed"</a>,
-    <a href="#dom-jsonlderrorcode-loading-remote-context-failed" class="idlEnumItem">"loading remote context failed"</a>,
-    <a href="#dom-jsonlderrorcode-multiple-context-link-headers" class="idlEnumItem">"multiple context link headers"</a>,
-    <a href="#dom-jsonlderrorcode-processing-mode-conflict" class="idlEnumItem">"processing mode conflict"</a>,
-    <a href="#dom-jsonlderrorcode-recursive-context-inclusion" class="idlEnumItem">"recursive context inclusion"</a>
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-colliding-keywords" class="internalDFN" data-link-type="dfn"><code>colliding keywords</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-conflicting-indexes" class="internalDFN" data-link-type="dfn"><code>conflicting indexes</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-cyclic-iri-mapping" class="internalDFN" data-link-type="dfn"><code>cyclic IRI mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@id-value" class="internalDFN" data-link-type="dfn"><code>invalid @id value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@index-value" class="internalDFN" data-link-type="dfn"><code>invalid @index value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@nest-value" class="internalDFN" data-link-type="dfn"><code>invalid @nest value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@prefix-value" class="internalDFN" data-link-type="dfn"><code>invalid @prefix value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@reverse-value" class="internalDFN" data-link-type="dfn"><code>invalid @reverse value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@version-value" class="internalDFN" data-link-type="dfn"><code>invalid @version value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-base-iri" class="internalDFN" data-link-type="dfn"><code>invalid base IRI</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-container-mapping" class="internalDFN" data-link-type="dfn"><code>invalid container mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-default-language" class="internalDFN" data-link-type="dfn"><code>invalid default language</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-iri-mapping" class="internalDFN" data-link-type="dfn"><code>invalid IRI mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-keyword-alias" class="internalDFN" data-link-type="dfn"><code>invalid keyword alias</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-map-value" class="internalDFN" data-link-type="dfn"><code>invalid language map value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-mapping" class="internalDFN" data-link-type="dfn"><code>invalid language mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-tagged-string" class="internalDFN" data-link-type="dfn"><code>invalid language-tagged string</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-tagged-value" class="internalDFN" data-link-type="dfn"><code>invalid language-tagged value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-local-context" class="internalDFN" data-link-type="dfn"><code>invalid local context</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-remote-context" class="internalDFN" data-link-type="dfn"><code>invalid remote context</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-reverse-property" class="internalDFN" data-link-type="dfn"><code>invalid reverse property</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-reverse-property-map" class="internalDFN" data-link-type="dfn"><code>invalid reverse property map</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-reverse-property-value" class="internalDFN" data-link-type="dfn"><code>invalid reverse property value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-scoped-context" class="internalDFN" data-link-type="dfn"><code>invalid scoped context</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-set-or-list-object" class="internalDFN" data-link-type="dfn"><code>invalid set or list object</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-term-definition" class="internalDFN" data-link-type="dfn"><code>invalid term definition</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-type-mapping" class="internalDFN" data-link-type="dfn"><code>invalid type mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-type-value" class="internalDFN" data-link-type="dfn"><code>invalid type value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-typed-value" class="internalDFN" data-link-type="dfn"><code>invalid typed value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-value-object" class="internalDFN" data-link-type="dfn"><code>invalid value object</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-value-object-value" class="internalDFN" data-link-type="dfn"><code>invalid value object value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-vocab-mapping" class="internalDFN" data-link-type="dfn"><code>invalid vocab mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-keyword-redefinition" class="internalDFN" data-link-type="dfn"><code>keyword redefinition</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-loading-document-failed" class="internalDFN" data-link-type="dfn"><code>loading document failed</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-loading-remote-context-failed" class="internalDFN" data-link-type="dfn"><code>loading remote context failed</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-multiple-context-link-headers" class="internalDFN" data-link-type="dfn"><code>multiple context link headers</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-processing-mode-conflict" class="internalDFN" data-link-type="dfn"><code>processing mode conflict</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-recursive-context-inclusion" class="internalDFN" data-link-type="dfn"><code>recursive context inclusion</code></a>"</span>
 };</span></pre></div>
 
       <dl data-dfn-for="JsonLdErrorCode" data-sort=""><dt><dfn data-dfn-for="jsonlderrorcode" data-dfn-type="dfn" id="dom-jsonlderrorcode-colliding-keywords" data-idl="" data-title="colliding keywords"><code>colliding keywords</code></dfn></dt>
@@ -6413,44 +6413,44 @@ interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" da
 };</span>
 
 <span class="idlEnum" data-idl="" data-title="JsonLdErrorCode">enum <span class="idlEnumID"><a data-no-default="" data-link-for="" data-lt="" href="#dom-jsonlderrorcode" class="internalDFN" data-link-type="dfn"><code>JsonLdErrorCode</code></a></span> {
-    <a href="#dom-jsonlderrorcode-colliding-keywords" class="idlEnumItem">"colliding keywords"</a>,
-    <a href="#dom-jsonlderrorcode-conflicting-indexes" class="idlEnumItem">"conflicting indexes"</a>,
-    <a href="#dom-jsonlderrorcode-cyclic-iri-mapping" class="idlEnumItem">"cyclic IRI mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@id-value" class="idlEnumItem">"invalid @id value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@index-value" class="idlEnumItem">"invalid @index value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@nest-value" class="idlEnumItem">"invalid @nest value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@prefix-value" class="idlEnumItem">"invalid @prefix value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@reverse-value" class="idlEnumItem">"invalid @reverse value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-@version-value" class="idlEnumItem">"invalid @version value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-base-iri" class="idlEnumItem">"invalid base IRI"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-container-mapping" class="idlEnumItem">"invalid container mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-default-language" class="idlEnumItem">"invalid default language"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-iri-mapping" class="idlEnumItem">"invalid IRI mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-keyword-alias" class="idlEnumItem">"invalid keyword alias"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-map-value" class="idlEnumItem">"invalid language map value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-mapping" class="idlEnumItem">"invalid language mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-tagged-string" class="idlEnumItem">"invalid language-tagged string"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-language-tagged-value" class="idlEnumItem">"invalid language-tagged value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-local-context" class="idlEnumItem">"invalid local context"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-remote-context" class="idlEnumItem">"invalid remote context"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-reverse-property" class="idlEnumItem">"invalid reverse property"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-reverse-property-map" class="idlEnumItem">"invalid reverse property map"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-reverse-property-value" class="idlEnumItem">"invalid reverse property value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-scoped-context" class="idlEnumItem">"invalid scoped context"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-set-or-list-object" class="idlEnumItem">"invalid set or list object"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-term-definition" class="idlEnumItem">"invalid term definition"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-type-mapping" class="idlEnumItem">"invalid type mapping"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-type-value" class="idlEnumItem">"invalid type value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-typed-value" class="idlEnumItem">"invalid typed value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-value-object" class="idlEnumItem">"invalid value object"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-value-object-value" class="idlEnumItem">"invalid value object value"</a>,
-    <a href="#dom-jsonlderrorcode-invalid-vocab-mapping" class="idlEnumItem">"invalid vocab mapping"</a>,
-    <a href="#dom-jsonlderrorcode-keyword-redefinition" class="idlEnumItem">"keyword redefinition"</a>,
-    <a href="#dom-jsonlderrorcode-loading-document-failed" class="idlEnumItem">"loading document failed"</a>,
-    <a href="#dom-jsonlderrorcode-loading-remote-context-failed" class="idlEnumItem">"loading remote context failed"</a>,
-    <a href="#dom-jsonlderrorcode-multiple-context-link-headers" class="idlEnumItem">"multiple context link headers"</a>,
-    <a href="#dom-jsonlderrorcode-processing-mode-conflict" class="idlEnumItem">"processing mode conflict"</a>,
-    <a href="#dom-jsonlderrorcode-recursive-context-inclusion" class="idlEnumItem">"recursive context inclusion"</a>
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-colliding-keywords" class="internalDFN" data-link-type="dfn"><code>colliding keywords</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-conflicting-indexes" class="internalDFN" data-link-type="dfn"><code>conflicting indexes</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-cyclic-iri-mapping" class="internalDFN" data-link-type="dfn"><code>cyclic IRI mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@id-value" class="internalDFN" data-link-type="dfn"><code>invalid @id value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@index-value" class="internalDFN" data-link-type="dfn"><code>invalid @index value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@nest-value" class="internalDFN" data-link-type="dfn"><code>invalid @nest value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@prefix-value" class="internalDFN" data-link-type="dfn"><code>invalid @prefix value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@reverse-value" class="internalDFN" data-link-type="dfn"><code>invalid @reverse value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-@version-value" class="internalDFN" data-link-type="dfn"><code>invalid @version value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-base-iri" class="internalDFN" data-link-type="dfn"><code>invalid base IRI</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-container-mapping" class="internalDFN" data-link-type="dfn"><code>invalid container mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-default-language" class="internalDFN" data-link-type="dfn"><code>invalid default language</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-iri-mapping" class="internalDFN" data-link-type="dfn"><code>invalid IRI mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-keyword-alias" class="internalDFN" data-link-type="dfn"><code>invalid keyword alias</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-map-value" class="internalDFN" data-link-type="dfn"><code>invalid language map value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-mapping" class="internalDFN" data-link-type="dfn"><code>invalid language mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-tagged-string" class="internalDFN" data-link-type="dfn"><code>invalid language-tagged string</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-language-tagged-value" class="internalDFN" data-link-type="dfn"><code>invalid language-tagged value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-local-context" class="internalDFN" data-link-type="dfn"><code>invalid local context</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-remote-context" class="internalDFN" data-link-type="dfn"><code>invalid remote context</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-reverse-property" class="internalDFN" data-link-type="dfn"><code>invalid reverse property</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-reverse-property-map" class="internalDFN" data-link-type="dfn"><code>invalid reverse property map</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-reverse-property-value" class="internalDFN" data-link-type="dfn"><code>invalid reverse property value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-scoped-context" class="internalDFN" data-link-type="dfn"><code>invalid scoped context</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-set-or-list-object" class="internalDFN" data-link-type="dfn"><code>invalid set or list object</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-term-definition" class="internalDFN" data-link-type="dfn"><code>invalid term definition</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-type-mapping" class="internalDFN" data-link-type="dfn"><code>invalid type mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-type-value" class="internalDFN" data-link-type="dfn"><code>invalid type value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-typed-value" class="internalDFN" data-link-type="dfn"><code>invalid typed value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-value-object" class="internalDFN" data-link-type="dfn"><code>invalid value object</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-value-object-value" class="internalDFN" data-link-type="dfn"><code>invalid value object value</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-invalid-vocab-mapping" class="internalDFN" data-link-type="dfn"><code>invalid vocab mapping</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-keyword-redefinition" class="internalDFN" data-link-type="dfn"><code>keyword redefinition</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-loading-document-failed" class="internalDFN" data-link-type="dfn"><code>loading document failed</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-loading-remote-context-failed" class="internalDFN" data-link-type="dfn"><code>loading remote context failed</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-multiple-context-link-headers" class="internalDFN" data-link-type="dfn"><code>multiple context link headers</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-processing-mode-conflict" class="internalDFN" data-link-type="dfn"><code>processing mode conflict</code></a>"</span>,
+    <span class="idlEnumItem">"<a data-no-default="" data-link-for="jsonlderrorcode" data-lt="" href="#dom-jsonlderrorcode-recursive-context-inclusion" class="internalDFN" data-link-type="dfn"><code>recursive context inclusion</code></a>"</span>
 };</span></pre></div></section>
 
 <section id="security" class="appendix">
@@ -6461,11 +6461,11 @@ interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" da
 <section class="appendix informative preserve" id="open-issues">
   <!--OddPage--><h2 id="c-open-issues"><span class="secno">C. </span>Open Issues&nbsp;<span class="permalink"><a href="#open-issues" aria-label="Permalink for C. Open Issues" title="Permalink for C. Open Issues"><span>§</span></a></span></h2><p><em>This section is non-normative.</em></p>
   <p>The following is a list of issues open at the time of publication.</p>
-  <div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/3"><span class="issue-number">Issue 3</span></a><span style="text-transform: none">: Option to compact terms but not values<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Provide a way to compact <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a>, but not <a href="#dfn-value-objects" class="internalDFN" data-link-type="dfn">value objects</a> or <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
+  <div class="issue closed" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/3"><span class="issue-number">Issue 3</span></a><span style="text-transform: none">: Option to compact terms but not values<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Provide a way to compact <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a>, but not <a href="#dfn-value-objects" class="internalDFN" data-link-type="dfn">value objects</a> or <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
   <div class="issue" id="issue-container-number-4"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/4"><span class="issue-number">Issue 4</span></a><span style="text-transform: none">: Relax the colliding keywords constraint for @type<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Allow <code>@type</code> to have a <code>@container</code> specification, such as <code>@set</code>.</p></div>
   <div class="issue" id="issue-container-number-5"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/5"><span class="issue-number">Issue 5</span></a><span style="text-transform: none">: Streaming Profiles for JSON-LD to/from RDF<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Define a "streaming profile" for JSON-LD to help parse data from a stream, rather than require the entire document to be in memory. Also to generate documents that can be so streamed. This would aid in using JSON-LD as a dataset dump format where there are a very large number of quads.</p></div>
-  <div class="issue" id="issue-container-number-6"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/6"><span class="issue-number">Issue 6</span></a><span style="text-transform: none">: method to require {"id": "uri"} resource compaction result <a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Provide a way to not compact <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
-  <div class="issue" id="issue-container-number-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/8"><span class="issue-number">Issue 8</span></a><span style="text-transform: none">: Make ordering keys when compaction optional<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Remove requirement that dictionary memberes to either processed in lexographical order or generated in lexographical order.</p></div>
+  <div class="issue closed" id="issue-container-number-6"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/6"><span class="issue-number">Issue 6</span></a><span style="text-transform: none">: method to require {"id": "uri"} resource compaction result <a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Provide a way to not compact <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
+  <div class="issue" id="issue-container-number-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/8"><span class="issue-number">Issue 8</span></a><span style="text-transform: none">: Make ordering keys when compaction optional<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aeditorial%22" style="background-color: rgb(88, 130, 10);">spec:editorial</a><a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Remove requirement that dictionary memberes to either processed in lexographical order or generated in lexographical order.</p></div>
   <div class="issue" id="issue-container-number-14"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/14"><span class="issue-number">Issue 14</span></a><span style="text-transform: none">: Circular imports: Abort, Retry, Fail?<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Problems importing contexts which reference other common contexts and result in an error.</p></div>
   <div class="issue" id="issue-container-number-22"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/22"><span class="issue-number">Issue 22</span></a><span style="text-transform: none">: toRdf test output sorting</span></div><p>The toRdf n-quads test outputs used to be lexicographically sorted by line, but a handful of newer tests are not.  For instance 0100.  I don't think the spec says anything about this type of ordering?  jsonld.js is having issues with this.  Semantically it shouldn't matter, so what should test runners do to check outputs?  Just sort api result and expected result prior to a compare?  Or did we sort the older results on purpose just to make testing easier?</p></div>
   <div class="issue" id="issue-container-number-25"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/25"><span class="issue-number">Issue 25</span></a><span style="text-transform: none">: remove requirement on blank node naming<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a><a class="respec-gh-label respec-label-light" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Asubstantive%22" style="background-color: rgb(207, 249, 164);">spec:substantive</a><a class="respec-gh-label respec-label-light" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22test%3Aneeds+implementation%22" style="background-color: rgb(228, 194, 249);">test:needs implementation</a></span></div><p class="">Currently, the algorithms are quite proscriptive on how blank node identifiers are named, principally to make it easier to test the results, however for some things this becomes difficult or impossible, and inhibits algorithms from being conformant based on a strict textual/structural validation of the results.</p></div>
