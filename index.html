@@ -1456,14 +1456,17 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes three required <span class="changed">and one optional</span> input variables.
+      <p>The algorithm takes three required <span class="changed">and two optional</span> input variables.
         The required inputs are an <var>active context</var>,
         an <var>active property</var>, and an <var>element</var> to be expanded.
-        <span class="changed">The optional input is the flag <var>frame expansion</var> the allows
-          special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a></span>.
+        <span class="changed">The optional inputs are the
+          <a data-link-for="JsonLdOptions">frameExpansion</a>
+          flag allowing special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a>,
+          and the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
+          <a>dictionary member</a> keys lexicographically, where noted</span>.
         To begin, the <var>active property</var> is set to <code>null</code>,
         and <var>element</var> is set to the <a>JSON-LD input</a>.
-        <span class="changed">If not passed, the <var>frame expansion</var> flag is set to <code>false</code></span>.</p>
+        <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
 
       <p class="changed">The algorithm also performs processing steps specific to expanding
         a <a>JSON-LD Frame</a>. For a <a>frame</a>, the <code>@id</code> and
@@ -1475,7 +1478,7 @@
         <code>@embed</code>, <code>@explicit</code>, <code>@omitDefault</code>, or
         <code>@requireAll</code>) which are preserved through expansion.
         Special processing for a <a>JSON-LD Frame</a> is invoked when the
-        <var>frame expansion</var> flag is set to <code>true</code>.</p>
+        <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set to <code>true</code>.</p>
 
       <p class="note">As mentioned in <a data-cite="JSON-LD11#terms-0">Terms</a> [[JSON-LD11]],
         to avoid forward-compatibility issues, <a>terms</a> should not start with an
@@ -1490,7 +1493,7 @@
         <ol>
         <li>If <var>element</var> is <code>null</code>, return <code>null</code>.</li>
         <li class="changed">If <var>active property</var> is <code>@default</code>,
-          set the <var>frame expansion</var> flag to <code>false</code>.</li>
+          set the <a data-link-for="JsonLdOptions">frameExpansion</a> flag to <code>false</code>.</li>
         <li>If <var>element</var> is a <a>scalar</a>,
           <ol>
             <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
@@ -1509,7 +1512,8 @@
                 <li>Initialize <var>expanded item</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>item</var> as <var>element</var>,
-                  <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+                  <span class="changed">the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a></span> flags.</li>
                 <li class="changed">If <var>active property</var>
                   is <code>@list</code>, or its <a>container mapping</a> is set
                   to <code>@list</code>, and <var>expanded item</var> is an
@@ -1548,7 +1552,7 @@
         </li>
         <li>Initialize an empty <a class="changed">dictionary</a>, <var>result</var>.</li>
         <li id="alg-expand-each-key-value">For each <var>key</var> and <var>value</var> in <var>element</var>,
-          ordered lexicographically by <var>key</var>:
+          ordered lexicographically by <var>key</var> <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
           <ol>
             <li>If <var>key</var> is <code>@context</code>, continue to
               the next <var>key</var>.</li>
@@ -1576,7 +1580,7 @@
                   passing <var>active context</var>, <var>value</var>, and <code>true</code>
                   for <var>document relative</var>.
                   <span class="changed">
-                    When the <var>frame expansion</var> flag is set, <var>value</var>
+                    When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
                     may be an empty <a>dictionary</a>, or an <a>array</a> of one
                     or more <a>strings</a>. <var>expanded value</var> will be
                     an <a>array</a> of one or more of these, with <a>string</a>
@@ -1593,7 +1597,7 @@
                   and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
                   or each of its items.
                   <span class="changed">
-                    When the <var>frame expansion</var> flag is set, <var>value</var>
+                    When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
                     may also be an empty <a>dictionary</a>.
                   </span>
                   <div class="note">
@@ -1606,7 +1610,8 @@
                   <var>expanded value</var> to the result of using this algorithm
                   recursively passing <var>active context</var>, <code>@graph</code>
                   for <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the <var>frame expansion</var> flag</span>,
+                  <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span>,
                   <span class="changed">
                     ensuring that <var>expanded value</var> is an <a>array</a> of one or more <a>dictionaries</a></span>.</li>
                 <li>If <var>expanded property</var> is <code>@value</code> and
@@ -1620,7 +1625,7 @@
                   in this case as the meaning of an <code>@type</code> <a>member</a> depends
                   on the existence of an <code>@value</code> <a>member</a>.
                   <span class="changed">
-                    When the <var>frame expansion</var> flag is set, <var>value</var>
+                    When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
                     may also be an empty <a>dictionary</a> or an array of
                     <a>scalar</a> values. <var>expanded value</var> will be <a>null</a>, or an
                     <a>array</a> of one or more <a>scalar</a> values.</span></li>
@@ -1630,7 +1635,7 @@
                   error has been detected and processing is aborted.
                   <span class="changed">
                     Otherwise, set <var>expanded value</var> to lowercased <var>value</var>.
-                    When the <var>frame expansion</var> flag is set, <var>value</var>
+                    When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
                     may also be an empty <a>dictionary</a> or an array of zero or
                     <a>strings</a>. <var>expanded value</var> will be an
                     <a>array</a> of one or more <a>string</a> values converted to lower case.</span></li>
@@ -1647,14 +1652,16 @@
                     <li>Otherwise, initialize <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
-                      <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+                      <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                        and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                   </ol>
                 </li>
                 <li>If <var>expanded property</var> is <code>@set</code>, set
                   <var>expanded value</var> to the result of using this algorithm
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+                  <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>If <var>expanded property</var> is <code>@reverse</code> and
                   <var>value</var> is not a <a class="changed">dictionary</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid @reverse value</a>
@@ -1664,7 +1671,8 @@
                       algorithm recursively, passing <var>active context</var>,
                       <code>@reverse</code> as <var>active property</var>,
                       <var>value</var> as <var>element</var>,
-                      <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+                      <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                        and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                     <li>If <var>expanded value</var> contains an <code>@reverse</code> <a>member</a>,
                       i.e., <a>properties</a> that are reversed twice, execute for each of its
                       <var>property</var> and <var>item</var> the following steps:
@@ -1706,7 +1714,7 @@
                   add <var>key</var> to <var>nests</var>, initializing it to an empty <a>array</a>,
                   if necessary.
                   Continue with the next <var>key</var> from <var>element</var>.</li>
-                <li class="changed">When the <var>frame expansion</var> flag is set,
+                <li class="changed">When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set,
                   if <var>expanded property</var> is any other
                   framing keyword (<code>@explicit</code>, <code>@default</code>,
                   <code>@embed</code>, <code>@explicit</code>, <code>@omitDefault</code>, or
@@ -1715,7 +1723,8 @@
                   <a href="#expansion-algorithm">Expansion Algorithm</a>
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+                  <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>Unless <var>expanded value</var> is <code>null</code>, set
                   the <var>expanded property</var> <a>member</a> of <var>result</var> to
                   <var>expanded value</var>.</li>
@@ -1738,7 +1747,7 @@
                 <li>Initialize <var>expanded value</var> to an empty
                   <a>array</a>.</li>
                 <li>For each key-value pair <var>language</var>-<var>language value</var>
-                  in <var>value</var>, ordered lexicographically by <var>language</var>:
+                  in <var>value</var>, ordered lexicographically by <var>language</var> <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
                   <ol>
                     <li>If <var>language value</var> is not an <a>array</a>
                       set it to an <a>array</a> containing only
@@ -1773,7 +1782,8 @@
                 <li>Initialize <var>expanded value</var> to an empty
                   <a>array</a>.</li>
                 <li>For each key-value pair <var>index</var>-<var>index value</var>
-                  in <var>value</var>, ordered lexicographically by <var>index</var>:
+                  in <var>value</var>, ordered lexicographically by <var>index</var>
+                  <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
                   <ol>
                     <li class="changed">If <var>container mapping</var> includes <code>@type</code>,
                       and <var>index</var>'s <a>term definition</a> in
@@ -1796,7 +1806,8 @@
                       <var class="changed">map context</var> as <var>active context</var>,
                       <var>key</var> as <var>active property</var>,
                       <var>index value</var> as <var>element</var>,
-                      <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+                      <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                        and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
                         <li>If <var>container mapping</var> includes
@@ -1839,7 +1850,8 @@
             <li>Otherwise, initialize <var>expanded value</var> to the result of
               using this algorithm recursively, passing <var class="changed">term context</var> as <var>active context</var>,
               <var>key</var> for <var>active property</var>, <var>value</var> for <var>element</var>,
-              <span class="changed">and the <var>frame expansion</var> flag</span>.</li>
+              <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
             <li>If <var>expanded value</var> is <code>null</code>, ignore <var>key</var>
               by continuing to the next <var>key</var> from <var>element</var>.</li>
             <li>If <var>container mapping</var> <span class="changed">includes</span> <code>@list</code> and
@@ -1957,7 +1969,7 @@
             <li>Otherwise, if <var>result</var> is a <a class="changed">dictionary</a> whose only
               <a>member</a> is <code>@id</code>, set <var>result</var> to <code>null</code>.
               <span class="changed">
-                When the <var>frame expansion</var> flag is set, a <a>dictionary</a>
+                When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, a <a>dictionary</a>
                 containing only the <code>@id</code> <a>member</a> is retained.</span></li>
           </ol>
         </li>
@@ -2129,10 +2141,14 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes five required input variables: an <var>active context</var>,
-        an <var>inverse context</var>, an <var>active property</var>, an
-        <var>element</var> to be compacted, and a flag
-        <a data-link-for="JsonLdOptions">compactArrays</a>
+      <p>The algorithm takes <span class="changed">four required and two optional</span> input variables.
+        The required inputs are an <var>active context</var>,
+        an <var>inverse context</var>, an <var>active property</var>,
+        and an <var>element</var> to be compacted.
+        <span class="changed">The optional inputs are the
+          <a data-link-for="JsonLdOptions">compactArrays</a> flag
+          and the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
+          <a>dictionary member</a> keys lexicographically, where noted</span>.
         To begin, the <var>active context</var> is set to the result of
         performing <a href="#context-processing-algorithm">Context Processing</a>
         on the passed <a>context</a>, the <var>inverse context</var> is
@@ -2141,9 +2157,8 @@
         on <var>active context</var>, the <var>active property</var> is
         set to <code>null</code>, <var>element</var> is set to the result of
         performing the <a href="#expansion-algorithm">Expansion algorithm</a>
-        on the <a>JSON-LD input</a>, and, if not passed,
-        <a data-link-for="JsonLdOptions">compactArrays</a>
-        is set to <code>true</code>.</p>
+        on the <a>JSON-LD input</a>.
+        <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
 
       <ol>
         <li class="changed">If the <a>term definition</a> for <var>active property</var> has a
@@ -2167,8 +2182,10 @@
               <ol>
                 <li>Initialize <var>compacted item</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
-                  <var>inverse context</var>, <var>active property</var>, and
-                  <var>item</var> for <var>element</var>.</li>
+                  <var>inverse context</var>, <var>active property</var>,
+                  <var>item</var> for <var>element</var>,
+                  <span class="changed">and the <a data-link-for="JsonLdOptions">compactArrays</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>If <var>compacted item</var> is not <code>null</code>, then append
                   it to <var>result</var>.</li>
               </ol>
@@ -2195,10 +2212,12 @@
         <li class="changed">If <var>element</var> is a
           <a>list object</a>, and the <a>container mapping</a> for
           <var>active property</var> in <var>active context</var> is <code>@list</code>,
-          return the esult of using this algorithm recursively, passing
+          return the result of using this algorithm recursively, passing
           <var>active context</var>, <var>inverse context</var>,
-          <var>active property</var>, and value of <code>@list</code>
-          in <var>element</var> for <var>element</var>.</li>
+          <var>active property</var>, value of <code>@list</code>
+          in <var>element</var> for <var>element</var>,
+          <span class="changed">and the <a data-link-for="JsonLdOptions">compactArrays</a>
+            and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
         <li>Initialize <var>inside reverse</var> to <code>true</code> if
           <var>active property</var> equals <code>@reverse</code>,
           otherwise to <code>false</code>.</li>
@@ -2227,7 +2246,8 @@
           </ol>
         </li>
         <li>For each key <var>expanded property</var> and value <var>expanded value</var>
-          in <var>element</var>, ordered lexicographically by <var>expanded property</var>:
+          in <var>element</var>, ordered lexicographically by <var>expanded property</var>
+          <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
           <ol>
             <li>If <var>expanded property</var> is <code>@id</code> or
               <code>@type</code>:
@@ -2276,8 +2296,10 @@
                 <li>Initialize <var>compacted value</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
                   <var>inverse context</var>, <code>@reverse</code> for
-                  <var>active property</var>, and <var>expanded value</var>
-                  for <var>element</var>.</li>
+                  <var>active property</var>, <var>expanded value</var>
+                  for <var>element</var>,
+                  <span class="changed">and the <a data-link-for="JsonLdOptions">compactArrays</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>For each <var>property</var> and <var>value</var> in <var>compacted value</var>:
                   <ol>
                     <li>If the <a>term definition</a> for <var>property</var> in the
@@ -2326,8 +2348,10 @@
                 <li>Initialize <var>compacted value</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
                   <var>inverse context</var>, <var>property</var> for
-                  <var>active property</var>, and <var>expanded value</var>
-                  for <var>element</var>.</li>
+                  <var>active property</var>, <var>expanded value</var>
+                  for <var>element</var>,
+                  <span class="changed">and the <a data-link-for="JsonLdOptions">compactArrays</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>Add <var>expanded value</var> as the value of <code>@preserve</code>
                   in <var>result</var> unless <var>expanded value</var> is an empty <a>array</a>.</li>
               </ol>
@@ -2420,7 +2444,9 @@
                   <var>expanded item</var> for <var>element</var> if it does
                   not contain the <a>member</a> <code>@list</code>
                   <span class="changed">and is not a <a>graph object</a> containing <code>@list</code></span>,
-                  otherwise pass the value of the <a>member</a> for <var>element</var>.</li>
+                  otherwise pass the value of the <a>member</a> for <var>element</var>.
+                  <span class="changed">Along with the <a data-link-for="JsonLdOptions">compactArrays</a>
+                    and <a data-link-for="JsonLdOptions">ordered</a> flags</span></li>
                 <li>
                   If <var>expanded item</var> is a <a>list object</a>:
                   <ol>
@@ -3409,9 +3435,13 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes two input variables, an <var>element</var> to flatten and
-        an optional <var>context</var> used to compact the flattened document. If not
-        passed, <var>context</var> is set to <code>null</code>.</p>
+      <p>The algorithm takes <span class="changed">one required and two optional</span> input variables.
+        The required input is an <var>element</var> to flatten.
+        The optional inputs are the <var>context</var> used to compact the flattened document
+        <span class="changed">and the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
+          <a>dictionary member</a> keys lexicographically, where noted</span>.
+        If not passed, <var>context</var> is set to <code>null</code>
+        <span class="changed">and, the <a data-link-for="JsonLdOptions">ordered</a> flag is set to <code>false</code></span>.</p>
 
       <p>This algorithm generates new <a>blank node identifiers</a>
         and relabels existing <a>blank node identifiers</a>.
@@ -3431,7 +3461,10 @@
           <a>member</a> of <var>node map</var>, which is a <a class="changed">dictionary</a> representing
           the <a>default graph</a>.</li>
         <li>For each key-value pair <var>graph name</var>-<var>graph</var> in <var>node map</var>
-          where <var>graph name</var> is not <code>@default</code>,  perform the following steps:
+          where <var>graph name</var> is not <code>@default</code>,
+          <span class="changed">ordered lexicographically by var>graph name</var>
+          if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>
+          perform the following steps:
           <ol>
             <li>If <var>default graph</var> does not have a <var>graph name</var> <a>member</a>, create
               one and initialize its value to a <a class="changed">dictionary</a> consisting of an
@@ -3440,18 +3473,21 @@
               <var>default graph</var> using the variable <var>entry</var>.</li>
             <li>Add an <code>@graph</code> <a>member</a> to <var>entry</var> and set it to an
               empty <a>array</a>.</li>
-            <li>For each <var>id</var>-<var>node</var> pair in <var>graph</var> ordered by <var>id</var>,
+            <li>For each <var>id</var>-<var>node</var> pair in <var>graph</var> ordered lexicographically by <var>id</var>
+              <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>,
               add <var>node</var> to the <code>@graph</code> <a>member</a> of <var>entry</var>,
               unless the only <a>member</a> of <var>node</var> is <code>@id</code>.</li>
           </ol>
         </li>
         <li>Initialize an empty <a>array</a> <var>flattened</var>.</li>
-        <li>For each <var>id</var>-<var>node</var> pair in <var>default graph</var> ordered by <var>id</var>,
+        <li>For each <var>id</var>-<var>node</var> pair in <var>default graph</var> ordered lexicographically by <var>id</var>
+          <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>,
           add <var>node</var> to <var>flattened</var>,
           unless the only <a>member</a> of <var>node</var> is <code>@id</code>.</li>
         <li>If <var>context</var> is <code>null</code>, return <var>flattened</var>.</li>
         <li>Otherwise, return the result of <a>compacting</a> <var>flattened</var> according the
           <a href="#compaction-algorithm">Compaction algorithm</a> passing <var>context</var>
+          <span class="changed">and the <a data-link-for="JsonLdOptions">ordered</a> flag</span>
           ensuring that the compaction result has only the <code>@graph</code> keyword (or its alias)
           at the top-level other than <code>@context</code>, even if the context is empty or if there is only one element to
           put in the <code>@graph</code> <a>array</a>. This ensures that the returned
@@ -4078,9 +4114,11 @@
     <section class="algorithm">
       <h2>Algorithm</h2>
 
-      <p>The algorithm takes one required and two optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
-        and the two flags <var>use native types</var> and <i>use <code>rdf:type</code></i>
-        that both default to <code>false</code>.</p>
+      <p>The algorithm takes one required and three optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
+        and the three flags <var>use native types</var>, <i>use <code>rdf:type</code></i>,
+        <span class="changed">and the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
+          <a>dictionary member</a> keys lexicographically, where noted</span>
+        that all default to <code>false</code>.</p>
 
       <ol>
         <li>Initialize <var>default graph</var> to an empty <a class="changed">dictionary</a>.</li>
@@ -4220,15 +4258,17 @@
         </li>
         <li>Initialize an empty <a>array</a> <var>result</var>.</li>
         <li>For each <var>subject</var> and <var>node</var> in <var>default graph</var>
-          ordered by <var>subject</var>:
+          ordered lexographically by <var>subject</var>
+          <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
           <ol>
             <li>If <var>graph map</var> has a <var>subject</var> <a>member</a>:
               <ol>
                 <li>Add an <code>@graph</code> <a>member</a> to <var>node</var> and initialize
                   its value to an empty <a>array</a>.</li>
                 <li>For each key-value pair <var>s</var>-<var>n</var> in the <var>subject</var>
-                  <a>member</a> of <var>graph map</var> ordered by <var>s</var>, append <var>n</var>
-                  to the <code>@graph</code> <a>member</a> of <var>node</var> after
+                  <a>member</a> of <var>graph map</var> ordered lexographically by <var>s</var>
+                  <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>,
+                  append <var>n</var> to the <code>@graph</code> <a>member</a> of <var>node</var> after
                   removing its <code>usages</code> <a>member</a>, unless the only
                   remaining <a>member</a> of <var>n</var> is <code>@id</code>.</li>
               </ol>
@@ -4496,7 +4536,8 @@
             following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand</a>
-            method using <a data-lt="jsonldprocessor-compact-input">input</a> and <a data-lt="jsonldprocessor-compact-options">options</a>.
+            method using <a data-lt="jsonldprocessor-compact-input">input</a> and <a data-lt="jsonldprocessor-compact-options">options</a>,
+            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.
           <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
             <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
@@ -4512,7 +4553,9 @@
             an empty <a>dictionary</a> as <var>inverse context</var>,
             <code>null</code> as <var>property</var>,
             <var>expanded input</var> as <var>element</var>, and if passed, the
-            <a data-link-for="JsonldOptions">compactArrays</a> flag in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
+            <a data-link-for="JsonldOptions">compactArrays</a>
+            <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
+            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>Fulfill the <var>promise</var> passing <var>compacted output</var>.
             <span class="changed">transforming <var>compacted output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
@@ -4579,7 +4622,10 @@
           <li>Set <var>expanded output</var> to the result of using the
             <a href="#expansion-algorithm">Expansion algorithm</a>, passing the
             <var>active context</var> and <var>input</var> as <var>element</var>,
-            <span class="changed">and, if the <a data-link-for="JsonLdOptions">frameExpansion</a> option is set, pass the <var>frame expansion</var> flag as <code>true</code>.</span>.</li>
+            and if passed, the
+            <span class="changed"><a data-link-for="JsonldOptions">frameExpansion</a></span>
+            <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
+            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>Fulfill the <var>promise</var> passing <var>expanded output</var>.
             <span class="changed">transforming <var>expanded output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
@@ -4606,7 +4652,8 @@
             following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand</a>
-            method using <a data-lt="jsonldprocessor-flatten-input">input</a> and <a data-lt="jsonldprocessor-flatten-options">options</a>.
+            method using <a data-lt="jsonldprocessor-flatten-input">input</a> and <a data-lt="jsonldprocessor-flatten-options">options</a>
+            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.
           <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
             <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
@@ -4623,9 +4670,9 @@
           <li>Set <var>flattened output</var> to the result of using the
             <a href="#flattening-algorithm">Flattening algorithm</a>, passing
             <var>expanded input</var> as <var>element</var>, <var>active context</var>, and if passed, the
-            <a data-link-for="JsonldOptions">compactArrays</a> flag in <a data-lt="jsonldprocessor-flatten-options">options</a>
-            (which is internally passed to the
-            <a href="#compaction-algorithm">Compaction algorithm</a>).</li>
+            <a data-link-for="JsonldOptions">compactArrays</a>
+            <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
+            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>Fulfill the <var>promise</var> passing <var>flattened output</var>.
             <span class="changed">transforming <var>flattened output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
@@ -4688,6 +4735,7 @@
         LoadDocumentCallback   documentLoader = null;
         (JsonLdDictionary? or USVString) expandContext = null;
         boolean                frameExpansion = false;
+        boolean                ordered = false;
         USVString              processingMode = null;
         boolean                produceGeneralizedRdf = true;
       };
@@ -4729,6 +4777,11 @@
         <a data-link-for="JsonLdOptions">base</a> option or document location when <a>compacting</a>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">frameExpansion</dfn></dt>
       <dd class="changed">Enables special frame processing rules for the <a href="#expansion-algorithm">Expansion Algorithm</a>.</dd>
+      <dt class="changed"><dfn data-dfn-for="JsonLdOptions">ordered</dfn></dt>
+      <dd class="changed">If set to <code>true</code>, certain algorithm
+        processing steps where indicated are ordered lexicographically.
+        If <code>false</code>, order
+        is not considered in processing.</dd>
     </dl>
   </section> <!-- end JsonLdOptions -->
 
@@ -5016,7 +5069,7 @@
   <ul>
     <li>The <a href="#expansion-algorithm">Expansion Algorithm</a>
       has a special <a>processing mode</a>, based on
-      the <var>frame expansion</var> flag, to enable content associated with JSON-LD
+      the <a data-link-for="JsonLdOptions">frameExpansion</a> flag, to enable content associated with JSON-LD
       frames, which may not otherwise be valid <a>JSON-LD documents</a>.</li>
     <li>An <a>expanded term definition</a> can now have an
       <code>@context</code> <a>member</a>, which defines a context used for values of

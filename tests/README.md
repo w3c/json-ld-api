@@ -8,20 +8,49 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 # Design
 
 Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, and _toRdf_ sections:
-* _compact_ tests have _input_, _expected_ and _context_ documents. The _expected_ results can be compared using JSON object comparison with the processor output. For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
-* _expand_ tests have _input_ and _expected_ documents. The _expected_ results can be compared using JSON object comparison with the processor output. For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
-* _flatten_ tests have _input_ and _expected_ documents. The _expected_ results   can be compared using JSON object comparison with the processor output. For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
-* _remote-doc_ tests have _input_ and _expected_ documents. The _expected_ results can be compared using JSON object comparison with the processor output. For *NegativeEvaluationTests*, the result is a string associated with the expected error code. Options may be present to describe the intended HTTP behavior:
+
+* _compact_ tests have _input_, _expected_ and _context_ documents.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output. Additionally, if the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
+
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
+* _expand_ tests have _input_ and _expected_ documents.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
+
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
+* _flatten_ tests have _input_ and _expected_ documents and an optional _context_ document.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
+  Additionally, if the result is compacted and the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
+
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
+* _remote-doc_ tests have _input_ and _expected_ documents.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
+
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code. Options may be present to describe the intended HTTP behavior:
   * _contentType_: Content-Type of the returned HTTP payload, defaults to the appropriate type for the _input_ suffix.
   * _httpStatus_: The HTTP status code to return, defaults to `200`.
   * _redirectTo_: The HTTP _Content-Location_ header value.
   * _httpLink_: The HTTP _Link_ header value.
-* _fromRdf_ tests have _input_ and _expected_ documents. The _expected_ results  can be compared using JSON object comparison with the processor output. Note that comparison of JSON Arrays should consider the fact that statements in an RDF Dataset are unordered, and therefore, properties with multiple values, and the value of `@graph` may not be ordered as in the _expected_ document and blank node labels may not be preserved.
-* _toRdf_ tests have _input_ and _expected_ documents. The _expected_ results can be compared using [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism).
+* _fromRdf_ tests have _input_ and _expected_ documents.
+  The _expected_ results  can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
+* _toRdf_ tests have _input_ and _expected_ documents.
+  The _expected_ results can be compared using [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism).
 
 Unless `processingMode` is set explicitly in a test entry, `processingMode` is compatible with both `json-ld-1.0` and `json-ld-1.1`.
 
 Test results that include a context input presume that the context is provided locally, and not from the referenced location, thus the results will include the content of the context file, rather than a reference.
+
+<section id="json-ld-object-comparison">
+## JSON-LD Object comparison
+If algorithms are invoked with the `ordered` flag set to `true`, simple JSON Object comparison may be used, as the order of all arrays will be preserved (except for _fromRdf_, unless the input quads are also ordered). If `ordered` is `false`, then the following algorithm will ensure arrays other than values of `@list` are compared without regard to order.
+
+JSON-LD Object comparison compares JSON objects, arrays, and values recursively for equality.
+
+* JSON objects are compared member by member without regard to the ordering of members within the object. Each member must have a corresponding member in the object being compared to. Values are compared recursively.
+* JSON arrays are generally compared without regard to order (the lone exception being if the referencing key is `@list`). Each item within the array must be equivalent to an item in the array being compared to by using the comparison algorithm recursively. For values of `@list`, the order of these items is significant.
+* JSON values are compared using strict equality.
+
+Note that some tests require re-expansion and comparison, as list values may exist as values of properties that have `@container: @list` and the comparison algorithm will not consider ordering significant.
+</section>
 
 # Running tests
 Implementations create their own infrastructure for running the test suite. In particular, the following should be considered:
