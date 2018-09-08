@@ -39,7 +39,6 @@ Unless `processingMode` is set explicitly in a test entry, `processingMode` is c
 
 Test results that include a context input presume that the context is provided locally, and not from the referenced location, thus the results will include the content of the context file, rather than a reference.
 
-<section id="json-ld-object-comparison">
 ## JSON-LD Object comparison
 
 If algorithms are invoked with the `ordered` flag set to `true`, simple JSON Object comparison may be used, as the order of all arrays will be preserved (except for _fromRdf_, unless the input quads are also ordered). If `ordered` is `false`, then the following algorithm will ensure arrays other than values of `@list` are compared without regard to order.
@@ -51,7 +50,6 @@ JSON-LD Object comparison compares JSON objects, arrays, and values recursively 
 * JSON values are compared using strict equality.
 
 Note that some tests require re-expansion and comparison, as list values may exist as values of properties that have `@container: @list` and the comparison algorithm will not consider ordering significant.
-</section>
 
 # Running tests
 Implementations create their own infrastructure for running the test suite. In particular, the following should be considered:
