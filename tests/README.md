@@ -41,6 +41,7 @@ Test results that include a context input presume that the context is provided l
 
 <section id="json-ld-object-comparison">
 ## JSON-LD Object comparison
+
 If algorithms are invoked with the `ordered` flag set to `true`, simple JSON Object comparison may be used, as the order of all arrays will be preserved (except for _fromRdf_, unless the input quads are also ordered). If `ordered` is `false`, then the following algorithm will ensure arrays other than values of `@list` are compared without regard to order.
 
 JSON-LD Object comparison compares JSON objects, arrays, and values recursively for equality.
