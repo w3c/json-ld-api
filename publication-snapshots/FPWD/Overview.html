@@ -542,41 +542,6 @@ table.exceptions table {
 
 
 
-
-
-<style type="text/css">
-  .hl-bold {
-    font-weight: bold;
-    color: #0a3;
-  }
-  .comment {
-    color: #999;
-  }
-  .error a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-  }
-  .algorithm ol {
-    counter-reset: numsection;
-    list-style-type: none;
-  }
-  .algorithm li {
-    margin: 0.5em 0;
-  }
-  .algorithm li:before {
-    font-weight: bold;
-    counter-increment: numsection;
-    content: counters(numsection, ".") ") ";
-  }
-  .changed {
-    background-color: rgb(215, 238, 197);
-  }
-  .changed:hover {
-    color:  green;
-    background-color: inherit;
-  }
-</style>
 <style id="respec-mainstyle">/*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
@@ -854,7 +819,42 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-strong {
   font-weight: bold;
 }
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"><link rel="canonical" href="https://www.w3.org/TR/json-ld11-api/"><script id="initialUserConfig" type="application/json">{
+</style>
+
+<style type="text/css">
+  .hl-bold {
+    font-weight: bold;
+    color: #0a3;
+  }
+  .comment {
+    color: #999;
+  }
+  .error a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+  }
+  .algorithm ol {
+    counter-reset: numsection;
+    list-style-type: none;
+  }
+  .algorithm li {
+    margin: 0.5em 0;
+  }
+  .algorithm li:before {
+    font-weight: bold;
+    counter-increment: numsection;
+    content: counters(numsection, ".") ") ";
+  }
+  .changed {
+    background-color: rgb(215, 238, 197);
+  }
+  .changed:hover {
+    color:  green;
+    background-color: inherit;
+  }
+</style>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"><link rel="canonical" href="https://www.w3.org/TR/json-ld11-api/"><script id="initialUserConfig" type="application/json">{
   "localBiblio": {
     "JSON-LD11": {
       "title": "JSON-LD 1.1",
@@ -1298,7 +1298,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a>:</p>
 
     <ul>
-      <li><a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/">JSON-LD 1.1</a></li>
+      <li><a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/">JSON-LD 1.1</a></li>
       <li><a href="http://www.w3.org/TR/2018/WD-json-ld11-api-20180911/">JSON-LD 1.1 Processing Algorithms and API</a></li>
       <li><a href="http://www.w3.org/TR/2018/WD-json-ld11-framing-20180911/">JSON-LD 1.1 Framing</a></li>
     </ul>
@@ -1321,7 +1321,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <p>To understand the basics in this specification you must first be familiar with
     <a href="https://tools.ietf.org/html/rfc8288">JSON</a>, which is detailed in [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>]. You must also understand the
-    <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>], which is the base syntax used by all
+    <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>], which is the base syntax used by all
     of the algorithms in this document. To understand the API and how it is
     intended to operate in a programming environment, it is useful to have working
     knowledge of the JavaScript programming language [<cite><a class="bibref" href="#bib-ecmascript">ECMASCRIPT</a></cite>] and
@@ -1399,7 +1399,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
     the collection is <em>unordered</em> by default. While order is
     preserved in regular JSON arrays, it is not in regular JSON-LD arrays
     unless specifically defined (see
-    <a class="externalDFN" href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#sets-and-lists">Sets and Lists</a> in
+    <a class="externalDFN" href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/#sets-and-lists">Sets and Lists</a> in
     the JSON-LD Syntax specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>]).</dd>
   <dt><dfn data-lt="json objects|json object" id="dfn-json-objects" data-dfn-type="dfn">JSON object</dfn></dt><dd>
     In the JSON serialization, an <a class="externalDFN" href="https://tools.ietf.org/html/rfc8259#section-4">object</a> structure is represented as a pair of curly brackets surrounding zero or
@@ -1479,7 +1479,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
     each <abbr title="Internationalized Resource Identifier">IRI</abbr> contained within a common vocabulary identified by <a href="#dfn-prefixes" class="internalDFN" data-link-type="dfn">prefix</a>.</dd>
   <dt><dfn data-lt="contexts|context" id="dfn-contexts" data-dfn-type="dfn">context</dfn></dt><dd>
     A set of rules for interpreting a <a href="#dfn-json-ld-documents" class="internalDFN" data-link-type="dfn">JSON-LD document</a> as specified in
-    <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#the-context">The Context</a> of the JSON-LD Syntax specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>].</dd>
+    <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/#the-context">The Context</a> of the JSON-LD Syntax specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>].</dd>
   <dt><dfn id="dfn-datatype-iri" data-dfn-type="dfn">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></dfn></dt><dd>
     A <a class="externalDFN" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a>
     as specified by [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>].</dd>
@@ -1551,7 +1551,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
     <a href="#dfn-language-tagged-strings" class="internalDFN" data-link-type="dfn">language-tagged string</a>.</dd>
   <dt><dfn data-lt="keywords|keyword" id="dfn-keywords" data-dfn-type="dfn">keyword</dfn></dt><dd>
     A <a href="#dfn-strings" class="internalDFN" data-link-type="dfn">string</a> that is specific to JSON-LD, specified in the JSON-LD Syntax specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>]
-    in the section titled <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#syntax-tokens-and-keywords">Syntax Tokens and Keywords</a>.</dd>
+    in the section titled <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/#syntax-tokens-and-keywords">Syntax Tokens and Keywords</a>.</dd>
   <dt><dfn data-lt="language maps|language map" id="dfn-language-maps" data-dfn-type="dfn">language map</dfn></dt><dd>
     An <a href="#dfn-language-maps" class="internalDFN" data-link-type="dfn">language map</a> is a <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-dictionary">dictionary</a> value of a <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">term</a> defined with
     <code>@container</code> set to <code>@language</code>, whose keys <em class="rfc2119" title="MUST">MUST</em> be <a href="#dfn-strings" class="internalDFN" data-link-type="dfn">strings</a> representing
@@ -1568,7 +1568,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
   <dt><dfn data-lt="graph|graphs|linked data graph" id="dfn-graph" data-dfn-type="dfn">linked data graph</dfn></dt><dd>
     A labeled directed <a class="externalDFN" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">graph</a>, i.e., a set of <a href="#dfn-nodes" class="internalDFN" data-link-type="dfn">nodes</a>
     connected by <a href="#dfn-edges" class="internalDFN" data-link-type="dfn">edges</a>,
-    as specified in the <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#data-model">Data Model</a>
+    as specified in the <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/#data-model">Data Model</a>
     section of the JSON-LD specification [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>].
     A <a href="#dfn-graph" class="internalDFN" data-link-type="dfn">linked data graph</a> is a generalized representation of an
     <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graph</a>
@@ -2892,7 +2892,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
         Special processing for a <a href="#dfn-json-ld-frame" class="internalDFN" data-link-type="dfn">JSON-LD Frame</a> is invoked when the
         <var>frame expansion</var> flag is set to <code>true</code>.</p>
 
-      <div class="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><p class="">As mentioned in <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#terms-0">Terms</a> [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>],
+      <div class="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><p class="">As mentioned in <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/#terms-0">Terms</a> [<cite><a class="bibref" href="#bib-json-ld11">JSON-LD11</a></cite>],
         to avoid forward-compatibility issues, <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a> should not start with an
         <code>@</code> character as future versions of JSON-LD may introduce
         additional <a href="#dfn-keywords" class="internalDFN" data-link-type="dfn">keywords</a>. This step will treat such terms like any
@@ -4809,7 +4809,7 @@ The content <span class="hljs-keyword">of</span> the example is <span class="hlj
         which collects all <a href="#dfn-properties" class="internalDFN" data-link-type="dfn">properties</a> of a <a href="#dfn-nodes" class="internalDFN" data-link-type="dfn">node</a> in a single
         <a class="changed" data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-dictionary">dictionary</a>. In the next step, the <var>node map</var> is
         converted to a JSON-LD document in
-        <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/#flattened-document-form">flattened document form</a>.
+        <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/#flattened-document-form">flattened document form</a>.
         Finally, if a <a href="#dfn-contexts" class="internalDFN" data-link-type="dfn">context</a> has been passed, the flattened document
         is compacted using the <a href="#compaction-algorithm">Compaction algorithm</a>
         before being returned.</p>
@@ -6461,16 +6461,16 @@ interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" da
 <section class="appendix informative preserve" id="open-issues">
   <!--OddPage--><h2 id="c-open-issues"><span class="secno">C. </span>Open Issues&nbsp;<span class="permalink"><a href="#open-issues" aria-label="Permalink for C. Open Issues" title="Permalink for C. Open Issues"><span>§</span></a></span></h2><p><em>This section is non-normative.</em></p>
   <p>The following is a list of issues open at the time of publication.</p>
-  <div class="issue closed" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/3"><span class="issue-number">Issue 3</span></a><span style="text-transform: none">: Option to compact terms but not values<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Provide a way to compact <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a>, but not <a href="#dfn-value-objects" class="internalDFN" data-link-type="dfn">value objects</a> or <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
-  <div class="issue" id="issue-container-number-4"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/4"><span class="issue-number">Issue 4</span></a><span style="text-transform: none">: Relax the colliding keywords constraint for @type<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Allow <code>@type</code> to have a <code>@container</code> specification, such as <code>@set</code>.</p></div>
+  <div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/3"><span class="issue-number">Issue 3</span></a></div><p class="">Provide a way to compact <a href="#dfn-terms" class="internalDFN" data-link-type="dfn">terms</a>, but not <a href="#dfn-value-objects" class="internalDFN" data-link-type="dfn">value objects</a> or <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
+  <div class="issue" id="issue-container-number-4"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/4"><span class="issue-number">Issue 4</span></a></div><p class="">Allow <code>@type</code> to have a <code>@container</code> specification, such as <code>@set</code>.</p></div>
   <div class="issue" id="issue-container-number-5"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/5"><span class="issue-number">Issue 5</span></a><span style="text-transform: none">: Streaming Profiles for JSON-LD to/from RDF<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Define a "streaming profile" for JSON-LD to help parse data from a stream, rather than require the entire document to be in memory. Also to generate documents that can be so streamed. This would aid in using JSON-LD as a dataset dump format where there are a very large number of quads.</p></div>
   <div class="issue closed" id="issue-container-number-6"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/6"><span class="issue-number">Issue 6</span></a><span style="text-transform: none">: method to require {"id": "uri"} resource compaction result <a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Provide a way to not compact <a href="#dfn-node-references" class="internalDFN" data-link-type="dfn">node references</a>.</p></div>
-  <div class="issue" id="issue-container-number-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/8"><span class="issue-number">Issue 8</span></a><span style="text-transform: none">: Make ordering keys when compaction optional<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aeditorial%22" style="background-color: rgb(88, 130, 10);">spec:editorial</a><a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Remove requirement that dictionary memberes to either processed in lexographical order or generated in lexographical order.</p></div>
-  <div class="issue" id="issue-container-number-14"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/14"><span class="issue-number">Issue 14</span></a><span style="text-transform: none">: Circular imports: Abort, Retry, Fail?<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">Problems importing contexts which reference other common contexts and result in an error.</p></div>
-  <div class="issue" id="issue-container-number-22"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/22"><span class="issue-number">Issue 22</span></a><span style="text-transform: none">: toRdf test output sorting</span></div><p>The toRdf n-quads test outputs used to be lexicographically sorted by line, but a handful of newer tests are not.  For instance 0100.  I don't think the spec says anything about this type of ordering?  jsonld.js is having issues with this.  Semantically it shouldn't matter, so what should test runners do to check outputs?  Just sort api result and expected result prior to a compare?  Or did we sort the older results on purpose just to make testing easier?</p></div>
-  <div class="issue" id="issue-container-number-25"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/25"><span class="issue-number">Issue 25</span></a><span style="text-transform: none">: remove requirement on blank node naming<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a><a class="respec-gh-label respec-label-light" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Asubstantive%22" style="background-color: rgb(207, 249, 164);">spec:substantive</a><a class="respec-gh-label respec-label-light" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22test%3Aneeds+implementation%22" style="background-color: rgb(228, 194, 249);">test:needs implementation</a></span></div><p class="">Currently, the algorithms are quite proscriptive on how blank node identifiers are named, principally to make it easier to test the results, however for some things this becomes difficult or impossible, and inhibits algorithms from being conformant based on a strict textual/structural validation of the results.</p></div>
-  <div class="issue" id="issue-container-number-26"><div role="heading" class="issue-title marker" id="h-issue-7" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/26"><span class="issue-number">Issue 26</span></a><span style="text-transform: none">: Ensure that blank node identifiers for anonymous graphs are reused<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aenhancement%22" style="background-color: rgb(193, 21, 55);">spec:enhancement</a></span></div><p class="">For <code>@graph</code> containers, use the generated graph name identifier as the default subject for nodes in that graph.</p></div>
-  <div class="issue" id="issue-container-number-27"><div role="heading" class="issue-title marker" id="h-issue-8" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/27"><span class="issue-number">Issue 27</span></a><span style="text-transform: none">: toRdf and fromRdf algorithms need WebIDL API methods defined<a class="respec-gh-label respec-label-dark" href="https://github.com/w3c/json-ld-api/issues/?q=is%3Aissue+is%3Aopen+label%3A%22spec%3Aeditorial%22" style="background-color: rgb(88, 130, 10);">spec:editorial</a></span></div></div>
+  <div class="issue" id="issue-container-number-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/8"><span class="issue-number">Issue 8</span></a></div><p class="">Remove requirement that dictionary memberes to either processed in lexographical order or generated in lexographical order.</p></div>
+  <div class="issue" id="issue-container-number-14"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/14"><span class="issue-number">Issue 14</span></a></div><p class="">Problems importing contexts which reference other common contexts and result in an error.</p></div>
+  <div class="issue" id="issue-container-number-22"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/22"><span class="issue-number">Issue 22</span></a></div></div>
+  <div class="issue" id="issue-container-number-25"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/25"><span class="issue-number">Issue 25</span></a></div><p class="">Currently, the algorithms are quite proscriptive on how blank node identifiers are named, principally to make it easier to test the results, however for some things this becomes difficult or impossible, and inhibits algorithms from being conformant based on a strict textual/structural validation of the results.</p></div>
+  <div class="issue" id="issue-container-number-26"><div role="heading" class="issue-title marker" id="h-issue-7" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/26"><span class="issue-number">Issue 26</span></a></div><p class="">For <code>@graph</code> containers, use the generated graph name identifier as the default subject for nodes in that graph.</p></div>
+  <div class="issue" id="issue-container-number-27"><div role="heading" class="issue-title marker" id="h-issue-8" aria-level="3"><a href="https://github.com/w3c/json-ld-api/issues/27"><span class="issue-number">Issue 27</span></a></div></div>
 </section>
 
 <section class="appendix informative" id="changes-since-1-0-recommendation-of-16-january-2014">
@@ -6623,7 +6623,7 @@ interface <span class="idlInterfaceID"><a data-no-default="" data-link-for="" da
     <section id="normative-references">
         <h3 id="g-1-normative-references"><span class="secno">G.1 </span>Normative references&nbsp;<span class="permalink"><a href="#normative-references" aria-label="Permalink for G.1 Normative references" title="Permalink for G.1 Normative references"><span>§</span></a></span></h3>
       <dl class="bibliography">
-        <dt id="bib-bcp47">[BCP47]</dt><dd><a href="https://tools.ietf.org/html/bcp47"><cite>Tags for Identifying Languages</cite></a>. A. Phillips; M. Davis. IETF. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a></dd><dt id="bib-ieee-754-2008">[IEEE-754-2008]</dt><dd><a href="http://standards.ieee.org/findstds/standard/754-2008.html"><cite>IEEE 754-2008 Standard for Floating-Point Arithmetic</cite></a>.  Institute of Electrical and Electronics Engineers. 2008. URL: <a href="http://standards.ieee.org/findstds/standard/754-2008.html">http://standards.ieee.org/findstds/standard/754-2008.html</a></dd><dt id="bib-json-ld">[JSON-LD]</dt><dd><a href="https://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/">https://www.w3.org/TR/json-ld/</a></dd><dt id="bib-json-ld11">[JSON-LD11]</dt><dd><a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg. W3C. 11 September 2018. W3C First Public Working Draft. URL: <a href="http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/">http://www.w3.org/TR/2018/WD-json-ld11-syntax-20180911/</a></dd><dt id="bib-rdf-schema">[RDF-SCHEMA]</dt><dd><a href="https://www.w3.org/TR/rdf-schema/"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd><dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd><dt id="bib-rdf11-mt">[RDF11-MT]</dt><dd><a href="https://www.w3.org/TR/rdf11-mt/"><cite>RDF 1.1 Semantics</cite></a>. Patrick Hayes; Peter Patel-Schneider. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-mt/">https://www.w3.org/TR/rdf11-mt/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc3986">[RFC3986]</dt><dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter. IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd><dt id="bib-rfc3987">[RFC3987]</dt><dd><a href="https://tools.ietf.org/html/rfc3987"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. M. Duerst; M. Suignard. IETF. January 2005. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc3987">https://tools.ietf.org/html/rfc3987</a></dd><dt id="bib-rfc8288">[RFC8288]</dt><dd><a href="https://tools.ietf.org/html/rfc8288"><cite>Web Linking</cite></a>. M. Nottingham. IETF. October 2017. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc8288">https://tools.ietf.org/html/rfc8288</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Cameron McCormack; Boris Zbarsky; Tobie Langel. W3C. 15 December 2016. W3C Editor's Draft. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a></dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd><a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al. W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a></dd>
+        <dt id="bib-bcp47">[BCP47]</dt><dd><a href="https://tools.ietf.org/html/bcp47"><cite>Tags for Identifying Languages</cite></a>. A. Phillips; M. Davis. IETF. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a></dd><dt id="bib-ieee-754-2008">[IEEE-754-2008]</dt><dd><a href="http://standards.ieee.org/findstds/standard/754-2008.html"><cite>IEEE 754-2008 Standard for Floating-Point Arithmetic</cite></a>.  Institute of Electrical and Electronics Engineers. 2008. URL: <a href="http://standards.ieee.org/findstds/standard/754-2008.html">http://standards.ieee.org/findstds/standard/754-2008.html</a></dd><dt id="bib-json-ld">[JSON-LD]</dt><dd><a href="https://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/">https://www.w3.org/TR/json-ld/</a></dd><dt id="bib-json-ld11">[JSON-LD11]</dt><dd><a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg. W3C. 11 September 2018. W3C First Public Working Draft. URL: <a href="http://www.w3.org/TR/2018/WD-json-ld11-20180911/">http://www.w3.org/TR/2018/WD-json-ld11-20180911/</a></dd><dt id="bib-rdf-schema">[RDF-SCHEMA]</dt><dd><a href="https://www.w3.org/TR/rdf-schema/"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd><dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd><dt id="bib-rdf11-mt">[RDF11-MT]</dt><dd><a href="https://www.w3.org/TR/rdf11-mt/"><cite>RDF 1.1 Semantics</cite></a>. Patrick Hayes; Peter Patel-Schneider. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-mt/">https://www.w3.org/TR/rdf11-mt/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner. IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc3986">[RFC3986]</dt><dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter. IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd><dt id="bib-rfc3987">[RFC3987]</dt><dd><a href="https://tools.ietf.org/html/rfc3987"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. M. Duerst; M. Suignard. IETF. January 2005. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc3987">https://tools.ietf.org/html/rfc3987</a></dd><dt id="bib-rfc8288">[RFC8288]</dt><dd><a href="https://tools.ietf.org/html/rfc8288"><cite>Web Linking</cite></a>. M. Nottingham. IETF. October 2017. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc8288">https://tools.ietf.org/html/rfc8288</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Cameron McCormack; Boris Zbarsky; Tobie Langel. W3C. 15 December 2016. W3C Editor's Draft. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a></dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd><a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al. W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a></dd>
       </dl></section><section id="informative-references">
         <h3 id="g-2-informative-references"><span class="secno">G.2 </span>Informative references&nbsp;<span class="permalink"><a href="#informative-references" aria-label="Permalink for G.2 Informative references" title="Permalink for G.2 Informative references"><span>§</span></a></span></h3>
       <dl class="bibliography">
