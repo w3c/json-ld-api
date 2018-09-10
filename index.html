@@ -685,7 +685,7 @@
     -->
     </pre>
 
-    <p>Using the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD algorithm</a>
+    <p>Using the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
       a developer could transform this document into expanded JSON-LD:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
@@ -708,12 +708,12 @@
     </pre>
 
     <p class="changed">The example above is the JSON-LD serialization of the output of the
-      <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD algorithm</a>,
+      <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>,
       where the algorithm's use of <a>dictionaries</a> are replaced with <a>JSON objects</a>.</p>
 
     <p>Note that the output above could easily be compacted using the technique outlined
       in the previous section. It is also possible to deserialize the JSON-LD document back
-      to RDF using the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF algorithm</a>.</p>
+      to RDF using the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
   </section> <!-- end of RDF Serialization/Deserialization -->
 </section> <!-- end of Features section -->
 
@@ -3788,7 +3788,7 @@
     implementations with random access to <a class="changed">dictionary</a> elements.</p>
 
   <section>
-    <h2>Deserialize JSON-LD to RDF algorithm</h2>
+    <h2>Deserialize JSON-LD to RDF Algorithm</h2>
 
     <p>This algorithm deserializes a JSON-LD document to an <a>RDF dataset</a>.
       Please note that RDF does not allow a <a>blank node</a> to be used
@@ -3843,8 +3843,10 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes a JSON-LD document <var>element</var> and returns an
-        <a>RDF dataset</a>. Unless the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option
+      <p>The algorithm takes a <a>dictionary</a> <var>node map</var>, which
+        is the result of the <a href="#node-map-generation">Node Map Generation algorithm</a> and
+        an <a>RDF dataset</a> <var>dataset</var> into which new <a>graphs</a> and <a>triples</a> are added.
+        Unless the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option
         is set to <code>true</code>, <a>RDF triple</a>
         containing a <a>blank node</a> <a>predicate</a>
         are excluded from output.</p>
@@ -3858,18 +3860,19 @@
         to <code>0</code>.</p>
 
       <ol>
-        <li>Expand <var>element</var> according to the
-          <a href="#expansion-algorithm">Expansion algorithm</a>.</li>
-        <li>Generate a <var>node map</var> according to the
-          <a href="#node-map-generation">Node Map Generation algorithm</a>.</li>
-        <li>Initialize an empty <a>RDF dataset</a> <var>dataset</var>.</li>
         <li>For each <var>graph name</var> and <var>graph</var> in <var>node map</var>
           ordered by <var>graph name</var>:
           <ol>
             <li>If <var>graph name</var> is
               <span class="changed">not <a>well-formed</a></span>, continue
               with the next <var>graph name</var>-<var>graph</var> pair.</li>
-            <li>Initialize <var>triples</var> as an empty <a>array</a>.</li>
+            <li class="changed">If <var>graph name</var> is <code>@default</code>, set
+              set <var>triples</var> to the value of the <a data-link-for="RdfDataset">defaultGraph</a>
+              attribute of <var>dataset</var>.
+              Otherwise, initialize <var>graph</var> as an empty <a>RdfGraph</a>
+              and add to <var>dataset</var> using its
+              <a data-link-for="RdfDataset">add</a> method along with <var>graph name</var>
+              for <a data-lt="RdfDataset-add-graphName">graphName</a>.</li>
             <li>For each <var>subject</var> and <var>node</var> in <var>graph</var> ordered
               by <var>subject</var>:
               <ol>
@@ -3880,10 +3883,13 @@
                   ordered by <var>property</var>:
                   <ol>
                     <li>If <var>property</var> is <code>@type</code>, then for each
-                      <var>type</var> in <var>values</var>, append a <a>triple</a>
-                      composed of <var>subject</var>, <code>rdf:type</code>,
-                      and <var>type</var> to <var>triples</var>.
-                      <span class="changed">unless <var>type</var> is not <a>well-formed</a></span>.</li>
+                      <var>type</var> in <var>values</var>,
+                      create a new <a>RdfTriple</a>
+                      composed of <var>subject</var>, <code>rdf:type</code> for <a data-link-for="rdftriple">predicate</a>,
+                      and <var>type</var> for <a data-link-for="rdftriple">object</a>
+                      <span class="changed">and add to <var>triples</var>
+                      using its <a data-link-for="RdfGraph">add</a> method,
+                      unless <var>type</var> is not <a>well-formed</a></span>.</li>
                     <li>Otherwise, if <var>property</var> is a <a>keyword</a>
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
                     <li>Otherwise, if <var>property</var> is a <a>blank node identifier</a> and
@@ -3909,24 +3915,20 @@
                           <code>null</code>, indicating a
                           <span class="changed">non-<a>well-formed</a> <a>RDF resource</a></span>
                           that has to be ignored.</li>
-                        <li class="changed">Append all <a>triples</a> from
-                          <var>list triples</var> to <var>triples</var>.</li>
+                        <li class="changed">Add all <a>RdfTriple</a> instances from
+                          <var>list triples</var> to <var>triples</var> using
+                          its using its <a data-link-for="RdfGraph">add</a> method.</li>
                       </ol>
                     </li>
                   </ol>
                 </li>
               </ol>
             </li>
-            <li>If <var>graph name</var> is <code>@default</code>, add
-              <var>triples</var> to the <a>default graph</a> in <var>dataset</var>.</li>
-            <li>Otherwise, create a <a>named graph</a> in <var>dataset</var>
-              composed of <var>graph name</var> and add <var>triples</var>.</li>
           </ol>
         </li>
-        <li>Return <var>dataset</var>.</li>
       </ol>
     </section>
-  </section> <!-- end of Deserialize JSON-LD to RDF algorithm -->
+  </section> <!-- end of Deserialize JSON-LD to RDF Algorithm -->
 
   <section>
     <h3>Object to RDF Conversion</h3>
@@ -4076,7 +4078,7 @@
     </section>
   </section> <!-- end of List to RDF -->
 
-  <section>
+  <section class="algorithm">
     <h2>Serialize RDF as JSON-LD Algorithm</h2>
 
     <p>This algorithm serializes an <a>RDF dataset</a> consisting of a
@@ -4095,7 +4097,7 @@
         and generating a JSON-LD document in expanded form for all
         <a>RDF literals</a>, <a>IRIs</a>
         and <a>blank node identifiers</a>.
-        If the <var>use native types</var> flag is set to <code>true</code>,
+        If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
         <a>RDF literals</a> with a
         <a>datatype IRI</a>
         that equals <code>xsd:integer</code> or <code>xsd:double</code> are converted
@@ -4106,19 +4108,23 @@
         <a>lexical form</a>
         as described in
         <a class="sectionRef" href="#data-round-tripping"></a>.
-        Unless the <i>use <code>rdf:type</code></i> flag is set to true, <code>rdf:type</code>
+        Unless the <a data-link-for="JsonLdOptions">useRdfType</a> flag is set to true, <code>rdf:type</code>
         predicates will be serialized as <code>@type</code> as long as the associated object is
         either an <a>IRI</a> or <a>blank node identifier</a>.</p>
     </section>
 
-    <section class="algorithm">
+    <section>
       <h2>Algorithm</h2>
 
       <p>The algorithm takes one required and three optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
-        and the three flags <var>use native types</var>, <i>use <code>rdf:type</code></i>,
+        and the three flags <a data-link-for="JsonLdOptions">useNativeTypes</a>, <a data-link-for="JsonLdOptions">useRdfType</a>,
         <span class="changed">and the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
           <a>dictionary member</a> keys lexicographically, where noted</span>
         that all default to <code>false</code>.</p>
+
+      <p>The <var>dataset</var> is <a data-link-for="RdfDataset">iterable</a> to iterate over <a>graphs</a> and <a>graph names</a>
+        contained within the <a>RdfDataset</a>. Each <a>graph</a> is also <a data-link-for="RdfGraph">iterable</a>
+        for iterating over <a>triples</a> contained within the <a>RdfGraph</a>.</p>
 
       <ol>
         <li>Initialize <var>default graph</var> to an empty <a class="changed">dictionary</a>.</li>
@@ -4155,7 +4161,7 @@
                   consisting of a single <a>member</a> <code>@id</code> whose value is
                   set to <var>object</var>.</li>
                 <li>If <var>predicate</var> equals <code>rdf:type</code>, the
-                  <i>use <code>rdf:type</code></i> flag is not <code>true</code>, and <var>object</var>
+                  <a data-link-for="JsonLdOptions">useRdfType</a> flag is not <code>true</code>, and <var>object</var>
                   is an <a>IRI</a> or <a>blank node identifier</a>,
                   append <var>object</var> to the value of the <code>@type</code>
                   <a>member</a> of <var>node</var>; unless such an item already exists.
@@ -4165,7 +4171,7 @@
                   <a>RDF triple</a>.</li>
                 <li>Set <var>value</var> to the result of using the
                   <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
-                  passing <var>object</var> and <var>use native types</var>.</li>
+                  passing <var>object</var> and <a data-link-for="JsonLdOptions">useNativeTypes</a>.</li>
                 <li>If <var>node</var> does not have an <var>predicate</var> <a>member</a>, create one
                   and initialize its value to an empty <a>array</a>.</li>
                 <li>If there is no item equivalent to <var>value</var> in the <a>array</a>
@@ -4227,7 +4233,7 @@
                   and <var>node</var> has no other <a>members</a> apart from an optional <code>@type</code>
                   <a>member</a> whose value is an array with a single item equal to
                   <code>rdf:List</code>,
-                  <var>node</var> represents a well-formed list node.
+                  <var>node</var> represents a <a>well-formed</a> list node.
                   Perform the following steps to traverse the list backwards towards its head:
                   <ol>
                     <li>Append the only item of <code>rdf:first</code> <a>member</a> of
@@ -4296,7 +4302,7 @@
         <a>value objects</a> whereas <a>IRIs</a> and
         <a>blank node identifiers</a> are
         transformed to <a>node objects</a>.
-        If the <var>use native types</var> flag is set to <code>true</code>,
+        If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
         <a>RDF literals</a> with a
         <a>datatype IRI</a>
         that equals <code>xsd:integer</code> or <code>xsd:double</code> are converted
@@ -4313,7 +4319,7 @@
       <h3>Algorithm</h3>
 
       <p>This algorithm takes two required inputs: a <var>value</var> to be converted
-        to a <a class="changed">dictionary</a> and a flag <var>use native types</var>.</p>
+        to a <a class="changed">dictionary</a> and a flag <a data-link-for="JsonLdOptions">useNativeTypes</a>.</p>
 
       <ol>
         <li>If <var>value</var> is an <a>IRI</a> or a
@@ -4326,7 +4332,7 @@
             <li>Initialize a new empty <a class="changed">dictionary</a> result.</li>
             <li>Initialize <var>converted value</var> to <var>value</var>.</li>
             <li>Initialize <var>type</var> to <code>null</code></li>
-            <li>If <var>use native types</var> is <code>true</code>
+            <li>If <a data-link-for="JsonLdOptions">useNativeTypes</a> is <code>true</code>
               <ol>
                 <li>If the
                   <a>datatype IRI</a>
@@ -4370,7 +4376,7 @@
         </li>
       </ol>
     </section>
-  </section>
+  </section> <!-- end of RDF to Object Conversion -->
 
   <section>
     <h2>Data Round Tripping</h2>
@@ -4453,13 +4459,13 @@
       space.</p>
 
     <p>To ensure lossless round-tripping the
-      <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD algorithm</a>
-      specifies a <var>use native types</var> flag which controls whether
+      <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
+      specifies a <a data-link-for="JsonLdOptions">useNativeTypes</a> flag which controls whether
       <a>RDF literals</a>
       with a <a>datatype IRI</a>
       equal to <code>xsd:integer</code>, <code>xsd:double</code>, or
       <code>xsd:boolean</code> are converted to their JSON-native
-      counterparts. If the <var>use native types</var> flag is set to
+      counterparts. If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to
       <code>false</code>, all literals remain in their original string
       representation.</p>
 
@@ -4472,7 +4478,6 @@
       backslash-escaped.</p>
   </section> <!-- end of Data Round Tripping -->
 </section>
-
 
 <section>
   <h2>The Application Programming Interface</h2>
@@ -4508,7 +4513,6 @@
       in this document mention this directly.</p>
 
     <pre class="idl">
-      [Constructor]
       interface JsonLdProcessor {
         static Promise&lt;JsonLdDictionary> compact(
           JsonLdInput input,
@@ -4521,11 +4525,17 @@
           JsonLdInput input,
           optional JsonLdContext? context,
           optional JsonLdOptions? options);
+        static Promise&lt;sequence&lt;JsonLdDictionary>> fromRdf(
+          RdfDataset input,
+          optional JsonLdOptions? options);
+        static Promise&lt;RdfDataset> toRdf(
+          JsonLdInput input,
+          optional JsonLdOptions? options);
       };
     </pre>
 
     <dl data-sort>
-      <dt><dfn data-dfn-for="JsonLdProcessor">compact</dfn></dt><dd>
+      <dt><dfn data-dfn-for="JsonLdProcessor">compact</dfn></dt>
       <dd class="algorithm">
         <p><a>Compacts</a> the given <var>input</var> using the
           <var>context</var> according to the steps in the
@@ -4636,7 +4646,7 @@
           <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> to perform the expansion upon or an
             <a>IRI</a> referencing the <a>JSON-LD document</a> to expand.</dd>
           <dt><dfn data-lt="jsonldprocessor-expand-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the used algorithms such. This allows, e.g.,
+          <dd>A set of options to configure the used algorithms. This allows, e.g.,
             to set the input document's <a>base IRI</a>.</dd>
         </dl>
       </dd>
@@ -4653,7 +4663,7 @@
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand</a>
             method using <a data-lt="jsonldprocessor-flatten-input">input</a> and <a data-lt="jsonldprocessor-flatten-options">options</a>
-            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.
+            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.</li>
           <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
             <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
@@ -4664,9 +4674,7 @@
             <a data-link-for="JsonLdOptions">compactToRelative</a> option is
             <strong>true</strong>, to the IRI of the currently being processed
             document, if available; otherwise to <code>null</code>.</li>
-          <li>Initialize an empty <var>identifier map</var> and a <var>counter</var> (set to <code>0</code>)
-            to be used by the
-            <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>.</li>
+          <li>Initialize an empty <var>identifier map</var>.</li>
           <li>Set <var>flattened output</var> to the result of using the
             <a href="#flattening-algorithm">Flattening algorithm</a>, passing
             <var>expanded input</var> as <var>element</var>, <var>active context</var>, and if passed, the
@@ -4690,7 +4698,80 @@
             passed or <code>null</code> is passed, the result will not be compacted
             but kept in expanded form.</dd>
           <dt><dfn data-lt="jsonldprocessor-flatten-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the used algorithms such. This allows, e.g.,
+          <dd>A set of options to configure the used algorithms. This allows, e.g.,
+            to set the input document's <a>base IRI</a>.</dd>
+        </dl>
+      </dd>
+
+      <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">fromRdf</dfn></dt>
+      <dd class="algorithm changed">
+        <p>Transforms the given <a data-lt="jsonldprocessor-fromRdf-input">input</a> into
+          a <a>JSON-LD document</a> in <a>expanded form</a>
+          according to the steps in the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>:</p>
+
+        <p class="note">This interface does not define a means of creating
+          an <a>RdfDataset</a> from an arbitrary input, other than the
+          <a data-link-for="JsonLdProcessor">toRdf</a> method.</p>
+
+        <ol>
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
+            following steps are then executed asynchronously.</li>
+          <li>Set <var>expanded result</var> to the result of invoking the
+            <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
+            method using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
+            and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
+          <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
+          <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
+          <li>Invoke the
+           <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
+            <var>expanded input</var> as <var>element</var> and <var>node map</var>.</li>
+          <li>Invoke the
+            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a></li>
+            passing <var>node map</var>, <var>dataset</var>, and if passed, the
+            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-fromRdf-options">options</a>
+          <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
+        </ol>
+
+        <dl class="parameters">
+          <dt><dfn data-lt="jsonldprocessor-fromRdf-input" data-lt-noDefault>input</dfn></dt>
+           <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> or an <a>IRI</a>
+            referencing the JSON-LD document to flatten.</dd>
+          <dt><dfn data-lt="jsonldprocessor-fromRdf-options" data-lt-noDefault>options</dfn></dt>
+          <dd>A set of options to configure the used algorithms. This allows, e.g.,
+            to set the input document's <a>base IRI</a>.</dd>
+        </dl>
+      </dd>
+
+      <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">toRdf</dfn></dt>
+      <dd class="algorithm changed">
+        <p>Transforms the given <a data-lt="jsonldprocessor-toRdf-input">input</a> into an <a>RdfDataset</a>
+          according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
+
+        <ol>
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
+            following steps are then executed asynchronously.</li>
+          <li>Set <var>expanded input</var> to the result of using the
+            <a data-link-for="JsonLdProcessor">expand</a>
+            method using <a data-lt="jsonldprocessor-toRdf-input">input</a>
+            and <a data-lt="jsonldprocessor-toRdf-options">options</a>.</li>
+          <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
+          <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
+          <li>Invoke the
+           <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
+            <var>expanded input</var> as <var>element</var> and <var>node map</var>.</li>
+          <li>Invoke the
+            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a></li>
+            passing <var>node map</var>, <var>dataset</var>, and if passed, the
+            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>
+          <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
+        </ol>
+
+        <dl class="parameters">
+          <dt><dfn data-lt="jsonldprocessor-toRdf-input" data-lt-noDefault>input</dfn></dt>
+           <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> or an <a>IRI</a>
+            referencing the JSON-LD document to flatten.</dd>
+          <dt><dfn data-lt="jsonldprocessor-toRdf-options" data-lt-noDefault>options</dfn></dt>
+          <dd>A set of options to configure the used algorithms. This allows, e.g.,
             to set the input document's <a>base IRI</a>.</dd>
         </dl>
       </dd>
@@ -4712,14 +4793,123 @@
       <a>IRI</a> which an be dereferenced to retrieve a valid JSON document.</p>
 
     <pre class="idl" data-transform="unComment"><!--
-      typedef (JsonLdDictionary or USVString or sequence<(JsonLdDictionary or USVString)>) JsonLdContext;
+      typedef (JsonLdDictionary or USVString or sequence&lt;(JsonLdDictionary or USVString)>) JsonLdContext;
     --></pre>
 
     <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value that
       that may be a <a class="changed">dictionary</a>, a <a>string</a> representing an
       <a>IRI</a>, or an array of <a class="changed">dictionaries</a>
       and <a>strings</a>.</p>
-  </section> <!-- end of JsonLdProcessor -->
+  </section>
+
+  <section>
+    <h3>RDF Dataset Interfaces</h3>
+
+    <p>The <dfn>RdfDataset</dfn> interface describes operations on an <a>RDF dataset</a> used by the <a data-link-for="JsonLdProcessor">fromRdf</a> and <a data-link-for="JsonLdProcessor">toRdf</a> methods in the <a>JsonLdProcessor</a> interface. The interface may be used for constructing a new <a>RDF dataset</a>, which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
+
+    <pre class="idl changed" data-transform="unComment">
+      [Constructor]
+      interface RdfDataset {
+        readonly attribute RdfGraph defaultGraph;
+        void add(USVString graphName, RdfGraph graph);
+        iterable&lt;USVString?, RdfGraph>;
+      };
+    </pre>
+
+    <dl data-sort>
+      <dt><dfn data-dfn-for="RdfDataset">defaultGraph</dfn></dt>
+      <dd>Provides access to the <a>default graph</a> associated with the <a>RDF dataset</a>.</dd>
+      <dt><dfn data-dfn-for="RdfDataset">add</dfn></dt>
+      <dd class="algorithm">
+        <p>Adds an <a>RdfGraph</a> and its associated <a>graph name</a> to the <a>RdfDataset</a>. Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
+
+        <dl class="parameters">
+          <dt><dfn data-lt="RdfDataset-add-graphName" data-lt-noDefault>graphName</dfn></dt>
+          <dd>The <a>graph name</a> associated with <a>graph</a>.
+            graphName MUST be a <a>well-formed</a> <a>IRI</a> or <a>blank node identifier</a>.
+          </dd>
+          <dt><dfn data-lt="RdfDataset-add-graph" data-lt-noDefault>graph</dfn></dt>
+          <dd>The <a>RdfGraph</a> to add to the <a>RdfDataset</a>.</dd>
+        </dl>
+      </dd>
+      <dt><dfn data-dfn-for="RdfDataset">iterable</dfn></dt>
+      <dd>The <a data-cite="WEBIDL#dfn-value-pairs-to-iterate-over">value pairs to iterate over</a>
+        are the list of <var>graph name</var>-<var>graph</var> pairs, with the
+        <var>graph name</var> being <code>null</code> (for the <a>default
+        graph</a>), an <a>IRI</a> or <a>blank node identifier</a> and graph an
+        <a>RdfGraph</a> instance.</dd>
+    </dl>
+
+    <p>The <dfn>RdfGraph</dfn> interface describes operations on an <a>RDF graph</a> used by the <a data-link-for="JsonLdProcessor">fromRdf</a> and <a data-link-for="JsonLdProcessor">toRdf</a> methods in the <a>JsonLdProcessor</a> interface. The interface may be used for constructing a new <a>RDF graph</a>, which is composed of zero or more <a>RdfTriple</a> instances.</p>
+
+    <pre class="idl changed" data-transform="unComment">
+      [Constructor]
+      interface RdfGraph {
+        void add(RdfTriple triple);
+        iterable&lt;RdfTriple>;
+      };
+    </pre>
+
+    <dl data-sort>
+      <dt><dfn data-dfn-for="RdfGraph">add</dfn></dt>
+      <dd class="algorithm">
+        <p>Adds an <a>RdfTriple</a> to the <a>RdfGraph</a>. Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
+
+        <dl class="parameters">
+          <dt><dfn data-lt="RdfGraph-add-triple" data-lt-noDefault>triple</dfn></dt>
+          <dd>The <a>RdfTriple</a> to add to the <a>RdfGraph</a>.</dd>
+        </dl>
+      </dd>
+      <dt><dfn data-dfn-for="RdfGraph">iterable</dfn></dt>
+      <dd>A <a data-cite="WEBIDL#dfn-value-iterator">value iterator</a>
+        over the <a>RdfTriple</a> instances associated with the graph.
+        Note that a given <a>RdfTriple</a> instance may appear
+        in more than one graph within a particular <a>RdfDataset</a> instance.</dd>
+    </dl>
+
+    <p>The <dfn>RdfTriple</dfn> interface describes an <a>RDF Triple</a>.</p>
+
+    <pre class="idl changed" data-transform="unComment">
+      [Constructor]
+      interface RdfTriple {
+        readonly attribute USVString subject;
+        readonly attribute USVString predicate;
+        readonly attribute (USVString or RdfLiteral) object;
+      };
+    </pre>
+
+    <dl>
+      <dt><dfn data-dfn-for="RdfTriple">subject</dfn></dt>
+      <dd>An absolute <a>IRI</a> or <a>blank node identifier</a> denoting the <a>subject</a> of the <a>triple</a>.</dd>
+      <dt><dfn data-dfn-for="RdfTriple">predicate</dfn></dt>
+      <dd>An absolute <a>IRI</a> denoting the <a>predicate</a> of the <a>triple</a>.
+        If used to represent a <a>Generalized RDF Dataset</a>, it may also be a <a>blank node identifier</a>.</dd>
+      <dt><dfn data-dfn-for="RdfTriple">object</dfn></dt>
+      <dd>An absolute <a>IRI</a>, <a>blank node identifier</a> or <a>literal</a> denoting the <a>object</a> of the <a>triple</a>.</dd>
+    </dl>
+
+    <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
+
+    <pre class="idl changed" data-transform="unComment">
+      [Constructor]
+      interface RdfLiteral {
+        readonly attribute USVString value;
+        readonly attribute USVString datatype;
+        readonly attribute USVString? language;
+      };
+    </pre>
+
+    <dl>
+      <dt><dfn data-dfn-for="RdfLiteral">value</dfn></dt>
+      <dd>The lexical value of the <a>literal</a>.</dd>
+      <dt><dfn data-dfn-for="RdfLiteral">datatype</dfn></dt>
+      <dd>An absolute <a>IRI</a> denoting the <a data-lt="RDF11-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of the <a>literal</a>.
+        If the value is <code>rdf:langString</code>, <a data-link-for="RdfLiteral">language</a> MUST be specified.</dd>
+      <dt><dfn data-dfn-for="RdfLiteral">language</dfn></dt>
+      <dd>An optional <a>language tag</a> as defined by [[!BCP47]]. If this value is specified,
+        <a data-link-for="RdfLiteral">datatype</a> MUST be <code>rdf:langString</code></dd>
+    </dl>
+  </section> <!-- end of RdfDataset -->
 
   <section>
     <h3>The JsonLdOptions Type</h3>
@@ -4738,6 +4928,8 @@
         boolean                ordered = false;
         USVString              processingMode = null;
         boolean                produceGeneralizedRdf = true;
+        boolean                useNativeTypes = false;
+        boolean                useRdfType = false;
       };
     --></pre>
 
@@ -4758,7 +4950,9 @@
       <dd>A context that is used to initialize the active context when expanding a document.</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">produceGeneralizedRdf</dfn></dt>
       <dd>If set to <code>true</code>, the JSON-LD processor may emit blank nodes for
-        <a>triple</a> <a>predicates</a>, otherwise they will be omitted.</dd>
+        <a>triple</a> <a>predicates</a>, otherwise they will be omitted.
+      <dfn data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
+        are defined in [[!RDF11-CONCEPTS]].</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
         If set to <code>json-ld-1.0</code> or <code>json-ld-1.1</code>, the
@@ -4777,6 +4971,11 @@
         <a data-link-for="JsonLdOptions">base</a> option or document location when <a>compacting</a>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">frameExpansion</dfn></dt>
       <dd class="changed">Enables special frame processing rules for the <a href="#expansion-algorithm">Expansion Algorithm</a>.</dd>
+      <dd class="changed">Enables special rules for the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
+        to use JSON-LD native types as values, where possible.</dd>
+      <dt class="changed"><dfn data-dfn-for="JsonLdOptions">useRdfType</dfn></dt>
+      <dd class="changed">Enables special rules for the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
+        causing <code>rdf:type</code> properties to be kept as <a>IRIs</a> in the output, rather than use <code>@type</code>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">ordered</dfn></dt>
       <dd class="changed">If set to <code>true</code>, certain algorithm
         processing steps where indicated are ordered lexicographically.
@@ -5130,7 +5329,7 @@
       <a>members</a> of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> using string concatenation.</li>
     <li><a>Lists</a> may now have <a>members</a> which are themselves <a>lists</a>.</li>
-    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF algorithm</a>
+    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
       has been updated to ensure that only <a>well-formed</a> <a>triples</a>
       are emitted; previously, it only ensured that <a>triples</a> containing
       <a>relative IRIs</a> were excluded.</li>
@@ -5146,7 +5345,7 @@
   <h2>Changes since JSON-LD Community Group Final Report</h2>
   <ul>
     <li><a>Lists</a> may now have <a>members</a> which are themselves <a>lists</a>.</li>
-    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF algorithm</a>
+    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
       has been updated to ensure that only <a>well-formed</a> <a>triples</a>
       are emitted; previously, it only ensured that <a>triples</a> containing
       <a>relative IRIs</a> were excluded.</li>
