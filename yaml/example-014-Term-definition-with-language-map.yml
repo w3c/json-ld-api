@@ -1,6 +1,0 @@
-Example 014: Term definition with language map
----
-"@context":
-  t:
-    "@id": http://example.org/t
-    "@container": "@language"
