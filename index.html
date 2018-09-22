@@ -151,6 +151,52 @@
     color:  green;
     background-color: inherit;
   }
+  aside.example {
+    overflow-y: hidden;
+  }
+  /* example tab selection */
+  .ds-selector-tabs {
+    padding-bottom: 2em;
+  }
+  .ds-selector-tabs .selectors {
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+    height: 28px;
+  }
+  .ds-selector-tabs .selectors button {
+    display: inline-block;
+    min-width: 54px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    height: 27px;
+    padding: 0 8px;
+    line-height: 27px;
+    transition: all,0.218s;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    color: #666;
+    border: 1px solid transparent;
+  }
+  .ds-selector-tabs .selectors button:first-child {
+    margin-left: 2px;
+  }
+  .ds-selector-tabs .selectors button.selected {
+    color: #202020 !important;
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #fff !important;
+  }
+  .ds-selector-tabs .selectors button:hover {
+    background-color: transparent;
+    color: #202020;
+    cursor: pointer;
+  }
+  .ds-selector-tabs pre, .ds-selector-tabs table {
+    display: none;
+  }
+  .ds-selector-tabs pre.selected, .ds-selector-tabs table.selected {
+    display: block;
+  }
 </style>
 </head>
 
@@ -351,43 +397,64 @@
       here is an example of JSON-LD that uses only <a>terms</a>
       and is fairly compact:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         title="JSON-LD documenet using only terms">
-    <!--
-    {
-      "@context": {
-        "name": "http://xmlns.com/foaf/0.1/name",
-        "homepage": {
-          "@id": "http://xmlns.com/foaf/0.1/homepage",
-          "@type": "@id"
-        }
-      },
-      "@id": "http://me.markus-lanthaler.com/",
-      "name": "Markus Lanthaler",
-      "homepage": "http://www.markus-lanthaler.com/"
-    }
-    -->
-    </pre>
+    <aside class="example ds-selector-tabs"
+           title="JSON-LD document using only terms">
+      <div class="selectors">
+        <button class="selected" data-selects="expanded">Expanded</button>
+        <button data-selects="statements">Statements</button>
+        <button data-selects="turtle">Turtle</button>
+      </div>
+      <pre class="original selected" data-transform="updateExample">
+      <!--
+      {
+        "@context": {
+          "name": "http://xmlns.com/foaf/0.1/name",
+          "homepage": {
+            "@id": "http://xmlns.com/foaf/0.1/homepage",
+            "@type": "@id"
+          }
+        },
+        "@id": "http://me.markus-lanthaler.com/",
+        "name": "Markus Lanthaler",
+        "homepage": "http://www.markus-lanthaler.com/"
+      }
+      -->
+      </pre>
+      <pre class="expanded"
+          data-result-for="JSON-LD document using only terms-expanded">
+      <!--
+      [{
+        "@id": "http://me.markus-lanthaler.com/",
+        "http://xmlns.com/foaf/0.1/name": [
+          {"@value": "Markus Lanthaler"}
+        ],
+        "http://xmlns.com/foaf/0.1/homepage": [
+          {"@id": "http://www.markus-lanthaler.com/"}
+        ]
+      }]
+      -->
+      </pre>
+      <table class="statements"
+             data-result-for="JSON-LD document using only terms-expanded">
+        <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>http://me.markus-lanthaler.com/</td><td>foaf:name</td><td>Markus Lanthaler</td></tr>
+          <tr><td>http://me.markus-lanthaler.com/</td><td>http://xmlns.com/foaf/0.1/homepage</td><td>http://www.markus-lanthaler.com/</td></tr>
+        </tbody>
+      </table>
+      <pre class="turtle"
+           data-content-type="text/turtle"
+           data-result-for="JSON-LD document using only terms-expanded"
+           data-transform="updateExample"
+           data-to-rdf>
+      <!--
+      @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-    <script class="example" 
-            data-result-for="JSON-LD documenet using only terms"
-            title="JSON-LD document using only terms (expanded)">
-      [
-        {
-          "@id": "http://me.markus-lanthaler.com/",
-          "http://xmlns.com/foaf/0.1/homepage": [
-            {
-              "@id": "http://www.markus-lanthaler.com/"
-            }
-          ],
-          "http://xmlns.com/foaf/0.1/name": [
-            {
-              "@value": "Markus Lanthaler"
-            }
-          ]
-        }
-      ]
-    </script>
+      <http://me.markus-lanthaler.com/> foaf:name "Markus Lanthaler";
+        foaf:homepage <http://www.markus-lanthaler.com/> .
+      -->
+      </pre>
+    </aside>
 
     <p>The next input example uses one <a>IRI</a> to express a <a>property</a>
     and an <a>array</a> to encapsulate another, but
@@ -582,9 +649,7 @@
       "@id": "http://me.markus-lanthaler.com/",
       "name": "Markus Lanthaler",
       "knows": [
-        {
-          "name": "Dave Longley"
-        }
+        {"name": "Dave Longley"}
       ]
     }
     -->
@@ -600,23 +665,20 @@
          data-flatten
          title="Flattened sample document in expanded form">
     <!--
-    [
-      {
-        "@id": "_:b0",
-        "http://xmlns.com/foaf/0.1/name": [
-          { "@value": "Dave Longley" }
-        ]
-      },
-      {
-        "@id": "http://me.markus-lanthaler.com/",
-        "http://xmlns.com/foaf/0.1/name": [
-          { "@value": "Markus Lanthaler" }
-        ],
-        "http://xmlns.com/foaf/0.1/knows": [
-          { "@id": "_:b0" }
-        ]
-      }
-    ]
+    [{
+      "@id": "http://me.markus-lanthaler.com/",
+      "http://xmlns.com/foaf/0.1/name": [
+        { "@value": "Markus Lanthaler" }
+      ],
+      "http://xmlns.com/foaf/0.1/knows": [
+        { "@id": "_:b0" }
+      ]
+    }, {
+      "@id": "_:b0",
+      "http://xmlns.com/foaf/0.1/name": [
+        { "@value": "Dave Longley" }
+      ]
+    }]
     -->
     </pre>
 
@@ -645,16 +707,14 @@
         "name": "http://xmlns.com/foaf/0.1/name",
         "knows": "http://xmlns.com/foaf/0.1/knows"
       },
-      "@graph": [
-        {
-          "@id": "_:b0",
-          "name": "Dave Longley"
-        }, {
-          "@id": "http://me.markus-lanthaler.com/",
-          "name": "Markus Lanthaler",
-          "knows": { "@id": "_:b0" }
-        }
-      ]
+      "@graph": [{
+        "@id": "http://me.markus-lanthaler.com/",
+        "name": "Markus Lanthaler",
+        "knows": { "@id": "_:b0" }
+      }, {
+        "@id": "_:b0",
+        "name": "Dave Longley"
+      }]
     }
     -->
     </pre>
@@ -3205,21 +3265,31 @@
         <h4>Language Map Term</h4>
         <p>If the term definition has <code>"@container": "@language"</code>, it will only match a
           <a>value object</a> having no <code>@type</code>.</p>
-        <pre class="example" title="Term definition with language map">
+
+        <aside class="example" data-ignore
+               title="Term definition with language map">
+          <pre data-transform="updateExample">
+          <!--
           {
             "@context": {"t": {"@id": "http://example.org/t", "@container": "@language"}}
           }
-        </pre>
-        <p>The inverse context will contain the following:</p>
-        <pre>
-        {
-          "@language": {
-            "@language": {"@none": "t"},
-            "@type": {"@none": "t"},
-            "@any": {"@none": "t"}
+          -->
+          </pre>
+
+          <p>The inverse context will contain the following:</p>
+
+          <pre data-transform="updateExample">
+          <!--
+          {
+            "@language": {
+              "@language": {"@none": "t"},
+              "@type": {"@none": "t"},
+              "@any": {"@none": "t"}
+            }
           }
-        }
-        </pre>
+          -->
+          </pre>
+        </aside>
 
         <aside class="example" data-ignore title="Language map term with language value">
           <p>Given the <a>member</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
@@ -3242,13 +3312,21 @@
         <h4>Datatyped Term</h4>
         <p>If the term definition has a datatype, it will only match a
           <a>value object</a> having a matching datatype.</p>
-        <pre class="example" title="Term definition with datatype">
+
+        <aside class="example" data-ignore
+               title="Term definition with datatype">
+          <pre data-transform="updateExample">
+          <!--
           {
             "@context": {"t": {"@id": "http://example.org/t", "@type": "http:/example.org/type"}}
           }
-        </pre>
-        <p>The inverse context will contain the following:</p>
-        <pre>
+          -->
+          </pre>
+
+          <p>The inverse context will contain the following:</p>
+
+          <pre data-transform="updateExample">
+          <!--
           {
             "@none": {
               "@language": {},
@@ -3256,7 +3334,9 @@
               "@any": {"@none": "t"}
             }
           }
-        </pre>
+          -->
+          </pre>
+        </aside>
 
         <aside class="example" data-ignore title="Datatyped term with datatyped value">
           <p>Given the <a>member</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
