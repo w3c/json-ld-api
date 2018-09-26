@@ -197,6 +197,16 @@
   .ds-selector-tabs pre.selected, .ds-selector-tabs table.selected {
     display: block;
   }
+  a.playground {
+    border-bottom: none;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  a[href].playground {
+    border-bottom: none;
+    text-decoration: none;
+    color: #666;
+  }
 </style>
 </head>
 
@@ -400,11 +410,13 @@
     <aside class="example ds-selector-tabs"
            title="JSON-LD document using only terms">
       <div class="selectors">
-        <button class="selected" data-selects="expanded">Expanded</button>
+        <button class="selected" data-selects="original">Original</button>
+        <button data-selects="expanded">Expanded</button>
         <button data-selects="statements">Statements</button>
         <button data-selects="turtle">Turtle</button>
+        <a class="playground" target="_blank"></a>
       </div>
-      <pre class="expanded selected" data-transform="updateExample">
+      <pre class="original selected" data-transform="updateExample">
       <!--
       {
         "@context": {
@@ -421,7 +433,8 @@
       -->
       </pre>
       <pre class="expanded"
-          data-result-for="JSON-LD document using only terms-expanded">
+           data-result-for="JSON-LD document using only terms-original"
+           data-transform="updateExample">
       <!--
       [{
         "@id": "http://me.markus-lanthaler.com/",
@@ -460,19 +473,24 @@
     and an <a>array</a> to encapsulate another, but
     leaves the rest of the information untouched.</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         title="Sample JSON-LD document using an IRI instead of a term to express a property">
-    <!--
-    {
-      "@context": {
-        ****"website": "http://xmlns.com/foaf/0.1/homepage"****
-      },
-      "@id": "http://me.markus-lanthaler.com/",
-      "****http://xmlns.com/foaf/0.1/name****": "Markus Lanthaler",
-      ****"website"****: ****{ "@id":**** "http://www.markus-lanthaler.com/" ****}****
-    }
-    -->
-    </pre>
+    <aside class="example ds-selector-tabs"
+           title="Sample JSON-LD document using an IRI instead of a term to express a property">
+      <div class="selectors">
+        <a class="playground" target="_blank"></a>
+      </div>
+      <pre class="original selected nohighlight" data-transform="updateExample">
+      <!--
+      {
+        "@context": {
+          ****"website": "http://xmlns.com/foaf/0.1/homepage"****
+        },
+        "@id": "http://me.markus-lanthaler.com/",
+        "****http://xmlns.com/foaf/0.1/name****": "Markus Lanthaler",
+        ****"website"****: ****{ "@id":**** "http://www.markus-lanthaler.com/" ****}****
+      }
+      -->
+      </pre>
+    </aside>
 
     <p>Note that both inputs are valid JSON-LD and both represent the same
       information. The difference is in their <a>context</a> information
@@ -493,16 +511,16 @@
       operation) against the above examples results in the following output:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
-         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property"
+         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-original"
          title="Expanded JSON-LD document using an IRI">
     <!--
     [
       {
         "@id": "http://me.markus-lanthaler.com/",
-        "http://xmlns.com/foaf/0.1/name": [
+        "****http://xmlns.com/foaf/0.1/name****": [
           { "@value": "Markus Lanthaler" }
         ],
-        "http://xmlns.com/foaf/0.1/homepage": [
+        "****http://xmlns.com/foaf/0.1/homepage****": [
           { "@id": "http://www.markus-lanthaler.com/" }
         ]
       }
@@ -546,8 +564,8 @@
 
     <p>For example, assume the following expanded JSON-LD input document:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property"
+    <pre id="sample-document"
+         class="example nohighlight" data-transform="updateExample"
          title="Expanded sample document">
     <!--
     [
@@ -567,7 +585,9 @@
     <p>Additionally, assume the following developer-supplied JSON-LD
       <a>context</a>:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
+    <pre id="sample-document-context"
+         class="example nohighlight"
+         data-transform="updateExample"
          data-context-for="Expanded sample document"
          title="JSON-LD context">
     <!--
@@ -588,26 +608,36 @@
       operation) given the context supplied above against the JSON-LD input
       document provided above would result in the following output:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         data-result-for="Expanded sample document"
-         data-context="JSON-LD context"
-         data-compact
-         title="Compacted sample document">
-    <!--
-    {
-      "@context": {
-        "name": "http://xmlns.com/foaf/0.1/name",
-        "homepage": {
-          "@id": "http://xmlns.com/foaf/0.1/homepage",
-          "@type": "@id"
-        }
-      },
-      "@id": "http://me.markus-lanthaler.com/",
-      "name": "Markus Lanthaler",
-      "homepage": "http://www.markus-lanthaler.com/"
-    }
-    -->
-    </pre>
+    <aside class="example ds-selector-tabs"
+           title="Compacted sample document">
+      <div class="selectors">
+        <a class="playground"
+           data-result-for="#sample-document"
+           data-context="#sample-document-context"
+           data-compact
+           target="_blank"></a>
+      </div>
+      <pre class="original selected nohighlight" data-transform="updateExample"
+           data-result-for="Expanded sample document"
+           data-context="JSON-LD context"
+           data-compact
+           title="Compacted sample document">
+      <!--
+      {
+        "@context": {
+          "name": "http://xmlns.com/foaf/0.1/name",
+          "homepage": {
+            "@id": "http://xmlns.com/foaf/0.1/homepage",
+            "@type": "@id"
+          }
+        },
+        "@id": "http://me.markus-lanthaler.com/",
+        "name": "Markus Lanthaler",
+        "homepage": "http://www.markus-lanthaler.com/"
+      }
+      -->
+      </pre>
+    </aside>
 
     <p class="changed">The example above is the JSON-LD serialization of the output of the
       <a href="#compaction-algorithm">compaction algorithm</a>,
@@ -638,7 +668,8 @@
 
     <p>For example, assume the following JSON-LD input document:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
+    <pre id="json-ld-document-in-compact-form"
+         class="example nohighlight" data-transform="updateExample"
          title="JSON-LD document in compact form">
     <!--
     {
@@ -660,27 +691,35 @@
       operation) with a context set to <a>null</a> to prevent compaction
       returns the following document:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         data-result-for="JSON-LD document in compact form"
-         data-flatten
-         title="Flattened sample document in expanded form">
-    <!--
-    [{
-      "@id": "http://me.markus-lanthaler.com/",
-      "http://xmlns.com/foaf/0.1/name": [
-        { "@value": "Markus Lanthaler" }
-      ],
-      "http://xmlns.com/foaf/0.1/knows": [
-        { "@id": "_:b0" }
-      ]
-    }, {
-      "@id": "_:b0",
-      "http://xmlns.com/foaf/0.1/name": [
-        { "@value": "Dave Longley" }
-      ]
-    }]
-    -->
-    </pre>
+    <aside class="example ds-selector-tabs"
+           title="Flattened sample document">
+      <div class="selectors">
+        <a class="playground"
+           data-result-for="#json-ld-document-in-compact-form"
+           data-flatten
+           target="_blank"></a>
+      </div>
+      <pre class="original selected nohighlight" data-transform="updateExample"
+           data-result-for="JSON-LD document in compact form"
+           data-flatten>
+      <!--
+      [{
+        "@id": "http://me.markus-lanthaler.com/",
+        "http://xmlns.com/foaf/0.1/name": [
+          { "@value": "Markus Lanthaler" }
+        ],
+        "http://xmlns.com/foaf/0.1/knows": [
+          { "@id": "_:b0" }
+        ]
+      }, {
+        "@id": "_:b0",
+        "http://xmlns.com/foaf/0.1/name": [
+          { "@value": "Dave Longley" }
+        ]
+      }]
+      -->
+      </pre>
+    </aside>
 
     <p class="changed">The example above is the JSON-LD serialization of the output of the
       <a href="#flattening-algorithm">flattening algorithm</a>,
@@ -696,28 +735,38 @@
       the same context as the input document, the flattened and compacted document
       looks as follows:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         data-result-for="JSON-LD document in compact form"
-         data-flatten
-         data-context="JSON-LD document in compact form"
-         title="Flattened and compacted sample document">
-    <!--
-    {
-      "@context": {
-        "name": "http://xmlns.com/foaf/0.1/name",
-        "knows": "http://xmlns.com/foaf/0.1/knows"
-      },
-      "@graph": [{
-        "@id": "http://me.markus-lanthaler.com/",
-        "name": "Markus Lanthaler",
-        "knows": { "@id": "_:b0" }
-      }, {
-        "@id": "_:b0",
-        "name": "Dave Longley"
-      }]
-    }
-    -->
-    </pre>
+    <aside class="example ds-selector-tabs"
+           title="Flattened and compacted sample document">
+      <div class="selectors">
+        <a class="playground"
+           data-result-for="#json-ld-document-in-compact-form"
+           data-context="#json-ld-document-in-compact-form"
+           data-flatten
+           target="_blank"></a>
+      </div>
+      <pre class="original selected nohighlight" data-transform="updateExample"
+           data-result-for="JSON-LD document in compact form"
+           data-context="JSON-LD document in compact form"
+           data-flatten
+           title="Flattened and compacted sample document">
+      <!--
+      {
+        "@context": {
+          "name": "http://xmlns.com/foaf/0.1/name",
+          "knows": "http://xmlns.com/foaf/0.1/knows"
+        },
+        "@graph": [{
+          "@id": "http://me.markus-lanthaler.com/",
+          "name": "Markus Lanthaler",
+          "knows": { "@id": "_:b0" }
+        }, {
+          "@id": "_:b0",
+          "name": "Dave Longley"
+        }]
+      }
+      -->
+      </pre>
+    </aside>
 
     <p>Please note that the result of flattening and <a>compacting</a> a document
       is always a <a class="changed">dictionary</a>,
