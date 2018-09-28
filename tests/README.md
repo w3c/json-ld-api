@@ -18,7 +18,8 @@ Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, 
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
 * _flatten_ tests have _input_ and _expected_ documents and an optional _context_ document.
-  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output
+  after potentially remapping blank node identifiers (see below).
   Additionally, if the result is compacted and the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
@@ -57,7 +58,7 @@ Implementations create their own infrastructure for running the test suite. In p
 
 * _remote-doc_ tests will likely not return expected HTTP headers, so the _options_ should be used to determine what headers are associated with the input document.
 * Some algorithms, particularly _fromRdf_, may not preserve the order of statements listed in the input document, and provision should be taken for performing unordered array comparison, for arrays other than values of `@list`. (This may be difficult for compacted results, where array value ordering is dependent on the associated term definition).
-* Some implementations may choose an alternative Blank Node Label algorithm, the comparison between documents containing blank node labels should take this into consideration. (One way to do this may be to reduce both results and _expected_ to datsets to extract a bijective mapping of blank node labels between the two datasets as described in [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism)).
+* When comparing documents after flattening, framing or generating RDF, blank node identifiers may not be predictable. Implementations using the JSON-LD 1.0 algorithm, where output is always sorted and blank node identifiers are generated sequentially from `_:b0` may continue to use a simple object comparison. Otherwise, implementations should take this into consideration. (One way to do this may be to reduce both results and _expected_ to datsets to extract a bijective mapping of blank node labels between the two datasets as described in [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism)).
 
 # Contributing
 
