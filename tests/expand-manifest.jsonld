@@ -1180,6 +1180,13 @@
       "purpose": "Verifies that an exception is raised in Expansion when an invalid set or list object is found",
       "input": "expand/e041-in.jsonld",
       "expect": "invalid set or list object"
+   }, {
+      "@id": "#te042",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Keywords may not be redefined",
+      "purpose": "Verifies that an exception is raised on expansion when processing an invalid context attempting to define @container on a keyword",
+      "input": "expand/e042-in.jsonld",
+      "expect": "keyword redefinition"
     }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
