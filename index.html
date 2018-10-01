@@ -1125,7 +1125,7 @@
     <section class="informative">
       <h3>Overview</h3>
 
-      <p><a>term definitions</a> are created by
+      <p><a>Term definitions</a> are created by
         parsing the information in the given <a>local context</a> for the
         given <a>term</a>. If the given <a>term</a> is a
         <a>compact IRI</a>, it may omit an <a>IRI mapping</a> by
@@ -1165,14 +1165,21 @@
         <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>member</a> to
           <code>false</code>. This indicates that the <a>term definition</a>
           is now being created but is not yet complete.</li>
-        <li>Since <a>keywords</a> cannot be overridden,
-          <var>term</var> must not be a <a>keyword</a>. Otherwise, a
+        <li>Initialize <var>value</var> to a copy of the value associated with the <a>member</a>
+          <var>term</var> in <var>local context</var>.</li>
+        <li class="changed">If <a data-link-for="JsonLdOptions">processingMode</a>
+          is <code>json-ld-1.1</code>
+          and <var>term</var> is <code>@type</code>, <var>value</var>
+          MUST be a <a>dictionary</a> with the member <code>@container</code>
+          and value <code>@set</code>. Any other value means that a
+          <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
+          been detected and processing is aborted.</li>
+        <li><span class="changed">Otherwise</span>, since <a>keywords</a> cannot be overridden,
+          <var>term</var> MUST NOT be a <a>keyword</a> and a
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
           error has been detected and processing is aborted.</li>
         <li>Remove any existing <a>term definition</a> for <var>term</var> in
           <var>active context</var>.</li>
-        <li>Initialize <var>value</var> to a copy of the value associated with the <a>member</a>
-          <var>term</var> in <var>local context</var>.</li>
         <li>If <var>value</var> is <code>null</code> or <var>value</var>
           is a <a class="changed">dictionary</a> containing the key-value pair
           <code>@id</code>-<code>null</code>, set the
@@ -1183,7 +1190,7 @@
           to a <a class="changed">dictionary</a> consisting of a single <a>member</a> whose
           key is <code>@id</code> and whose value is <var>value</var>.
           <span class="changed">Set <var>simple term</var> to <code>true</code></span>.</li>
-        <li>Otherwise, <var>value</var> must be a <a class="changed">dictionary</a>, if not, an
+        <li>Otherwise, <var>value</var> MUST be a <a class="changed">dictionary</a>, if not, an
           <a data-link-for="JsonLdErrorCode">invalid term definition</a>
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
@@ -1191,7 +1198,7 @@
         <li>If <var>value</var> contains the <a>member</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>type</var> to the value associated with the
-              <code>@type</code> <a>member</a>, which must be a <a>string</a>. Otherwise, an
+              <code>@type</code> <a>member</a>, which MUST be a <a>string</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set <var>type</var> to the result of using the
@@ -1283,6 +1290,8 @@
               of <var>definition</var> to <var>term</var>.</li>
           </ol>
         </li>
+        <li class="changed">Otherwise, if term is <code>@type</code>, set the <a>IRI mapping</a>
+          of <var>definition</var> to <code>@type</code>.</li>
         <li>Otherwise, if <var>active context</var> has a
           <a>vocabulary mapping</a>, the <a>IRI mapping</a>
           of <var>definition</var> is set to the result of concatenating the value
@@ -1293,7 +1302,7 @@
         <li>If <var>value</var> contains the <a>member</a> <code>@container</code>:
           <ol>
             <li>Initialize <var>container</var> to the value associated with the
-              <code>@container</code> <a>member</a>, which must be either
+              <code>@container</code> <a>member</a>, which MUST be either
               <code class="changed">@graph</code>,
               <code class="changed">@id</code>,
               <code>@index</code>,
@@ -1341,7 +1350,7 @@
           does not contain the <a>member</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>language</var> to the value associated with the
-              <code>@language</code> <a>member</a>, which must be either <code>null</code>
+              <code>@language</code> <a>member</a>, which MUST be either <code>null</code>
               or a <a>string</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1356,8 +1365,8 @@
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <a>nest value</a> in <var>definition</var> to the value associated with the
-              <code>@nest</code> <a>member</a>, which must be a <a>string</a> and
-              must not be a keyword other than <code>@nest</code>. Otherwise, an
+              <code>@nest</code> <a>member</a>, which MUST be a <a>string</a> and
+              MUST NOT be a keyword other than <code>@nest</code>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
               error has been detected and processing is aborted.</li>
           </ol>
@@ -1369,7 +1378,7 @@
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize the <a>prefix flag</a> to the value associated with the
-              <code>@prefix</code> <a>member</a>, which must be a <a>boolean</a>. Otherwise, an
+              <code>@prefix</code> <a>member</a>, which MUST be a <a>boolean</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @prefix value</a>
               error has been detected and processing is aborted.</li>
           </ol>
@@ -2398,6 +2407,12 @@
                     passing <var>active context</var>, <var>inverse context</var>,
                     <var>expanded property</var> for <var>var</var>,
                     and <code>true</code> for <var>vocab</var>.</li>
+                  <li class="changed">If <a>processing mode</a> is <code>json-ld-1.1</code>,
+                    <var>element</var> does not have an <code>@value</code> member,
+                    <var>expanded property</var> is <code>@type</code>,
+                    and the <a>term definition</a> for <var>alias</var> in the
+                    <var>active context</var> has a <a>container mapping</a> including <code>@set</code>,
+                    ensure that <var>compacted value</var> is an <a>array</a>.</li>
                   <li>Add a <a>member</a> <var>alias</var> to <var>result</var> whose value is
                     set to <var>compacted value</var> and continue to the next
                     <var>expanded property</var>.</li>
@@ -2417,7 +2432,7 @@
                     <li>If the <a>term definition</a> for <var>property</var> in the
                       <var>active context</var> indicates that <var>property</var> is
                       a <a>reverse property</a>
-                      <ol>
+                            <ol>
                         <li>If the <a>term definition</a> for <var>property</var> in
                           the <var>active context</var> has a
                           <a>container mapping</a> <span class="changed">including</span> <code>@set</code> or
@@ -5457,20 +5472,8 @@
       a context. When this is set, vocabulary-relative IRIs, such as the
       <a>members</a> of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> using string concatenation.</li>
-    <li><a>Lists</a> may now have <a>members</a> which are themselves <a>lists</a>.</li>
-    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
-      has been updated to ensure that only <a>well-formed</a> <a>triples</a>
-      are emitted; previously, it only ensured that <a>triples</a> containing
-      <a>relative IRIs</a> were excluded.</li>
-    <li>The API now adds an <a data-link-for="JsonLdOptions">ordered</a>
-       option, defaulting to <code>false</code> This is used in algorithms to
-       control interation of <a>dictionary member</a> keys. Previously, the
-       algorithms always required such an order. The instructions for
-       evaluating test results have been updated accordingly.</li>
-    <li>The <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
-      has been updated to remove the specifics of how new blank node
-      identifiers are created.</li>
   </ul>
+  <p>Additionally, see <a href="#changes-from-cg" class="sectionRef"></a>.</p>
 </section>
 
 <section class="appendix informative" id="changes-from-cg">
@@ -5489,6 +5492,10 @@
     <li>The <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
       has been updated to remove the specifics of how new blank node
       identifiers are created.</li>
+    <li>Values of <code>@type</code>, or an alais of <code>@type</code>, may now have their <code>@container</code> set to @set
+      to ensure that <code>@type</code> members are always represented as an array. This
+      also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>dictionary</a>
+      with <code>@container</code> set to <code>@set</code>.</li>
   </ul>
 </section>
 
