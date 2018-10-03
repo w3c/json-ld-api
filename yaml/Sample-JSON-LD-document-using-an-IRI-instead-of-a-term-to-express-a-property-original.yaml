@@ -1,4 +1,4 @@
-Example 004: Sample JSON-LD document using an IRI instead of a term to express a property
+Example 004: Sample JSON-LD document using an IRI instead of a term to express a property-original
 ---
 "@context":
   website: http://xmlns.com/foaf/0.1/homepage
