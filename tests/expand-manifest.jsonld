@@ -803,6 +803,13 @@
       "expect": "expand/0108-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0109",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "IRI expansion of fragments including ':'",
+      "purpose": "Do not treat as absolute IRIs values that look like compact IRIs if they're not absolute",
+      "input": "expand/0109-in.jsonld",
+      "expect": "expand/0109-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",

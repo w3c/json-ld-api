@@ -1514,7 +1514,8 @@
               for <var>prefix</var>, return the result of concatenating
               the <a>IRI mapping</a> associated with <var>prefix</var> and
               <var>suffix</var>.</li>
-            <li>Return <var>value</var> as it is already an <a>absolute IRI</a>.</li>
+            <li><span class="changed">If <var>value</var> as the form of an <a>absolute IRI</a></span>,
+              return <var>value</var>.</li>
           </ol>
         </li>
         <li>If <var>vocab</var> is <code>true</code>, and
@@ -5510,6 +5511,11 @@
       to ensure that <code>@type</code> members are always represented as an array. This
       also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>dictionary</a>
       with <code>@container</code> set to <code>@set</code>.</li>
+    <li>Updated the <a href="#iri-expansion">IRI Expansion algorithm</a> so that
+      if <var>value</var> contains a colon (<code>:</code>), but
+      <var>prefix</var> is not a <a>term</a>, to only return <var>value</var>
+      if it has the form of an <a>absolute IRI</a>, otherwise fall through to
+      the rest of the algorithm.</li>
   </ul>
 </section>
 
