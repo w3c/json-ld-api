@@ -1181,7 +1181,7 @@
           is now being created but is not yet complete.</li>
         <li>Initialize <var>value</var> to a copy of the value associated with the <a>member</a>
           <var>term</var> in <var>local context</var>.</li>
-        <li class="changed">If <a data-link-for="JsonLdOptions">processingMode</a>
+        <li class="changed">If <a>processing mode</a>
           is <code>json-ld-1.1</code>
           and <var>term</var> is <code>@type</code>, <var>value</var>
           MUST be a <a>dictionary</a> with the member <code>@container</code>
@@ -1336,7 +1336,7 @@
               Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid container mapping</a>
               has been detected and processing is aborted.</li>
-            <li class="changed">If <a data-link-for="JsonLdOptions">processingMode</a>
+            <li class="changed">If <a>processing mode</a>
               is <code>json-ld-1.0</code> and the container value
               is <code>@graph</code>, <code>@id</code>, or <code>@type</code>, or is otherwise not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid container mapping</a>
@@ -1347,7 +1347,7 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>member</a> <code>@context</code>:
           <ol>
-            <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, an
+            <li>If <a>processing mode</a> is <code>json-ld-1.0</code>, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <var>context</var> to the value associated with the
@@ -1375,7 +1375,7 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>member</a> <code>@nest</code>:
           <ol>
-            <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, an
+            <li>If <a>processing mode</a> is <code>json-ld-1.0</code>, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <a>nest value</a> in <var>definition</var> to the value associated with the
@@ -1387,7 +1387,7 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>member</a> <code>@prefix</code>:
           <ol>
-            <li>If <a data-link-for="JsonLdOptions">processingMode</a> is <code>json-ld-1.0</code>, or if
+            <li>If <a>processing mode</a> is <code>json-ld-1.0</code>, or if
               <var>term</var> contains a colon (<code>:</code>), an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
@@ -4882,9 +4882,10 @@
            <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
             <var>expanded input</var> as <var>element</var> and <var>node map</var>.</li>
           <li>Invoke the
-            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a></li>
+            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
             passing <var>node map</var>, <var>dataset</var>, and if passed, the
             <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-fromRdf-options">options</a>
+            <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
           <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
         </ol>
 
