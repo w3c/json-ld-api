@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ruby-rdf/json-ld.git
+  revision: b74e49d3ecfc9e139ea3c60c0f700e9d2d844b20
+  branch: develop
+  specs:
+    json-ld (3.0.2)
+      multi_json (~> 1.12)
+      rdf (>= 2.2.8, < 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -22,9 +31,6 @@ GEM
     htmlentities (4.3.4)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
-    json-ld (3.0.2)
-      multi_json (~> 1.12)
-      rdf (>= 2.2.8, < 4.0)
     json-ld-preloaded (3.0.1)
       json-ld (~> 3.0)
       multi_json (~> 1.12)
@@ -65,7 +71,7 @@ GEM
     multi_json (1.13.1)
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     nokogumbo (1.5.0)
       nokogiri
@@ -111,13 +117,13 @@ GEM
       rdf (>= 2.2, < 4.0)
       rdf-vocab (>= 2.2, < 4.0)
       rdf-xsd (>= 2.2, < 4.0)
-    rdf-trig (3.0.0)
+    rdf-trig (3.0.1)
       ebnf (~> 1.1)
       rdf (~> 3.0)
-      rdf-turtle (~> 3.0, >= 3.0.2)
+      rdf-turtle (~> 3.0, >= 3.0.3)
     rdf-trix (2.2.1)
       rdf (>= 2.2, < 4.0)
-    rdf-turtle (3.0.2)
+    rdf-turtle (3.0.3)
       ebnf (~> 1.1)
       rdf (~> 3.0)
     rdf-vocab (3.0.3)
@@ -153,6 +159,7 @@ PLATFORMS
 
 DEPENDENCIES
   colorize
+  json-ld!
   linkeddata
   nokogiri
   rake
