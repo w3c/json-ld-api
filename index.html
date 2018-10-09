@@ -119,7 +119,7 @@
   };
 //]]>
 </script>
-<script type="text/javascript">
+<script>
   // Add example button selection logic
   document.addEventListener("DOMContentLoaded", () => {
     for (const button of document.querySelectorAll(".ds-selector-tabs .selectors button")) {
@@ -133,7 +133,7 @@
     }
   })
 </script>
-<style type="text/css">
+<style>
   .hl-bold {
     font-weight: bold;
     color: #0a3;
@@ -211,15 +211,19 @@
   .ds-selector-tabs pre.selected, .ds-selector-tabs table.selected {
     display: block;
   }
-  button.playground {
-    width: 150px;
-  }
   a.playground {
-    border-bottom: none;
+    display: inline-block;
+    width: 150px;
+    border: 1px solid transparent;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    background-color: rgb(192, 192, 192);
     text-decoration: none;
     font-size: 13px;
+    margin-bottom: 10px;
   }
   a[href].playground {
+    padding: 4px 0 3px 8px;
     border-bottom: none;
     text-decoration: none;
     color: #666;
@@ -4917,9 +4921,9 @@
            <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
             <var>expanded input</var> as <var>element</var> and <var>node map</var>.</li>
           <li>Invoke the
-            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a></li>
+            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
             passing <var>node map</var>, <var>dataset</var>, and if passed, the
-            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>
+            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.</li>
           <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
         </ol>
 
