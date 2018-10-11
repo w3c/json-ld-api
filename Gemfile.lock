@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ruby-rdf/json-ld.git
-  revision: b74e49d3ecfc9e139ea3c60c0f700e9d2d844b20
+  revision: 488d5e7737d401bb83a246248ad2f921c56938c4
   branch: develop
   specs:
     json-ld (3.0.2)
@@ -162,6 +162,7 @@ DEPENDENCIES
   json-ld!
   linkeddata
   nokogiri
+  nokogumbo
   rake
 
 BUNDLED WITH

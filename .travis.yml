@@ -29,6 +29,7 @@ jobs:
         - bundle exec rake check_html
     - stage: echidna
       name: "Echidna Publication"
+      language: javascript
       # Only on push to "publications" branch
       if: branch = publications AND type = push
       env:
