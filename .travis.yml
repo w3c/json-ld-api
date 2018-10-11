@@ -1,11 +1,11 @@
-sudo: required
 dist: trusty
-services:
-  - docker
 jobs:
   include:
     - stage: common
       name: "Verify common files are consistent"
+      language: javascript
+      # Only check on pull requests to master
+      if: branch = master AND type = pull_request
       script:
         - git remote add -f b https://github.com/w3c/json-ld-wg.git
         - git remote update
@@ -17,10 +17,16 @@ jobs:
       bundler_args: --without debug
       script: "rake test"
     - stage: links
-      name: "Check internal links"
+      name: "Check internal links and HTML"
+      sudo: required
+      services:
+        - docker
+      # Because (alas) rawgit is end of life, we'll run this only on the master branch.
+      if: branch = master
       script:
         - docker pull stupchiy/checklink
         - docker run -it stupchiy/checklink -b -X '(http|https|mailto):' "https://labs.w3.org/spec-generator/?type=respec&url=https://rawgit.com/w3c/json-ld-api/${TRAVIS_BRANCH}/index.html?specStatus=WD;shortName=json-ld11-api"
+        - bundle exec rake check_html
     - stage: echidna
       name: "Echidna Publication"
       # Only on push to "publications" branch
