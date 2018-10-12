@@ -24,9 +24,9 @@
 
       // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
       // and its maturity status
-      prevVersion:          "https://www.w3.org/TR/2014/REC-json-ld-api-20140116/",
-      previousPublishDate:  "2014-01-16",
-      previousMaturity:     "REC",
+      prevVersion:          "https://www.w3.org/TR/2018/WD-json-ld11-api-20181012/",
+      previousPublishDate:  "2018-10-12",
+      previousMaturity:     "WD",
 
       // if there a publicly available Editor's Draft, this is the link
       edDraftURI:           "https://w3c.github.io/json-ld-api/",
@@ -41,6 +41,7 @@
       includePermalinks:      true,
       doJsonLd:               true,
       highlightVars:          true,
+      pluralize:              true,
 
       // editors, add as many as you like
       // only "name" is required
@@ -277,8 +278,8 @@
   </ul>
 
   <p>To understand the basics in this specification you must first be familiar with
-    <a data-cite="RFC8288">JSON</a>, which is detailed in [[!RFC8288]]. You must also understand the
-    <a data-cite="JSON-LD11">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [[!JSON-LD11]], which is the base syntax used by all
+    <a data-cite="RFC8288">JSON</a>, which is detailed in [[RFC8288]]. You must also understand the
+    <a data-cite="JSON-LD11">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [[JSON-LD11]], which is the base syntax used by all
     of the algorithms in this document. To understand the API and how it is
     intended to operate in a programming environment, it is useful to have working
     knowledge of the JavaScript programming language [[ECMASCRIPT]] and
@@ -312,8 +313,8 @@
   <section>
     <h2>Terminology</h2>
 
-    <p>This document uses the following terms as defined in JSON [[!RFC8288]]. Refer
-      to the <a data-cite="RFC8288#section-2">JSON Grammar section</a> in [[!RFC8288]] for formal definitions.</p>
+    <p>This document uses the following terms as defined in JSON [[RFC8288]]. Refer
+      to the <a data-cite="RFC8288#section-2">JSON Grammar section</a> in [[RFC8288]] for formal definitions.</p>
 
     <div data-include="common/terms.html"
          data-oninclude="restrictReferences">
@@ -372,7 +373,7 @@
 <section class="informative">
   <h1>Features</h1>
 
-  <p>The JSON-LD 1.1 Syntax specification [[!JSON-LD11]] defines a syntax to
+  <p>The JSON-LD 1.1 Syntax specification [[JSON-LD11]] defines a syntax to
     express Linked Data in JSON. Because there is more than one way to
     express Linked Data using this syntax, it is often useful to be able to
     transform JSON-LD documents so that they may be more easily consumed by
@@ -405,7 +406,7 @@
     <a>expansion</a> and <a>compaction</a>, respectively.</p>
 
   <p class="changed">JSON-LD 1.1 introduces new features that are
-    compatible with <a data-cite="JSON-LD">JSON-LD 1.0</a> [[!JSON-LD]],
+    compatible with <a data-cite="JSON-LD">JSON-LD 1.0</a> [[JSON-LD]],
     but if processed by a JSON-LD 1.0 processor may produce different results.
     In order to detect this JSON-LD 1.1 requires that the <a>processing
     mode</a> be explicitly set to <code>json-ld-1.1</code>, either through the
@@ -918,16 +919,16 @@
       <a>term definitions</a> which specify how
       keys and values have to be interpreted as well as the current <a>base IRI</a>,
       the <a>vocabulary mapping</a> and the <a>default language</a>. Each
-      <a>term definition</a> consists of an <dfn data-lt="IRI mappings">IRI mapping</dfn>, a boolean
-      flag <dfn data-lt="reverse properties">reverse property</dfn>, an optional <dfn data-lt="type mappings">type mapping</dfn>
-      or <dfn data-lt="language mappings">language mapping</dfn>,
+      <a>term definition</a> consists of an <dfn>IRI mapping</dfn>, a boolean
+      flag <dfn>reverse property</dfn>, an optional <dfn>type mapping</dfn>
+      or <dfn>language mapping</dfn>,
       <span class="changed">an optional <a>context</a></span>,
       <span class="changed">an optional <dfn>nest value</dfn>,</span>
       <span class="changed">an optional <dfn>prefix flag</dfn>,</span>
-      and an optional <dfn data-lt="container mappings">container mapping</dfn>.
+      and an optional <dfn>container mapping</dfn>.
       A <a>term definition</a> can not only be used to map a <a>term</a>
       to an IRI, but also to map a <a>term</a> to a <a>keyword</a>,
-      in which case it is referred to as a <dfn data-lt="keyword aliases">keyword alias</dfn>.</p>
+      in which case it is referred to as a <dfn>keyword alias</dfn>.</p>
 
     <p>When processing, <var>active context</var> is initialized
       without any <a>term definitions</a>,
@@ -1016,16 +1017,16 @@
                 <li>Set <var>context</var> to the result of resolving <var>value</var> against
                   the base IRI which is established as specified in
                   <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
-                  of [[!RFC3986]]. Only the basic algorithm in
+                  of [[RFC3986]]. Only the basic algorithm in
                   <a data-cite="RFC3986#section-5.2">section 5.2</a>
-                  of [[!RFC3986]] is used; neither
+                  of [[RFC3986]] is used; neither
                   <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
                   <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
                   are performed. Characters additionally allowed in IRI
                   references are treated in the same way that unreserved
                   characters are treated in URI references, per
                   <a data-cite="RFC3987#section-6.5">section 6.5</a>
-                  of [[!RFC3987]].</li>
+                  of [[RFC3987]].</li>
                 <li>If <var>context</var> is in the <var>remote contexts</var> array, a
                   <a data-link-for="JsonLdErrorCode">recursive context inclusion</a>
                   error has been detected and processing is aborted;
@@ -1530,13 +1531,13 @@
           set <var>value</var> to the result of resolving <var>value</var> against
           the <a>base IRI</a>. Only the basic algorithm in
           <a data-cite="RFC3986#section-5.2">section 5.2</a>
-          of [[!RFC3986]] is used; neither
+          of [[RFC3986]] is used; neither
           <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
           <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
           are performed. Characters additionally allowed in IRI references are treated
           in the same way that unreserved characters are treated in URI references, per
           <a data-cite="RFC3987#section-6.5">section 6.5</a>
-          of [[!RFC3987]].</li>
+          of [[RFC3987]].</li>
         <li>Return <var>value</var> as is.</li>
       </ol>
     </section>
@@ -3982,7 +3983,7 @@
         <a>lexical form</a> of a <a>string</a>, any <a>datatype IRI</a> is
         <a>well-formed</a>, and any <a>language tag</a> is <a>well-formed</a>
         according to <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of
-        [[!BCP47]].</li>
+        [[BCP47]].</li>
     </ul>
 
     <section class="informative">
@@ -4156,7 +4157,7 @@
           part (the result of a modulo&#8209;1 operation) or <var>value</var> is a <a>number</a>
           and <var>datatype</var> equals <code>xsd:double</code>, convert <var>value</var> to a
           <a>string</a> in <a>canonical lexical form</a> of
-          an <a data-cite="XMLSCHEMA11-2#double"><code>xsd:double</code></a> as defined in [[!XMLSCHEMA11-2]]
+          an <a data-cite="XMLSCHEMA11-2#double"><code>xsd:double</code></a> as defined in [[XMLSCHEMA11-2]]
           and described in
           <a class="sectionRef" href="#data-round-tripping"></a>.
           If <var>datatype</var> is <code>null</code>, set it to
@@ -4166,7 +4167,7 @@
           is a <a>number</a> and <var>datatype</var>
           equals <code>xsd:integer</code>, convert <var>value</var> to a
           <a>string</a> in <a>canonical lexical form</a> of
-          an <a data-cite="XMLSCHEMA11-2#integer"><code>xsd:integer</code></a> as defined in [[!XMLSCHEMA11-2]]
+          an <a data-cite="XMLSCHEMA11-2#integer"><code>xsd:integer</code></a> as defined in [[XMLSCHEMA11-2]]
           and described in
           <a class="sectionRef" href="#data-round-tripping"></a>.
           If <var>datatype</var> is <code>null</code>, set it to
@@ -4189,7 +4190,7 @@
     <p>List Conversion is the process of taking a <a>list object</a>
       and transforming it into an
       <a>RDF collection</a>
-      as defined in RDF Semantics [[!RDF11-MT]].</p>
+      as defined in RDF Semantics [[RDF11-MT]].</p>
 
     <section class="informative">
       <h3>Overview</h3>
@@ -4514,7 +4515,7 @@
                   <code>xsd:double</code> and its
                   <a>lexical form</a>
                   is a valid <code>xsd:integer</code> or <code>xsd:double</code>
-                  according [[!XMLSCHEMA11-2]], set <var>converted value</var>
+                  according [[XMLSCHEMA11-2]], set <var>converted value</var>
                   to the result of converting the
                   <a>lexical form</a>
                   to a JSON <a>number</a>.</li>
@@ -4550,7 +4551,7 @@
       and <a>strings</a> are coerced to <code>xsd:string</code>.
       The numeric or boolean values themselves are converted to
       <dfn>canonical lexical form</dfn>, i.e., a deterministic string
-      representation as defined in [[!XMLSCHEMA11-2]].</p>
+      representation as defined in [[XMLSCHEMA11-2]].</p>
 
     <p>The <a>canonical lexical form</a> of an <em>integer</em>, i.e., a
       <a>number</a> with no non-zero fractional part or a <a>number</a>
@@ -4583,7 +4584,7 @@
       decimal point unless the value being represented is zero. The
       canonical representation for zero is <code>0.0E0</code>.
       <code>xsd:double</code>'s value space is defined by the IEEE
-      double-precision 64-bit floating point type [[!IEEE-754-2008]] whereas
+      double-precision 64-bit floating point type [[IEEE-754-2008]] whereas
       the value space of JSON <a>numbers</a> is not
       specified; when deserializing JSON-LD to RDF the mantissa is rounded to
       15&nbsp;digits after the decimal point. In JavaScript, implementers
@@ -4613,7 +4614,7 @@
       when converted from RDF to JSON-LD and back to RDF. It is important
       to highlight that in practice it might be impossible to losslessly
       convert an <code>xsd:integer</code> to a <a>number</a> because
-      its value space is not limited. While the JSON specification [[!RFC8288]]
+      its value space is not limited. While the JSON specification [[RFC8288]]
       does not limit the value space of <a>numbers</a>
       either, concrete implementations typically do have a limited value
       space.</p>
@@ -4773,7 +4774,7 @@
             as <var>local context</var>. If
             <a data-link-for="JsonldOptions">expandContext</a>
             is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, pass that <a data-lt="member">member's</a> value instead.</li>
-          <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved, the response has an HTTP Link Header [[!RFC8288]]
+          <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved, the response has an HTTP Link Header [[RFC8288]]
             using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
             and a content type of <code>application/json</code> or any media type
             with a <code>+json</code> suffix as defined in [[RFC6839]] except
@@ -5067,7 +5068,7 @@
       <dd>An absolute <a>IRI</a> denoting the <a data-lt="RDF11-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of the <a>literal</a>.
         If the value is <code>rdf:langString</code>, <a data-link-for="RdfLiteral">language</a> MUST be specified.</dd>
       <dt><dfn data-dfn-for="RdfLiteral">language</dfn></dt>
-      <dd>An optional <a>language tag</a> as defined by [[!BCP47]]. If this value is specified,
+      <dd>An optional <a>language tag</a> as defined by [[BCP47]]. If this value is specified,
         <a data-link-for="RdfLiteral">datatype</a> MUST be <code>rdf:langString</code></dd>
     </dl>
   </section> <!-- end of RdfDataset -->
@@ -5113,7 +5114,7 @@
       <dd>If set to <code>true</code>, the JSON-LD processor may emit blank nodes for
         <a>triple</a> <a>predicates</a>, otherwise they will be omitted.
       <dfn data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
-        are defined in [[!RDF11-CONCEPTS]].</dd>
+        are defined in [[RDF11-CONCEPTS]].</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
         If set to <code>json-ld-1.0</code> or <code>json-ld-1.1</code>, the
@@ -5193,7 +5194,7 @@
 
       <dl>
         <dt><dfn data-dfn-for="RemoteDocument">contextUrl</dfn></dt>
-        <dd>If available, the value of the HTTP Link Header [[!RFC8288]] using the
+        <dd>If available, the value of the HTTP Link Header [[RFC8288]] using the
           <code>http://www.w3.org/ns/json-ld#context</code> link relation in the
           response. If the response's content type is <code>application/ld+json</code>,
           the HTTP Link Header is ignored. If multiple HTTP Link Headers using
@@ -5391,7 +5392,7 @@
         <dt><dfn>loading remote context failed</dfn></dt>
         <dd>There was a problem encountered loading a remote context.</dd>
         <dt><dfn>multiple context link headers</dfn></dt>
-        <dd>Multiple HTTP Link Headers [[!RFC8288]] using the
+        <dd>Multiple HTTP Link Headers [[RFC8288]] using the
           <code>http://www.w3.org/ns/json-ld#context</code> link relation
           have been detected.</dd>
         <dt><dfn>processing mode conflict</dfn></dt>
