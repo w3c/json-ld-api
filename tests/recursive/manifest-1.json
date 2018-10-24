@@ -1,5 +1,5 @@
 {
-	"@context": "http://iiif.io/api/presentation/3/context.json",
+	"@context": "https://rawgit.com/w3c/json-ld-api/recursive-test/tests/recursive/presentation.json",
 	"id": "http://example.org/iiif/prezi/1/manifest.json",
 	"type": "Manifest",
 	"label": {"en": ["Manifest"]},
