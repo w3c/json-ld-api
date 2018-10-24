@@ -1,0 +1,28 @@
+{
+	"@context": {
+		"@version": 1.1,
+		"image": "http://iiif.io/api/image/3/context.json",
+		"prezi": "http://iiif.io/api/presentation/3/context.json",
+		"exif": "http://www.w3.org/2003/12/exif/ns#",
+		"as": "http://www.w3.org/ns/activitystreams#",
+
+	    "id": "@id",
+	    "type": "@type",
+
+	    "ImageService3": "http://iiif.io/api/image/3/ImageService",
+
+	    "height": "exif:height",
+	    "width": "exif:width",
+
+	    "partOf": {
+	      "@type": "@id",
+	      "@id": "as:partOf",
+	      "@container": "@set"
+	    },
+
+	    "Manifest": {
+	    	"@id": "prezi:Manifest",
+	    	"@context": "http://iiif.io/api/presentation/3/context.json"
+		}
+	}
+}

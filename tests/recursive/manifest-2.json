@@ -1,0 +1,40 @@
+{
+	"@context": "http://iiif.io/api/presentation/3b/context.json",
+	"id": "http://example.org/iiif/prezi/1/manifest.json",
+	"type": "Manifest",
+	"label": {"en": ["Manifest"]},
+	"items": [
+		{
+			"id": "http://example.org/iiif/prezi/1/canvas/1.json",
+			"type": "Canvas",
+			"items": [
+				{
+					"id": "http://example.org/iiif/prezi/1/list/1.json",
+					"type": "AnnotationPage",
+					"items": [
+						{
+							"@context": "http://www.w3.org/ns/anno.jsonld",
+							"id": "http://example.org/anno/1.json",
+							"type": "Annotation",
+							"target": "http://example.org/iiif/prezi/1/canvas/1.json",
+							"body": {
+								"id": "http://example.org/content/image/1.png",
+								"type": "Image",
+								"service": {
+									"@context": "http://iiif.io/api/image/3b/context.json",
+									"id": "http://example.org/iiif/image/1/info.json",
+									"type": "ImageService3",
+									"partOf": {
+										"@context": "http://iiif.io/api/presentation/3b/context.json",
+										"id": "http://example.org/iiif/prezi/1/collection.json",
+										"type": "Collection"
+									}
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

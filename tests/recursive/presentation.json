@@ -1,0 +1,50 @@
+{
+	"@context": {
+		"@version": 1.1,
+		"image": "http://iiif.io/api/image/3/context.json",
+		"prezi": "http://iiif.io/api/presentation/3/context.json",
+		"as": "http://www.w3.org/ns/activitystreams#",
+		"oa": "http://www.w3.org/ns/oa#",
+
+    	"Collection": "prezi:Collection",
+    	"Manifest": "prezi:Manifest",
+    	"Canvas": "prezi:Canvas",
+    	"Range": "prezi:Range",
+
+	    "AnnotationCollection": {
+	      "@id": "as:OrderedCollection",
+	      "@context": "http://www.w3.org/ns/anno.jsonld"
+	    },
+	    "AnnotationPage": {
+	      "@id": "as:OrderedCollectionPage",
+	      "@context": "http://www.w3.org/ns/anno.jsonld"
+	    },
+	    "Annotation": {
+	      "@id": "oa:Annotation",
+	      "@context": "http://www.w3.org/ns/anno.jsonld"
+	    },    	
+
+	    "ImageService3": {
+	      "@id": "http://iiif.io/api/image/3/ImageService",
+	      "@context": "http://iiif.io/api/image/3/context.json"
+    	},
+
+	    "id": "@id",
+	    "type": "@type",
+	    "label": {
+	      "@id": "rdfs:label",
+	      "@container": ["@language", "@set"]
+	    },
+	    "service": {
+	      "@type": "@id",
+	      "@id": "svcs:has_service",
+	      "@container": "@set"
+	    },
+	    "items": {
+	    	"@type": "@id",
+	    	"@id": "as:orderedItems",
+	    	"@container": "@list"
+	    }
+
+	}
+}
