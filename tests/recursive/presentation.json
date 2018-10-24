@@ -26,7 +26,7 @@
 
 	    "ImageService3": {
 	      "@id": "http://iiif.io/api/image/3/ImageService",
-	      "@context": "https://rawgit.com/w3c/json-ld-api/recursive-test/tests/recursive/image.json"
+	      "@context": "https://raw.githubusercontent.com/w3c/json-ld-api/recursive-test/tests/recursive/image.json"
     	},
 
 	    "id": "@id",

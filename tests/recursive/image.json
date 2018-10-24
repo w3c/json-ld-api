@@ -22,7 +22,7 @@
 
 	    "Manifest": {
 	    	"@id": "prezi:Manifest",
-	    	"@context": "https://rawgit.com/w3c/json-ld-api/recursive-test/tests/recursive/presentation.json"
+	    	"@context": "https://raw.githubusercontent.com/w3c/json-ld-api/recursive-test/tests/recursive/presentation.json"
 		}
 	}
 }
