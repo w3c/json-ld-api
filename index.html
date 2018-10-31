@@ -1100,7 +1100,9 @@
                   of <var>result</var> is set to <var>value</var>. If it is not
                   an <a>absolute IRI</a>, or a <a>blank node identifier</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid vocab mapping</a>
-                  error has been detected and processing is aborted.</li>
+                  error has been detected and processing is aborted.
+                  <div class="issue atrisk">The use of <a>blank node identifiers</a> to value for <code>@vocab</code> is obsolete,
+                    and may be removed in a future version of JSON-LD.</div></li>
               </ol>
             </li>
             <li>If <var>context</var> has an <code>@language</code> <a>member</a>:
@@ -3859,7 +3861,9 @@
               <ol>
                 <li>If <var>property</var> is a <a>blank node identifier</a>, replace it with a newly
                   <a href="#generate-blank-node-identifier">generated blank node identifier</a>
-                  passing <var>property</var> for <var>identifier</var>.</li>
+                  passing <var>property</var> for <var>identifier</var>.
+                  <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+                    and may be removed in a future version of JSON-LD.</div></li>
                 <li>If <var>node</var> does not have a <var>property</var> <a>member</a>, create one and initialize
                   its value to an empty <a>array</a>.</li>
                 <li>Recursively invoke this algorithm passing <var>value</var> for <var>element</var>,
@@ -3961,9 +3965,12 @@
 
     <p>This algorithm deserializes a JSON-LD document to an <a>RDF dataset</a>.
       Please note that RDF does not allow a <a>blank node</a> to be used
-      as a <a>property</a>, while JSON-LD does.  Therefore, by default
+      as a <a>property</a>, while JSON-LD does. Therefore, by default
       RDF triples that would have contained blank nodes as <a>properties</a> are
       discarded when interpreting JSON-LD as RDF.</p>
+
+    <p class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+      and may be removed in a future version of JSON-LD.</p>
 
     <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
       <a>RDF triples</a> and <a>graph names</a>:</p>
@@ -4020,6 +4027,11 @@
         containing a <a>blank node</a> <a>predicate</a>
         are excluded from output.</p>
 
+      <p class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+        and may be removed in a future version of JSON-LD,
+        as is the support for <a>generalized rdf datasets</a>
+        and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</p>
+
       <ol>
         <li>For each <var>graph name</var> and <var>graph</var> in <var>node map</var>
           ordered by <var>graph name</var>:
@@ -4055,7 +4067,12 @@
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
                     <li>Otherwise, if <var>property</var> is a <a>blank node identifier</a> and
                       the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option is not <code>true</code>,
-                      continue with the next <var>property</var>-<var>values</var> pair.</li>
+                      continue with the next <var>property</var>-<var>values</var> pair.
+                      <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+                        and may be removed in a future version of JSON-LD,
+                        as is the support for <a>generalized rdf datasets</a>
+                        and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</div>
+                      </li>
                     <li>Otherwise, if <var>property</var> is
                       <span class="changed">not <a>well-formed</a></span>,
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
@@ -4454,7 +4471,7 @@
     <h2>RDF to Object Conversion</h2>
 
     <p>This algorithm transforms an RDF literal to a JSON-LD <a>value object</a>
-      and a RDF blank node or IRI to an JSON-LD <a>node object</a>.</p>
+      and a RDF <a>blank node</a> or <a>IRI</a> to an JSON-LD <a>node object</a>.</p>
 
     <section class="informative">
       <h3>Overview</h3>
@@ -4890,7 +4907,12 @@
             <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
             passing <var>node map</var>, <var>dataset</var>, and if passed, the
             <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-fromRdf-options">options</a>
-            <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
+            <a data-lt="jsonldprocessor-fromRdf-options">options</a>.
+            <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+              and may be removed in a future version of JSON-LD,
+              as is the support for <a>generalized rdf datasets</a>
+              and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</div>
+            </li>
           <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
         </ol>
 
@@ -4924,7 +4946,12 @@
           <li>Invoke the
             <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
             passing <var>node map</var>, <var>dataset</var>, and if passed, the
-            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.</li>
+            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.
+            <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+              and may be removed in a future version of JSON-LD,
+              as is the support for <a>generalized rdf datasets</a>
+              and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</div>
+            </li>
           <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
         </ol>
 
@@ -5045,7 +5072,10 @@
       <dd>An absolute <a>IRI</a> or <a>blank node identifier</a> denoting the <a>subject</a> of the <a>triple</a>.</dd>
       <dt><dfn data-dfn-for="RdfTriple">predicate</dfn></dt>
       <dd>An absolute <a>IRI</a> denoting the <a>predicate</a> of the <a>triple</a>.
-        If used to represent a <a>Generalized RDF Dataset</a>, it may also be a <a>blank node identifier</a>.</dd>
+        If used to represent a <a>Generalized RDF Dataset</a>, it may also be a <a>blank node identifier</a>.
+        <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+          and may be removed in a future version of JSON-LD, as is the support for <a>generalized rdf datasets</a>.</div>
+        </dd>
       <dt><dfn data-dfn-for="RdfTriple">object</dfn></dt>
       <dd>An absolute <a>IRI</a>, <a>blank node identifier</a> or <a>literal</a> denoting the <a>object</a> of the <a>triple</a>.</dd>
     </dl>
@@ -5113,8 +5143,13 @@
       <dt><dfn data-dfn-for="JsonLdOptions">produceGeneralizedRdf</dfn></dt>
       <dd>If set to <code>true</code>, the JSON-LD processor may emit blank nodes for
         <a>triple</a> <a>predicates</a>, otherwise they will be omitted.
-      <dfn data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
-        are defined in [[RDF11-CONCEPTS]].</dd>
+        <dfn data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
+          are defined in [[RDF11-CONCEPTS]].
+        <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
+          and may be removed in a future version of JSON-LD,
+          as is the support for <a>generalized rdf datasets</a>
+          and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</div>
+      </dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
         If set to <code>json-ld-1.0</code> or <code>json-ld-1.1</code>, the
@@ -5522,6 +5557,11 @@
       <var>prefix</var> is not a <a>term</a>, to only return <var>value</var>
       if it has the form of an <a>absolute IRI</a>, otherwise fall through to
       the rest of the algorithm.</li>
+    <li>The use of <a>blank node identifiers</a> to label properties is obsolete,
+      and may be removed in a future version of JSON-LD,
+      as is the support for <a>generalized rdf datasets</a>
+      and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</li>
+    
   </ul>
 </section>
 
