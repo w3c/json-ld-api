@@ -4717,198 +4717,193 @@
       <dt><dfn data-dfn-for="JsonLdProcessor">compact</dfn></dt>
       <dd class="algorithm">
         <p><a>Compacts</a> the given <var>input</var> using the
-          <var>context</var> according to the steps in the
-          <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
+          <var>context</var> according to the steps in the <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
-            following steps are then executed asynchronously.</li>
-          <li>Set <var>expanded input</var> to the result of using the
-            <a data-link-for="JsonLdProcessor">expand</a>
-            method using <a data-lt="jsonldprocessor-compact-input">input</a> and <a data-lt="jsonldprocessor-compact-options">options</a>,
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+            The following steps are then executed asynchronously.</li>
+          <li>Set <var>expanded input</var> to the result of
+            using the <a data-link-for="JsonLdProcessor">expand</a> method
+            using <a data-lt="jsonldprocessor-compact-input">input</a>
+            and <a data-lt="jsonldprocessor-compact-options">options</a>,
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.
-          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
-            <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
+          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>,
+            set <var>context</var> to that <a data-lt="member">member's</a> value,
+            otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
-            the <a>base IRI</a> is set to
-            the <a data-link-for="JsonldOptions">base</a> option from
-            <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
-            otherwise, if the
-            <a data-link-for="JsonLdOptions">compactToRelative</a> option is
-            <strong>true</strong>, to the IRI of the currently being processed
-            document, if available; otherwise to <code>null</code>.</li>
-          <li>Set <var>compacted output</var> to the result of using the
-            <a href="#compaction-algorithm">Compaction algorithm</a>, using <a>active context</a>,
+            the <a>base IRI</a> is set to the <a data-link-for="JsonldOptions">base</a> option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
+            otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
+            to the IRI of the currently being processed document, if available;
+            otherwise to <code>null</code>.</li>
+          <li>Set <var>compacted output</var> to the result of using the <a href="#compaction-algorithm">Compaction algorithm</a>,
+            using <a>active context</a>,
             an empty <a>dictionary</a> as <var>inverse context</var>,
             <code>null</code> as <var>property</var>,
-            <var>expanded input</var> as <var>element</var>, and if passed, the
-            <a data-link-for="JsonldOptions">compactArrays</a>
+            <var>expanded input</var> as <var>element</var>,
+            and if passed, the <a data-link-for="JsonldOptions">compactArrays</a>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>Fulfill the <var>promise</var> passing <var>compacted output</var>.
+          <li>Fulfill the <var>promise</var> passing <var>compacted output</var>
             <span class="changed">transforming <var>compacted output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-compact-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a>, array of <a class="changed">dictionaries</a> to perform the compaction upon or an
-            <a>IRI</a> referencing the JSON-LD document to compact.</dd>
+           <dd>The <a class="changed">dictionary</a>,
+             array of <a class="changed">dictionaries</a> to perform the compaction upon,
+             or an <a>IRI</a> referencing the JSON-LD document to compact.</dd>
           <dt><dfn data-lt="jsonldprocessor-compact-context" data-lt-noDefault>context</dfn></dt>
           <dd>The context to use when <a>compacting</a> the <code>input</code>;
-            it can be specified by using a <a class="changed">dictionary</a>, an
-            <a>IRI</a>, or an array consisting of
-            <a class="changed">dictionaries</a> and <a>IRI</a>s.</dd>
+            it can be specified by using a <a class="changed">dictionary</a>,
+            an <a>IRI</a>,
+            or an array consisting of <a class="changed">dictionaries</a> and <a>IRI</a>s.</dd>
           <dt><dfn data-lt="jsonldprocessor-compact-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the algorithms. This allows, e.g.,
-            to set the input document's base <a>IRI</a>.</dd>
+          <dd>A set of options to configure the algorithms.
+            This allows, e.g., to set the input document's base <a>IRI</a>.</dd>
         </dl>
       </dd>
 
       <dt><dfn data-dfn-for="JsonLdProcessor">expand</dfn></dt>
       <dd class="algorithm">
-        <p><a href="#expansion">Expands</a> the given <a data-lt="jsonldprocessor-expand-input">input</a> according to
-          the steps in the <a href="#expansion-algorithm">Expansion algorithm</a>:</p>
+        <p><a href="#expansion">Expands</a> the given <a data-lt="jsonldprocessor-expand-input">input</a>
+          according to the steps in the <a href="#expansion-algorithm">Expansion algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
-            following steps are then executed asynchronously.</li>
-          <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a> is a <a>string</a>
-            representing the <a>IRI</a> of a remote document, dereference it.
-            If the retrieved document's content type is neither <code>application/json</code>,
-            nor <code>application/ld+json</code>, nor any other media type using a
-            <code>+json</code> suffix as defined in [[RFC6839]], reject the <var>promise</var> passing an
-            <a data-link-for="JsonLdErrorCode">loading document failed</a>
-            error.</li>
-          <li>Initialize a new empty <var>active context</var>. The <a>base IRI</a>
-            of the <var>active context</var> is set to the IRI of the currently being processed
-            document, if available; otherwise to <code>null</code>. If set, the
-            <a data-link-for="JsonldOptions">base</a> option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
-          <li>If an
-            <a data-link-for="JsonldOptions">expandContext</a> option
-            has been passed, update the <var>active context</var> using the
-            <a href="#context-processing-algorithm">Context Processing algorithm</a>, passing the
-            <a data-link-for="JsonldOptions">expandContext</a>
-            as <var>local context</var>. If
-            <a data-link-for="JsonldOptions">expandContext</a>
-            is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, pass that <a data-lt="member">member's</a> value instead.</li>
-          <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved, the response has an HTTP Link Header [[RFC8288]]
-            using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
-            and a content type of <code>application/json</code> or any media type
-            with a <code>+json</code> suffix as defined in [[RFC6839]] except
-            <code>application/ld+json</code>, update the <var>active context</var> using the
-            <a href="#context-processing-algorithm">Context Processing algorithm</a>, passing the
-            context referenced in the HTTP Link Header as <var>local context</var>. The
-            HTTP Link Header is ignored for documents served as <code>application/ld+json</code> If
-            multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code>
-            link relation are found, the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to
-            <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+            The following steps are then executed asynchronously.</li>
+          <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
+            is a <a>string</a> representing the <a>IRI</a> of a remote document, dereference it.
+            If the retrieved document's content type is neither
+            <code class="changed">text/html</code>,
+            <code>application/json</code>,
+            <code>application/ld+json</code>,
+            nor any other media type using a
+            <code>+json</code> suffix as defined in [[RFC6839]],
+            reject the <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
+          <li>Initialize a new empty <var>active context</var>.
+            The <a>base IRI</a> of the <var>active context</var> is set to the IRI of the currently being processed document, if available;
+            otherwise to <code>null</code>.
+            If set, the <a data-link-for="JsonldOptions">base</a> option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
+          <li>If an <a data-link-for="JsonldOptions">expandContext</a> option has been passed,
+            update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+            passing the <a data-link-for="JsonldOptions">expandContext</a> as <var>local context</var>.
+            If <a data-link-for="JsonldOptions">expandContext</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>,
+            pass that <a data-lt="member">member's</a> value instead.</li>
+          <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved,
+            the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
+            and a content type of <code>application/json</code>
+            or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
+            except <code>application/ld+json</code>,
+            update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+            passing the context referenced in the HTTP Link Header as <var>local context</var>.
+            The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>.
+            If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
+            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</li>
-          <li class="changed">If necessary, transform <var>input</var> into the
-            <a>internal representation</a>. If <var>input</var> cannot be transformed to the
-            <a>internal representation</a>, reject <var>promise</var> passing a
-            <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
-          <li>Set <var>expanded output</var> to the result of using the
-            <a href="#expansion-algorithm">Expansion algorithm</a>, passing the
-            <var>active context</var> and <var>input</var> as <var>element</var>,
-            and if passed, the
-            <span class="changed"><a data-link-for="JsonldOptions">frameExpansion</a></span>
+          <li class="changed">If necessary, transform <var>input</var> into the <a>internal representation</a>.
+            If <var>input</var> cannot be transformed to the <a>internal representation</a>,
+            reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
+          <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
+            passing the <var>active context</var> and <var>input</var> as <var>element</var>,
+            and if passed, the <span class="changed"><a data-link-for="JsonldOptions">frameExpansion</a></span>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>Fulfill the <var>promise</var> passing <var>expanded output</var>.
+          <li>Fulfill the <var>promise</var> passing <var>expanded output</var>
             <span class="changed">transforming <var>expanded output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-expand-input" data-lt-noDefault>input</dfn></dt>
-          <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> to perform the expansion upon or an
-            <a>IRI</a> referencing the <a>JSON-LD document</a> to expand.</dd>
+          <dd>The <a class="changed">dictionary</a>,
+            or array of <a class="changed">dictionaries</a> to perform the expansion upon,
+            or an <a>IRI</a> referencing the <a>JSON-LD document</a> to expand.</dd>
           <dt><dfn data-lt="jsonldprocessor-expand-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the used algorithms. This allows, e.g.,
-            to set the input document's <a>base IRI</a>.</dd>
+          <dd>A set of options to configure the used algorithms.
+            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
         </dl>
       </dd>
 
       <dt><dfn data-dfn-for="JsonLdProcessor">flatten</dfn></dt>
       <dd class="algorithm">
-        <p><a href="#flattening">Flattens</a> the given <a data-lt="jsonldprocessor-flatten-input">input</a> and
-          <a>compacts</a> it using the passed <a data-lt="jsonldprocessor-flatten-context">context</a>
+        <p><a href="#flattening">Flattens</a> the given <a data-lt="jsonldprocessor-flatten-input">input</a>
+          and <a>compacts</a> it using the passed <a data-lt="jsonldprocessor-flatten-context">context</a>
           according to the steps in the <a href="#flattening-algorithm">Flattening algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
-            following steps are then executed asynchronously.</li>
-          <li>Set <var>expanded input</var> to the result of using the
-            <a data-link-for="JsonLdProcessor">expand</a>
-            method using <a data-lt="jsonldprocessor-flatten-input">input</a> and <a data-lt="jsonldprocessor-flatten-options">options</a>
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+            The following steps are then executed asynchronously.</li>
+          <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand</a> method
+            using <a data-lt="jsonldprocessor-flatten-input">input</a>
+            and <a data-lt="jsonldprocessor-flatten-options">options</a>
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.</li>
-          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>, set
-            <var>context</var> to that <a data-lt="member">member's</a> value, otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
+          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>,
+            set <var>context</var> to that <a data-lt="member">member's</a> value,
+            otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
-            the <a>base IRI</a> is set to
-            the <a data-link-for="JsonldOptions">base</a> option from
-            <a data-lt="jsonldprocessor-flatten-options">options</a>, if set;
-            otherwise, if the
-            <a data-link-for="JsonLdOptions">compactToRelative</a> option is
-            <strong>true</strong>, to the IRI of the currently being processed
-            document, if available; otherwise to <code>null</code>.</li>
+            the <a>base IRI</a> is set to the <a data-link-for="JsonldOptions">base</a> option
+            from <a data-lt="jsonldprocessor-flatten-options">options</a>, if set;
+            otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
+            to the IRI of the currently being processed document, if available;
+            otherwise to <code>null</code>.</li>
           <li>Initialize an empty <var>identifier map</var>.</li>
-          <li>Set <var>flattened output</var> to the result of using the
-            <a href="#flattening-algorithm">Flattening algorithm</a>, passing
-            <var>expanded input</var> as <var>element</var>, <var>active context</var>, and if passed, the
-            <a data-link-for="JsonldOptions">compactArrays</a>
+          <li>Set <var>flattened output</var> to the result of using the <a href="#flattening-algorithm">Flattening algorithm</a>,
+            passing <var>expanded input</var> as <var>element</var>,
+            <var>active context</var>,
+            and if passed, the <a data-link-for="JsonldOptions">compactArrays</a>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>Fulfill the <var>promise</var> passing <var>flattened output</var>.
+          <li>Fulfill the <var>promise</var> passing <var>flattened output</var>
             <span class="changed">transforming <var>flattened output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-flatten-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> or an <a>IRI</a>
-            referencing the JSON-LD document to flatten.</dd>
+           <dd>The <a class="changed">dictionary</a>,
+             or array of <a class="changed">dictionaries</a>,
+             or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-flatten-context" data-lt-noDefault>context</dfn></dt>
           <dd>The context to use when <a>compacting</a> the flattened <var>expanded input</var>;
-            it can be specified by using a <a class="changed">dictionary</a>, an
-            <a>IRI</a>, or an array consisting of <a class="changed">dictionaries</a>
-            and <a>IRI</a>s. If not
-            passed or <code>null</code> is passed, the result will not be compacted
-            but kept in expanded form.</dd>
+            it can be specified by using a <a class="changed">dictionary</a>,
+            an <a>IRI</a>, or an array consisting of <a class="changed">dictionaries</a>
+            and <a>IRI</a>s.
+            If not passed or <code>null</code> is passed,
+            the result will not be compacted but kept in expanded form.</dd>
           <dt><dfn data-lt="jsonldprocessor-flatten-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the used algorithms. This allows, e.g.,
-            to set the input document's <a>base IRI</a>.</dd>
+          <dd>A set of options to configure the used algorithms.
+            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
         </dl>
       </dd>
 
       <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">fromRdf</dfn></dt>
       <dd class="algorithm changed">
-        <p>Transforms the given <a data-lt="jsonldprocessor-fromRdf-input">input</a> into
-          a <a>JSON-LD document</a> in <a>expanded form</a>
+        <p>Transforms the given <a data-lt="jsonldprocessor-fromRdf-input">input</a>
+          into a <a>JSON-LD document</a> in <a>expanded form</a>
           according to the steps in the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>:</p>
 
-        <p class="note">This interface does not define a means of creating
-          an <a>RdfDataset</a> from an arbitrary input, other than the
-          <a data-link-for="JsonLdProcessor">toRdf</a> method.</p>
+        <p class="note">This interface does not define a means of creating an <a>RdfDataset</a>
+          from an arbitrary input, other than the <a data-link-for="JsonLdProcessor">toRdf</a> method.</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
-            following steps are then executed asynchronously.</li>
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+            The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded result</var> to the result of invoking the
-            <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
-            method using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
+            <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
+            using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
             and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
           <li>Invoke the
-           <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
-            <var>expanded input</var> as <var>element</var> and <var>node map</var>.</li>
+           <a href="#node-map-generation">Node Map Generation algorithm</a>,
+           passing <var>expanded input</var> as <var>element</var>
+           and <var>node map</var>.</li>
           <li>Invoke the
             <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
-            passing <var>node map</var>, <var>dataset</var>, and if passed, the
-            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-fromRdf-options">options</a>
-            <a data-lt="jsonldprocessor-fromRdf-options">options</a>.
+            passing <var>node map</var>,
+            <var>dataset</var>,
+            and if passed, the <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-fromRdf-options">options</a>.
             <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
               and may be removed in a future version of JSON-LD,
               as is the support for <a>generalized RDF Datasets</a>
@@ -4919,11 +4914,12 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-fromRdf-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> or an <a>IRI</a>
-            referencing the JSON-LD document to flatten.</dd>
+           <dd>The <a class="changed">dictionary</a>,
+             or array of <a class="changed">dictionaries</a>,
+             or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-fromRdf-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the used algorithms. This allows, e.g.,
-            to set the input document's <a>base IRI</a>.</dd>
+          <dd>A set of options to configure the used algorithms.
+            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
         </dl>
       </dd>
 
@@ -4933,21 +4929,20 @@
           according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it. The
-            following steps are then executed asynchronously.</li>
+          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+            The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of using the
-            <a data-link-for="JsonLdProcessor">expand</a>
-            method using <a data-lt="jsonldprocessor-toRdf-input">input</a>
+            <a data-link-for="JsonLdProcessor">expand</a> method
+            using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
-          <li>Invoke the
-           <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
-            <var>expanded input</var> as <var>element</var> and <var>node map</var>.</li>
-          <li>Invoke the
-            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
-            passing <var>node map</var>, <var>dataset</var>, and if passed, the
-            <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.
+          <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
+            passing <var>expanded input</var> as <var>element</var>
+            and <var>node map</var>.</li>
+          <li>Invoke the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
+            passing <var>node map</var>, <var>dataset</var>,
+            and if passed, the <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.
             <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
               and may be removed in a future version of JSON-LD,
               as is the support for <a>generalized RDF Datasets</a>
@@ -4958,11 +4953,12 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-toRdf-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a> or array of <a class="changed">dictionaries</a> or an <a>IRI</a>
-            referencing the JSON-LD document to flatten.</dd>
+           <dd>The <a class="changed">dictionary</a>,
+             or array of <a class="changed">dictionaries</a>,
+             or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-toRdf-options" data-lt-noDefault>options</dfn></dt>
-          <dd>A set of options to configure the used algorithms. This allows, e.g.,
-            to set the input document's <a>base IRI</a>.</dd>
+          <dd>A set of options to configure the used algorithms.
+            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
         </dl>
       </dd>
     </dl>
@@ -4971,31 +4967,38 @@
       dictionary JsonLdDictionary {};
     --></pre>
     <p class="changed">The <dfn>JsonLdDictionary</dfn> is the definition of a <a>dictionary</a>
-      used to contain arbitrary <a>dictionary members</a> which are the result of
-      parsing a <a>JSON Object</a>.
+      used to contain arbitrary <a>dictionary members</a>
+      which are the result of parsing a <a>JSON Object</a>.
 
     <pre class="idl changed" data-transform="unComment"><!--
       typedef (JsonLdDictionary or sequence&lt;JsonLdDictionary> or USVString) JsonLdInput;
     --></pre>
 
-    <p class="changed">The <dfn>JsonLdInput</dfn> type is used to refer to an input value that
-      that may be a <a>dictionary</a>, an array of <a>dictionaries </a> or a <a>string</a> representing an
-      <a>IRI</a> which an be dereferenced to retrieve a valid JSON document.</p>
+    <p class="changed">The <dfn>JsonLdInput</dfn> type is used to refer to an input value
+      that that may be a <a>dictionary</a>,
+      an array of <a>dictionaries </a>,
+      or a <a>string</a> representing an <a>IRI</a>
+      which can be dereferenced to retrieve a valid JSON document.</p>
 
     <pre class="idl" data-transform="unComment"><!--
       typedef (JsonLdDictionary or USVString or sequence&lt;(JsonLdDictionary or USVString)>) JsonLdContext;
     --></pre>
 
-    <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value that
-      that may be a <a class="changed">dictionary</a>, a <a>string</a> representing an
-      <a>IRI</a>, or an array of <a class="changed">dictionaries</a>
-      and <a>strings</a>.</p>
+    <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value
+      that may be a <a class="changed">dictionary</a>,
+      a <a>string</a> representing an <a>IRI</a>,
+      or an array of <a class="changed">dictionaries</a> and <a>strings</a>.</p>
   </section>
 
   <section>
     <h3>RDF Dataset Interfaces</h3>
 
-    <p>The <dfn>RdfDataset</dfn> interface describes operations on an <a>RDF dataset</a> used by the <a data-link-for="JsonLdProcessor">fromRdf</a> and <a data-link-for="JsonLdProcessor">toRdf</a> methods in the <a>JsonLdProcessor</a> interface. The interface may be used for constructing a new <a>RDF dataset</a>, which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
+    <p>The <dfn>RdfDataset</dfn> interface describes operations on an <a>RDF dataset</a>
+      used by the <a data-link-for="JsonLdProcessor">fromRdf</a>
+      and <a data-link-for="JsonLdProcessor">toRdf</a> methods
+      in the <a>JsonLdProcessor</a> interface.
+      The interface may be used for constructing a new <a>RDF dataset</a>,
+      which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed" data-transform="unComment">
       [Constructor]
@@ -5011,7 +5014,8 @@
       <dd>Provides access to the <a>default graph</a> associated with the <a>RDF dataset</a>.</dd>
       <dt><dfn data-dfn-for="RdfDataset">add</dfn></dt>
       <dd class="algorithm">
-        <p>Adds an <a>RdfGraph</a> and its associated <a>graph name</a> to the <a>RdfDataset</a>. Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
+        <p>Adds an <a>RdfGraph</a> and its associated <a>graph name</a> to the <a>RdfDataset</a>.
+          Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
 
         <dl class="parameters">
           <dt><dfn data-lt="RdfDataset-add-graphName" data-lt-noDefault>graphName</dfn></dt>
@@ -5024,13 +5028,19 @@
       </dd>
       <dt><dfn data-dfn-for="RdfDataset">iterable</dfn></dt>
       <dd>The <a data-cite="WEBIDL#dfn-value-pairs-to-iterate-over">value pairs to iterate over</a>
-        are the list of <var>graph name</var>-<var>graph</var> pairs, with the
-        <var>graph name</var> being <code>null</code> (for the <a>default
-        graph</a>), an <a>IRI</a> or <a>blank node identifier</a> and graph an
-        <a>RdfGraph</a> instance.</dd>
+        are the list of <var>graph name</var>-<var>graph</var> pairs,
+        with the <var>graph name</var> being <code>null</code>
+        (for the <a>default graph</a>),
+        an <a>IRI</a>,
+        or <a>blank node identifier</a>
+        and graph an <a>RdfGraph</a> instance.</dd>
     </dl>
 
-    <p>The <dfn>RdfGraph</dfn> interface describes operations on an <a>RDF graph</a> used by the <a data-link-for="JsonLdProcessor">fromRdf</a> and <a data-link-for="JsonLdProcessor">toRdf</a> methods in the <a>JsonLdProcessor</a> interface. The interface may be used for constructing a new <a>RDF graph</a>, which is composed of zero or more <a>RdfTriple</a> instances.</p>
+    <p>The <dfn>RdfGraph</dfn> interface describes operations on an <a>RDF graph</a> used by the <a data-link-for="JsonLdProcessor">fromRdf</a>
+      and <a data-link-for="JsonLdProcessor">toRdf</a> methods
+      in the <a>JsonLdProcessor</a> interface.
+      The interface may be used for constructing a new <a>RDF graph</a>,
+      which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed" data-transform="unComment">
       [Constructor]
@@ -5043,7 +5053,8 @@
     <dl data-sort>
       <dt><dfn data-dfn-for="RdfGraph">add</dfn></dt>
       <dd class="algorithm">
-        <p>Adds an <a>RdfTriple</a> to the <a>RdfGraph</a>. Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
+        <p>Adds an <a>RdfTriple</a> to the <a>RdfGraph</a>.
+          Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
 
         <dl class="parameters">
           <dt><dfn data-lt="RdfGraph-add-triple" data-lt-noDefault>triple</dfn></dt>
@@ -5052,9 +5063,9 @@
       </dd>
       <dt><dfn data-dfn-for="RdfGraph">iterable</dfn></dt>
       <dd>A <a data-cite="WEBIDL#dfn-value-iterator">value iterator</a>
-        over the <a>RdfTriple</a> instances associated with the graph.
-        Note that a given <a>RdfTriple</a> instance may appear
-        in more than one graph within a particular <a>RdfDataset</a> instance.</dd>
+        over the <a>RdfTriple</a> instancesassociated with the graph.
+        Note that a given <a>RdfTriple</a> instance may appear in more than one graph
+        within a particular <a>RdfDataset</a> instance.</dd>
     </dl>
 
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>RDF Triple</a>.</p>
@@ -5070,15 +5081,18 @@
 
     <dl>
       <dt><dfn data-dfn-for="RdfTriple">subject</dfn></dt>
-      <dd>An absolute <a>IRI</a> or <a>blank node identifier</a> denoting the <a>subject</a> of the <a>triple</a>.</dd>
+      <dd>An absolute <a>IRI</a> or <a>blank node identifier</a>
+        denoting the <a>subject</a> of the <a>triple</a>.</dd>
       <dt><dfn data-dfn-for="RdfTriple">predicate</dfn></dt>
       <dd>An absolute <a>IRI</a> denoting the <a>predicate</a> of the <a>triple</a>.
-        If used to represent a <a>Generalized RDF Dataset</a>, it may also be a <a>blank node identifier</a>.
+        If used to represent a <a>Generalized RDF Dataset</a>,
+        it may also be a <a>blank node identifier</a>.
         <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
           and may be removed in a future version of JSON-LD, as is the support for <a>generalized RDF Datasets</a>.</div>
         </dd>
       <dt><dfn data-dfn-for="RdfTriple">object</dfn></dt>
-      <dd>An absolute <a>IRI</a>, <a>blank node identifier</a> or <a>literal</a> denoting the <a>object</a> of the <a>triple</a>.</dd>
+      <dd>An absolute <a>IRI</a>, <a>blank node identifier</a>, or <a>literal</a>
+        denoting the <a>object</a> of the <a>triple</a>.</dd>
     </dl>
 
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
@@ -5097,10 +5111,11 @@
       <dd>The lexical value of the <a>literal</a>.</dd>
       <dt><dfn data-dfn-for="RdfLiteral">datatype</dfn></dt>
       <dd>An absolute <a>IRI</a> denoting the <a data-lt="RDF11-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of the <a>literal</a>.
-        If the value is <code>rdf:langString</code>, <a data-link-for="RdfLiteral">language</a> MUST be specified.</dd>
+        If the value is <code>rdf:langString</code>,
+        <a data-link-for="RdfLiteral">language</a> MUST be specified.</dd>
       <dt><dfn data-dfn-for="RdfLiteral">language</dfn></dt>
-      <dd>An optional <a>language tag</a> as defined by [[BCP47]]. If this value is specified,
-        <a data-link-for="RdfLiteral">datatype</a> MUST be <code>rdf:langString</code></dd>
+      <dd>An optional <a>language tag</a> as defined by [[BCP47]].
+        If this value is specified, <a data-link-for="RdfLiteral">datatype</a> MUST be <code>rdf:langString</code>.</dd>
     </dl>
   </section> <!-- end of RdfDataset -->
 
@@ -5128,22 +5143,24 @@
 
     <dl data-sort>
       <dt><dfn data-dfn-for="JsonLdOptions">base</dfn></dt>
-      <dd>The base IRI to use when expanding or <a>compacting</a> the document. If set, this overrides
-        the input document's IRI.</dd>
+      <dd>The base IRI to use when expanding or <a>compacting</a> the document.
+        If set, this overrides the input document's IRI.</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">compactArrays</dfn></dt>
-      <dd>If set to <code>true</code>, the JSON-LD processor replaces arrays with just
-        one element with that element during <a>compaction</a>. If set to <code>false</code>,
+      <dd>If set to <code>true</code>, the JSON-LD processor replaces arrays
+        with just one element with that element during <a>compaction</a>.
+        If set to <code>false</code>,
         all arrays will remain arrays even if they have just one element.
       </dd>
       <dt><dfn data-dfn-for="JsonLdOptions">documentLoader</dfn></dt>
       <dd>The callback of the loader to be used to retrieve remote documents and contexts.
-        If specified, it is used to retrieve remote documents and contexts; otherwise,
-        if not specified, the processor's built-in loader is used.</dd>
+        If specified, it is used to retrieve remote documents and contexts;
+        otherwise, if not specified, the processor's built-in loader is used.</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">expandContext</dfn></dt>
       <dd>A context that is used to initialize the active context when expanding a document.</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">produceGeneralizedRdf</dfn></dt>
-      <dd>If set to <code>true</code>, the JSON-LD processor may emit blank nodes for
-        <a>triple</a> <a>predicates</a>, otherwise they will be omitted.
+      <dd>If set to <code>true</code>, the JSON-LD processor may emit
+        <a>blank nodes</a> for <a>triple</a> <a>predicates</a>,
+        otherwise they will be omitted.
         <dfn data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
           are defined in [[RDF11-CONCEPTS]].
         <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
@@ -5153,20 +5170,21 @@
       </dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
-        If set to <code>json-ld-1.0</code> or <code>json-ld-1.1</code>, the
-        implementation must produce exactly the same results as the algorithms
-        defined in this specification.
-        If set to another value, the JSON-LD processor is allowed to extend
-        or modify the algorithms defined in this specification to enable
-        application-specific optimizations. The definition of such
-        optimizations is beyond the scope of this specification and thus
-        not defined. Consequently, different implementations may implement
-        different optimizations. Developers must not define modes beginning
-        with <code>json-ld</code> as they are reserved for future versions
-        of this specification.</dd>
+        If set to <code>json-ld-1.0</code> or <code>json-ld-1.1</code>,
+        the implementation must produce exactly the same results as the
+        algorithms defined in this specification.
+        If set to another value,
+        the JSON-LD processor is allowed to extend or modify the algorithms defined in this specification
+        to enable application-specific optimizations.
+        The definition of such optimizations is beyond the scope of this specification
+        and thus not defined.
+        Consequently, different implementations may implement different optimizations.
+        Developers must not define modes beginning with <code>json-ld</code>
+        as they are reserved for future versions of this specification.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">compactToRelative</dfn></dt>
-      <dd class="changed">Determines if IRIs are compacted relative to the
-        <a data-link-for="JsonLdOptions">base</a> option or document location when <a>compacting</a>.</dd>
+      <dd class="changed">Determines if IRIs are compacted
+        relative to the <a data-link-for="JsonLdOptions">base</a> option
+        or document location when <a>compacting</a>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">frameExpansion</dfn></dt>
       <dd class="changed">Enables special frame processing rules for the <a href="#expansion-algorithm">Expansion Algorithm</a>.</dd>
       <dd class="changed">Enables special rules for the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
@@ -5178,19 +5196,19 @@
       <dd class="changed">Enables special rules for the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
         causing <code>rdf:type</code> properties to be kept as <a>IRIs</a> in the output, rather than use <code>@type</code>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">ordered</dfn></dt>
-      <dd class="changed">If set to <code>true</code>, certain algorithm
-        processing steps where indicated are ordered lexicographically.
-        If <code>false</code>, order
-        is not considered in processing.</dd>
+      <dd class="changed">If set to <code>true</code>,
+        certain algorithm processing steps where indicated are ordered lexicographically.
+        If <code>false</code>, order is not considered in processing.</dd>
     </dl>
   </section> <!-- end JsonLdOptions -->
 
   <section>
     <h3>Remote Document and Context Retrieval</h3>
 
-    <p>Users of an API implementation can utilize a callback to control how remote
-      documents and contexts are retrieved. This section details the parameters of
-      that callback and the data structure used to return the retrieved context.</p>
+    <p>Users of an API implementation can utilize a callback to control how
+      remote documents and contexts are retrieved.
+      This section details the parameters of that callback
+      and the data structure used to return the retrieved context.</p>
 
     <section>
       <h3>LoadDocumentCallback</h3>
@@ -5207,9 +5225,8 @@
         <dd>The URL of the remote document or context to load.</dd>
       </dl>
 
-      <p>All errors result in the <a>Promise</a> being rejected with
-        a <a>JsonLdError</a> whose code is set to
-        <a data-link-for="JsonLdErrorCode">loading document failed</a>
+      <p>All errors result in the <a>Promise</a> being rejected with a <a>JsonLdError</a>
+        whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
         or <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
         as described in the next section.</p>
     </section>
@@ -5230,20 +5247,20 @@
 
       <dl>
         <dt><dfn data-dfn-for="RemoteDocument">contextUrl</dfn></dt>
-        <dd>If available, the value of the HTTP Link Header [[RFC8288]] using the
-          <code>http://www.w3.org/ns/json-ld#context</code> link relation in the
-          response. If the response's content type is <code>application/ld+json</code>,
-          the HTTP Link Header is ignored. If multiple HTTP Link Headers using
-          the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
-          the <a>Promise</a> of the <a>LoadDocumentCallback</a> is rejected with
-          a <a>JsonLdError</a> whose code is set to
-          <a data-link-for="JsonLdErrorCode">multiple context link headers</a>.</dd>
+        <dd>If available, the value of the HTTP Link Header [[RFC8288]]
+          using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
+          in the response.
+          If the response's content type is <code>application/ld+json</code>,
+          the HTTP Link Header is ignored.
+          If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
+          the <a>Promise</a> of the <a>LoadDocumentCallback</a> is rejected
+          with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>.</dd>
         <dt><dfn data-dfn-for="RemoteDocument">documentUrl</dfn></dt>
-        <dd>The final URL of the loaded document. This is important
-          to handle HTTP redirects properly.</dd>
+        <dd>The final URL of the loaded document.
+          This is important to handle HTTP redirects properly.</dd>
         <dt><dfn data-dfn-for="RemoteDocument">document</dfn></dt>
-        <dd>The retrieved document. This can either be the raw payload or the already
-          parsed document.</dd>
+        <dd>The retrieved document.
+          This can either be the raw payload or the already parsed document.</dd>
       </dl>
     </section>
   </section> <!-- end of Remote Document and Context Retrieval -->
@@ -5251,8 +5268,8 @@
   <section>
     <h3>Error Handling</h3>
 
-    <p>This section describes the datatype definitions used within the
-      JSON-LD API for error handling.</p>
+    <p>This section describes the datatype definitions
+      used within the JSON-LD API for error handling.</p>
 
     <section>
       <h4>JsonLdError</h4>
@@ -5268,19 +5285,17 @@
 
       <dl>
         <dt><dfn data-dfn-for="JsonLdError">code</dfn></dt>
-        <dd>a string representing the particular error type, as described in
-          the various algorithms in this document.</dd>
+        <dd>A string representing the particular error type,
+          as described in the various algorithms in this document.</dd>
         <dt><dfn data-dfn-for="JsonLdError">message</dfn></dt>
-        <dd>an optional error message containing additional debugging information.
-          The specific contents of error messages are outside the scope of this
-          specification.</dd>
+        <dd>An optional error message containing additional debugging information.
+          The specific contents of error messages are outside the scope of this specification.</dd>
       </dl>
     </section>
 
     <section>
       <h4>JsonLdErrorCode</h4>
-      <p>The <dfn>JsonLdErrorCode</dfn> represents the collection of valid JSON-LD error
-        codes.</p>
+      <p>The <dfn>JsonLdErrorCode</dfn> represents the collection of valid JSON-LD error codes.</p>
 
       <pre class="idl" data-transform="unComment"><!--
         enum JsonLdErrorCode {
@@ -5328,18 +5343,17 @@
       <dl data-dfn-for="JsonLdErrorCode" data-sort>
         <dt><dfn>colliding keywords</dfn></dt>
         <dd>Two <a>properties</a> which expand to the same keyword have been detected.
-          This might occur if a <a>keyword</a> and an alias thereof
+          This might occur if a <a>keyword</a>
+          and an alias thereof
           are used at the same time.</dd>
         <dt><dfn>conflicting indexes</dfn></dt>
         <dd>Multiple conflicting indexes have been found for the same node.</dd>
         <dt><dfn>cyclic IRI mapping</dfn></dt>
         <dd>A cycle in <a>IRI mappings</a> has been detected.</dd>
         <dt><dfn>invalid @id value</dfn></dt>
-        <dd>An <code>@id</code> <a>member</a> was encountered whose value was not a
-          <a>string</a>.</dd>
+        <dd>An <code>@id</code> <a>member</a> was encountered whose value was not a <a>string</a>.</dd>
         <dt><dfn>invalid @index value</dfn></dt>
-        <dd>An <code>@index</code> <a>member</a> was encountered whose value was
-          not a <a>string</a>.</dd>
+        <dd>An <code>@index</code> <a>member</a> was encountered whose value was not a <a>string</a>.</dd>
         <dt class="changed"><dfn>invalid @nest value</dfn></dt>
         <dd class="changed">An invalid value for <code>@nest</code> has been found.</dd>
         <dt class="changed"><dfn>invalid @prefix value</dfn></dt>
@@ -5348,79 +5362,77 @@
         <dd>An invalid value for an <code>@reverse</code> <a>member</a> has been detected,
           i.e., the value was not a <a class="changed">dictionary</a>.</dd>
         <dt><dfn>invalid @version value</dfn></dt>
-        <dd>The <code>@version</code> <a>member</a> was used in a <a>context</a> with
-          an out of range value.</dd>
+        <dd>The <code>@version</code> <a>member</a> was used in a <a>context</a>
+          with an out of range value.</dd>
         <dt><dfn>invalid base IRI</dfn></dt>
-        <dd>An invalid <a>base IRI</a> has been detected, i.e., it is
-          neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
+        <dd>An invalid <a>base IRI</a> has been detected, i.e.,
+          it is neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid container mapping</dfn></dt>
-        <dd>An <code>@container</code> <a>member</a> was encountered whose value was
-          not one of the following <a>strings</a>:
-          <code>@list</code>, <code>@set</code>, or <code>@index</code>.</dd>
+        <dd>An <code>@container</code> <a>member</a> was encountered
+          whose value was not one of the following <a>strings</a>:
+          <code>@list</code>,
+          <code>@set</code>,
+          or <code>@index</code>.</dd>
         <dt><dfn>invalid default language</dfn></dt>
         <dd>The value of the <a>default language</a> is not a <a>string</a>
           or <code>null</code> and thus invalid.</dd>
         <dt><dfn>invalid IRI mapping</dfn></dt>
-        <dd>A <a>local context</a> contains a <a>term</a> that has
-          an invalid or missing <a>IRI mapping</a>.</dd>
+        <dd>A <a>local context</a> contains a <a>term</a>
+          that has an invalid or missing <a>IRI mapping</a>.</dd>
         <dt><dfn>invalid keyword alias</dfn></dt>
-        <dd>An invalid <a>keyword</a> alias definition has been
-          encountered.</dd>
+        <dd>An invalid <a>keyword</a> alias definition has been encountered.</dd>
         <dt><dfn>invalid language map value</dfn></dt>
-        <dd>An invalid value in a <a>language map</a>
-          has been detected. It has to be a <a>string</a> or an <a>array</a> of
-          <a>strings</a>.</dd>
+        <dd>An invalid value in a <a>language map</a> has been detected.
+          It MUST be a <a>string</a> or an <a>array</a> of <a>strings</a>.</dd>
         <dt><dfn>invalid language mapping</dfn></dt>
         <dd>An <code>@language</code> <a>member</a> in a <a>term definition</a>
-          was encountered whose value was neither a <a>string</a> nor
-          <code>null</code> and thus invalid.</dd>
+          was encountered whose value was neither a <a>string</a>
+          nor <code>null</code> and thus invalid.</dd>
         <dt><dfn>invalid language-tagged string</dfn></dt>
-        <dd>A <a>language-tagged string</a> with an invalid language
-          value was detected.</dd>
+        <dd>A <a>language-tagged string</a> with an invalid language value was detected.</dd>
         <dt><dfn>invalid language-tagged value</dfn></dt>
-        <dd>A <a>number</a>, <code>true</code>, or <code>false</code> with an
-          associated <a>language tag</a> was detected.</dd>
+        <dd>A <a>number</a>, <code>true</code>, or <code>false</code>
+          with an associated <a>language tag</a> was detected.</dd>
         <dt><dfn>invalid local context</dfn></dt>
         <dd>In invalid <a>local context</a> was detected.</dd>
         <dt><dfn>invalid remote context</dfn></dt>
-        <dd>No valid context document has been found for a referenced,
-         remote context.</dd>
+        <dd>No valid context document has been found for a referenced remote context.</dd>
         <dt><dfn>invalid reverse property</dfn></dt>
         <dd>An invalid reverse property definition has been detected.</dd>
         <dt><dfn>invalid reverse property map</dfn></dt>
-        <dd>An invalid reverse property map has been detected. No
-          <a>keywords</a> apart from <code>@context</code>
+        <dd>An invalid reverse property map has been detected.
+          No <a>keywords</a> apart from <code>@context</code>
           are allowed in reverse property maps.</dd>
         <dt><dfn>invalid reverse property value</dfn></dt>
-        <dd>An invalid value for a reverse property has been detected. The value of an inverse
-          property must be a <a>node object</a>.</dd>
+        <dd>An invalid value for a reverse property has been detected.
+          The value of an inverse property must be a <a>node object</a>.</dd>
         <dt class="changed"><dfn>invalid scoped context</dfn></dt>
-        <dd class="changed">The <a>local context</a> defined within a <a>term definition</a> is invalid.</dd>
+        <dd class="changed">The <a>local context</a>
+          defined within a <a>term definition</a>
+          is invalid.</dd>
         <dt><dfn>invalid set or list object</dfn></dt>
-        <dd>A <a>set object</a> or <a>list object</a> with
-          disallowed <a>members</a> has been detected.</dd>
+        <dd>A <a>set object</a> or <a>list object</a>
+          with disallowed <a>members</a>
+          has been detected.</dd>
         <dt><dfn>invalid term definition</dfn></dt>
         <dd>An invalid <a>term definition</a> has been detected.</dd>
         <dt><dfn>invalid type mapping</dfn></dt>
         <dd>An <code>@type</code> <a>member</a> in a <a>term definition</a>
-          was encountered whose value could not be expanded to an
-          <a>absolute IRI</a>.</dd>
+          was encountered whose value could not be expanded to an <a>absolute IRI</a>.</dd>
         <dt><dfn>invalid type value</dfn></dt>
         <dd>An invalid value for an <code>@type</code> <a>member</a> has been detected,
-          i.e., the value was neither a <a>string</a> nor an <a>array</a>
-          of <a>strings</a>.</dd>
+          i.e., the value was neither a <a>string</a> nor an <a>array</a> of <a>strings</a>.</dd>
         <dt><dfn>invalid typed value</dfn></dt>
         <dd>A <a>typed value</a> with an invalid type was detected.</dd>
         <dt><dfn>invalid value object</dfn></dt>
-        <dd>A <a>value object</a> with disallowed <a>members</a> has been
-          detected.</dd>
+        <dd>A <a>value object</a> with disallowed <a>members</a> has been detected.</dd>
         <dt><dfn>invalid value object value</dfn></dt>
-        <dd>An invalid value for the <code>@value</code> <a>member</a> of a
-          <a>value object</a> has been detected, i.e., it is neither
-          a <a>scalar</a> nor <code>null</code>.</dd>
+        <dd>An invalid value for the <code>@value</code> <a>member</a> of a <a>value object</a>
+          has been detected,
+          i.e., it is neither a <a>scalar</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid vocab mapping</dfn></dt>
-        <dd>An invalid <a>vocabulary mapping</a> has been detected, i.e.,
-          it is neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
+        <dd>An invalid <a>vocabulary mapping</a> has been detected,
+          i.e., it is neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
         <dt><dfn>loading document failed</dfn></dt>
@@ -5428,12 +5440,12 @@
         <dt><dfn>loading remote context failed</dfn></dt>
         <dd>There was a problem encountered loading a remote context.</dd>
         <dt><dfn>multiple context link headers</dfn></dt>
-        <dd>Multiple HTTP Link Headers [[RFC8288]] using the
-          <code>http://www.w3.org/ns/json-ld#context</code> link relation
+        <dd>Multiple HTTP Link Headers [[RFC8288]]
+          using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
           have been detected.</dd>
         <dt><dfn>processing mode conflict</dfn></dt>
-        <dd>An attempt was made to change the <a>processing mode</a> which is
-          incompatible with the previous specified version.</dd>
+        <dd>An attempt was made to change the <a>processing mode</a>
+          which is incompatible with the previous specified version.</dd>
         <dt><dfn>recursive context inclusion</dfn></dt>
         <dd>A cycle in remote context inclusions has been detected.</dd>
       </dl>
