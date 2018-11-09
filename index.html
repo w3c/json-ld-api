@@ -4658,6 +4658,64 @@
   </section> <!-- end of Data Round Tripping -->
 </section>
 
+<section class="changed">
+  <h2>HTML Content Algorithms</h2>
+  <section id="extract-script-content" class="algorithm">
+    <h3>Extract Script Content Algorithm</h3>
+
+    <p>The algorithm extracts the text content a
+      <a>JSON-LD script element</a> into a <a>dictionary</a> or <a>array</a> of <a>dictionaries</a>.
+      A <dfn>JSON-LD script element</dfn> is a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>
+      within an HTML [[HTML52]] document with the with the <code>type</code> attribute set to
+      <code>application/ld+json</code>.</p>
+
+    <section class="informative">
+      <h4>Overview</h4>
+      <p>As a <a data-cite="HTML52/semantics-scripting.html#data-block">data block</a> 
+        may be inside a comment, and may be escaped, the algorithm extracts the JSON from any comment,
+        removes REVERSE SOLIDUS escapes,
+        and reverses <a data-cite="HTML5/syntax.html#character-references">HTML Character references</a>.
+    </section>
+
+    <section>
+      <h4>Algorithm</h4>
+      <p>The algorithm takes a single required input variable: <var>source</var>,
+        the <a data-cite="DOM#dom-node-textcontent">textContent</a> of an HTML <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>.</p>
+      <p>For the purpose of this algorithm, the following tokens are defined in [[ABNF]]:</p>
+
+      <pre class="nohighlight">
+  <dfn>space-character</dfn> = %20 ; SPACE
+                  / %09 ; CHARACTER TABULATION (tab)
+                  / %0A ; LINE FEED (LF)
+                  / %0C ; FORM FEED (FF)
+                  / %0D ; CARRIAGE RETURN (CR)
+  <dfn>comment-open</dfn>    = *<a>space-character</a> <code>"&lt;!--"</code> *<a>space-character</a>
+  <dfn>comment-close</dfn>   = *<a>space-character</a> <code>"--&gt;"</code> *<a>space-character</a>
+      </pre>
+
+      <ol>
+      <li>If <var>source</var> begins with <a>comment-open</a> and ends with <a>comment-close</a>,
+        remove those sequences from <var>source</var>.</li>
+      <li>If <var>source</var> contains <a>comment-open</a> or <a>comment-close</a>,
+        an <a data-link-for="JsonLdErrorCode">invalid script element</a> has been detected, and processing is aborted.</li>
+      <li>For all occurances of the any of the character sequences
+        <code>&lt;\script</code>,
+        <code>&lt;\/script</code>,
+        <code>&lt;\!--</code>,
+        or <code>--\&gt;</code>
+        in <var>source</var> using a case-insenstive match,
+        replace the sequence with the equivalent sequence excluding the REVERSE SOLIDUS (<code>\</code>).</li>
+      <li>For all occurances of a <a data-cite="HTML5/syntax.html#character-references">HTML Character reference</a> in <var>source</var>,
+        replace the sequence with the equivalent Unicode character as defined
+        in <a data-cite="HTML52/syntax.html#named-character-references">Named character references</a> in [[HTML52]].</li>
+      <li>If <var>source</var> is not a valid JSON document,
+        an <a data-link-for="JsonLdErrorCode">invalid script element</a> has been detected, and processing is aborted.</li>
+      <li>Return the result of transforming <var>source</var> into the <a>internal representation</a>.</li>
+      </ol>
+    </section>
+  </section>
+</section>
+
 <section>
   <h2>The Application Programming Interface</h2>
 
@@ -4716,7 +4774,7 @@
     <dl data-sort>
       <dt><dfn data-dfn-for="JsonLdProcessor">compact</dfn></dt>
       <dd class="algorithm">
-        <p><a>Compacts</a> the given <var>input</var> using the
+        <p><a>Compacts</a> the given <a data-lt="jsonldprocessor-compact-input">input</a> using the
           <var>context</var> according to the steps in the <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
 
         <ol>
@@ -4726,7 +4784,8 @@
             using the <a data-link-for="JsonLdProcessor">expand</a> method
             using <a data-lt="jsonldprocessor-compact-input">input</a>
             and <a data-lt="jsonldprocessor-compact-options">options</a>,
-            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.
+            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
+            <span class="changed">and <a data-link-for="JsonldOptions">extractAllScripts</a> defaulting to <code>false</code></span>.
           <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>,
             set <var>context</var> to that <a data-lt="member">member's</a> value,
             otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
@@ -4754,7 +4813,7 @@
              array of <a class="changed">dictionaries</a> to perform the compaction upon,
              or an <a>IRI</a> referencing the JSON-LD document to compact.</dd>
           <dt><dfn data-lt="jsonldprocessor-compact-context" data-lt-noDefault>context</dfn></dt>
-          <dd>The context to use when <a>compacting</a> the <code>input</code>;
+          <dd>The context to use when <a>compacting</a> the <a data-lt="jsonldprocessor-compact-input">input</a>;
             it can be specified by using a <a class="changed">dictionary</a>,
             an <a>IRI</a>,
             or an array consisting of <a class="changed">dictionaries</a> and <a>IRI</a>s.</dd>
@@ -4773,8 +4832,8 @@
           <li>Create a new <a>Promise</a> <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
-            is a <a>string</a> representing the <a>IRI</a> of a remote document, dereference it.
-            If the retrieved document's content type is neither
+            is a <a>string</a> representing the <a>IRI</a> of a remote document, dereference it as <var>original input</var>.
+            If the retrieved document's <a>Content-Type</a> is neither
             <code class="changed">text/html</code>,
             <code>application/json</code>,
             <code>application/ld+json</code>,
@@ -4792,20 +4851,55 @@
             pass that <a data-lt="member">member's</a> value instead.</li>
           <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved,
             the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
-            and a content type of <code>application/json</code>
+            and a <a>Content-Type</a> of <code>application/json</code>
             or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
             except <code>application/ld+json</code>,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the context referenced in the HTTP Link Header as <var>local context</var>.
-            The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>.
+            The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>
+            <span class="changed">or <code>text/html</code></span>.
             If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</li>
-          <li class="changed">If necessary, transform <var>input</var> into the <a>internal representation</a>.
+          <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>
+            and the passed <a data-lt="jsonldprocessor-expand-input">input</a> is
+            a <a>string</a> representing the <a>IRI</a> of a remote document,
+            extract the content of the <a>JSON-LD script element</a>(s) into <var>original input</var>:
+            <ol>
+              <li>If the original passed <a data-lt="jsonldprocessor-expand-input">input</a> parameter
+                contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
+                set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
+                of the <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> in <var>input</var>
+                having an <a data-cite="HTML52/dom.html#element-attrdef-global-id">id attribute</a>
+                that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.
+                If no element is found
+                or the located element is not a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> with <code>type</code> <code>application/ld+json</code>,
+                reject <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">invalid script element</a> error.
+                Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
+                using <var>source</var>.</li>
+              <li>Otherwise, if the <a data-link-for="JsonldOptions">extractAllScripts</a> option is not present, or <code>false</code>,
+                locate the first <a>JSON-LD script element</a> in <var>input</var>,
+                and set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>, if found.
+                Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
+                using <var>source</var>.
+                If no <a>JSON-LD script element</a> is found, set <var>original input</var> to a new empty <a>array</a>.</li>
+              <li>Otherwise, set <var>original input</var> to a new empty <a>array</a>.
+                For each <a>JSON-LD script element</a> in <var>input</var>:
+                <ol>
+                  <li>Set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>.</li>
+                  <li>Set <var>script content</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
+                    using <var>source</var>.</li>
+                  <li>If <var>script content</var> is an <a>array</a>, merge it to the end of <var>original input</var>.</li>
+                  <li>Otherwise, append <var>script content</var> to <var>original input</var>.</li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li class="changed">If necessary, transform <var>original input</var> into the <a>internal representation</a>.
             If <var>input</var> cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
-            passing the <var>active context</var> and <var>input</var> as <var>element</var>,
+            passing the <var>active context</var> and <var>original input</var> as <var>element</var>,
             and if passed, the <span class="changed"><a data-link-for="JsonldOptions">frameExpansion</a></span>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
@@ -4837,7 +4931,8 @@
           <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand</a> method
             using <a data-lt="jsonldprocessor-flatten-input">input</a>
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
-            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>.</li>
+            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
+            <span class="changed">and <a data-link-for="JsonldOptions">extractAllScripts</a> defaulting to <code>true</code></span>.</li>
           <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>,
             set <var>context</var> to that <a data-lt="member">member's</a> value,
             otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
@@ -4934,7 +5029,9 @@
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
-            and <a data-lt="jsonldprocessor-toRdf-options">options</a>.</li>
+            and <a data-lt="jsonldprocessor-toRdf-options">options</a>
+            <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
+            <span class="changed">and <a data-link-for="JsonldOptions">extractAllScripts</a> defaulting to <code>true</code></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
@@ -5132,6 +5229,7 @@
         boolean                compactToRelative = true;
         LoadDocumentCallback   documentLoader = null;
         (JsonLdDictionary? or USVString) expandContext = null;
+        boolean                extractAllScripts = false;
         boolean                frameExpansion = false;
         boolean                ordered = false;
         USVString              processingMode = null;
@@ -5157,6 +5255,11 @@
         otherwise, if not specified, the processor's built-in loader is used.</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">expandContext</dfn></dt>
       <dd>A context that is used to initialize the active context when expanding a document.</dd>
+      <dt class="changed"><dfn data-dfn-for="JsonLdOptions">extractAllScripts</dfn></dt>
+      <dd>If set to <code>true</code>,
+        when extracting <a>JSON-LD script elements</a> from HTML,
+        unless a specific <a data-cite="RFC3986#section-3.5">fragment identifier</a> is targeted,
+        extracts all encountered <a>JSON-LD script elements</a> using an <a>array</a> form, if necessary.</dd>
       <dt><dfn data-dfn-for="JsonLdOptions">produceGeneralizedRdf</dfn></dt>
       <dd>If set to <code>true</code>, the JSON-LD processor may emit
         <a>blank nodes</a> for <a>triple</a> <a>predicates</a>,
@@ -5242,6 +5345,7 @@
           USVString contextUrl = null;
           USVString documentUrl;
           any       document;
+          USVString contentType;
         };
       --></pre>
 
@@ -5250,7 +5354,7 @@
         <dd>If available, the value of the HTTP Link Header [[RFC8288]]
           using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
           in the response.
-          If the response's content type is <code>application/ld+json</code>,
+          If the response's <a>Content-Type</a> is <code>application/ld+json</code>,
           the HTTP Link Header is ignored.
           If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
           the <a>Promise</a> of the <a>LoadDocumentCallback</a> is rejected
@@ -5261,6 +5365,9 @@
         <dt><dfn data-dfn-for="RemoteDocument">document</dfn></dt>
         <dd>The retrieved document.
           This can either be the raw payload or the already parsed document.</dd>
+        <dt class="changed"><dfn data-dfn-for="RemoteDocument">contentType</dfn></dt>
+        <dd class="changed">The <dfn data-cite="RFC2045#section-5">Content-Type</dfn>
+          of the loaded document.</dd>
       </dl>
     </section>
   </section> <!-- end of Remote Document and Context Retrieval -->
@@ -5323,6 +5430,7 @@
             "invalid reverse property map",
             "invalid reverse property value",
             "invalid scoped context",
+            "invalid script element",
             "invalid set or list object",
             "invalid term definition",
             "invalid type mapping",
@@ -5410,6 +5518,10 @@
         <dd class="changed">The <a>local context</a>
           defined within a <a>term definition</a>
           is invalid.</dd>
+        <dt class="changed"><dfn>invalid script element</dfn></dt>
+        <dd class="changed">A <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> in HTML input
+          which is the target of a <a data-cite="RFC3986#section-3.5">fragment identifier</a>
+          does not have an appropriate <code>type</code> attribute.</dd>
         <dt><dfn>invalid set or list object</dfn></dt>
         <dd>A <a>set object</a> or <a>list object</a>
           with disallowed <a>members</a>
@@ -5574,7 +5686,11 @@
       and may be removed in a future version of JSON-LD,
       as is the support for <a>generalized RDF Datasets</a>
       and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</li>
-    
+    <li>Added API steps to accept <code>text/html</code> as input,
+      extracting either a specifically targeted <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>,
+      the first found <a>JSON-LD script element</a>,
+      or all <a>JSON-LD script elements</a>.</li>
+    <li>Added <a data-link-for="RemoteDocument">contentType</a> field to <a>RemoteDocument</a>.</li>
   </ul>
 </section>
 
@@ -5620,10 +5736,9 @@
     Paolo Ciccarese,
     Paul Frazze,
     Paul Warren,
-    Rego Gmür,
+    Reto Gmür,
     Rob Trainer,
-    Ted Thibodeau Jr.,
-    and Victor Charpenay.</p>
+    and Ted Thibodeau Jr..</p>
 
   <p>For the 1.0 version of the specification, the editors would like to thank Mark Birbeck, who provided a great deal of
     the initial push behind the JSON-LD work via his work on RDFj.
