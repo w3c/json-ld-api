@@ -1130,6 +1130,42 @@
       "input": "compact/ep15-in.jsonld",
       "context": "compact/ep15-context.jsonld",
       "expect": "invalid container mapping"
+    }, {
+      "@id": "#th001",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compacts embedded JSON-LD script element",
+      "purpose": "Tests embedded JSON-LD in HTML",
+      "input": "compact/h001-in.html",
+      "context": "compact/h001-context.jsonld",
+      "expect": "compact/h001-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#th002",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compacts first embedded JSON-LD script element",
+      "purpose": "Tests embedded JSON-LD in HTML",
+      "input": "compact/h002-in.html",
+      "context": "compact/h002-context.jsonld",
+      "expect": "compact/h002-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#th003",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compacts targeted JSON-LD script element",
+      "purpose": "Tests embedded JSON-LD in HTML with fragment identifier",
+      "input": "compact/h003-in.html#second",
+      "context": "compact/h003-context.jsonld",
+      "expect": "compact/h003-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#th004",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compacts all embedded JSON-LD script elements with extractAllScripts option",
+      "purpose": "Tests embedded JSON-LD in HTML extracting all elements",
+      "input": "compact/h004-in.html",
+      "context": "compact/h004-context.jsonld",
+      "expect": "compact/h004-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1", "extractAllScripts": true}
    }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
