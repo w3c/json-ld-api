@@ -878,6 +878,30 @@
       "input": "toRdf/0129-in.jsonld",
       "expect": "toRdf/0129-out.nq"
     }, {
+      "@id": "#th001",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transforms embedded JSON-LD script element",
+      "purpose": "Tests embedded JSON-LD in HTML",
+      "input": "toRdf/h001-in.html",
+      "expect": "toRdf/h001-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#th002",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transforms first embedded JSON-LD script element",
+      "purpose": "Tests embedded JSON-LD in HTML",
+      "input": "toRdf/h002-in.html",
+      "expect": "toRdf/h002-out.nq",
+      "option": {"specVersion": "json-ld-1.1", "extractAllScripts": false}
+    }, {
+      "@id": "#th003",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transforms targeted JSON-LD script element",
+      "purpose": "Tests embedded JSON-LD in HTML with fragment identifier",
+      "input": "toRdf/h003-in.html#second",
+      "expect": "toRdf/h003-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@list containing @list",
