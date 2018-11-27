@@ -86,7 +86,7 @@
       "name": "load JSON-LD document with link",
       "purpose": "If a context is specified in a link header, it is not used for JSON-LD.",
       "option": {
-        "httpLink": "<remote-doc/0009-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\""
+        "httpLink": "<0009-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\""
       },
       "input": "remote-doc/0009-in.jsonld",
       "expect": "remote-doc/0009-out.jsonld"
