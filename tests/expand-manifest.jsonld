@@ -1448,7 +1448,7 @@
       "purpose": "Tests embedded JSON-LD in HTML",
       "input": "expand/h019-in.html",
       "expect": "expand/h019-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1", "base": "http://example.org/doc"}
+      "option": {"specVersion": "json-ld-1.1", "base": "http://a.example.com/doc"}
     }, {
       "@id": "#th020",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1456,7 +1456,7 @@
       "purpose": "Tests embedded JSON-LD in HTML",
       "input": "expand/h020-in.html",
       "expect": "expand/h020-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1", "base": "http://example.org/doc"}
+      "option": {"specVersion": "json-ld-1.1", "base": "http://a.example.com/doc"}
     }, {
       "@id": "#th021",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1464,7 +1464,7 @@
       "purpose": "Tests embedded JSON-LD in HTML",
       "input": "expand/h021-in.html",
       "expect": "expand/h021-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1", "base": "http://example.org/doc"}
+      "option": {"specVersion": "json-ld-1.1", "base": "http://a.example.com/doc"}
     }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
