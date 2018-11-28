@@ -1466,6 +1466,14 @@
       "expect": "expand/h021-out.jsonld",
       "option": {"specVersion": "json-ld-1.1", "base": "http://a.example.com/doc"}
     }, {
+      "@id": "#th022",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands targeted JSON-LD script element with fragment and HTML base",
+      "purpose": "Tests embedded JSON-LD in HTML with fragment identifier",
+      "input": "expand/h022-in.html#second",
+      "expect": "expand/h022-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Adds @id to object not having an @id",
