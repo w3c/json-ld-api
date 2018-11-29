@@ -530,7 +530,7 @@
       and regular way of expressing of values in JSON-LD; all contextual
       information from the document is instead stored locally with each value.
       Running the <a href="#expansion-algorithm">Expansion algorithm</a>
-      (<a data-link-for="JsonLdProcessor">expand</a>)
+      (<a data-link-for="JsonLdProcessor">expand()</a>)
       operation) against the above examples results in the following output:</p>
 
     <pre class="example nohighlight" data-transform="updateExample"
@@ -627,7 +627,7 @@
     </pre>
 
     <p>Running the <a href="#compaction-algorithm">Compaction Algorithm</a>
-      (<a data-link-for="JsonLdProcessor">compact</a>)
+      (<a data-link-for="JsonLdProcessor">compact()</a>)
       operation) given the context supplied above against the JSON-LD input
       document provided above would result in the following output:</p>
 
@@ -710,7 +710,7 @@
     </pre>
 
     <p>Running the <a href="#flattening-algorithm">Flattening Algorithm</a>
-      (<a data-link-for="JsonLdProcessor">flatten</a>)
+      (<a data-link-for="JsonLdProcessor">flatten()</a>)
       operation) with a context set to <a>null</a> to prevent compaction
       returns the following document:</p>
 
@@ -4772,7 +4772,7 @@
     </pre>
 
     <dl data-sort>
-      <dt><dfn data-dfn-for="JsonLdProcessor">compact</dfn></dt>
+      <dt><dfn data-dfn-for="JsonLdProcessor">compact()</dfn></dt>
       <dd class="algorithm">
         <p><a>Compacts</a> the given <a data-lt="jsonldprocessor-compact-input">input</a> using the
           <var>context</var> according to the steps in the <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
@@ -4781,7 +4781,7 @@
           <li>Create a new <a>Promise</a> <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of
-            using the <a data-link-for="JsonLdProcessor">expand</a> method
+            using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-compact-input">input</a>
             and <a data-lt="jsonldprocessor-compact-options">options</a>,
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
@@ -4823,7 +4823,7 @@
         </dl>
       </dd>
 
-      <dt><dfn data-dfn-for="JsonLdProcessor">expand</dfn></dt>
+      <dt><dfn data-dfn-for="JsonLdProcessor">expand()</dfn></dt>
       <dd class="algorithm">
         <p><a href="#expansion">Expands</a> the given <a data-lt="jsonldprocessor-expand-input">input</a>
           according to the steps in the <a href="#expansion-algorithm">Expansion algorithm</a>:</p>
@@ -4919,7 +4919,7 @@
         </dl>
       </dd>
 
-      <dt><dfn data-dfn-for="JsonLdProcessor">flatten</dfn></dt>
+      <dt><dfn data-dfn-for="JsonLdProcessor">flatten()</dfn></dt>
       <dd class="algorithm">
         <p><a href="#flattening">Flattens</a> the given <a data-lt="jsonldprocessor-flatten-input">input</a>
           and <a>compacts</a> it using the passed <a data-lt="jsonldprocessor-flatten-context">context</a>
@@ -4928,7 +4928,7 @@
         <ol>
           <li>Create a new <a>Promise</a> <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
-          <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand</a> method
+          <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-flatten-input">input</a>
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
@@ -4972,14 +4972,14 @@
         </dl>
       </dd>
 
-      <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">fromRdf</dfn></dt>
+      <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">fromRdf()</dfn></dt>
       <dd class="algorithm changed">
         <p>Transforms the given <a data-lt="jsonldprocessor-fromRdf-input">input</a>
           into a <a>JSON-LD document</a> in <a>expanded form</a>
           according to the steps in the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>:</p>
 
         <p class="note">This interface does not define a means of creating an <a>RdfDataset</a>
-          from an arbitrary input, other than the <a data-link-for="JsonLdProcessor">toRdf</a> method.</p>
+          from an arbitrary input, other than the <a data-link-for="JsonLdProcessor">toRdf()</a> method.</p>
 
         <ol>
           <li>Create a new <a>Promise</a> <var>promise</var> and return it.
@@ -5018,7 +5018,7 @@
         </dl>
       </dd>
 
-      <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">toRdf</dfn></dt>
+      <dt><dfn data-dfn-for="JsonLdProcessor" class="changed">toRdf()</dfn></dt>
       <dd class="algorithm changed">
         <p>Transforms the given <a data-lt="jsonldprocessor-toRdf-input">input</a> into an <a>RdfDataset</a>
           according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
@@ -5027,7 +5027,7 @@
           <li>Create a new <a>Promise</a> <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of using the
-            <a data-link-for="JsonLdProcessor">expand</a> method
+            <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
@@ -5091,8 +5091,8 @@
     <h3>RDF Dataset Interfaces</h3>
 
     <p>The <dfn>RdfDataset</dfn> interface describes operations on an <a>RDF dataset</a>
-      used by the <a data-link-for="JsonLdProcessor">fromRdf</a>
-      and <a data-link-for="JsonLdProcessor">toRdf</a> methods
+      used by the <a data-link-for="JsonLdProcessor">fromRdf()</a>
+      and <a data-link-for="JsonLdProcessor">toRdf()</a> methods
       in the <a>JsonLdProcessor</a> interface.
       The interface may be used for constructing a new <a>RDF dataset</a>,
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
@@ -5109,7 +5109,7 @@
     <dl data-sort>
       <dt><dfn data-dfn-for="RdfDataset">defaultGraph</dfn></dt>
       <dd>Provides access to the <a>default graph</a> associated with the <a>RDF dataset</a>.</dd>
-      <dt><dfn data-dfn-for="RdfDataset">add</dfn></dt>
+      <dt><dfn data-dfn-for="RdfDataset">add()</dfn></dt>
       <dd class="algorithm">
         <p>Adds an <a>RdfGraph</a> and its associated <a>graph name</a> to the <a>RdfDataset</a>.
           Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
@@ -5133,8 +5133,8 @@
         and graph an <a>RdfGraph</a> instance.</dd>
     </dl>
 
-    <p>The <dfn>RdfGraph</dfn> interface describes operations on an <a>RDF graph</a> used by the <a data-link-for="JsonLdProcessor">fromRdf</a>
-      and <a data-link-for="JsonLdProcessor">toRdf</a> methods
+    <p>The <dfn>RdfGraph</dfn> interface describes operations on an <a>RDF graph</a> used by the <a data-link-for="JsonLdProcessor">fromRdf()</a>
+      and <a data-link-for="JsonLdProcessor">toRdf()</a> methods
       in the <a>JsonLdProcessor</a> interface.
       The interface may be used for constructing a new <a>RDF graph</a>,
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
@@ -5148,7 +5148,7 @@
     </pre>
 
     <dl data-sort>
-      <dt><dfn data-dfn-for="RdfGraph">add</dfn></dt>
+      <dt><dfn data-dfn-for="RdfGraph">add()</dfn></dt>
       <dd class="algorithm">
         <p>Adds an <a>RdfTriple</a> to the <a>RdfGraph</a>.
           Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
