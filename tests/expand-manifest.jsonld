@@ -1354,22 +1354,6 @@
       "expect": "expand/h007-out.jsonld",
       "option": {"specVersion": "json-ld-1.1", "extractAllScripts": true}
     }, {
-      "@id": "#th008",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Expands embedded JSON-LD script element with comments",
-      "purpose": "Tests embedded JSON-LD in HTML with comments",
-      "input": "expand/h008-in.html",
-      "expect": "expand/h008-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#th009",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Expands embedded JSON-LD script element with escaped tokens",
-      "purpose": "Tests embedded JSON-LD in HTML with escapes",
-      "input": "expand/h009-in.html",
-      "expect": "expand/h009-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
       "@id": "#th010",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expands embedded JSON-LD script element with HTML character references",
