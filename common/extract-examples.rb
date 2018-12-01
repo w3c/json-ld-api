@@ -223,7 +223,7 @@ ARGV.each do |input|
         examples[title] = {
           title: title,
           filename: fn,
-          content: content.to_s.gsub(/^\s*< !\s*-\s*-/, '<!--').gsub(/-\s*- >/, '-->'),
+          content: content.to_s.gsub(/^\s*< !\s*-\s*-/, '<!--').gsub(/-\s*- >/, '-->').gsub(/-\s*-\s*&gt;/, '--&gt;'),
           content_type: element.attr('data-content-type'),
           number: example_number,
           ext: ext,
