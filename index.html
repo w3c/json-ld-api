@@ -3043,9 +3043,13 @@
               element from the value of <code>@preserve</code> as <var>value</var>.</li>
             <li>Initialize <var>containers</var> to an empty <a>array</a>. This
               <a>array</a> will be used to keep track of an ordered list of
-              preferred <a>container mapping</a>
-              for a <a>term</a>, based on what is compatible with
-              <var>value</var>.</li>
+              preferred <a>container mapping</a> for a <a>term</a>,
+              based on what is compatible with <var>value</var>.
+              <div class="note">
+                Algorithm steps may append the same value to <var>containers</var>,
+                but the order in which they are added is significant for choosing the most appropriate term.
+              </div>
+            </li>
             <li>Initialize <var>type/language</var> to <code>@language</code>,
               and <var>type/language value</var> to <code>@null</code>. These two
               variables will keep track of the preferred
