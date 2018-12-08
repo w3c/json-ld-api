@@ -4673,25 +4673,14 @@
       within an HTML [[HTML52]] document with the with the <code>type</code> attribute set to
       <code>application/ld+json</code>.</p>
 
-    <section class="informative">
-      <h4>Overview</h4>
-      <p>The algorithm reverses <a data-cite="HTML5/syntax.html#character-references">HTML Character references</a>.
-    </section>
+    <p>The algorithm takes a single required input variable: <var>source</var>,
+      the <a data-cite="DOM#dom-node-textcontent">textContent</a> of an HTML <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>.</p>
 
-    <section>
-      <h4>Algorithm</h4>
-      <p>The algorithm takes a single required input variable: <var>source</var>,
-        the <a data-cite="DOM#dom-node-textcontent">textContent</a> of an HTML <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>.</p>
-
-      <ol>
-      <li>For all occurances of a <a data-cite="HTML5/syntax.html#character-references">HTML Character reference</a> in <var>source</var>,
-        replace the sequence with the equivalent Unicode character as defined
-        in <a data-cite="HTML52/syntax.html#named-character-references">Named character references</a> in [[HTML52]].</li>
-      <li>If <var>source</var> is not a valid JSON document,
-        an <a data-link-for="JsonLdErrorCode">invalid script element</a> has been detected, and processing is aborted.</li>
-      <li>Return the result of transforming <var>source</var> into the <a>internal representation</a>.</li>
-      </ol>
-    </section>
+    <ol>
+    <li>If <var>source</var> is not a valid JSON document,
+      an <a data-link-for="JsonLdErrorCode">invalid script element</a> has been detected, and processing is aborted.</li>
+    <li>Return the result of transforming <var>source</var> into the <a>internal representation</a>.</li>
+    </ol>
   </section>
 </section>
 
@@ -4862,8 +4851,7 @@
                 If no element is found
                 or the located element is not a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> with <code>type</code> <code>application/ld+json</code>,
                 reject <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">invalid script element</a> error.
-                Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
-                using <var>source</var>.</li>
+                Set <var>original input</var> to <var>source</var>.</li>
               <li>Otherwise, if the <a data-link-for="JsonldOptions">extractAllScripts</a> option is not present, or <code>false</code>,
                 locate the first <a>JSON-LD script element</a> in <var>input</var>,
                 and set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>, if found.
