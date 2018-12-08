@@ -4851,7 +4851,8 @@
                 If no element is found
                 or the located element is not a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> with <code>type</code> <code>application/ld+json</code>,
                 reject <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">invalid script element</a> error.
-                Set <var>original input</var> to <var>source</var>.</li>
+                Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
+                using <var>source</var>.</li>
               <li>Otherwise, if the <a data-link-for="JsonldOptions">extractAllScripts</a> option is not present, or <code>false</code>,
                 locate the first <a>JSON-LD script element</a> in <var>input</var>,
                 and set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>, if found.
