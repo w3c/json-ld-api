@@ -5,6 +5,8 @@ be used to verify JSON-LD Processor conformance to the set of specifications
 that constitute JSON-LD. The goal of the suite is to provide an easy and
 comprehensive JSON-LD testing solution for developers creating JSON-LD Processors.
 
+More information and an RDFS definition of the test vocabulary can be found at [vocab](https://w3c.github.io/json-ld-api/tests/vocab).
+
 # Design
 
 Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, and _toRdf_ sections:
@@ -35,6 +37,18 @@ Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, 
   The _expected_ results  can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 * _toRdf_ tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism).
+* _http_ tests have _input_ and _expected_ documents and an optional _context_ document.
+  These tests describe the behavior of an HTTP server performing content-negotiation using the ACCEPT header, specified using the _accept_ option to generate the _expected_ result document.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output
+  after potentially remapping blank node identifiers (see below).
+  Additionally, if the result is compacted and the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
+
+  If the result is to be compacted, and no explicit context URL is provided, test subjects should use http/default-context.jsonld
+
+  If the profile parameter includes http://example.com/do-not-use, test subjects should reject the URL and not accept the media type. Otherwise, for any other URL, applications should apply the specified URL for the context or frame, as appropriate.
+
+  For *NegativeEvaluationTests*, the result is the expected HTTP status. Options may be present to describe the intended HTTP behavior:
+  * _accept_: The HTTP _Accept_ header value.
 
 Unless `processingMode` is set explicitly in a test entry, `processingMode` is compatible with both `json-ld-1.0` and `json-ld-1.1`.
 
