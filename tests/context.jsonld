@@ -23,6 +23,7 @@
     "compactToRelative":    { "@type": "xsd:boolean" },
     "contentType":          { "@type": "xsd:boolean" },
     "expandContext":        { "@type": "xsd:string" },
+    "httpAccept":           { "@type": "xsd:string" },
     "httpLink":             { "@type": "xsd:string", "@container": "@set" },
     "httpStatus":           { "@type": "xsd:integer" },
     "processingMode":       { "@type": "xsd:string" },

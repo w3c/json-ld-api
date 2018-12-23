@@ -1,0 +1,23 @@
+{
+  "@context": "https://w3c.github.io/json-ld-api/tests/http/0011-context.jsonld",
+  "@graph": [
+    {
+      "id": "http://example.org/library",
+      "type": "ex:Library",
+      "contains": "http://example.org/library/the-republic"
+    },
+    {
+      "id": "http://example.org/library/the-republic",
+      "type": "ex:Book",
+      "http://purl.org/dc/elements/1.1/creator": "Plato",
+      "http://purl.org/dc/elements/1.1/title": "The Republic",
+      "contains": "http://example.org/library/the-republic#introduction"
+    },
+    {
+      "id": "http://example.org/library/the-republic#introduction",
+      "type": "ex:Chapter",
+      "description": "An introductory chapter on The Republic.",
+      "http://purl.org/dc/elements/1.1/title": "The Introduction"
+    }
+  ]
+}

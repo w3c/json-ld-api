@@ -9,6 +9,7 @@
     "expand-manifest.jsonld",
     "flatten-manifest.jsonld",
     "fromRdf-manifest.jsonld",
+    "http-manifest.jsonld",
     "remote-doc-manifest.jsonld",
     "toRdf-manifest.jsonld"
   ]

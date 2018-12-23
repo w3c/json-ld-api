@@ -1,0 +1,235 @@
+{
+  "@context": "https://w3c.github.io/json-ld-api/context.jsonld",
+  "@id": "",
+  "@type": "mf:Manifest",
+  "name": "HTTP",
+  "description": "Tests the appropriate server response to an HTTP Accept header and use of the profile parameter to the application/ld+json media type.",
+  "baseIri": "https://w3c.github.io/json-ld-api/tests/",
+  "sequence": [
+    {
+      "@id": "#t0001",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return unprocessed input",
+      "purpose": "Support application/ld+json media type.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0001-in.jsonld",
+      "expect": "http/0001-out.jsonld"
+    }, {
+      "@id": "#t0002",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return expanded input with profile=http://www.w3.org/ns/json-ld#expanded",
+      "purpose": "Perform expansion of the input.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=http://www.w3.org/ns/json-ld#expanded",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0002-in.jsonld",
+      "expect": "http/0002-out.jsonld"
+    }, {
+      "@id": "#t0003",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return compacted input using the default context with profile=http://www.w3.org/ns/json-ld#compacted",
+      "purpose": "Perform compaction of the input.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=http://www.w3.org/ns/json-ld#compacted",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0003-in.jsonld",
+      "context": "http/default-context.jsonld",
+      "expect": "http/0003-out.jsonld"
+    }, {
+      "@id": "#t0004",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return compacted input using the specified context with application/ld+json;profile=https://w3c.github.io/json-ld-api/tests/http/0004-context.jsonld",
+      "purpose": "Perform compaction of the input.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted https://w3c.github.io/json-ld-api/tests/http/0004-context.jsonld\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0004-in.jsonld",
+      "context": "http/0004-context.jsonld",
+      "expect": "http/0004-out.jsonld"
+    }, {
+      "@id": "#t0005",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return compacted input using the specified context with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted https://w3c.github.io/json-ld-api/tests/http/0005-context.jsonld\"",
+      "purpose": "Perform compaction of the input.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted https://w3c.github.io/json-ld-api/tests/http/0005-context.jsonld\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0005-in.jsonld",
+      "context": "http/0005-context.jsonld",
+      "expect": "http/0005-out.jsonld"
+    }, {
+      "@id": "#t0006",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return compacted input as application/ld+json using specified with application/ld+json;profile=\"https://w3c.github.io/json-ld-api/tests/http/0006-context.jsonld http://www.w3.org/ns/json-ld#compacted\"",
+      "purpose": "Perform compaction of the input.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"https://w3c.github.io/json-ld-api/tests/http/0006-context.jsonld http://www.w3.org/ns/json-ld#compacted\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0006-in.jsonld",
+      "context": "http/0006-context.jsonld",
+      "expect": "http/0006-out.jsonld"
+    }, {
+      "@id": "#t0007",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return flattened input as application/ld+json using specified with application/ld+json;profile=http://www.w3.org/ns/json-ld#flattened",
+      "purpose": "Perform flattening of the input in expanded form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=http://www.w3.org/ns/json-ld#flattened",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0007-in.jsonld",
+      "expect": "http/0007-out.jsonld"
+    }, {
+      "@id": "#t0008",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return flattened input using the default context with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted\"",
+      "purpose": "Perform flattening of the input in compact form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0008-in.jsonld",
+      "expect": "http/0008-out.jsonld"
+    }, {
+      "@id": "#t0009",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return flattened input using the default context with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted http://www.w3.org/ns/json-ld#flattened\"",
+      "purpose": "Perform flattening of the input in compact form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted http://www.w3.org/ns/json-ld#flattened\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0009-in.jsonld",
+      "expect": "http/0009-out.jsonld"
+    }, {
+      "@id": "#t0010",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return flattened input using the specified context with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#flattened https://w3c.github.io/json-ld-api/tests/http/0010-context.jsonld\"",
+      "purpose": "Perform flattening of the input in compact form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#flattened https://w3c.github.io/json-ld-api/tests/http/0010-context.jsonld\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0010-in.jsonld",
+      "context": "http/0010-context.jsonld",
+      "expect": "http/0010-out.jsonld"
+    }, {
+      "@id": "#t0011",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return flattened input using the specified context with application/ld+json;profile=\"https://w3c.github.io/json-ld-api/tests/http/0011-context.jsonld http://www.w3.org/ns/json-ld#flattened\"",
+      "purpose": "Perform flattening of the input in compact form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"https://w3c.github.io/json-ld-api/tests/http/0011-context.jsonld http://www.w3.org/ns/json-ld#flattened\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0011-in.jsonld",
+      "context": "http/0011-context.jsonld",
+      "expect": "http/0011-out.jsonld"
+    }, {
+      "@id": "#t0012",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return flattened input using the specified context with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted https://w3c.github.io/json-ld-api/tests/http/0012-context.jsonld\"",
+      "purpose": "Perform flattening of the input in compact form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted https://w3c.github.io/json-ld-api/tests/http/0012-context.jsonld\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0012-in.jsonld",
+      "context": "http/0012-context.jsonld",
+      "expect": "http/0012-out.jsonld"
+    }, {
+      "@id": "#t0013",
+      "@type": ["jld:PositiveEvaluationTest", "jld:HttpTest"],
+      "name": "Return framed input using the specified frame with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#framed https://w3c.github.io/json-ld-api/tests/http/0013-frame.jsonld\"",
+      "purpose": "Perform flattening of the input in compact form.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#framed https://w3c.github.io/json-ld-api/tests/http/0013-frame.jsonld\"",
+        "contentType": "application/ld+json"
+      },
+      "input": "http/0013-in.jsonld",
+      "frame": "http/0013-frame.jsonld",
+      "expect": "http/0013-out.jsonld"
+    }, {
+      "@id": "#t0014",
+      "@type": ["jld:NegativeEvaluationTest", "jld:HttpTest"],
+      "name": "Return status 406 with application/ld+json;profile=http://www.w3.org/ns/json-ld#framed",
+      "purpose": "Do not respond to invalid profile parameters.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=http://www.w3.org/ns/json-ld#framed",
+        "contentType": "text/plain"
+      },
+      "input": "http/0014-in.jsonld",
+      "expect": 406
+    }, {
+      "@id": "#t0015",
+      "@type": ["jld:NegativeEvaluationTest", "jld:HttpTest"],
+      "name": "Return status 406 with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#framed http://www.w3.org/ns/json-ld#expanded\"",
+      "purpose": "Do not respond to invalid profile parameters.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#framed http://www.w3.org/ns/json-ld#expanded\"",
+        "contentType": "text/plain"
+      },
+      "input": "http/0015-in.jsonld",
+      "expect": 406
+    }, {
+      "@id": "#t0016",
+      "@type": ["jld:NegativeEvaluationTest", "jld:HttpTest"],
+      "name": "Return status 406 with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#expanded http://www.w3.org/ns/json-ld#framed\"",
+      "purpose": "Do not respond to invalid profile parameters.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#expanded http://www.w3.org/ns/json-ld#framed\"",
+        "contentType": "text/plain"
+      },
+      "input": "http/0016-in.jsonld",
+      "expect": 406
+    }, {
+      "@id": "#t0017",
+      "@type": ["jld:NegativeEvaluationTest", "jld:HttpTest"],
+      "name": "Return status 406 with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#framed http://www.w3.org/ns/json-ld#compacted\"",
+      "purpose": "Do not respond to invalid profile parameters.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#framed http://www.w3.org/ns/json-ld#compacted\"",
+        "contentType": "text/plain"
+      },
+      "input": "http/0017-in.jsonld",
+      "expect": 406
+    }, {
+      "@id": "#t0018",
+      "@type": ["jld:NegativeEvaluationTest", "jld:HttpTest"],
+      "name": "Return status 406 with application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted http://www.w3.org/ns/json-ld#framed\"",
+      "purpose": "Do not respond to invalid profile parameters.",
+      "option": {
+        "specVersion": "json-ld-1.1",
+        "httpAccept": "application/ld+json;profile=\"http://www.w3.org/ns/json-ld#compacted http://www.w3.org/ns/json-ld#framed\"",
+        "contentType": "text/plain"
+      },
+      "input": "http/0018-in.jsonld",
+      "expect": 406
+    }
+  ]
+}
