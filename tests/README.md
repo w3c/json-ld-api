@@ -28,7 +28,9 @@ Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, 
 * _remote-doc_ tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 
-  For *NegativeEvaluationTests*, the result is a string associated with the expected error code. Options may be present to describe the intended HTTP behavior:
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
+
+  Options may be present to describe the intended HTTP behavior:
   * _contentType_: Content-Type of the returned HTTP payload, defaults to the appropriate type for the _input_ suffix.
   * _httpStatus_: The HTTP status code to return, defaults to `200`.
   * _redirectTo_: The HTTP _Content-Location_ header value.
@@ -49,6 +51,11 @@ Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, 
 
   For *NegativeEvaluationTests*, the result is the expected HTTP status. Options may be present to describe the intended HTTP behavior:
   * _accept_: The HTTP _Accept_ header value.
+
+  Options may be present to describe the intended HTTP behavior:
+  * _contentType_: Content-Type of the returned HTTP payload, defaults to the appropriate type for the _input_ suffix.
+  * _httpAccept_: The HTTP _Accept_ header value.
+  * _httpLink_: The HTTP _Link_ header value.
 
 Unless `processingMode` is set explicitly in a test entry, `processingMode` is compatible with both `json-ld-1.0` and `json-ld-1.1`.
 
