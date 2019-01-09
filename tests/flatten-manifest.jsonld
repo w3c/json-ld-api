@@ -263,6 +263,7 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
       "name": "Flattening blank node labels",
       "purpose": "Blank nodes are not relabeled during expansion",
+      "option": {"processingMode": "json-ld-1.0"},
       "input": "flatten/0038-in.jsonld",
       "expect": "flatten/0038-out.jsonld"
     }, {

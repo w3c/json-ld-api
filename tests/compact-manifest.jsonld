@@ -616,7 +616,7 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Compact using relative fragment identifier",
       "purpose": "Compacting a relative round-trips",
-      "option": {"base": "http://example.org/"},
+      "option": {"processingMode": "json-ld-1.0", "base": "http://example.org/"},
       "input": "compact/0075-in.jsonld",
       "context": "compact/0075-context.jsonld",
       "expect": "compact/0075-out.jsonld"
