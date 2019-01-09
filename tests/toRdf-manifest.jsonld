@@ -515,6 +515,7 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Drop blank node predicates by default",
       "purpose": "Triples with blank node predicates are dropped by default.",
+      "option": {"processingMode": "json-ld-1.0"},
       "input": "toRdf/0078-in.jsonld",
       "expect": "toRdf/0078-out.nq"
     }, {
@@ -796,6 +797,7 @@
       "name": "produce generalized RDF flag",
       "purpose": "Triples with blank node predicates are not dropped if the produce generalized RDF flag is true.",
       "option": {
+        "processingMode": "json-ld-1.0",
         "produceGeneralizedRdf": true
       },
       "input": "toRdf/0118-in.jsonld",

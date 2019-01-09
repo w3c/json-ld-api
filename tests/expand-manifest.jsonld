@@ -270,6 +270,7 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expanding blank node labels",
       "purpose": "Blank nodes are not relabeled during expansion",
+      "option": {"processingMode": "json-ld-1.0"},
       "input": "expand/0038-in.jsonld",
       "expect": "expand/0038-out.jsonld"
     }, {
@@ -528,6 +529,7 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "@vocab as blank node identifier",
       "purpose": "Use @vocab to map all properties to blank node identifiers",
+      "option": {"processingMode": "json-ld-1.0"},
       "input": "expand/0075-in.jsonld",
       "expect": "expand/0075-out.jsonld"
     }, {
