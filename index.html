@@ -1092,14 +1092,12 @@
                   <code>@vocab</code> <a>member</a>.</li>
                 <li>If <var>value</var> is <a>null</a>, remove
                   any <a>vocabulary mapping</a> from <var>result</var>.</li>
-                <li class="changed">Otherwise, if <var>value</var>
-                  the empty string (<code>&quot;&quot;</code>),
-                  the effective value is the current <a>base IRI</a>.</li>
                 <li>Otherwise, if <var>value</var> is
-                  an <a>absolute IRI</a>
+                  an <a>IRI</a>
                   or <a>blank node identifier</a>, the <a>vocabulary mapping</a>
-                  of <var>result</var> is set to <var>value</var>. If it is not
-                  an <a>absolute IRI</a>, or a <a>blank node identifier</a>, an
+                  of <var>result</var> is set to <var>value</var>,
+                  <span class="changed">expanding relative to the <a>base IRI</a>, if it is a <a>relative IRI</a></span>.
+                  If it is not an <a>IRI</a>, or a <a>blank node identifier</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid vocab mapping</a>
                   error has been detected and processing is aborted.
                   <div class="issue atrisk">The use of <a>blank node identifiers</a> to value for <code>@vocab</code> is obsolete,
@@ -5520,7 +5518,7 @@
           i.e., it is neither a <a>scalar</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid vocab mapping</dfn></dt>
         <dd>An invalid <a>vocabulary mapping</a> has been detected,
-          i.e., it is neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
+          i.e., it is neither an <a>IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
         <dt><dfn>loading document failed</dfn></dt>
