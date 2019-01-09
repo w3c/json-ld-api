@@ -811,6 +811,13 @@
       "input": "expand/0109-in.jsonld",
       "expect": "expand/0109-out.jsonld"
     }, {
+      "@id": "#t0110",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Various relative IRIs as properties with with relative @vocab",
+      "purpose": "Pathological relative property IRIs",
+      "input": "expand/0110-in.jsonld",
+      "expect": "expand/0110-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
