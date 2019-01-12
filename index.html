@@ -1095,8 +1095,14 @@
                 <li>Otherwise, if <var>value</var> is
                   an <a>IRI</a>
                   or <a>blank node identifier</a>, the <a>vocabulary mapping</a>
-                  of <var>result</var> is set to <var>value</var>,
-                  <span class="changed">expanding relative to the <a>base IRI</a>, if it is a <a>relative IRI</a></span>.
+                  of <var>result</var> is set to
+                  <span class="changed">the result of using the 
+                    <a href="#iri-expansion">IRI Expansion algorithm</a>,
+                    passing <var>result</var> as the <a>active context</a>,
+                    <var>value</var>,
+                    <code>true</code> for <var>vocab</var>, and
+                    <code>true</code> for <var>document relative</var>.
+                  </span>.
                   If it is not an <a>IRI</a>, or a <a>blank node identifier</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid vocab mapping</a>
                   error has been detected and processing is aborted.
