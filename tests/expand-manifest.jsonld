@@ -818,6 +818,20 @@
       "input": "expand/0110-in.jsonld",
       "expect": "expand/0110-out.jsonld"
     }, {
+      "@id": "#t0111",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base",
+      "purpose": "Pathological relative property IRIs",
+      "input": "expand/0111-in.jsonld",
+      "expect": "expand/0111-out.jsonld"
+    }, {
+      "@id": "#t0112",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base",
+      "purpose": "Pathological relative property IRIs",
+      "input": "expand/0112-in.jsonld",
+      "expect": "expand/0112-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
