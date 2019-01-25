@@ -996,9 +996,9 @@
         with a <a>local context</a>. The algorithm takes three required
         <span class="changed">and one optional</span>
         input variables:
-        an <var>active context</var>, a <var>local context</var>, an  <a>array</a>
+        an <var>active context</var>, a <var>local context</var>, and an <a>array</a>
         <var>remote contexts</var> which is used to detect cyclical context inclusions.
-        <span class="changed">The option input is <var>from sealed term</var> defaulting to <code>false</code>.</span>
+        <span class="changed">The optional input is <var>from sealed term</var> defaulting to <code>false</code>.</span>
         If <var>remote contexts</var> is not passed, it is initialized to an empty
         <a>array</a>.</p>
 
@@ -1136,7 +1136,7 @@
               or currently being defined during recursion.</li>
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
               <var>key</var> is not <code>@base</code>, <code>@vocab</code>,
-              <code>@language</code>, or <code>@version</code>, invoke the
+              <code>@language</code>, <code>@sealed</code>, or <code>@version</code>, invoke the
               <a href="#create-term-definition">Create Term Definition algorithm</a>,
               passing <var>result</var> for <var>active context</var>,
               <var>context</var> for <var>local context</var>, <var>key</var>,
