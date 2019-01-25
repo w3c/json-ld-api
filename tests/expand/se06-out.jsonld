@@ -1,0 +1,8 @@
+[
+  {
+    "http://example.com/sealed": [{"@value": true}],
+    "http://example.com/scope": [{
+      "http://example.com/sealed": [{"@value": "this should have the property http://example.com/sealed"}]
+    }]
+  }
+]
