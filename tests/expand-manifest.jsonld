@@ -1784,6 +1784,70 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li10-in.jsonld",
       "expect": "expand/li10-out.jsonld"
+   }, {
+      "@id": "#tse01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Seal a term",
+      "purpose": "Sealed Contexts",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se01-in.jsonld",
+      "expect": "expand/se01-out.jsonld"
+   }, {
+      "@id": "#tse02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Set a term to not be sealed",
+      "purpose": "A term with @sealed: false is not sealed.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se02-in.jsonld",
+      "expect": "expand/se02-out.jsonld"
+   }, {
+      "@id": "#tse03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Seal all terms in context",
+      "purpose": "A sealed context seals all term definitions.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se03-in.jsonld",
+      "expect": "expand/se03-out.jsonld"
+   }, {
+      "@id": "#tse04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Do not seal term with @sealed: false",
+      "purpose": "A sealed context does not seal terms with @sealed: false.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se04-in.jsonld",
+      "expect": "expand/se04-out.jsonld"
+   }, {
+      "@id": "#tse05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Do not clear active context with sealed terms",
+      "purpose": "The Active context may not be set to null if there are sealed terms.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se05-in.jsonld",
+      "expect": "expand/se05-out.jsonld"
+   }, {
+      "@id": "#tse06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Do not clear sealed context from scoped term that is not sealed.",
+      "purpose": "The Active context may be set to null from a scoped context of a sealed term.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se06-in.jsonld",
+      "expect": "expand/se06-out.jsonld"
+   }, {
+      "@id": "#tse07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Clear sealed context from scoped term that is sealed.",
+      "purpose": "The Active context may be set to null from a scoped context of a sealed term.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se07-in.jsonld",
+      "expect": "expand/se07-out.jsonld"
+   }, {
+      "@id": "#tse08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Term with sealed scoped context.",
+      "purpose": "A scoped context can seal terms.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se08-in.jsonld",
+      "expect": "expand/se08-out.jsonld"
     }
   ]
 }
