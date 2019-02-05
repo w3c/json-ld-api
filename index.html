@@ -995,11 +995,10 @@
       <p>This algorithm specifies how a new <a>active context</a> is updated
         with a <a>local context</a>. The algorithm takes two required
         <span class="changed">and two optional</span>
-        input variables:
-        an <var>active context</var> and a <var>local context</var>.
-        <span class="changed">The optional inputs are <var>from term</var></span>,
-        and an <a>array</a>
-        <var>remote contexts</var> which is used to detect cyclical context inclusions,
+        input variables.
+        The required inputs inputs are an <var>active context</var> and a <var>local context</var>.
+        <span class="changed">The optional inputs are <var>from term</var></span>, which defaults to <code>null</code>,
+        and an <a>array</a> <var>remote contexts</var> which is used to detect cyclical context inclusions,
         which defaults to a new empty <a>array</a>.</p>
 
       <ol>
@@ -1022,8 +1021,8 @@
               set <var>result</var> to a
               newly-initialized <var>active context</var> and continue with the
               next <var>context</var>.
-              <span class="changed">If <var>current seal</var> is <code>null</code>,
-                processors SHOULD issue a warning that an attempt to clear a sealed context was attempted.</span>
+              <span class="changed">If <var>current seal</var> is not <code>null</code>,
+                processors SHOULD issue a warning that an attempt was made to clear a sealed context.</span>
               <span class="note">In JSON-LD 1.0, the <a>base IRI</a> was given
                 a default value here; this is now described conditionally
                 in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
@@ -1195,12 +1194,13 @@
       <h3>Algorithm</h3>
 
       <p>The algorithm has four required <span class="changed">and three optional</span> inputs.
-        The required inputs are:
+        The required inputs are
         an <var>active context</var>, a <var>local context</var>,
         a <var>term</var>, and a map <var>defined</var>.
         <span class="changed">The optional inputs are
           <var>sealed</var> which defaults to <code>false</code>,
-          <var>current seal</var>, and <var>context id</var>, which default to <code>null</code>.</span></p>
+          <var>current seal</var>, which defaults to <code>null</code>,
+          and <var>context id</var>, which defaults to <code>null</code>.</span></p>
       <ol>
         <li>If <var>defined</var> contains the <a>member</a> <var>term</var> and the associated
           value is <code>true</code> (indicating that the
