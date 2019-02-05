@@ -6,9 +6,7 @@
     "sealed": {"@id": "http://example.com/sealed"},
     "unsealed": {"@id": "http://example.com/unsealed", "@sealed": false}
   },
-  "sealed": true,
-  "unsealed": true,
-  "scope": {
+  "sealed": {
     "@context": {
       "sealed": "http://example.com/something-else1",
       "unsealed": "http://example.com/something-else2"
