@@ -926,7 +926,7 @@
       <span class="changed">an optional <a>context</a></span>,
       <span class="changed">an optional <dfn>nest value</dfn>,</span>
       <span class="changed">an optional <dfn>prefix flag</dfn>,</span>
-      <span class="changed">an optional <dfn>sealed flag</dfn>,</span>
+      <span class="changed">an optional <dfn>context id</dfn>, used to flag this as a sealed term,</span>
       and an optional <dfn>container mapping</dfn>.
       A <a>term definition</a> can not only be used to map a <a>term</a>
       to an IRI, but also to map a <a>term</a> to a <a>keyword</a>,
@@ -993,31 +993,37 @@
       <h3>Algorithm</h3>
 
       <p>This algorithm specifies how a new <a>active context</a> is updated
-        with a <a>local context</a>. The algorithm takes three required
-        <span class="changed">and one optional</span>
+        with a <a>local context</a>. The algorithm takes two required
+        <span class="changed">and two optional</span>
         input variables:
-        an <var>active context</var>, a <var>local context</var>, and an <a>array</a>
-        <var>remote contexts</var> which is used to detect cyclical context inclusions.
-        <span class="changed">The optional input is <var>from sealed term</var> defaulting to <code>false</code>.</span>
-        If <var>remote contexts</var> is not passed, it is initialized to an empty
-        <a>array</a>.</p>
+        an <var>active context</var> and a <var>local context</var>.
+        <span class="changed">The optional inputs are <var>from term</var></span>,
+        and an <a>array</a>
+        <var>remote contexts</var> which is used to detect cyclical context inclusions,
+        which defaults to a new empty <a>array</a>.</p>
 
       <ol>
         <li>Initialize <var>result</var> to the result of cloning
           <var>active context</var>.</li>
+        <li>Initialize <var>current seal</var> to the value of <a>context id</a>
+          from the term definition for <var>from term</var>,
+          if such a term definition exists.</li>
         <li>If <var>local context</var> is not an <a>array</a>,
           set it to an <a>array</a> containing only
           <var>local context</var>.</li>
         <li>
           For each item <var>context</var> in <var>local context</var>:
           <ol>
+            <li class="changed">Initialize <var>context id</var> to a unique identifier.
+              <span class="note"><var>context id</var> is used to identify sealed terms
+                created from the same context.</span></li>
             <li>If <var>context</var> is <code>null</code>
-              <span class="changed">and <var>from sealed term</var> is <code>true</code>
-                  or the <var>active context</var> contains no <a>term definition</a>
-                  with a <a>sealed flag</a> of <code>true</code></span>,
+              <span class="changed">and <var>current seal</var> is <code>null</code></span>,
               set <var>result</var> to a
               newly-initialized <var>active context</var> and continue with the
               next <var>context</var>.
+              <span class="changed">If <var>current seal</var> is <code>null</code>,
+                processors SHOULD issue a warning that an attempt to clear a sealed context was attempted.</span>
               <span class="note">In JSON-LD 1.0, the <a>base IRI</a> was given
                 a default value here; this is now described conditionally
                 in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
@@ -1141,8 +1147,9 @@
               passing <var>result</var> for <var>active context</var>,
               <var>context</var> for <var>local context</var>, <var>key</var>,
               <var>defined</var>,
-              <span class="changed">and the value of the <code>@sealed</code>
-                member from <var>context</var>, if any, for <var>sealed</var></span>.</li>
+              <span class="changed">the value of the <code>@sealed</code>
+                member from <var>context</var>, if any, for <var>sealed</var></span>,
+                <var>current seal</var>, and <var>context id</var>.</li>
           </ol>
         </li>
         <li>Return <var>result</var>.</li>
@@ -1187,11 +1194,13 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm has four required <span class="changed">and one optional</span> inputs which are:
+      <p>The algorithm has four required <span class="changed">and three optional</span> inputs.
+        The required inputs are:
         an <var>active context</var>, a <var>local context</var>,
         a <var>term</var>, and a map <var>defined</var>.
-        <span class="changed">The optional input is <var>sealed</var> which defaults to <code>false</code>.</span></p>
-
+        <span class="changed">The optional inputs are
+          <var>sealed</var> which defaults to <code>false</code>,
+          <var>current seal</var>, and <var>context id</var>, which default to <code>null</code>.</span></p>
       <ol>
         <li>If <var>defined</var> contains the <a>member</a> <var>term</var> and the associated
           value is <code>true</code> (indicating that the
@@ -1216,8 +1225,9 @@
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
           error has been detected and processing is aborted.</li>
         <li class="changed">If the <var>active context</var> has an existing
-          <a>term definition</a> for <var>term</var> with the <a>sealed flag</a> set to <code>true</code>
-          processing is aborted.</li>
+          <a>term definition</a> for <var>term</var> with a non-null <a>context id</a>,
+          and <var>current seal</var> is not <code>null</code>, processing is aborted;
+          processors SHOULD issue a warning that an attempt was made to redefine a sealed term.</li>
         <li>Otherwise, remove any existing <a>term definition</a> for <var>term</var> in
           <var>active context</var>.</li>
         <li>If <var>value</var> is <code>null</code> or <var>value</var>
@@ -1235,9 +1245,11 @@
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
         <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
-        <li class="changed">Set the <a>sealed flag</a> in <var>definition</var>
-          to the value of the <code>@sealed</code> member in <var>value</var>,
-          if any, or to the value of <var>sealed</var> otherwise.</li>
+        <li class="changed">If the <code>@sealed</code> member in <var>value</var>
+          is <code>true</code>, or there is no <code>@sealed</code> member in <var>value</var>
+          and the <var>sealed</var> parameter is <code>true</code>,
+          set the <a>context id</a> in <var>definition</var>
+          to the value of the <var>context id</var> parameter.</li>
         <li>If <var>value</var> contains the <a>member</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>type</var> to the value associated with the
@@ -1698,8 +1710,9 @@
         <li>If <var>element</var> contains the <a>member</a> <code>@context</code>, set
           <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-          passing <var>active context</var> and the value of the
-          <code>@context</code> <a>member</a> as <var>local context</var>.</li>
+          passing <var>active context</var>, the value of the
+          <code>@context</code> <a>member</a> as <var>local context</var>,
+          <span class="changed">and <var>active property</var> as <var>from term</var></span>.</li>
         <li class="changed">For each <var>key</var>/<var>value</var> pair in <var>element</var>
           where <var>key</var> expands to <code>@type</code> using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
@@ -1713,9 +1726,7 @@
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
               passing <var>active context</var>, the value of the
               <var>term</var>'s <a>local context</a> as <var>local context</var>,
-              <span class="changed">and <var>from sealed term</var> set to the value
-                of the <a>sealed flag</a> from
-                <var>term</var>'s <a>term definition</a> in <var>active context</var></span>.</li>
+              <span class="changed">and <var>active property</var> as <var>from term</var></span>.</li>
           </ol>
         </li>
         <li>Initialize an empty <a class="changed">dictionary</a>, <var>result</var>.</li>
@@ -1902,11 +1913,10 @@
             <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>local context</a>, set <var>term context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var>, the value of the
-              <var>key</var>'s <a>local context</a> as <var>local context</var>,
-              <span class="changed">and <var>from sealed term</var> set to the value
-                of the <a>sealed flag</a> from
-                <var>key</var>'s <a>term definition</a> in <var>active context</var></span>.
+              passing <var>active context</var> and the value of the
+              <var>key</var>'s <a>local context</a> as <var>local context</var>.
+              <span class="changed note">The <var>from term</var> is not passed,
+                as scoped contexts may redefine sealed terms.</span>
               Otherwise, set <var>term context</var> to <var>active context</var>.</li>
             <li>Set <var>container mapping</var> to <var>key</var>'s <a>container mapping</a> in
               <var class="changed">term context</var>.</li>
@@ -1964,9 +1974,7 @@
                       algorithm</a>, passing <var>term context</var> as <var>active context</var>, the
                       value of the <var>index</var>'s <a>local context</a> as
                       <var>local context</var>,
-                      <span class="changed">and <var>from sealed term</var> set to the value
-                        of the <a>sealed flag</a> from
-                        <var>index</var>'s <a>term definition</a> in <var>active context</var></span>.
+                      <span class="changed">and <var>active property</var> as <var>from term</var></span>.
                       Otherwise, set <var>map context</var>
                       to <var>term context</var>.</li>
                     <li>Set <var>expanded index</var> to the result of using the
@@ -2341,8 +2349,9 @@
           <ol>
             <li>Set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var> and the value of the
-              <var>active property</var>'s <a>local context</a> as <var>local context</var>.</li>
+              passing <var>active context</var>, the value of the
+              <var>active property</var>'s <a>local context</a> as <var>local context</var>,
+              <span class="changed">and <var>active property</var> as <var>from term</var></span>.</li>
             <li>Set <var>inverse context</var> using the
               <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
               using <var>active context</var>.</li>
@@ -2411,8 +2420,9 @@
               <ol>
                 <li>Set <var>active context</var> to the result of the
                   <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-                  passing <var>active context</var> and the value of <var>term</var>'s
-                  <a>local context</a> as <var>local context</var>.</li>
+                  passing <var>active context</var>, the value of <var>term</var>'s
+                  <a>local context</a> as <var>local context</var>
+                  <span class="changed">and <var>active property</var> as <var>from term</var></span>.</li>
                 <li>Set <var>inverse context</var> using the
                   <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
                   using <var>active context</var>.</li>

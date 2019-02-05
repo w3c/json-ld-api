@@ -6,10 +6,12 @@
     "sealed1": {"@id": "http://example.com/sealed1"},
     "sealed2": {"@id": "http://example.com/sealed2"}
   },
-  "sealed1": true,
-  "sealed2": true,
-  "scope": {
-    "@context": {"sealed1": "http://example.com/something-else"},
-    "sealed1": "this should have the property http://example.com/sealed1"
+  "sealed1": {
+    "@context": {
+      "sealed1": "http://example.com/something-else",
+      "sealed2": "http://example.com/something-else"
+    },
+    "sealed1": "this should have the property http://example.com/sealed1",
+    "sealed2": "this should have the property http://example.com/sealed2"
   }
 }

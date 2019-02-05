@@ -1819,16 +1819,16 @@
    }, {
       "@id": "#tse05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not clear active context with sealed terms",
-      "purpose": "The Active context may not be set to null if there are sealed terms.",
+      "name": "Do not clear active context with sealed terms from a sealed term",
+      "purpose": "The Active context may not be set to null if there are sealed terms when expanding a sealed term from the same context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se05-in.jsonld",
       "expect": "expand/se05-out.jsonld"
    }, {
       "@id": "#tse06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not clear sealed context from scoped term that is not sealed.",
-      "purpose": "The Active context may be set to null from a scoped context of a sealed term.",
+      "name": "Clear active context of sealed terms from an unsealed term.",
+      "purpose": "The Active context may be set to null from a scoped context of an unsealed term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se06-in.jsonld",
       "expect": "expand/se06-out.jsonld"
@@ -1848,6 +1848,14 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se08-in.jsonld",
       "expect": "expand/se08-out.jsonld"
+   }, {
+      "@id": "#tse09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Redefine term in other sealed context.",
+      "purpose": "A sealed term can redefine a sealed term in another context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/se09-in.jsonld",
+      "expect": "expand/se09-out.jsonld"
     }
   ]
 }
