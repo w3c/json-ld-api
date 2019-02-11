@@ -1819,27 +1819,19 @@
    }, {
       "@id": "#tse05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not clear active context with sealed terms from a sealed term",
-      "purpose": "The Active context may not be set to null if there are sealed terms when expanding a sealed term from the same context.",
+      "name": "Clear active context with sealed terms from an embedded context",
+      "purpose": "The Active context be set to null from an embedded context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se05-in.jsonld",
       "expect": "expand/se05-out.jsonld"
    }, {
       "@id": "#tse06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Clear active context of sealed terms from an unsealed term.",
-      "purpose": "The Active context may be set to null from a scoped context of an unsealed term.",
+      "name": "Clear active context of sealed terms from a term.",
+      "purpose": "The Active context may be set to null from a scoped context of a term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se06-in.jsonld",
       "expect": "expand/se06-out.jsonld"
-   }, {
-      "@id": "#tse07",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Clear sealed context from scoped term that is sealed.",
-      "purpose": "The Active context may be set to null from a scoped context of a sealed term.",
-      "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se07-in.jsonld",
-      "expect": "expand/se07-out.jsonld"
    }, {
       "@id": "#tse08",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1851,8 +1843,8 @@
    }, {
       "@id": "#tse09",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Redefine term in other sealed context.",
-      "purpose": "A sealed term can redefine a sealed term in another context.",
+      "name": "Attempt to redefine term in other sealed context.",
+      "purpose": "A sealed term cannot redefine another sealed term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se09-in.jsonld",
       "expect": "expand/se09-out.jsonld"
