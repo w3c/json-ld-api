@@ -6,7 +6,7 @@
     "sealed": {"@language": null}
   },
   "sealed": {
-    "@context": null,
-    "sealed": "this should have the property http://example.com/sealed"
+    "@context": [null, {"@vocab": "http://something-else/"}],
+    "sealed": "this should have the property http://something-else/sealed"
   }
 }
