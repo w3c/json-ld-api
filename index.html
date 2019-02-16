@@ -1030,8 +1030,9 @@
                   characters are treated in URI references, per
                   <a data-cite="RFC3987#section-6.5">section 6.5</a>
                   of [[RFC3987]].</li>
-                <li>If <var>context</var> is in the <var>remote contexts</var> array, a
-                  <a data-link-for="JsonLdErrorCode">recursive context inclusion</a>
+                <li>If the number of entries in the <var>remote contexts</var> array
+                  exceeds a processor defined limit, a
+                  <a data-link-for="JsonLdErrorCode">context overflow</a>
                   error has been detected and processing is aborted;
                   otherwise, add <var>context</var> to <var>remote contexts</var>.</li>
                 <li class="changed">If <var>context</var> was previously dereferenced,
@@ -5437,7 +5438,7 @@
             "loading remote context failed",
             "multiple context link headers",
             "processing mode conflict",
-            "recursive context inclusion"
+            "context overflow"
         };
       --></pre>
 
@@ -5551,8 +5552,8 @@
         <dt><dfn>processing mode conflict</dfn></dt>
         <dd>An attempt was made to change the <a>processing mode</a>
           which is incompatible with the previous specified version.</dd>
-        <dt><dfn>recursive context inclusion</dfn></dt>
-        <dd>A cycle in remote context inclusions has been detected.</dd>
+        <dt><dfn>context overflow</dfn></dt>
+        <dd>maximum number of <code>@context</code> URLs exceeded.</dd>
       </dl>
     </section>
   </section> <!-- end of Error Handling -->
@@ -5680,6 +5681,8 @@
       or all <a>JSON-LD script elements</a>.</li>
     <li>Added <a data-link-for="RemoteDocument">contentType</a> field to <a>RemoteDocument</a>.</li>
     <li>Added support for sealed <a>contexts</a> and <a>term definitions</a>.</li>
+    <li>Because scoped contexts can lead to contexts being reloaded, replace the
+      <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
   </ul>
 </section>
 

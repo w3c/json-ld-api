@@ -932,14 +932,16 @@
       "name": "A context may not include itself recursively (direct)",
       "purpose": "Verifies that an exception is raised on expansion when processing a context referencing itself",
       "input": "expand/e002-in.jsonld",
-      "expect": "recursive context inclusion"
+      "expect": "recursive context inclusion",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te003",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "A context may not include itself recursively (indirect)",
       "purpose": "Verifies that an exception is raised on expansion when processing a context referencing itself indirectly",
       "input": "expand/e003-in.jsonld",
-      "expect": "recursive context inclusion"
+      "expect": "recursive context inclusion",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te004",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
