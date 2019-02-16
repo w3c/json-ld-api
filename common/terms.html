@@ -112,6 +112,16 @@
     Whenever possible, an <a>edge</a> should be labeled with an <a>IRI</a>.
     <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD.</div></dd>
+  <dt><dfn>embedded context</dfn></dt><dd>
+    An embedded <a>context</a> is a <a>dictionary</a> composed of a combintation of
+    <a>term definitions</a>, a <a>vocabulary mapping</a>, a <a>base IRI</a> and <a>default language</a>.
+    An <a>embedded context</a> may appear as part of a <a>node object</a> or <a>value object</a> using the
+    <code>@context</code> <a>member</a>.
+  </dd>
+  <dt><dfn>scoped context</dfn></dt><dd>
+    A <a>scoped context</a> is part of an <a>expanded term definition</a> using the
+    <code>@context</code> <a>member</a>. It has the same form as an <a>embedded context</a>.
+  </dd>
   <dt><dfn>expanded term definition</dfn></dt><dd>
     An expanded term definition is a <a>term definition</a>
     where the value is a <a>dictionary</a>
@@ -150,7 +160,8 @@
     is a <a>graph object</a> which does not have an <code>@id</code> <a>member</a>.
     Note that <a>node objects</a> may have a <code>@graph</code> member,
     but are not considered <a>graph objects</a> if they include any other <a>members</a>.
-    A top-level object consisting of <code>@graph</code> is also not a <a>graph object</a>.</dd>
+    A top-level object consisting of <code>@graph</code> is also not a <a>graph object</a>.
+    Note that a <a>node object</a> may also represent a <a>named graph</a> it it includes other properties.</dd>
   <dt><dfn>index map</dfn></dt><dd>
     An <a>index map</a> is a <a>dictionary</a> value of a <a>term</a>
     defined with <code>@container</code> set to <code>@index</code>,
@@ -212,7 +223,8 @@
     A <a>list</a> is an ordered sequence of <a>IRIs</a>, <a>blank nodes</a>, and <a>JSON-LD values</a>.
     See <dfn data-cite="RDF-SCHEMA#ch_collectionvocab" data-lt="collection" class="preserve">RDF collection</dfn> in [[RDF-SCHEMA]].</dd>
   <dt><dfn>list object</dfn></dt><dd>
-    A <a>list object</a> is a <a>dictionary</a> that has a <code>@list</code> key.</dd>
+    A <a>list object</a> is a <a>dictionary</a> that has a <code>@list</code> key.
+    It may also have an <code>@index</code> key, but no other members.</dd>
   <dt><dfn>literal</dfn></dt><dd>
     An <a>object</a> expressed as a value such as a string, number or in expanded form.</dd>
   <dt><dfn>local context</dfn></dt><dd>
@@ -294,7 +306,8 @@
     are resolved relative to the <a>vocabulary mapping</a>,
     not the <a>base IRI</a>.</dd>
   <dt><dfn>set object</dfn></dt><dd>
-    A <a>set object</a> is a <a>dictionary</a> that has an <code>@set</code> <a>member</a>.</dd>
+    A <a>set object</a> is a <a>dictionary</a> that has an <code>@set</code> <a>member</a>.
+    It may also have an <code>@index</code> key, but no other members.</dd>
   <dt><dfn>subject</dfn></dt><dd>
     A <a data-cite="RDF11-CONCEPTS#dfn-subject" class="externalDFN">subject</a>
     is a <a>node</a> in a <a>linked data graph</a>
