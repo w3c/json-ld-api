@@ -1246,7 +1246,9 @@
               <var>active context</var>, <var>type</var> for <var>value</var>,
               <code>true</code> for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the expanded <var>type</var> is
-              neither <code>@id</code>, nor <code>@vocab</code>, nor an <a>absolute IRI</a>, an
+              neither <code>@id</code>, nor <code>@vocab</code>,
+              <span class="changed">nor, if <a>processing mode</a> is <code>json-ld-1.1</code>, <code>@none</code>,</span>
+              nor an <a>absolute IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set the <a>type mapping</a> for <var>definition</var> to <var>type</var>.</li>
@@ -2218,7 +2220,7 @@
           <var>value</var>.</li>
         <li>If <var>active property</var> has a <a>type mapping</a> in
           <var>active context</var>,
-          <span class="changed">other than <code>@id</code> or <code>@vocab</code>,</span>
+          <span class="changed">other than <code>@id</code> or <code>@vocab</code>, or <code>@none</code>,</span>
           add an <code>@type</code> <a>member</a> to
           <var>result</var> and set its value to the value associated with the
           <a>type mapping</a>.</li>
@@ -2935,6 +2937,22 @@
                   being processed.</li>
               </ol>
             </li>
+            <li class="changed">Otherwise, if <a>term definition</a> has a
+              <a>type mapping</a> which is <code>@null</code>:</li>
+              <ol>
+                <li>Reference the value associated with the <code>@language</code>
+                  <a>member</a> in <var>type/language map</var> using the variable
+                  <var>language map</var>.</li>
+                <li>If <var>language map</var> does not have an <code>@any</code>
+                  <a>member</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>Reference the value associated with the <code>@type</code>
+                  <a>member</a> in <var>type/language map</var> using the variable
+                  <var>type map</var>.</li>
+                <li>If <var>type map</var> does not have an <code>@any</code>
+                  <a>member</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
             <li>Otherwise, if <a>term definition</a> has a
               <a>type mapping</a>:
               <ol>
@@ -3228,6 +3246,7 @@
               that order, to <var>preferred values</var>.
               <span class="changed">If <var>value</var> is an empty <a>list object</a>,
                 set <var>type/language</var> to <code>@any</code>.</span></li>
+            <li class="changed">Append <code>@any</code> to <var>preferred values</var>.</li>
             <li>Initialize <var>term</var> to the result of the
               <a href="#term-selection">Term Selection algorithm</a>, passing
               <var>inverse context</var>, <var>var</var>, <var>containers</var>,
@@ -3558,6 +3577,22 @@
           <code>1</code>.</li>
         <li>If <var>number members</var> is greater than <code>2</code>, return
           <var>value</var> as it cannot be compacted.</li>
+        <li class="changed">If the <a>type mapping</a> of <var>active property</var> is <code>@none</code>,
+          leave <var>value</var> as is, as value compaction is disabled.
+          <ol>
+            <li>Replace any value of <code>@type</code> in <var>value</var> with the result of using the
+              <a href="#iri-compaction">IRI compaction algorithm</a>,
+              passing <var>active context</var>, <var>inverse context</var>,
+              the value of the <code>@type</code> <a>member</a> for <var>var</var>, and
+              <code>true</code> for <var>vocab</var>.</li>
+            <li>Replace each key in <var>value</var> with the result of using the
+              <a href="#iri-compaction">IRI compaction algorithm</a>,
+              passing <var>active context</var>, <var>inverse context</var>,
+              the that key for <var>var</var>, and
+              <code>true</code> for <var>vocab</var>.</li>
+            <li>Return <var>value</var>.</li>
+          </ol>
+        </li>
         <li>If <var>value</var> has an <code>@id</code> <a>member</a>:
           <ol>
             <li>If <var>number members</var> is <code>1</code> and
@@ -3590,7 +3625,21 @@
           or the <a>language mapping</a> of <var>active property</var>
           is set to <code>null</code>, return the value associated with the
           <code>@value</code> <a>member</a>.</li>
-        <li>Otherwise, return <var>value</var> as is.</li>
+        <li>Otherwise:
+          <ol class="changed">
+            <li>Replace any value of <code>@type</code> in <var>value</var> with the result of using the
+              <a href="#iri-compaction">IRI compaction algorithm</a>,
+              passing <var>active context</var>, <var>inverse context</var>,
+              the value of the <code>@type</code> <a>member</a> for <var>var</var>, and
+              <code>true</code> for <var>vocab</var>.</li>
+            <li>Replace each key in <var>value</var> with the result of using the
+              <a href="#iri-compaction">IRI compaction algorithm</a>,
+              passing <var>active context</var>, <var>inverse context</var>,
+              the that key for <var>var</var>, and
+              <code>true</code> for <var>vocab</var>.</li>
+            <li>Return <var>value</var>.</li>
+          </ol>
+        </li>
       </ol>
     </section>
   </section> <!-- end of Value Compaction algorithm -->
@@ -5570,11 +5619,9 @@
 <section class="appendix informative preserve">
   <h2>Open Issues</h2>
   <p>The following is a list of issues open at the time of publication.</p>
-  <p class="issue" data-number="4">Allow <code>@type</code> to have a <code>@container</code> specification, such as <code>@set</code>.</p>
   <p class="issue" data-number="5">Define a "streaming profile" for JSON-LD to help parse data from a stream, rather than require the entire document to be in memory. Also to generate documents that can be so streamed. This would aid in using JSON-LD as a dataset dump format where there are a very large number of quads.</p>
   <p class="issue" data-number="14">Problems importing contexts which reference other common contexts and result in an error.</p>
-  <p class="issue" data-number="26">For <code>@graph</code> containers, use the generated graph name identifier as the default subject for nodes in that graph.</p>
-  <p class="issue" data-number="33">Option to specify level of compaction for literals &amp; resources.</p>
+  <p class="issue" data-number="53">HTML baseURI and @context?</p>
 </section>
 
 <section class="appendix informative">
@@ -5683,6 +5730,7 @@
     <li>Added support for sealed <a>contexts</a> and <a>term definitions</a>.</li>
     <li>Because scoped contexts can lead to contexts being reloaded, replace the
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
+    <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
   </ul>
 </section>
 
