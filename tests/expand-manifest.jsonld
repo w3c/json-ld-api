@@ -1850,6 +1850,22 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/se09-in.jsonld",
       "expect": "expand/se09-out.jsonld"
+   }, {
+      "@id": "#ttn01",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@type: @none is illegal in 1.0.",
+      "purpose": "@type: @none is illegal in json-ld-1.0.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/tn01-in.jsonld",
+      "expect": "invalid type mapping"
+   }, {
+      "@id": "#ttn02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@type: @none expands strings as value objects",
+      "purpose": "@type: @none leaves inputs other than strings alone",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/tn02-in.jsonld",
+      "expect": "expand/tn02-out.jsonld"
     }
   ]
 }

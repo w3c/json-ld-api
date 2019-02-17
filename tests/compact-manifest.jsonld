@@ -1591,6 +1591,33 @@
       "context": "compact/li05-context.jsonld",
       "expect": "compact/li05-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
+   }, {
+      "@id": "#ttn01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "@type: @none does not compact values",
+      "purpose": "@type: @none does not compact values.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "context": "compact/tn01-context.jsonld",
+      "input": "compact/tn01-in.jsonld",
+      "expect": "compact/tn01-out.jsonld"
+   }, {
+      "@id": "#ttn02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "@type: @none does not use arrays by default",
+      "purpose": "@type: @none honors @container.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "context": "compact/tn02-context.jsonld",
+      "input": "compact/tn02-in.jsonld",
+      "expect": "compact/tn02-out.jsonld"
+   }, {
+      "@id": "#ttn03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "@type: @none uses arrays with @container: @set",
+      "purpose": "@type: @none honors @container.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "context": "compact/tn03-context.jsonld",
+      "input": "compact/tn03-in.jsonld",
+      "expect": "compact/tn03-out.jsonld"
     }
   ]
 }
