@@ -175,6 +175,20 @@
       "input": "fromRdf/0023-in.nq",
       "expect": "fromRdf/0023-out.jsonld"
     }, {
+      "@id": "#t0024",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "multiple languages for same subject+property+value",
+      "purpose": "Uniqness of triples should include the value language",
+      "input": "fromRdf/0024-in.nq",
+      "expect": "fromRdf/0024-out.jsonld"
+    }, {
+      "@id": "#t0025",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "multiple types for same subject+property+value",
+      "purpose": "Uniqness of triples should include the value type",
+      "input": "fromRdf/0025-in.nq",
+      "expect": "fromRdf/0025-out.jsonld"
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "@list containing empty @list",
