@@ -1874,69 +1874,69 @@
       "input": "expand/li10-in.jsonld",
       "expect": "expand/li10-out.jsonld"
    }, {
-      "@id": "#tse01",
+      "@id": "#tpr01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Seal a term",
-      "purpose": "Sealed Contexts",
+      "name": "Protect a term",
+      "purpose": "Protected Contexts",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se01-in.jsonld",
-      "expect": "expand/se01-out.jsonld"
+      "input": "expand/pr01-in.jsonld",
+      "expect": "expand/pr01-out.jsonld"
    }, {
-      "@id": "#tse02",
+      "@id": "#tpr02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Set a term to not be sealed",
-      "purpose": "A term with @sealed: false is not sealed.",
+      "name": "Set a term to not be protected",
+      "purpose": "A term with @protected: false is not protected.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se02-in.jsonld",
-      "expect": "expand/se02-out.jsonld"
+      "input": "expand/pr02-in.jsonld",
+      "expect": "expand/pr02-out.jsonld"
    }, {
-      "@id": "#tse03",
+      "@id": "#tpr03",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Seal all terms in context",
-      "purpose": "A sealed context seals all term definitions.",
+      "name": "Protect all terms in context",
+      "purpose": "A protected context protects all term definitions.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se03-in.jsonld",
-      "expect": "expand/se03-out.jsonld"
+      "input": "expand/pr03-in.jsonld",
+      "expect": "expand/pr03-out.jsonld"
    }, {
-      "@id": "#tse04",
+      "@id": "#tpr04",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not seal term with @sealed: false",
-      "purpose": "A sealed context does not seal terms with @sealed: false.",
+      "name": "Do not protect term with @protected: false",
+      "purpose": "A protected context does not protect terms with @protected: false.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se04-in.jsonld",
-      "expect": "expand/se04-out.jsonld"
+      "input": "expand/pr04-in.jsonld",
+      "expect": "expand/pr04-out.jsonld"
    }, {
-      "@id": "#tse05",
+      "@id": "#tpr05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Clear active context with sealed terms from an embedded context",
+      "name": "Clear active context with protected terms from an embedded context",
       "purpose": "The Active context be set to null from an embedded context.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se05-in.jsonld",
-      "expect": "expand/se05-out.jsonld"
+      "input": "expand/pr05-in.jsonld",
+      "expect": "expand/pr05-out.jsonld"
    }, {
-      "@id": "#tse06",
+      "@id": "#tpr06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Clear active context of sealed terms from a term.",
+      "name": "Clear active context of protected terms from a term.",
       "purpose": "The Active context may be set to null from a scoped context of a term.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se06-in.jsonld",
-      "expect": "expand/se06-out.jsonld"
+      "input": "expand/pr06-in.jsonld",
+      "expect": "expand/pr06-out.jsonld"
    }, {
-      "@id": "#tse08",
+      "@id": "#tpr08",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Term with sealed scoped context.",
-      "purpose": "A scoped context can seal terms.",
+      "name": "Term with protected scoped context.",
+      "purpose": "A scoped context can protect terms.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se08-in.jsonld",
-      "expect": "expand/se08-out.jsonld"
+      "input": "expand/pr08-in.jsonld",
+      "expect": "expand/pr08-out.jsonld"
    }, {
-      "@id": "#tse09",
+      "@id": "#tpr09",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Attempt to redefine term in other sealed context.",
-      "purpose": "A sealed term cannot redefine another sealed term.",
+      "name": "Attempt to redefine term in other protected context.",
+      "purpose": "A protected term cannot redefine another protected term.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/se09-in.jsonld",
-      "expect": "expand/se09-out.jsonld"
+      "input": "expand/pr09-in.jsonld",
+      "expect": "expand/pr09-out.jsonld"
    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
