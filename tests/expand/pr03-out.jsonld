@@ -1,0 +1,8 @@
+[
+  {
+    "http://example.com/protected1": [{
+      "http://example.com/protected1": [{"@value": "this should have the property http://example.com/protected1"}],
+      "http://example.com/protected2": [{"@value": "this should have the property http://example.com/protected2"}]
+    }]
+  }
+]

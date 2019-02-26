@@ -926,7 +926,7 @@
       <span class="changed">an optional <a>context</a></span>,
       <span class="changed">an optional <dfn>nest value</dfn>,</span>
       <span class="changed">an optional <dfn>prefix flag</dfn>,</span>
-      <span class="changed">a <dfn>sealed</dfn>, used to mark this as a sealed term,</span>
+      <span class="changed">a <dfn>protected</dfn>, used to mark this as a protected term,</span>
       and an optional <dfn>container mapping</dfn>.
       A <a>term definition</a> can not only be used to map a <a>term</a>
       to an IRI, but also to map a <a>term</a> to a <a>keyword</a>,
@@ -1131,13 +1131,13 @@
               or currently being defined during recursion.</li>
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
               <var>key</var> is not <code>@base</code>, <code>@vocab</code>,
-              <code>@language</code>, <code>@sealed</code>, or <code>@version</code>, invoke the
+              <code>@language</code>, <code>@protected</code>, or <code>@version</code>, invoke the
               <a href="#create-term-definition">Create Term Definition algorithm</a>,
               passing <var>result</var> for <var>active context</var>,
               <var>context</var> for <var>local context</var>, <var>key</var>,
               <var>defined</var>,
-              <span class="changed">and the value of the <code>@sealed</code>
-                member from <var>context</var>, if any, for <var>sealed</var></span>.</li>
+              <span class="changed">and the value of the <code>@protected</code>
+                member from <var>context</var>, if any, for <var>protected</var></span>.</li>
           </ol>
         </li>
         <li>Return <var>result</var>.</li>
@@ -1187,7 +1187,7 @@
         an <var>active context</var>, a <var>local context</var>,
         a <var>term</var>, and a map <var>defined</var>.
         <span class="changed">The optional input is
-          <var>sealed</var> which defaults to <code>false</code>.</span></p>
+          <var>protected</var> which defaults to <code>false</code>.</span></p>
       <ol>
         <li>If <var>defined</var> contains the <a>member</a> <var>term</var> and the associated
           value is <code>true</code> (indicating that the
@@ -1212,8 +1212,8 @@
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
           error has been detected and processing is aborted.</li>
         <li class="changed">If the <var>active context</var> has an existing
-          <a>term definition</a> for <var>term</var> which is sealed, processing is aborted;
-          processors SHOULD issue a warning that an attempt was made to redefine a sealed term.</li>
+          <a>term definition</a> for <var>term</var> which is protected, processing is aborted;
+          processors SHOULD issue a warning that an attempt was made to redefine a protected term.</li>
         <li>Otherwise, remove any existing <a>term definition</a> for <var>term</var> in
           <var>active context</var>.</li>
         <li>If <var>value</var> is <code>null</code> or <var>value</var>
@@ -1231,10 +1231,10 @@
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
         <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
-        <li class="changed">If the <code>@sealed</code> member in <var>value</var>
-          is <code>true</code>, or there is no <code>@sealed</code> member in <var>value</var>
-          and the <var>sealed</var> parameter is <code>true</code>,
-          set the <a>sealed</a> in <var>definition</var> to true.</li>
+        <li class="changed">If the <code>@protected</code> member in <var>value</var>
+          is <code>true</code>, or there is no <code>@protected</code> member in <var>value</var>
+          and the <var>protected</var> parameter is <code>true</code>,
+          set the <a>protected</a> in <var>definition</var> to true.</li>
         <li>If <var>value</var> contains the <a>member</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>type</var> to the value associated with the
@@ -5727,7 +5727,7 @@
       the first found <a>JSON-LD script element</a>,
       or all <a>JSON-LD script elements</a>.</li>
     <li>Added <a data-link-for="RemoteDocument">contentType</a> field to <a>RemoteDocument</a>.</li>
-    <li>Added support for sealed <a>contexts</a> and <a>term definitions</a>.</li>
+    <li>Added support for protected <a>contexts</a> and <a>term definitions</a>.</li>
     <li>Because scoped contexts can lead to contexts being reloaded, replace the
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
     <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
