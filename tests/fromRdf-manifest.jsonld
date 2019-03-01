@@ -189,6 +189,13 @@
       "input": "fromRdf/0025-in.nq",
       "expect": "fromRdf/0025-out.jsonld"
     }, {
+      "@id": "#t0026",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "triple with rdf:first property and rdf:nil value",
+      "purpose": "Check list generation with rdf:first property and rdf:nil value.",
+      "input": "fromRdf/0026-in.nq",
+      "expect": "fromRdf/0026-out.jsonld"
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "@list containing empty @list",
