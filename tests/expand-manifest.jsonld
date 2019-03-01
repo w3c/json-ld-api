@@ -1938,6 +1938,62 @@
       "input": "expand/pr09-in.jsonld",
       "expect": "protected term redefinition"
    }, {
+      "@id": "#tpr10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr10-in.jsonld",
+      "expect": "expand/pr10-out.jsonld"
+   }, {
+      "@id": "#tpr11",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr11-in.jsonld",
+      "expect": "protected term redefinition"
+   }, {
+      "@id": "#tpr12",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr12-in.jsonld",
+      "expect": "protected term redefinition"
+   }, {
+      "@id": "#tpr13",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr13-in.jsonld",
+      "expect": "expand/pr13-out.jsonld"
+   }, {
+      "@id": "#tpr14",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr14-in.jsonld",
+      "expect": "expand/pr14-out.jsonld"
+   }, {
+      "@id": "#tpr15",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr15-in.jsonld",
+      "expect": "invalid context nullification"
+   }, {
+      "@id": "#tpr16",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "",
+      "purpose": "",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr16-in.jsonld",
+      "expect": "invalid context nullification"
+   }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
