@@ -1874,13 +1874,21 @@
       "input": "expand/li10-in.jsonld",
       "expect": "expand/li10-out.jsonld"
    }, {
-      "@id": "#tpr01",
+      "@id": "#tpr01e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Protect a term",
-      "purpose": "Protected Contexts",
+      "name": "Protected a term (error mode)",
+      "purpose": "Check 'error' mode when overriding a protected term. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr01-in.jsonld",
       "expect": "protected term redefinition"
+   }, {
+      "@id": "#tpr01w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Protected a term (warn mode)",
+      "purpose": "Check 'warn' mode when overriding a protected term. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr01-in.jsonld",
+      "expect": "expand/pr01-out.jsonld"
    }, {
       "@id": "#tpr02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1890,29 +1898,53 @@
       "input": "expand/pr02-in.jsonld",
       "expect": "expand/pr02-out.jsonld"
    }, {
-      "@id": "#tpr03",
+      "@id": "#tpr03e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Protect all terms in context",
-      "purpose": "A protected context protects all term definitions.",
+      "name": "Protect all terms in context (error mode)",
+      "purpose": "A protected context protects all term definitions. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr03-in.jsonld",
       "expect": "protected term redefinition"
    }, {
-      "@id": "#tpr04",
+      "@id": "#tpr03w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Protect all terms in context (warn mode)",
+      "purpose": "A protected context protects all term definitions. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr03-in.jsonld",
+      "expect": "expand/pr03-out.jsonld"
+   }, {
+      "@id": "#tpr04e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not protect term with @protected: false",
-      "purpose": "A protected context does not protect terms with @protected: false.",
+      "name": "Do not protect term with @protected: false (error mode)",
+      "purpose": "A protected context does not protect terms with @protected: false. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr04-in.jsonld",
       "expect": "protected term redefinition"
    }, {
-      "@id": "#tpr05",
+      "@id": "#tpr04w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Do not protect term with @protected: false (warn mode)",
+      "purpose": "A protected context does not protect terms with @protected: false. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr04-in.jsonld",
+      "expect": "expand/pr04-out.jsonld"
+   }, {
+      "@id": "#tpr05e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Clear active context with protected terms from an embedded context",
-      "purpose": "The Active context be set to null from an embedded context.",
+      "name": "Clear active context with protected terms from an embedded context (error mode)",
+      "purpose": "The Active context be set to null from an embedded context. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr05-in.jsonld",
       "expect": "invalid context nullification"
+   }, {
+      "@id": "#tpr05w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Clear active context with protected terms from an embedded context (warn mode)",
+      "purpose": "The Active context be set to null from an embedded context. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr05-in.jsonld",
+      "expect": "expand/pr05-out.jsonld"
    }, {
       "@id": "#tpr06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1922,77 +1954,181 @@
       "input": "expand/pr06-in.jsonld",
       "expect": "expand/pr06-out.jsonld"
    }, {
-      "@id": "#tpr08",
+      "@id": "#tpr08e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Term with protected scoped context.",
-      "purpose": "A scoped context can protect terms.",
+      "name": "Term with protected scoped context. (error mode)",
+      "purpose": "A scoped context can protect terms. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr08-in.jsonld",
       "expect": "protected term redefinition"
    }, {
-      "@id": "#tpr09",
+      "@id": "#tpr08w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Term with protected scoped context. (warn mode)",
+      "purpose": "A scoped context can protect terms. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr08-in.jsonld",
+      "expect": "expand/pr08-out.jsonld"
+   }, {
+      "@id": "#tpr09e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Attempt to redefine term in other protected context.",
-      "purpose": "A protected term cannot redefine another protected term.",
+      "name": "Attempt to redefine term in other protected context. (error mode)",
+      "purpose": "A protected term cannot redefine another protected term. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr09-in.jsonld",
       "expect": "protected term redefinition"
    }, {
+      "@id": "#tpr09w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Attempt to redefine term in other protected context. (warn mode)",
+      "purpose": "A protected term cannot redefine another protected term. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr09-in.jsonld",
+      "expect": "expand/pr09-out.jsonld"
+   }, {
       "@id": "#tpr10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "name": "Simple protected and unprotected terms.",
+      "purpose": "Simple protected and unprotected terms.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr10-in.jsonld",
       "expect": "expand/pr10-out.jsonld"
    }, {
-      "@id": "#tpr11",
+      "@id": "#tpr11e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "name": "Fail to override protected term. (error mode)",
+      "purpose": "Fail to override protected term. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr11-in.jsonld",
       "expect": "protected term redefinition"
    }, {
-      "@id": "#tpr12",
+      "@id": "#tpr11w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail to override protected term. (warn mode)",
+      "purpose": "Fail to override protected term. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr11-in.jsonld",
+      "expect": "expand/pr11-out.jsonld"
+   }, {
+      "@id": "#tpr12e",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "name": "Scoped context fail to override protected term. (error mode)",
+      "purpose": "Scoped context fail to override protected term. (error mode)",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr12-in.jsonld",
       "expect": "protected term redefinition"
    }, {
+      "@id": "#tpr12w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Scoped context fail to override protected term. (warn mode)",
+      "purpose": "Scoped context fail to override protected term. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr12-in.jsonld",
+      "expect": "expand/pr12-out.jsonld"
+   }, {
       "@id": "#tpr13",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "name": "Override unprotected term.",
+      "purpose": "Override unprotected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr13-in.jsonld",
       "expect": "expand/pr13-out.jsonld"
    }, {
       "@id": "#tpr14",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "name": "Clear protection with null context.",
+      "purpose": "Clear protection with null context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr14-in.jsonld",
       "expect": "expand/pr14-out.jsonld"
    }, {
       "@id": "#tpr15",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Clear protection with array with null context",
+      "purpose": "Clear protection with array with null context",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr15-in.jsonld",
-      "expect": "invalid context nullification"
+      "expect": "expand/pr15-out.jsonld"
    }, {
       "@id": "#tpr16",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "",
-      "purpose": "",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Override protected terms after null.",
+      "purpose": "Override protected terms after null.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr16-in.jsonld",
+      "expect": "expand/pr16-out.jsonld"
+   }, {
+      "@id": "#tpr17e",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail to override protected terms with type. (error mode)",
+      "purpose": "Fail to override protected terms with type. (error mode)",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr17-in.jsonld",
       "expect": "invalid context nullification"
+   }, {
+      "@id": "#tpr17w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail to override protected terms with type. (warn mode)",
+      "purpose": "Fail to override protected terms with type. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr17-in.jsonld",
+      "expect": "expand/pr17-out.jsonld"
+   }, {
+      "@id": "#tpr18e",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail to override protected terms with type+null+ctx. (error mode)",
+      "purpose": "Fail to override protected terms with type+null+ctx. (error mode)",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr18-in.jsonld",
+      "expect": "invalid context nullification"
+   }, {
+      "@id": "#tpr18w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail to override protected terms with type+null+ctx. (warn mode)",
+      "purpose": "Fail to override protected terms with type+null+ctx. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr18-in.jsonld",
+      "expect": "expand/pr18-out.jsonld"
+   }, {
+      "@id": "#tpr19",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Mix of protected and unprotected terms.",
+      "purpose": "Mix of protected and unprotected terms.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr19-in.jsonld",
+      "expect": "expand/pr19-out.jsonld"
+   }, {
+      "@id": "#tpr20e",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail with mix of protected and unprotected terms with type+null+ctx. (error mode)",
+      "purpose": "Fail with mix of protected and unprotected terms with type+null+ctx. (error mode)",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr20-in.jsonld",
+      "expect": "invalid context nullification"
+   }, {
+      "@id": "#tpr20w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail with mix of protected and unprotected terms with type+null+ctx. (warn mode)",
+      "purpose": "Fail with mix of protected and unprotected terms with type+null+ctx. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr20-in.jsonld",
+      "expect": "expand/pr20-out.jsonld"
+   }, {
+      "@id": "#tpr21e",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail with mix of protected and unprotected terms with type+null. (error mode)",
+      "purpose": "Fail with mix of protected and unprotected terms with type+null. (error mode)",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr21-in.jsonld",
+      "expect": "invalid context nullification"
+   }, {
+      "@id": "#tpr21w",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail with mix of protected and unprotected terms with type+null. (warn mode)",
+      "purpose": "Fail with mix of protected and unprotected terms with type+null. (warn mode)",
+      "option": {"specVersion": "json-ld-1.1", "protectedMode": "warn"},
+      "input": "expand/pr21-in.jsonld",
+      "expect": "expand/pr21-out.jsonld"
    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],

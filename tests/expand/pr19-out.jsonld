@@ -11,11 +11,6 @@
           {
             "@value": "p === ex:protected3"
           }
-        ],
-        "ex:unprotected2": [
-          {
-            "@value": "p === ex:unprotected2"
-          }
         ]
       }
     ],
