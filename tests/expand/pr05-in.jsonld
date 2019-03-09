@@ -6,7 +6,12 @@
     "protected": {"@language": null}
   },
   "protected": {
-    "@context": [null, {"@vocab": "http://something-else/"}],
-    "protected": "this should have the property http://something-else/protected"
+    "@context": [
+      null,
+      {
+        "@vocab": "http://something-else/"
+      }
+    ],
+    "protected": "error / property http://example.com/protected"
   }
 }

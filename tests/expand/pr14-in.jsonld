@@ -5,14 +5,14 @@
     "protected1": "ex:protected1",
     "protected2": {
       "@id": "ex:protected2",
-      "@context": [null]
+      "@context": null
     }
   },
   "protected1": "p === ex:protected1",
   "protected2": {
     "@context": {
-      "protected": "ex:protected3"
+      "protected1": "ex:protected3"
     },
-    "protected": "p === ex:protected3"
+    "protected1": "p === ex:protected3"
   }
 }

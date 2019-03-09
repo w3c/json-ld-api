@@ -6,7 +6,9 @@
     "protected2": "http://example.org/protected2"
   },
   "protected2": {
-    "@context": {"protected1": "http://example.com/something-else"},
-    "protected1": "this should have the property http://example.org/protected1"
+    "@context": {
+      "protected1": "http://example.org/something-else"
+    },
+    "protected1": "error / property http://example.org/protected1"
   }
 }

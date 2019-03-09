@@ -1,0 +1,12 @@
+[
+  {
+    "@type": [
+      "ex:Protected"
+    ],
+    "ex:protected1": [
+      {
+        "@value": "error / p === ex:protected1"
+      }
+    ]
+  }
+]
