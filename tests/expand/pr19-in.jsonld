@@ -8,8 +8,7 @@
       "@context": [
         null,
         {
-          "protected1": "ex:protected3",
-          "unprotected": "ex:unprotected2"
+          "protected1": "ex:protected3"
         }
       ]
     },

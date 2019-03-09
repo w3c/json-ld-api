@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "ex:protected1": [
+      {
+        "@value": "p === ex:protected1"
+      }
+    ],
+    "ex:protected2": [
+      {
+        "ex:protected1": [
+          {
+            "@value": "error / p === ex:protected1"
+          }
+        ]
+      }
+    ]
+  }
+]

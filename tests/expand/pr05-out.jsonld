@@ -1,7 +1,7 @@
 [
   {
     "http://example.com/protected": [{
-      "http://something-else/protected": [{"@value": "this should have the property http://something-else/protected"}]
+      "http://example.com/protected": [{"@value": "error / property http://example.com/protected"}]
     }]
   }
 ]
