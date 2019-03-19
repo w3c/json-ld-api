@@ -832,6 +832,13 @@
       "input": "expand/0112-in.jsonld",
       "expect": "expand/0112-out.jsonld"
     }, {
+      "@id": "#t0113",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "context with JavaScript Object property names",
+      "purpose": "Expand with context including JavaScript Object property names",
+      "input": "expand/0113-in.jsonld",
+      "expect": "expand/0113-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",

@@ -905,6 +905,16 @@
       "context": "compact/0107-context.jsonld",
       "expect": "compact/0107-out.jsonld"
     }, {
+      "@id": "#t0108",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Relative propererty IRIs with @vocab: ''",
+      "purpose": "Complex use cases for relative IRI compaction or properties",
+      "name": "context with JavaScript Object property names",
+      "purpose": "Compact with context including JavaScript Object property names",
+      "input": "compact/0108-in.jsonld",
+      "context": "compact/0108-context.jsonld",
+      "expect": "compact/0108-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "adding new term",

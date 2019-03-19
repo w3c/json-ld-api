@@ -342,6 +342,13 @@
       "input": "flatten/0048-in.jsonld",
       "expect": "flatten/0048-out.jsonld"
     }, {
+      "@id": "#t0049",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
+      "name": "context with JavaScript Object property names",
+      "purpose": "Flatten with context including JavaScript Object property names",
+      "input": "flatten/0049-in.jsonld",
+      "expect": "flatten/0049-out.jsonld"
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:FlattenTest" ],
       "name": "Conflicting indexes",
