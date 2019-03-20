@@ -895,6 +895,10 @@
     </tr></thead>
     <tbody>
       <tr>
+        <td>jsonld</td>
+        <td>http://www.w3.org/ns/json-ld#</td>
+      </tr>
+      <tr>
         <td>rdf</td>
         <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
       </tr>
@@ -1247,7 +1251,7 @@
               <code>true</code> for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the expanded <var>type</var> is
               neither <code>@id</code>, nor <code>@vocab</code>,
-              <span class="changed">nor, if <a>processing mode</a> is <code>json-ld-1.1</code>, <code>@none</code>,</span>
+              <span class="changed">nor, if <a>processing mode</a> is <code>json-ld-1.1</code>, <code>@json</code> nor <code>@none</code>,</span>
               nor an <a>absolute IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1715,7 +1719,12 @@
           </ol>
         </li>
         <li>Initialize an empty <a class="changed">dictionary</a>, <var>result</var>.</li>
-        <li id="alg-expand-each-key-value">For each <var>key</var> and <var>value</var> in <var>element</var>,
+        <li id="alg-expand-each-key-value">
+          <span class="changed">
+            Initialize an empty <a>dictionary</a>, <var>nests</var>, and
+            <var>input type</var> to the last value of any <a>member</a> expanding to <code>@type</code>.
+          </span>
+          For each <var>key</var> and <var>value</var> in <var>element</var>,
           ordered lexicographically by <var>key</var> <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
           <ol>
             <li>If <var>key</var> is <code>@context</code>, continue to
@@ -1778,7 +1787,11 @@
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>,
                   <span class="changed">
                     ensuring that <var>expanded value</var> is an <a>array</a> of one or more <a>dictionaries</a></span>.</li>
-                <li>If <var>expanded property</var> is <code>@value</code> and
+                <li>Otherwise, if <var>expanded property</var> is <code>@value</code>,
+                  <span class="changed"><a>processing mode</a> is <code>json-ld-1.1</code>, and
+                    <var>input type</var> is <code>@json</code>,
+                    set <var>expanded value</var> to <var>value</var>.
+                    Otherwise, if</span>
                   <var>value</var> is not a <a>scalar</a> or <code>null</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid value object value</a>
                   error has been detected and processing is aborted. Otherwise,
@@ -1903,7 +1916,11 @@
               set <var>term context</var> to <var>active context</var>.</li>
             <li>Set <var>container mapping</var> to <var>key</var>'s <a>container mapping</a> in
               <var class="changed">term context</var>.</li>
-            <li>If <var>container mapping</var> <span class="changed">includes</span> <code>@language</code> and
+            <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
+              has a <a>type mapping</a> of <code>@json</code>,
+              set <var>expanded value</var> to a new <a>dictionary</a> the the <a>member</a>
+              <code>@value</code> set to <var>value</var>, and <code>@type</code> set to <code>@json</code>.</li>
+            <li>Otherwise, if <var>container mapping</var> <span class="changed">includes</span> <code>@language</code> and
               <var>value</var> is a <a class="changed">dictionary</a> then <var>value</var>
               is expanded from a <a>language map</a>
               as follows:
@@ -2077,7 +2094,7 @@
                       <var>nested value</var> expands to <code>@value</code>, an
                       <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                       has been detected and processing is aborted.</li>
-                    <li>Recursively repeat <a href="#alg-expand-each-key-value">step 7</a>
+                    <li>Recursively repeat <a href="#alg-expand-each-key-value">step 9</a>
                       using <var>nested value</var> for <var>element</var>.</li>
                   </ol>
                 </li>
@@ -2096,6 +2113,9 @@
               error has been detected and processing is aborted.</li>
             <li>If the value of <var>result</var>'s <code>@value</code> <a>member</a> is
               <code>null</code>, then set <var>result</var> to <code>null</code>.</li>
+            <li class="changed">Otherwise, if the <var>result</var>'s <code>@type</code> <a>member</a>
+              is <code>@json</code>, then the <code>@value</code> <a>member</a> may
+              contain any value, and is treated as a <a>JSON literal</a>.</li>
             <li>Otherwise, if the value of <var>result</var>'s <code>@value</code> <a>member</a>
               is not a <a>string</a> and <var>result</var> contains the <a>member</a>
               <code>@language</code>, an
@@ -2220,7 +2240,7 @@
           <var>value</var>.</li>
         <li>If <var>active property</var> has a <a>type mapping</a> in
           <var>active context</var>,
-          <span class="changed">other than <code>@id</code> or <code>@vocab</code>, or <code>@none</code>,</span>
+          <span class="changed">other than <code>@id</code>, <code>@vocab</code>, or <code>@none</code>,</span>
           add an <code>@type</code> <a>member</a> to
           <var>result</var> and set its value to the value associated with the
           <a>type mapping</a>.</li>
@@ -2372,7 +2392,10 @@
           <a href="#value-compaction">Value Compaction algorithm</a>,
           passing <var>active context</var>, <var>inverse context</var>,
           <var>active property</var>,and <var>element</var> as <var>value</var> is
-          a <a>scalar</a>, return that result.</li>
+          a <a>scalar</a>,
+          <span class="changed">or the <a>term definition</a> for <var>active property</var>
+            has a <a>type mapping</a> of <code>@json</code>,</span>
+          return that result.</li>
         <li class="changed">If <var>element</var> is a
           <a>list object</a>, and the <a>container mapping</a> for
           <var>active property</var> in <var>active context</var> is <code>@list</code>,
@@ -4235,6 +4258,13 @@
         <li class="changed">If <var>datatype</var> is not <a>well-formed</a>, return <code>null</code>.</li>
         <li class="changed">If <var>item</var> has a <code>@language</code>
           <a>member</a> which is not <a>well-formed</a>, return <code>null</code>.</li>
+        <li class="changed">If <var>datatype</var> is <code>@json</code>,
+          convert <var>value</var> to the <a>canonical lexical form</a> as defined in [[JCS]]
+          using the result of transforming the <a>internal representation</a> of <var>value</var>
+          to JSON and set <var>datatype</var> to <code>jsonld:JSON</code>.
+          <div class="issue atrisk">JCS is still in draft form, and normatively requiring
+            JSON canonicalization may be removed in a future draft, or
+            a JSON-LD specific canonicalization form may be defined.</div></li>
         <li>If <var>value</var> is <code>true</code> or
           <code>false</code>, set <var>value</var> to the <a>string</a>
           <code>true</code> or <code>false</code> which is the
@@ -4552,6 +4582,11 @@
         <a>value objects</a> whereas <a>IRIs</a> and
         <a>blank node identifiers</a> are
         transformed to <a>node objects</a>.
+        <span class="changed">Literals with datatype <code>jsonld:JSON</code>
+          are transformed into a value object using the internal representation
+          based on the lexical-to-value mapping defined in
+          <a data-cite="JSON-LD11#dfn-json-datatype" class="externalDfn">JSON datatype</a> in [[JSON-LD11]]</span>,
+          and <code>@type</code> of <code>@json</code>.</span>
         If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
         <a>RDF literals</a> with a
         <a>datatype IRI</a>
@@ -4610,6 +4645,11 @@
                   to a JSON <a>number</a>.</li>
               </ol>
             </li>
+            <li class="changed">Otherwise, if <a>processing mode</a> is <code>json-ld-1.1</code>,
+              and <var>value</var> is a <a>JSON literal</a>,
+              set the <code>@value</code> <a>member</a> to the result of
+              turning the lexical value of <var>value</var>
+              into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.</li>
             <li>Otherwise, if <var>value</var> is a
               <a>language-tagged string</a>
               add a <a>member</a> <code>@language</code> to <var>result</var> and set its value to the
@@ -4638,9 +4678,10 @@
       or not (the result of a modulo&#8209;1 operation), the boolean values
       <code>true</code> and <code>false</code> are coerced to <code>xsd:boolean</code>,
       and <a>strings</a> are coerced to <code>xsd:string</code>.
-      The numeric or boolean values themselves are converted to
+      The JSON, numeric, or boolean values themselves are converted to
       <dfn>canonical lexical form</dfn>, i.e., a deterministic string
-      representation as defined in [[XMLSCHEMA11-2]].</p>
+      representation as defined in [[XMLSCHEMA11-2]]
+      <span class="changed">and [[JCS]]</span>.
 
     <p>The <a>canonical lexical form</a> of an <em>integer</em>, i.e., a
       <a>number</a> with no non-zero fractional part or a <a>number</a>
@@ -4691,6 +4732,56 @@
     <p>The <a>canonical lexical form</a> of the <em>boolean</em>
       values <code>true</code> and <code>false</code> are the strings
       <code>true</code> and <code>false</code>.</p>
+
+    <p class="changed">The <a>canonical lexical form</a> of the <a>JSON literal</a>
+      values are defined in [[JCS]]. The internal representation
+      of value objects having @type @json are converted to JSON
+      and canonicalized to reduce unnecessary whitespace,
+      order object members, and use a standard representation
+      for strings and numbers.</p>
+
+    <aside class="example changed" data-ignore
+           title="Canonicalized JSON literal">
+      <pre class="original" data-transform="updateExample">
+      <!--
+      {
+        "@context": {
+          "@version": 1.1,
+          "e": {"@id": "http://example.org/vocab#c14n", ****"@type": "@json"****}
+        },
+        "e": ****[
+          56.0,
+          {
+            "d": true,
+            "10": null,
+            "1": [ ]
+          }
+        ]****
+      }
+      -->
+      </pre>
+
+      <p>The example shows the value of "e" as a native JSON array including
+        unnecssary whitespace, a number and an object. The result
+        eliminates the whitespace, uses a canonical number representation,
+        and reorders the object members lexicographically:</p>
+
+      <pre class="turtle"
+           data-content-type="text/turtle"
+           data-result-for="Canonicalized JSON literal-original"
+           data-transform="updateExample"
+           data-to-rdf>
+      <!--
+      @prefix ex: <http://example.org/vocab#> .
+      @prefix jsonld: <http://www.w3.org/ns/json-ld#> .
+      [ex:c14n ****"""[56,{"1":[],"10":null,"d":true}]"""^^jsonld:JSON****] .
+      -->
+      </pre>
+    </aside>
+
+    <p class="issue atrisk">JCS is still in draft form, and normatively requiring
+      JSON canonicalization may be removed in a future draft, or
+      a JSON-LD specific canonicalization form may be defined.</p>
 
     <p>When JSON-native <a>numbers</a> are deserialized
       to RDF, lossless data round-tripping cannot be guaranteed, as rounding
@@ -5731,6 +5822,7 @@
     <li>Because scoped contexts can lead to contexts being reloaded, replace the
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
     <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
+    <li>Added support for <a>JSON literals</a>.</li>
   </ul>
 </section>
 
