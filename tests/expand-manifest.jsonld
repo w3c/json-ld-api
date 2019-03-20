@@ -1490,6 +1490,86 @@
       "expect": "expand/h022-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (boolean true)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (boolean true).",
+      "input": "expand/js01-in.jsonld",
+      "expect": "expand/js01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (boolean false)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (boolean false).",
+      "input": "expand/js02-in.jsonld",
+      "expect": "expand/js02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (double)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (double).",
+      "input": "expand/js03-in.jsonld",
+      "expect": "expand/js03-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (double-zero)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (double-zero).",
+      "input": "expand/js04-in.jsonld",
+      "expect": "expand/js04-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (integer)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (integer).",
+      "input": "expand/js05-in.jsonld",
+      "expect": "expand/js05-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (object)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (object).",
+      "input": "expand/js06-in.jsonld",
+      "expect": "expand/js06-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (array)",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (array).",
+      "input": "expand/js07-in.jsonld",
+      "expect": "expand/js07-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal without expanding contents",
+      "purpose": "Tests expanding JSON literal does not expand terms inside json.",
+      "input": "expand/js08-in.jsonld",
+      "expect": "expand/js08-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal aleady in expanded form",
+      "purpose": "Tests expanding JSON literal in expanded form.",
+      "input": "expand/js09-in.jsonld",
+      "expect": "expand/js09-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal aleady in expanded form with aliased keys",
+      "purpose": "Tests expanding JSON literal in expanded form with aliased keys in value object.",
+      "input": "expand/js10-in.jsonld",
+      "expect": "expand/js10-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Adds @id to object not having an @id",
