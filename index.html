@@ -1918,8 +1918,8 @@
               <var class="changed">term context</var>.</li>
             <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>type mapping</a> of <code>@json</code>,
-              set <var>expanded value</var> to a new <a>dictionary</a> the the <a>member</a>
-              <code>@value</code> set to <var>value</var>, and <code>@type</code> set to <code>@json</code>.</li>
+              set <var>expanded value</var> to a new <a>dictionary</a>, set the <a>member</a>
+              <code>@value</code> to <var>value</var>, and set the member <code>@type</code> to <code>@json</code>.</li>
             <li>Otherwise, if <var>container mapping</var> <span class="changed">includes</span> <code>@language</code> and
               <var>value</var> is a <a class="changed">dictionary</a> then <var>value</var>
               is expanded from a <a>language map</a>
@@ -4679,7 +4679,7 @@
       or not (the result of a modulo&#8209;1 operation), the boolean values
       <code>true</code> and <code>false</code> are coerced to <code>xsd:boolean</code>,
       and <a>strings</a> are coerced to <code>xsd:string</code>.
-      The JSON, numeric, or boolean values themselves are converted to
+      The <span class="changed">JSON, </span>numeric, or boolean values themselves are converted to
       <dfn>canonical lexical form</dfn>, i.e., a deterministic string
       representation as defined in [[XMLSCHEMA11-2]]
       <span class="changed">and [[JCS]]</span>.
@@ -4763,7 +4763,7 @@
       </pre>
 
       <p>The example shows the value of "e" as a native JSON array including
-        unnecssary whitespace, a number and an object. The result
+        unnecessary whitespace, a number and an object. The result
         eliminates the whitespace, uses a canonical number representation,
         and reorders the object members lexicographically:</p>
 
