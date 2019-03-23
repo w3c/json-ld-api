@@ -1599,6 +1599,60 @@
       "context": "compact/p008-context.jsonld",
       "expect": "compact/p008-out.jsonld"
     }, {
+      "@id": "#tpi01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "property-valued index indexes property value, instead of property (value)",
+      "purpose": "Compacting property-valued indexes.",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"},
+      "input": "compact/pi01-in.jsonld",
+      "context": "compact/pi01-context.jsonld",
+      "expect": "compact/pi01-out.jsonld"
+    }, {
+      "@id": "#tpi02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "property-valued index indexes property value, instead of property (multiple values)",
+      "purpose": "Compacting property-valued indexes.",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"},
+      "input": "compact/pi02-in.jsonld",
+      "context": "compact/pi02-context.jsonld",
+      "expect": "compact/pi02-out.jsonld"
+    }, {
+      "@id": "#tpi03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "property-valued index indexes property value, instead of property (node)",
+      "purpose": "Compacting property-valued indexes.",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"},
+      "input": "compact/pi03-in.jsonld",
+      "context": "compact/pi03-context.jsonld",
+      "expect": "compact/pi03-out.jsonld"
+    }, {
+      "@id": "#tpi04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "property-valued index indexes property value, instead of property (multiple nodes)",
+      "purpose": "Compacting property-valued indexes.",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"},
+      "input": "compact/pi04-in.jsonld",
+      "context": "compact/pi04-context.jsonld",
+      "expect": "compact/pi04-out.jsonld"
+    }, {
+      "@id": "#tpi05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "property-valued index indexes using @none if no property value exists",
+      "purpose": "Compacting property-valued indexes.",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"},
+      "input": "compact/pi05-in.jsonld",
+      "context": "compact/pi05-context.jsonld",
+      "expect": "compact/pi05-out.jsonld"
+    }, {
+      "@id": "#tpi06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "property-valued index indexes using @none if no property value does not compact to string",
+      "purpose": "Compacting property-valued indexes.",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"},
+      "input": "compact/pi06-in.jsonld",
+      "context": "compact/pi06-context.jsonld",
+      "expect": "compact/pi06-out.jsonld"
+    }, {
       "@id": "#tr001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Expands and compacts to document base by default",
