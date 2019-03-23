@@ -926,6 +926,7 @@
       <span class="changed">an optional <a>context</a></span>,
       <span class="changed">an optional <dfn>nest value</dfn>,</span>
       <span class="changed">an optional <dfn>prefix flag</dfn>,</span>
+      <span class="changed">an optional <dfn>index mapping</dfn>,</span>
       <span class="changed">a <dfn>protected</dfn>, used to mark this as a protected term,</span>
       and an optional <dfn>container mapping</dfn>.
       A <a>term definition</a> can not only be used to map a <a>term</a>
@@ -1371,6 +1372,20 @@
               has been detected and processing is aborted.</li>
             <li>Set the <a>container mapping</a> of <var>definition</var> to
               <var>container</var>.</li>
+          </ol>
+        </li>
+        <li class="changed">If <var>value</var> contains the <a>member</a> <code>@index</code>:
+          <ol>
+            <li>If <a>processing mode</a> is <code>json-ld-1.0</code> or
+              <a>container mapping</a> does not include <code>@index</code>,
+              an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
+              has been detected and processing is aborted.</li>
+            <li>Initialize <var>index</var> to the value associated with the
+              <code>@index</code> <a>member</a>, which MUST a <a>string</a> expanding to an <a>absolute IRI</a>.
+              Otherwise, an
+              <a data-link-for="JsonLdErrorCode">invalid term definition</a>
+              has been detected and processing is aborted.</li>
+            <li>Set the <a>index mapping</a> of <var>definition</var> to <var>index</var></li>
           </ol>
         </li>
         <li class="changed">If <var>value</var> contains the <a>member</a> <code>@context</code>:
@@ -1956,8 +1971,10 @@
               <var>value</var> is a <a class="changed">dictionary</a> then <var>value</var>
               is expanded from an map as follows:
               <ol>
-                <li>Initialize <var>expanded value</var> to an empty
-                  <a>array</a>.</li>
+                <li>Initialize <var>expanded value</var> to an empty <a>array</a>.</li>
+                <li class="changed">Initialize <var>index key</var> to
+                  the <var>key</var>'s <a>index mapping</a> in <a>active context</a>,
+                  or <code>@index</code>, if it does not exist.</li>
                 <li>For each key-value pair <var>index</var>-<var>index value</var>
                   in <var>value</var>, ordered lexicographically by <var>index</var>
                   <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
@@ -1987,36 +2004,41 @@
                         and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
-                        <li>If <var>container mapping</var> includes
-                          <code>@graph</code> and if <var>item</var> is not a
-                          <a>graph object</a>, set <var>item</var> to a new
-                          <a>dictionary</a> containing the key-value pair
-                          <code>@graph</code>-<var>item</var>, ensuring that the
-                          value is represented using an <a>array</a>.</li>
-                        <li>If <var>container mapping</var> includes <code>@index</code>
-                          and <var>item</var> does not have the <a>member</a>
-                          <code>@index</code> and <var>expanded index</var> is not <code>@none</code>,
-                          add the key-value pair
-                          (<code>@index</code>-<var>index</var>) to <var>item</var>.</li>
+                        <li>If <var>container mapping</var> includes <code>@graph</code>
+                          and if <var>item</var> is not a <a>graph object</a>,
+                          set <var>item</var> to a new <a>dictionary</a> containing the key-value pair
+                          <code>@graph</code>-<var>item</var>,
+                          ensuring that the value is represented using an <a>array</a>.</li>
+                        <li class="changed">If <var>container mapping</var> includes <code>@index</code>,
+                          <var>index key</var> is not <code>@index</code>,
+                          <var>item</var> does not have a <a>member</a> <code>@index</code>
+                          and <var>expanded index</var> is not <code>@none</code>,
+                          set <var>index property values</var> to the concatenation of
+                          <var>expanded index</var> with any existing values of
+                          <var>index key</var> in <var>item</var>.
+                          Add the key-value pair (<var>expanded index</var>-<var>index property values</var>) to <var>item</var>.
+                          If expanded value is a value object,
+                          it MUST NOT contain any extra properties;
+                          an <a data-link-for="JsonLdErrorCode">invalid value object</a>
+                          error has been detected and processing is aborted.</li>
+                        <li>Otherwise, if <var>container mapping</var> includes <code>@index</code>,
+                          <var>item</var> does not have a <a>member</a> <code>@index</code>,
+                          and <var>expanded index</var> is not <code>@none</code>,
+                          add the key-value pair (<code>@index</code>-<var>index</var>) to <var>item</var>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@id</code>
-                          and <var>item</var> does not have the <a>member</a>
-                          <code>@id</code>, add the key-value pair
-                          (<code>@id</code>-<var>expanded index</var>) to
-                          <var>item</var>, where <var>expanded index</var> is set to the result of
-                          using the
+                          and <var>item</var> does not have the <a>member</a> <code>@id</code>,
+                          add the key-value pair (<code>@id</code>-<var>expanded index</var>) to <var>item</var>,
+                          where <var>expanded index</var> is set to the result of using the
                           <a href="#iri-expansion">IRI Expansion algorithm</a>,
                           passing <var>active context</var>, <var>index</var>, and <code>true</code>
                           for <var>document relative</var>, unless <var>expanded index</var>
                           is already set to <code>@none</code>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@type</code>
-                          set <var>types</var> to the concatenation of
-                          <var>expanded index</var> with any existing values of
-                          <code>@type</code> in <var>item</var>.
+                          set <var>types</var> to the concatenation of <var>expanded index</var>
+                          with any existing values of <code>@type</code> in <var>item</var>.
                           If <var>expanded index</var> is <code>@none</code>,
                           do not concatenate <var>expanded index</var> to <var>types</var>.
-                          Add the key-value pair
-                          (<code>@type</code>-<var>types</var>) to
-                          <var>item</var>.</li>
+                          Add the key-value pair (<code>@type</code>-<var>types</var>) to <var>item</var>.</li>
                         <li>Append <var>item</var> to <var>expanded value</var>.</li>
                       </ol>
                     </li>
@@ -2776,17 +2798,31 @@
                       either <code>@language</code>, <code>@index</code>, <code>@id</code>, or <code>@type</code>
                       based on the contents of <var>container</var>, as <var>var</var>, and <code>true</code>
                       for <var>vocab</var>.</li>
+                    <li class="changed">Set <var>index key</var> to the value of <a>index mapping</a> in
+                      the <a>term definition</a> associated with <var>item active property</var> in <var>active context</var>,
+                      or <code>@index</code>, if no such value exists.</li>
                     <li>If <var>container</var> includes <code>@language</code> and
                       <var>expanded item</var> contains a
                       <code>@value</code> <a>member</a>, then set <var>compacted item</var>
                       to the value associated with its <code>@value</code> <a>member</a>.
                       Set <var>map key</var> to the value of <code>@language</code> in <var>expanded item</var>, if any.</li>
-                    <li>If <var>container</var> includes <code>@index</code> set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any,
+                    <li>Otherwise, if <var>container</var> includes <code>@index</code>
+                      and <var>index key</var> is <code>@index</code>,
+                      set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any,
                       and remove <var>container key</var> from <var>compacted item</var>.</li>
-                    <li class="changed">If <var>container</var> includes <code>@id</code>, set
+                    <li class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
+                      and <var>index key</var> is not <code>@index</code>,
+                      Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.
+                      If there are remaining values in <var>compacted item</var>
+                      for <var>compacted container</var>, set the value of
+                      <var>compacted container</var> in <var>compacted value</var>
+                      to those remaining values. Otherwise, remove that
+                      <a>member</a> from <var>compacted item</var>.
+                    </li>
+                    <li class="changed">Otherwise, if <var>container</var> includes <code>@id</code>, set
                       <var>map key</var> to the value of <var>container key</var> in
                       <var>compacted item</var> and remove <var>container key</var> from <var>compacted item</var>.</li>
-                    <li class="changed">If <var>container</var> is <code>@type</code>,
+                    <li class="changed">Otherwise, if <var>container</var> is <code>@type</code>,
                       set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.
                       If there are remaining values in <var>compacted item</var>
                       for <var>compacted container</var>, set the value of

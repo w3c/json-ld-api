@@ -1785,6 +1785,94 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/p004-in.jsonld",
       "expect": "expand/p004-out.jsonld"
+    }, {
+      "@id": "#tpi01",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "error if @version is not json-ld-1.1 for property-valued index",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi01-in.jsonld",
+      "expect": "invalid term definition"
+    }, {
+      "@id": "#tpi02",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "error if @container does not include @index for property-valued index",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi02-in.jsonld",
+      "expect": "invalid term definition"
+    }, {
+      "@id": "#tpi03",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "error if @index is a keyword for property-valued index",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi03-in.jsonld",
+      "expect": "invalid term definition"
+    }, {
+      "@id": "#tpi04",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "error if @index is not a string for property-valued index",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi04-in.jsonld",
+      "expect": "invalid term definition"
+    }, {
+      "@id": "#tpi05",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "error if attempting to add property to value object for property-valued index",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi05-in.jsonld",
+      "expect": "invalid value object"
+    }, {
+      "@id": "#tpi06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "property-valued index expands to property value, instead of @index (value)",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi06-in.jsonld",
+      "expect": "expand/pi06-out.jsonld"
+    }, {
+      "@id": "#tpi07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "property-valued index appends to property value, instead of @index (value)",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi07-in.jsonld",
+      "expect": "expand/pi07-out.jsonld"
+    }, {
+      "@id": "#tpi08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "property-valued index expands to property value, instead of @index (node)",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi08-in.jsonld",
+      "expect": "expand/pi08-out.jsonld"
+    }, {
+      "@id": "#tpi09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "property-valued index appends to property value, instead of @index (node)",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi09-in.jsonld",
+      "expect": "expand/pi09-out.jsonld"
+    }, {
+      "@id": "#tpi10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "property-valued index does not output property for @none",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi10-in.jsonld",
+      "expect": "expand/pi10-out.jsonld"
+    }, {
+      "@id": "#tpi11",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "property-valued index adds property to graph object",
+      "purpose": "Expanding index maps where index is a property.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pi11-in.jsonld",
+      "expect": "expand/pi11-out.jsonld"
    }, {
       "@id": "#tl001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
