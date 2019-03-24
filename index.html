@@ -895,10 +895,6 @@
     </tr></thead>
     <tbody>
       <tr>
-        <td>jsonld</td>
-        <td>http://www.w3.org/ns/json-ld#</td>
-      </tr>
-      <tr>
         <td>rdf</td>
         <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
       </tr>
@@ -4260,12 +4256,17 @@
         <li class="changed">If <var>item</var> has a <code>@language</code>
           <a>member</a> which is not <a>well-formed</a>, return <code>null</code>.</li>
         <li class="changed">If <var>datatype</var> is <code>@json</code>,
-          convert <var>value</var> to the <a>canonical lexical form</a> as defined in [[JCS]]
+          convert <var>value</var> to the <a>canonical lexical form</a>
           using the result of transforming the <a>internal representation</a> of <var>value</var>
-          to JSON and set <var>datatype</var> to <code>jsonld:JSON</code>.
-          <div class="issue atrisk">JCS is still in draft form, and normatively requiring
-            JSON canonicalization may be removed in a future draft, or
-            a JSON-LD specific canonicalization form may be defined.</div></li>
+          to JSON and set <var>datatype</var> to <code>rdf:JSON</code>.
+          <div class="issue atrisk">The JSON Canonicalization Scheme [[?JCS]]
+            is an emerging standard for JSON canonicalization
+            not yet ready to be referenced.
+            When a JSON canonicalization standard becomes available,
+            this specification will likely be updated to require such a canonical representation.
+            Users are cautioned from depending on the
+            <a>JSON literal</a> lexical representation as an <a>RDF literal</a>,
+            as the specifics of serialization may change in a future revison of this document.</div></li>
         <li>If <var>value</var> is <code>true</code> or
           <code>false</code>, set <var>value</var> to the <a>string</a>
           <code>true</code> or <code>false</code> which is the
@@ -4583,7 +4584,7 @@
         <a>value objects</a> whereas <a>IRIs</a> and
         <a>blank node identifiers</a> are
         transformed to <a>node objects</a>.
-        <span class="changed">Literals with datatype <code>jsonld:JSON</code>
+        <span class="changed">Literals with datatype <code>rdf:JSON</code>
           are transformed into a value object using the internal representation
           based on the lexical-to-value mapping defined in
           <a data-cite="JSON-LD11#dfn-json-datatype" class="externalDfn">JSON datatype</a> in [[JSON-LD11]],
@@ -4679,10 +4680,9 @@
       or not (the result of a modulo&#8209;1 operation), the boolean values
       <code>true</code> and <code>false</code> are coerced to <code>xsd:boolean</code>,
       and <a>strings</a> are coerced to <code>xsd:string</code>.
-      The <span class="changed">JSON, </span>numeric, or boolean values themselves are converted to
+      The <span class="changed">JSON</span>, numeric, or boolean values themselves are converted to
       <dfn>canonical lexical form</dfn>, i.e., a deterministic string
-      representation as defined in [[XMLSCHEMA11-2]]
-      <span class="changed">and [[JCS]]</span>.
+      representation as defined in [[XMLSCHEMA11-2]].</p>
 
     <p>The <a>canonical lexical form</a> of an <em>integer</em>, i.e., a
       <a>number</a> with no non-zero fractional part or a <a>number</a>
@@ -4735,11 +4735,33 @@
       <code>true</code> and <code>false</code>.</p>
 
     <p class="changed">The <a>canonical lexical form</a> of the <a>JSON literal</a>
-      values are defined in [[JCS]]. The internal representation
-      of value objects having @type @json are converted to JSON
-      and canonicalized to reduce unnecessary whitespace,
-      order object members, and use a standard representation
-      for strings and numbers.</p>
+      values are non-normative, as a normative recommendation for
+      JSON canonicalization is not yet defined. Implementations
+      SHOULD use the following guidelines when creating the lexical
+      representation of a <a>JSON literal</a>:</p>
+    <ul class="changed">
+      <li>Serialize JSON using no unnecessary whitespace,</li>
+      <li>Keys in objects SHOULD be ordered lexicographically,</li>
+      <li>Native Boolean and Numeric values SHOULD be serialized as described elsewhere in this section
+        for <a href="#deserialize-json-ld-to-rdf-algorithm">deserializing JSON-LD to RDF</a>,</li>
+      <li>Strings SHOULD be serialized with Unicode codepoints from <code>U+0000</code> through <code>U+001F</code>
+        using lowercase hexaddecimal Unicode notation (<code>\uhhhh</code>) unless in the set
+        of predefined JSON control characters <code>U+0008</code>, <code>U+0009</code>,
+        <code>U+000A</code>, <code>U+000C</code> or <code>U+000D</code>
+        which SHOULD be serialized as <code>\b</code>, <code>\t</code>, <code>\n</code>, <code>\f</code> and <code>\r</code> respectively.
+        All other Unicode characters SHOULD be serialized "as is", other than
+        <code>U+005C</code> (<code>\</code>) and <code>U+0022</code> (<code>"</code>)
+        which SHOULD be serialized as <code>\\</code> and <code>\"</code> respectively.</li>
+    </ul>
+
+    <p class="issue atrisk changed">The JSON Canonicalization Scheme [[?JCS]]
+      is an emerging standard for JSON canonicalization
+      not yet ready to be referenced.
+      When a JSON canonicalization standard becomes available,
+      this specification will likely be updated to require such a canonical representation.
+      Users are cautioned from depending on the
+      <a>JSON literal</a> lexical representation as an <a>RDF literal</a>,
+      as the specifics of serialization may change in a future revison of this document.</div>
 
     <aside class="example changed" data-ignore
            title="Canonicalized JSON literal">
@@ -4775,14 +4797,10 @@
       <!--
       @prefix ex: <http://example.org/vocab#> .
       @prefix jsonld: <http://www.w3.org/ns/json-ld#> .
-      [ex:c14n ****"""[56,{"1":[],"10":null,"d":true}]"""^^jsonld:JSON****] .
+      [ex:c14n ****"""[56,{"1":[],"10":null,"d":true}]"""^^rdf:JSON****] .
       -->
       </pre>
     </aside>
-
-    <p class="issue atrisk">JCS is still in draft form, and normatively requiring
-      JSON canonicalization may be removed in a future draft, or
-      a JSON-LD specific canonicalization form may be defined.</p>
 
     <p>When JSON-native <a>numbers</a> are deserialized
       to RDF, lossless data round-tripping cannot be guaranteed, as rounding
