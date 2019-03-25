@@ -18,7 +18,7 @@ const jsonld = {
     },
     "JCS": {
       title: "JSON Canonicalization Scheme (JCS)",
-      href: 'https://tools.ietf.org/html/draft-rundgren-json-canonicalization-scheme-05#page-6',
+      href: 'https://tools.ietf.org/html/draft-rundgren-json-canonicalization-scheme-05',
       authors: ['A. Rundgren', 'B. Jordan', 'S. Erdtman'],
       publisher: 'Network Working Group',
       status: 'Internet-Draft',
