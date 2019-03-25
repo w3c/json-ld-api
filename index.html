@@ -4742,8 +4742,8 @@
     <ul class="changed">
       <li>Serialize JSON using no unnecessary whitespace,</li>
       <li>Keys in objects SHOULD be ordered lexicographically,</li>
-      <li>Native Boolean and Numeric values SHOULD be serialized as described elsewhere in this section
-        for <a href="#deserialize-json-ld-to-rdf-algorithm">deserializing JSON-LD to RDF</a>,</li>
+      <li>Native Numeric values SHOULD be serialized according to
+        <a data-cite="?ECMASCRIPT#sec-tostring-applied-to-the-number-type">Section 7.1.12.1</a> of [[?ECMASCRIPT]],</li>
       <li>Strings SHOULD be serialized with Unicode codepoints from <code>U+0000</code> through <code>U+001F</code>
         using lowercase hexaddecimal Unicode notation (<code>\uhhhh</code>) unless in the set
         of predefined JSON control characters <code>U+0008</code>, <code>U+0009</code>,
@@ -4770,7 +4770,7 @@
       {
         "@context": {
           "@version": 1.1,
-          "e": {"@id": "http://example.org/vocab#c14n", ****"@type": "@json"****}
+          "e": {"@id": "http://example.org/vocab#json", ****"@type": "@json"****}
         },
         "e": ****[
           56.0,
@@ -4797,7 +4797,7 @@
       <!--
       @prefix ex: <http://example.org/vocab#> .
       @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-      [ex:c14n ****"""[56,{"1":[],"10":null,"d":true}]"""^^rdf:JSON****] .
+      [ex:json ****"""[56,{"1":[],"10":null,"d":true}]"""^^rdf:JSON****] .
       -->
       </pre>
     </aside>
