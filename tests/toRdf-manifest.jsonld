@@ -880,6 +880,14 @@
       "input": "toRdf/0129-in.jsonld",
       "expect": "toRdf/0129-out.nq"
     }, {
+      "@id": "#t0130",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Compact IRIs and prefix",
+      "purpose": "1.1 extension of toRdf-0088",
+      "input": "toRdf/0130-in.jsonld",
+      "expect": "toRdf/0130-out.nq",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
       "@id": "#th001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Transforms embedded JSON-LD script element",
