@@ -1,15 +1,14 @@
 {
   "@context": {
     "term": "http://example.com/terms-are-not-considered-in-id",
-    "compact-iris": "http://example.com/compact-iris-",
     "property": "http://example.com/property",
     "@vocab": "http://example.org/vocab-is-not-considered-for-id"
   },
   "@id": "term",
   "property": [
     {
-      "@id": "compact-iris:are-considered",
-      "property": "@id supports the following values: relative, absolute, and compact IRIs"
+      "@id": "http://example.com/absolute-iri",
+      "property": "@id supports the following values: relative and absolute IRIs"
     },
     {
       "@id": "../parent-node",
