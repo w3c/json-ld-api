@@ -1,4 +1,3 @@
 <http://example.com/absolute-iri> <http://example.com/property> "@id supports the following values: relative and absolute IRIs" .
 <https://w3c.github.io/json-ld-api/tests/parent-node> <http://example.com/property> "relative IRIs get resolved against the document's base IRI" .
-<https://w3c.github.io/json-ld-api/tests/toRdf/term> <http://example.com/property> <http://example.com/compact-iris-are-considered> .
 <https://w3c.github.io/json-ld-api/tests/toRdf/term> <http://example.com/property> <https://w3c.github.io/json-ld-api/tests/parent-node> .
