@@ -1,6 +1,6 @@
-<http://example.com/compact-iris-are-considered> <http://example.com/property> "Compact IRIs with term definition ending with non-gen-delim character are only allowed with @prefix true" .
+<http://example.com/prefix-compact-iris-are-considered> <http://example.com/property> "Compact IRIs with term definition ending with non-gen-delim character are only allowed with @prefix true" .
 <http://example.com/safe-compact-iris/are-considered> <http://example.com/property> "Compact IRIs with term definition ending with gen-delim character are always allowed" .
 <https://w3c.github.io/json-ld-api/tests/parent-node> <http://example.com/property> "relative IRIs get resolved against the document's base IRI" .
-<https://w3c.github.io/json-ld-api/tests/toRdf/term> <http://example.com/property> <http://example.com/compact-iris-are-considered> .
+<https://w3c.github.io/json-ld-api/tests/toRdf/term> <http://example.com/property> <http://example.com/prefix-compact-iris-are-considered> .
 <https://w3c.github.io/json-ld-api/tests/toRdf/term> <http://example.com/property> <http://example.com/safe-compact-iris/are-considered> .
 <https://w3c.github.io/json-ld-api/tests/toRdf/term> <http://example.com/property> <https://w3c.github.io/json-ld-api/tests/parent-node> .

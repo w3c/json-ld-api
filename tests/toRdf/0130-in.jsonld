@@ -2,7 +2,8 @@
   "@context": {
     "@version": 1.1,
     "term": "http://example.com/terms-are-not-considered-in-id",
-    "compact-iris": { "@id": "http://example.com/compact-iris-", "@prefix": true },
+    "unsafe-compact-iris": "http://example.com/unsafe-compact-iris-",
+    "prefix-compact-iris": { "@id": "http://example.com/prefix-compact-iris-", "@prefix": true },
     "safe-compact-iris": "http://example.com/safe-compact-iris/",
     "property": "http://example.com/property",
     "@vocab": "http://example.org/vocab-is-not-considered-for-id"
@@ -10,7 +11,11 @@
   "@id": "term",
   "property": [
     {
-      "@id": "compact-iris:are-considered",
+      "@id": "unsafe-compact-iris:are-not-considered",
+      "property": "Compact IRIs with term definition ending with non-gen-delim character are not allowed"
+    },
+    {
+      "@id": "prefix-compact-iris:are-considered",
       "property": "Compact IRIs with term definition ending with non-gen-delim character are only allowed with @prefix true"
     },
     {

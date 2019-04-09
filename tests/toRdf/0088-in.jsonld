@@ -1,14 +1,20 @@
 {
   "@context": {
     "term": "http://example.com/terms-are-not-considered-in-id",
+    "unsafe-compact-iris": "http://example.com/unsafe-compact-iris-",
+    "safe-compact-iris": "http://example.com/safe-compact-iris/",
     "property": "http://example.com/property",
     "@vocab": "http://example.org/vocab-is-not-considered-for-id"
   },
   "@id": "term",
   "property": [
     {
-      "@id": "http://example.com/absolute-iri",
-      "property": "@id supports the following values: relative and absolute IRIs"
+      "@id": "unsafe-compact-iris:are-considered",
+      "property": "@id supports the following values: relative, absolute, and compact IRIs ending with gen-delim character"
+    },
+    {
+      "@id": "safe-compact-iris:are-considered",
+      "property": "@id supports the following values: relative, absolute, and compact IRIs ending with gen-delim character"
     },
     {
       "@id": "../parent-node",
