@@ -1,8 +1,0 @@
-[
-  {
-    "http://example.com/protected": [{
-      "http://example.com/protected": [{"@value": "error / property http://example.com/protected"}],
-      "http://example.com/something-else2": [{"@value": "property http://example.com/something-else2"}]
-    }]
-  }
-]
