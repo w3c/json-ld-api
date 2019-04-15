@@ -2033,7 +2033,7 @@
                           <var>expanded index</var> with any existing values of
                           <var>index key</var> in <var>item</var>.
                           Add the key-value pair (<var>expanded index</var>-<var>index property values</var>) to <var>item</var>.
-                          If expanded value is a value object,
+                          If <var>item</var> is a value object,
                           it MUST NOT contain any extra properties;
                           an <a data-link-for="JsonLdErrorCode">invalid value object</a>
                           error has been detected and processing is aborted.</li>
@@ -2579,7 +2579,7 @@
                   for <var>element</var>,
                   <span class="changed">and the <a data-link-for="JsonLdOptions">compactArrays</a>
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
-                <li>Add <var>expanded value</var> as the value of <code>@preserve</code>
+                <li>Add <var>compacted value</var> as the value of <code>@preserve</code>
                   in <var>result</var> unless <var>expanded value</var> is an empty <a>array</a>.</li>
               </ol>
             </li>
@@ -2830,8 +2830,8 @@
                       and <var>index key</var> is not <code>@index</code>,
                       Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.
                       If there are remaining values in <var>compacted item</var>
-                      for <var>compacted container</var>, set the value of
-                      <var>compacted container</var> in <var>compacted value</var>
+                      for <var>container key</var>, set the value of
+                      <var>container key</var> in <var>compacted item</var>
                       to those remaining values. Otherwise, remove that
                       <a>member</a> from <var>compacted item</var>.
                     </li>
@@ -2841,8 +2841,8 @@
                     <li class="changed">Otherwise, if <var>container</var> is <code>@type</code>,
                       set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.
                       If there are remaining values in <var>compacted item</var>
-                      for <var>compacted container</var>, set the value of
-                      <var>compacted container</var> in <var>compacted value</var>
+                      for <var>container key</var>, set the value of
+                      <var>container key</var> in <var>compacted item</var>
                       to those remaining values. Otherwise, remove that
                       <a>member</a> from <var>compacted item</var>.</li>
                     <li class="changed">If <var>compacted item</var> is not an
