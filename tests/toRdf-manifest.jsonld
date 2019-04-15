@@ -1175,6 +1175,14 @@
       "name": "literal_with_numeric_escape4",
       "purpose": "literal with numeric escape4 \\u from N-Triples",
       "input": "toRdf/nt16-in.jsonld"
+    }, {
+      "@id": "#trt01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Representing numbers >= 1e21",
+      "purpose": "numbers with no fractions but that are >= 1e21 are represented as xsd:double",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/rt01-in.jsonld",
+      "expect": "toRdf/rt01-out.nq"
     }
   ]
 }
