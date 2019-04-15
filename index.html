@@ -4737,8 +4737,10 @@
       representation as defined in [[XMLSCHEMA11-2]].</p>
 
     <p>The <a>canonical lexical form</a> of an <em>integer</em>, i.e., a
-      <a>number</a> with no non-zero fractional part or a <a>number</a>
-      coerced to <code>xsd:integer</code>, is a finite-length sequence of decimal
+      <a>number</a> with no non-zero fractional part
+      <span class="changed">and an exponent less than or equal to <code>21</code></code>,</span>
+      or a <a>number</a> coerced to <code>xsd:integer</code>,
+      is a finite-length sequence of decimal
       digits (<code>0-9</code>) with an optional leading minus sign; leading
       zeros are prohibited. In JavaScript, implementers can use the following
       snippet of code to convert an integer to
@@ -4753,7 +4755,9 @@
     </pre>
 
     <p>The <a>canonical lexical form</a> of a <em>double</em>, i.e., a
-      <a>number</a> with a non-zero fractional part or a <a>number</a>
+      <a>number</a>
+      <span class="changed">which cannot be represented as an <em>integer</em></span>,
+      or a <a>number</a>
       coerced to <code>xsd:double</code>, consists of a mantissa followed by the
       character <code>E</code>, followed by an exponent. The mantissa is a
       decimal number and the exponent is an integer. Leading zeros and a
