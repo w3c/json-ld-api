@@ -2403,8 +2403,9 @@
           <ol>
             <li>Set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var> and the value of the
-              <var>active property</var>'s <a>local context</a> as <var>local context</var>.</li>
+              passing <var>active context</var>, the value of the
+              <var>active property</var>'s <a>local context</a> as <var>local context</var>,
+              <span class="changed">and <code>true</code> for <var>from term</var></span>.</li>
             <li>Set <var>inverse context</var> using the
               <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
               using <var>active context</var>.</li>
