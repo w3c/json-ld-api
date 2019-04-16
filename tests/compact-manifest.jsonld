@@ -1653,6 +1653,33 @@
       "context": "compact/pi06-context.jsonld",
       "expect": "compact/pi06-out.jsonld"
     }, {
+      "@id": "#tpr01",
+      "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
+      "name": "Check illegal clearing of context with protected terms",
+      "purpose": "Check error when clearing a context with protected terms.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "compact/pr01-in.jsonld",
+      "context": "compact/pr01-context.jsonld",
+      "expect": "invalid context nullification"
+    }, {
+      "@id": "#tpr03",
+      "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
+      "name": "Check illegal overriding of protected term",
+      "purpose": "Check error when overriding a protected term.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "compact/pr02-in.jsonld",
+      "context": "compact/pr02-context.jsonld",
+      "expect": "protected term redefinition"
+    }, {
+      "@id": "#tpr04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Check legal overriding of protected term from property-scoped context",
+      "purpose": "Check overriding a protected term from property-scoped context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "compact/pr04-in.jsonld",
+      "context": "compact/pr04-context.jsonld",
+      "expect": "compact/pr04-out.jsonld"
+    }, {
       "@id": "#tr001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Expands and compacts to document base by default",
