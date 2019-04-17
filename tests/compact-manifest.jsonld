@@ -1662,10 +1662,19 @@
       "context": "compact/pr01-context.jsonld",
       "expect": "invalid context nullification"
     }, {
-      "@id": "#tpr03",
+      "@id": "#tpr02",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
       "name": "Check illegal overriding of protected term",
       "purpose": "Check error when overriding a protected term.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "compact/pr02-in.jsonld",
+      "context": "compact/pr02-context.jsonld",
+      "expect": "protected term redefinition"
+    }, {
+      "@id": "#tpr03",
+      "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
+      "name": "Check illegal overriding of protected term from type-scoped context",
+      "purpose": "Check error when overriding a protected term from type-scoped context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/pr02-in.jsonld",
       "context": "compact/pr02-context.jsonld",
