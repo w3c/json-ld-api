@@ -4,18 +4,18 @@
 
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/elements/1.1/> .
 @prefix mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 @prefix :       <https://w3c.github.io/json-ld-api/tests/vocab#> .
 
 : rdfs:comment     "Manifest vocabulary for JSON-LD test cases" ;
-  dc:creator       "Gregg Kellogg" ;
-  dc:publisher     "W3C Linked JSON Community Group" ;
-  dc:title         "Test case manifest vocabulary extensions" ;
-  dc:description   "Test case manifest vocabulary extensions" ;
-  dc:date          "2013-09-23" ;
-  dc:identifier    : .
+  dcterms:creator       "Gregg Kellogg" ;
+  dcterms:publisher     "W3C Linked JSON Community Group" ;
+  dcterms:title         "Test case manifest vocabulary extensions" ;
+  dcterms:description   "Test case manifest vocabulary extensions" ;
+  dcterms:date          "2013-09-23" ;
+  dcterms:identifier    : .
 
 ## ---- Test Case Classes ---
 
