@@ -1,12 +1,12 @@
 %html{lang: :en}
   %head
     %meta{charset: 'utf-8'}
-    %title<= ontology['dcterms:title']
+    %title<= ontology['dc11:title']
     %link{href: "http://www.w3.org/StyleSheets/2016/base.css", rel: :stylesheet}
     %script{type: 'application/ld+json'}
       = source
   %body
-    %h1<=ontology['dcterms:title']
+    %h1<=ontology['dc11:title']
     %p<
       %a{href: 'http://www.w3.org/'}<
         %img(src="http://www.w3.org/Icons/w3c_home" alt="W3C" height="48" width="72")
@@ -36,4 +36,4 @@
             :markdown
               #{prop["rdfs:comment"].to_s.gsub(/^\s+/, '')}
     %footer
-      %span<= ontology["dcterms:publisher"]
+      %span<= ontology["dc11:publisher"]

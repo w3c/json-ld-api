@@ -21,7 +21,7 @@ File.open("vocab.jsonld", "w") do |f|
 
       # Create vocab.html using vocab_template.haml and compacted vocabulary
       template = File.read("vocab_template.haml")
-      
+
       html = Haml::Engine.new(template, format: :html5).render(self,
         ontology: compacted['@graph'].detect {|o| o['@id'] == "https://w3c.github.io/json-ld-api/tests/vocab#"},
         classes: compacted['@graph'].select {|o| o['@type'] == "rdfs:Class"}.sort_by {|o| o['rdfs:label']},
