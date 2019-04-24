@@ -187,7 +187,8 @@
       "name": "Term definition with @id: @type",
       "purpose": "Expanding term mapping to @type uses @type syntax",
       "input": "expand/0026-in.jsonld",
-      "expect": "expand/0026-out.jsonld"
+      "expect": "expand/0026-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0027",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -502,7 +503,8 @@
       "name": "Redefine terms looking like compact IRIs",
       "purpose": "Term definitions may look like compact IRIs",
       "input": "expand/0071-in.jsonld",
-      "expect": "expand/0071-out.jsonld"
+      "expect": "expand/0071-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0072",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1225,6 +1227,22 @@
       "purpose": "Verifies that an exception is raised on expansion when processing an invalid context attempting to define @container on a keyword",
       "input": "expand/e042-in.jsonld",
       "expect": "keyword redefinition"
+    }, {
+      "@id": "#te043",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Term definition with @id: @type",
+      "purpose": "Expanding term mapping to @type uses @type syntax now illegal",
+      "input": "expand/e043-in.jsonld",
+      "expect": "invalid IRI mapping",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te044",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Redefine terms looking like compact IRIs",
+      "purpose": "Term definitions may look like compact IRIs, but must be consistent.",
+      "input": "expand/e044-in.jsonld",
+      "expect": "invalid IRI mapping",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],

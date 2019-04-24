@@ -432,7 +432,8 @@
       "name": "Expanding term mapping to @type uses @type syntax",
       "purpose": "RDF version of expand-0026",
       "input": "toRdf/0066-in.jsonld",
-      "expect": "toRdf/0066-out.nq"
+      "expect": "toRdf/0066-out.nq",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0067",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -748,7 +749,8 @@
       "name": "Redefine terms looking like compact IRIs",
       "purpose": "RDF version of expand-0071",
       "input": "toRdf/0111-in.jsonld",
-      "expect": "toRdf/0111-out.nq"
+      "expect": "toRdf/0111-out.nq",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0112",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
