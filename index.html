@@ -1307,6 +1307,12 @@
               i.e., it contains no colon (<code>:</code>), an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
+            <li class="changed">If the <var>term</var> contains a colon (<code>:</code>)
+              and the result of expanding <var>term</var>
+              using the <a href="#iri-expansion">IRI Expansion algorithm</a>
+              is not the same as the <a>IRI mapping</a> of <var>definition</var>,
+              an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
+              error has been detected and processing is aborted.</li>
             <li>If <var>value</var> contains an <code>@container</code> <a>member</a>,
               set the <a>container mapping</a> of <var>definition</var>
               to its value; if its value is neither <code>@set</code>, nor
@@ -1340,6 +1346,12 @@
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted; if it equals <code>@context</code>, an
               <a data-link-for="JsonLdErrorCode">invalid keyword alias</a>
+              error has been detected and processing is aborted.</li>
+            <li class="changed">If the <var>term</var> contains a colon (<code>:</code>)
+              and the result of expanding <var>term</var>
+              using the <a href="#iri-expansion">IRI Expansion algorithm</a>
+              is not the same as the <a>IRI mapping</a> of <var>definition</var>,
+              an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
             <li class="changed">If <var>term</var> does not contain a colon (<code>:</code>),
               <span class="changed"><var>simple term</var> is <code>true</code></span>, and the,
@@ -5937,6 +5949,8 @@
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
     <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
     <li>Added support for <a>JSON literals</a>.</li>
+    <li><a>Term definitions</a> with keys which are of the form of a <a>compact IRI</a> or <a>absolute IRI</a> MUST NOT
+      expand to an <a>IRI</a> other than the expansion of the key itself.</li>
   </ul>
 </section>
 
