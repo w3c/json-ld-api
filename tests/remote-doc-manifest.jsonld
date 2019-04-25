@@ -124,6 +124,16 @@
       },
       "input": "remote-doc/0012-in.json",
       "expect": "multiple context link headers"
+    }, {
+      "@id": "#t0013",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "load JSON document with link to HTML document",
+      "purpose": "If a context is specified in a link header, it is used for JSON, extracting from HTML.",
+      "option": {
+        "httpLink": "<0013-context.html>; rel=\"http://www.w3.org/ns/json-ld#context\""
+      },
+      "input": "remote-doc/0013-in.json",
+      "expect": "remote-doc/0013-out.jsonld"
     }
   ]
 }
