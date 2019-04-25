@@ -1508,6 +1508,45 @@
       "expect": "expand/h022-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#thc01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context",
+      "purpose": "Tests extracting a context from an HTML document.",
+      "input": "expand/hc01-in.jsonld",
+      "expect": "expand/hc01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context with a fragment identifier",
+      "purpose": "Tests extracting a context from an HTML document with script identified by fragment identifier.",
+      "input": "expand/hc02-in.jsonld",
+      "expect": "expand/hc02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context with preference to context profile",
+      "purpose": "Tests extracting a context from an HTML document, skipping other contexts.",
+      "input": "expand/hc03-in.jsonld",
+      "expect": "expand/hc03-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context with expandContext",
+      "purpose": "Tests extracting a context from an HTML document, using expandContext API option.",
+      "input": "expand/hc04-in.jsonld",
+      "expect": "expand/hc04-out.jsonld",
+      "option": {"expandContext": "hc04-context.html", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc05",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Errors if given an HTML file for a context where no context script element is found",
+      "purpose": "Verifies that an exception is raised on expansion when a remote context is an HTML file but does not contain a script element which is an object containing @context",
+      "input": "expand/hc05-in.jsonld",
+      "expect": "invalid remote context"
+    }, {
       "@id": "#tjs01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expand JSON literal (boolean true)",
