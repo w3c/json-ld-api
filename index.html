@@ -323,6 +323,30 @@
   </section>
 
   <section class="informative">
+    <h2>Processor Levels</h2>
+    <p>JSON-LD mostly uses the JSON syntax [[RFC8259]] along with
+      various micro-syntaxes based on XML Schema datatypes [[XMLSCHEMA11-2]].
+      However, it has become increasingly common to include JSON within
+      a <a data-cite="HTML/semantics-scripting.html#the-script-element">script element</a>
+      within an HTML document [[HTML]],
+      as described in <a href="#html-content-algorithms" class="sectionRef"></a>.
+      As not all processors operate in an environment which can include HTML,
+      this specification describes various categories of JSON-LD processors.</p>
+
+    <p>A <dfn>pure JSON Processor</dfn> only requires the use of a
+      JSON processor and is restricted to processing documents retrieved
+      with a JSON content type (e.g., <code>application/ld+json</code> or other JSON type).</p>
+
+    <p>A <dfn>event-based JSON Processor</dfn> processes a stream of characters
+      expecting an event after each syntactic element is encountered.
+      Such processors are sensitive to the order of the members of <a>JSON objects</a>,
+      which can have a performance impact if the members of <a>JSON objects</a> are encountered in an unexpected order.</p>
+
+    <p>A <dfn>full Processor</dfn> is capable of JSON-LD embedded in HTML,
+      in addition to the capabilities of a <a>pure JSON Processor</a>.</p>
+  </section>
+
+  <section class="informative">
     <h2>Typographical conventions</h2>
     <div data-include="common/typographical-conventions.html"></div>
   </section>
@@ -1075,6 +1099,9 @@
                 <li>Otherwise, dereference <var>context</var>, <span class="changed">transforming into the <a>internal representation</a></span>.</li>
                 <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>:
                   <ol>
+                    <li>If processor is a <a>pure JSON Processor</a>,
+                      a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
+                      error has been detected and processing is aborted.</li>
                     <li>If the original <var>context</var>
                       contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
                       set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
@@ -4952,6 +4979,7 @@
 
 <section class="changed">
   <h2>HTML Content Algorithms</h2>
+  <p class="note">This section describes features required of a <a>full Processor</a>.</p>
   <section id="extract-script-content" class="algorithm">
     <h3>Extract Script Content Algorithm</h3>
 
@@ -5095,6 +5123,7 @@
             <code>application/ld+json</code>,
             nor any other media type using a
             <code>+json</code> suffix as defined in [[RFC6839]],
+            <span class="changed">or if the processor is a <a>pure JSON Processor</a></span>,
             reject the <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Initialize a new empty <var>active context</var>.
             The <a>base IRI</a> of the <var>active context</var> is set to the IRI of the currently being processed document, if available;
@@ -5117,7 +5146,8 @@
             If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</li>
-          <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>
+          <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>,
+            <span class="changed">the processor is not a <a>pure JSON Processor</a></span>
             and the passed <a data-lt="jsonldprocessor-expand-input">input</a> is
             a <a>string</a> representing the <a>IRI</a> of a remote document,
             extract the content of the <a>JSON-LD script element</a>(s) into <var>original input</var>:
@@ -5974,7 +6004,8 @@
     <li>Added support for <a>JSON literals</a>.</li>
     <li><a>Term definitions</a> with keys which are of the form of a <a>compact IRI</a> or <a>absolute IRI</a> MUST NOT
       expand to an <a>IRI</a> other than the expansion of the key itself.</li>
-    <li>If a retrieved context URL returns an HTML document, the first script element
+    <li>Define different processor modes: <a>pure JSON Processor</a>, <a>event-based JSON processor</a>, and <a>full Processor</a>.</li>
+    <li>For a <a>full Processor</a>, if a retrieved context URL returns an HTML document, the first script element
       of type <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#context</code>,
       or <code>application/ld+json</code> is used as the context for further processing.
       This allows a mechanism for documenting the content of a context using HTML.</li>
