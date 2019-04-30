@@ -323,30 +323,6 @@
   </section>
 
   <section class="informative">
-    <h2>Processor Levels</h2>
-    <p>JSON-LD mostly uses the JSON syntax [[RFC8259]] along with
-      various micro-syntaxes based on XML Schema datatypes [[XMLSCHEMA11-2]].
-      However, it has become increasingly common to include JSON within
-      a <a data-cite="HTML/semantics-scripting.html#the-script-element">script element</a>
-      within an HTML document [[HTML]],
-      as described in <a href="#html-content-algorithms" class="sectionRef"></a>.
-      As not all processors operate in an environment which can include HTML,
-      this specification describes various categories of JSON-LD processors.</p>
-
-    <p>A <dfn>pure JSON Processor</dfn> only requires the use of a
-      JSON processor and is restricted to processing documents retrieved
-      with a JSON content type (e.g., <code>application/ld+json</code> or other JSON type).</p>
-
-    <p>A <dfn>event-based JSON Processor</dfn> processes a stream of characters
-      expecting an event after each syntactic element is encountered.
-      Such processors are sensitive to the order of the members of <a>JSON objects</a>,
-      which can have a performance impact if the members of <a>JSON objects</a> are encountered in an unexpected order.</p>
-
-    <p>A <dfn>full Processor</dfn> is capable of processing JSON-LD embedded in HTML,
-      in addition to the capabilities of a <a>pure JSON Processor</a>.</p>
-  </section>
-
-  <section class="informative">
     <h2>Typographical conventions</h2>
     <div data-include="common/typographical-conventions.html"></div>
   </section>
@@ -944,6 +920,37 @@
       </tr>
     </tbody>
   </table>
+
+  <section class="informative">
+    <h2>Processor Levels</h2>
+    <p>JSON-LD mostly uses the JSON syntax [[RFC8259]] along with
+      various micro-syntaxes based on XML Schema datatypes [[XMLSCHEMA11-2]].
+      However, it has become increasingly common to include JSON within
+      a <a data-cite="HTML/semantics-scripting.html#the-script-element">script element</a>
+      within an HTML document [[HTML]],
+      as described in <a href="#html-content-algorithms" class="sectionRef"></a>.
+      As not all processors operate in an environment which can include HTML,
+      this specification describes various categories of JSON-LD processors.</p>
+
+    <p>A <dfn>pure JSON Processor</dfn> only requires the use of a
+      JSON processor and is restricted to processing documents retrieved
+      with a JSON content type (e.g., <code>application/ld+json</code> or other JSON type).</p>
+
+    <p>A <dfn>full Processor</dfn> is capable of processing JSON-LD embedded in HTML,
+      in addition to the capabilities of a <a>pure JSON Processor</a>.</p>
+
+    <section class="informative">
+      <h3>Additional Processor Levels</h3>
+
+      <p>In addition to the normatively defined processor levels, an additional processor
+        level is defined for reference.</p>
+
+      <p>A <dfn>event-based JSON Processor</dfn> processes a stream of characters
+        expecting an event after each syntactic element is encountered.
+        Such processors are sensitive to the order of the members of <a>JSON objects</a>,
+        which can have a performance impact if the members of <a>JSON objects</a> are encountered in an unexpected order.</p>
+    </section>
+  </section>
 </section> <!-- end of Conformance section -->
 
 <section>
@@ -4013,7 +4020,7 @@
             <li>If <var>active subject</var> is a <a class="changed">dictionary</a>, a reverse property relationship
               is being processed. Perform the following steps:
               <ol>
-                <li>If <var>node</var> does not have an <var>active property</var> <a>member</a>,
+                <li>If <var>node</var> does not have a <var>active property</var> <a>member</a>,
                   create one and initialize its value to an <a>array</a>
                   containing <var>active subject</var>.</li>
                 <li>Otherwise, compare <var>active subject</var> against every item in the
