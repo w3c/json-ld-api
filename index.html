@@ -929,11 +929,11 @@
       As not all processors operate in an environment which can include HTML,
       this specification describes various categories of JSON-LD processors.</p>
 
-    <p>A <dfn>pure JSON Processor</dfn> only requires the use of a
+    <p>A <dfn data-cite="JSON-LD11#pure-json-processor">pure JSON Processor</dfn> only requires the use of a
       JSON processor and is restricted to processing documents retrieved
       with a JSON content type (e.g., <code>application/ld+json</code> or other JSON type).</p>
 
-    <p>A <dfn>full Processor</dfn> is capable of processing JSON-LD embedded in HTML,
+    <p>A <dfn data-cite="JSON-LD11#full-processor">full Processor</dfn> is capable of processing JSON-LD embedded in HTML,
       in addition to the capabilities of a <a>pure JSON Processor</a>.</p>
 
     <section class="informative">
@@ -942,7 +942,7 @@
       <p>In addition to the normatively defined processor levels, an additional processor
         level is defined for reference.</p>
 
-      <p>A <dfn>event-based JSON Processor</dfn> processes a stream of characters
+      <p>A <dfn data-cite="JSON-LD11#event-based-json-processor">event-based JSON Processor</dfn> processes a stream of characters
         expecting an event after each syntactic element is encountered.
         Such processors are sensitive to the order of the members of <a>JSON objects</a>,
         which can have a performance impact if the members of <a>JSON objects</a> are encountered in an unexpected order.
