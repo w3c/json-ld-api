@@ -187,7 +187,8 @@
       "name": "Term definition with @id: @type",
       "purpose": "Expanding term mapping to @type uses @type syntax",
       "input": "expand/0026-in.jsonld",
-      "expect": "expand/0026-out.jsonld"
+      "expect": "expand/0026-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0027",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -502,7 +503,8 @@
       "name": "Redefine terms looking like compact IRIs",
       "purpose": "Term definitions may look like compact IRIs",
       "input": "expand/0071-in.jsonld",
-      "expect": "expand/0071-out.jsonld"
+      "expect": "expand/0071-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0072",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1226,6 +1228,22 @@
       "input": "expand/e042-in.jsonld",
       "expect": "keyword redefinition"
     }, {
+      "@id": "#te043",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Term definition with @id: @type",
+      "purpose": "Expanding term mapping to @type uses @type syntax now illegal",
+      "input": "expand/e043-in.jsonld",
+      "expect": "invalid IRI mapping",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te044",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Redefine terms looking like compact IRIs",
+      "purpose": "Term definitions may look like compact IRIs, but must be consistent.",
+      "input": "expand/e044-in.jsonld",
+      "expect": "invalid IRI mapping",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",
@@ -1489,6 +1507,45 @@
       "input": "expand/h022-in.html#second",
       "expect": "expand/h022-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context",
+      "purpose": "Tests extracting a context from an HTML document.",
+      "input": "expand/hc01-in.jsonld",
+      "expect": "expand/hc01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context with a fragment identifier",
+      "purpose": "Tests extracting a context from an HTML document with script identified by fragment identifier.",
+      "input": "expand/hc02-in.jsonld",
+      "expect": "expand/hc02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context with preference to context profile",
+      "purpose": "Tests extracting a context from an HTML document, skipping other contexts.",
+      "input": "expand/hc03-in.jsonld",
+      "expect": "expand/hc03-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expands document using an HTML context with expandContext",
+      "purpose": "Tests extracting a context from an HTML document, using expandContext API option.",
+      "input": "expand/hc04-in.jsonld",
+      "expect": "expand/hc04-out.jsonld",
+      "option": {"expandContext": "hc04-context.html", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#thc05",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Errors if given an HTML file for a context where no context script element is found",
+      "purpose": "Verifies that an exception is raised on expansion when a remote context is an HTML file but does not contain a script element which is an object containing @context",
+      "input": "expand/hc05-in.jsonld",
+      "expect": "invalid remote context"
     }, {
       "@id": "#tjs01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
