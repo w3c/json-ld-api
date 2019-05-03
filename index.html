@@ -1024,7 +1024,7 @@
         with the value of the <code>@context</code> <a>member</a> of the top-level object in the
         retrieved JSON-LD document.
         <span class="changed">If the result is an HTML document,
-          we attempt to extract JSON-LD from the first <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>
+          we attempt to extract JSON-LD from the first <a data-cite="HTML/scripting.html#the-script-element">script element</a>
           of type <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#context</code>
           or <code>application/ld+json</code>, if no context profile exists.</span>
         If there's no such <a>member</a>, an
@@ -1124,14 +1124,14 @@
                     <li>If the original <var>context</var>
                       contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
                       set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
-                      of the <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> in <var>context</var>
-                      having an <a data-cite="HTML52/dom.html#element-attrdef-global-id">id attribute</a>
+                      of the <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>context</var>
+                      having an <a data-cite="HTML/dom.html#the-id-attribute">id attribute</a>
                       that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.</li>
-                    <li>Otherwise, if the retrived document has a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>
+                    <li>Otherwise, if the retrived document has a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
                       of <code>type</code> <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#context</code>,
                       set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
                       of the first element found with that type.</li>
-                    <li>Otherwise, if the retrived document has a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>
+                    <li>Otherwise, if the retrived document has a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
                       of <code>type</code> <code>application/ld+json</code>,
                       set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
                       of the first element found with that type.</li>
@@ -5004,12 +5004,12 @@
 
     <p>The algorithm extracts the text content a
       <a>JSON-LD script element</a> into a <a>dictionary</a> or <a>array</a> of <a>dictionaries</a>.
-      A <dfn>JSON-LD script element</dfn> is a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>
+      A <dfn>JSON-LD script element</dfn> is a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
       within an HTML [[HTML]] document with the <code>type</code> attribute set to
       <code>application/ld+json</code>.</p>
 
     <p>The algorithm takes a single required input variable: <var>source</var>,
-      the <a data-cite="DOM#dom-node-textcontent">textContent</a> of an HTML <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>.</p>
+      the <a data-cite="DOM#dom-node-textcontent">textContent</a> of an HTML <a data-cite="HTML/scripting.html#the-script-element">script element</a>.</p>
 
     <ol>
     <li>If <var>source</var> is not a valid JSON document,
@@ -5175,22 +5175,22 @@
             a <a>string</a> representing the <a>IRI</a> of a remote document,
             extract the content of the <a>JSON-LD script element</a>(s) into <var>original input</var>:
             <ol>
-              <li>Set <a>base IRI</a> to the the <a data-cite="HTML52/infrastructure.html#document-base-url">Document Base URL</a>
+              <li>Set <a>base IRI</a> to the the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
                 of <var>original input</var>, as defined in [[HTML]],
                 using the existing <a>base IRI</a> as the document's URL.
                 <div class="issue atrisk">
-                  The use of the <a data-cite="HTML52/infrastructure.html#document-base-url">Document Base URL</a>
+                  The use of the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
                   from [[HTML]] for setting the <a>base IRI</a> of the enclosed JSON-LD
                   is an experimental feature, which may be changed in a future version of this specification.
                 </div></li>
               <li>If the original passed <a data-lt="jsonldprocessor-expand-input">input</a> parameter
                 contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
                 set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
-                of the <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> in <var>input</var>
-                having an <a data-cite="HTML52/dom.html#element-attrdef-global-id">id attribute</a>
+                of the <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>input</var>
+                having an <a data-cite="HTML/dom.html#the-id-attribute">id attribute</a>
                 that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.
                 If no element is found
-                or the located element is not a <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> with <code>type</code> <code>application/ld+json</code>,
+                or the located element is not a <a data-cite="HTML/scripting.html#the-script-element">script element</a> with <code>type</code> <code>application/ld+json</code>,
                 reject <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">invalid script element</a> error.
                 Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
                 using <var>source</var>.</li>
@@ -5838,7 +5838,7 @@
           defined within a <a>term definition</a>
           is invalid.</dd>
         <dt class="changed"><dfn>invalid script element</dfn></dt>
-        <dd class="changed">A <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a> in HTML input
+        <dd class="changed">A <a data-cite="HTML/scripting.html#the-script-element">script element</a> in HTML input
           which is the target of a <a data-cite="RFC3986#section-3.5">fragment identifier</a>
           does not have an appropriate <code>type</code> attribute.</dd>
         <dt><dfn>invalid set or list object</dfn></dt>
@@ -6016,7 +6016,7 @@
       as is the support for <a>generalized RDF Datasets</a>
       and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</li>
     <li>Added API steps to accept <code>text/html</code> as input,
-      extracting either a specifically targeted <a data-cite="HTML52/semantics-scripting.html#the-script-element">script element</a>,
+      extracting either a specifically targeted <a data-cite="HTML/scripting.html#the-script-element">script element</a>,
       the first found <a>JSON-LD script element</a>,
       or all <a>JSON-LD script elements</a>.</li>
     <li>Added <a data-link-for="RemoteDocument">contentType</a> field to <a>RemoteDocument</a>.</li>
