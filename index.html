@@ -929,7 +929,7 @@
     <p>JSON-LD mostly uses the JSON syntax [[RFC8259]] along with
       various micro-syntaxes based on XML Schema datatypes [[XMLSCHEMA11-2]].
       However, it has become increasingly common to include JSON within
-      a <a data-cite="HTML/semantics-scripting.html#the-script-element">script element</a>
+      a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
       within an HTML document [[HTML]],
       as described in <a href="#html-content-algorithms" class="sectionRef"></a>.
       As not all processors operate in an environment which can include HTML,
@@ -1111,33 +1111,10 @@
                   then the processor MUST NOT do a further dereference, and
                   <a>context</a> is set to the
                   previously established <a>internal representation</a>.</li>
-                <li>Otherwise, dereference <var>context</var>, <span class="changed">transforming into the <a>internal representation</a></span>.</li>
-                <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>:
-                  <ol>
-                    <li>If processor is a <a>pure JSON Processor</a>,
-                      a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
-                      error has been detected and processing is aborted.</li>
-                    <li>If the original <var>context</var>
-                      contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
-                      set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
-                      of the <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>context</var>
-                      having an <a data-cite="HTML/dom.html#the-id-attribute">id attribute</a>
-                      that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.</li>
-                    <li>Otherwise, if the retrived document has a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
-                      of <code>type</code> <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#context</code>,
-                      set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
-                      of the first element found with that type.</li>
-                    <li>Otherwise, if the retrived document has a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
-                      of <code>type</code> <code>application/ld+json</code>,
-                      set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
-                      of the first element found with that type.</li>
-                    <li>If no element is found,
-                      a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
-                      error has been detected and processing is aborted.</li>
-                    <li>Set <var>context</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
-                      using <var>source</var>, transforming into the <a>internal representation</a>.</li>
-                  </ol>
-                </li>
+                <li class="changed">Otherwise, dereference <var>context</var> using
+                  the <a>LoadDocumentCallback</a>, passing <var>context</var>
+                  for <a data-link-for="LoadDocumentCallback">url</a>,
+                  and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a></li>
                 <li>If <var>context</var> cannot be dereferenced,
                   <span class="changed">or cannot be transformed into the <a>internal representation</a></span>,
                   a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
@@ -5001,7 +4978,7 @@
     <p>The algorithm extracts the text content a
       <a>JSON-LD script element</a> into a <a>dictionary</a> or <a>array</a> of <a>dictionaries</a>.
       A <dfn>JSON-LD script element</dfn> is a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
-      within an HTML [[HTML]] document with the <code>type</code> attribute set to
+      within an HTML [[HTML]] document with the <a data-cite="HTML/semantics.html#attr-link-type">type attribute</a> set to
       <code>application/ld+json</code>.</p>
 
     <p>The algorithm takes a single required input variable: <var>source</var>,
@@ -5131,21 +5108,18 @@
           <li>Create a new <a>Promise</a> <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
-            is a <a>string</a> representing the <a>IRI</a> of a remote document, dereference it as <var>original input</var>.
-            <ol>
-              <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>,
-                and the processor is a <a>pure JSON Processor</a>
-                reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
-              <li>Otherwise, if the retrieved document's <a>Content-Type</a> is neither
-                <code>application/json</code>,
-                <code>application/ld+json</code>,
-                nor any other media type using a
-                <code>+json</code> suffix as defined in [[RFC6839]],
-                reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
-            </ol>
+            is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
+            using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
+            for <a data-link-for="LoadDocumentCallback">url</a>,
+            the <a data-link-for="JsonldOptions">extractAllScripts</a> option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
+          <li class="changed">If necessary, transform <a data-link-for="RemoteDocument">document</a>
+            from <var>remote document</var> into the <a>internal representation</a>.
+            If <a data-link-for="RemoteDocument">document</a> cannot be transformed to the <a>internal representation</a>,
+            reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Initialize a new empty <var>active context</var>.
-            The <a>base IRI</a> of the <var>active context</var> is set to the IRI of the currently being processed document, if available;
+            The <a>base IRI</a> of the <var>active context</var> is set to the <a data-link-for="RemoteDocument">documentUrl</a>
+            from <var>remote document</var>, if available;
             otherwise to <code>null</code>.
             If set, the <a data-link-for="JsonldOptions">base</a> option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
           <li>If an <a data-link-for="JsonldOptions">expandContext</a> option has been passed,
@@ -5153,66 +5127,13 @@
             passing the <a data-link-for="JsonldOptions">expandContext</a> as <var>local context</var>.
             If <a data-link-for="JsonldOptions">expandContext</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>member</a>,
             pass that <a data-lt="member">member's</a> value instead.</li>
-          <li>Once <a data-lt="jsonldprocessor-expand-input">input</a> has been retrieved,
-            the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
-            and a <a>Content-Type</a> of <code>application/json</code>
-            or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
-            except <code>application/ld+json</code>,
+          <li>If <var>remote document</var> has a <a data-link-for="RemoteDocument">contextUrl</a>,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-            passing the context referenced in the HTTP Link Header as <var>local context</var>.
-            The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>
-            <span class="changed">or <code>text/html</code></span>.
-            If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
-            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
-            and processing is terminated.</li>
-          <li class="changed">If the retrieved document's <a>Content-Type</a> is <code>text/html</code>,
-            <span class="changed">the processor is not a <a>pure JSON Processor</a></span>
-            and the passed <a data-lt="jsonldprocessor-expand-input">input</a> is
-            a <a>string</a> representing the <a>IRI</a> of a remote document,
-            extract the content of the <a>JSON-LD script element</a>(s) into <var>original input</var>:
-            <ol>
-              <li>Set <a>base IRI</a> to the the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
-                of <var>original input</var>, as defined in [[HTML]],
-                using the existing <a>base IRI</a> as the document's URL.
-                <div class="issue atrisk">
-                  The use of the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
-                  from [[HTML]] for setting the <a>base IRI</a> of the enclosed JSON-LD
-                  is an experimental feature, which may be changed in a future version of this specification.
-                </div></li>
-              <li>If the original passed <a data-lt="jsonldprocessor-expand-input">input</a> parameter
-                contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
-                set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
-                of the <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>input</var>
-                having an <a data-cite="HTML/dom.html#the-id-attribute">id attribute</a>
-                that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.
-                If no element is found
-                or the located element is not a <a data-cite="HTML/scripting.html#the-script-element">script element</a> with <code>type</code> <code>application/ld+json</code>,
-                reject <var>promise</var> passing an <a data-link-for="JsonLdErrorCode">invalid script element</a> error.
-                Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
-                using <var>source</var>.</li>
-              <li>Otherwise, if the <a data-link-for="JsonldOptions">extractAllScripts</a> option is not present, or <code>false</code>,
-                locate the first <a>JSON-LD script element</a> in <var>input</var>,
-                and set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>, if found.
-                Set <var>original input</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
-                using <var>source</var>.
-                If no <a>JSON-LD script element</a> is found, set <var>original input</var> to a new empty <a>array</a>.</li>
-              <li>Otherwise, set <var>original input</var> to a new empty <a>array</a>.
-                For each <a>JSON-LD script element</a> in <var>input</var>:
-                <ol>
-                  <li>Set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>.</li>
-                  <li>Set <var>script content</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
-                    using <var>source</var>.</li>
-                  <li>If <var>script content</var> is an <a>array</a>, merge it to the end of <var>original input</var>.</li>
-                  <li>Otherwise, append <var>script content</var> to <var>original input</var>.</li>
-                </ol>
-              </li>
-            </ol>
-          </li>
-          <li class="changed">If necessary, transform <var>original input</var> into the <a>internal representation</a>.
-            If <var>input</var> cannot be transformed to the <a>internal representation</a>,
-            reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
+            passing the <a data-link-for="RemoteDocument">contextUrl</a> as <var>local context</var>.</li>
           <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
-            passing the <var>active context</var> and <var>original input</var> as <var>element</var>,
+            passing the <var>active context</var> and <a data-link-for="RemoteDocument">document</a>
+            from <var>remote document</var>, or <a data-lt="jsonldprocessor-expand-input">input</a>
+            if there is no <var>remote document</var> as <var>element</var>,
             and if passed, the <span class="changed"><a data-link-for="JsonldOptions">frameExpansion</a></span>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
@@ -5612,25 +5533,175 @@
       This section details the parameters of that callback
       and the data structure used to return the retrieved context.</p>
 
-    <section>
+    <section class="algorithm">
       <h3>LoadDocumentCallback</h3>
 
       <p>The <dfn>LoadDocumentCallback</dfn> defines a callback that custom document loaders
-        have to implement to be used to retrieve remote documents and contexts.</p>
+        have to implement to be used to retrieve remote documents and contexts.
+        Upon successful completion, the callback returns a <a>Promise</a> containing a <a>RemoteDocument</a>.
+        On failure, the Promise is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
 
       <pre class="idl" data-transform="unComment"><!--
-        callback LoadDocumentCallback = Promise&lt;RemoteDocument> (USVString url);
+        callback LoadDocumentCallback = Promise&lt;RemoteDocument> (
+          USVString url,
+          optional LoadDocumentOptions? options
+        );
       --></pre>
 
       <dl>
         <dt><dfn data-dfn-for="LoadDocumentCallback">url</dfn></dt>
         <dd>The URL of the remote document or context to load.</dd>
+        <dt class="changed"><dfn data-lt="LoadDocumentCallback-options" data-lt-noDefault>options</dfn></dt>
+        <dd class="changed">A set of options to determine
+          the behavior of the callback. See <a href="loaddocumentoptions" class="sectionRef"></a>.</dd>
       </dl>
 
-      <p>All errors result in the <a>Promise</a> being rejected with a <a>JsonLdError</a>
-        whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
-        or <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
-        as described in the next section.</p>
+      <p class="changed">The following algorithm describes the default callback and places
+        requirements on implementations of the callback.</p>
+
+      <ol class="changed">
+        <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+          The following steps are then executed asynchronously.</li>
+        <li>Set <var>document</var> to the body retrieved from
+          the resource identified by <a data-link-for="LoadDocumentCallback">url</a>,
+          or by otherwise locating a resource associated with <a data-link-for="LoadDocumentCallback">url</a>.
+          When requesting remote documents the request MUST prefer <a>Content-Type</a> <code>application/ld+json</code>
+          followed by <code>application/json</code>.
+
+          <p>If <a data-link-for="LoadDocumentOptions">requestProfile</a> is set,
+            it MUST be added as a profile on <code>application/ld+json</code>.</p>
+
+          <p>Processors MAY include other media types using a <code>+json</code> suffix as defined in [[RFC6839]].</p>
+
+          <p>A <a>full Processor</a> MUST include <code>text/html</code> at any preference level.</p></li>
+        <li>Set <var>documentUrl</var> to the location of the retrieved resource
+          considering redirections (exclusive of HTTP status <code>303</code> "See Other" redirects
+          as discussed in [[?cooluris]]).</li>
+        <li>If the retrieved resource's <a>Content-Type</a> is <code>application/json</code>
+          or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
+          except <code>application/ld+json</code>,
+          and the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation,
+          set <var>contextUrl</var> to the associated <code>href</code>.
+          <p>If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
+            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
+            and processing is terminated.</p>
+          <p>Processors MAY transform <var>document</var> to the <a>internal representation</a>
+            using the <a href="#extract-script-content">Extract Script Content algorithm</a>.</p>
+          <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>
+            or <code>text/html</code>.</p>
+        </li>
+        <li>Otherwise, if the retrieved resource's <a>Content-Type</a> is <code>text/html</code>:
+          <ol>
+            <li>If the processor is a <a>pure JSON Processor</a>
+              the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+              and processing is terminated.</li>
+            <li>Set <var>documentUrl</var> to the the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
+              of <a data-link-for="LoadDocumentCallback">url</a>, as defined in [[HTML]],
+              using the existing <var>documentUrl</var> as the document's URL.
+              <div class="issue atrisk">
+                The use of the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
+                from [[HTML]] for setting the <a>base IRI</a> of the enclosed JSON-LD
+                is an experimental feature, which may be changed in a future version of this specification.
+              </div>
+            </li>
+            <li>If the <a data-link-for="LoadDocumentCallback">url</a> parameter
+              contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
+              set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
+              of the <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>document</var>
+              having an <a data-cite="HTML/dom.html#the-id-attribute">id attribute</a>
+              that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.
+              <p>If no such element is found,
+                or the located element is not a <a>JSON-LD script element</a>,
+                the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+                and processing is terminated.</p></li>
+            </li>
+            <li>Otherwise, if the <a data-link-for="LoadDocumentOptions">profile</a>
+              option is specified,
+              set <var>source</var> to the result of transforming the
+              <a data-cite="DOM#dom-node-textcontent">textContent</a>
+              of the first <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>document</var>
+              having an <a data-cite="HTML/semantics.html#attr-link-type">type attribute</a>
+              of <code>application/ld+json</code> along with the value of the
+              <a data-link-for="LoadDocumentOptions">profile</a> option, if found.</li>
+            <li>If <var>source</var> is undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
+              set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
+              of the first <a>JSON-LD script element</a> in <var>document</var>.
+              <p>If no such element is found,
+                or the located element is not a <a>JSON-LD script element</a>,
+                the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+                and processing is terminated.</p></li>
+            <li>If <var>source</var> is defined and the,
+              set <var>document</var> to the result of the
+              <a href="#extract-script-content">Extract Script Content algorithm</a>,
+              using <var>source</var>, rejecting <var>promise</var>
+              with a <a>JsonLdError</a> whose code set from the result, if an error is detected
+              and processing is terminated.
+            </li>
+            <li>Otherwise, if <var>source</var> is undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
+              the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+              and processing is terminated.</li>              
+            <li>Otherwise, if <var>source</var> is undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is <code>true</code>,
+              set <var>document</var> to a new empty <a>array</a>.
+              For each <a>JSON-LD script element</a> in <var>input</var>:
+              <ol>
+                <li>Set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>.</li>
+                <li>Set <var>script content</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
+                  using <var>source</var>, rejecting <var>promise</var>
+                  with a <a>JsonLdError</a> whose code set from the result, if an error is detected
+                  and processing is terminated.</li>
+                <li>If <var>script content</var> is an <a>array</a>, merge it to the end of <var>document</var>.</li>
+                <li>Otherwise, append <var>script content</var> to <var>document</var>.</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>Otherwise, if the retrieved document's <a>Content-Type</a> is neither
+          <code>application/json</code>,
+          <code>application/ld+json</code>,
+          nor any other media type using a
+          <code>+json</code> suffix as defined in [[RFC6839]],
+          reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
+        </li>
+        <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using <var>document</var>,
+          the returned <a>Content-Type</a> (without parameters) as <a data-link-for="RemoteDocument">contentType</a>,
+          any returned <code>profile</code> parameter,
+          and any <var>contextUrl</var>.</li>
+        <li>Fulfill the <var>promise</var> passing <var>remote document</var>.</li>
+      </ol>
+
+      <p class="note">A custom <a>LoadDocumentCallback</a> set via the
+        <a data-link-for="JsonLdOptions">documentLoader</a> option might be used
+        to maintain a local cache of well-known context documents or to implement
+        application-specific URL protocols.</p>
+    </section>
+
+    <section class="changed">
+      <h3>LoadDocumentOptions</h3>
+
+      <p>The <dfn>LoadDocumentOptions</dfn> type is used to pass various options
+        to the <a>LoadDocumentCallback</a>.</p>
+
+      <pre class="idl" data-transform="unComment"><!--
+        dictionary LoadDocumentOptions {
+          boolean  extractAllScripts = false;
+          USVString profile = null;
+          (USVString or sequence&lt;USVString>) requestProfile = null;
+        };
+      --></pre>
+
+      <dl>
+        <dt><dfn data-dfn-for="LoadDocumentOptions">extractAllScripts</dfn></dt>
+        <dd>If set to <code>true</code>,
+          when extracting <a>JSON-LD script elements</a> from HTML,
+          unless a specific <a data-cite="RFC3986#section-3.5">fragment identifier</a> is targeted,
+          extracts all encountered <a>JSON-LD script elements</a> using an <a>array</a> form, if necessary.</dd>
+        <dt><dfn data-dfn-for="LoadDocumentOptions">profile</dfn></dt>
+        <dd>When the resulting <a data-link-for="RemoteDocument">contentType</a> is <code>text/html</code>,
+          this option determines the profile to use for selecting a <a>JSON-LD script elements</a>.</dd>
+        <dt><dfn data-dfn-for="LoadDocumentOptions">requestProfile</dfn></dt>
+        <dd>One or more IRIs to use in the request as a <code>profile</code> parameter.
+          (See <a data-cite="JSON-LD11#iana-considerations">IANA Considerations</a> in [[JSON-LD11]]).</dd>
+      </dl>
     </section>
 
     <section>
@@ -5645,6 +5716,7 @@
           USVString documentUrl;
           any       document;
           USVString contentType;
+          USVString profile = null;
         };
       --></pre>
 
@@ -5666,7 +5738,10 @@
           This can either be the raw payload or the already parsed document.</dd>
         <dt class="changed"><dfn data-dfn-for="RemoteDocument">contentType</dfn></dt>
         <dd class="changed">The <dfn data-cite="RFC2045#section-5">Content-Type</dfn>
-          of the loaded document.</dd>
+          of the loaded document, exclusive of any optional parameters.</dd>
+        <dt class="changed"><dfn data-dfn-for="RemoteDocument">profile</dfn></dt>
+        <dd class="changed">The value of any <code>profile</code> parameter
+          retrieved as part of the original <a data-link-for="RemoteDocument">contentType</a>.</dd>
       </dl>
     </section>
   </section> <!-- end of Remote Document and Context Retrieval -->
@@ -5822,7 +5897,7 @@
         <dt class="changed"><dfn>invalid script element</dfn></dt>
         <dd class="changed">A <a data-cite="HTML/scripting.html#the-script-element">script element</a> in HTML input
           which is the target of a <a data-cite="RFC3986#section-3.5">fragment identifier</a>
-          does not have an appropriate <code>type</code> attribute.</dd>
+          does not have an appropriate <a data-cite="HTML/semantics.html#attr-link-type">type attribute</a>.</dd>
         <dt><dfn>invalid set or list object</dfn></dt>
         <dd>A <a>set object</a> or <a>list object</a>
           with disallowed <a>members</a>
@@ -5892,10 +5967,6 @@
 <section class="appendix informative preserve">
   <h2>Open Issues</h2>
   <p>The following is a list of issues open at the time of publication.</p>
-  <p class="issue" data-number="5">Define a "streaming profile" for JSON-LD to help parse data from a stream, rather than require the entire document to be in memory. Also to generate documents that can be so streamed. This would aid in using JSON-LD as a dataset dump format where there are a very large number of quads.</p>
-  <p class="issue" data-number="66">What if a @context URL response is HTML?
-    The HTML-based response has the value of potentially providing documentation for the contained context, but we lack a few things and/or need to clarify others.
-  </p>
   <p class="issue" data-number="76">More compact @prefix.</p>
 </section>
 
@@ -6014,6 +6085,8 @@
       of type <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#context</code>,
       or <code>application/ld+json</code> is used as the context for further processing.
       This allows a mechanism for documenting the content of a context using HTML.</li>
+    <li>Consolodate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
+      including variations on HTML processing.</li>
   </ul>
 </section>
 
