@@ -5078,7 +5078,7 @@
             and if passed, the <a data-link-for="JsonldOptions">compactArrays</a>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>Fulfill the <var>promise</var> passing <var>compacted output</var>
+          <li>Resolve the <var>promise</var> with <var>compacted output</var>
             <span class="changed">transforming <var>compacted output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
@@ -5110,8 +5110,8 @@
           <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
-            for <a data-link-for="LoadDocumentCallback">url</a>
-            and the <a data-link-for="JsonldOptions">extractAllScripts</a> option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
+            for <a data-link-for="LoadDocumentCallback">url</a>,
+            the <a data-link-for="JsonldOptions">extractAllScripts</a> option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
           <li class="changed">If necessary, transform <a data-link-for="RemoteDocument">document</a>
             from <var>remote document</var> into the <a>internal representation</a>.
@@ -5137,7 +5137,7 @@
             and if passed, the <span class="changed"><a data-link-for="JsonldOptions">frameExpansion</a></span>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>Fulfill the <var>promise</var> passing <var>expanded output</var>
+          <li>Resolve the <var>promise</var> with <var>expanded output</var>
             <span class="changed">transforming <var>expanded output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
@@ -5183,7 +5183,7 @@
             and if passed, the <a data-link-for="JsonldOptions">compactArrays</a>
             <span class="changed">and <a data-link-for="JsonldOptions">ordered</a></span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>Fulfill the <var>promise</var> passing <var>flattened output</var>
+          <li>Resolve the <var>promise</var> with <var>flattened output</var>
             <span class="changed">transforming <var>flattened output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
@@ -5265,7 +5265,7 @@
               as is the support for <a>generalized RDF Datasets</a>
               and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</div>
             </li>
-          <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
+          <li>Resolve the <var>promise</var> with <var>dataset</var>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5538,8 +5538,8 @@
 
       <p>The <dfn>LoadDocumentCallback</dfn> defines a callback that custom document loaders
         have to implement to be used to retrieve remote documents and contexts.
-        Upon successful completion, the callback returns a <a>Promise</a> containing a <a>RemoteDocument</a>.
-        On failure, the Promise is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
+        The callback returns a <a>Promise</a> resolving to a <a>RemoteDocument</a>.
+        On failure, the <a>Promise</a> is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
 
       <pre class="idl" data-transform="unComment"><!--
         callback LoadDocumentCallback = Promise&lt;RemoteDocument> (
@@ -5666,7 +5666,7 @@
           the returned <a>Content-Type</a> (without parameters) as <a data-link-for="RemoteDocument">contentType</a>,
           any returned <code>profile</code> parameter,
           and any <var>contextUrl</var>.</li>
-        <li>Fulfill the <var>promise</var> passing <var>remote document</var>.</li>
+        <li>Resolve the <var>promise</var> with <var>remote document</var>.</li>
       </ol>
 
       <p class="note">A custom <a>LoadDocumentCallback</a> set via the
