@@ -5301,23 +5301,9 @@
             <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
             using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
             and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
-          <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
-          <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
-          <li>Invoke the
-           <a href="#node-map-generation">Node Map Generation algorithm</a>,
-           passing <var>expanded input</var> as <var>element</var>
-           and <var>node map</var>.</li>
-          <li>Invoke the
-            <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
-            passing <var>node map</var>,
-            <var>dataset</var>,
-            and if passed, the <a data-link-for="JsonldOptions">produceGeneralizedRdf</a> flag in <a data-lt="jsonldprocessor-fromRdf-options">options</a>.
-            <div class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
-              and may be removed in a future version of JSON-LD,
-              as is the support for <a>generalized RDF Datasets</a>
-              and thus the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option may be also be removed.</div>
-            </li>
-          <li>Fulfill the <var>promise</var> passing <var>dataset</var>.</li>
+          <li>Resolve the <var>promise</var> with <var>expanded result</var>
+            <span class="changed">transforming <var>expanded result</var> from the
+              <a>internal representation</a> to a JSON serialization</span>.</li>
         </ol>
 
         <dl class="parameters">
