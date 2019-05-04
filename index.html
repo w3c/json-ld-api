@@ -5613,7 +5613,7 @@
               <p>If no such element is found,
                 or the located element is not a <a>JSON-LD script element</a>,
                 the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
-                and processing is terminated.</p></li>
+                and processing is terminated.</p>
             </li>
             <li>Otherwise, if the <a data-link-for="LoadDocumentOptions">profile</a>
               option is specified,
@@ -5661,7 +5661,6 @@
           nor any other media type using a
           <code>+json</code> suffix as defined in [[RFC6839]],
           reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
-        </li>
         <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using <var>document</var>,
           the returned <a>Content-Type</a> (without parameters) as <a data-link-for="RemoteDocument">contentType</a>,
           any returned <code>profile</code> parameter,
