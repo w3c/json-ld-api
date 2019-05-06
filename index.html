@@ -4672,7 +4672,7 @@
         </li>
         <li>Initialize an empty <a>array</a> <var>result</var>.</li>
         <li>For each <var>subject</var> and <var>node</var> in <var>default graph</var>
-          ordered lexographically by <var>subject</var>
+          ordered lexicographically by <var>subject</var>
           <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
           <ol>
             <li>If <var>graph map</var> has a <var>subject</var> <a>member</a>:
@@ -4680,7 +4680,7 @@
                 <li>Add an <code>@graph</code> <a>member</a> to <var>node</var> and initialize
                   its value to an empty <a>array</a>.</li>
                 <li>For each key-value pair <var>s</var>-<var>n</var> in the <var>subject</var>
-                  <a>member</a> of <var>graph map</var> ordered lexographically by <var>s</var>
+                  <a>member</a> of <var>graph map</var> ordered lexicographically by <var>s</var>
                   <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>,
                   append <var>n</var> to the <code>@graph</code> <a>member</a> of <var>node</var> after
                   removing its <code>usages</code> <a>member</a>, unless the only
@@ -4875,7 +4875,7 @@
       <li>Native Numeric values SHOULD be serialized according to
         <a data-cite="?ECMASCRIPT#sec-tostring-applied-to-the-number-type">Section 7.1.12.1</a> of [[?ECMASCRIPT]],</li>
       <li>Strings SHOULD be serialized with Unicode codepoints from <code>U+0000</code> through <code>U+001F</code>
-        using lowercase hexaddecimal Unicode notation (<code>\uhhhh</code>) unless in the set
+        using lowercase hexadecimal Unicode notation (<code>\uhhhh</code>) unless in the set
         of predefined JSON control characters <code>U+0008</code>, <code>U+0009</code>,
         <code>U+000A</code>, <code>U+000C</code> or <code>U+000D</code>
         which SHOULD be serialized as <code>\b</code>, <code>\t</code>, <code>\n</code>, <code>\f</code> and <code>\r</code> respectively.
@@ -5113,8 +5113,8 @@
             for <a data-link-for="LoadDocumentCallback">url</a>,
             the <a data-link-for="JsonldOptions">extractAllScripts</a> option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
-          <li class="changed">If necessary, transform <a data-link-for="RemoteDocument">document</a>
-            from <var>remote document</var> into the <a>internal representation</a>.
+          <li class="changed">If <a data-link-for="RemoteDocument">document</a>
+            from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
             If <a data-link-for="RemoteDocument">document</a> cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Initialize a new empty <var>active context</var>.
@@ -5380,7 +5380,7 @@
       </dd>
       <dt><dfn data-dfn-for="RdfGraph">iterable</dfn></dt>
       <dd>A <a data-cite="WEBIDL#dfn-value-iterator">value iterator</a>
-        over the <a>RdfTriple</a> instancesassociated with the graph.
+        over the <a>RdfTriple</a> instances associated with the graph.
         Note that a given <a>RdfTriple</a> instance may appear in more than one graph
         within a particular <a>RdfDataset</a> instance.</dd>
     </dl>
@@ -5514,7 +5514,7 @@
         to use JSON-LD native types as values, where possible.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">useNativeTypes</dfn></dt>
       <dd class="changed">Causes the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
-        to use native JSON values in <a>value objects</a> avoiding the need for an explicity <code>@type</code>.</dd>
+        to use native JSON values in <a>value objects</a> avoiding the need for an explicitly <code>@type</code>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">useRdfType</dfn></dt>
       <dd class="changed">Enables special rules for the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
         causing <code>rdf:type</code> properties to be kept as <a>IRIs</a> in the output, rather than use <code>@type</code>.</dd>
@@ -5585,8 +5585,7 @@
           <p>If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</p>
-          <p>Processors MAY transform <var>document</var> to the <a>internal representation</a>
-            using the <a href="#extract-script-content">Extract Script Content algorithm</a>.</p>
+          <p>Processors MAY transform <var>document</var> to the <a>internal representation</a>.</p>
           <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>
             or <code>text/html</code>.</p>
         </li>
@@ -5623,44 +5622,49 @@
               having an <a data-cite="HTML/semantics.html#attr-link-type">type attribute</a>
               of <code>application/ld+json</code> along with the value of the
               <a data-link-for="LoadDocumentOptions">profile</a> option, if found.</li>
-            <li>If <var>source</var> is undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
+            <li>If <var>source</var> is still undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
               set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
               of the first <a>JSON-LD script element</a> in <var>document</var>.
               <p>If no such element is found,
                 or the located element is not a <a>JSON-LD script element</a>,
                 the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
                 and processing is terminated.</p></li>
-            <li>If <var>source</var> is defined and the,
+            <li>If <var>source</var> is defined,
               set <var>document</var> to the result of the
               <a href="#extract-script-content">Extract Script Content algorithm</a>,
               using <var>source</var>, rejecting <var>promise</var>
               with a <a>JsonLdError</a> whose code set from the result, if an error is detected
               and processing is terminated.
             </li>
-            <li>Otherwise, if <var>source</var> is undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
-              the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
-              and processing is terminated.</li>              
-            <li>Otherwise, if <var>source</var> is undefined and the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is <code>true</code>,
-              set <var>document</var> to a new empty <a>array</a>.
-              For each <a>JSON-LD script element</a> in <var>input</var>:
+            <li>Otherwise, <var>source</var> is undefined.
               <ol>
-                <li>Set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>.</li>
-                <li>Set <var>script content</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
-                  using <var>source</var>, rejecting <var>promise</var>
-                  with a <a>JsonLdError</a> whose code set from the result, if an error is detected
-                  and processing is terminated.</li>
-                <li>If <var>script content</var> is an <a>array</a>, merge it to the end of <var>document</var>.</li>
-                <li>Otherwise, append <var>script content</var> to <var>document</var>.</li>
+                <li>If the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
+                  the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+                  and processing is terminated.</li>              
+                <li>Otherwise, the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is <code>true</code>.
+                  Set <var>document</var> to a new empty <a>array</a>.
+                  For each <a>JSON-LD script element</a> in <var>input</var>:
+                  <ol>
+                    <li>Set <var>source</var> to its <a data-cite="DOM#dom-node-textcontent">textContent</a>.</li>
+                    <li>Set <var>script content</var> to the result of the <a href="#extract-script-content">Extract Script Content algorithm</a>,
+                      using <var>source</var>, rejecting <var>promise</var>
+                      with a <a>JsonLdError</a> whose code set from the result, if an error is detected
+                      and processing is terminated.</li>
+                    <li>If <var>script content</var> is an <a>array</a>, merge it to the end of <var>document</var>.</li>
+                    <li>Otherwise, append <var>script content</var> to <var>document</var>.</li>
+                  </ol>
+                </li>
               </ol>
             </li>
           </ol>
         </li>
-        <li>Otherwise, if the retrieved document's <a>Content-Type</a> is neither
+        <li>Otherwise, the retrieved document's <a>Content-Type</a> is neither
           <code>application/json</code>,
           <code>application/ld+json</code>,
+          <code>text/html</code>,
           nor any other media type using a
-          <code>+json</code> suffix as defined in [[RFC6839]],
-          reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
+          <code>+json</code> suffix as defined in [[RFC6839]].
+          Reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
         <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using <var>document</var>,
           the returned <a>Content-Type</a> (without parameters) as <a data-link-for="RemoteDocument">contentType</a>,
           any returned <code>profile</code> parameter,
@@ -6084,7 +6088,7 @@
       of type <code>application/ld+json;profile=http://www.w3.org/ns/json-ld#context</code>,
       or <code>application/ld+json</code> is used as the context for further processing.
       This allows a mechanism for documenting the content of a context using HTML.</li>
-    <li>Consolodate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
+    <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
   </ul>
 </section>
