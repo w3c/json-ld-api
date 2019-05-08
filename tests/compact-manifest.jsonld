@@ -1685,8 +1685,8 @@
       "name": "Check illegal overriding of protected term from type-scoped context",
       "purpose": "Check error when overriding a protected term from type-scoped context.",
       "option": {"specVersion": "json-ld-1.1"},
-      "input": "compact/pr02-in.jsonld",
-      "context": "compact/pr02-context.jsonld",
+      "input": "compact/pr03-in.jsonld",
+      "context": "compact/pr03-context.jsonld",
       "expect": "protected term redefinition"
     }, {
       "@id": "#tpr04",
