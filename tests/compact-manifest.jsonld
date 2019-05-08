@@ -1698,6 +1698,16 @@
       "context": "compact/pr04-context.jsonld",
       "expect": "compact/pr04-out.jsonld"
     }, {
+      "@id": "#tpr05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Check legal overriding of type-scoped protected term from nested node",
+      "purpose": "Check legal overriding of type-scoped protected term from nested node.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "compact/pr05-in.jsonld",
+      "context": "compact/pr05-context.jsonld",
+      "expect": "compact/pr05-out.jsonld"
+    }, {
+    }, {
       "@id": "#tr001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Expands and compacts to document base by default",
