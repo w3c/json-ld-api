@@ -989,7 +989,7 @@
     }, {
       "@id": "#tc009",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
-      "name": "deep @context affects nested nodes",
+      "name": "deep @type-scoped @context does NOT affect nested nodes",
       "purpose": "scoped context on @type",
       "input": "compact/c009-in.jsonld",
       "context": "compact/c009-context.jsonld",
@@ -1022,6 +1022,15 @@
       "context": "compact/c012-context.jsonld",
       "expect": "compact/c012-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc013",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "deep property-term scoped @context in @type-scoped @context affects nested nodes",
+      "purpose": "scoped context on @type",
+      "input": "compact/c013-in.jsonld",
+      "context": "compact/c013-context.jsonld",
+      "expect": "compact/c013-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}    
     }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
