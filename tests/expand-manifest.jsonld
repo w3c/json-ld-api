@@ -2187,6 +2187,14 @@
       "input": "expand/pr21-in.jsonld",
       "expect": "invalid context nullification"
    }, {
+      "@id": "#tpr22",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Check legal overriding of type-scoped protected term from nested node.",
+      "purpose": "Check legal overriding of type-scoped protected term from nested node.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr22-in.jsonld",
+      "expect": "expand/pr22-out.jsonld"
+   }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
