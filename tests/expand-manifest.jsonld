@@ -907,7 +907,7 @@
     }, {
       "@id": "#tc009",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "deep @context affects nested nodes",
+      "name": "deep @type-scoped @context does NOT affect nested nodes",
       "purpose": "scoped context on @type",
       "input": "expand/c009-in.jsonld",
       "expect": "expand/c009-out.jsonld",
@@ -927,6 +927,14 @@
       "purpose": "scoped context on @type",
       "input": "expand/c011-in.jsonld",
       "expect": "expand/c011-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc012",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "deep property-term scoped @context in @type-scoped @context affects nested nodes",
+      "purpose": "scoped context on @type",
+      "input": "expand/c012-in.jsonld",
+      "expect": "expand/c012-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
    }, {
       "@id": "#te001",
