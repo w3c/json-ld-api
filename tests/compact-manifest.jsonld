@@ -1707,7 +1707,6 @@
       "context": "compact/pr05-context.jsonld",
       "expect": "compact/pr05-out.jsonld"
     }, {
-    }, {
       "@id": "#tr001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Expands and compacts to document base by default",
