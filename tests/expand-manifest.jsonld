@@ -936,6 +936,14 @@
       "input": "expand/c012-in.jsonld",
       "expect": "expand/c012-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc013",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "type maps use scoped context from type index and not scoped context from containing",
+      "purpose": "scoped context on @type",
+      "input": "expand/c013-in.jsonld",
+      "expect": "expand/c013-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
