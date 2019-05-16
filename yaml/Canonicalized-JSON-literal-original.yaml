@@ -1,0 +1,12 @@
+Example 022: Canonicalized JSON literal-original
+---
+"@context":
+  "@version": 1.1
+  e:
+    "@id": http://example.org/vocab#json
+    "@type": "@json"
+e:
+- 56.0
+- d: true
+  '10': 
+  '1': []
