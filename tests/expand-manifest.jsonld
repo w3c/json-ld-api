@@ -944,7 +944,7 @@
       "input": "expand/c013-in.jsonld",
       "expect": "expand/c013-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tc014",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "type-scoped context nullification",
@@ -952,7 +952,7 @@
       "input": "expand/c014-in.jsonld",
       "expect": "expand/c014-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tc015",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "type-scoped base",
@@ -960,7 +960,7 @@
       "input": "expand/c015-in.jsonld",
       "expect": "expand/c015-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tc016",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "type-scoped vocab",
@@ -968,7 +968,7 @@
       "input": "expand/c016-in.jsonld",
       "expect": "expand/c016-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tc017",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "multiple type-scoped contexts are properly reverted",
@@ -976,7 +976,7 @@
       "input": "expand/c017-in.jsonld",
       "expect": "expand/c017-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tc018",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "multiple type-scoped types resolved against previous context",
@@ -984,7 +984,7 @@
       "input": "expand/c018-in.jsonld",
       "expect": "expand/c018-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tc019",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "type-scoped context with multiple property scoped terms",
@@ -992,7 +992,7 @@
       "input": "expand/c019-in.jsonld",
       "expect": "expand/c019-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",
@@ -1315,7 +1315,7 @@
       "input": "expand/ec01-in.jsonld",
       "expect": "invalid term definition",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tem01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid container mapping",
@@ -1818,7 +1818,7 @@
       "input": "expand/m016-in.jsonld",
       "expect": "expand/m016-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
-   }, {
+    }, {
       "@id": "#tn001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expands input using @nest",
@@ -1994,7 +1994,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pi11-in.jsonld",
       "expect": "expand/pi11-out.jsonld"
-   }, {
+    }, {
       "@id": "#tl001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Language map with null value",
@@ -2002,7 +2002,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/l001-in.jsonld",
       "expect": "expand/l001-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "@list containing @list",
@@ -2010,7 +2010,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li01-in.jsonld",
       "expect": "expand/li01-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "@list containing empty @list",
@@ -2018,7 +2018,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li02-in.jsonld",
       "expect": "expand/li02-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli03",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "@list containing @list (with coercion)",
@@ -2026,7 +2026,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li03-in.jsonld",
       "expect": "expand/li03-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli04",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "@list containing empty @list (with coercion)",
@@ -2034,7 +2034,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li04-in.jsonld",
       "expect": "expand/li04-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "coerced @list containing an array",
@@ -2042,7 +2042,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li05-in.jsonld",
       "expect": "expand/li05-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "coerced @list containing an empty array",
@@ -2050,7 +2050,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li06-in.jsonld",
       "expect": "expand/li06-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli07",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "coerced @list containing deep arrays",
@@ -2058,7 +2058,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li07-in.jsonld",
       "expect": "expand/li07-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli08",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "coerced @list containing deep empty arrays",
@@ -2066,7 +2066,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li08-in.jsonld",
       "expect": "expand/li08-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli09",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "coerced @list containing multiple lists",
@@ -2074,7 +2074,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li09-in.jsonld",
       "expect": "expand/li09-out.jsonld"
-   }, {
+    }, {
       "@id": "#tli10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "coerced @list containing mixed list values",
@@ -2082,7 +2082,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/li10-in.jsonld",
       "expect": "expand/li10-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Protect a term",
@@ -2090,7 +2090,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr01-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Set a term to not be protected",
@@ -2098,7 +2098,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr02-in.jsonld",
       "expect": "expand/pr02-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Protect all terms in context",
@@ -2106,7 +2106,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr03-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr04",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Do not protect term with @protected: false",
@@ -2114,7 +2114,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr04-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr05",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Clear active context with protected terms from an embedded context",
@@ -2122,7 +2122,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr05-in.jsonld",
       "expect": "invalid context nullification"
-   }, {
+    }, {
       "@id": "#tpr06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Clear active context of protected terms from a term.",
@@ -2130,7 +2130,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr06-in.jsonld",
       "expect": "expand/pr06-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr08",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Term with protected scoped context.",
@@ -2138,7 +2138,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr08-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr09",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Attempt to redefine term in other protected context.",
@@ -2146,7 +2146,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr09-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Simple protected and unprotected terms.",
@@ -2154,7 +2154,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr10-in.jsonld",
       "expect": "expand/pr10-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr11",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Fail to override protected term.",
@@ -2162,7 +2162,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr11-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr12",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Scoped context fail to override protected term.",
@@ -2170,7 +2170,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr12-in.jsonld",
       "expect": "protected term redefinition"
-   }, {
+    }, {
       "@id": "#tpr13",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Override unprotected term.",
@@ -2178,7 +2178,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr13-in.jsonld",
       "expect": "expand/pr13-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr14",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Clear protection with null context.",
@@ -2186,7 +2186,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr14-in.jsonld",
       "expect": "expand/pr14-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr15",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Clear protection with array with null context",
@@ -2194,7 +2194,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr15-in.jsonld",
       "expect": "expand/pr15-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr16",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Override protected terms after null.",
@@ -2202,7 +2202,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr16-in.jsonld",
       "expect": "expand/pr16-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr17",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Fail to override protected terms with type.",
@@ -2210,7 +2210,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr17-in.jsonld",
       "expect": "invalid context nullification"
-   }, {
+    }, {
       "@id": "#tpr18",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Fail to override protected terms with type+null+ctx.",
@@ -2218,7 +2218,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr18-in.jsonld",
       "expect": "invalid context nullification"
-   }, {
+    }, {
       "@id": "#tpr19",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Mix of protected and unprotected terms.",
@@ -2226,7 +2226,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr19-in.jsonld",
       "expect": "expand/pr19-out.jsonld"
-   }, {
+    }, {
       "@id": "#tpr20",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Fail with mix of protected and unprotected terms with type+null+ctx.",
@@ -2234,7 +2234,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr20-in.jsonld",
       "expect": "invalid context nullification"
-   }, {
+    }, {
       "@id": "#tpr21",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Fail with mix of protected and unprotected terms with type+null.",
@@ -2242,7 +2242,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr21-in.jsonld",
       "expect": "invalid context nullification"
-   }, {
+    }, {
       "@id": "#tpr22",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Check legal overriding of type-scoped protected term from nested node.",
@@ -2250,7 +2250,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr22-in.jsonld",
       "expect": "expand/pr22-out.jsonld"
-   }, {
+    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
@@ -2258,7 +2258,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/tn01-in.jsonld",
       "expect": "invalid type mapping"
-   }, {
+    }, {
       "@id": "#ttn02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none expands strings as value objects",
