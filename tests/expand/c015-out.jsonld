@@ -1,0 +1,10 @@
+[{
+  "@id": "http://example/base-base#base-id",
+  "http://example/p": [{
+    "@id": "http://example/typed-base#typed-id",
+    "@type": ["http://example/Type"],
+    "http://example/nested": [{
+      "@id": "http://example/base-base#nested-id"
+    }]
+  }]
+}]
