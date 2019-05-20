@@ -2299,6 +2299,46 @@
       "input": "expand/pr22-in.jsonld",
       "expect": "expand/pr22-out.jsonld"
     }, {
+      "@id": "#tpr23",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Allows redefinition of protected alias term with same definition.",
+      "purpose": "Allows redefinition of protected alias term with same definition.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr23-in.jsonld",
+      "expect": "expand/pr23-out.jsonld"
+    }, {
+      "@id": "#tpr24",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Allows redefinition of protected prefix term with same definition.",
+      "purpose": "Allows redefinition of protected prefix term with same definition.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr24-in.jsonld",
+      "expect": "expand/pr24-out.jsonld"
+    }, {
+      "@id": "#tpr25",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Allows redefinition of terms with scoped contexts using same definitions.",
+      "purpose": "Allows redefinition of terms with scoped contexts using same definitions.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr25-in.jsonld",
+      "expect": "expand/pr25-out.jsonld"
+    }, {
+      "@id": "#tpr26",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fails on redefinition of terms with scoped contexts using different definitions.",
+      "purpose": "Fails on redefinition of terms with scoped contexts using different definitions.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr26-in.jsonld",
+      "expect": "protected term redefinition"
+    }, {
+      "@id": "#tpr27",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Allows redefinition of protected alias term with same definition modulo protected flag.",
+      "purpose": "Allows redefinition of protected alias term with same definition modulo protected flag.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr27-in.jsonld",
+      "expect": "expand/pr27-out.jsonld"
+    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
