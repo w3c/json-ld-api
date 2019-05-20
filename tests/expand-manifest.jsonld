@@ -945,6 +945,54 @@
       "expect": "expand/c013-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
    }, {
+      "@id": "#tc014",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "type-scoped context nullification",
+      "purpose": "type-scoped context nullification",
+      "input": "expand/c014-in.jsonld",
+      "expect": "expand/c014-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+   }, {
+      "@id": "#tc015",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "type-scoped base",
+      "purpose": "type-scoped base",
+      "input": "expand/c015-in.jsonld",
+      "expect": "expand/c015-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+   }, {
+      "@id": "#tc016",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "type-scoped vocab",
+      "purpose": "type-scoped vocab",
+      "input": "expand/c016-in.jsonld",
+      "expect": "expand/c016-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+   }, {
+      "@id": "#tc017",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "multiple type-scoped contexts are properly reverted",
+      "purpose": "multiple type-scoped contexts are property reverted",
+      "input": "expand/c017-in.jsonld",
+      "expect": "expand/c017-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+   }, {
+      "@id": "#tc018",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "multiple type-scoped types resolved against previous context",
+      "purpose": "multiple type-scoped types resolved against previous context",
+      "input": "expand/c018-in.jsonld",
+      "expect": "expand/c018-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+   }, {
+      "@id": "#tc019",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "type-scoped context with multiple property scoped terms",
+      "purpose": "type-scoped context with multiple property scoped terms",
+      "input": "expand/c019-in.jsonld",
+      "expect": "expand/c019-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+   }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",
