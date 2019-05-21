@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "@base": "http://example/base-base",
+    "@vocab": "http://example/",
+    "foo": "http://example/foo",
+    "Type": {
+      "@context": {
+        "@base": "http://example/typed-base"
+      }
+    }
+  },
+  "@id": "#base-id",
+  "p": {
+    "@id": "#typed-id",
+    "@type": "Type",
+    "nested": {
+      "@id": "#nested-id"
+    }
+  }
+}
