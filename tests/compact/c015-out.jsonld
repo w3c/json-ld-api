@@ -13,8 +13,12 @@
   "p": {
     "@id": "#typed-id",
     "@type": "Type",
-    "nested": {
-      "@id": "#nested-id"
+    "subjectReference": {
+      "@id": "#subject-reference-id"
+    },
+    "nestedNode": {
+      "@id": "#nested-id",
+      "foo": "bar"
     }
   }
 }
