@@ -1104,6 +1104,24 @@
       "expect": "compact/c021-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc022",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "type-scoped property-scoped contexts including @type:@vocab",
+      "purpose": "type-scoped property-scoped contexts including @type:@vocab",
+      "input": "compact/c022-in.jsonld",
+      "context": "compact/c022-context.jsonld",
+      "expect": "compact/c022-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc023",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "composed type-scoped property-scoped contexts including @type:@vocab",
+      "purpose": "composed type-scoped property-scoped contexts including @type:@vocab",
+      "input": "compact/c023-in.jsonld",
+      "context": "compact/c023-context.jsonld",
+      "expect": "compact/c023-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Compaction to list of lists",
