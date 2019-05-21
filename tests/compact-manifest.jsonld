@@ -1095,6 +1095,15 @@
       "expect": "compact/c020-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc021",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "type-scoped value mix",
+      "purpose": "type-scoped value mix",
+      "input": "compact/c021-in.jsonld",
+      "context": "compact/c021-context.jsonld",
+      "expect": "compact/c021-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Compaction to list of lists",
