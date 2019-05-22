@@ -1131,6 +1131,15 @@
       "expect": "compact/c024-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc025",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "type-scoped + graph container",
+      "purpose": "type-scoped + graph container",
+      "input": "compact/c025-in.jsonld",
+      "context": "compact/c025-context.jsonld",
+      "expect": "compact/c025-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Compaction to list of lists",

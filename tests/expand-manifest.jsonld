@@ -1033,6 +1033,14 @@
       "expect": "expand/c024-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc025",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "type-scoped + graph container",
+      "purpose": "type-scoped + graph container",
+      "input": "expand/c025-in.jsonld",
+      "expect": "expand/c025-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",
