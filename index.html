@@ -974,14 +974,13 @@
     <p>The <a>active context</a> contains the active
       <a>term definitions</a> which specify how
       keys and values have to be interpreted as well as the current <a>base IRI</a>,
-      the <a>vocabulary mapping</a> and the <a>default language</a>. Each
-      <a>term definition</a> consists of:</p>
+      the <a>vocabulary mapping</a>, the <a>default language</a>,
+      <span class="changed">and an optional <dfn>previous context</dfn>,
+        used when a type-scoped <a>context</a> is defined</span>.
+      Each <a>term definition</a> consists of:</p>
     <ul>
       <li>an <dfn>IRI mapping</dfn>,</li>
       <li>a boolean flag <dfn>reverse property</dfn>,</li>
-      <li class="changed">a boolean flag <dfn>from type</dfn>,</li>
-      <li class="changed">a <dfn>previous definition</dfn>
-        used to record any previous <a>term definition</a>,</li>
       <li>an optional <dfn>type mapping</dfn>, or <dfn>language mapping</dfn>,</li>
       <li class="changed">an optional <a>context</a>,</li>
       <li class="changed">an optional <dfn>nest value</dfn>,</li>
@@ -1079,6 +1078,10 @@
         <li>If <var>local context</var> is not an <a>array</a>,
           set it to an <a>array</a> containing only
           <var>local context</var>.</li>
+        <li class="changed">
+          If <var>from type</var> is <code>true</code>, and <var>result</var>
+          does not have a <a>previous context</a>, set <a>previous context</a>
+          in <var>result</var> to <var>active context</var>.</li>
         <li>
           For each item <var>context</var> in <var>local context</var>:
           <ol>
@@ -1089,8 +1092,10 @@
                   an <a data-link-for="JsonLdErrorCode">invalid context nullification</a>
                   has been detected and processing is aborted.</li>
                 <li>Otherwise, set <var>result</var> to a
-                  newly-initialized <var>active context</var> and continue with the
-                  next <var>context</var>.
+                  newly-initialized <var>active context</var>,
+                  <span class="changed">setting <a>previous context</a> in <var>result</var>
+                    to the previous value of <var>result</var> if <var>from type</var> is <code>true</code></span>.
+                  Continue with the next <var>context</var>.
                   <span class="note">In JSON-LD 1.0, the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
                     in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
@@ -1275,8 +1280,7 @@
           <var>protected</var> which defaults to <code>false</code>,
           <var>from property</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
-          and <var>from type</var>, defaulting to <code>false</code>,
-          which is used to mark <a>term definitions</a> associated with a type-scoped <a>context</a>.</span>.
+          and <var>from type</var>, defaulting to <code>false</code>.</span>.
         </p>
       <ol>
         <li>If <var>defined</var> contains the <a>member</a> <var>term</var> and the associated
@@ -1314,8 +1318,6 @@
           <code>@id</code>-<code>null</code>, set the
           <a>term definition</a> in <var>active context</var> to
           <code>null</code>,
-          <span class="changed">along with <a>from type</a> from <var>from type</var>
-            and <a>previous definition</a> from <var>previous definition</var>,</span>
           and set the value associated with <var>defined</var>'s
           <a>member</a> <var>term</var> to <code>true</code>, and return.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>, convert it
@@ -1326,9 +1328,7 @@
           <a data-link-for="JsonLdErrorCode">invalid term definition</a>
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
-        <li>Create a new <a>term definition</a>, <var>definition</var>,
-          including <a>from type</a> from <var>from type</var>
-            and <a>previous definition</a> from <var>previous definition</var>.</li>
+        <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
         <li class="changed">If the <code>@protected</code> member in <var>value</var>
           is <code>true</code>, or there is no <code>@protected</code> member in <var>value</var>
           and the <var>protected</var> parameter is <code>true</code>,
@@ -1559,34 +1559,6 @@
     </section>
   </section> <!-- end of Term Creation -->
 
-  <section class="changed algorithm"><h2>Revert Type Scoped Terms</h2>
-    <p>This algorithm returns a new <a>context</a> based on the <a>active context</a>
-      where any <a>term definitions</a> which were created as part of a type-scoped <a>context</a>
-      are replaced with any previous term definitions, or removed.</p>
-
-    <p>The algorithm takes a single required parameter <var>active context</var></p>
-    <ol>
-      <li>If <var>active context</var> contains no <a>term definitions</a>
-        where <var>from type</var> is <code>true</code>, return <var>active context</var>.</li>
-      <li>Initialize <var>result</var> to the result of cloning <var>active context</var>.</li>
-      <li>For each <a>member</a> <a>term definition</a> with key <var>term</var> and value <var>definition</var> in <var>result</var>:
-        <ol>
-          <li>If <var>definition</var> has <var>from type</var> with a value of <code>true</code>:
-            <ol>
-              <li>Set <var>previous definition</var> to any <a>previous definition</a>
-                in <var>definition</var>.</li>
-              <li>If <var>previous definition</var> is undefined,
-                remove <var>term</var> and <var>definition</var> from <var>result</var>.</li>
-              <li>Otherwise, update the <a>member</a> value for <var>term</var> in <var>result</var>
-                with <var>previous definition</var>.</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>Return <var>result</var>.</li>
-    </ol>
-  </section>
-
   <section>
     <h2>IRI Expansion</h2>
 
@@ -1808,10 +1780,16 @@
         <li>If <var>element</var> is <code>null</code>, return <code>null</code>.</li>
         <li class="changed">If <var>active property</var> is <code>@default</code>,
           set the <a data-link-for="JsonLdOptions">frameExpansion</a> flag to <code>false</code>.</li>
+        <li class="changed">If <var>active property</var> has a <a>term definition</a> in <var>active context</var>
+          has a <a>local context</a>, set <var>property scoped context</var> to the that <a>local context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>,
           <ol>
             <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
               drop the free-floating <a>scalar</a> by returning <code>null</code>.</li>
+            <li class="changed">If <var>property scoped context</var> is defined,
+              set <var>active context</var> to the result of the
+              <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+              passing <var>active context</var> and <var>property scoped context</var> as <var>local context</var>.</li>
             <li>Return the result of the
               <a href="#value-expansion">Value Expansion algorithm</a>, passing the
               <var>active context</var>, <var>active property</var>, and
@@ -1845,15 +1823,25 @@
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>.</li>
+        <li class="changed">If <var>active context</var> has a <a>previous context</a>,
+          the <a>context</a> is type-scoped.
+          If <var>from map</var> is undefined or <code>false</code>,
+          and <var>element</var> does not contain a <a>member</a> expanding to <code>@value</code>,
+          and <var>element</var> does not consist of a single member expanding to <code>@id</code>,
+          set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
+          as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
+        <li class="changed">If <var>property scoped context</var> is defined,
+          set <var>active context</var> to the result of the
+          <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+          passing <var>active context</var> and <var>property scoped context</var> as <var>local context</var>.</li>
         <li>If <var>element</var> contains the <a>member</a> <code>@context</code>, set
           <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
           passing <var>active context</var> and the value of the
           <code>@context</code> <a>member</a> as <var>local context</var>.</li>
-        <li>Unless the <var>from map</var> flag is true,
-          replace <var>active context</var> with the result of the
-          <a href="#revert-type-scoped-terms">Revert Type Scoped Terms</a> algorithm,
-          passing <var>active context</var>.</li>
+        <li class="changed">Set <var>type scoped context</var> to <var>active context</var>.
+          This is used for expanding values that may be relevant to any previous
+          type-scoped <a>context</a>.</li>
         <li class="changed">For each <var>key</var>/<var>value</var> pair in <var>element</var>
           where <var>key</var> expands to <code>@type</code> using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
@@ -1918,7 +1906,8 @@
                   error has been detected and processing is aborted. Otherwise,
                   set <var>expanded value</var> to the result of using the
                   <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-                  <var>active context</var>, <code>true</code> for <var>vocab</var>,
+                  <var class="changed">type scoped context</var> for <var>active context</var>,
+                  <code>true</code> for <var>vocab</var>,
                   and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
                   or each of its items.
                   <span class="changed">
@@ -2060,15 +2049,8 @@
                 <li>Continue with the next <var>key</var> from <var>element</var>.</li>
               </ol>
             </li>
-            <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
-              has a <a>local context</a>, set <var>term context</var> to the result of the
-              <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var>, the value of the
-              <var>key</var>'s <a>local context</a> as <var>local context</var>,
-              and <code>true</code> for <var>from property</var>. Otherwise,
-              set <var>term context</var> to <var>active context</var>.</li>
             <li>Set <var>container mapping</var> to <var>key</var>'s <a>container mapping</a> in
-              <var class="changed">term context</var>.</li>
+              <var>active context</var>.</li>
             <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>type mapping</a> of <code>@json</code>,
               set <var>expanded value</var> to a new <a>dictionary</a>, set the <a>member</a>
@@ -2123,9 +2105,8 @@
                   <ol>
                     <li class="changed">If <var>container mapping</var> includes <code>@type</code>:
                       <ol>
-                        <li>Set <var>map context</var> to the result of calling the
-                          <a href="#revert-type-scoped-terms">Revert Type Scoped Terms</a> algorithm
-                          passing <var>term context</var> as <var>active context</var>.</li>
+                        <li>Set <var>map context</var> to the <a>previous context</a>
+                          from <var>active context</var> if it exists, or <var>active context</var> otherwise.</li>
                         <li>If <var>index</var>'s <a>term definition</a> in
                           <var>map context</var> has a <a>local context</a>, update
                           <var>map context</var> to the result of the
@@ -2135,7 +2116,7 @@
                           as <var>local context</var>.</li>
                       </ol>
                     </li>
-                    <li>Otherwise, set <var>map context</var> to <var>term context</var>.</li>
+                    <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
                     <li>Set <var>expanded index</var> to the result of using the
                       <a href="#iri-expansion">IRI Expansion algorithm</a>,
                       passing <var>active context</var>, <var>index</var>, and <code>true</code>
@@ -2195,7 +2176,7 @@
               </ol>
             </li>
             <li>Otherwise, initialize <var>expanded value</var> to the result of
-              using this algorithm recursively, passing <var class="changed">term context</var> as <var>active context</var>,
+              using this algorithm recursively, passing <var>active context</var>,
               <var>key</var> for <var>active property</var>, <var>value</var> for <var>element</var>,
               <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
                 and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
