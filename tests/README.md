@@ -79,7 +79,7 @@ Implementations create their own infrastructure for running the test suite. In p
 If you would like to contribute a new test or a fix to an existing test,
 please follow these steps:
 
-1. Notify the JSON-LD mailing list, json-ld-wg@w3.org,
+1. Notify the JSON-LD mailing list, public-json-ld-wg@w3.org,
    that you will be creating a new test or fix and the purpose of the
    change.
 2. Clone the git repository: git://github.com/w3c/json-ld-wg.git
