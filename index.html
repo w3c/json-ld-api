@@ -1858,12 +1858,12 @@
               <span class="changed">and <code>true</code> for <var>from type</var></span>.</li>
           </ol>
         </li>
-        <li>Initialize an empty <a class="changed">dictionary</a>, <var>result</var>.</li>
+        <li>Initialize two empty <a class="changed">dictionaries</a>, <var>result</var>
+          <span class="changed">and <var>nests</var>.
+            Set <var>input type</var> to the last value of any <a>member</a> of <var>element</var>
+            expanding to <code>@type</code></span>.
+        </li>
         <li id="alg-expand-each-key-value">
-          <span class="changed">
-            Initialize an empty <a>dictionary</a>, <var>nests</var>, and
-            <var>input type</var> to the last value of any <a>member</a> expanding to <code>@type</code>.
-          </span>
           For each <var>key</var> and <var>value</var> in <var>element</var>,
           ordered lexicographically by <var>key</var> <span class="changed">if <a data-link-for="JsonLdOptions">ordered</a> is <code>true</code></span>:
           <ol>
