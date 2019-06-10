@@ -1332,10 +1332,6 @@
           error has been detected and processing is aborted.</li>
         <li class="changed">Set <var>previous definition</var> to any existing
           <a>term definition</a> for <var>term</var> in <var>active context</var>.</li>
-        <li class="changed">If <var>from property</var> is <code>false</code>
-          and <var>previous definition</var> exists and is protected,
-          a <a data-link-for="JsonLdErrorCode">protected term redefinition</a> error has been detected,
-          and processing is aborted.</li>
         <li>Otherwise, remove any <var>previous definition</var> from
           <var>active context</var>.</li>
         <li>If <var>value</var> is <code>null</code> or <var>value</var>
@@ -1344,7 +1340,9 @@
           <a>term definition</a> in <var>active context</var> to
           <code>null</code>,
           and set the value associated with <var>defined</var>'s
-          <a>member</a> <var>term</var> to <code>true</code>, and return.</li>
+          <a>member</a> <var>term</var> to <code>true</code>, and return.
+          <div class="ednote">Should probably store as a dictionary with <code>@id</code>-<code>null</code>
+            and retain <code>@protected</code> so we can protect against redefinitions.</div></li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>, convert it
           to a <a class="changed">dictionary</a> consisting of a single <a>member</a> whose
           key is <code>@id</code> and whose value is <var>value</var>.
@@ -1580,6 +1578,17 @@
           <code class="changed">@prefix</code>, or <code>@type</code>, an
           <a data-link-for="JsonLdErrorCode">invalid term definition</a> error has
           been detected and processing is aborted.</li>
+        <li class="changed">If <var>from property</var> is <code>false</code>
+          and <var>previous definition</var> exists and is protected;
+          <ol>
+            <li>If <var>definition</var> is not the same as <var>previous definition</var>
+              (other than the value of <a>protected</a>),
+              a <a data-link-for="JsonLdErrorCode">protected term redefinition</a> error has been detected,
+              and processing is aborted.</li>
+            <li>Set <var>definition</var> to <var>previous definition</var> to retain the value
+              of <a>protected</a>.</li>
+          </ol>
+        </li>
         <li>Set the <a>term definition</a> of <var>term</var> in
           <var>active context</var> to <var>definition</var> and set the value
           associated with <var>defined</var>'s <a>member</a> <var>term</var> to
