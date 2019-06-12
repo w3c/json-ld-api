@@ -1334,15 +1334,9 @@
           <a>term definition</a> for <var>term</var> in <var>active context</var>.</li>
         <li>Otherwise, remove any <var>previous definition</var> from
           <var>active context</var>.</li>
-        <li>If <var>value</var> is <code>null</code> or <var>value</var>
-          is a <a class="changed">dictionary</a> containing the key-value pair
-          <code>@id</code>-<code>null</code>, set the
-          <a>term definition</a> in <var>active context</var> to
-          <code>null</code>,
-          and set the value associated with <var>defined</var>'s
-          <a>member</a> <var>term</var> to <code>true</code>, and return.
-          <div class="ednote">Should probably store as a dictionary with <code>@id</code>-<code>null</code>
-            and retain <code>@protected</code> so we can protect against redefinitions.</div></li>
+        <li class="changed">If <var>value</var> is <code>null</code>,
+          convert it to a <a class="changed">dictionary</a> consisting of a single <a>member</a> whose
+          key is <code>@id</code> and whose value is <code>null</code>.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>, convert it
           to a <a class="changed">dictionary</a> consisting of a single <a>member</a> whose
           key is <code>@id</code> and whose value is <var>value</var>.
@@ -1414,7 +1408,10 @@
         <li>If <var>value</var> contains the <a>member</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
-            <li>If the value associated with the <code>@id</code> <a>member</a> is not a <a>string</a>, an
+            <li>If <var>value</var> contains the <code>@id</code> <a>member</a>
+              is <code>null</code>, the term is not used for IRI expansion, but is
+              retained to be able to detect future redefinitions of this term.</li>
+            <li>Otherwise, if the value associated with the <code>@id</code> <a>member</a> is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
@@ -1697,9 +1694,10 @@
               in <var>active context</var> during
               <a href="#context-processing-algorithm">Context Processing</a>.</li>
             <li>If <var>active context</var> contains a <a>term definition</a>
-              for <var>prefix</var>, return the result of concatenating
-              the <a>IRI mapping</a> associated with <var>prefix</var> and
-              <var>suffix</var>.</li>
+              for <var>prefix</var>
+              <span class="changed">having a non-<code>null</code> <a>IRI mapping</a></span>,
+              return the result of concatenating the <a>IRI mapping</a>
+              associated with <var>prefix</var> and <var>suffix</var>.</li>
             <li><span class="changed">If <var>value</var> has the form of an <a>absolute IRI</a></span>,
               return <var>value</var>.</li>
           </ol>
