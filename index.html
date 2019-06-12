@@ -147,18 +147,40 @@
     float: right;
     font: x-large Arial, sans-serif;
     color: gray;
+    border: solid thin black;
+    padding: 0.2em;
   }
   .example > pre.frame:before {
     content: "Frame";
     float: right;
     font: x-large Arial, sans-serif;
     color: gray;
+    border: solid thin black;
+    padding: 0.2em;
   }
   .example > pre.input:before {
     content: "Input";
     float: right;
     font: x-large Arial, sans-serif;
     color: gray;
+    border: solid thin black;
+    padding: 0.2em;
+  }
+  .example > pre.result:before {
+    content: "Result";
+    float: right;
+    font: x-large Arial, sans-serif;
+    color: gray;
+    border: solid thin black;
+    padding: 0.2em;
+  }
+  .example > pre.turtle:before {
+    content: "Turtle";
+    float: right;
+    font: x-large Arial, sans-serif;
+    color: gray;
+    border: solid thin black;
+    padding: 0.2em;
   }
   .algorithm ol {
     counter-reset: numsection;
@@ -219,7 +241,7 @@
     color: #202020;
     cursor: pointer;
   }
-  .ds-selector-tabs pre, .ds-selector-tabs table {
+  .ds-selector-tabs pre:not(.preserve), .ds-selector-tabs table:not(.preserve) {
     display: none;
   }
   .ds-selector-tabs pre.selected, .ds-selector-tabs table.selected {
@@ -445,13 +467,13 @@
     <aside class="example ds-selector-tabs"
            title="JSON-LD document using only terms">
       <div class="selectors">
-        <button class="selected" data-selects="original">Original</button>
-        <button data-selects="expanded">Expanded</button>
+        <button class="selected input" data-selects="compacted">Compacted (Input)</button>
+        <button data-selects="expanded">Expanded (Result)</button>
         <button data-selects="statements">Statements</button>
         <button data-selects="turtle">Turtle</button>
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original selected" data-transform="updateExample">
+      <pre class="compacted selected" data-transform="updateExample">
       <!--
       {
         "@context": {
@@ -467,8 +489,8 @@
       }
       -->
       </pre>
-      <pre class="expanded"
-           data-result-for="JSON-LD document using only terms-original"
+      <pre class="expanded result"
+           data-result-for="JSON-LD document using only terms-compacted"
            data-transform="updateExample">
       <!--
       [{
@@ -513,7 +535,7 @@
       <div class="selectors">
         <a class="playground" target="_blank"></a>
       </div>
-      <pre class="original input selected nohighlight" data-transform="updateExample">
+      <pre class="compacted input selected nohighlight" data-transform="updateExample">
       <!--
       {
         "@context": {
@@ -545,8 +567,8 @@
       (<a data-link-for="JsonLdProcessor">expand()</a>)
       operation) against the above examples results in the following output:</p>
 
-    <pre class="example nohighlight" data-transform="updateExample"
-         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-original"
+    <pre class="example result nohighlight" data-transform="updateExample"
+         data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-compacted"
          title="Expanded JSON-LD document using an IRI">
     <!--
     [
@@ -600,7 +622,7 @@
     <p>For example, assume the following expanded JSON-LD input document:</p>
 
     <pre id="sample-document"
-         class="example input nohighlight" data-transform="updateExample"
+         class="example expanded input nohighlight" data-transform="updateExample"
          title="Expanded sample document">
     <!--
     [
@@ -652,7 +674,7 @@
            data-compact
            target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample"
+      <pre class="result compacted selected nohighlight" data-transform="updateExample"
            data-result-for="Expanded sample document"
            data-context="JSON-LD context"
            data-compact
@@ -704,7 +726,7 @@
     <p>For example, assume the following JSON-LD input document:</p>
 
     <pre id="json-ld-document-in-compact-form"
-         class="example input nohighlight" data-transform="updateExample"
+         class="example compacted input nohighlight" data-transform="updateExample"
          title="JSON-LD document in compact form">
     <!--
     {
@@ -734,7 +756,7 @@
            data-flatten
            target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample"
+      <pre class="original result selected nohighlight" data-transform="updateExample"
            data-result-for="JSON-LD document in compact form"
            data-flatten>
       <!--
@@ -779,7 +801,7 @@
            data-flatten
            target="_blank"></a>
       </div>
-      <pre class="original selected nohighlight" data-transform="updateExample"
+      <pre class="result selected nohighlight" data-transform="updateExample"
            data-result-for="JSON-LD document in compact form"
            data-context="JSON-LD document in compact form"
            data-flatten
@@ -4966,7 +4988,7 @@
 
     <aside class="example changed" data-ignore
            title="Canonicalized JSON literal">
-      <pre class="original" data-transform="updateExample">
+      <pre class="original input" data-transform="updateExample">
       <!--
       {
         "@context": {
@@ -4990,7 +5012,7 @@
         eliminates the whitespace, uses a canonical number representation,
         and reorders the object members lexicographically:</p>
 
-      <pre class="turtle"
+      <pre class="turtle result"
            data-content-type="text/turtle"
            data-result-for="Canonicalized JSON literal-original"
            data-transform="updateExample"
