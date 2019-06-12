@@ -2339,6 +2339,14 @@
       "input": "expand/pr27-in.jsonld",
       "expect": "expand/pr27-out.jsonld"
     }, {
+      "@id": "#tpr28",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fails if trying to redefine a protected null term.",
+      "purpose": "A protected term with a null IRI mapping cannot be redefined.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr28-in.jsonld",
+      "expect": "protected term redefinition"
+    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
