@@ -1076,7 +1076,8 @@
       "name": "Invalid remote context",
       "purpose": "Verifies that an exception is raised on expansion when a remote context is not an object containing @context",
       "input": "expand/e005-in.jsonld",
-      "expect": "invalid remote context"
+      "expect": "invalid remote context",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te006",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
