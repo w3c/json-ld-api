@@ -348,7 +348,8 @@
       "name": "@set of @value objects with keyword aliases",
       "purpose": "RDF version of expand-0014",
       "input": "toRdf/0054-in.jsonld",
-      "expect": "toRdf/0054-out.nq"
+      "expect": "toRdf/0054-out.nq",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0055",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
