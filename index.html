@@ -1695,9 +1695,13 @@
               <a href="#context-processing-algorithm">Context Processing</a>.</li>
             <li>If <var>active context</var> contains a <a>term definition</a>
               for <var>prefix</var>
-              <span class="changed">having a non-<code>null</code> <a>IRI mapping</a></span>,
+              <span class="changed">having a non-<code>null</code> <a>IRI mapping</a>
+                and the <a>prefix flag</a> of the <a>term definition</a> is <code>true</code></span>,
               return the result of concatenating the <a>IRI mapping</a>
-              associated with <var>prefix</var> and <var>suffix</var>.</li>
+              associated with <var>prefix</var> and <var>suffix</var>.
+              <p class="ednote">A more conservative change, although more involved,
+                would to restrict looking at the <a>prefix flag</a> unless
+                the <a>processing mode</a> is <code>json-ld-1.1</code>.</p></li>
             <li><span class="changed">If <var>value</var> has the form of an <a>absolute IRI</a></span>,
               return <var>value</var>.</li>
           </ol>

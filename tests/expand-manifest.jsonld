@@ -271,7 +271,7 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expanding blank node labels",
       "purpose": "Blank nodes are not relabeled during expansion",
-      "option": {"processingMode": "json-ld-1.0"},
+      "option": {"specVersion": "json-ld-1.0"},
       "input": "expand/0038-in.jsonld",
       "expect": "expand/0038-out.jsonld"
     }, {
@@ -2347,6 +2347,14 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr28-in.jsonld",
       "expect": "protected term redefinition"
+    }, {
+      "@id": "#tpr29",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Does not expand a Compact IRI using a non-prefix term.",
+      "purpose": "Expansion of Compact IRIs considers if the term can be used as a prefix.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr29-in.jsonld",
+      "expect": "expand/pr29-out.jsonld"
     }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
