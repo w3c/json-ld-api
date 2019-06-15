@@ -1149,6 +1149,15 @@
       "context": "compact/e001-context.jsonld",
       "expect": "compaction to list of lists"
     }, {
+      "@id": "#te002",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
+      "name": "Absolute IRI confused with Compact IRI",
+      "purpose": "Verifies that IRI compaction detects when the result is an absolute IRI with a scheme matching a term.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "compact/e002-in.jsonld",
+      "context": "compact/e002-context.jsonld",
+      "expect": "IRI confused with prefix"
+    }, {
       "@id": "#ten01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Nest term not defined",

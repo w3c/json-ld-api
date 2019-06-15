@@ -3520,7 +3520,7 @@
           <a data-lt="active context">active context's</a> <a>vocabulary mapping</a>.
           Try to create a <a>compact IRI</a>, starting by initializing
           <var>compact IRI</var> to <code>null</code>. This variable will be used to
-          tore the created <a>compact IRI</a>, if any.</li>
+          store the created <a>compact IRI</a>, if any.</li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>:
           <ol>
@@ -3547,6 +3547,12 @@
           </ol>
         </li>
         <li>If <var>compact IRI</var> is not <code>null</code>, return <var>compact IRI</var>.</li>
+        <li class="changed">To ensure that the <a>absolute IRI</a> <var>var</var> is
+          not confused with a <a>compact IRI</a>,
+          if the <a data-cite="RFC3986#section-3.1">IRI scheme</a> of <var>var</var>
+          matches any term in <a>active context</a>,
+          an <a data-link-for="JsonLdErrorCode">iri confused with prefix</a> error has been detected,
+          and processing is aborted.</li>
         <li>If <var>vocab</var> is <code>false</code>,
           transform <var>var</var> to a <a>relative IRI</a> using
           the <span class="changed"><a>base IRI</a> from <var>active context</var>, if it exists</span>.</li>
@@ -5921,6 +5927,7 @@
             "invalid value object",
             "invalid value object value",
             "invalid vocab mapping",
+            "iri confused with prefix",
             "keyword redefinition",
             "loading document failed",
             "loading remote context failed",
@@ -6028,6 +6035,9 @@
         <dt><dfn>invalid vocab mapping</dfn></dt>
         <dd>An invalid <a>vocabulary mapping</a> has been detected,
           i.e., it is neither an <a>IRI</a> nor <code>null</code>.</dd>
+        <dt class="changed">iri confused with prefix</dt>
+        <dd>When compacting an <a>absolute IRI</a> would result in an <a>absolute IRI</a>
+          with an <a data-cite="RFC3986#section-3.1">IRI scheme</a> could be confused with a term.</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
         <dt><dfn>loading document failed</dfn></dt>
@@ -6194,6 +6204,9 @@
       This allows a mechanism for documenting the content of a context using HTML.</li>
     <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
+    <li>The <a href="#iri-compaction">IRI compaction algorithm</a> may generate an error if the result is an
+      <a>absolute IRI</a> where the scheme part could be confused with a term in the
+      <a>active context</a>.</li>
   </ul>
 </section>
 
