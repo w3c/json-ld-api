@@ -3551,6 +3551,7 @@
           not confused with a <a>compact IRI</a>,
           if the <a data-cite="RFC3986#section-3.1">IRI scheme</a> of <var>var</var>
           matches any term in <a>active context</a>,
+          and <var>var</var> has no <a datacite="https://tools.ietf.org/html/rfc3986#section-3.2">IRI authority</a> (beginning with double-forward-slash (<code>//</code>),
           an <a data-link-for="JsonLdErrorCode">IRI confused with prefix</a> error has been detected,
           and processing is aborted.</li>
         <li>If <var>vocab</var> is <code>false</code>,
@@ -6037,7 +6038,7 @@
           i.e., it is neither an <a>IRI</a> nor <code>null</code>.</dd>
         <dt class="changed">IRI confused with prefix</dt>
         <dd>When compacting an <a>absolute IRI</a> would result in an <a>absolute IRI</a>
-          with an <a data-cite="RFC3986#section-3.1">IRI scheme</a> could be confused with a term.</dd>
+          which could be confused with a compact IRI (because its <a data-cite="RFC3986#section-3.1">IRI scheme</a> matches a <a>term definition</a> and it has no <a data-cite="RFC3986#section-3.1">IRI authority</a>).</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
         <dt><dfn>loading document failed</dfn></dt>
@@ -6205,7 +6206,7 @@
     <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
     <li>The <a href="#iri-compaction">IRI compaction algorithm</a> may generate an error if the result is an
-      <a>absolute IRI</a> where the scheme part could be confused with a term in the
+      <a>absolute IRI</a> which could be confused with a compact IRI in the
       <a>active context</a>.</li>
   </ul>
 </section>
