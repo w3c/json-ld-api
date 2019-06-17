@@ -1888,8 +1888,10 @@
           passing <var>active context</var>, <var>key</var> for
           <var>value</var>, and <code>true</code> for <var>vocab</var>:
           <ol>
+            <li>Convert <var>value</var> into an <a>array</a>, if necessary.</li>
             <li>For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
-              if <var>term</var>'s <a>term definition</a> in <var>active context</var>
+              if <var>term</var> is a <a>string</a>,
+              and <var>term</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>local context</a>, set <var>active context</var> to the result
               to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
