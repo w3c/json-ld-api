@@ -3297,6 +3297,11 @@
         <a>base IRI</a>. Finally, if the <a>IRI</a> or
         <a>keyword</a> still could not be compacted, it is returned
         as is.</p>
+
+      <p class="changed">In the case were this algorithm would return the input <a>IRI</a> as is,
+        and that <a>IRI</a> can be mistaken for a <a>compact IRI</a> in the <a>active context</a>,
+        this algorithm will raise an error,
+        because it has no way to return an unambiguous representation of the original <a>IRI</a>.</p>
     </section>
 
     <section class="algorithm">
