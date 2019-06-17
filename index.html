@@ -3546,7 +3546,7 @@
         <li class="changed">To ensure that the <a>absolute IRI</a> <var>var</var> is
           not confused with a <a>compact IRI</a>,
           if the <a data-cite="RFC3986#section-3.1">IRI scheme</a> of <var>var</var>
-          matches any term in <a>active context</a>,
+          matches any term in <a>active context</a> with <a>prefix flag</a> set to <code>true</code>,
           and <var>var</var> has no <a datacite="https://tools.ietf.org/html/rfc3986#section-3.2">IRI authority</a> (beginning with double-forward-slash (<code>//</code>),
           an <a data-link-for="JsonLdErrorCode">IRI confused with prefix</a> error has been detected,
           and processing is aborted.</li>
