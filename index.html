@@ -3547,7 +3547,7 @@
           not confused with a <a>compact IRI</a>,
           if the <a data-cite="RFC3986#section-3.1">IRI scheme</a> of <var>var</var>
           matches any term in <a>active context</a> with <a>prefix flag</a> set to <code>true</code>,
-          and <var>var</var> has no <a datacite="https://tools.ietf.org/html/rfc3986#section-3.2">IRI authority</a> (beginning with double-forward-slash (<code>//</code>),
+          and <var>var</var> has no <a data-cite="RFC3986#section-3.1">IRI authority</a> (beginning with double-forward-slash (<code>//</code>),
           an <a data-link-for="JsonLdErrorCode">IRI confused with prefix</a> error has been detected,
           and processing is aborted.</li>
         <li>If <var>vocab</var> is <code>false</code>,
@@ -6032,7 +6032,7 @@
         <dt><dfn>invalid vocab mapping</dfn></dt>
         <dd>An invalid <a>vocabulary mapping</a> has been detected,
           i.e., it is neither an <a>IRI</a> nor <code>null</code>.</dd>
-        <dt class="changed">IRI confused with prefix</dt>
+        <dt class="changed"><dfn>IRI confused with prefix</dfn></dt>
         <dd>When compacting an <a>absolute IRI</a> would result in an <a>absolute IRI</a>
           which could be confused with a compact IRI (because its <a data-cite="RFC3986#section-3.1">IRI scheme</a> matches a <a>term definition</a> and it has no <a data-cite="RFC3986#section-3.1">IRI authority</a>).</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
