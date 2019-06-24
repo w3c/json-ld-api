@@ -1003,7 +1003,7 @@
       keys and values have to be interpreted as well as the current <a>base IRI</a>,
       the <a>vocabulary mapping</a>, the <a>default language</a>,
       <span class="changed">and an optional <dfn>previous context</dfn>,
-        used when a type-scoped <a>context</a> is defined</span>.
+        used when a non-propagated <a>context</a> is defined</span>.
       Each <a>term definition</a> consists of:</p>
     <ul>
       <li>an <dfn>IRI mapping</dfn>,</li>
@@ -1069,6 +1069,11 @@
         they affect how the other <a>entries</a> are processed. Please note that <code>@base</code> is
         ignored when processing remote contexts.</p>
 
+      <p class="changed">If <a>context</a> is not to be propagated,
+        a reference to the <var>previous context</var> is retained so that
+        it may be rolled back when a new <a>node object</a> is entered.
+        By default, all contexts are propagated, other than type-scoped contexts.</p>
+
       <p>Then, for every other <a>entry</a> in <a>local context</a>, we update
         the <a>term definition</a> in <var>result</var>. Since
         <a>term definitions</a> in a <a>local context</a>
@@ -1096,19 +1101,23 @@
         <span class="changed">, <var>from property</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
           and <var>from type</var>, defaulting to <code>false</code>,
-          which is used to mark <a>term definitions</a> associated with a type-scoped <a>context</a>.</span>.
+          which is used to set the default for <var>propagated</var>
+          to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>.</span>.
       </p>
 
       <ol>
         <li>Initialize <var>result</var> to the result of cloning
           <var>active context</var>.</li>
+        <li class="changed">If <var>local context</var> is an object containing the member <code>@propagate</code>,
+          its value MUST be <a>boolean</a> <code>true</code> or <code>false</code>,
+          set <var>propagate</var> to that value.</li>
+        <li class="changed">Otherwise, set <var>propagate</var> to <var>from type</var>.</li>
+        <li class="changed">If <var>propagate</var> is <code>false</code>, and <var>result</var>
+          does not have a <a>previous context</a>, set <a>previous context</a>
+          in <var>result</var> to <var>active context</var>.</li>
         <li>If <var>local context</var> is not an <a>array</a>,
           set it to an <a>array</a> containing only
           <var>local context</var>.</li>
-        <li class="changed">
-          If <var>from type</var> is <code>true</code>, and <var>result</var>
-          does not have a <a>previous context</a>, set <a>previous context</a>
-          in <var>result</var> to <var>active context</var>.</li>
         <li>
           For each item <var>context</var> in <var>local context</var>:
           <ol>
@@ -1242,12 +1251,24 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
+            <li>If <var>context</var> has an <code>@propagate</code> <a>entry</a>
+              and its value is not <a>boolean</a> <code>true</code> or <code>false</code>,
+              or <a>processing mode</a> is <code>json-ld-1.0</code>,
+              an <a data-link-for="JsonLdErrorCode">invalid local context</a>
+              error has been detected and processing is aborted.
+              <span class="note"><var>previous context</var> was determined before.</span></li>
             <li>Create a <a class="changed">map</a> <var>defined</var> to use to keep
               track of whether or not a <a>term</a> has already been defined
               or currently being defined during recursion.</li>
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
-              <var>key</var> is not <code>@base</code>, <code>@vocab</code>,
-              <code>@language</code>, <code>@protected</code>, or <code>@version</code>, invoke the
+              <var>key</var> is not
+              <code>@base</code>,
+              <code>@vocab</code>,
+              <code>@language</code>,
+              <code class="changed">@propagate</code>,
+              <code class="changed">@protected</code>, or
+              <code>@version</code>,
+              invoke the
               <a href="#create-term-definition">Create Term Definition algorithm</a>,
               passing <var>result</var> for <var>active context</var>,
               <var>context</var> for <var>local context</var>, <var>key</var>,
@@ -1791,7 +1812,7 @@
           the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
           <a>map entry</a> keys lexicographically, where noted,
           and the <var>from map</var> flag, used to control reverting
-          previous <a>term definitions</a> in the <a>active context</a> associated with a type-scoped <a>context</a>.</span>
+          previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.</span>
         To begin, the <var>active property</var> is set to <code>null</code>,
         and <var>element</var> is set to the <a>JSON-LD input</a>.
         <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
@@ -1866,7 +1887,7 @@
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
         <li class="changed">If <var>active context</var> has a <a>previous context</a>,
-          the <var>active context</var> is type-scoped.
+          the <var>active context</var> is not propagated.
           If <var>from map</var> is undefined or <code>false</code>,
           and <var>element</var> does not contain a <a>entry</a> expanding to <code>@value</code>,
           and <var>element</var> does not consist of a single entry expanding to <code>@id</code>,
@@ -2570,7 +2591,7 @@
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
         <li class="changed">If <var>active context</var> has a <a>previous context</a>,
-          the <var>active context</var> is type-scoped.
+          the <var>active context</var> is not propagated.
           If <var>element</var> does not contain an <code>@value</code> <a>entry</a>,
           and <var>element</var> does not consist of a single <code>@id</code> entry,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
@@ -6215,6 +6236,9 @@
     <li>The <a href="#iri-compaction">IRI compaction algorithm</a> may generate an error if the result is an
       <a>absolute IRI</a> which could be confused with a compact IRI in the
       <a>active context</a>.</li>
+    <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
+      type-scoped contexts. This can be controlled using the <code>@preserve</code>
+      <a>member</a> in a <a>local context</a>.</li>
   </ul>
 </section>
 
