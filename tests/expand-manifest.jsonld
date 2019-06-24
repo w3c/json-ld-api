@@ -1041,30 +1041,6 @@
       "expect": "expand/c025-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tc026",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "@propagate: true on type-scoped context",
-      "purpose": "type-scoped context with @propagate: true survive node-objects",
-      "input": "expand/c026-in.jsonld",
-      "expect": "expand/c026-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#tc027",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "@propagate: false on property-scoped context",
-      "purpose": "property-scoped context with @propagate: false do not survive node-objects",
-      "input": "expand/c027-in.jsonld",
-      "expect": "expand/c027-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#tc028",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "@propagate: false on embedded context",
-      "purpose": "embedded context with @propagate: false do not survive node-objects",
-      "input": "expand/c028-in.jsonld",
-      "expect": "expand/c028-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",

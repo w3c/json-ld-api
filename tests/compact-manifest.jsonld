@@ -1140,24 +1140,6 @@
       "expect": "compact/c025-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tc026",
-      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
-      "name": "@propagate: true on type-scoped context",
-      "purpose": "type-scoped context with @propagate: true survive node-objects",
-      "input": "compact/c026-in.jsonld",
-      "context": "compact/c026-context.jsonld",
-      "expect": "compact/c026-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#tc027",
-      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
-      "name": "@propagate: false on property-scoped context",
-      "purpose": "property-scoped context with @propagate: false do not survive node-objects",
-      "input": "compact/c027-in.jsonld",
-      "context": "compact/c027-context.jsonld",
-      "expect": "compact/c027-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Compaction to list of lists",
