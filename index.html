@@ -1182,6 +1182,34 @@
             <li>If <var>context</var> is not a <a class="changed">map</a>, an
               <a data-link-for="JsonLdErrorCode">invalid local context</a>
               error has been detected and processing is aborted.</li>
+            <li class="changed">If <var>context</var> has an <code>@version</code> <a>entry</a>:
+              <ol>
+                <li>If the associated value is not <code>1.1</code>,
+                  an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
+                  has been detected, and processing is aborted.</li>
+                <li>If <a>processing mode</a>
+                  is set to <code>json-ld-1.0</code>,
+                  a <a data-link-for="JsonLdErrorCode">processing mode conflict</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Set <a>processing mode</a>,
+                  to <code>json-ld-1.1</code>, if not already set.</li>
+              </ol>
+            </li>
+            <li class="changed">If <var>context</var> has an <code>@source</code> <a>entry</a>:
+              <ol>
+                <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
+                  an <a data-link-for="JsonLdErrorCode">invalid context member</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Otherwise, if its value is not a <a>string</a>,
+                  an <a data-link-for="JsonLdErrorCode">invalid @source value</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Otherwise, set <var>result</var> to the result of recursively calling this algorithm,
+                  passing <var>result</var> for <var>active context</var>,
+                  the value of <code>@source</code> for <var>local context</var>,
+                  and a copy of <var>remote contexts</var>.
+                </li>
+              </ol>
+            </li>
             <li>If <var>context</var> has an <code>@base</code> <a>entry</a> and <var>remote contexts</var> is empty, i.e., the currently
               being processed context is not a remote context:
               <ol>
@@ -1199,19 +1227,6 @@
                 <li>Otherwise, an
                   <a data-link-for="JsonLdErrorCode">invalid base IRI</a>
                   error has been detected and processing is aborted.</li>
-              </ol>
-            </li>
-            <li class="changed">If <var>context</var> has an <code>@version</code> <a>entry</a>:
-              <ol>
-                <li>If the associated value is not <code>1.1</code>,
-                  an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
-                  has been detected, and processing is aborted.</li>
-                <li>If <a>processing mode</a>
-                  is set to <code>json-ld-1.0</code>,
-                  a <a data-link-for="JsonLdErrorCode">processing mode conflict</a>
-                  error has been detected and processing is aborted.</li>
-                <li>Set <a>processing mode</a>,
-                  to <code>json-ld-1.1</code>, if not already set.</li>
               </ol>
             </li>
             <li>If <var>context</var> has an <code>@vocab</code> <a>entry</a>:
@@ -1251,13 +1266,19 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
-            <li>If <var>context</var> has an <code>@propagate</code> <a>entry</a>
-              and its value is not <a>boolean</a> <code>true</code> or <code>false</code>,
-              or <a>processing mode</a> is <code>json-ld-1.0</code>,
-              an <a data-link-for="JsonLdErrorCode">invalid local context</a>
-              error has been detected and processing is aborted.
-              <span class="note"><var>previous context</var> was determined before.</span></li>
-            <li>Create a <a class="changed">map</a> <var>defined</var> to use to keep
+            <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
+              <ol>
+                <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
+                  an <a data-link-for="JsonLdErrorCode">invalid context member</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Otherwise, if its value is not <a>boolean</a> <code>true</code> or <code>false</code>,
+                  an <a data-link-for="JsonLdErrorCode">invalid @propagate value</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Otherwise, <var>previous context</var> was determined before,
+                  and no further processing is necessary.</li>
+              </ol>
+            </li>
+            <li>Create a <a class="changed">dictionary</a> <var>defined</var> to use to keep
               track of whether or not a <a>term</a> has already been defined
               or currently being defined during recursion.</li>
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
@@ -5929,10 +5950,13 @@
             "invalid @index value",
             "invalid @nest value",
             "invalid @prefix value",
+            "invalid @propagate value",
             "invalid @reverse value",
+            "invalid @source value",
             "invalid @version value",
             "invalid base IRI",
             "invalid container mapping",
+            "invalid context member",
             "invalid context nullification",
             "invalid default language",
             "invalid IRI mapping",
@@ -5985,9 +6009,13 @@
         <dd class="changed">An invalid value for <code>@nest</code> has been found.</dd>
         <dt class="changed"><dfn>invalid @prefix value</dfn></dt>
         <dd class="changed">An invalid value for <code>@prefix</code> has been found.</dd>
+        <dt class="changed"><dfn>invalid @propagate value</dfn></dt>
+        <dd class="changed">An invalid value for <code>@propagate</code> has been found.</dd>
         <dt><dfn>invalid @reverse value</dfn></dt>
         <dd>An invalid value for an <code>@reverse</code> <a>entry</a> has been detected,
           i.e., the value was not a <a class="changed">map</a>.</dd>
+        <dt class="changed"><dfn>invalid @source value</dfn></dt>
+        <dd class="changed">An invalid value for <code>@source</code> has been found.</dd>
         <dt><dfn>invalid @version value</dfn></dt>
         <dd>The <code>@version</code> <a>entry</a> was used in a <a>context</a>
           with an out of range value.</dd>
@@ -6082,6 +6110,8 @@
           which is incompatible with the previous specified version.</dd>
         <dt><dfn>context overflow</dfn></dt>
         <dd>maximum number of <code>@context</code> URLs exceeded.</dd>
+        <dt class="changed"><dfn>invalid context member</dfn></dt>
+        <dd class="changed">A member of a context is invalid due to processing mode incompatibility.</dd>
         <dt class="changed"><dfn>invalid context nullification</dfn></dt>
         <dd class="changed">An attempt was made to nullify a context
           containing <a>protected</a> <a>term definitions</a>.</dd>
@@ -6239,6 +6269,9 @@
     <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
       type-scoped contexts. This can be controlled using the <code>@propagate</code>
       <a>member</a> in a <a>local context</a>.</li>
+    <li>A context may contain a <code>@source</code> member used to reference a remote context
+      within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
+      authored for <code>JSON-LD 1.0</code>.</li>
   </ul>
 </section>
 
