@@ -1065,6 +1065,22 @@
       "expect": "expand/c028-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc029",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@propagate is invalid in 1.0",
+      "purpose": "@propagate is invalid in 1.0",
+      "input": "expand/c029-in.jsonld",
+      "expect": "invalid context member",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc029",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@propagate must be boolean valued",
+      "purpose": "@propagate must be boolean valued",
+      "input": "expand/c030-in.jsonld",
+      "expect": "invalid @propagate value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",
@@ -2379,6 +2395,54 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr29-in.jsonld",
       "expect": "expand/pr29-out.jsonld"
+    }, {
+      "@id": "#tso01",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@source is invalid in 1.0.",
+      "purpose": "@source is invalid in 1.0.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so01-in.jsonld",
+      "expect": "invalid context member"
+    }, {
+      "@id": "#tso02",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@source must be a string",
+      "purpose": "@source must be a string.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so02-in.jsonld",
+      "expect": "invalid @source value"
+    }, {
+      "@id": "#tso03",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@source overflow",
+      "purpose": "Processors must detect overflowing context loads through @source.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so03-in.jsonld",
+      "expect": "maximum number of @context URLs exceeded"
+    }, {
+      "@id": "#tso04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Embedded context with @source",
+      "purpose": "An embedded context may load another context using @source.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so04-in.jsonld",
+      "expect": "expand/so04-out.jsonld"
+    }, {
+      "@id": "#tso05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@propagate: true on type-scoped context with @source",
+      "purpose": "type-scoped context with @propagate: true survive node-objects (with @source)",
+      "input": "expand/so05-in.jsonld",
+      "expect": "expand/so05-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tso06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@propagate: false on property-scoped context with @source",
+      "purpose": "property-scoped context with @propagate: false do not survive node-objects (with @source)",
+      "input": "expand/so06-in.jsonld",
+      "expect": "expand/so06-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
