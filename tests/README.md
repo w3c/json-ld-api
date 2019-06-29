@@ -9,23 +9,23 @@ More information and an RDFS definition of the test vocabulary can be found at [
 
 # Design
 
-Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, and _toRdf_ sections:
+Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [compact](compact-manifest.jsonld), [expand](expand-manifest.jsonld), [flatten](flatten-manifest.jsonld), [remote-doc](remote-doc-manifest.jsonld), [fromRdf](fromRdf-manifest.jsonld), and [toRdf](toRdf-manifest.jsonld) sections:
 
-* _compact_ tests have _input_, _expected_ and _context_ documents.
+* [compact](compact-manifest.jsonld) tests have _input_, _expected_ and _context_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output. Additionally, if the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
-* _expand_ tests have _input_ and _expected_ documents.
+* [expand](expand-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
-* _flatten_ tests have _input_ and _expected_ documents and an optional _context_ document.
+* [flatten](flatten-manifest.jsonld) tests have _input_ and _expected_ documents and an optional _context_ document.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output
   after potentially remapping blank node identifiers (see below).
   Additionally, if the result is compacted and the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
-* _remote-doc_ tests have _input_ and _expected_ documents.
+* [remote-doc](remote-doc-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code. Options may be present to describe the intended HTTP behavior:
@@ -33,9 +33,9 @@ Tests are defined into _compact_, _expand_, _flatten_, _remote-doc_, _fromRdf_, 
   * _httpStatus_: The HTTP status code to return, defaults to `200`.
   * _redirectTo_: The HTTP _Content-Location_ header value.
   * _httpLink_: The HTTP _Link_ header value.
-* _fromRdf_ tests have _input_ and _expected_ documents.
+* [fromRdf](fromRdf-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results  can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
-* _toRdf_ tests have _input_ and _expected_ documents.
+* [toRdf](toRdf-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism).
 * _http_ tests have _input_ and _expected_ documents and an optional _context_ document.
   These tests describe the behavior of an HTTP server performing content-negotiation using the ACCEPT header, specified using the _accept_ option to generate the _expected_ result document.
@@ -68,6 +68,7 @@ Note that some tests require re-expansion and comparison, as list values may exi
 
 # Running tests
 
+The top-level [manifest](manifest.jsonld) references the specific test manifests, which in turn reference each test associated with a particular type of behavior.
 Implementations create their own infrastructure for running the test suite. In particular, the following should be considered:
 
 * _remote-doc_ tests will likely not return expected HTTP headers, so the _options_ should be used to determine what headers are associated with the input document.
