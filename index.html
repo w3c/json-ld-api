@@ -313,7 +313,7 @@
   </ul>
 
   <p>To understand the basics in this specification you must first be familiar with
-    <a data-cite="RFC8288" data-no-xref="">JSON</a>, which is detailed in [[RFC8288]]. You must also understand the
+    <a data-cite="RFC8259" data-no-xref="">JSON</a>, which is detailed in [[RFC8259]]. You must also understand the
     <a data-cite="JSON-LD11" data-no-xref="">JSON-LD syntax</a> defined in the JSON-LD 1.1 Syntax specification [[JSON-LD11]], which is the base syntax used by all
     of the algorithms in this document. To understand the API and how it is
     intended to operate in a programming environment, it is useful to have working
@@ -348,8 +348,8 @@
   <section class="normative">
     <h2>Terminology</h2>
 
-    <p>This document uses the following terms as defined in JSON [[RFC8288]]. Refer
-      to the <a data-cite="RFC8288#section-2">JSON Grammar section</a> in [[RFC8288]] for formal definitions.</p>
+    <p>This document uses the following terms as defined in JSON [[RFC8259]]. Refer
+      to the <a data-cite="RFC8259#section-2">JSON Grammar section</a> in [[RFC8259]] for formal definitions.</p>
 
     <div data-include="common/terms.html"
          data-oninclude="exportReferences">
@@ -5063,7 +5063,7 @@
       when converted from RDF to JSON-LD and back to RDF. It is important
       to highlight that in practice it might be impossible to losslessly
       convert an <code>xsd:integer</code> to a <a>number</a> because
-      its value space is not limited. While the JSON specification [[RFC8288]]
+      its value space is not limited. While the JSON specification [[RFC8259]]
       does not limit the value space of <a>numbers</a>
       either, concrete implementations typically do have a limited value
       space.</p>
@@ -5701,7 +5701,7 @@
         <li>If the retrieved resource's <a>Content-Type</a> is <code>application/json</code>
           or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
           except <code>application/ld+json</code>,
-          and the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation,
+          and the response has an HTTP Link Header [[RFC8259]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation,
           set <var>contextUrl</var> to the associated <code>href</code>.
           <p>If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
@@ -5846,7 +5846,7 @@
 
       <dl>
         <dt><dfn data-dfn-for="RemoteDocument">contextUrl</dfn></dt>
-        <dd>If available, the value of the HTTP Link Header [[RFC8288]]
+        <dd>If available, the value of the HTTP Link Header [[RFC8259]]
           using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
           in the response.
           If the response's <a>Content-Type</a> is <code>application/ld+json</code>,
@@ -6056,7 +6056,7 @@
         <dt><dfn>loading remote context failed</dfn></dt>
         <dd>There was a problem encountered loading a remote context.</dd>
         <dt><dfn>multiple context link headers</dfn></dt>
-        <dd>Multiple HTTP Link Headers [[RFC8288]]
+        <dd>Multiple HTTP Link Headers [[RFC8259]]
           using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
           have been detected.</dd>
         <dt><dfn>processing mode conflict</dfn></dt>
