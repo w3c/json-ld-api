@@ -39,10 +39,10 @@ function restrictReferences(utils, content) {
 
 // Mark definitions to be exported
 function exportReferences(utils, content) {
-  const base = document.createElement("div:not([data-cite])");
+  const base = document.createElement("div");
   base.innerHTML = content;
 
-  const defns = base.querySelectorAll("dfn");
+  const defns = base.querySelectorAll("dfn:not([data-cite])");
   for (const item of defns) {
     const de = document.createAttribute("data-export");
     item.setAttributeNode(de);
