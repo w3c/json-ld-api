@@ -1093,15 +1093,16 @@
 
       <p>This algorithm specifies how a new <a>active context</a> is updated
         with a <a>local context</a>. The algorithm takes two required
-        <span class="changed">and three optional</span>
-        input variables.
+        <span class="changed">and four optional</span> input variables.
         The required inputs are an <var>active context</var> and a <var>local context</var>.
         The optional inputs are an <a>array</a> <var>remote contexts</var>,
         defaulting to a new empty <a>array</a>, which is used to detect cyclical context inclusions,
-        <span class="changed">, <var>from property</var>, defaulting to <code>false</code>,
+        <span class="changed">
+          <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
-          and <var>from type</var>, defaulting to <code>false</code>,
-          which is used to set the default for <var>propagated</var>
+          <var>protected</var>, defaulting to <code>false</code>,
+          which provides a defeault value for <code>@protected</code>,
+          and <var>propagate</var>, defaulting to <code>true</code>
           to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>.</span>.
       </p>
 
@@ -1111,7 +1112,6 @@
         <li class="changed">If <var>local context</var> is an object containing the member <code>@propagate</code>,
           its value MUST be <a>boolean</a> <code>true</code> or <code>false</code>,
           set <var>propagate</var> to that value.</li>
-        <li class="changed">Otherwise, set <var>propagate</var> to <var>from type</var>.</li>
         <li class="changed">If <var>propagate</var> is <code>false</code>, and <var>result</var>
           does not have a <a>previous context</a>, set <a>previous context</a>
           in <var>result</var> to <var>active context</var>.</li>
@@ -1123,14 +1123,14 @@
           <ol>
             <li>If <var>context</var> is <code>null</code>:
               <ol>
-                <li class="changed">If <var>from property</var> is <code>false</code> and <var>active context</var>
+                <li class="changed">If <var>override protected</var> is <code>false</code> and <var>active context</var>
                   contains any <a>protected</a> <a>term definitions</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid context nullification</a>
                   has been detected and processing is aborted.</li>
                 <li>Otherwise, set <var>result</var> to a
                   newly-initialized <var>active context</var>,
                   <span class="changed">setting <a>previous context</a> in <var>result</var>
-                    to the previous value of <var>result</var> if <var>from type</var> is <code>true</code></span>.
+                    to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code></span>.
                   Continue with the next <var>context</var>.
                   <span class="note">In [[[JSON-LD]]], the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
@@ -1195,6 +1195,9 @@
                   to <code>json-ld-1.1</code>, if not already set.</li>
               </ol>
             </li>
+            <li class="changed">If <var>context</var> has a <code>@protected</code> <a>entry</a>,
+              set the value of <var>protected</var> from its value.</li>
+            </li>
             <li class="changed">If <var>context</var> has an <code>@source</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
@@ -1206,7 +1209,8 @@
                 <li>Otherwise, set <var>result</var> to the result of recursively calling this algorithm,
                   passing <var>result</var> for <var>active context</var>,
                   the value of <code>@source</code> for <var>local context</var>,
-                  and a copy of <var>remote contexts</var>.
+                  a copy of <var>remote contexts</var>,
+                  and <var>protected</var>.
                 </li>
               </ol>
             </li>
@@ -1294,9 +1298,10 @@
               passing <var>result</var> for <var>active context</var>,
               <var>context</var> for <var>local context</var>, <var>key</var>,
               <var>defined</var>,
-              <span class="changed">the value of the <code>@protected</code>
-                entry from <var>context</var>, if any, for <var>protected</var></span>,
-                <var>from property</var>, and <var>from type</var>.</li>
+              <span class="changed">
+                <var>protected</var>, <var>override protected</var>, and <var>propagate</var>
+              </span>.
+            </li>
           </ol>
         </li>
         <li>Return <var>result</var>.</li>
@@ -1347,9 +1352,9 @@
         a <var>term</var>, and a map <var>defined</var>.
         <span class="changed">The optional inputs are
           <var>protected</var> which defaults to <code>false</code>,
-          <var>from property</var>, defaulting to <code>false</code>,
+          <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
-          and <var>from type</var>, defaulting to <code>false</code>.</span>.
+          and <var>propagate</var>, defaulting to <code>true</code>.</span>.
         </p>
       <ol>
         <li>If <var>defined</var> contains the <a>entry</a> <var>term</var> and the associated
@@ -1565,7 +1570,7 @@
               <code>@context</code> <a>entry</a>, which is treated as a <var>local context</var>.</li>
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
               using the <var>active context</var>, <var>context</var> as <var>local context</var>,
-              and <code>true</code> for <var>from property</var>.
+              and <code>true</code> for <var>override protected</var>.
               If any error is detected, an
               <a data-link-for="JsonLdErrorCode">invalid scoped context</a> error
               has been detected and processing is aborted.
@@ -1619,7 +1624,7 @@
           <code class="changed">@prefix</code>, or <code>@type</code>, an
           <a data-link-for="JsonLdErrorCode">invalid term definition</a> error has
           been detected and processing is aborted.</li>
-        <li class="changed">If <var>from property</var> is <code>false</code>
+        <li class="changed">If <var>override protected</var> is <code>false</code>
           and <var>previous definition</var> exists and is protected;
           <ol>
             <li>If <var>definition</var> is not the same as <var>previous definition</var>
@@ -1941,7 +1946,7 @@
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
               passing <var>active context</var>, the value of the
               <var>term</var>'s <a>local context</a> as <var>local context</var>,
-              <span class="changed">and <code>true</code> for <var>from type</var></span>.</li>
+              <span class="changed">and <code>true</code> for <var>propagate</var></span>.</li>
           </ol>
         </li>
         <li>Initialize two empty <a class="changed">maps</a>, <var>result</var>
@@ -2624,7 +2629,7 @@
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
               passing <var>active context</var>, the value of the
               <var>active property</var>'s <a>local context</a> as <var>local context</var>,
-              <span class="changed">and <code>true</code> for <var>from property</var></span>.</li>
+              <span class="changed">and <code>true</code> for <var>override protected</var></span>.</li>
             <li>Set <var>inverse context</var> using the
               <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
               using <var>active context</var>.</li>
@@ -2658,7 +2663,7 @@
           into it's compacted form using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
           passing <var>active context</var>, <var>inverse context</var>,
           <var>expanded type</var> for <var>var</var>, <code>true</code> for <var>vocab</var>,
-          and <code>true</code> for <var>from type</var>.
+          and <code>false</code> for <var>propagate</var>.
           Then, for each <var>term</var>
           in <var>compacted types</var> ordered lexicographically:
           <ol>
