@@ -2444,6 +2444,14 @@
       "expect": "expand/so06-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tso07",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Protect all terms in sourced context",
+      "purpose": "A protected context protects all term definitions.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so07-in.jsonld",
+      "expect": "protected term redefinition"
+    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
