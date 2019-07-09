@@ -13,7 +13,7 @@
     A flag specifying that for <a>properties</a> to be included in the output,
     they MUST be explicitly declared in the matching <a>frame</a>.</dd>
   <dt><dfn>framing state</dfn></dt><dd>
-    A <a>dictionary</a> containing values for the
+    A <a>map</a> containing values for the
     <a>object embed flag</a>, the
     <a>require all flag</a>, the
     <a>explicit inclusion flag</a>, and the
@@ -35,15 +35,15 @@
     but present in the <a>input frame</a>,
     should be omitted from the output.</dd>
   <dt class="changed"><dfn>omit graph flag</dfn></dt><dd class="changed">
-    A flag that determines if framing output is always contained within a <code>@graph</code> member,
+    A flag that determines if framing output is always contained within a <code>@graph</code> <a>entry</a>,
     or only if required to represent multiple <a>node objects</a>.</dd>
   <dt><dfn>processor state</dfn></dt><dd>
     The <a>processor state</a>,
     which includes the <a>active context</a>, <a>active subject</a>, and <a>active property</a>.
     The <a>processor state</a> is managed as a stack with elements from the previous <a>processor state</a>
     copied into a new <a>processor state</a> when entering a new <a>JSON object</a>.</dd>
-  <dt><dfn>promise</dfn></dt><dd>
-    A <a data-cite="ECMASCRIPT#sec-promise-objects" class="externalDFN">promise</a> is an object that represents the eventual result of a single asynchronous operation.
+  <dt><dfn data-cite="ECMASCRIPT#sec-promise-objects">promise</dfn></dt><dd>
+    A <a>promise</a> is an object that represents the eventual result of a single asynchronous operation.
     Promises are defined in [[ECMASCRIPT]].</dd>
   <dt><dfn>require all flag</dfn></dt><dd>
     A flag specifying that all properties present in the <a>input frame</a>
