@@ -1201,7 +1201,7 @@
             <li class="changed">If <var>context</var> has an <code>@source</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
-                  an <a data-link-for="JsonLdErrorCode">invalid context member</a>
+                  an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
                 <li>Otherwise, if its value is not a <a>string</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid @source value</a>
@@ -1273,7 +1273,7 @@
             <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
-                  an <a data-link-for="JsonLdErrorCode">invalid context member</a>
+                  an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
                 <li>Otherwise, if its value is not <a>boolean</a> <code>true</code> or <code>false</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @propagate value</a>
@@ -5961,7 +5961,7 @@
             "invalid @version value",
             "invalid base IRI",
             "invalid container mapping",
-            "invalid context member",
+            "invalid context entry",
             "invalid context nullification",
             "invalid default language",
             "invalid IRI mapping",
@@ -6115,8 +6115,8 @@
           which is incompatible with the previous specified version.</dd>
         <dt><dfn>context overflow</dfn></dt>
         <dd>maximum number of <code>@context</code> URLs exceeded.</dd>
-        <dt class="changed"><dfn>invalid context member</dfn></dt>
-        <dd class="changed">A member of a context is invalid due to processing mode incompatibility.</dd>
+        <dt class="changed"><dfn>invalid context entry</dfn></dt>
+        <dd class="changed">An <a>entry</a> in a context is invalid due to processing mode incompatibility.</dd>
         <dt class="changed"><dfn>invalid context nullification</dfn></dt>
         <dd class="changed">An attempt was made to nullify a context
           containing <a>protected</a> <a>term definitions</a>.</dd>
