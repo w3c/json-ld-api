@@ -2415,18 +2415,10 @@
       "@id": "#tso03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@source overflow",
-      "purpose": "Processors must detect overflowing context loads through @source.",
+      "purpose": "Processors must detect source contexts that include @source.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so03-in.jsonld",
-      "expect": "maximum number of @context URLs exceeded"
-    }, {
-      "@id": "#tso04",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Embedded context with @source",
-      "purpose": "An embedded context may load another context using @source.",
-      "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/so04-in.jsonld",
-      "expect": "expand/so04-out.jsonld"
+      "expect": "invalid context member"
     }, {
       "@id": "#tso05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2451,6 +2443,38 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so07-in.jsonld",
       "expect": "protected term redefinition"
+    }, {
+      "@id": "#tso08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Override term defined in sourced context",
+      "purpose": "The containing context is merged into the source context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so08-in.jsonld",
+      "expect": "expand/so08-out.jsonld"
+    }, {
+      "@id": "#tso09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Override @vocab defined in sourced context",
+      "purpose": "The containing context is merged into the source context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so09-in.jsonld",
+      "expect": "expand/so09-out.jsonld"
+    }, {
+      "@id": "#tso10",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Protect terms in sourced context",
+      "purpose": "The containing context is merged into the source context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so10-in.jsonld",
+      "expect": "protected term redefinition"
+    }, {
+      "@id": "#tso11",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Override protected terms in sourced context",
+      "purpose": "The containing context is merged into the source context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so11-in.jsonld",
+      "expect": "expand/so11-out.jsonld"
     }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
