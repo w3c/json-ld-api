@@ -397,7 +397,7 @@
     -->
     </pre>
     <p>In the <a>internal representation</a>, the example above would be of a
-      <a>dictionary</a> containing <code>@context</code>, <code>@id</code>, <code>name</code>, and <code>knows</code> <a>entries</a>,
+      <a>map</a> containing <code>@context</code>, <code>@id</code>, <code>name</code>, and <code>knows</code> <a>entries</a>,
       with either <a>maps</a>, <a>strings</a>, or <a>arrays</a> of
       maps or strings values. In the JSON serialization, <a>JSON objects</a> are used
       for maps, while arrays and strings are serialized using a
@@ -721,7 +721,7 @@
       <a>node</a> may be spread across a number of different
       <a class="changed">maps</a>. By flattening a
       document, all <a>properties</a> of a <a>node</a> are collected in a single
-      <a class="changed">dictionary</a> and all <a>blank nodes</a>
+      <a class="changed">map</a> and all <a>blank nodes</a>
       are labeled with a <a>blank node identifier</a>. This may drastically
       simplify the code required to process JSON-LD data in certain applications.</p>
 
@@ -785,7 +785,7 @@
       where the algorithm's use of <a>maps</a> are replaced with <a>JSON objects</a>.</p>
 
     <p>Note how in the output above all <a>properties</a> of a <a>node</a> are collected in a
-      single <a class="changed">dictionary</a> and how the <a>blank node</a> representing
+      single <a class="changed">map</a> and how the <a>blank node</a> representing
       &quot;Dave Longley&quot; has been assigned the <a>blank node identifier</a>
       <code>_:b0</code>.</p>
 
@@ -828,7 +828,7 @@
     </aside>
 
     <p>Please note that the result of flattening and <a>compacting</a> a document
-      is always a <a class="changed">dictionary</a>,
+      is always a <a class="changed">map</a>,
       <span class="changed">(represented as a <a>JSON object</a> when serialized)</span>,
       which contains an <code>@graph</code>
       <a>entry</a> that represents the <a>default graph</a>.</p>
@@ -1038,7 +1038,7 @@
         the current <a>active context</a>. Then we normalize the form of the original
         <a>local context</a> to an <a>array</a>.
         <a>Local contexts</a> may be in the form of a
-        <a class="changed">dictionary</a>, a <a>string</a>, or an <a>array</a> containing
+        <a class="changed">map</a>, a <a>string</a>, or an <a>array</a> containing
         a combination of the two. Finally we process each <a>context</a> contained
         in the <a>local context</a> <a>array</a> as follows.</p>
 
@@ -1061,7 +1061,7 @@
         has been detected. Otherwise, we process <a>context</a> by recursively using
         this algorithm ensuring that there is no cyclical reference.</p>
 
-      <p>If <a>context</a> is a <a class="changed">dictionary</a>, we first update the
+      <p>If <a>context</a> is a <a class="changed">map</a>, we first update the
         <a>base IRI</a>, the <a>vocabulary mapping</a>, <a>processing mode</a>, and the
         <a>default language</a> by processing three specific keywords:
         <code>@base</code>, <code>@vocab</code>, <code>@version</code>, and <code>@language</code>.
@@ -1160,7 +1160,7 @@
                   <span class="changed">or cannot be transformed into the <a>internal representation</a></span>,
                   a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
                   error has been detected and processing is aborted. If the dereferenced document has no
-                  top-level <a class="changed">dictionary</a> with an <code>@context</code> <a>entry</a>, an
+                  top-level <a class="changed">map</a> with an <code>@context</code> <a>entry</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid remote context</a>
                   has been detected and processing is aborted; otherwise,
                   set <var>context</var> to the value of that <a>entry</a>.</li>
@@ -1170,7 +1170,7 @@
                 <li>Continue with the next <var>context</var>.</li>
               </ol>
             </li>
-            <li>If <var>context</var> is not a <a class="changed">dictionary</a>, an
+            <li>If <var>context</var> is not a <a class="changed">map</a>, an
               <a data-link-for="JsonLdErrorCode">invalid local context</a>
               error has been detected and processing is aborted.</li>
             <li>If <var>context</var> has an <code>@base</code> <a>entry</a> and <var>remote contexts</var> is empty, i.e., the currently
@@ -1242,7 +1242,7 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
-            <li>Create a <a class="changed">dictionary</a> <var>defined</var> to use to keep
+            <li>Create a <a class="changed">map</a> <var>defined</var> to use to keep
               track of whether or not a <a>term</a> has already been defined
               or currently being defined during recursion.</li>
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
@@ -1324,7 +1324,7 @@
         <li class="changed">If <a>processing mode</a>
           is <code>json-ld-1.1</code>
           and <var>term</var> is <code>@type</code>, <var>value</var>
-          MUST be a <a>dictionary</a> with the entry <code>@container</code>
+          MUST be a <a>map</a> with the entry <code>@container</code>
           and value <code>@set</code>. Any other value means that a
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
           been detected and processing is aborted.</li>
@@ -1337,13 +1337,13 @@
         <li>Otherwise, remove any <var>previous definition</var> from
           <var>active context</var>.</li>
         <li class="changed">If <var>value</var> is <code>null</code>,
-          convert it to a <a class="changed">dictionary</a> consisting of a single <a>entry</a> whose
+          convert it to a <a class="changed">map</a> consisting of a single <a>entry</a> whose
           key is <code>@id</code> and whose value is <code>null</code>.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>, convert it
-          to a <a class="changed">dictionary</a> consisting of a single <a>entry</a> whose
+          to a <a class="changed">map</a> consisting of a single <a>entry</a> whose
           key is <code>@id</code> and whose value is <var>value</var>.
           <span class="changed">Set <var>simple term</var> to <code>true</code></span>.</li>
-        <li>Otherwise, <var>value</var> MUST be a <a class="changed">dictionary</a>, if not, an
+        <li>Otherwise, <var>value</var> MUST be a <a class="changed">map</a>, if not, an
           <a data-link-for="JsonLdErrorCode">invalid term definition</a>
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
@@ -1763,7 +1763,7 @@
         <li>Otherwise, if the <var>element</var> is an <a>array</a>, then we expand
           each of its items recursively and return them in a new
           <a>array</a>.</li>
-        <li>Otherwise, <var>element</var> is a <a class="changed">dictionary</a>. We expand
+        <li>Otherwise, <var>element</var> is a <a class="changed">map</a>. We expand
           each of its <a>entries</a>, adding them to our <var>result</var>, and then we expand
           each value for each <a>entry</a> recursively. Some of the <a>entry</a> keys will be
           <a>terms</a> or
@@ -1799,8 +1799,8 @@
       <p class="changed">The algorithm also performs processing steps specific to expanding
         a <a>JSON-LD Frame</a>. For a <a>frame</a>, the <code>@id</code> and
         <code>@type</code> <a>entries</a> can accept an array of <a>IRIs</a> or
-        an empty <a>dictionary</a>. The <a>entries</a> of a <a>value object</a> can also
-        accept an <a>array</a> of <a>strings</a>, or an empty <a>dictionary</a>.
+        an empty <a>map</a>. The <a>entries</a> of a <a>value object</a> can also
+        accept an <a>array</a> of <a>strings</a>, or an empty <a>map</a>.
         Framing also uses additional keyword <a>entries</a>:
         (<code>@explicit</code>, <code>@default</code>,
         <code>@embed</code>, <code>@explicit</code>, <code>@omitDefault</code>, or
@@ -1853,7 +1853,7 @@
                   of <var>active property</var> includes <code>@list</code>,
                   and <var>expanded item</var> is an
                   <a>array</a>, set <var>expanded item</var> to a new
-                  <a>dictionary</a> containing the <a>entry</a>
+                  <a>map</a> containing the <a>entry</a>
                   <code>@list</code> where the value is the original
                   <var>expanded item</var>.</li>
                 <li>If <var>expanded item</var> is an <a>array</a>, append each
@@ -1864,7 +1864,7 @@
             <li>Return <var>result</var>.</li>
           </ol>
         </li>
-        <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>.</li>
+        <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
         <li class="changed">If <var>active context</var> has a <a>previous context</a>,
           the <var>active context</var> is type-scoped.
           If <var>from map</var> is undefined or <code>false</code>,
@@ -1938,7 +1938,7 @@
                   for <var>document relative</var>.
                   <span class="changed">
                     When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
-                    may be an empty <a>dictionary</a>, or an <a>array</a> of one
+                    may be an empty <a>map</a>, or an <a>array</a> of one
                     or more <a>strings</a>. <var>expanded value</var> will be
                     an <a>array</a> of one or more of these, with <a>string</a>
                     values expanded using the <a
@@ -1956,7 +1956,7 @@
                   or each of its items.
                   <span class="changed">
                     When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
-                    may also be an empty <a>dictionary</a>.
+                    may also be an empty <a>map</a>.
                   </span>
                   <div class="note">
                     No transformation from a <a>string</a> <var>value</var> to an <a>array</a>
@@ -1988,7 +1988,7 @@
                   on the existence of an <code>@value</code> <a>entry</a>.
                   <span class="changed">
                     When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
-                    may also be an empty <a>dictionary</a> or an array of
+                    may also be an empty <a>map</a> or an array of
                     <a>scalar</a> values. <var>expanded value</var> will be <a>null</a>, or an
                     <a>array</a> of one or more <a>scalar</a> values.</span></li>
                 <li>If <var>expanded property</var> is <code>@language</code> and
@@ -1998,7 +1998,7 @@
                   <span class="changed">
                     Otherwise, set <var>expanded value</var> to lowercased <var>value</var>.
                     When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
-                    may also be an empty <a>dictionary</a> or an array of zero or
+                    may also be an empty <a>map</a> or an array of zero or
                     <a>strings</a>. <var>expanded value</var> will be an
                     <a>array</a> of one or more <a>string</a> values converted to lower case.</span></li>
                 <li>If <var>expanded property</var> is <code>@index</code> and
@@ -2025,7 +2025,7 @@
                   <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>If <var>expanded property</var> is <code>@reverse</code> and
-                  <var>value</var> is not a <a class="changed">dictionary</a>, an
+                  <var>value</var> is not a <a class="changed">map</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid @reverse value</a>
                   error has been detected and processing is aborted. Otherwise
                   <ol>
@@ -2048,7 +2048,7 @@
                     <li>If <var>expanded value</var> contains an <a>entry</a> other than <code>@reverse</code>:
                       <ol>
                         <li>If <var>result</var> does not have an <code>@reverse</code> <a>entry</a>, create
-                          one and set its value to an empty <a class="changed">dictionary</a>.</li>
+                          one and set its value to an empty <a class="changed">map</a>.</li>
                         <li>Reference the value of the <code>@reverse</code> <a>entry</a> in <var>result</var>
                           using the variable <var>reverse map</var>.</li>
                         <li>For each <var>property</var> and <var>items</var> in <var>expanded value</var>
@@ -2097,10 +2097,10 @@
               <var>active context</var>.</li>
             <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>type mapping</a> of <code>@json</code>,
-              set <var>expanded value</var> to a new <a>dictionary</a>, set the <a>entry</a>
+              set <var>expanded value</var> to a new <a>map</a>, set the <a>entry</a>
               <code>@value</code> to <var>value</var>, and set the entry <code>@type</code> to <code>@json</code>.</li>
             <li>Otherwise, if <var>container mapping</var> <span class="changed">includes</span> <code>@language</code> and
-              <var>value</var> is a <a class="changed">dictionary</a> then <var>value</var>
+              <var>value</var> is a <a class="changed">map</a> then <var>value</var>
               is expanded from a <a>language map</a>
               as follows:
               <ol>
@@ -2119,7 +2119,7 @@
                           otherwise an
                           <a data-link-for="JsonLdErrorCode">invalid language map value</a>
                           error has been detected and processing is aborted.</li>
-                        <li>Append a <a class="changed">dictionary</a> to
+                        <li>Append a <a class="changed">map</a> to
                           <var>expanded value</var> that consists of two
                           key-value pairs: (<code>@value</code>-<var>item</var>)
                           and (<code>@language</code>-lowercased
@@ -2136,7 +2136,7 @@
             <li>Otherwise, if <var>container mapping</var>
               <span class="changed">includes</span> <code>@index</code>,
               <span class="changed"><code>@type</code>, or <code>@id</code></span> and
-              <var>value</var> is a <a class="changed">dictionary</a> then <var>value</var>
+              <var>value</var> is a <a class="changed">map</a> then <var>value</var>
               is expanded from an map as follows:
               <ol>
                 <li>Initialize <var>expanded value</var> to an empty <a>array</a>.</li>
@@ -2179,7 +2179,7 @@
                       <ol class="algorithm changed">
                         <li>If <var>container mapping</var> includes <code>@graph</code>
                           and if <var>item</var> is not a <a>graph object</a>,
-                          set <var>item</var> to a new <a>dictionary</a> containing the key-value pair
+                          set <var>item</var> to a new <a>map</a> containing the key-value pair
                           <code>@graph</code>-<var>item</var>,
                           ensuring that the value is represented using an <a>array</a>.</li>
                         <li class="changed">If <var>container mapping</var> includes <code>@index</code>,
@@ -2231,7 +2231,7 @@
               convert <var>expanded value</var> to a <a>list object</a>
               by first setting it to an <a>array</a> containing only
               <var>expanded value</var> if it is not already an <a>array</a>,
-              and then by setting it to a <a class="changed">dictionary</a> containing
+              and then by setting it to a <a class="changed">map</a> containing
               the key-value pair <code>@list</code>-<var>expanded value</var>.</li>
             <li class="changed">If <var>container mapping</var> <span>includes</span>
               <code>@graph</code>, convert <var>expanded value</var> into an <a>array</a>, if necessary,
@@ -2239,7 +2239,7 @@
               <a>graph object</a>:
               <ol>
                 <li>If <var>ev</var> is not a <a>graph object</a>, convert it into
-                  one by creating a <a>dictionary</a> containing the key-value
+                  one by creating a <a>map</a> containing the key-value
                   pair <code>@graph</code>-<var>ev</var>
                   where <var>ev</var> is represented as an <a>array</a>.</li>
               </ol>
@@ -2248,7 +2248,7 @@
               <var>key</var> indicates that it is a <a>reverse property</a>
               <ol>
                 <li>If <var>result</var> has no <code>@reverse</code> <a>entry</a>, create
-                  one and initialize its value to an empty <a class="changed">dictionary</a>.</li>
+                  one and initialize its value to an empty <a class="changed">map</a>.</li>
                 <li>Reference the value of the <code>@reverse</code> <a>entry</a> in <var>result</var>
                   using the variable <var>reverse map</var>.</li>
                 <li>If <var>expanded value</var> is not an <a>array</a>, set
@@ -2281,7 +2281,7 @@
                   in <var>element</var>, ensuring that it is an <a>array</a>.</li>
                 <li>For each <var>nested value</var> in <var>nested values</var>:
                   <ol>
-                    <li>If <var>nested value</var> is not a <a class="changed">dictionary</a>, or any key within
+                    <li>If <var>nested value</var> is not a <a class="changed">map</a>, or any key within
                       <var>nested value</var> expands to <code>@value</code>, an
                       <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                       has been detected and processing is aborted.</li>
@@ -2338,13 +2338,13 @@
         <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
           drop free-floating values as follows:
           <ol>
-            <li>If <var>result</var> is an empty <a class="changed">dictionary</a> or contains
+            <li>If <var>result</var> is an empty <a class="changed">map</a> or contains
               the <a>entries</a> <code>@value</code> or <code>@list</code>, set <var>result</var> to
               <code>null</code>.</li>
-            <li>Otherwise, if <var>result</var> is a <a class="changed">dictionary</a> whose only
+            <li>Otherwise, if <var>result</var> is a <a class="changed">map</a> whose only
               <a>entry</a> is <code>@id</code>, set <var>result</var> to <code>null</code>.
               <span class="changed">
-                When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, a <a>dictionary</a>
+                When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, a <a>map</a>
                 containing only the <code>@id</code> <a>entry</a> is retained.</span></li>
           </ol>
         </li>
@@ -2352,7 +2352,7 @@
       </ol>
 
       <p>If, after the above algorithm is run, the result is a
-        <a class="changed">dictionary</a> that contains only an <code>@graph</code> <a>entry</a>, set the
+        <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>, set the
         result to the value of <code>@graph</code>'s value. Otherwise, if the result
         is <code>null</code>, set it to an empty <a>array</a>. Finally, if
         the result is not an <a>array</a>, then set the result to an
@@ -2376,12 +2376,12 @@
       <p>If <a>active property</a> has a <a>type mapping</a> in the
         <a>active context</a> set to <code>@id</code> or <code>@vocab</code>,
         <span class="changed">and the value is a <a>string</a>,</span>
-        a <a class="changed">dictionary</a> with a single <a>entry</a> <code>@id</code> whose
+        a <a class="changed">map</a> with a single <a>entry</a> <code>@id</code> whose
         value is the result of using the
         <a href="#iri-expansion">IRI Expansion algorithm</a> on <var>value</var>
         is returned.</p>
 
-      <p>Otherwise, the result will be a <a class="changed">dictionary</a> containing
+      <p>Otherwise, the result will be a <a class="changed">map</a> containing
         an <code>@value</code> <a>entry</a> whose value is the passed <var>value</var>.
         Additionally, an <code>@type</code> <a>entry</a> will be included if there is a
         <a>type mapping</a> associated with the <a>active property</a>
@@ -2411,7 +2411,7 @@
           in <var>active context</var> that is <code>@id</code>,
           <span class="changed">and the <var>value</var> is a <a>string</a>,</span>
           return a new
-          <a class="changed">dictionary</a> containing a single <a>entry</a> where the
+          <a class="changed">map</a> containing a single <a>entry</a> where the
           key is <code>@id</code> and the value is the result of using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
           <var>active context</var>, <var>value</var>, and <code>true</code> for
@@ -2420,13 +2420,13 @@
           <var>active context</var> that is <code>@vocab</code>,
           <span class="changed">and the <var>value</var> is a <a>string</a>,</span>
           return a new
-          <a class="changed">dictionary</a> containing a single <a>entry</a> where the
+          <a class="changed">map</a> containing a single <a>entry</a> where the
           key is <code>@id</code> and the value is the result of using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
           <var>active context</var>, <var>value</var>, <code>true</code> for
           <var>vocab</var>, and <code>true</code> for
           <var>document relative</var>.</li>
-        <li>Otherwise, initialize <var>result</var> to a <a class="changed">dictionary</a>
+        <li>Otherwise, initialize <var>result</var> to a <a class="changed">map</a>
           with an <code>@value</code> <a>entry</a> whose value is set to
           <var>value</var>.</li>
         <li>If <var>active property</var> has a <a>type mapping</a> in
@@ -2492,7 +2492,7 @@
         <li>If the <var>element</var> is an <a>array</a>, we compact
           each of its items recursively and return them in a new
           <a>array</a>.</li>
-        <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>. The value
+        <li>Otherwise <var>element</var> is a <a class="changed">map</a>. The value
           of each <a>entry</a> in element is compacted recursively. Some of the <a>entry</a> keys will be
           compacted, using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
           to <a>terms</a> or <a>compact IRIs</a>
@@ -2506,8 +2506,8 @@
           maps.</li>
       </ol>
 
-      <p>The final output is a <a class="changed">dictionary</a> with an <code>@context</code>
-        <a>entry</a>, if a non-empty <a>context</a> was given, where the <a class="changed">dictionary</a>
+      <p>The final output is a <a class="changed">map</a> with an <code>@context</code>
+        <a>entry</a>, if a non-empty <a>context</a> was given, where the <a class="changed">map</a>
         is either <var>result</var> or a wrapper for it where <var>result</var> appears
         as the value of an (aliased) <code>@graph</code> <a>entry</a> because <var>result</var>
         contained two or more items in an <a>array</a>.</p>
@@ -2568,7 +2568,7 @@
             <li>Return <var>result</var>.</li>
           </ol>
         </li>
-        <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>.</li>
+        <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
         <li class="changed">If <var>active context</var> has a <a>previous context</a>,
           the <var>active context</var> is type-scoped.
           If <var>element</var> does not contain an <code>@value</code> <a>entry</a>,
@@ -2609,7 +2609,7 @@
         <li>Initialize <var>inside reverse</var> to <code>true</code> if
           <var>active property</var> equals <code>@reverse</code>,
           otherwise to <code>false</code>.</li>
-        <li>Initialize <var>result</var> to an empty <a class="changed">dictionary</a>.</li>
+        <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
         <li class="changed">If <var>element</var> has an <code>@type</code> <a>entry</a>,
           create a new array <var>compacted types</var> initialized
           by transforming each <var>expanded type</var> of that <a>entry</a>
@@ -2735,7 +2735,7 @@
                   </ol>
                 </li>
                 <li>If <var>compacted value</var> has some remaining <a>map entries</a>, i.e.,
-                  it is not an empty <a class="changed">dictionary</a>:
+                  it is not an empty <a class="changed">map</a>:
                   <ol>
                     <li>Initialize <var>alias</var> to the result of using the
                       <a href="#iri-compaction">IRI Compaction algorithm</a>,
@@ -2798,7 +2798,7 @@
                   otherwise an <a data-link-for="JsonLdErrorCode">invalid @nest
                   value</a> error has been detected, and processing is aborted.
                   If <var>result</var> does not have a <var>nest term</var> <a>entry</a>,
-                  initialize it to an empty <a>dictionary</a> (<var>nest object</var>).
+                  initialize it to an empty <a>map</a> (<var>nest object</var>).
                   If <var>nest object</var> does not have an <var>item active property</var> <a>entry</a>,
                   set this <a data-lt="entry">entry's</a>
                   value in <var>nest object</var> to an empty
@@ -2832,7 +2832,7 @@
                   otherwise an <a data-link-for="JsonLdErrorCode">invalid @nest
                   value</a> error has been detected, and processing is aborted.
                   Set <var>nest result</var> to the value of <var>nest term</var> in <var>result</var>,
-                  initializing it to a new <a class="changed">dictionary</a>, if necessary; otherwise
+                  initializing it to a new <a class="changed">map</a>, if necessary; otherwise
                   set <var>nest result</var> to <var>result</var>.</li>
                 <li>Initialize <var>container</var> to <code>null</code>. If there
                   is a <a>container mapping</a> for
@@ -2864,7 +2864,7 @@
                       <ol>
                         <li>Convert <var>compacted item</var> to a
                           <a>list object</a> by setting it to a
-                          <a class="changed">dictionary</a> containing an <a>entry</a>
+                          <a class="changed">map</a> containing an <a>entry</a>
                           where the key is the result of the
                           <a href="#iri-compaction">IRI Compaction algorithm</a>,
                           passing <var>active context</var>, <var>inverse context</var>,
@@ -2944,7 +2944,7 @@
                     <li>Otherwise, <var>container</var> does not include <code>@graph</code>
                       or otherwise does not match one of the previous cases, redo <var>compacted item</var>.
                       <ol>
-                        <li>Set <var>compacted item</var> to a new dictionary containing
+                        <li>Set <var>compacted item</var> to a new map containing
                           the key resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
                           passing <var>active context</var>, <code>@graph</code> as
@@ -2985,7 +2985,7 @@
                     <span class="changed">and <var>container</var> does not include <code>@graph</code></span>:
                   <ol>
                     <li>If <var>item active property</var> is not an <a>entry</a> in
-                      <var class="changed">nest result</var>, initialize it to an empty <a class="changed">dictionary</a>.
+                      <var class="changed">nest result</var>, initialize it to an empty <a class="changed">map</a>.
                       Initialize <var>map object</var> to the value of <var>item active property</var>
                       in <var class="changed">nest result</var>.</li>
                     <li>Set <var>container key</var> to the result of calling the
@@ -3071,9 +3071,9 @@
       </ol>
 
       <p>If, after the algorithm outlined above is run, <var>result</var>
-        <span class="changed">is an empty <a>array</a>, replace it with a new <a>dictionary</a></span>.
+        <span class="changed">is an empty <a>array</a>, replace it with a new <a>map</a></span>.
         Otherwise, if <var>result</var> is an <a>array</a>, replace it with a new
-        <a class="changed">dictionary</a> with a single <a>entry</a> whose key is the result
+        <a class="changed">map</a> with a single <a>entry</a> whose key is the result
         of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
         passing <var>active context</var>, <var>inverse context</var>, and
         <code>@graph</code> as <var>var</var> and whose value is the <a>array</a>
@@ -3141,7 +3141,7 @@
         the <a>inverse context</a> is being created for.</p>
 
       <ol>
-        <li>Initialize <var>result</var> to an empty <a class="changed">dictionary</a>.</li>
+        <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
         <li>Initialize <var>default language</var> to <code>@none</code>. If the
           <var>active context</var> has a <a>default language</a>,
           set <var>default language</var> to it.</li>
@@ -3163,17 +3163,17 @@
               for the <a>term definition</a>.</li>
             <li>If <var>var</var> is not an <a>entry</a> of <var>result</var>, add
               a <a>entry</a> where the key is <var>var</var> and the value
-              is an empty <a class="changed">dictionary</a> to <var>result</var>.</li>
+              is an empty <a class="changed">map</a> to <var>result</var>.</li>
             <li>Reference the value associated with the <var>var</var> <a>entry</a> in
               <var>result</var> using the variable <var>container map</var>.</li>
             <li>If <var>container map</var> has no <var>container</var> <a>entry</a>,
               create one and set its value to a new
-              <a class="changed">dictionary</a> with <span class="changed">three</span> <a>entries</a>.
+              <a class="changed">map</a> with <span class="changed">three</span> <a>entries</a>.
               The first <a>entry</a> is <code>@language</code> and its value is a new empty
-              <a class="changed">dictionary</a>, the second <a>entry</a> is <code>@type</code>
-              and its value is a new empty <a class="changed">dictionary</a>,
+              <a class="changed">map</a>, the second <a>entry</a> is <code>@type</code>
+              and its value is a new empty <a class="changed">map</a>,
               <span class="changed">and the third <a>entry</a> is <code>@any</code>
-                and its value is a new <a>dictionary</a> with the <a>entry</a>
+                and its value is a new <a>map</a> with the <a>entry</a>
                 <code>@none</code> set to the <a>term</a> being processed</span>.</li>
             <li>Reference the value associated with the <var>container</var> <a>entry</a>
               in <var>container map</var> using the variable <var>type/language map</var>.</li>
@@ -3331,8 +3331,8 @@
               <a data-lt="active context">active context's</a>
               <a>default language</a>, if it has one, otherwise to
               <code>@none</code>.</li>
-            <li class="changed">If <var>value</var> is a <a>dictionary</a> containing
-              the member <code>@preserve</code>, use the first
+            <li class="changed">If <var>value</var> is a <a>map</a> containing
+              the <a>entry</a> <code>@preserve</code>, use the first
               element from the value of <code>@preserve</code> as <var>value</var>.</li>
             <li>Initialize <var>containers</var> to an empty <a>array</a>. This
               <a>array</a> will be used to keep track of an ordered list of
@@ -3348,7 +3348,7 @@
               variables will keep track of the preferred
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
-            <li>If <var>value</var> is a <a class="changed">dictionary</a>,
+            <li>If <var>value</var> is a <a class="changed">map</a>,
               that contains the an <code>@index</code> <a>entry</a>,
               <span class="changed">and <var>value</var> is not a <a>graph object</a></span>
               then append the values <code>@index</code> <span class="changed">and <code>@index@set</code></span> to <var>containers</var>.</li>
@@ -3919,7 +3919,7 @@
     <h2>Flattening Algorithm</h2>
 
     <p>This algorithm flattens an expanded JSON-LD document by collecting all
-      <a>properties</a> of a <a>node</a> in a single <a class="changed">dictionary</a>
+      <a>properties</a> of a <a>node</a> in a single <a class="changed">map</a>
       and labeling all <a>blank nodes</a> with
       <a>blank node identifiers</a>.
       This resulting uniform shape of the document, may drastically simplify
@@ -3931,7 +3931,7 @@
       <p>First, a <var>node map</var> is generated using the
         <a href="#node-map-generation">Node Map Generation algorithm</a>
         which collects all <a>properties</a> of a <a>node</a> in a single
-        <a class="changed">dictionary</a>. In the next step, the <var>node map</var> is
+        <a class="changed">map</a>. In the next step, the <var>node map</var> is
         converted to a JSON-LD document in
         <a data-cite="JSON-LD11#flattened-document-form">flattened document form</a>.
         Finally, if a <a>context</a> has been passed, the flattened document
@@ -3962,13 +3962,13 @@
         Thus, before this algorithm is run, the <var>identifier map</var> is reset.</p>
 
       <ol>
-        <li>Initialize <var>node map</var> to a <a class="changed">dictionary</a> consisting of
+        <li>Initialize <var>node map</var> to a <a class="changed">map</a> consisting of
           a single <a>entry</a> whose key is <code>@default</code> and whose value is
-          an empty <a class="changed">dictionary</a>.</li>
+          an empty <a class="changed">map</a>.</li>
         <li>Perform the <a href="#node-map-generation">Node Map Generation algorithm</a>, passing
           <var>element</var> and <var>node map</var>.</li>
         <li>Initialize <var>default graph</var> to the value of the <code>@default</code>
-          <a>entry</a> of <var>node map</var>, which is a <a class="changed">dictionary</a> representing
+          <a>entry</a> of <var>node map</var>, which is a <a class="changed">map</a> representing
           the <a>default graph</a>.</li>
         <li>For each key-value pair <var>graph name</var>-<var>graph</var> in <var>node map</var>
           where <var>graph name</var> is not <code>@default</code>,
@@ -3977,7 +3977,7 @@
           perform the following steps:
           <ol>
             <li>If <var>default graph</var> does not have a <var>graph name</var> <a>entry</a>, create
-              one and initialize its value to a <a class="changed">dictionary</a> consisting of an
+              one and initialize its value to a <a class="changed">map</a> consisting of an
               <code>@id</code> <a>entry</a> whose value is set to <var>graph name</var>.</li>
             <li>Reference the value associated with the <var>graph name</var> <a>entry</a> in
               <var>default graph</var> using the variable <var>entry</var>.</li>
@@ -4009,7 +4009,7 @@
   <section>
     <h2>Node Map Generation</h2>
 
-    <p>This algorithm creates a <a class="changed">dictionary</a> <var>node map</var> holding an indexed
+    <p>This algorithm creates a <a class="changed">map</a> <var>node map</var> holding an indexed
       representation of the <a>graphs</a> and <a>nodes</a>
       represented in the passed expanded document. All <a>nodes</a> that are not
       uniquely identified by an IRI get assigned a (new) <a>blank node identifier</a>.
@@ -4023,14 +4023,14 @@
 
       <p>The algorithm recursively runs over an expanded JSON-LD document to
         collect all <a>entries</a> of a <a>node</a>
-        in a single <a class="changed">dictionary</a>. The algorithm updates a
-        <a class="changed">dictionary</a> <var>node map</var> whose keys represent the
+        in a single <a class="changed">map</a>. The algorithm updates a
+        <a class="changed">map</a> <var>node map</var> whose keys represent the
         <a>graph names</a> used in the document
         (the <a>default graph</a> is stored under the <code>@default</code> <a>entry</a>)
         and whose associated values are <a class="changed">maps</a>
         which index the <a>nodes</a> in the
         <a>graph</a>. If a
-        <a data-lt="member">member's</a> value is a <a>node object</a>,
+        <a data-lt="entry">entry's</a> value is a <a>node object</a>,
         it is replaced by a <a>node object</a> consisting of only an
         <code>@id</code> <a>entry</a>. If a <a>node object</a> has no <code>@id</code>
         <a>entry</a> or it is identified by a <a>blank node identifier</a>,
@@ -4044,9 +4044,9 @@
       <h3>Algorithm</h3>
 
       <p>The algorithm takes as input an expanded JSON-LD document <var>element</var> and a reference to
-        a <a class="changed">dictionary</a> <var>node map</var>. Furthermore it has the optional parameters
+        a <a class="changed">map</a> <var>node map</var>. Furthermore it has the optional parameters
         <var>active graph</var> (which defaults to <code>@default</code>), an <var>active subject</var>,
-        <var>active property</var>, and a reference to a <a class="changed">dictionary</a> <var>list</var>. If
+        <var>active property</var>, and a reference to a <a class="changed">map</a> <var>list</var>. If
         not passed, <var>active subject</var>, <var>active property</var>, and <var>list</var> are
         set to <code>null</code>.</p>
 
@@ -4059,8 +4059,8 @@
               <var>active property</var>, and <var>list</var>.</li>
           </ol>
         </li>
-        <li>Otherwise <var>element</var> is a <a class="changed">dictionary</a>. Reference the
-          <a class="changed">dictionary</a> which is the value of the <a>active graph</a>
+        <li>Otherwise <var>element</var> is a <a class="changed">map</a>. Reference the
+          <a class="changed">map</a> which is the value of the <a>active graph</a>
           <a>entry</a> of <var>node map</var> using the variable <var>graph</var>. If the
           <var>active subject</var> is <code>null</code>, set <var>node</var> to <code>null</code>
           otherwise reference the <var>active subject</var> <a>entry</a> of <var>graph</var> using the
@@ -4094,7 +4094,7 @@
         <li>Otherwise, if <var>element</var> has an <code>@list</code> <a>entry</a>, perform
           the following steps:
           <ol>
-            <li>Initialize a new <a class="changed">dictionary</a> <var>result</var> consisting of a single <a>entry</a>
+            <li>Initialize a new <a class="changed">map</a> <var>result</var> consisting of a single <a>entry</a>
               <code>@list</code> whose value is initialized to an empty <a>array</a>.</li>
             <li>Recursively call this algorithm passing the value of <var>element</var>'s
               <code>@list</code> <a>entry</a> for <var>element</var>, <var>node map</var>, <var>active graph</var>,
@@ -4118,11 +4118,11 @@
               <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
               passing <code>null</code> for <var>identifier</var>.</li>
             <li>If <var>graph</var> does not contain a <a>entry</a> <var>id</var>, create one and initialize
-              its value to a <a class="changed">dictionary</a> consisting of a single <a>entry</a> <code>@id</code> whose
+              its value to a <a class="changed">map</a> consisting of a single <a>entry</a> <code>@id</code> whose
               value is <var>id</var>.</li>
             <li>Reference the value of the <var>id</var> <a>entry</a> of <var>graph</var> using the
               variable <var>node</var>.</li>
-            <li>If <var>active subject</var> is a <a class="changed">dictionary</a>, a reverse property relationship
+            <li>If <var>active subject</var> is a <a class="changed">map</a>, a reverse property relationship
               is being processed. Perform the following steps:
               <ol>
                 <li>If <var>node</var> does not have a <var>active property</var> <a>entry</a>,
@@ -4138,7 +4138,7 @@
             </li>
             <li>Otherwise, if <var>active property</var> is not <code>null</code>, perform the following steps:
               <ol>
-                <li>Create a new <a class="changed">dictionary</a> <var>reference</var> consisting of a single <a>entry</a>
+                <li>Create a new <a class="changed">map</a> <var>reference</var> consisting of a single <a>entry</a>
                   <code>@id</code> whose value is <var>id</var>.</li>
                 <li>If <var>list</var> is <code>null</code>:
                   <ol>
@@ -4169,7 +4169,7 @@
               removing the <code>@index</code> <a>entry</a> from <var>element</var>.</li>
             <li>If <var>element</var> has an <code>@reverse</code> <a>entry</a>:
               <ol>
-                <li>Create a <a class="changed">dictionary</a> <var>referenced node</var> with a single <a>entry</a> <code>@id</code> whose
+                <li>Create a <a class="changed">map</a> <var>referenced node</var> with a single <a>entry</a> <code>@id</code> whose
                   value is <var>id</var>.</li>
                 <li>Set <var>reverse map</var> to the value of the <code>@reverse</code> <a>entry</a> of
                   <var>element</var>.</li>
@@ -4181,7 +4181,7 @@
                           <var>element</var>, <var>node map</var>, <var>active graph</var>,
                           <var>referenced node</var> for <var>active subject</var>, and
                           <var>property</var> for <var>active property</var>. Passing a
-                          <a class="changed">dictionary</a> for <var>active subject</var> indicates to the
+                          <a class="changed">map</a> for <var>active subject</var> indicates to the
                           algorithm that a reverse property relationship is being processed.</li>
                       </ol>
                     </li>
@@ -4269,12 +4269,12 @@
       in each graph contained in the <var>node map</var>.</p>
 
     <ol>
-      <li>Create <var>result</var> as an empty <a>dictionary</a></li>
+      <li>Create <var>result</var> as an empty <a>map</a></li>
       <li>For each <var>graph name</var> and <var>node map</var> in <var>graph map</var>
         and for each <var>id</var> and <var>node</var> in <var>node map</var>:
         <ol>
           <li>Set <var>merged node</var> to the value for <var>id</var> in <var>result</var>, initializing it
-            with a new <a>dictionary</a> consisting of a single <a>entry</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
+            with a new <a>map</a> consisting of a single <a>entry</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
           <li>For each <var>property</var> and <var>values</var> in <var>node</var>:
             <ol>
               <li>If <var>property</var> is a <a>keyword</a>, add <var>property</var> and values to <var>merged node</var>.</li>
@@ -4296,7 +4296,7 @@
 
   <p>This section describes algorithms to deserialize a JSON-LD document to an
     <a>RDF dataset</a> and vice versa. The algorithms are designed for in-memory
-    implementations with random access to <a class="changed">dictionary</a> elements.</p>
+    implementations with random access to <a class="changed">map</a> elements.</p>
 
   <section>
     <h2>Deserialize JSON-LD to RDF Algorithm</h2>
@@ -4354,7 +4354,7 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes a <a>dictionary</a> <var>node map</var>, which
+      <p>The algorithm takes a <a>map</a> <var>node map</var>, which
         is the result of the <a href="#node-map-generation">Node Map Generation algorithm</a> and
         an <a>RDF dataset</a> <var>dataset</var> into which new <a>graphs</a> and <a>triples</a> are added.
         Unless the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option
@@ -4652,22 +4652,22 @@
         for iterating over <a>triples</a> contained within the <a>RdfGraph</a>.</p>
 
       <ol>
-        <li>Initialize <var>default graph</var> to an empty <a class="changed">dictionary</a>.</li>
-        <li>Initialize <var>graph map</var> to a <a class="changed">dictionary</a> consisting
+        <li>Initialize <var>default graph</var> to an empty <a class="changed">map</a>.</li>
+        <li>Initialize <var>graph map</var> to a <a class="changed">map</a> consisting
           of a single <a>entry</a> <code>@default</code> whose value references
           <var>default graph</var>.</li>
-        <li class="changed">Initialize <var>referenced once</var> to an empty <a>dictionary</a>.</li>
+        <li class="changed">Initialize <var>referenced once</var> to an empty <a>map</a>.</li>
         <li>For each <var>graph</var> in  <var>dataset</var>:
           <ol>
             <li>If <var>graph</var> is the <a>default graph</a>,
               set <var>name</var> to <code>@default</code>, otherwise to the
               <a>graph name</a> associated with <var>graph</var>.</li>
             <li>If <var>graph map</var> has no <var>name</var> <a>entry</a>, create one and set
-              its value to an empty <a class="changed">dictionary</a>.</li>
+              its value to an empty <a class="changed">map</a>.</li>
             <li>If <var>graph</var> is not the <a>default graph</a> and
               <var>default graph</var> does not have a <var>name</var> <a>entry</a>,
               create such a <a>entry</a> and initialize its value to a new
-              <a class="changed">dictionary</a> with a single <a>entry</a> <code>@id</code>
+              <a class="changed">map</a> with a single <a>entry</a> <code>@id</code>
               whose value is <var>name</var>.</li>
             <li>Reference the value of the <var>name</var> <a>entry</a> in <var>graph map</var>
               using the variable <var>node map</var>.</li>
@@ -4675,14 +4675,14 @@
               consisting of <var>subject</var>, <var>predicate</var>, and <var>object</var>:
               <ol>
                 <li>If <var>node map</var> does not have a <var>subject</var> <a>entry</a>,
-                  create one and initialize its value to a new <a class="changed">dictionary</a>
+                  create one and initialize its value to a new <a class="changed">map</a>
                   consisting of a single <a>entry</a> <code>@id</code> whose value is
                   set to <var>subject</var>.</li>
                 <li>Reference the value of the <var>subject</var> <a>entry</a> in <var>node map</var>
                   using the variable <var>node</var>.</li>
                 <li>If <var>object</var> is an <a>IRI</a> or <a>blank node identifier</a>,
                   and <var>node map</var> does not have an <var>object</var> <a>entry</a>,
-                  create one and initialize its value to a new <a class="changed">dictionary</a>
+                  create one and initialize its value to a new <a class="changed">map</a>
                   consisting of a single <a>entry</a> <code>@id</code> whose value is
                   set to <var>object</var>.</li>
                 <li>If <var>predicate</var> equals <code>rdf:type</code>, the
@@ -4708,7 +4708,7 @@
                   <ol>
                     <li>Reference the <code>usages</code> <a>entry</a> of the <var>object</var>
                       <a>entry</a> of <var>node map</var> using the variable <var>usages</var>.</li>
-                    <li>Append a new <a>dictionary</a> consisting of three
+                    <li>Append a new <a>map</a> consisting of three
                       <a>entries</a>, <code>node</code>, <code>property</code>, and <code>value</code>
                       to the <var>usages</var> <a>array</a>. The <code>node</code> <a>entry</a>
                       is set to a reference to <var>node</var>, <code>property</code> to <var>predicate</var>,
@@ -4720,7 +4720,7 @@
                 <li class="changed">Otherwise, if <var>object</var> is a <a>blank node identifier</a>,
                   it might represent a list node:
                   <ol>
-                    <li>Set the <var>object</var> <a>entry</a> of <var>referenced once</var> to a new <a>dictionary</a> consisting of three
+                    <li>Set the <var>object</var> <a>entry</a> of <var>referenced once</var> to a new <a>map</a> consisting of three
                       <a>entries</a>, <code>node</code>, <code>property</code>, and <code>value</code>
                       to the <var>usages</var> <a>array</a>. The <code>node</code> <a>entry</a>
                       is set to a reference to <var>node</var>, <code>property</code> to <var>predicate</var>,
@@ -4752,7 +4752,7 @@
                   <span class="changed">the value of the <code>@id</code> <a>entry</a>
                     of <var>node</var> is a <a>blank node identifier</a>,</span>
                   the value of the <a>entry</a> of <var>referenced once</var> associated with the <code>@id</code>
-                  <a>entry</a> of <code>node</code> is a <a>dictionary</a>,
+                  <a>entry</a> of <code>node</code> is a <a>map</a>,
                   <var>node</var> has <code>rdf:first</code> and <code>rdf:rest</code> <a>entries</a>,
                   both of which have as value an <a>array</a> consisting of a single element,
                   and <var>node</var> has no other <a>entries</a> apart from an optional <code>@type</code>
@@ -4849,17 +4849,17 @@
       <h3>Algorithm</h3>
 
       <p>This algorithm takes two required inputs: a <var>value</var> to be converted
-        to a <a class="changed">dictionary</a> and a flag <a data-link-for="JsonLdOptions">useNativeTypes</a>.</p>
+        to a <a class="changed">map</a> and a flag <a data-link-for="JsonLdOptions">useNativeTypes</a>.</p>
 
       <ol>
         <li>If <var>value</var> is an <a>IRI</a> or a
-          <a>blank node identifier</a>, return a new <a class="changed">dictionary</a>
+          <a>blank node identifier</a>, return a new <a class="changed">map</a>
           consisting of a single <a>entry</a> <code>@id</code> whose value is set to
           <var>value</var>.</li>
         <li>Otherwise <var>value</var> is an
           <a>RDF literal</a>:
           <ol>
-            <li>Initialize a new empty <a class="changed">dictionary</a> result.</li>
+            <li>Initialize a new empty <a class="changed">map</a> result.</li>
             <li>Initialize <var>converted value</var> to <var>value</var>.</li>
             <li>Initialize <var>type</var> to <code>null</code></li>
             <li>If <a data-link-for="JsonLdOptions">useNativeTypes</a> is <code>true</code>
@@ -5093,7 +5093,7 @@
     <h3>Extract Script Content Algorithm</h3>
 
     <p>The algorithm extracts the text content a
-      <a>JSON-LD script element</a> into a <a>dictionary</a> or <a>array</a> of <a>maps</a>.
+      <a>JSON-LD script element</a> into a <a>map</a> or <a>array</a> of <a>maps</a>.
       A <dfn>JSON-LD script element</dfn> is a <a data-cite="HTML/scripting.html#the-script-element">script element</a>
       within an HTML [[HTML]] document with the <a data-cite="HTML/semantics.html#attr-link-type">type attribute</a> set to
       <code>application/ld+json</code>.</p>
@@ -5179,8 +5179,8 @@
             and <a data-lt="jsonldprocessor-compact-options">options</a>,
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
             <span class="changed">and <a data-link-for="JsonldOptions">extractAllScripts</a> defaulting to <code>false</code></span>.
-          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>entry</a>,
-            set <var>context</var> to that <a data-lt="member">member's</a> value,
+          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
+            set <var>context</var> to that <a data-lt="entry">entry's</a> value,
             otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
             the <a>base IRI</a> is set to the <a data-link-for="JsonldOptions">base</a> option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
@@ -5189,7 +5189,7 @@
             otherwise to <code>null</code>.</li>
           <li>Set <var>compacted output</var> to the result of using the <a href="#compaction-algorithm">Compaction algorithm</a>,
             using <a>active context</a>,
-            an empty <a>dictionary</a> as <var>inverse context</var>,
+            an empty <a>map</a> as <var>inverse context</var>,
             <code>null</code> as <var>property</var>,
             <var>expanded input</var> as <var>element</var>,
             and if passed, the <a data-link-for="JsonldOptions">compactArrays</a>
@@ -5202,12 +5202,12 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-compact-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a>,
+           <dd>The <a class="changed">map</a>,
              array of <a class="changed">maps</a> to perform the compaction upon,
              or an <a>IRI</a> referencing the JSON-LD document to compact.</dd>
           <dt><dfn data-lt="jsonldprocessor-compact-context" data-lt-noDefault>context</dfn></dt>
           <dd>The context to use when <a>compacting</a> the <a data-lt="jsonldprocessor-compact-input">input</a>;
-            it can be specified by using a <a class="changed">dictionary</a>,
+            it can be specified by using a <a class="changed">map</a>,
             an <a>IRI</a>,
             or an array consisting of <a class="changed">maps</a> and <a>IRI</a>s.</dd>
           <dt><dfn data-lt="jsonldprocessor-compact-options" data-lt-noDefault>options</dfn></dt>
@@ -5242,8 +5242,8 @@
           <li>If an <a data-link-for="JsonldOptions">expandContext</a> option has been passed,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the <a data-link-for="JsonldOptions">expandContext</a> as <var>local context</var>.
-            If <a data-link-for="JsonldOptions">expandContext</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>entry</a>,
-            pass that <a data-lt="member">member's</a> value instead.</li>
+            If <a data-link-for="JsonldOptions">expandContext</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
+            pass that <a data-lt="entry">entry's</a> value instead.</li>
           <li>If <var>remote document</var> has a <a data-link-for="RemoteDocument">contextUrl</a>,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the <a data-link-for="RemoteDocument">contextUrl</a> as <var>local context</var>.</li>
@@ -5261,7 +5261,7 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-expand-input" data-lt-noDefault>input</dfn></dt>
-          <dd>The <a class="changed">dictionary</a>,
+          <dd>The <a class="changed">map</a>,
             or array of <a class="changed">maps</a> to perform the expansion upon,
             or an <a>IRI</a> referencing the <a>JSON-LD document</a> to expand.</dd>
           <dt><dfn data-lt="jsonldprocessor-expand-options" data-lt-noDefault>options</dfn></dt>
@@ -5284,8 +5284,8 @@
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
             <span class="changed">and <a data-link-for="JsonldOptions">extractAllScripts</a> defaulting to <code>true</code></span>.</li>
-          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">dictionary</a> having an <code>@context</code> <a>entry</a>,
-            set <var>context</var> to that <a data-lt="member">member's</a> value,
+          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
+            set <var>context</var> to that <a data-lt="entry">entry's</a> value,
             otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
             the <a>base IRI</a> is set to the <a data-link-for="JsonldOptions">base</a> option
@@ -5307,12 +5307,12 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-flatten-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a>,
+           <dd>The <a class="changed">map</a>,
              or array of <a class="changed">maps</a>,
              or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-flatten-context" data-lt-noDefault>context</dfn></dt>
           <dd>The context to use when <a>compacting</a> the flattened <var>expanded input</var>;
-            it can be specified by using a <a class="changed">dictionary</a>,
+            it can be specified by using a <a class="changed">map</a>,
             an <a>IRI</a>, or an array consisting of <a class="changed">maps</a>
             and <a>IRI</a>s.
             If not passed or <code>null</code> is passed,
@@ -5346,7 +5346,7 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-fromRdf-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a>,
+           <dd>The <a class="changed">map</a>,
              or array of <a class="changed">maps</a>,
              or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-fromRdf-options" data-lt-noDefault>options</dfn></dt>
@@ -5370,7 +5370,7 @@
             <span class="changed">with <a data-link-for="JsonldOptions">ordered</a> set to <code>false</code></span>,
             <span class="changed">and <a data-link-for="JsonldOptions">extractAllScripts</a> defaulting to <code>true</code></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
-          <li>Create a new <a>dictionary</a> <var>node map</var>.</li>
+          <li>Create a new <a>map</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
             passing <var>expanded input</var> as <var>element</var>
             and <var>node map</var>.</li>
@@ -5387,7 +5387,7 @@
 
         <dl class="parameters">
           <dt><dfn data-lt="jsonldprocessor-toRdf-input" data-lt-noDefault>input</dfn></dt>
-           <dd>The <a class="changed">dictionary</a>,
+           <dd>The <a class="changed">map</a>,
              or array of <a class="changed">maps</a>,
              or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-toRdf-options" data-lt-noDefault>options</dfn></dt>
@@ -5400,7 +5400,7 @@
     <pre class="idl changed" data-transform="unComment"><!--
       dictionary JsonLdDictionary {};
     --></pre>
-    <p class="changed">The <dfn>JsonLdDictionary</dfn> is the definition of a <a>dictionary</a>
+    <p class="changed">The <dfn>JsonLdDictionary</dfn> is the definition of a <a>map</a>
       used to contain arbitrary <a>map entries</a>
       which are the result of parsing a <a>JSON Object</a>.
 
@@ -5409,7 +5409,7 @@
     --></pre>
 
     <p class="changed">The <dfn>JsonLdInput</dfn> type is used to refer to an input value
-      that that may be a <a>dictionary</a>,
+      that that may be a <a>map</a>,
       an array of <a>maps </a>,
       or a <a>string</a> representing an <a>IRI</a>
       which can be dereferenced to retrieve a valid JSON document.</p>
@@ -5419,7 +5419,7 @@
     --></pre>
 
     <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value
-      that may be a <a class="changed">dictionary</a>,
+      that may be a <a class="changed">map</a>,
       a <a>string</a> representing an <a>IRI</a>,
       or an array of <a class="changed">maps</a> and <a>strings</a>.</p>
   </section>
@@ -6182,7 +6182,7 @@
       identifiers are created.</li>
     <li>Values of <code>@type</code>, or an alais of <code>@type</code>, may now have their <code>@container</code> set to <code>@set</code>
       to ensure that <code>@type</code> entries are always represented as an array. This
-      also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>dictionary</a>
+      also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>map</a>
       with <code>@container</code> set to <code>@set</code>.</li>
     <li>Updated the <a href="#iri-expansion">IRI Expansion algorithm</a> so that
       if <var>value</var> contains a colon (<code>:</code>), but
