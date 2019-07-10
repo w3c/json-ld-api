@@ -1066,8 +1066,10 @@
         <a>default language</a> by processing three specific keywords:
         <code>@base</code>, <code>@vocab</code>, <code>@version</code>, and <code>@language</code>.
         These are handled before any other <a>entries</a> in the <a>local context</a> because
-        they affect how the other <a>entries</a> are processed. Please note that <code>@base</code> is
-        ignored when processing remote contexts.</p>
+        they affect how the other <a>entries</a> are processed.
+        <span class="changed">If <a>context</a> contains <code>@source</code>, it is retrieved and is reverse-merged
+          into the containing context, allowing JSON-LD 1.0 contexts to be uplifed to JSON-LD 1.1.</span>
+        Please note that <code>@base</code> is ignored when processing remote contexts.</p>
 
       <p class="changed">If <a>context</a> is not to be propagated,
         a reference to the <var>previous context</var> is retained so that
@@ -1093,15 +1095,14 @@
 
       <p>This algorithm specifies how a new <a>active context</a> is updated
         with a <a>local context</a>. The algorithm takes two required
-        <span class="changed">and four optional</span> input variables.
+        <span class="changed">and three optional</span>
+        input variables.
         The required inputs are an <var>active context</var> and a <var>local context</var>.
         The optional inputs are an <a>array</a> <var>remote contexts</var>,
         defaulting to a new empty <a>array</a>, which is used to detect cyclical context inclusions,
         <span class="changed">
           <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
-          <var>protected</var>, defaulting to <code>false</code>,
-          which provides a defeault value for <code>@protected</code>,
           and <var>propagate</var>, defaulting to <code>true</code>
           to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>.</span>.
       </p>
@@ -1195,9 +1196,6 @@
                   to <code>json-ld-1.1</code>, if not already set.</li>
               </ol>
             </li>
-            <li class="changed">If <var>context</var> has a <code>@protected</code> <a>entry</a>,
-              set the value of <var>protected</var> from its value.</li>
-            </li>
             <li class="changed">If <var>context</var> has an <code>@source</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
@@ -1206,12 +1204,39 @@
                 <li>Otherwise, if its value is not a <a>string</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid @source value</a>
                   error has been detected and processing is aborted.</li>
-                <li>Otherwise, set <var>result</var> to the result of recursively calling this algorithm,
-                  passing <var>result</var> for <var>active context</var>,
-                  the value of <code>@source</code> for <var>local context</var>,
-                  a copy of <var>remote contexts</var>,
-                  and <var>protected</var>.
-                </li>
+                <li>Set <var>source</var> to the result of resolving the value of <code>@source</code> against
+                  the base IRI which is established as specified in
+                  <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
+                  of [[RFC3986]]. Only the basic algorithm in
+                  <a data-cite="RFC3986#section-5.2">section 5.2</a>
+                  of [[RFC3986]] is used; neither
+                  <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
+                  <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
+                  are performed. Characters additionally allowed in IRI
+                  references are treated in the same way that unreserved
+                  characters are treated in URI references, per
+                  <a data-cite="RFC3987#section-6.5">section 6.5</a>
+                  of [[RFC3987]].</li>
+                <li>Otherwise, dereference <var>source</var> using
+                  the <a>LoadDocumentCallback</a>, passing <var>source</var>
+                  for <a data-link-for="LoadDocumentCallback">url</a>,
+                  and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a></li>
+                <li>If <var>source</var> cannot be dereferenced,
+                  <span>or cannot be transformed into the <a>internal representation</a></span>,
+                  a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
+                  error has been detected and processing is aborted.</li>
+                <li>If the dereferenced document has no
+                  top-level <a>map</a> with an <code>@context</code> <a>entry</a>,
+                  or if the value of <code>@context</code> is not an <a>map</a>,
+                  an <a data-link-for="JsonLdErrorCode">invalid remote context</a>
+                  has been detected and processing is aborted; otherwise,
+                  set <var>source context</var> to the value of that <a>entry</a>.</li>
+                <li>If <var>source context</var> has a <code>@source</code> <a>entry</a>,
+                  an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Set <var>context</var> to the result of merging <var>context</var>
+                  into <var>source context</var>, replacing common entries
+                  with those from <var>context</var>.</li>
               </ol>
             </li>
             <li>If <var>context</var> has an <code>@base</code> <a>entry</a> and <var>remote contexts</var> is empty, i.e., the currently
@@ -1282,7 +1307,7 @@
                   and no further processing is necessary.</li>
               </ol>
             </li>
-            <li>Create a <a class="changed">dictionary</a> <var>defined</var> to use to keep
+            <li>Create a <a class="changed">map</a> <var>defined</var> to use to keep
               track of whether or not a <a>term</a> has already been defined
               or currently being defined during recursion.</li>
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
@@ -1299,7 +1324,9 @@
               <var>context</var> for <var>local context</var>, <var>key</var>,
               <var>defined</var>,
               <span class="changed">
-                <var>protected</var>, <var>override protected</var>, and <var>propagate</var>
+                the value of the <code>@protected</code>
+                entry from <var>context</var>, if any, for <var>protected</var>,
+                and <var>propagate</var>
               </span>.
             </li>
           </ol>
