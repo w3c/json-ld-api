@@ -3,7 +3,7 @@
     "@vocab": "http://example.com/",
     "@version": 1.1,
     "@protected": true,
-    "@source": "so07-context.jsonld"
+    "@import": "so07-context.jsonld"
   },
   "protected1": {
     "@context": {

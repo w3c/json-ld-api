@@ -1,7 +1,7 @@
 {
   "@context": {
     "@version": 1.1,
-    "@source": "so09-context.jsonld",
+    "@import": "so09-context.jsonld",
     "@vocab": "http://example.org/redefined/"
   },
   "term": "value"
