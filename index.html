@@ -1061,7 +1061,9 @@
         has been detected. Otherwise, we process <a>context</a> by recursively using
         this algorithm ensuring that there is no cyclical reference.</p>
 
-      <p>If <a>context</a> is a <a class="changed">map</a>, we first update the
+      <p>If <a>context</a> is a <a class="changed">map</a>,
+        it is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.
+        We first update the
         <a>base IRI</a>, the <a>vocabulary mapping</a>, <a>processing mode</a>, and the
         <a>default language</a> by processing three specific keywords:
         <code>@base</code>, <code>@vocab</code>, <code>@version</code>, and <code>@language</code>.
@@ -1074,7 +1076,7 @@
       <p class="changed">If <a>context</a> is not to be propagated,
         a reference to the <var>previous context</var> is retained so that
         it may be rolled back when a new <a>node object</a> is entered.
-        By default, all contexts are propagated, other than type-scoped contexts.</p>
+        By default, all contexts are propagated, other than <a>type-scoped contexts</a>.</p>
 
       <p>Then, for every other <a>entry</a> in <a>local context</a>, we update
         the <a>term definition</a> in <var>result</var>. Since
@@ -1183,6 +1185,7 @@
             <li>If <var>context</var> is not a <a class="changed">map</a>, an
               <a data-link-for="JsonLdErrorCode">invalid local context</a>
               error has been detected and processing is aborted.</li>
+            <li>Otherwise, <var>context</var> is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.</li>
             <li class="changed">If <var>context</var> has an <code>@version</code> <a>entry</a>:
               <ol>
                 <li>If the associated value is not <code>1.1</code>,
@@ -1217,7 +1220,7 @@
                   characters are treated in URI references, per
                   <a data-cite="RFC3987#section-6.5">section 6.5</a>
                   of [[RFC3987]].</li>
-                <li>Otherwise, dereference <var>import</var> using
+                <li>Dereference <var>import</var> using
                   the <a>LoadDocumentCallback</a>, passing <var>import</var>
                   for <a data-link-for="LoadDocumentCallback">url</a>,
                   and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a></li>
@@ -1227,7 +1230,8 @@
                   error has been detected and processing is aborted.</li>
                 <li>If the dereferenced document has no
                   top-level <a>map</a> with an <code>@context</code> <a>entry</a>,
-                  or if the value of <code>@context</code> is not an <a>map</a>,
+                  or if the value of <code>@context</code> is not a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>
+                  (i.e., it is not an <a>map</a>),
                   an <a data-link-for="JsonLdErrorCode">invalid remote context</a>
                   has been detected and processing is aborted; otherwise,
                   set <var>import context</var> to the value of that <a>entry</a>.</li>
@@ -1897,15 +1901,15 @@
         <li class="changed">If <var>active property</var> is <code>@default</code>,
           set the <a data-link-for="JsonLdOptions">frameExpansion</a> flag to <code>false</code>.</li>
         <li class="changed">If <var>active property</var> has a <a>term definition</a> in <var>active context</var>
-          has a <a>local context</a>, set <var>property scoped context</var> to the that <a>local context</a>.</li>
+          has a <a>local context</a>, set <var>property-scoped context</var> to the that <a>local context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>,
           <ol>
             <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
               drop the free-floating <a>scalar</a> by returning <code>null</code>.</li>
-            <li class="changed">If <var>property scoped context</var> is defined,
+            <li class="changed">If <var>property-scoped context</var> is defined,
               set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var> and <var>property scoped context</var> as <var>local context</var>.</li>
+              passing <var>active context</var> and <var>property-scoped context</var> as <var>local context</var>.</li>
             <li>Return the result of the
               <a href="#value-expansion">Value Expansion algorithm</a>, passing the
               <var>active context</var>, <var>active property</var>, and
@@ -1946,18 +1950,18 @@
           and <var>element</var> does not consist of a single entry expanding to <code>@id</code>,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
-        <li class="changed">If <var>property scoped context</var> is defined,
+        <li class="changed">If <var>property-scoped context</var> is defined,
           set <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-          passing <var>active context</var> and <var>property scoped context</var> as <var>local context</var>.</li>
+          passing <var>active context</var> and <var>property-scoped context</var> as <var>local context</var>.</li>
         <li>If <var>element</var> contains the <a>entry</a> <code>@context</code>, set
           <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
           passing <var>active context</var> and the value of the
           <code>@context</code> <a>entry</a> as <var>local context</var>.</li>
-        <li class="changed">Set <var>type scoped context</var> to <var>active context</var>.
+        <li class="changed">Set <var>type-scoped context</var> to <var>active context</var>.
           This is used for expanding values that may be relevant to any previous
-          type-scoped <a>context</a>.</li>
+          <a>type-scoped context</a>.</li>
         <li class="changed">For each <var>key</var>/<var>value</var> pair in <var>element</var>
           where <var>key</var> expands to <code>@type</code> using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
@@ -2024,7 +2028,7 @@
                   error has been detected and processing is aborted. Otherwise,
                   set <var>expanded value</var> to the result of using the
                   <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-                  <var class="changed">type scoped context</var> for <var>active context</var>,
+                  <var class="changed">type-scoped context</var> for <var>active context</var>,
                   <code>true</code> for <var>vocab</var>,
                   and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
                   or each of its items.
@@ -2610,9 +2614,9 @@
         <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
 
       <ol>
-        <li class="changed">Set <var>type scoped context</var> to <var>active context</var>.
+        <li class="changed">Set <var>type-scoped context</var> to <var>active context</var>.
           This is used for compacting values that may be relevant to any previous
-          type-scoped <a>context</a>.</li>
+          <a>type-scoped context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>, it is already in its most
           compact form, so simply return <var>element</var>.</li>
         <li>If <var>element</var> is an <a>array</a>:
@@ -2694,13 +2698,13 @@
           Then, for each <var>term</var>
           in <var>compacted types</var> ordered lexicographically:
           <ol>
-            <li>If the <a>term definition</a> for <var>term</var> in <var>type scoped context</var> has a
+            <li>If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
               <a>local context</a>:
               <ol>
                 <li>Set <var>active context</var> to the result of the
                   <a href="#context-processing-algorithm">Context Processing algorithm</a>,
                   passing <var>active context</var> and the value of <var>term</var>'s
-                  <a>local context</a> in <var>type scoped context</var> as <var>local context</var>.</li>
+                  <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>.</li>
                 <li>Set <var>inverse context</var> using the
                   <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
                   using <var>active context</var>.</li>
@@ -2734,7 +2738,7 @@
                 <li>If <var>expanded value</var> is a <a>string</a>,
                   then initialize <var>compacted value</var> to the result
                   of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>type scoped context</var> for <var>active context</var>, <var>inverse context</var>,
+                  passing <var>type-scoped context</var> for <var>active context</var>, <var>inverse context</var>,
                   <var>expanded value</var> for <var>var</var>,
                   and <code>true</code> for <var>vocab</var>.</li>
                 <li>Otherwise, <var>expanded value</var> must be a
@@ -2747,7 +2751,7 @@
                       <ol>
                         <li>Set <var>term</var> to the result of
                           of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                          passing <var>type scoped context</var> for <var>active context</var>, <var>inverse context</var>,
+                          passing <var>type-scoped context</var> for <var>active context</var>, <var>inverse context</var>,
                           <var>expanded type</var> for <var>var</var>, and
                           <code>true</code> for <var>vocab</var>.</li>
                         <li>Append <var>term</var>, to <var>compacted value</var>.</li>
@@ -6299,7 +6303,7 @@
       <a>absolute IRI</a> which could be confused with a compact IRI in the
       <a>active context</a>.</li>
     <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
-      type-scoped contexts. This can be controlled using the <code>@propagate</code>
+      <a>type-scoped contexts</a>. This can be controlled using the <code>@propagate</code>
       <a>entry</a> in a <a>local context</a>.</li>
     <li>A context may contain a <code>@import</code> <a>entry</a> used to reference a remote context
       within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
