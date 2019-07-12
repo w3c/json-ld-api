@@ -4,7 +4,7 @@
     "@vocab": "http://example/",
     "bar": {
       "@context": {
-        "@source": "so06-context.jsonld",
+        "@import": "so06-context.jsonld",
         "@propagate": false
       }
     }

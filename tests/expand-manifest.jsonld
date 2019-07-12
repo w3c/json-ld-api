@@ -2398,40 +2398,40 @@
     }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "@source is invalid in 1.0.",
-      "purpose": "@source is invalid in 1.0.",
+      "name": "@import is invalid in 1.0.",
+      "purpose": "@import is invalid in 1.0.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so01-in.jsonld",
       "expect": "invalid context member"
     }, {
       "@id": "#tso02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "@source must be a string",
-      "purpose": "@source must be a string.",
+      "name": "@import must be a string",
+      "purpose": "@import must be a string.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so02-in.jsonld",
-      "expect": "invalid @source value"
+      "expect": "invalid @import value"
     }, {
       "@id": "#tso03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "@source overflow",
-      "purpose": "Processors must detect source contexts that include @source.",
+      "name": "@import overflow",
+      "purpose": "Processors must detect source contexts that include @import.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so03-in.jsonld",
       "expect": "invalid context member"
     }, {
       "@id": "#tso05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "@propagate: true on type-scoped context with @source",
-      "purpose": "type-scoped context with @propagate: true survive node-objects (with @source)",
+      "name": "@propagate: true on type-scoped context with @import",
+      "purpose": "type-scoped context with @propagate: true survive node-objects (with @import)",
       "input": "expand/so05-in.jsonld",
       "expect": "expand/so05-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tso06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "@propagate: false on property-scoped context with @source",
-      "purpose": "property-scoped context with @propagate: false do not survive node-objects (with @source)",
+      "name": "@propagate: false on property-scoped context with @import",
+      "purpose": "property-scoped context with @propagate: false do not survive node-objects (with @import)",
       "input": "expand/so06-in.jsonld",
       "expect": "expand/so06-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}

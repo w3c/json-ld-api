@@ -1,5 +1,5 @@
 {
   "@context": {
-    "@source": "so01-in.jsonld"
+    "@import": "so01-in.jsonld"
   }
 }

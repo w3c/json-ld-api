@@ -1067,7 +1067,7 @@
         <code>@base</code>, <code>@vocab</code>, <code>@version</code>, and <code>@language</code>.
         These are handled before any other <a>entries</a> in the <a>local context</a> because
         they affect how the other <a>entries</a> are processed.
-        <span class="changed">If <a>context</a> contains <code>@source</code>, it is retrieved and is reverse-merged
+        <span class="changed">If <a>context</a> contains <code>@import</code>, it is retrieved and is reverse-merged
           into the containing context, allowing JSON-LD 1.0 contexts to be uplifed to JSON-LD 1.1.</span>
         Please note that <code>@base</code> is ignored when processing remote contexts.</p>
 
@@ -1196,15 +1196,15 @@
                   to <code>json-ld-1.1</code>, if not already set.</li>
               </ol>
             </li>
-            <li class="changed">If <var>context</var> has an <code>@source</code> <a>entry</a>:
+            <li class="changed">If <var>context</var> has an <code>@import</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
                 <li>Otherwise, if its value is not a <a>string</a>,
-                  an <a data-link-for="JsonLdErrorCode">invalid @source value</a>
+                  an <a data-link-for="JsonLdErrorCode">invalid @import value</a>
                   error has been detected and processing is aborted.</li>
-                <li>Set <var>source</var> to the result of resolving the value of <code>@source</code> against
+                <li>Set <var>import</var> to the result of resolving the value of <code>@import</code> against
                   the base IRI which is established as specified in
                   <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
                   of [[RFC3986]]. Only the basic algorithm in
@@ -1217,11 +1217,11 @@
                   characters are treated in URI references, per
                   <a data-cite="RFC3987#section-6.5">section 6.5</a>
                   of [[RFC3987]].</li>
-                <li>Otherwise, dereference <var>source</var> using
-                  the <a>LoadDocumentCallback</a>, passing <var>source</var>
+                <li>Otherwise, dereference <var>import</var> using
+                  the <a>LoadDocumentCallback</a>, passing <var>import</var>
                   for <a data-link-for="LoadDocumentCallback">url</a>,
                   and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a></li>
-                <li>If <var>source</var> cannot be dereferenced,
+                <li>If <var>import</var> cannot be dereferenced,
                   <span>or cannot be transformed into the <a>internal representation</a></span>,
                   a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
                   error has been detected and processing is aborted.</li>
@@ -1230,12 +1230,12 @@
                   or if the value of <code>@context</code> is not an <a>map</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid remote context</a>
                   has been detected and processing is aborted; otherwise,
-                  set <var>source context</var> to the value of that <a>entry</a>.</li>
-                <li>If <var>source context</var> has a <code>@source</code> <a>entry</a>,
+                  set <var>import context</var> to the value of that <a>entry</a>.</li>
+                <li>If <var>import context</var> has a <code>@import</code> <a>entry</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
                 <li>Set <var>context</var> to the result of merging <var>context</var>
-                  into <var>source context</var>, replacing common entries
+                  into <var>import context</var>, replacing common entries
                   with those from <var>context</var>.</li>
               </ol>
             </li>
@@ -5984,7 +5984,7 @@
             "invalid @prefix value",
             "invalid @propagate value",
             "invalid @reverse value",
-            "invalid @source value",
+            "invalid @import value",
             "invalid @version value",
             "invalid base IRI",
             "invalid container mapping",
@@ -6046,8 +6046,8 @@
         <dt><dfn>invalid @reverse value</dfn></dt>
         <dd>An invalid value for an <code>@reverse</code> <a>entry</a> has been detected,
           i.e., the value was not a <a class="changed">map</a>.</dd>
-        <dt class="changed"><dfn>invalid @source value</dfn></dt>
-        <dd class="changed">An invalid value for <code>@source</code> has been found.</dd>
+        <dt class="changed"><dfn>invalid @import value</dfn></dt>
+        <dd class="changed">An invalid value for <code>@import</code> has been found.</dd>
         <dt><dfn>invalid @version value</dfn></dt>
         <dd>The <code>@version</code> <a>entry</a> was used in a <a>context</a>
           with an out of range value.</dd>
@@ -6301,7 +6301,7 @@
     <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
       type-scoped contexts. This can be controlled using the <code>@propagate</code>
       <a>entry</a> in a <a>local context</a>.</li>
-    <li>A context may contain a <code>@source</code> <a>entry</a> used to reference a remote context
+    <li>A context may contain a <code>@import</code> <a>entry</a> used to reference a remote context
       within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
       authored for <code>JSON-LD 1.0</code>.</li>
   </ul>
