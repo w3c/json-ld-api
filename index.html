@@ -5206,7 +5206,7 @@
       that developers use to access the JSON-LD transformation methods.</p>
 
     <p>It is important to highlight that implementations do not modify the input parameters.
-      If an error is detected, the <a>Promise</a> is
+      If an error is detected, the {{Promise}} is
       rejected passing a <a>JsonLdError</a> with the corresponding error
       <a data-link-for="JsonLdError">code</a>
       and processing is stopped.</p>
@@ -5249,7 +5249,7 @@
           <var>context</var> according to the steps in the <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+          <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of
             using the <a data-link-for="JsonLdProcessor">expand()</a> method
@@ -5300,7 +5300,7 @@
           according to the steps in the <a href="#expansion-algorithm">Expansion algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+          <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
@@ -5355,7 +5355,7 @@
           according to the steps in the <a href="#flattening-algorithm">Flattening algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+          <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-flatten-input">input</a>
@@ -5411,7 +5411,7 @@
           from an arbitrary input, other than the <a data-link-for="JsonLdProcessor">toRdf()</a> method.</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+          <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded result</var> to the result of invoking the
             <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
@@ -5439,7 +5439,7 @@
           according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
 
         <ol>
-          <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+          <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then executed asynchronously.</li>
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand()</a> method
@@ -5734,8 +5734,8 @@
 
       <p>The <dfn>LoadDocumentCallback</dfn> defines a callback that custom document loaders
         have to implement to be used to retrieve remote documents and contexts.
-        The callback returns a <a>Promise</a> resolving to a <a>RemoteDocument</a>.
-        On failure, the <a>Promise</a> is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
+        The callback returns a {{Promise}} resolving to a <a>RemoteDocument</a>.
+        On failure, the {{Promise}} is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
 
       <pre class="idl" data-transform="unComment"><!--
         callback LoadDocumentCallback = Promise&lt;RemoteDocument> (
@@ -5756,7 +5756,7 @@
         requirements on implementations of the callback.</p>
 
       <ol class="changed">
-        <li>Create a new <a>Promise</a> <var>promise</var> and return it.
+        <li>Create a new {{Promise}} <var>promise</var> and return it.
           The following steps are then executed asynchronously.</li>
         <li>Set <var>document</var> to the body retrieved from
           the resource identified by <a data-link-for="LoadDocumentCallback">url</a>,
@@ -5927,7 +5927,7 @@
           If the response's <a>Content-Type</a> is <code>application/ld+json</code>,
           the HTTP Link Header is ignored.
           If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
-          the <a>Promise</a> of the <a>LoadDocumentCallback</a> is rejected
+          the {{Promise}} of the <a>LoadDocumentCallback</a> is rejected
           with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>.</dd>
         <dt><dfn data-dfn-for="RemoteDocument">documentUrl</dfn></dt>
         <dd>The final URL of the loaded document.
