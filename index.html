@@ -1317,11 +1317,12 @@
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
               <var>key</var> is not
               <code>@base</code>,
-              <code>@vocab</code>,
+              <code class="changed">@import</code>,
               <code>@language</code>,
               <code class="changed">@propagate</code>,
-              <code class="changed">@protected</code>, or
-              <code>@version</code>,
+              <code class="changed">@protected</code>,
+              <code>@version</code>, or
+              <code>@vocab</code>,
               invoke the
               <a href="#create-term-definition">Create Term Definition algorithm</a>,
               passing <var>result</var> for <var>active context</var>,
