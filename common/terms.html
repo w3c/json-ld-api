@@ -171,11 +171,11 @@
   <dt><dfn data-cite="JSON-LD11#dfn-default-object">default object</dfn></dt><dd>
     A <a>default object</a> is a <a>map</a> that has a <code>@default</code> key.</dd>
   <dt><dfn data-cite="JSON-LD11#dfn-embedded-context">embedded context</dfn></dt><dd>
-    An embedded <a>context</a> is a context which appears as part of a
-    <a>node object</a>, <a>value object</a>, <a>graph object</a>, <a>list object</a>,
-    <a>set object</a>, <span class="changed">or as part of <a>nested properties</a>,
-      or in an <a>expanded term definition</a></span>
-    using the <code>@context</code> <a>entry</a>.
+    An embedded <a>context</a> is a context which appears
+    as the <code>@context</code> <a>entry</a> of one of the following:
+    a <a>node object</a>, a <a>value object</a>, a <a>graph object</a>, a <a>list object</a>,
+    a <a>set object</a>, the value of a <a>nested properties</a>,
+    or the value of an <a>expanded term definition</a></span>.
     Its value may be a <a>map</a> for a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>,
     as an <a>IRI</a>, or as an <a>array</a> combining either of the above.
   </dd>
