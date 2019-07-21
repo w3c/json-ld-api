@@ -1581,6 +1581,33 @@
       "expect": "compact/m019-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tm020",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "node reference compacts to string value of type map",
+      "purpose": "index on @type",
+      "input": "compact/m020-in.jsonld",
+      "context": "compact/m020-context.jsonld",
+      "expect": "compact/m020-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tm021",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "node reference compacts to string value of type map with @type: @id",
+      "purpose": "index on @type",
+      "input": "compact/m021-in.jsonld",
+      "context": "compact/m021-context.jsonld",
+      "expect": "compact/m021-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tm022",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "node reference compacts to string value of type map with @type: @vocab",
+      "purpose": "index on @type",
+      "input": "compact/m022-in.jsonld",
+      "context": "compact/m022-context.jsonld",
+      "expect": "compact/m022-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tn001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Indexes to @nest for property with @nest",

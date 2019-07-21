@@ -1639,6 +1639,38 @@
       "input": "toRdf/m016-in.jsonld",
       "expect": "toRdf/m016-out.nq",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      }, {
+        "@id": "#tm017",
+        "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+        "name": "string value of type map expands to node reference",
+        "purpose": "index on @type",
+        "input": "toRdf/m017-in.jsonld",
+        "expect": "toRdf/m017-out.nq",
+        "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      }, {
+        "@id": "#tm018",
+        "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+        "name": "string value of type map expands to node reference with @type: @id",
+        "purpose": "index on @type",
+        "input": "toRdf/m018-in.jsonld",
+        "expect": "toRdf/m018-out.nq",
+        "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      }, {
+        "@id": "#tm019",
+        "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+        "name": "string value of type map expands to node reference with @type: @vocab",
+        "purpose": "index on @type",
+        "input": "toRdf/m019-in.jsonld",
+        "expect": "toRdf/m019-out.nq",
+        "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      }, {
+        "@id": "#tm020",
+        "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+        "name": "string value of type map must not be a literal",
+        "purpose": "index on @type",
+        "input": "toRdf/m020-in.jsonld",
+        "expect": "invalid type mapping",
+        "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
