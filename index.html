@@ -5193,7 +5193,7 @@
     JSON-LD data into a variety of output formats that are often easier to
     work with.</p>
 
-  <p>The JSON-LD API uses <a>Promises</a> to represent
+  <p>The JSON-LD API uses <a data-cite="ECMASCRIPT#sec-promise-objects">Promises</a> to represent
     the result of the various asynchronous operations.
     <a data-cite="ECMASCRIPT#sec-promise-objects">Promises</a> are defined in [[ECMASCRIPT]].
     General use within specifications can be found in [[promises-guide]].</p>
@@ -5220,24 +5220,25 @@
       in this document mention this directly.</p>
 
     <pre class="idl">
+      [Exposed=Window]
       interface JsonLdProcessor {
         static Promise&lt;JsonLdDictionary> compact(
           JsonLdInput input,
-          JsonLdContext context,
-          optional JsonLdOptions? options);
+          optional JsonLdContext context = {},
+          optional JsonLdOptions options = {});
         static Promise&lt;sequence&lt;JsonLdDictionary>> expand(
           JsonLdInput input,
-          optional JsonLdOptions? options);
+          optional JsonLdOptions options = {});
         static Promise&lt;JsonLdDictionary> flatten(
           JsonLdInput input,
-          optional JsonLdContext? context,
-          optional JsonLdOptions? options);
+          optional JsonLdContext context = {},
+          optional JsonLdOptions options = {});
         static Promise&lt;sequence&lt;JsonLdDictionary>> fromRdf(
           RdfDataset input,
-          optional JsonLdOptions? options);
+          optional JsonLdOptions options = {});
         static Promise&lt;RdfDataset> toRdf(
           JsonLdInput input,
-          optional JsonLdOptions? options);
+          optional JsonLdOptions options = {});
       };
     </pre>
 
@@ -5512,7 +5513,7 @@
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed" data-transform="unComment">
-      [Constructor]
+      [Constructor, Exposed=Window]
       interface RdfDataset {
         readonly attribute RdfGraph defaultGraph;
         void add(USVString graphName, RdfGraph graph);
@@ -5554,7 +5555,7 @@
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed" data-transform="unComment">
-      [Constructor]
+      [Constructor, Exposed=Window]
       interface RdfGraph {
         void add(RdfTriple triple);
         iterable&lt;RdfTriple>;
@@ -5582,7 +5583,7 @@
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed" data-transform="unComment">
-      [Constructor]
+      [Constructor, Exposed=Window]
       interface RdfTriple {
         readonly attribute USVString subject;
         readonly attribute USVString predicate;
@@ -5609,7 +5610,7 @@
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
     <pre class="idl changed" data-transform="unComment">
-      [Constructor]
+      [Constructor, Exposed=Window]
       interface RdfLiteral {
         readonly attribute USVString value;
         readonly attribute USVString datatype;
