@@ -1887,7 +1887,7 @@
         Special processing for a <a>JSON-LD Frame</a> is invoked when the
         <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set to <code>true</code>.</p>
 
-      <p class="note">As mentioned in <a data-cite="JSON-LD11#terms-0">Terms</a> [[JSON-LD11]],
+      <p class="note">As mentioned in <a data-cite="JSON-LD11#terms">Terms</a> [[JSON-LD11]],
         to avoid forward-compatibility issues, <a>terms</a> should not start with an
         <code>@</code> character as future versions of JSON-LD may introduce
         additional <a>keywords</a>. This step will treat such terms like any
@@ -4383,14 +4383,14 @@
     <p>This algorithm deserializes a JSON-LD document to an <a>RDF dataset</a>.
       Please note that RDF does not allow a <a>blank node</a> to be used
       as a <a>property</a>, while JSON-LD does. Therefore, by default
-      RDF triples that would have contained blank nodes as <a>properties</a> are
+      <a>triples</a> that would have contained blank nodes as <a>properties</a> are
       discarded when interpreting JSON-LD as RDF.</p>
 
     <p class="issue atrisk">The use of <a>blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD.</p>
 
     <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
-      <a>RDF triples</a> and <a>graph names</a>:</p>
+      <a>triples</a> and <a>graph names</a>:</p>
     <ul>
       <li>An <a>IRI</a> is <a>well-formed</a> if it matches the
         <a data-cite="RFC3987#section-2.2">ABNF for <strong>IRI</strong></a> as
@@ -4418,14 +4418,14 @@
         This allows each graph represented within the document to be
         extracted and flattened, making it easier to process each
         <a>node object</a>.
-        Each graph from the <var>node map</var> is processed to extract <a>RDF triple</a>,
+        Each graph from the <var>node map</var> is processed to extract <a>triple</a>,
         to which any (non-default) graph name is applied to create an <a>RDF dataset</a>.
         Each <a>node object</a> in the <var>node map</var> has an <code>@id</code> <a>entry</a>
-        which corresponds to the <a>RDF subject</a>,
-        the other <a>entries</a> represent <a>RDF predicates</a>.
+        which corresponds to the <a>subject</a>,
+        the other <a>entries</a> represent <a>predicates</a>.
         Each <a>entry</a> value is either an <a>IRI</a> or <a>blank node identifier</a>
         or can be transformed to an<a>RDF literal</a>
-        to generate an <a>RDF triple</a>.
+        to generate an <a>triple</a>.
         <a>Lists</a> are transformed into an <a>RDF collection</a>
         using the <a href="#list-to-rdf-conversion">List to RDF Conversion algorithm.</a></p>
     </section>
@@ -4437,7 +4437,7 @@
         is the result of the <a href="#node-map-generation">Node Map Generation algorithm</a> and
         an <a>RDF dataset</a> <var>dataset</var> into which new <a>graphs</a> and <a>triples</a> are added.
         Unless the <a data-link-for="JsonLdOptions">produceGeneralizedRdf</a> option
-        is set to <code>true</code>, <a>RDF triple</a>
+        is set to <code>true</code>, <a>triple</a>
         containing a <a>blank node</a> <a>predicate</a>
         are excluded from output.</p>
 
@@ -4505,7 +4505,7 @@
                           <span class="changed">and <var>list triples</var></span>
                           to <var>triples</var>, unless the result is
                           <code>null</code>, indicating a
-                          <span class="changed">non-<a>well-formed</a> <a>RDF resource</a></span>
+                          <span class="changed">non-<a>well-formed</a> <a>resource</a></span>
                           that has to be ignored.</li>
                         <li class="changed">Add all <a>RdfTriple</a> instances from
                           <var>list triples</var> to <var>triples</var> using
@@ -4526,12 +4526,10 @@
     <h3>Object to RDF Conversion</h3>
 
     <p>This algorithm takes a <a>node object</a>, <a class="changed">list object</a>, or <a>value object</a>
-      and transforms it into an
-      <a>RDF resource</a>
-      to be used as the <a>object</a> of an <a>RDF triple</a>. If a
-      <a>node object</a> containing a <a>relative IRI</a> is passed to
+      and transforms it into an <a>resource</a> to be used as the <a>object</a> of an <a>triple</a>.
+      If a <a>node object</a> containing a <a>relative IRI</a> is passed to
       the algorithm, <code>null</code> is returned which then causes the resulting
-      <a>RDF triple</a> to be ignored.
+      <a>triple</a> to be ignored.
       <span class="changed">If the input is a <a>list object</a>, it will also
         return the triples created from that input.</span></p>
 
@@ -4750,7 +4748,7 @@
               whose value is <var>name</var>.</li>
             <li>Reference the value of the <var>name</var> <a>entry</a> in <var>graph map</var>
               using the variable <var>node map</var>.</li>
-            <li>For each <a>RDF triple</a> in <var>graph</var>
+            <li>For each <a>triple</a> in <var>graph</var>
               consisting of <var>subject</var>, <var>predicate</var>, and <var>object</var>:
               <ol>
                 <li>If <var>node map</var> does not have a <var>subject</var> <a>entry</a>,
@@ -4772,7 +4770,7 @@
                   If no such <a>entry</a> exists, create one
                   and initialize it to an <a>array</a> whose only item is
                   <var>object</var>. Finally, continue to the next
-                  <a>RDF triple</a>.</li>
+                  <a>triple</a>.</li>
                 <li>Set <var>value</var> to the result of using the
                   <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
                   passing <var>object</var> and <a data-link-for="JsonLdOptions">useNativeTypes</a>.</li>
@@ -5581,7 +5579,7 @@
         within a particular <a>RdfDataset</a> instance.</dd>
     </dl>
 
-    <p>The <dfn>RdfTriple</dfn> interface describes an <a>RDF Triple</a>.</p>
+    <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed" data-transform="unComment">
       [Constructor]
