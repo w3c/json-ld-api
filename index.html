@@ -5496,16 +5496,16 @@
       </dd>
     </dl>
 
-    <pre class="idl changed" data-transform="unComment"><!--
+    <pre class="idl changed">
       dictionary JsonLdDictionary {};
-    --></pre>
+    </pre>
     <p class="changed">The <dfn>JsonLdDictionary</dfn> is the definition of a <a>map</a>
       used to contain arbitrary <a>map entries</a>
       which are the result of parsing a <a>JSON Object</a>.
 
-    <pre class="idl changed" data-transform="unComment"><!--
+    <pre class="idl changed">
       typedef (JsonLdDictionary or sequence&lt;JsonLdDictionary> or USVString) JsonLdInput;
-    --></pre>
+    </pre>
 
     <p class="changed">The <dfn>JsonLdInput</dfn> type is used to refer to an input value
       that that may be a <a>map</a>,
@@ -5513,9 +5513,9 @@
       or a <a>string</a> representing an <a>IRI</a>
       which can be dereferenced to retrieve a valid JSON document.</p>
 
-    <pre class="idl" data-transform="unComment"><!--
+    <pre class="idl">
       typedef (JsonLdDictionary or USVString or sequence&lt;(JsonLdDictionary or USVString)>) JsonLdContext;
-    --></pre>
+    </pre>
 
     <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value
       that may be a <a class="changed">map</a>,
@@ -5533,7 +5533,7 @@
       The interface may be used for constructing a new <a>RDF dataset</a>,
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
-    <pre class="idl changed" data-transform="unComment">
+    <pre class="idl changed">
       [Constructor, Exposed=Window]
       interface RdfDataset {
         readonly attribute RdfGraph defaultGraph;
@@ -5575,7 +5575,7 @@
       The interface may be used for constructing a new <a>RDF graph</a>,
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
-    <pre class="idl changed" data-transform="unComment">
+    <pre class="idl changed">
       [Constructor, Exposed=Window]
       interface RdfGraph {
         void add(RdfTriple triple);
@@ -5603,7 +5603,7 @@
 
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
-    <pre class="idl changed" data-transform="unComment">
+    <pre class="idl changed">
       [Constructor, Exposed=Window]
       interface RdfTriple {
         readonly attribute USVString subject;
@@ -5630,7 +5630,7 @@
 
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
-    <pre class="idl changed" data-transform="unComment">
+    <pre class="idl changed">
       [Constructor, Exposed=Window]
       interface RdfLiteral {
         readonly attribute USVString value;
@@ -5658,7 +5658,7 @@
     <p>The <dfn>JsonLdOptions</dfn> type is used to pass various options to the
       <a>JsonLdProcessor</a> methods.</p>
 
-    <pre class="idl" data-transform="unComment"><!--
+    <pre class="idl">
       dictionary JsonLdOptions {
         USVString?             base;
         boolean                compactArrays = true;
@@ -5673,7 +5673,7 @@
         boolean                useNativeTypes = false;
         boolean                useRdfType = false;
       };
-    --></pre>
+    </pre>
 
     <dl data-sort>
       <dt><dfn data-dfn-for="JsonLdOptions">base</dfn></dt>
@@ -5758,12 +5758,12 @@
         The callback returns a {{Promise}} resolving to a <a>RemoteDocument</a>.
         On failure, the {{Promise}} is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
 
-      <pre class="idl" data-transform="unComment"><!--
+      <pre class="idl">
         callback LoadDocumentCallback = Promise&lt;RemoteDocument> (
           USVString url,
           optional LoadDocumentOptions? options
         );
-      --></pre>
+      </pre>
 
       <dl>
         <dt><dfn data-dfn-for="LoadDocumentCallback">url</dfn></dt>
@@ -5901,13 +5901,13 @@
       <p>The <dfn>LoadDocumentOptions</dfn> type is used to pass various options
         to the <a>LoadDocumentCallback</a>.</p>
 
-      <pre class="idl" data-transform="unComment"><!--
+      <pre class="idl">
         dictionary LoadDocumentOptions {
           boolean  extractAllScripts = false;
           USVString profile = null;
           (USVString or sequence&lt;USVString>) requestProfile = null;
         };
-      --></pre>
+      </pre>
 
       <dl>
         <dt><dfn data-dfn-for="LoadDocumentOptions">extractAllScripts</dfn></dt>
@@ -5930,7 +5930,7 @@
       <p>The <dfn>RemoteDocument</dfn> type is used by a <a>LoadDocumentCallback</a>
         to return information about a remote document or context.</p>
 
-      <pre class="idl" data-transform="unComment"><!--
+      <pre class="idl">
         dictionary RemoteDocument {
           USVString contextUrl = null;
           USVString documentUrl;
@@ -5938,7 +5938,7 @@
           USVString contentType;
           USVString profile = null;
         };
-      --></pre>
+      </pre>
 
       <dl>
         <dt><dfn data-dfn-for="RemoteDocument">contextUrl</dfn></dt>
@@ -5977,12 +5977,12 @@
 
       <p>The <dfn>JsonLdError</dfn> type is used to report processing errors.</p>
 
-      <pre class="idl" data-transform="unComment"><!--
+      <pre class="idl">
         dictionary JsonLdError {
           JsonLdErrorCode code;
           USVString?      message = null;
         };
-      --></pre>
+      </pre>
 
       <dl>
         <dt><dfn data-dfn-for="JsonLdError">code</dfn></dt>
@@ -5998,7 +5998,7 @@
       <h4>JsonLdErrorCode</h4>
       <p>The <dfn>JsonLdErrorCode</dfn> represents the collection of valid JSON-LD error codes.</p>
 
-      <pre class="idl" data-transform="unComment"><!--
+      <pre class="idl">
         enum JsonLdErrorCode {
             "colliding keywords",
             "conflicting indexes",
@@ -6046,7 +6046,7 @@
             "protected term redefinition",
             "context overflow"
         };
-      --></pre>
+      </pre>
 
       <dl data-dfn-for="JsonLdErrorCode" data-sort>
         <dt><dfn>colliding keywords</dfn></dt>
