@@ -1700,6 +1700,142 @@
       "input": "expand/hc05-in.jsonld",
       "expect": "invalid remote context"
     }, {
+      "@id": "#tin01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Includes referenced identifier",
+      "purpose": "Tests included maps.",
+      "input": "expand/in01-in.jsonld",
+      "expect": "expand/in01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Includes with array value",
+      "purpose": "Tests included maps.",
+      "input": "expand/in02-in.jsonld",
+      "expect": "expand/in02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Includes with node value",
+      "purpose": "Tests included maps.",
+      "input": "expand/in03-in.jsonld",
+      "expect": "expand/in03-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Included drops a literal value",
+      "purpose": "Tests included maps.",
+      "input": "expand/in04-in.jsonld",
+      "expect": "expand/in04-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Includes with nested property",
+      "purpose": "Tests included maps.",
+      "input": "expand/in05-in.jsonld",
+      "expect": "expand/in05-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Included property values are vocabulary-relative IRIs",
+      "purpose": "Tests included maps.",
+      "input": "expand/in06-in.jsonld",
+      "expect": "expand/in06-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Included in different top-level objects of an array",
+      "purpose": "Tests included maps.",
+      "input": "expand/in07-in.jsonld",
+      "expect": "expand/in07-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Multiple values for an @included property",
+      "purpose": "Tests included maps.",
+      "input": "expand/in08-in.jsonld",
+      "expect": "expand/in08-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@included with no @type: @included",
+      "purpose": "Tests included maps.",
+      "input": "expand/in09-in.jsonld",
+      "expect": "expand/in09-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Only uses first entry mapping to @included",
+      "purpose": "Tests included maps.",
+      "input": "expand/in10-in.jsonld",
+      "expect": "expand/in10-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin11",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Missing @included",
+      "purpose": "Tests included maps.",
+      "input": "expand/in11-in.jsonld",
+      "expect": "missing @included referent",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin12",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Missing @included referent",
+      "purpose": "Tests included maps.",
+      "input": "expand/in12-in.jsonld",
+      "expect": "missing @included referent",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin13",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@included in a non-top-level object",
+      "purpose": "Tests included maps.",
+      "input": "expand/in13-in.jsonld",
+      "expect": "invalid @included map",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin14",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@included term within @included map",
+      "purpose": "Tests included maps.",
+      "input": "expand/in14-in.jsonld",
+      "expect": "invalid @included map",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin15",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@included not a map",
+      "purpose": "Tests included maps.",
+      "input": "expand/in15-in.jsonld",
+      "expect": "invalid @included map",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin16",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@included key is not a valid IRI",
+      "purpose": "Tests included maps.",
+      "input": "expand/in16-in.jsonld",
+      "expect": "invalid @included entry",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin17",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@included key is @none",
+      "purpose": "Tests included maps.",
+      "input": "expand/in17-in.jsonld",
+      "expect": "invalid @included entry",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tjs01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expand JSON literal (boolean true)",

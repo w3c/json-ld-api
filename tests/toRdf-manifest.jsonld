@@ -1392,6 +1392,142 @@
       "expect": "toRdf/h022-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tin01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Includes referenced identifier",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in01-in.jsonld",
+      "expect": "toRdf/in01-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Includes with array value",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in02-in.jsonld",
+      "expect": "toRdf/in02-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Includes with node value",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in03-in.jsonld",
+      "expect": "toRdf/in03-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Included drops a literal value",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in04-in.jsonld",
+      "expect": "toRdf/in04-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Includes with nested property",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in05-in.jsonld",
+      "expect": "toRdf/in05-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Included property values are vocabulary-relative IRIs",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in06-in.jsonld",
+      "expect": "toRdf/in06-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Included in different top-level objects of an array",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in07-in.jsonld",
+      "expect": "toRdf/in07-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Multiple values for an @included property",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in08-in.jsonld",
+      "expect": "toRdf/in08-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@included with no @type: @included",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in09-in.jsonld",
+      "expect": "toRdf/in09-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Only uses first entry mapping to @included",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in10-in.jsonld",
+      "expect": "toRdf/in10-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin11",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Missing @included",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in11-in.jsonld",
+      "expect": "missing @included referent",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin12",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Missing @included referent",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in12-in.jsonld",
+      "expect": "missing @included referent",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin13",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@included in a non-top-level object",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in13-in.jsonld",
+      "expect": "invalid @included map",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin14",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@included term within @included map",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in14-in.jsonld",
+      "expect": "invalid @included map",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin15",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@included not a map",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in15-in.jsonld",
+      "expect": "invalid @included map",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin16",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@included key is not a valid IRI",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in16-in.jsonld",
+      "expect": "invalid @included entry",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin17",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@included key is @none",
+      "purpose": "Tests included maps.",
+      "input": "toRdf/in17-in.jsonld",
+      "expect": "invalid @included entry",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tjs01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Transform JSON literal (boolean true)",

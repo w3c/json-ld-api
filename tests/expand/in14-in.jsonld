@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "http://example.org/",
+    "data": {"@type": "@included"}
+  },
+  "data": "http://example.org/data",
+  "@included": {
+    "http://example.org/data": {
+      "@type": "Data",
+      "label": "label",
+      "data": "http://example.org/data"
+    }
+  }
+}

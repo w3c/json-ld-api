@@ -1443,7 +1443,7 @@
               <code>true</code> for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the expanded <var>type</var> is
               neither <code>@id</code>, nor <code>@vocab</code>,
-              <span class="changed">nor, if <a>processing mode</a> is <code>json-ld-1.1</code>, <code>@json</code> nor <code>@none</code>,</span>
+              <span class="changed">nor, if <a>processing mode</a> is <code>json-ld-1.1</code>, neither `@included`, <code>@json</code> nor <code>@none</code>,</span>
               nor an <a>absolute IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1828,7 +1828,10 @@
       <a>compact IRIs</a> are expanded to
       <a>absolute IRIs</a>,
       <a>blank node identifiers</a>, or
-      <a>keywords</a> and all
+      <a>keywords</a>,
+      <span class="changed">all properties of type `@included` are replaced
+        with the referenced values in an <a>included map</a>,</span>
+      and all
       <a>JSON-LD values</a> are expressed in
       <a>arrays</a> in <a>expanded form</a>.</p>
 
@@ -1862,6 +1865,10 @@
         </li>
       </ol>
 
+      <p class="changed">If a top-level <a>map</a> contains an entry with a key which expands to `@included`,
+        it defines an <a>included map</a>, and properties of type `@included` with references
+        to <a>entries</a> in that <a>map</a> have their references replaced with values from the <a>included map</a>.</p>
+
       <p>Finally, after ensuring <var>result</var> is in an <a>array</a>,
         we return <var>result</var>.</p>
     </section>
@@ -1869,11 +1876,12 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes three required <span class="changed">and three optional</span> input variables.
+      <p>The algorithm takes three required <span class="changed">and four optional</span> input variables.
         The required inputs are an <var>active context</var>,
         an <var>active property</var>, and an <var>element</var> to be expanded.
-        <span class="changed">The optional inputs are the
-          <a data-link-for="JsonLdOptions">frameExpansion</a>
+        <span class="changed">The optional inputs are
+          <var>included</var>, which is either `null`, or an expanded <a>included map</a>,
+          the <a data-link-for="JsonLdOptions">frameExpansion</a>
           flag allowing special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a>,
           the <a data-link-for="JsonLdOptions">ordered</a> flag, used to order
           <a>map entry</a> keys lexicographically, where noted,
@@ -1881,7 +1889,8 @@
           previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.</span>
         To begin, the <var>active property</var> is set to <code>null</code>,
         and <var>element</var> is set to the <a>JSON-LD input</a>.
-        <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
+        <span class="changed">If not passed, <var>included</var> is set to `null`,
+          and both flags are set to <code>false</code></span>.</p>
 
       <p class="changed">The algorithm also performs processing steps specific to expanding
         a <a>JSON-LD Frame</a>. For a <a>frame</a>, the <code>@id</code> and
@@ -1933,7 +1942,8 @@
                 <li>Initialize <var>expanded item</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>item</var> as <var>element</var>,
-                  <span class="changed">the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                  <span class="changed"><var>included</var>,
+                    the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                     <a data-link-for="JsonLdOptions">ordered</a></span>,
                     and <var>from map</var> flags.</li>
                 <li class="changed">If the <a>container mapping</a>
@@ -1971,7 +1981,8 @@
         <li class="changed">Set <var>type-scoped context</var> to <var>active context</var>.
           This is used for expanding values that may be relevant to any previous
           <a>type-scoped context</a>.</li>
-        <li class="changed">For each <var>key</var>/<var>value</var> pair in <var>element</var>
+        <li class="changed">For each <var>key</var> and <var>value</var> in <var>element</var>
+          ordered lexicographically by <var>key</var>
           where <var>key</var> expands to <code>@type</code> using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
           passing <var>active context</var>, <var>key</var> for
@@ -1989,10 +2000,44 @@
               <span class="changed">and <code>true</code> for <var>propagate</var></span>.</li>
           </ol>
         </li>
+        <li class="changed">If <var>included</var> is `null`,
+          then for the first <var>key</var> and <var>value</var> in <var>element</var>
+          ordered lexicographically by <var>key</var>
+          where <var>key</var> expands to `@included`, using the
+          <a href="#iri-expansion">IRI Expansion algorithm</a>,
+          passing <var>active context</var>, <var>key</var> for
+          <var>value</var>, and <code>true</code> for <var>vocab</var>,
+          if any:
+          <ol>
+            <li>If <var>value</var> is not a <a>map</a>,
+              an <a data-link-for="JsonLdErrorCode">invalid @included map</a>
+              error has been detected and processing is aborted.</li>
+            <li>Set <var>included</var> to a new <var>map</var>,
+              with entries composed of the entries from <var>value</var>,
+              where the key is replaced by the result of
+              using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
+              passing <var>active context</var>, the corresponding key from the entry in <var>value</var> for
+              <var>value</var>, and <code>true</code> for <var>vocab</var>,
+              and the value is replaced by the result of
+              using this algorithm recursively passing <var>active context</var>, `null`
+              for <var>active property</var>,
+              the corresponding value from the entry in <var>value</var> for <var>value</var>,
+              and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
+              and <a data-link-for="JsonLdOptions">ordered</a> flags.</li>
+            <li>If, when expanding any value, a property of type `@included` is found,
+              or an `@included` entry is found,
+              an <a data-link-for="JsonLdErrorCode">invalid @included map</a>
+              error has been detected and processing is aborted.</li>
+            <li>If any entry in <var>included</var> contains an entry with a key
+              which is not a valid absolute IRI,
+              an <a data-link-for="JsonLdErrorCode">invalid @included entry</a>
+              error has been detected and processing is aborted.</li>
+          </ol>
+        </li>
         <li>Initialize two empty <a class="changed">maps</a>, <var>result</var>
           <span class="changed">and <var>nests</var>.
-            Set <var>input type</var> to the last value of any <a>entry</a> of <var>element</var>
-            expanding to <code>@type</code></span>.
+            Set <var>input type</var> to the last value of the first <a>entry</a> in <var>element</var>
+            expanding to <code>@type</code>, ordering <a>entries</a> lexicographically by key</span>.
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
@@ -2012,8 +2057,8 @@
                 <li>If <var>active property</var> equals <code>@reverse</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
-                <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>, a
-                  <a data-link-for="JsonLdErrorCode">colliding keywords</a>
+                <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
+                  a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
                   <var>value</var> is not a <a>string</a>, an
@@ -2055,7 +2100,8 @@
                   <var>expanded value</var> to the result of using this algorithm
                   recursively passing <var>active context</var>, <code>@graph</code>
                   for <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                  <span class="changed"><var>included</var>,
+                    and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>,
                   <span class="changed">
                     ensuring that <var>expanded value</var> is an <a>array</a> of one or more <a>maps</a></span>.</li>
@@ -2101,7 +2147,8 @@
                     <li>Otherwise, initialize <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
-                      <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                      <span class="changed"><var>included</var>,
+                        and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                         and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                   </ol>
                 </li>
@@ -2109,7 +2156,8 @@
                   <var>expanded value</var> to the result of using this algorithm
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                  <span class="changed"><var>included</var>,
+                    and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>If <var>expanded property</var> is <code>@reverse</code> and
                   <var>value</var> is not a <a class="changed">map</a>, an
@@ -2120,7 +2168,8 @@
                       algorithm recursively, passing <var>active context</var>,
                       <code>@reverse</code> as <var>active property</var>,
                       <var>value</var> as <var>element</var>,
-                      <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                      <span class="changed"><var>included</var>,
+                        and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                         and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                     <li>If <var>expanded value</var> contains an <code>@reverse</code> <a>entry</a>,
                       i.e., <a>properties</a> that are reversed twice, execute for each of its
@@ -2172,7 +2221,8 @@
                   <a href="#expansion-algorithm">Expansion Algorithm</a>
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                  <span class="changed"><var>included</var>,
+                    and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                 <li>Unless <var>expanded value</var> is <code>null</code>, set
                   the <var>expanded property</var> <a>entry</a> of <var>result</var> to
@@ -2186,6 +2236,36 @@
               has a <a>type mapping</a> of <code>@json</code>,
               set <var>expanded value</var> to a new <a>map</a>, set the <a>entry</a>
               <code>@value</code> to <var>value</var>, and set the entry <code>@type</code> to <code>@json</code>.</li>
+            <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
+              has a <a>type mapping</a> of <code>@included</code>:
+              <ol>
+                <li>If <var>value</var> is not an <a>array</a>,
+                  set it to an <a>array</a> containing only
+                  <var>value</var>.</li>
+                <li>Set <var>expanded value</var> to a new empty <a>array</a>.</li>
+                <li>For each <var>included value</var> in <var>value</var>:
+                  <ol>
+                    <li>If <var>included value</var> is a <a>string</a>,
+                      set <var>included value</var> to the result of using the
+                      <a href="#iri-expansion">IRI Expansion algorithm</a>,
+                      passing <var>active context</var>, <var>included value</var>, and <code>true</code>
+                      for <var>vocab</var>.
+                      If <var>included</var> is not a <a>map</a> or does not contain an entry for <var>included value</var>,
+                      a <a data-link-for="JsonLdErrorCode">missing @included referent</a>
+                      error has been detected and processing is aborted.
+                      Otherwise, add the entry for <var>included value</var> in <var>included</var> to <var>expanded value</var>.
+                    </li>
+                    <li>Otherwise, add the result of calling this algorithm recursively,
+                      passing <var>active context</var>,
+                      <var>active property</var>, <var>included value</var> for <var>element</var>,
+                      <var>included</var>,
+                      and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
+                      and <a data-link-for="JsonLdOptions">ordered</a> flags
+                      to <var>expanded value</var>.</li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
             <li>Otherwise, if <var>container mapping</var> <span class="changed">includes</span> <code>@language</code> and
               <var>value</var> is a <a class="changed">map</a> then <var>value</var>
               is expanded from a <a>language map</a>
@@ -2260,7 +2340,8 @@
                       <var class="changed">map context</var> as <var>active context</var>,
                       <var>key</var> as <var>active property</var>,
                       <var>index value</var> as <var>element</var>,
-                      <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                      <span class="changed"><var>included</var>,
+                        and the <a data-link-for="JsonLdOptions">frameExpansion</a>
                         and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
@@ -2309,7 +2390,8 @@
             <li>Otherwise, initialize <var>expanded value</var> to the result of
               using this algorithm recursively, passing <var>active context</var>,
               <var>key</var> for <var>active property</var>, <var>value</var> for <var>element</var>,
-              <span class="changed">and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+              <span class="changed"><var>included</var>,
+                and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
                 and <a data-link-for="JsonLdOptions">ordered</a> flags</span>.</li>
             <li>If <var>expanded value</var> is <code>null</code>, ignore <var>key</var>
               by continuing to the next <var>key</var> from <var>element</var>.</li>
@@ -2368,7 +2450,22 @@
                   in <var>element</var>, ensuring that it is an <a>array</a>.</li>
                 <li>For each <var>nested value</var> in <var>nested values</var>:
                   <ol>
-                    <li>If <var>nested value</var> is not a <a class="changed">map</a>, or any key within
+                    <li>If <var>nested value</var> is a <a>string</a>,
+                      and the <var>key</var>'s <a>term definition</a> in <var>active context</var>
+                      has a <a>type mapping</a> of <code>@included</code>:
+                      <ol>
+                        <li>Set <var>nested value</var> to the result of using the
+                          <a href="#iri-expansion">IRI Expansion algorithm</a>,
+                          passing <var>active context</var>, <var>nested value</var>, and <code>true</code>
+                          for <var>vocab</var>.</li>
+                        <li>If <var>included</var> is not a <a>map</a> or does not contain an entry for <var>nested value</var>,
+                          a <a data-link-for="JsonLdErrorCode">missing @included referent</a>
+                          error has been detected and processing is aborted.</li>
+                        <li>Otherwise, set <var>nested value</var> to the value for
+                          <var>nested value</var> in <var>included</var>.</li>
+                      </ol>
+                    </li>
+                    <li>If <var>nested value</var> is not a <a>map</a>, or any key within
                       <var>nested value</var> expands to <code>@value</code>, an
                       <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                       has been detected and processing is aborted.</li>
@@ -6016,6 +6113,8 @@
             "invalid context entry",
             "invalid context nullification",
             "invalid default language",
+            "invalid @included map",
+            "invalid @included entry",
             "invalid IRI mapping",
             "invalid keyword alias",
             "invalid language map value",
@@ -6041,6 +6140,7 @@
             "keyword redefinition",
             "loading document failed",
             "loading remote context failed",
+            "missing @included referent",
             "multiple context link headers",
             "processing mode conflict",
             "protected term redefinition",
@@ -6174,6 +6274,13 @@
           containing <a>protected</a> <a>term definitions</a>.</dd>
         <dt class="changed"><dfn>protected term redefinition</dfn></dt>
         <dd class="changed">An attempt was made to redefine a <a>protected</a> term.</dd>
+        <dt class="changed"><dfn>invalid @included map</dfn></dt>
+        <dd class="changed">An <a>included map</a> is invalid, or is not defined in a top-level <a>node object</a>.</dd>
+        <dt class="changed"><dfn>invalid @included entry</dfn></dt>
+        <dd class="changed">An <a>included map</a> contains an <a>entry</a> with an invalid key.</dd>
+        <dt class="changed"><dfn>missing @included referent</dfn></dt>
+        <dd class="changed">A reference to an <a>included map</a> was made for which there is no
+          corresponding entry.</dd>
       </dl>
     </section>
   </section> <!-- end of Error Handling -->
@@ -6331,6 +6438,12 @@
     <li>A context may contain a <code>@import</code> <a>entry</a> used to reference a remote context
       within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
       authored for <code>JSON-LD 1.0</code>.</li>
+    <li>A top level <a>node object</a> may include an <a>included map</a>,
+      which is used to contain <a>entries</a> which can be substituted for property values
+      in other <a>node objects</a>, where that property has a type mapping to `@included`.
+      This allows values which are frequently repeated within a <a>JSON-LD document</a> to be consolidated
+      within an <a>included map</a>, allowing property values to be replaced with entries from
+      that <a>included map</a> upon <a>expansion</a>.</li>
   </ul>
 </section>
 

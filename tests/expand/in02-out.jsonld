@@ -1,0 +1,9 @@
+[{
+  "http://example.org/data": [{
+    "@type": ["http://example.org/Data"],
+    "http://example.org/label": [{"@value": "label"}]
+  }, {
+    "@type": ["http://example.org/Data2"],
+    "http://example.org/label": [{"@value": "label2"}]
+  }]
+}]
