@@ -1773,11 +1773,11 @@
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin10",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Only uses first entry mapping to @included",
       "purpose": "Tests included maps.",
       "input": "expand/in10-in.jsonld",
-      "expect": "expand/in10-out.jsonld",
+      "expect": "colliding keywords",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin11",

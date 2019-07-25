@@ -1,6 +1,0 @@
-[{
-  "http://example.org/data": [{
-    "@type": ["http://example.org/Data"],
-    "http://example.org/label": [{"@value": "label"}]
-  }]
-}]

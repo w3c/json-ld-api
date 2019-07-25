@@ -1465,11 +1465,11 @@
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin10",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
       "name": "Only uses first entry mapping to @included",
       "purpose": "Tests included maps.",
       "input": "toRdf/in10-in.jsonld",
-      "expect": "toRdf/in10-out.nq",
+      "expect": "colliding keywords",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin11",

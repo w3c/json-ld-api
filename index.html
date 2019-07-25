@@ -2001,27 +2001,29 @@
           </ol>
         </li>
         <li class="changed">If <var>included</var> is `null`,
-          then for the first <var>key</var> and <var>value</var> in <var>element</var>
-          ordered lexicographically by <var>key</var>
+          set <var>included map</var> to the value of the <a>entry</a> in <var>element</var>
           where <var>key</var> expands to `@included`, using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
           passing <var>active context</var>, <var>key</var> for
           <var>value</var>, and <code>true</code> for <var>vocab</var>,
           if any:
           <ol>
-            <li>If <var>value</var> is not a <a>map</a>,
+            <li>If <var>element</var> has more than one key mapping to `@included`,
+              a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
+              error has been detected and processing is aborted.</li>
+            <li>If <var>included map</var> is not a <a>map</a>,
               an <a data-link-for="JsonLdErrorCode">invalid @included map</a>
               error has been detected and processing is aborted.</li>
             <li>Set <var>included</var> to a new <var>map</var>,
-              with entries composed of the entries from <var>value</var>,
+              with entries composed of the entries from <var>included map</var>,
               where the key is replaced by the result of
               using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-              passing <var>active context</var>, the corresponding key from the entry in <var>value</var> for
+              passing <var>active context</var>, the corresponding key from the entry in <var>included map</var> for
               <var>value</var>, and <code>true</code> for <var>vocab</var>,
               and the value is replaced by the result of
               using this algorithm recursively passing <var>active context</var>, `null`
               for <var>active property</var>,
-              the corresponding value from the entry in <var>value</var> for <var>value</var>,
+              the corresponding value from the entry in <var>included map</var> for <var>value</var>,
               and the <a data-link-for="JsonLdOptions">frameExpansion</a>,
               and <a data-link-for="JsonLdOptions">ordered</a> flags.</li>
             <li>If, when expanding any value, a property of type `@included` is found,
