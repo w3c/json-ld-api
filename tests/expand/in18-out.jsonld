@@ -1,0 +1,16 @@
+[{
+  "@id": "http://example.org/base/1",
+  "@type": ["http://example.org/Thing-with-Items"],
+  "http://example.org/items": [{
+    "@id": "http://example.org/base/2",
+    "@type": ["http://example.org/Type", "http://example.org/Service"],
+    "http://example.org/label": [
+      {"@value": "Classification 6"},
+      {"@value": "Login Service"}
+    ]
+  }, {
+    "@id": "http://example.org/base/27",
+    "@type": ["http://example.org/Type"],
+    "http://example.org/label": [{"@value": "Classification 6"}]
+  }]
+}]

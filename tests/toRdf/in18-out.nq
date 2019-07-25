@@ -1,0 +1,9 @@
+<http://example.org/base/1> <http://example.org/items> <http://example.org/base/2> .
+<http://example.org/base/1> <http://example.org/items> <http://example.org/base/27> .
+<http://example.org/base/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Thing-with-Items> .
+<http://example.org/base/2> <http://example.org/label> "Classification 6" .
+<http://example.org/base/2> <http://example.org/label> "Login Service" .
+<http://example.org/base/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Service> .
+<http://example.org/base/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Type> .
+<http://example.org/base/27> <http://example.org/label> "Classification 6" .
+<http://example.org/base/27> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Type> .

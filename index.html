@@ -2060,6 +2060,7 @@
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
+                  <span class="changed">other than `@type`</span>,
                   a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
@@ -2088,6 +2089,9 @@
                   <code>true</code> for <var>vocab</var>,
                   and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
                   or each of its items.
+                  <span class="changed">If <var>result</var> already has an entry for `@type`,
+                    prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
+                    transforming it into an <a>array</a>, if necessary.</span>
                   <span class="changed">
                     When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
                     may also be an empty <a>map</a>.
@@ -6446,6 +6450,8 @@
       This allows values which are frequently repeated within a <a>JSON-LD document</a> to be consolidated
       within an <a>included map</a>, allowing property values to be replaced with entries from
       that <a>included map</a> upon <a>expansion</a>.</li>
+    <li>The <a data-link-for="JsonLdErrorCode">colliding keywords</a> error is not issued for `@type`;
+      instead, previous values of `@type` are prepended to any new values, when expanding.</li>
   </ul>
 </section>
 

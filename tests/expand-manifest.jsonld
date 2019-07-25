@@ -841,6 +841,14 @@
       "input": "expand/0113-in.jsonld",
       "expect": "expand/0113-out.jsonld"
     }, {
+      "@id": "#t0114",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expansion allows multiple properties expanding to @type",
+      "purpose": "An exception for the colliding keywords error is made for @type",
+      "input": "expand/0114-in.jsonld",
+      "expect": "expand/0114-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
@@ -1836,6 +1844,14 @@
       "expect": "invalid @included entry",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tin18",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Include with nesting and duplicate keys",
+      "purpose": "Tests included maps.",
+      "input": "expand/in18-in.jsonld",
+      "expect": "expand/in18-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tjs01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Expand JSON literal (boolean true)",
@@ -2218,6 +2234,14 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n007-in.jsonld",
       "expect": "expand/n007-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tn008",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Multiple keys may mapping to @type when nesting",
+      "purpose": "Expansion using @nest",
+      "input": "expand/n008-in.jsonld",
+      "expect": "expand/n008-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tp001",
