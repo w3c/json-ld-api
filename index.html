@@ -1971,7 +1971,8 @@
         <li class="changed">Set <var>type-scoped context</var> to <var>active context</var>.
           This is used for expanding values that may be relevant to any previous
           <a>type-scoped context</a>.</li>
-        <li class="changed">For each <var>key</var>/<var>value</var> pair in <var>element</var>
+        <li class="changed">For each <var>key</var> and <var>value</var> in <var>element</var>
+          ordered lexicographically by <var>key</var>
           where <var>key</var> expands to <code>@type</code> using the
           <a href="#iri-expansion">IRI Expansion algorithm</a>,
           passing <var>active context</var>, <var>key</var> for
@@ -1991,8 +1992,8 @@
         </li>
         <li>Initialize two empty <a class="changed">maps</a>, <var>result</var>
           <span class="changed">and <var>nests</var>.
-            Set <var>input type</var> to the last value of any <a>entry</a> of <var>element</var>
-            expanding to <code>@type</code></span>.
+            Set <var>input type</var> to the last value of the first <a>entry</a> in <var>element</var>
+            expanding to <code>@type</code>, ordering <a>entries</a> lexicographically by key</span>.
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
@@ -2012,8 +2013,9 @@
                 <li>If <var>active property</var> equals <code>@reverse</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
-                <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>, a
-                  <a data-link-for="JsonLdErrorCode">colliding keywords</a>
+                <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
+                  <span class="changed">other than `@type`</span>,
+                  a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
                   <var>value</var> is not a <a>string</a>, an
@@ -2041,6 +2043,9 @@
                   <code>true</code> for <var>vocab</var>,
                   and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
                   or each of its items.
+                  <span class="changed">If <var>result</var> already has an entry for `@type`,
+                    prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
+                    transforming it into an <a>array</a>, if necessary.</span>
                   <span class="changed">
                     When the <a data-link-for="JsonLdOptions">frameExpansion</a> flag is set, <var>value</var>
                     may also be an empty <a>map</a>.
@@ -2368,7 +2373,7 @@
                   in <var>element</var>, ensuring that it is an <a>array</a>.</li>
                 <li>For each <var>nested value</var> in <var>nested values</var>:
                   <ol>
-                    <li>If <var>nested value</var> is not a <a class="changed">map</a>, or any key within
+                    <li>If <var>nested value</var> is not a <a>map</a>, or any key within
                       <var>nested value</var> expands to <code>@value</code>, an
                       <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                       has been detected and processing is aborted.</li>
@@ -6331,6 +6336,8 @@
     <li>A context may contain a <code>@import</code> <a>entry</a> used to reference a remote context
       within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
       authored for <code>JSON-LD 1.0</code>.</li>
+    <li>The <a data-link-for="JsonLdErrorCode">colliding keywords</a> error is not issued for `@type`;
+      instead, previous values of `@type` are prepended to any new values, when expanding.</li>
   </ul>
 </section>
 
