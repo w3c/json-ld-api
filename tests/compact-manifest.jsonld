@@ -1329,6 +1329,51 @@
       "expect": "compact/h004-out.jsonld",
       "option": {"specVersion": "json-ld-1.1", "extractAllScripts": true}
     }, {
+      "@id": "#tin01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Basic Included array",
+      "purpose": "Tests included maps.",
+      "input": "compact/in01-in.jsonld",
+      "context": "compact/in01-context.jsonld",
+      "expect": "compact/in01-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin02",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Basic Included object",
+      "purpose": "Tests included maps.",
+      "input": "compact/in02-in.jsonld",
+      "context": "compact/in02-context.jsonld",
+      "expect": "compact/in02-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Multiple properties mapping to @included are folded together",
+      "purpose": "Tests included maps.",
+      "input": "compact/in03-in.jsonld",
+      "context": "compact/in03-context.jsonld",
+      "expect": "compact/in03-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Included containing @included",
+      "purpose": "Tests included maps.",
+      "input": "compact/in04-in.jsonld",
+      "context": "compact/in04-context.jsonld",
+      "expect": "compact/in04-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Property value with @included",
+      "purpose": "Tests included maps.",
+      "input": "compact/in05-in.jsonld",
+      "context": "compact/in05-context.jsonld",
+      "expect": "compact/in05-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tjs01",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Compact JSON literal (boolean true)",

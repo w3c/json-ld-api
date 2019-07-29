@@ -2014,7 +2014,7 @@
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
-                  <span class="changed">other than `@type`</span>,
+                  <span class="changed">other than `@included` or `@type`</span>,
                   a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
@@ -2064,6 +2064,19 @@
                     and <a data-link-for="JsonLdOptions">ordered</a> flags</span>,
                   <span class="changed">
                     ensuring that <var>expanded value</var> is an <a>array</a> of one or more <a>maps</a></span>.</li>
+                <li class="changed">If <var>expanded property</var> is `@included`
+                  and <a>processing mode</a> is `json-ld-1.1`,
+                  set <var>expanded value</var> to the result of using
+                  this algorithm recursively passing <var>active context</var>,
+                  <var>active property</var>, <var>value</var> for <var>element</var>,
+                  and the <a data-link-for="JsonLdOptions">frameExpansion</a>
+                  and <a data-link-for="JsonLdOptions">ordered</a> flags,
+                  ensuring that the result is an <a>array</a>.
+                  If any element of <var>included result</var> is not a <a>node object</a>,
+                  an <a data-link-for="JsonLdErrorCode">invalid @included value</a>
+                  error has been detected and processing is aborted.
+                  If <var>result</var> already has an entry for `@include`,
+                  prepend the value of `@include` in <var>result</var> to <var>expanded value</var>.</li>
                 <li>Otherwise, if <var>expanded property</var> is <code>@value</code>,
                   <span class="changed"><a>processing mode</a> is <code>json-ld-1.1</code>, and
                     <var>input type</var> is <code>@json</code>,
@@ -4299,6 +4312,10 @@
               algorithm passing the value of the <code>@graph</code> <a>entry</a> for <var>element</var>,
               <var>node map</var>, and <var>id</var> for <var>active graph</var> before removing
               the <code>@graph</code> <a>entry</a> from <var>element</var>.</li>
+            <li class="changed">If <var>element</var> has an `@included` <a>entry</a>,
+              recursively invoke this algorithm passing the value of the `@included <a>entry</a> for <var>element</var>,
+              <var>node map</var>, <var>active subject</var>, <var>active property</var>, and <var>active graph</var>
+              before removing the `@included` <a>entry</a> from <var>element</var>.</li>
             <li>Finally, for each key-value pair <var>property</var>-<var>value</var> in <var>element</var> ordered by
               <var>property</var> perform the following steps:
               <ol>
@@ -6021,6 +6038,7 @@
             "invalid context entry",
             "invalid context nullification",
             "invalid default language",
+            "invalid @included value",
             "invalid IRI mapping",
             "invalid keyword alias",
             "invalid language map value",
@@ -6179,6 +6197,8 @@
           containing <a>protected</a> <a>term definitions</a>.</dd>
         <dt class="changed"><dfn>protected term redefinition</dfn></dt>
         <dd class="changed">An attempt was made to redefine a <a>protected</a> term.</dd>
+        <dt class="changed"><dfn>invalid @included value</dfn></dt>
+        <dd class="changed">An <a>included block</a> contains an invalid value.</dd>
       </dl>
     </section>
   </section> <!-- end of Error Handling -->
@@ -6338,6 +6358,13 @@
       authored for <code>JSON-LD 1.0</code>.</li>
     <li>The <a data-link-for="JsonLdErrorCode">colliding keywords</a> error is not issued for `@type`;
       instead, previous values of `@type` are prepended to any new values, when expanding.</li>
+    <li>A <a>node object</a> may include an <a>included block</a>,
+      which is used to contain a set of <a>node objects</a> which are treated
+      exactly as if they were <a>node objects</a> defined in an <a>array</a> including the containing
+      <a>node object</a>.
+      This allows the use of the object form of a JSON-LD document when there is more
+      than one <a>node object</a> being defined, and where those <a>node objects</a>
+      are not embedded as values of the containing <a>node object</a>.</li>
   </ul>
 </section>
 
