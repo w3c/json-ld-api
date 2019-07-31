@@ -1,9 +1,6 @@
 [{
   "@id": "_:b0",
-  "http://example.org/prop": [
-    {"@id": "_:b1"},
-    {"@id": "_:b2"}
-  ]
+  "http://example.org/prop": [{"@id": "_:b1"}]
 }, {
   "@id": "_:b1",
   "@type": ["http://example.org/Foo"]
