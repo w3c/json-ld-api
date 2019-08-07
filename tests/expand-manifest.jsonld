@@ -1405,6 +1405,22 @@
       "expect": "invalid IRI mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te046",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "compact IRI as @vocab",
+      "purpose": "Verifies that @vocab defined as a compact IRI expands properly",
+      "input": "expand/e046-in.jsonld",
+      "expect": "expand/e046-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te047",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "term as @vocab",
+      "purpose": "Verifies that @vocab defined as a term expands properly",
+      "input": "expand/e047-in.jsonld",
+      "expect": "expand/e047-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",
