@@ -3000,7 +3000,7 @@
                           in <var class="changed">nest result</var>.</li>
                         <li>Initialize <var>map key</var> to the result of calling the
                           <a href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var> and the value of <code>@id</code> in <var>expanded item</var>
+                          passing <var>active context</var>, <var>inverse context</var>, and the value of <code>@id</code> in <var>expanded item</var>
                           or <code>@none</code> if no such value exists as <var>var</var>, with <var>vocab</var> set to <code>true</code>
                           if there is no <code>@id</code> <a>entry</a> in <var>expanded item</var>.</li>
                         <li class="changed">If <var>compacted item</var> is not an
@@ -3052,24 +3052,24 @@
                         <li>Set <var>compacted item</var> to a new map containing
                           the key resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <code>@graph</code> as
+                          passing <var>active context</var>, <var>inverse context</var>, <code>@graph</code> as
                           <var>var</var>, and <code>true</code> for
                           <var>vocab</var> using the original
                           <var>compacted item</var> as a value.</li>
                         <li>If expanded item contains an <code>@id</code> <a>entry</a>,
                           add the key resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <code>@id</code> as
+                          passing <var>active context</var>, <var>inverse context</var>, <code>@id</code> as
                           <var>var</var>, and <code>true</code> for
                           <var>vocab</var> using the value resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, the value of <code>@id</code>
+                          passing <var>active context</var>, <var>inverse context</var>, the value of <code>@id</code>
                           in <var>expanded item</var> as
                           <var>var</var>.</li>
                         <li>If expanded item contains an <code>@index</code> <a>entry</a>,
                           add the key resulting from calling the <a
                           href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <code>@index</code> as
+                          passing <var>active context</var>, <var>inverse context</var>, <code>@index</code> as
                           <var>var</var>, and <code>true</code> for
                           <var>vocab</var> using the value of <code>@index</code>
                           in <var>expanded item</var>.</li>
@@ -3095,7 +3095,7 @@
                       in <var class="changed">nest result</var>.</li>
                     <li>Set <var>container key</var> to the result of calling the
                       <a href="#iri-compaction">IRI Compaction algorithm</a>
-                      passing <var>active context</var>,
+                      passing <var>active context</var>, <var>inverse context</var>,
                       either <code>@language</code>, <code>@index</code>, <code>@id</code>, or <code>@type</code>
                       based on the contents of <var>container</var>, as <var>var</var>, and <code>true</code>
                       for <var>vocab</var>.</li>
@@ -3148,7 +3148,7 @@
                       set <var>compacted item</var> to an <a>array</a> containing that value.</li>
                     <li>If <var>map key</var> is <code>null</code>, set it to the result of calling the
                       <a href="#iri-compaction">IRI Compaction algorithm</a>
-                      passing <var>active context</var>, <code>@none</code> as
+                      passing <var>active context</var>, <var>inverse context</var>, <code>@none</code> as
                       <var>var</var>, and <code>true</code> for
                       <var>vocab</var>.</li>
                     <li>If <var>map key</var> is not an <a>entry</a> of <var>map object</var>,
