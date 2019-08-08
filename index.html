@@ -264,6 +264,24 @@
     text-decoration: none;
     color: #666;
   }
+
+  .algorithm summary::before {
+    content: "// ";
+  }
+
+  .algorithm summary {
+    padding-left: 2em;
+    font-style: italic;
+  }
+
+  /* required if we chose to put OLs *outside* the details,
+     to force them visible when printing */
+  @media screen {
+    .algorithm details:not([open]) + ol {
+      display: none;
+    }
+  }
+
 </style>
 </head>
 
@@ -1073,6 +1091,7 @@
           For each item <var>context</var> in <var>local context</var>:
           <ol>
             <li>If <var>context</var> is <code>null</code>:
+              <details><summary>clear context (unless protected)</summary></details>
               <ol>
                 <li class="changed">If <var>override protected</var> is <code>false</code> and <var>active context</var>
                   contains any <a>protected</a> <a>term definitions</a>,
@@ -1086,10 +1105,10 @@
                   <span class="note">In [[[JSON-LD]]], the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
                     in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
-                  </ol>
+              </ol>
             </li>
-            <li>If <var>context</var> is a <a>string</a>,
-              <ol>
+            <li>If <var>context</var> is a <a>string</a>:
+              <details><summary>dereference and process</summary><ol>
                 <li>Set <var>context</var> to the result of resolving <var>value</var> against
                   the base IRI which is established as specified in
                   <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
@@ -1129,14 +1148,14 @@
                   passing <var>result</var> for <var>active context</var>,
                   <var>context</var> for <var>local context</var>, and <span class="changed">a copy of</span> <var>remote contexts</var>.</li>
                 <li>Continue with the next <var>context</var>.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> is not a <a class="changed">map</a>, an
               <a data-link-for="JsonLdErrorCode">invalid local context</a>
               error has been detected and processing is aborted.</li>
             <li>Otherwise, <var>context</var> is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.</li>
             <li class="changed">If <var>context</var> has an <code>@version</code> <a>entry</a>:
-              <ol>
+              <details><summary>set processing mode</summary><ol>
                 <li>If the associated value is not <code>1.1</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
                   has been detected, and processing is aborted.</li>
@@ -1146,10 +1165,10 @@
                   error has been detected and processing is aborted.</li>
                 <li>Set <a>processing mode</a>,
                   to <code>json-ld-1.1</code>, if not already set.</li>
-              </ol>
+              </ol></details>
             </li>
             <li class="changed">If <var>context</var> has an <code>@import</code> <a>entry</a>:
-              <ol>
+              <details><summary>merge imported context</summary><ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
@@ -1191,11 +1210,11 @@
                 <li>Set <var>context</var> to the result of merging <var>context</var>
                   into <var>import context</var>, replacing common entries
                   with those from <var>context</var>.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> has an <code>@base</code> <a>entry</a> and <var>remote contexts</var> is empty, i.e., the currently
               being processed context is not a remote context:
-              <ol>
+              <details><summary>reset <a>base IRI</a></summary><ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@base</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove the
@@ -1210,10 +1229,10 @@
                 <li>Otherwise, an
                   <a data-link-for="JsonLdErrorCode">invalid base IRI</a>
                   error has been detected and processing is aborted.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> has an <code>@vocab</code> <a>entry</a>:
-              <ol>
+              <details><summary>reset <a>vocabulary mapping</a></summary><ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@vocab</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <a>null</a>, remove
@@ -1234,10 +1253,10 @@
                   error has been detected and processing is aborted.
                   <div class="note">The use of <a>blank node identifiers</a> to value for <code>@vocab</code> is obsolete,
                     and may be removed in a future version of JSON-LD.</div></li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> has an <code>@language</code> <a>entry</a>:
-              <ol>
+              <details><summary>reset <a>default language</a></summary><ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@language</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove
@@ -1247,10 +1266,10 @@
                   lowercased <var>value</var>. If it is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid default language</a>
                   error has been detected and processing is aborted.</li>
-              </ol>
+              </ol></details>
             </li>
             <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
-              <ol>
+              <details><summary>check its validity</summary><ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
@@ -1259,7 +1278,7 @@
                   error has been detected and processing is aborted.</li>
                 <li>Otherwise, <a>previous context</a> was determined before,
                   and no further processing is necessary.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>Create a <a class="changed">map</a> <var>defined</var> to keep
               track of whether or not a <a>term</a> has already been defined
