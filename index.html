@@ -273,16 +273,51 @@
     padding-left: 2em;
     font-style: italic;
   }
-
-  /* required if we chose to put OLs *outside* the details,
-     to force them visible when printing */
-  @media screen {
-    .algorithm details:not([open]) + ol {
-      display: none;
-    }
-  }
-
 </style>
+<script>
+  (function() {
+    function beforePrint() {
+      console.debug("opening details before printing");
+      var algoDetails = document.querySelectorAll('.algorithm details');
+      var c = 0;
+      for (var dt of algoDetails) {
+
+        if (!dt.open) {
+          dt.setAttribute("data-was-closed", "");
+          dt.open = true;
+          c += 1;
+        }
+      }
+      console.debug(c, "details opended before printing");
+    }
+
+    function afterPrint() {
+      console.debug("closing details after printing");
+      var algoDetails = document.querySelectorAll('.algorithm details');
+      var c = 0;
+      for (var dt of algoDetails) {
+        if (dt.hasAttribute("data-was-closed")) {
+          dt.removeAttribute("data-was-closed");
+          dt.open = false;
+          c += 1;
+        }
+      }
+      console.debug(c, "details closed after printing");
+    }
+
+    // using matchMedia
+    window.matchMedia('print').addListener(function (mql) {
+      if (mql.matches) {
+        beforePrint();
+      } else {
+        afterPrint();
+      }
+    });
+    // using events
+    window.addEventListener('beforeprint', beforePrint);
+    window.addEventListener('afterprint', afterPrint);
+  })();
+</script>
 </head>
 
 <body>
@@ -1091,8 +1126,7 @@
           For each item <var>context</var> in <var>local context</var>:
           <ol>
             <li>If <var>context</var> is <code>null</code>:
-              <details><summary>clear context (unless protected)</summary></details>
-              <ol>
+              <details><summary>clear context (unless protected)</summary><ol>
                 <li class="changed">If <var>override protected</var> is <code>false</code> and <var>active context</var>
                   contains any <a>protected</a> <a>term definitions</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid context nullification</a>
@@ -1105,7 +1139,7 @@
                   <span class="note">In [[[JSON-LD]]], the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
                     in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> is a <a>string</a>:
               <details><summary>dereference and process</summary><ol>
