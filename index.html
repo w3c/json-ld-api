@@ -5809,7 +5809,7 @@
       <ol class="changed">
         <li>Create a new {{Promise}} <var>promise</var> and return it.
           The following steps are then executed asynchronously.</li>
-        <li>Set <var>document</var> to the body retrieved from
+        <li id="LoadDocumentCallback-step-2">Set <var>document</var> to the body retrieved from
           the resource identified by <a data-link-for="LoadDocumentCallback">url</a>,
           or by otherwise locating a resource associated with <a data-link-for="LoadDocumentCallback">url</a>.
           When requesting remote documents the request MUST prefer <a>Content-Type</a> <code>application/ld+json</code>
@@ -5824,6 +5824,13 @@
         <li>Set <var>documentUrl</var> to the location of the retrieved resource
           considering redirections (exclusive of HTTP status <code>303</code> "See Other" redirects
           as discussed in [[?cooluris]]).</li>
+        <li>If the retrieved resource's <a>Content-Type</a> is not <code>application/ld+json</code>
+          nor any media type with a <code>+json</code> suffix as defined in [[RFC6839]],
+          and the response has an HTTP Link Header [[RFC8259]] using the <code>alternate</code> link relation
+          with type `application/ld+json`,
+          set <var>url</var> to the associated <code>href</code> relative to the previous <var>url</var>
+          and restart the algorithm from <a href="#LoadDocumentCallback-step-2">step 2</a>,
+          ensuring that <var>documentUrl</var> is set to the original <var>url</var>.</li>
         <li>If the retrieved resource's <a>Content-Type</a> is <code>application/json</code>
           or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
           except <code>application/ld+json</code>,
@@ -6372,6 +6379,9 @@
       a context. When this is set, vocabulary-relative IRIs, such as the
       <a>entries</a> of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> and the <a>vocabulary mapping</a> using string concatenation.</li>
+    <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not `application/ld+json`
+      and there is a link header with `rel=alternate` and `type=application/ld+json`, redirect
+      to that content.</li>
   </ul>
 </section>
 
