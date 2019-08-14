@@ -6379,7 +6379,7 @@
       a context. When this is set, vocabulary-relative IRIs, such as the
       <a>entries</a> of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> and the <a>vocabulary mapping</a> using string concatenation.</li>
-    <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not `application/ld+json`
+    <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not any JSON media type
       and there is a link header with `rel=alternate` and `type=application/ld+json`, redirect
       to that content.</li>
   </ul>
