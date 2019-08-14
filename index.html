@@ -5826,7 +5826,7 @@
           as discussed in [[?cooluris]]).</li>
         <li>If the retrieved resource's <a>Content-Type</a> is not <code>application/ld+json</code>
           nor any media type with a <code>+json</code> suffix as defined in [[RFC6839]],
-          and the response has an HTTP Link Header [[RFC8259]] using the <code>alternate</code> link relation
+          and the response has an HTTP Link Header [[RFC8288]] using the <code>alternate</code> link relation
           with type `application/ld+json`,
           set <var>url</var> to the associated <code>href</code> relative to the previous <var>url</var>
           and restart the algorithm from <a href="#LoadDocumentCallback-step-2">step 2</a>,
@@ -5834,7 +5834,7 @@
         <li>If the retrieved resource's <a>Content-Type</a> is <code>application/json</code>
           or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
           except <code>application/ld+json</code>,
-          and the response has an HTTP Link Header [[RFC8259]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation,
+          and the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation,
           set <var>contextUrl</var> to the associated <code>href</code>.
           <p>If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
@@ -5979,7 +5979,7 @@
 
       <dl>
         <dt><dfn data-dfn-for="RemoteDocument">contextUrl</dfn></dt>
-        <dd>If available, the value of the HTTP Link Header [[RFC8259]]
+        <dd>If available, the value of the HTTP Link Header [[RFC8288]]
           using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
           in the response.
           If the response's <a>Content-Type</a> is <code>application/ld+json</code>,
@@ -6197,7 +6197,7 @@
         <dt><dfn>loading remote context failed</dfn></dt>
         <dd>There was a problem encountered loading a remote context.</dd>
         <dt><dfn>multiple context link headers</dfn></dt>
-        <dd>Multiple HTTP Link Headers [[RFC8259]]
+        <dd>Multiple HTTP Link Headers [[RFC8288]]
           using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
           have been detected.</dd>
         <dt><dfn>processing mode conflict</dfn></dt>
