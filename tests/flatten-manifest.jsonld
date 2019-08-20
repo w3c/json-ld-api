@@ -359,42 +359,6 @@
       "input": "flatten/e001-in.jsonld",
       "expect": "conflicting indexes"
     }, {
-      "@id": "#th001",
-      "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
-      "name": "Flattens embedded JSON-LD script element",
-      "purpose": "Tests embedded JSON-LD in HTML",
-      "input": "flatten/h001-in.html",
-      "context": "flatten/h001-context.jsonld",
-      "expect": "flatten/h001-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#th002",
-      "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
-      "name": "Flattens first embedded JSON-LD script element",
-      "purpose": "Tests embedded JSON-LD in HTML",
-      "input": "flatten/h002-in.html",
-      "context": "flatten/h002-context.jsonld",
-      "expect": "flatten/h002-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1", "extractAllScripts": false}
-    }, {
-      "@id": "#th003",
-      "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
-      "name": "Flattens targeted JSON-LD script element",
-      "purpose": "Tests embedded JSON-LD in HTML with fragment identifier",
-      "input": "flatten/h003-in.html#second",
-      "context": "flatten/h003-context.jsonld",
-      "expect": "flatten/h003-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#th004",
-      "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
-      "name": "Flattens all script elements by default",
-      "purpose": "Tests embedded JSON-LD in HTML with fragment identifier",
-      "input": "flatten/h004-in.html",
-      "context": "flatten/h004-context.jsonld",
-      "expect": "flatten/h004-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],
       "name": "Basic Included array",
