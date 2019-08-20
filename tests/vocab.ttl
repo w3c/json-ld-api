@@ -114,6 +114,15 @@
     `PositiveSyntaxTest` or `NegativeSyntaxTest`.
   """ .
 
+:HtmlTest a rdfs:Class ;
+  rdfs:subClassOf :Test ;
+  rdfs:label "HTML Evaluation Test" ;
+  rdfs:comment """
+    An `HtmlTest` modifies either a `PositiveEvaluationTest` or `NegativeEvaluationTest`
+    indicating that the source is of type text/html, which requires optional
+    _HTML script extraction_ support.
+  """ .
+
 :HttpTest a rdfs:Class ;
   rdfs:subClassOf :Test ;
   rdfs:label "HTTP Evaluation Test" ;
