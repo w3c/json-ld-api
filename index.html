@@ -4628,7 +4628,7 @@
           convert <var>value</var> to the <a>canonical lexical form</a>
           using the result of transforming the <a>internal representation</a> of <var>value</var>
           to JSON and set <var>datatype</var> to <code>rdf:JSON</code>.
-          <div class="issue atrisk">The JSON Canonicalization Scheme [[?JCS]]
+          <div class="issue">The JSON Canonicalization Scheme [[?JCS]]
             is an emerging standard for JSON canonicalization
             not yet ready to be referenced.
             When a JSON canonicalization standard becomes available,
@@ -5127,7 +5127,7 @@
         which SHOULD be serialized as <code>\\</code> and <code>\"</code> respectively.</li>
     </ul>
 
-    <p class="issue atrisk changed">The JSON Canonicalization Scheme [[?JCS]]
+    <p class="issue changed">The JSON Canonicalization Scheme [[?JCS]]
       is an emerging standard for JSON canonicalization
       not yet ready to be referenced.
       When a JSON canonicalization standard becomes available,
@@ -5851,11 +5851,6 @@
             <li>Set <var>documentUrl</var> to the the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
               of <a data-link-for="LoadDocumentCallback">url</a>, as defined in [[HTML]],
               using the existing <var>documentUrl</var> as the document's URL.
-              <div class="issue atrisk">
-                The use of the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
-                from [[HTML]] for setting the <a>base IRI</a> of the enclosed JSON-LD
-                is an experimental feature, which may be changed in a future version of this specification.
-              </div>
             </li>
             <li>If the <a data-link-for="LoadDocumentCallback">url</a> parameter
               contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
