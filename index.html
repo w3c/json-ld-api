@@ -5880,9 +5880,6 @@
       <p>After <a href="#LoadDocumentCallback-step-5">step 5</a>, add the following processing step:
         Otherwise, if the retrieved resource's <a>Content-Type</a> is <code>text/html</code>:</p>
       <ol>
-        <li>If the processor does not support <a>HTML script extraction</a>
-          the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
-          and processing is terminated.</li>
         <li>Set <var>documentUrl</var> to the the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
           of <a data-link-for="LoadDocumentCallback">url</a>, as defined in [[HTML]],
           using the existing <var>documentUrl</var> as the document's URL.
