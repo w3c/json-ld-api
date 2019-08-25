@@ -922,7 +922,10 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@vocab as blank node identifier",
       "purpose": "Use @vocab to map all properties to blank node identifiers",
-      "option": {"processingMode": "json-ld-1.0"},
+      "option": {
+        "processingMode": "json-ld-1.0",
+        "produceGeneralizedRdf": true
+      },
       "input": "toRdf/e075-in.jsonld",
       "expect": "toRdf/e075-out.nq"
     }, {
