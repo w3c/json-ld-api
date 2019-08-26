@@ -9,7 +9,7 @@ More information and an RDFS definition of the test vocabulary can be found at [
 
 # Design
 
-Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [compact](compact-manifest.jsonld), [expand](expand-manifest.jsonld), [flatten](flatten-manifest.jsonld), [remote-doc](remote-doc-manifest.jsonld), [fromRdf](fromRdf-manifest.jsonld), and [toRdf](toRdf-manifest.jsonld) sections:
+Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [compact](compact-manifest.jsonld), [expand](expand-manifest.jsonld), [flatten](flatten-manifest.jsonld), [html](html-manifest.jsonld), [remote-doc](remote-doc-manifest.jsonld), [fromRdf](fromRdf-manifest.jsonld), and [toRdf](toRdf-manifest.jsonld) sections:
 
 * [compact](compact-manifest.jsonld) tests have _input_, _expected_ and _context_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output. Additionally, if the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
@@ -17,6 +17,12 @@ Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
 * [expand](expand-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
+
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
+* [html](html.jsonld) tests have _input_ and _expected_ documents and an optional _context_ document.
+  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output
+  after potentially remapping blank node identifiers (see below).
+  Additionally, if the result is compacted and the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
 
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
 * [flatten](flatten-manifest.jsonld) tests have _input_ and _expected_ documents and an optional _context_ document.
@@ -37,18 +43,6 @@ Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [
   The _expected_ results  can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 * [toRdf](toRdf-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism).
-* _http_ tests have _input_ and _expected_ documents and an optional _context_ document.
-  These tests describe the behavior of an HTTP server performing content-negotiation using the ACCEPT header, specified using the _accept_ option to generate the _expected_ result document.
-  The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output
-  after potentially remapping blank node identifiers (see below).
-  Additionally, if the result is compacted and the `ordered` option is not set, result should be expanded and compared with the expanded _expected_ document also using [JSON-LD object comparison](#json-ld-object-comparison).
-
-  If the result is to be compacted, and no explicit context URL is provided, test subjects should use http/default-context.jsonld
-
-  If the profile parameter includes http://example.com/do-not-use, test subjects should reject the URL and not accept the media type. Otherwise, for any other URL, applications should apply the specified URL for the context or frame, as appropriate.
-
-  For *NegativeEvaluationTests*, the result is the expected HTTP status. Options may be present to describe the intended HTTP behavior:
-  * _accept_: The HTTP _Accept_ header value.
 
 Unless `processingMode` is set explicitly in a test entry, `processingMode` is compatible with both `json-ld-1.0` and `json-ld-1.1`.
 
