@@ -177,7 +177,7 @@
     }, {
       "@id": "#tla05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Base remains that of original document",
+      "name": "Base is that of the alternate URL",
       "purpose": "Load an alternate link if type is not ld+json and rel=alternate.",
       "option": {
         "httpLink": "<la05-alternate.jsonld>; rel=\"alternate\"; type=\"application/ld+json\""
