@@ -5757,8 +5757,7 @@
           and the response has an HTTP Link Header [[RFC8288]] using the <code>alternate</code> link relation
           with type `application/ld+json`,
           set <var>url</var> to the associated <code>href</code> relative to the previous <var>url</var>
-          and restart the algorithm from <a href="#LoadDocumentCallback-step-2">step 2</a>,
-          ensuring that <var>documentUrl</var> is set to the original <var>url</var>.</li>
+          and restart the algorithm from <a href="#LoadDocumentCallback-step-2">step 2</a>.</li>
         <li id="LoadDocumentCallback-step-5">If the retrieved resource's <a>Content-Type</a> is <code>application/json</code>
           or any media type with a <code>+json</code> suffix as defined in [[RFC6839]]
           except <code>application/ld+json</code>,
