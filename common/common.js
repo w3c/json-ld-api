@@ -83,9 +83,9 @@ require(["core/pubsubhub"], (respecEvents) => {
       // now termsReferencedByTerms has ALL terms that
       // reference other terms, and a list of the
       // terms that they reference
-      const internalRefs = document.querySelectorAll("a.internalDFN");
+      const internalRefs = document.querySelectorAll("a[data-link-type='dfn']");
       for (const item of internalRefs) {
-        const idref = item.getAttribute('href').replace(/^#/,"") ;
+        const idref = item.getAttribute('href').replace(/^.*#/,"") ;
         // if the item is outside the term list
         if (!item.closest('dl.termlist')) {
           clearRefs(idref);
