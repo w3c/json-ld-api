@@ -974,7 +974,7 @@
     }, {
       "@id": "#te081",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "Does not create an @graph container if value is a graph",
+      "name": "Creates an @graph container if value is a graph",
       "purpose": "Don't double-expand an already expanded graph",
       "input": "toRdf/e081-in.jsonld",
       "expect": "toRdf/e081-out.nq",
@@ -1090,7 +1090,7 @@
     }, {
       "@id": "#te095",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "Does not create an @graph container if value is a graph (multiple objects)",
+      "name": "Creates an @graph container if value is a graph (multiple objects)",
       "purpose": "Don't double-expand an already expanded graph",
       "input": "toRdf/e095-in.jsonld",
       "expect": "toRdf/e095-out.nq",
@@ -1146,7 +1146,7 @@
     }, {
       "@id": "#te102",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "Do not expand @graph container if value is a graph (multiple objects)",
+      "name": "Expand @graph container if value is a graph (multiple objects)",
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e102-in.jsonld",
       "expect": "toRdf/e102-out.nq",
@@ -1154,7 +1154,7 @@
     }, {
       "@id": "#te103",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "Do not expand @graph container if value is a graph (multiple graphs)",
+      "name": "Expand @graph container if value is a graph (multiple graphs)",
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e103-in.jsonld",
       "expect": "toRdf/e103-out.nq",
@@ -1162,7 +1162,7 @@
     }, {
       "@id": "#te104",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "Does not create an @graph container if value is a graph (mixed graph and object)",
+      "name": "Creates an @graph container if value is a graph (mixed graph and object)",
       "purpose": "Don't double-expand an already expanded graph",
       "input": "toRdf/e104-in.jsonld",
       "expect": "toRdf/e104-out.nq",

@@ -580,7 +580,7 @@
     }, {
       "@id": "#t0081",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Does not create an @graph container if value is a graph",
+      "name": "Creates an @graph container if value is a graph",
       "purpose": "Don't double-expand an already expanded graph",
       "input": "expand/0081-in.jsonld",
       "expect": "expand/0081-out.jsonld",
