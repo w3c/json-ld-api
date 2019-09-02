@@ -2954,13 +2954,13 @@
                     <li>If <var>container</var> includes <code>@graph</code> and <code>@id</code>:
                       <ol>
                         <li>Initialize <var>map object</var> to the value of <var>item active property</var>
-                          in <var class="changed">nest result</var>.</li>
+                          in <var>nest result</var>.</li>
                         <li>Initialize <var>map key</var> to the result of calling the
                           <a href="#iri-compaction">IRI Compaction algorithm</a>
                           passing <var>active context</var>, <var>inverse context</var>, and the value of <code>@id</code> in <var>expanded item</var>
                           or <code>@none</code> if no such value exists as <var>var</var>, with <var>vocab</var> set to <code>true</code>
                           if there is no <code>@id</code> <a>entry</a> in <var>expanded item</var>.</li>
-                        <li class="changed">If <var>compacted item</var> is not an
+                        <li>If <var>compacted item</var> is not an
                           <a>array</a> and <var>as array</var> is <code>true</code>,
                           set <var>compacted item</var> to an <a>array</a> containing that value.</li>
                         <li>If <var>map key</var> is not an <a>entry</a> in <var>map object</var>,
@@ -2975,11 +2975,11 @@
                       and <var>expanded item</var> is a <a>simple graph object</a>:
                       <ol>
                         <li>Initialize <var>map object</var> to the value of <var>item active property</var>
-                          in <var class="changed">nest result</var>.</li>
+                          in <var>nest result</var>.</li>
                         <li>Initialize <var>map key</var> the value of <code>@index</code> in
                           <var>expanded item</var> or <code>@none</code>, if no such
                           value exists.</li>
-                        <li class="changed">If <var>compacted item</var> is not an
+                        <li>If <var>compacted item</var> is not an
                           <a>array</a> and <var>as array</var> is <code>true</code>,
                           set <var>compacted item</var> to an <a>array</a> containing that value.</li>
                         <li>If <var>map key</var> is not an <a>entry</a> in <var>map object</var>,
@@ -2991,17 +2991,27 @@
                       </ol>
                     </li>
                     <li>Otherwise, if <var>container</var> includes <code>@graph</code>
-                      and <var>expanded item</var> is a <a>simple graph
-                      object</a> the value cannot be represented as a map
-                      object. If <var>compacted item</var> is not an <a>array</a>
-                      and <var>as array</var> is <code>true</code>, set
-                      <var>compacted item</var> to an <a>array</a> containing
-                      that value. If the value of an <var>item active property</var> <a>entry</a> in
-                      <var class="changed">nest result</var> is not an <a>array</a>,
-                      set it to a new <a>array</a> containing only the value.
-                      Then append <var>compacted item</var> to the value if
-                      <var>compacted item</var> is not an <a>array</a>,
-                      otherwise, concatenate it.
+                      and <var>expanded item</var> is a <a>simple graph object</a>
+                      the value cannot be represented as a map object.
+                      <ol>
+                        <li>If <var>compacted item</var> is not an <a>array</a>
+                          and <var>as array</var> is <code>true</code>,
+                          set <var>compacted item</var> to an <a>array</a> containing that value.</li>
+                        <li>If <var>compacted item</var> is an <a>array</a>
+                          with more than one value, it cannot be directly represented,
+                          as multiple objects would be interpreted as different named graphs.
+                          Set <var>compacted item</var> to a new <a>map</a>,
+                          containing the key created by calling the <a href="#iri-compaction">IRI Compaction algorithm</a>
+                          passing <var>active context</var>, <var>inverse context</var>, `@included` as
+                          <var>var</var>, and `true` for
+                          <var>vocab</var> and the original <var>compacted item</var> as the value. </li>
+                        <li>If the value of an <var>item active property</var> <a>entry</a> in <var>nest result</var>
+                          is not an <a>array</a>,
+                          set it to a new <a>array</a> containing only the value.</li>
+                        <li>Then append <var>compacted item</var> to the value if
+                          <var>compacted item</var> is not an <a>array</a>,
+                          otherwise, concatenate it.</li>
+                      </ol>                      
                     </li>
                     <li>Otherwise, <var>container</var> does not include <code>@graph</code>
                       or otherwise does not match one of the previous cases, redo <var>compacted item</var>.

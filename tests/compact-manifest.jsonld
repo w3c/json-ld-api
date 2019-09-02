@@ -800,7 +800,7 @@
     }, {
       "@id": "#t0096",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
-      "name": "Compact @graph container (multiple objects)",
+      "name": "Compact @graph container (multiple graphs)",
       "purpose": "Ensure @graph appears properly in output",
       "input": "compact/0096-in.jsonld",
       "context": "compact/0096-context.jsonld",
@@ -809,7 +809,7 @@
     }, {
       "@id": "#t0097",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
-      "name": "Compact [@graph, @set] container (multiple objects)",
+      "name": "Compact [@graph, @set] container (multiple graphs)",
       "purpose": "Ensure @graph appears properly in output",
       "input": "compact/0097-in.jsonld",
       "context": "compact/0097-context.jsonld",
@@ -914,6 +914,24 @@
       "input": "compact/0108-in.jsonld",
       "context": "compact/0108-context.jsonld",
       "expect": "compact/0108-out.jsonld"
+    }, {
+      "@id": "#t0109",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact @graph container (multiple objects)",
+      "purpose": "Multiple objects in a simple graph with a graph container need to use @included",
+      "input": "compact/0109-in.jsonld",
+      "context": "compact/0109-context.jsonld",
+      "expect": "compact/0109-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0110",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact [@graph, @set] container (multiple objects)",
+      "purpose": "Multiple objects in a simple graph with a graph container need to use @included",
+      "input": "compact/0110-in.jsonld",
+      "context": "compact/0110-context.jsonld",
+      "expect": "compact/0110-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
