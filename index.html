@@ -275,6 +275,8 @@
   }
 </style>
 <script>
+  // functions related to foldable algorithm parts
+
   (function() {
     function beforePrint() {
       console.debug("opening details before printing");
@@ -316,6 +318,24 @@
     // using events
     window.addEventListener('beforeprint', beforePrint);
     window.addEventListener('afterprint', afterPrint);
+    window.addEventListener('load', function() {
+      console.debug("coucou");
+      document.getElementById('fold-all-algorithms').addEventListener('click', function() {
+        var algoDetails = document.querySelectorAll('.algorithm details');
+        for (var dt of algoDetails) {
+          dt.open = false;
+        }
+        console.debug("fold");
+      });
+      document.getElementById('unfold-all-algorithms').addEventListener('click', function() {
+        var algoDetails = document.querySelectorAll('.algorithm details');
+        for (var dt of algoDetails) {
+          dt.open = true;
+        }
+        console.debug("unfold");
+      });
+      console.debug("coucou");
+    });
   })();
 </script>
 </head>
@@ -396,6 +416,20 @@
   <section class="informative">
     <h2>Typographical conventions</h2>
     <div data-include="common/typographical-conventions.html"></div>
+
+    <section>
+      <h3>Summarized algorithm sections</h3>
+      <p>In order to make the algorithms easier to read,
+        some parts of them are initially hidden and replaced by a short summary.
+        Clicking on that summary will toggle between detailed and summarised view.
+        Using the buttons below, you can display or hide the details in all algorithms at once.
+        Note that, when printing, all details are always shown.
+      </p>
+      <p>
+        <button id="unfold-all-algorithms">Show all details in all algorithms</button>
+        <button id="fold-all-algorithms">Hide all details in all algorithms</button>
+      </p>
+    </section>
   </section>
 
   <section class="normative">
