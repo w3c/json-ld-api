@@ -5209,6 +5209,7 @@
     <pre class="idl">
       [Exposed=Window]
       interface JsonLdProcessor {
+        constructor();
         static Promise&lt;JsonLdDictionary> compact(
           JsonLdInput input,
           optional JsonLdContext context = {},
@@ -5500,8 +5501,9 @@
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed">
-      [Constructor, Exposed=Window]
+      [Exposed=Window]
       interface RdfDataset {
+        constructor();
         readonly attribute RdfGraph defaultGraph;
         void add(USVString graphName, RdfGraph graph);
         iterable&lt;USVString?, RdfGraph>;
@@ -5542,8 +5544,9 @@
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed">
-      [Constructor, Exposed=Window]
+      [Exposed=Window]
       interface RdfGraph {
+        constructor();
         void add(RdfTriple triple);
         iterable&lt;RdfTriple>;
       };
@@ -5570,8 +5573,9 @@
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed">
-      [Constructor, Exposed=Window]
+      [Exposed=Window]
       interface RdfTriple {
+        constructor();
         readonly attribute USVString subject;
         readonly attribute USVString predicate;
         readonly attribute (USVString or RdfLiteral) object;
@@ -5597,8 +5601,9 @@
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
     <pre class="idl changed">
-      [Constructor, Exposed=Window]
+      [Exposed=Window]
       interface RdfLiteral {
+        constructor();
         readonly attribute USVString value;
         readonly attribute USVString datatype;
         readonly attribute USVString? language;
