@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Compaction",
-  "description": "JSON-LD compaction tests use object comparison.",
+  "description": "JSON-LD Compaction tests.",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {

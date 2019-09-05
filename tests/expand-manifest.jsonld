@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Expansion",
-  "description": "JSON-LD Expansion tests use object compare",
+  "description": "JSON-LD Expansion tests.",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {

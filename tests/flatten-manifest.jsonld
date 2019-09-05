@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Flattening",
-  "description": "JSON-LD flattening tests use object comparison.",
+  "description": "JSON-LD flattening tests.",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {
