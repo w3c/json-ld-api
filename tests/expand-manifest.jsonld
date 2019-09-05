@@ -696,8 +696,8 @@
     }, {
       "@id": "#t0095",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Does not create an @graph container if value is a graph (multiple objects)",
-      "purpose": "Don't double-expand an already expanded graph",
+      "name": "Creates an @graph container if value is a graph (multiple objects)",
+      "purpose": "Double-expand an already expanded graph",
       "input": "expand/0095-in.jsonld",
       "expect": "expand/0095-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
@@ -752,24 +752,24 @@
     }, {
       "@id": "#t0102",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not expand @graph container if value is a graph (multiple objects)",
-      "purpose": "Does not create a new graph object if indexed value is already a graph object",
+      "name": "Expand @graph container if value is a graph (multiple objects)",
+      "purpose": "Creates a new graph object if indexed value is already a graph object",
       "input": "expand/0102-in.jsonld",
       "expect": "expand/0102-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0103",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Do not expand @graph container if value is a graph (multiple graphs)",
-      "purpose": "Does not create a new graph object if indexed value is already a graph object",
+      "name": "Expand @graph container if value is a graph (multiple graphs)",
+      "purpose": "Creates a new graph object if indexed value is already a graph object",
       "input": "expand/0103-in.jsonld",
       "expect": "expand/0103-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0104",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Does not create an @graph container if value is a graph (mixed graph and object)",
-      "purpose": "Don't double-expand an already expanded graph",
+      "name": "Creates an @graph container if value is a graph (mixed graph and object)",
+      "purpose": "Double-expand an already expanded graph",
       "input": "expand/0104-in.jsonld",
       "expect": "expand/0104-out.jsonld",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
