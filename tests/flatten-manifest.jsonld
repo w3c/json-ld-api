@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Flattening",
-  "description": "JSON-LD flattening tests.",
+  "description": "JSON-LD Flattening tests.",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {

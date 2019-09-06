@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Transform JSON-LD to RDF",
-  "description": "JSON-LD to RDF tests.",
+  "description": "JSON-LD To RDF tests.",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {
