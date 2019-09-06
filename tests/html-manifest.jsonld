@@ -2,7 +2,7 @@
   "@context": "context.jsonld",
   "@id": "",
   "@type": "mf:Manifest",
-  "name": "Expansion",
+  "name": "HTML",
   "description": "JSON-LD HTML tests",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [{
