@@ -1,5 +1,5 @@
 {
-  "@context": "https://w3c.github.io/json-ld-api/tests/context.jsonld",
+  "@context": ["context.jsonld", {"@base": "remote-doc-manifest"}],
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Remote document",

@@ -1,5 +1,5 @@
 {
-  "@context": "context.jsonld",
+  "@context": ["context.jsonld", {"@base": "flatten-manifest"}],
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Flattening",
