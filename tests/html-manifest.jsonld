@@ -1,5 +1,5 @@
 {
-  "@context": "context.jsonld",
+  "@context": ["context.jsonld", {"@base": "html-manifest"}],
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Expansion",
