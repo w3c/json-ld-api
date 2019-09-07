@@ -1081,7 +1081,7 @@
       "expect": "invalid context member",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tc029",
+      "@id": "#tc030",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@propagate must be boolean valued",
       "purpose": "@propagate must be boolean valued",
