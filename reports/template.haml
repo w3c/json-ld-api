@@ -65,8 +65,6 @@
         color: #C83500;
       }
   %body{prefix: "bibo: http://purl.org/ontology/bibo/ earl: http://www.w3.org/ns/earl# doap: http://usefulinc.com/ns/doap# mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#", vocab: "http://www.w3.org/ns/earl#"}
-    - test_info = {}
-    - test_refs = {}
     - subject_refs = {}
     - passed_tests = []
     - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each {|m| m['title'] ||= m['rdfs:label'] || m['description'] || m['rdfs:comment']}
@@ -264,13 +262,14 @@
             - test_cases.each do |test|
               - test['title'] ||= test['rdfs:label']
               - test['title'] = Array(test['title']).first
-              - tid = "test_#{Digest::MD5.hexdigest(test['@id'])}"
-              - (test_info[tid] ||= []) << test
-              - test_refs[test['@id']] = tid
               %tr
                 %td
-                  %a{href: "##{tid}"}<
-                    ~ "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
+                  %a{href: test['@id']}<
+                    - title = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
+                    - require 'byebug'; byebug if test['@id'] == 'https://w3c.github.io/json-ld-api/tests/expand-manifest#tc029'
+                    - if test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})['https://w3c.github.io/json-ld-api/tests/vocab#specVersion'] == 'json-ld-1.1'
+                      - title += "(new in JSON-LD 1.1)"
+                    ~ title
                 -# Order assertions by subject name
                 - subjects.each_with_index do |subject, ndx|
                   - next if skip_subject[subject['@id']]
