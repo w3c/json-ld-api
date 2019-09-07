@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+<title>
+Transform RDF to JSON-LD
+</title>
+<link href='fromRdf-manifest.jsonld' rel='alternate'>
+<link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet'>
+</head>
+<body>
+<header>
+<p>
+This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at&nbsp<a href='fromRdf-manifest.jsonld'>fromRdf-manifest.jsonld</a>.
+</p>
+</header>
+<h1>Transform RDF to JSON-LD</h1>
+<dl>
+<dt>baseIri</dt>
+<dd>https://w3c.github.io/json-ld-api/tests/</dd>
+</dl>
+<p>JSON-LD From RDF tests.</p>
+<section>
+<h2>
+Test sequence:
+</h2>
+<dl class='entries'>
+<dt id='t0001'>
+Test t0001 Object Lists
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0001</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests generation using different types of objects.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0001-in.nq'>fromRdf/0001-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0001-out.jsonld'>fromRdf/0001-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0002'>
+Test t0002 Native Types
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0002</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Do not use native datatypes for xsd:boolean, xsd:integer, and xsd:double by default.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0002-in.nq'>fromRdf/0002-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0002-out.jsonld'>fromRdf/0002-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0003'>
+Test t0003 BNodes and references
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0003</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>BNode name generation and references between resources.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0003-in.nq'>fromRdf/0003-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0003-out.jsonld'>fromRdf/0003-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0004'>
+Test t0004 Lists
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0004</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Multiple lists with different types of element.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0004-in.nq'>fromRdf/0004-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0004-out.jsonld'>fromRdf/0004-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0005'>
+Test t0005 Document with list
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0005</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Uses a named graph containing a list.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0005-in.nq'>fromRdf/0005-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0005-out.jsonld'>fromRdf/0005-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0006'>
+Test t0006 Two graphs having same subject but different values
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0006</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Ensure that properties and list elements aren't confused between graphs.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0006-in.nq'>fromRdf/0006-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0006-out.jsonld'>fromRdf/0006-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0007'>
+Test t0007 Graph with multiple named graphs
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0007</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Testing @graph recursion.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0007-in.nq'>fromRdf/0007-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0007-out.jsonld'>fromRdf/0007-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0008'>
+Test t0008 List conversion
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0008</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Conversion of lists of lists (the triples in the input are only partially ordered on purpose (1.0 semantics)</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0008-in.nq'>fromRdf/0008-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0008-out.jsonld'>fromRdf/0008-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0009'>
+Test t0009 List conversion with IRI nodes
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0009</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Preserve IRI list nodes (i.e., not blank nodes) when converting to @list</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0009-in.nq'>fromRdf/0009-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0009-out.jsonld'>fromRdf/0009-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0010'>
+Test t0010 List pattern without rdf:nil
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0010</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Do not convert lists that are not terminated by rdf:nil to @list.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0010-in.nq'>fromRdf/0010-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0010-out.jsonld'>fromRdf/0010-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0011'>
+Test t0011 List pattern with extra properties
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0011</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>If additional properties are associated to a list node, the list is only partially converted to @list.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0011-in.nq'>fromRdf/0011-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0011-out.jsonld'>fromRdf/0011-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0012'>
+Test t0012 List pattern with cycles
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0012</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Detect lists containing cycles and do not convert them to @list.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0012-in.nq'>fromRdf/0012-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0012-out.jsonld'>fromRdf/0012-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0013'>
+Test t0013 List pattern with multiple values of rdf:first
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0013</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Do not convert list nodes to @list if nodes contain more than one value for rdf:first.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0013-in.nq'>fromRdf/0013-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0013-out.jsonld'>fromRdf/0013-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0014'>
+Test t0014 List pattern with multiple values of rdf:rest
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0014</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Do not convert list nodes to @list if nodes contain more than one value for rdf:rest.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0014-in.nq'>fromRdf/0014-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0014-out.jsonld'>fromRdf/0014-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0015'>
+Test t0015 List pattern with IRI rdf:rest
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0015</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Do not convert lists to @list if a list node's rdf:rest is an IRI.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0015-in.nq'>fromRdf/0015-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0015-out.jsonld'>fromRdf/0015-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0016'>
+Test t0016 List pattern with type rdf:List
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0016</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List nodes may have a rdf:type rdf:List.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0016-in.nq'>fromRdf/0016-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0016-out.jsonld'>fromRdf/0016-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0017'>
+Test t0017 Remove duplicate triples
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0017</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Equivalent triples are used only once</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0017-in.nq'>fromRdf/0017-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0017-out.jsonld'>fromRdf/0017-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0018'>
+Test t0018 use native types flag set to true
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0018</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Literals with datatype xsd:boolean, xsd:integer, and xsd:double are serialized using native scalar values</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0018-in.nq'>fromRdf/0018-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0018-out.jsonld'>fromRdf/0018-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>useNativeTypes</dt>
+<dd>true</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0019'>
+Test t0019 use rdf:type flag set to false
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0019</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Setting useRdfType to true causes an rdf:type predicate to be treated like a normal property, not @type</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0019-in.nq'>fromRdf/0019-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0019-out.jsonld'>fromRdf/0019-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>useRdfType</dt>
+<dd>true</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0020'>
+Test t0020 list with node shared across graphs
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0020</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>An otherwise conformant list with a node shared across different lists does not serialize using @list</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0020-in.nq'>fromRdf/0020-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0020-out.jsonld'>fromRdf/0020-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0021'>
+Test t0021 list with node shared across graphs (same triple in different graphs)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0021</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>If a list node is used in different graphs, it isn't removed and converted to @list</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0021-in.nq'>fromRdf/0021-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0021-out.jsonld'>fromRdf/0021-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0022'>
+Test t0022 list from duplicate triples
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0022</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Duplicate triples for a list node will not prevent @list from being properly generated</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0022-in.nq'>fromRdf/0022-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0022-out.jsonld'>fromRdf/0022-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0023'>
+Test t0023 triple with RDF nil subject
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0023</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Test triple with RDF nil subject</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0023-in.nq'>fromRdf/0023-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0023-out.jsonld'>fromRdf/0023-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0024'>
+Test t0024 multiple languages for same subject+property+value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0024</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Uniqness of triples should include the value language</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0024-in.nq'>fromRdf/0024-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0024-out.jsonld'>fromRdf/0024-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0025'>
+Test t0025 multiple types for same subject+property+value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0025</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Uniqness of triples should include the value type</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0025-in.nq'>fromRdf/0025-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0025-out.jsonld'>fromRdf/0025-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='t0026'>
+Test t0026 triple with rdf:first property and rdf:nil value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0026</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Check list generation with rdf:first property and rdf:nil value.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/0026-in.nq'>fromRdf/0026-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/0026-out.jsonld'>fromRdf/0026-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='tjs01'>
+Test tjs01 JSON literal (boolean true)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs01</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (boolean true).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js01-in.nq'>fromRdf/js01-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js01-out.jsonld'>fromRdf/js01-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs02'>
+Test tjs02 JSON literal (boolean false)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs02</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (boolean false).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js02-in.nq'>fromRdf/js02-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js02-out.jsonld'>fromRdf/js02-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs03'>
+Test tjs03 JSON literal (double)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs03</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (double).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js03-in.nq'>fromRdf/js03-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js03-out.jsonld'>fromRdf/js03-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs04'>
+Test tjs04 JSON literal (double-zero)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs04</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (double-zero).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js04-in.nq'>fromRdf/js04-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js04-out.jsonld'>fromRdf/js04-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs05'>
+Test tjs05 JSON literal (integer)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs05</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (integer).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js05-in.nq'>fromRdf/js05-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js05-out.jsonld'>fromRdf/js05-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs06'>
+Test tjs06 JSON literal (object)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs06</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (object).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js06-in.nq'>fromRdf/js06-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js06-out.jsonld'>fromRdf/js06-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs07'>
+Test tjs07 JSON literal (array)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs07</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (array).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js07-in.nq'>fromRdf/js07-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js07-out.jsonld'>fromRdf/js07-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli01'>
+Test tli01 @list containing empty @list
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli01</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/li01-in.nq'>fromRdf/li01-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/li01-out.jsonld'>fromRdf/li01-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli02'>
+Test tli02 @list containing multiple lists
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli02</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/li02-in.nq'>fromRdf/li02-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/li02-out.jsonld'>fromRdf/li02-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli03'>
+Test tli03 t0008 as interpreted for 1.1. 
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli03</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/li02-in.nq'>fromRdf/li02-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/li02-out.jsonld'>fromRdf/li02-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</body>
+</html>
