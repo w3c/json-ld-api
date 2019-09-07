@@ -1,0 +1,72 @@
+-# This template is used for generating a rollup EARL report. It expects to be
+-# called with a single _tests_ local with the following structure
+- require 'cgi'
+- require 'digest'
+!!! 5
+%html
+  %head
+    %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
+    %title
+      = manifest['name']
+    %link{rel: "alternate", href: json_file}
+    %link{rel: "stylesheet", href: "https://www.w3.org/StyleSheets/TR/base"}
+  %body
+    %header
+      %p
+        This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at
+        ="&nbsp"
+        %a{href: json_file}<>=json_file
+        ="."
+    %h1<=manifest['name']
+    - if manifest['baseIri']
+      %dl
+        %dt="baseIri"
+        %dd=manifest['baseIri']
+    %p=manifest['description']
+    - if manifest['sequence']
+      %section
+        %h2
+          Test sequence:
+        - if manifest['sequence'].first.is_a?(String)
+          %ul
+            - manifest['sequence'].each do |man|
+              - man_name = man.sub('.jsonld', '')
+              %li
+                %a{href: "#{man_name}.html"}<=man_name
+        - else
+          %dl.entries
+            - manifest['sequence'].each do |entry|
+              %dt{id: entry['@id'][1..-1]}
+                ="Test #{entry['@id'][1..-1]} #{entry['name']}"
+              %dd
+                %dl.entry
+                  %dt="id"
+                  %dd=entry['@id']
+                  %dt="Type"
+                  %dd="#{Array(entry['@type']).join(', ')}"
+                  %dt="Purpose"
+                  %dd=entry['purpose']
+                  %dt="input"
+                  %dd
+                    %a{href: entry['input']}=entry['input']
+                  - if entry['context']
+                    %dt="context"
+                    %dd
+                      %a{href: entry['context']}=entry['context']
+                  - if entry['frame']
+                    %dt="frame"
+                    %dd
+                      %a{href: entry['frame']}=entry['frame']
+                  %dt="expect"
+                  %dd
+                    - if entry['@type'].to_s.include?('Negative')
+                      =entry['expect']
+                    - else
+                      %a{href: entry['expect']}=entry['expect']
+                  - if entry['option']
+                    %dt="Options"
+                    %dd
+                      %dl.options
+                        - entry['option'].each do |k, v|
+                          %dt=k
+                          %dd=v
