@@ -74,8 +74,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2019-09-07' property='dc:issued'>
-07 September 2019
+<time class='dt-published' datetime='2019-09-08' property='dc:issued'>
+08 September 2019
 </time>
 </h2>
 <dl>
@@ -237,23 +237,20 @@ Report Generation Software
 </ul>
 </section>
 <section id='instructions-for-submitting-implementation-reports'>
-<h2>Instructions for submitting implementation reports</h2>
-<p>Tests should be run using the test manifests defined in the
-<a href="#test-manifests">Test Manifests</a> Section.</p>
+<h2 id="instructions-for-submitting-implementation-reports">Instructions for submitting implementation reports</h2>
+<p>Tests should be run using the test manifests defined in the <a href="#test-manifests">Test Manifests</a> Section.</p>
 <p>The assumed base URI for the tests is <code>&lt;http://example/base/&gt;</code> if needed.</p>
-<p>Reports should be submitted in Turtle format to
-<a href="mailto:public-json-ld-wg@w3.org">Public JSON-LD WG</a>
-and include an <code>earl:Assertion</code>
-for each test, referencing the test resource from the associated manifest
-and the test subject being reported upon. An example test entry is be the following:</p>
-<pre><code>  [ a earl:Assertion;&#x000A;    earl:assertedBy &lt;--your-developer-identifier--&gt;;&#x000A;    earl:subject &lt;--your-software-identifier--&gt;;&#x000A;    earl:test &lt;--uri-of-test-from-manifest&gt;;&#x000A;    earl:result [&#x000A;      a earl:TestResult;&#x000A;      earl:outcome earl:passed;&#x000A;      dc:date &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime];&#x000A;    earl:mode earl:automatic ] .&#x000A;</code></pre>
-<p>The Test Subject should be defined as a <code>doap:Project</code>, including the name,
-homepage and developer(s) of the software (see <a href="https://github.com/edumbill/doap/wiki">DOAP</a>). Optionally, including the
-project description and programming language. An example test subject description is the following:</p>
-<pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool JSON-LD Parser&quot; ;&#x000A;    doap:revision      &quot;Software version number&quot; ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .&#x000A;</code></pre>
-<p>The software developer, either an organization or one or more individuals SHOULD be
-referenced from <code>doap:developer</code> using <a href="http://xmlns.com/foaf/spec">FOAF</a>. For example:</p>
-<pre><code>  &lt;--your-developer-identifier--&gt; a foaf:Person, earl:Assertor;&#x000A;    foaf:name &quot;--My Name--&quot;;&#x000A;    foaf:homepage &lt;--my homepage--&gt; .&#x000A;</code></pre>
+<p>Reports should be submitted in Turtle format to <script type="text/javascript">
+<!--
+h='&#x77;&#x33;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#112;&#x75;&#98;&#108;&#x69;&#x63;&#x2d;&#106;&#x73;&#x6f;&#110;&#x2d;&#108;&#100;&#x2d;&#x77;&#x67;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'Public JSON-LD WG'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#80;&#x75;&#98;&#108;&#x69;&#x63;&#32;&#74;&#x53;&#x4f;&#78;&#x2d;&#76;&#68;&#32;&#x57;&#x47;&#32;&#40;&#112;&#x75;&#98;&#108;&#x69;&#x63;&#x2d;&#106;&#x73;&#x6f;&#110;&#x2d;&#108;&#100;&#x2d;&#x77;&#x67;&#32;&#x61;&#116;&#32;&#x77;&#x33;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;&#x29;</noscript> and include an <code>earl:Assertion</code> for each test, referencing the test resource from the associated manifest and the test subject being reported upon. An example test entry is be the following:</p>
+<pre><code>  [ a earl:Assertion;&#x000A;    earl:assertedBy &lt;--your-developer-identifier--&gt;;&#x000A;    earl:subject &lt;--your-software-identifier--&gt;;&#x000A;    earl:test &lt;--uri-of-test-from-manifest&gt;;&#x000A;    earl:result [&#x000A;      a earl:TestResult;&#x000A;      earl:outcome earl:passed;&#x000A;      dc:date &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime];&#x000A;    earl:mode earl:automatic ] .</code></pre>
+<p>The Test Subject should be defined as a <code>doap:Project</code>, including the name, homepage and developer(s) of the software (see <a href="https://github.com/edumbill/doap/wiki">DOAP</a>). Optionally, including the project description and programming language. An example test subject description is the following:</p>
+<pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool JSON-LD Parser&quot; ;&#x000A;    doap:revision      &quot;Software version number&quot; ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .</code></pre>
+<p>The software developer, either an organization or one or more individuals SHOULD be referenced from <code>doap:developer</code> using <a href="http://xmlns.com/foaf/spec">FOAF</a>. For example:</p>
+<pre><code>  &lt;--your-developer-identifier--&gt; a foaf:Person, earl:Assertor;&#x000A;    foaf:name &quot;--My Name--&quot;;&#x000A;    foaf:homepage &lt;--my homepage--&gt; .</code></pre>
 </section>
 <section id='test-manifests'>
 <h2>
