@@ -34,7 +34,9 @@ Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [
 * [remote-doc](remote-doc-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 
-  For *NegativeEvaluationTests*, the result is a string associated with the expected error code. Options may be present to describe the intended HTTP behavior:
+  For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
+
+  Options may be present to describe the intended HTTP behavior:
   * _contentType_: Content-Type of the returned HTTP payload, defaults to the appropriate type for the _input_ suffix.
   * _httpStatus_: The HTTP status code to return, defaults to `200`.
   * _redirectTo_: The HTTP _Content-Location_ header value.
@@ -80,3 +82,10 @@ please follow these steps:
 2. Clone the git repository: git://github.com/w3c/json-ld-wg.git
 3. Make your changes and submit them via github, or via a 'git format-patch'
    to the [JSON-LD Working Group mailing list](mailto:json-ld-wg@w3.org).
+
+# Distribution
+  Distributed under the [W3C Test Suite License](http://www.w3.org/Consortium/Legal/2008/04-testsuite-license). To contribute to a W3C Test Suite, see the [policies and contribution forms](http://www.w3.org/2004/10/27-testcases).
+
+# Disclaimer
+  UNDER THE EXCLUSIVE LICENSE, THIS DOCUMENT AND ALL DOCUMENTS, TESTS AND SOFTWARE THAT LINK THIS STATEMENT ARE PROVIDED "AS IS," AND COPYRIGHT HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+  COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.

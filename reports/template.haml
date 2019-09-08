@@ -266,7 +266,6 @@
                 %td
                   %a{href: test['@id']}<
                     - title = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
-                    - require 'byebug'; byebug if test['@id'] == 'https://w3c.github.io/json-ld-api/tests/expand-manifest#tc029'
                     - if test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})['https://w3c.github.io/json-ld-api/tests/vocab#specVersion'] == 'json-ld-1.1'
                       - title += "(new in JSON-LD 1.1)"
                     ~ title
