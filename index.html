@@ -4981,7 +4981,11 @@
               and <var>value</var> is a <a>JSON literal</a>,
               set the <code>@value</code> <a>entry</a> to the result of
               turning the lexical value of <var>value</var>
-              into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.</li>
+              into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.
+              If the the lexical value of <var>value</var> is not valid JSON according to
+              the <a data-cite="RFC8259#section-2">JSON Grammar</a> [[RFC8259]],
+              an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
+              error has been detected and processing is aborted.</li>
             <li>Otherwise, if <var>value</var> is a
               <a>language-tagged string</a>
               add a <a>entry</a> <code>@language</code> to <var>result</var> and set its value to the
@@ -6068,6 +6072,8 @@
         <dd>An <code>@id</code> <a>entry</a> was encountered whose value was not a <a>string</a>.</dd>
         <dt><dfn>invalid @index value</dfn></dt>
         <dd>An <code>@index</code> <a>entry</a> was encountered whose value was not a <a>string</a>.</dd>
+        <dt class="changed"><dfn>invalid JSON literal</dfn></dt>
+        <dd class="changed">An invalid JSON literal was detected.</dd>
         <dt class="changed"><dfn>invalid @nest value</dfn></dt>
         <dd class="changed">An invalid value for <code>@nest</code> has been found.</dd>
         <dt class="changed"><dfn>invalid @prefix value</dfn></dt>

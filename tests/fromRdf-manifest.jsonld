@@ -252,6 +252,22 @@
       "expect": "fromRdf/js07-out.jsonld",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
     }, {
+      "@id": "#tjs08",
+      "@type": ["jld:NegativeEvaluationTest", "jld:FromRDFTest"],
+      "name": "Invalid JSON literal (bare-word)",
+      "purpose": "Processors must generate an error when deserializing an invalid JSON literal.",
+      "input": "fromRdf/js08-in.nq",
+      "expect": "invalid JSON literal",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs09",
+      "@type": ["jld:NegativeEvaluationTest", "jld:FromRDFTest"],
+      "name": "Invalid JSON literal (invalid structure)",
+      "purpose": "Processors must generate an error when deserializing an invalid JSON literal.",
+      "input": "fromRdf/js09-in.nq",
+      "expect": "invalid JSON literal",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "@list containing empty @list",
