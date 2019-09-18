@@ -676,7 +676,8 @@
       "name": "Various relative IRIs as properties with with @vocab: ''",
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0092-in.jsonld",
-      "expect": "expand/0092-out.jsonld"
+      "expect": "expand/0092-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0093",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -818,21 +819,24 @@
       "name": "Various relative IRIs as properties with with relative @vocab",
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0110-in.jsonld",
-      "expect": "expand/0110-out.jsonld"
+      "expect": "expand/0110-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0111",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base",
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0111-in.jsonld",
-      "expect": "expand/0111-out.jsonld"
+      "expect": "expand/0111-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0112",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base",
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0112-in.jsonld",
-      "expect": "expand/0112-out.jsonld"
+      "expect": "expand/0112-out.jsonld",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0113",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
