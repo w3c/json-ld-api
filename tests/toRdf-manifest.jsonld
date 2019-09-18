@@ -1070,7 +1070,8 @@
       "name": "Various relative IRIs as properties with with @vocab: ''",
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e092-in.jsonld",
-      "expect": "toRdf/e092-out.nq"
+      "expect": "toRdf/e092-out.nq",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te093",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1212,21 +1213,24 @@
       "name": "Various relative IRIs as properties with with relative @vocab",
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e110-in.jsonld",
-      "expect": "toRdf/e110-out.nq"
+      "expect": "toRdf/e110-out.nq",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te111",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base",
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e111-in.jsonld",
-      "expect": "toRdf/e111-out.nq"
+      "expect": "toRdf/e111-out.nq",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te112",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base",
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e112-in.jsonld",
-      "expect": "toRdf/e112-out.nq"
+      "expect": "toRdf/e112-out.nq",
+      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te113",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
