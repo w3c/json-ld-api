@@ -1247,6 +1247,22 @@
       "expect": "toRdf/e114-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te115",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Verifies that relative IRIs as properties with @vocab: '' in 1.0 are dropped",
+      "purpose": "Pathological relative property IRIs in 1.0",
+      "input": "toRdf/e115-in.jsonld",
+      "expect": "toRdf/e115-out.nq",
+      "option": {"specVersion": "json-ld-1.0"}
+    }, {
+      "@id": "#te116",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Verifies that relative IRIs as properties with relative @vocab in 1.0 are dropped",
+      "purpose": "Pathological relative property IRIs in 1.0",
+      "input": "toRdf/e116-in.jsonld",
+      "expect": "toRdf/e116-out.nq",
+      "option": {"specVersion": "json-ld-1.0"}
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",

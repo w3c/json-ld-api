@@ -853,6 +853,22 @@
       "expect": "expand/0114-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0115",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Verifies that relative IRIs as properties with @vocab: '' in 1.0 are dropped",
+      "purpose": "Pathological relative property IRIs in 1.0",
+      "input": "expand/0115-in.jsonld",
+      "expect": "expand/0115-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
+    }, {
+      "@id": "#t0116",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Verifies that relative IRIs as properties with relative @vocab in 1.0 are dropped",
+      "purpose": "Pathological relative property IRIs in 1.0",
+      "input": "expand/0116-in.jsonld",
+      "expect": "expand/0116-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
