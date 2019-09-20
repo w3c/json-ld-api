@@ -1823,9 +1823,9 @@
         The required inputs are an <var>active context</var>,
         an <var>active property</var>, and an <var>element</var> to be expanded.
         <span class="changed">The optional inputs are the
-          github/frameExpansion}}
+          {{JsonLdOptions/frameExpansion}}
           flag allowing special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a>,
-          the github/ordered}} flag, used to order
+          the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted,
           and the <var>from map</var> flag, used to control reverting
           previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.</span>
@@ -1843,7 +1843,7 @@
         <code>@embed</code>, <code>@explicit</code>, <code>@omitDefault</code>, or
         <code>@requireAll</code>) which are preserved through expansion.
         Special processing for a <a>JSON-LD Frame</a> is invoked when the
-        github/frameExpansion}} flag is set to <code>true</code>.</p>
+        {{JsonLdOptions/frameExpansion}} flag is set to <code>true</code>.</p>
 
       <p class="note">As mentioned in <a data-cite="JSON-LD11#terms">Terms</a> [[JSON-LD11]],
         to avoid forward-compatibility issues, <a>terms</a> should not start with an
@@ -1866,7 +1866,7 @@
         <ol>
         <li>If <var>element</var> is <code>null</code>, return <code>null</code>.</li>
         <li class="changed">If <var>active property</var> is <code>@default</code>,
-          set the github/frameExpansion}} flag to <code>false</code>.</li>
+          set the {{JsonLdOptions/frameExpansion}} flag to <code>false</code>.</li>
         <li class="changed">If <var>active property</var> has a <a>term definition</a> in <var>active context</var>
           with a <a>local context</a>, set <var>property scoped context</var> to that <a>local context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>,
@@ -1891,8 +1891,8 @@
                 <li>Initialize <var>expanded item</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>item</var> as <var>element</var>,
-                  <span class="changed">the github/frameExpansion}}
-                    github/ordered}}</span>,
+                  <span class="changed">the {{JsonLdOptions/frameExpansion}}
+                    {{JsonLdOptions/ordered}}</span>,
                     and <var>from map</var> flags.</li>
                 <li class="changed">If the <a>container mapping</a>
                   of <var>active property</var> includes <code>@list</code>,
@@ -1955,7 +1955,7 @@
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
-          ordered lexicographically by <var>key</var> <span class="changed">if github/ordered}} is <code>true</code></span>:
+          ordered lexicographically by <var>key</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
           <ol>
             <li>If <var>key</var> is <code>@context</code>, continue to
               the next <var>key</var>.</li>
@@ -1984,7 +1984,7 @@
                   passing <var>active context</var>, <var>value</var>, and <code>true</code>
                   for <var>document relative</var>.
                   <span class="changed">
-                    When the github/frameExpansion}} flag is set, <var>value</var>
+                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
                     may be an empty <a>map</a>, or an <a>array</a> of one
                     or more <a>strings</a>. <var>expanded value</var> will be
                     an <a>array</a> of one or more of these, with <a>string</a>
@@ -2005,7 +2005,7 @@
                     prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
                     transforming it into an <a>array</a>, if necessary.</span>
                   <span class="changed">
-                    When the github/frameExpansion}} flag is set, <var>value</var>
+                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
                     may also be an empty <a>map</a>.
                   </span>
                   <div class="note">
@@ -2018,8 +2018,8 @@
                   <var>expanded value</var> to the result of using this algorithm
                   recursively passing <var>active context</var>, <code>@graph</code>
                   for <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the github/frameExpansion}}
-                    and github/ordered}} flags</span>,
+                  <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                    and {{JsonLdOptions/ordered}} flags</span>,
                   <span class="changed">
                     ensuring that <var>expanded value</var> is an <a>array</a> of one or more <a>maps</a></span>.</li>
                 <li class="changed">If <var>expanded property</var> is `@included`
@@ -2027,8 +2027,8 @@
                   set <var>expanded value</var> to the result of using
                   this algorithm recursively passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  and the github/frameExpansion}}
-                  and github/ordered}} flags,
+                  and the {{JsonLdOptions/frameExpansion}}
+                  and {{JsonLdOptions/ordered}} flags,
                   ensuring that the result is an <a>array</a>.
                   If any element of <var>included result</var> is not a <a>node object</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid @included value</a>
@@ -2050,7 +2050,7 @@
                   in this case as the meaning of an <code>@type</code> <a>entry</a> depends
                   on the existence of an <code>@value</code> <a>entry</a>.
                   <span class="changed">
-                    When the github/frameExpansion}} flag is set, <var>value</var>
+                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
                     may also be an empty <a>map</a> or an array of
                     <a>scalar</a> values. <var>expanded value</var> will be <a>null</a>, or an
                     <a>array</a> of one or more <a>scalar</a> values.</span></li>
@@ -2060,7 +2060,7 @@
                   error has been detected and processing is aborted.
                   <span class="changed">
                     Otherwise, set <var>expanded value</var> to lowercased <var>value</var>.
-                    When the github/frameExpansion}} flag is set, <var>value</var>
+                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
                     may also be an empty <a>map</a> or an array of zero or
                     <a>strings</a>. <var>expanded value</var> will be an
                     <a>array</a> of one or more <a>string</a> values converted to lower case.</span></li>
@@ -2077,16 +2077,16 @@
                     <li>Otherwise, initialize <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
-                      <span class="changed">and the github/frameExpansion}}
-                        and github/ordered}} flags</span>.</li>
+                      <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                        and {{JsonLdOptions/ordered}} flags</span>.</li>
                   </ol>
                 </li>
                 <li>If <var>expanded property</var> is <code>@set</code>, set
                   <var>expanded value</var> to the result of using this algorithm
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the github/frameExpansion}}
-                    and github/ordered}} flags</span>.</li>
+                  <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                    and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li>If <var>expanded property</var> is <code>@reverse</code> and
                   <var>value</var> is not a <a class="changed">map</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid @reverse value</a>
@@ -2096,8 +2096,8 @@
                       algorithm recursively, passing <var>active context</var>,
                       <code>@reverse</code> as <var>active property</var>,
                       <var>value</var> as <var>element</var>,
-                      <span class="changed">and the github/frameExpansion}}
-                        and github/ordered}} flags</span>.</li>
+                      <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                        and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>If <var>expanded value</var> contains an <code>@reverse</code> <a>entry</a>,
                       i.e., <a>properties</a> that are reversed twice, execute for each of its
                       <var>property</var> and <var>item</var> the following steps:
@@ -2139,7 +2139,7 @@
                   add <var>key</var> to <var>nests</var>, initializing it to an empty <a>array</a>,
                   if necessary.
                   Continue with the next <var>key</var> from <var>element</var>.</li>
-                <li class="changed">When the github/frameExpansion}} flag is set,
+                <li class="changed">When the {{JsonLdOptions/frameExpansion}} flag is set,
                   if <var>expanded property</var> is any other
                   framing keyword (<code>@explicit</code>, <code>@default</code>,
                   <code>@embed</code>, <code>@explicit</code>, <code>@omitDefault</code>, or
@@ -2148,8 +2148,8 @@
                   <a href="#expansion-algorithm">Expansion Algorithm</a>
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
-                  <span class="changed">and the github/frameExpansion}}
-                    and github/ordered}} flags</span>.</li>
+                  <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                    and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li>Unless <var>expanded value</var> is <code>null</code>, set
                   the <var>expanded property</var> <a>entry</a> of <var>result</var> to
                   <var>expanded value</var>.</li>
@@ -2170,7 +2170,7 @@
                 <li>Initialize <var>expanded value</var> to an empty
                   <a>array</a>.</li>
                 <li>For each key-value pair <var>language</var>-<var>language value</var>
-                  in <var>value</var>, ordered lexicographically by <var>language</var> <span class="changed">if github/ordered}} is <code>true</code></span>:
+                  in <var>value</var>, ordered lexicographically by <var>language</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
                     <li>If <var>language value</var> is not an <a>array</a>
                       set it to an <a>array</a> containing only
@@ -2208,7 +2208,7 @@
                   or <code>@index</code>, if it does not exist.</li>
                 <li>For each key-value pair <var>index</var>-<var>index value</var>
                   in <var>value</var>, ordered lexicographically by <var>index</var>
-                  <span class="changed">if github/ordered}} is <code>true</code></span>:
+                  <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
                     <li class="changed">If <var>container mapping</var> includes <code>@type</code>:
                       <ol>
@@ -2236,8 +2236,8 @@
                       <var class="changed">map context</var> as <var>active context</var>,
                       <var>key</var> as <var>active property</var>,
                       <var>index value</var> as <var>element</var>,
-                      <span class="changed">and the github/frameExpansion}}
-                        and github/ordered}} flags</span>.</li>
+                      <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                        and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
                         <li>If <var>container mapping</var> includes <code>@graph</code>,
@@ -2284,8 +2284,8 @@
             <li>Otherwise, initialize <var>expanded value</var> to the result of
               using this algorithm recursively, passing <var>active context</var>,
               <var>key</var> for <var>active property</var>, <var>value</var> for <var>element</var>,
-              <span class="changed">and the github/frameExpansion}}
-                and github/ordered}} flags</span>.</li>
+              <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                and {{JsonLdOptions/ordered}} flags</span>.</li>
             <li>If <var>expanded value</var> is <code>null</code>, ignore <var>key</var>
               by continuing to the next <var>key</var> from <var>element</var>.</li>
             <li>If <var>container mapping</var> <span class="changed">includes</span> <code>@list</code> and
@@ -2406,7 +2406,7 @@
             <li>Otherwise, if <var>result</var> is a <a class="changed">map</a> whose only
               <a>entry</a> is <code>@id</code>, set <var>result</var> to <code>null</code>.
               <span class="changed">
-                When the github/frameExpansion}} flag is set, a <a>map</a>
+                When the {{JsonLdOptions/frameExpansion}} flag is set, a <a>map</a>
                 containing only the <code>@id</code> <a>entry</a> is retained.</span></li>
           </ol>
         </li>
@@ -2583,8 +2583,8 @@
         an <var>inverse context</var>, an <var>active property</var>,
         and an <var>element</var> to be compacted.
         <span class="changed">The optional inputs are the
-          github/compactArrays}} flag
-          and the github/ordered}} flag, used to order
+          {{JsonLdOptions/compactArrays}} flag
+          and the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted</span>.
         To begin, the <var>active context</var> is set to the result of
         performing <a href="#context-processing-algorithm">Context Processing</a>
@@ -2612,8 +2612,8 @@
                   algorithm recursively, passing <var>active context</var>,
                   <var>inverse context</var>, <var>active property</var>,
                   <var>item</var> for <var>element</var>,
-                  <span class="changed">and the github/compactArrays}}
-                    and github/ordered}} flags</span>.</li>
+                  <span class="changed">and the {{JsonLdOptions/compactArrays}}
+                    and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li>If <var>compacted item</var> is not <code>null</code>, then append
                   it to <var>result</var>.</li>
               </ol>
@@ -2625,7 +2625,7 @@
                 or the <a>container mapping</a> for <var>active property</var> in
                 <var>active context</var> does not include <code>@list</code> or <code>@set</code>,
               </span>
-              and github/compactArrays}}
+              and {{JsonLdOptions/compactArrays}}
               is <code>true</code>, set <var>result</var> to its only item.</li>
             <li>Return <var>result</var>.</li>
           </ol>
@@ -2666,8 +2666,8 @@
           <var>active context</var>, <var>inverse context</var>,
           <var>active property</var>, value of <code>@list</code>
           in <var>element</var> for <var>element</var>,
-          <span class="changed">and the github/compactArrays}}
-            and github/ordered}} flags</span>.</li>
+          <span class="changed">and the {{JsonLdOptions/compactArrays}}
+            and {{JsonLdOptions/ordered}} flags</span>.</li>
         <li>Initialize <var>inside reverse</var> to <code>true</code> if
           <var>active property</var> equals <code>@reverse</code>,
           otherwise to <code>false</code>.</li>
@@ -2698,7 +2698,7 @@
         </li>
         <li>For each key <var>expanded property</var> and value <var>expanded value</var>
           in <var>element</var>, ordered lexicographically by <var>expanded property</var>
-          <span class="changed">if github/ordered}} is <code>true</code></span>:
+          <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
           <ol>
             <li>If <var>expanded property</var> is <code>@id</code>:
               <ol>
@@ -2767,8 +2767,8 @@
                   <var>inverse context</var>, <code>@reverse</code> for
                   <var>active property</var>, <var>expanded value</var>
                   for <var>element</var>,
-                  <span class="changed">and the github/compactArrays}}
-                    and github/ordered}} flags</span>.</li>
+                  <span class="changed">and the {{JsonLdOptions/compactArrays}}
+                    and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li>For each <var>property</var> and <var>value</var> in <var>compacted value</var>:
                   <ol>
                     <li>If the <a>term definition</a> for <var>property</var> in the
@@ -2778,7 +2778,7 @@
                         <li>If the <a>term definition</a> for <var>property</var> in
                           the <var>active context</var> has a
                           <a>container mapping</a> <span class="changed">including</span> <code>@set</code> or
-                          github/compactArrays}}
+                          {{JsonLdOptions/compactArrays}}
                           is <code>false</code>, and <var>value</var> is not an
                           <a>array</a>, set <var>value</var> to a new
                           <a>array</a> containing only <var>value</var>.</li>
@@ -2819,8 +2819,8 @@
                   <var>inverse context</var>, <var>property</var> for
                   <var>active property</var>, <var>expanded value</var>
                   for <var>element</var>,
-                  <span class="changed">and the github/compactArrays}}
-                    and github/ordered}} flags</span>.</li>
+                  <span class="changed">and the {{JsonLdOptions/compactArrays}}
+                    and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li>Add <var>compacted value</var> as the value of <code>@preserve</code>
                   in <var>result</var> unless <var>expanded value</var> is an empty <a>array</a>.</li>
               </ol>
@@ -2914,8 +2914,8 @@
                   not contain the <a>entry</a> <code>@list</code>
                   <span class="changed">and is not a <a>graph object</a> containing <code>@list</code></span>,
                   otherwise pass the value of the <a>entry</a> for <var>element</var>.
-                  <span class="changed">Along with the github/compactArrays}}
-                    and github/ordered}} flags</span></li>
+                  <span class="changed">Along with the {{JsonLdOptions/compactArrays}}
+                    and {{JsonLdOptions/ordered}} flags</span></li>
                 <li>
                   If <var>expanded item</var> is a <a>list object</a>:
                   <ol>
@@ -3130,7 +3130,7 @@
                   Otherwise,
                   <ol>
                     <li>If
-                      github/compactArrays}}
+                      {{JsonLdOptions/compactArrays}}
                       is <code>false</code>, <var>as array</var> is <code>true</code> and
                       <var>compacted item</var> is not an <a>array</a>,
                       set it to a new <a>array</a>
@@ -4030,10 +4030,10 @@
       <p>The algorithm takes <span class="changed">one required and two optional</span> input variables.
         The required input is an <var>element</var> to flatten.
         The optional inputs are the <var>context</var> used to compact the flattened document
-        <span class="changed">and the github/ordered}} flag, used to order
+        <span class="changed">and the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted</span>.
         If not passed, <var>context</var> is set to <code>null</code>
-        <span class="changed">and, the github/ordered}} flag is set to <code>false</code></span>.</p>
+        <span class="changed">and, the {{JsonLdOptions/ordered}} flag is set to <code>false</code></span>.</p>
 
       <p>This algorithm uses the
         <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
@@ -4058,7 +4058,7 @@
         <li>For each key-value pair <var>graph name</var>-<var>graph</var> in <var>node map</var>
           where <var>graph name</var> is not <code>@default</code>,
           <span class="changed">ordered lexicographically by <var>graph name</var>
-          if github/ordered}} is <code>true</code></span>,
+          if {{JsonLdOptions/ordered}} is <code>true</code></span>,
           perform the following steps:
           <ol>
             <li>If <var>default graph</var> does not have a <var>graph name</var> <a>entry</a>, create
@@ -4069,20 +4069,20 @@
             <li>Add an <code>@graph</code> <a>entry</a> to <var>entry</var> and set it to an
               empty <a>array</a>.</li>
             <li>For each <var>id</var>-<var>node</var> pair in <var>graph</var> ordered lexicographically by <var>id</var>
-              <span class="changed">if github/ordered}} is <code>true</code></span>,
+              <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
               add <var>node</var> to the <code>@graph</code> <a>entry</a> of <var>entry</var>,
               unless the only <a>entry</a> of <var>node</var> is <code>@id</code>.</li>
           </ol>
         </li>
         <li>Initialize an empty <a>array</a> <var>flattened</var>.</li>
         <li>For each <var>id</var>-<var>node</var> pair in <var>default graph</var> ordered lexicographically by <var>id</var>
-          <span class="changed">if github/ordered}} is <code>true</code></span>,
+          <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
           add <var>node</var> to <var>flattened</var>,
           unless the only <a>entry</a> of <var>node</var> is <code>@id</code>.</li>
         <li>If <var>context</var> is <code>null</code>, return <var>flattened</var>.</li>
         <li>Otherwise, return the result of <a>compacting</a> <var>flattened</var> according the
           <a href="#compaction-algorithm">Compaction algorithm</a> passing <var>context</var>
-          <span class="changed">and the github/ordered}} flag</span>
+          <span class="changed">and the {{JsonLdOptions/ordered}} flag</span>
           ensuring that the compaction result has only the <code>@graph</code> keyword (or its alias)
           at the top-level other than <code>@context</code>, even if the context is empty or if there is only one element to
           put in the <code>@graph</code> <a>array</a>. This ensures that the returned
@@ -4446,7 +4446,7 @@
       <p>The algorithm takes a <a>map</a> <var>node map</var>, which
         is the result of the <a href="#node-map-generation">Node Map Generation algorithm</a> and
         an <a>RDF dataset</a> <var>dataset</var> into which new <a>graphs</a> and <a>triples</a> are added.
-        Unless the github/produceGeneralizedRdf}} option
+        Unless the {{JsonLdOptions/produceGeneralizedRdf}} option
         is set to <code>true</code>, <a>triple</a>
         containing a <a>blank node</a> <a>predicate</a>
         are excluded from output.</p>
@@ -4454,7 +4454,7 @@
       <p class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
         and may be removed in a future version of JSON-LD,
         as is the support for <a>generalized RDF Datasets</a>
-        and thus the github/produceGeneralizedRdf}} option may be also be removed.</p>
+        and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</p>
 
       <ol>
         <li>For each <var>graph name</var> and <var>graph</var> in <var>node map</var>
@@ -4490,12 +4490,12 @@
                     <li>Otherwise, if <var>property</var> is a <a>keyword</a>
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
                     <li>Otherwise, if <var>property</var> is a <a>blank node identifier</a> and
-                      the github/produceGeneralizedRdf}} option is not <code>true</code>,
+                      the {{JsonLdOptions/produceGeneralizedRdf}} option is not <code>true</code>,
                       continue with the next <var>property</var>-<var>values</var> pair.
                       <div class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
                         and may be removed in a future version of JSON-LD,
                         as is the support for <a>generalized RDF Datasets</a>
-                        and thus the github/produceGeneralizedRdf}} option may be also be removed.</div>
+                        and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</div>
                       </li>
                     <li>Otherwise, if <var>property</var> is
                       <span class="changed">not <a>well-formed</a></span>,
@@ -4730,7 +4730,7 @@
 
       <p>The algorithm takes one required and three optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
         and the three flags <a data-link-for="JsonLdOptions">useNativeTypes</a>, <a data-link-for="JsonLdOptions">useRdfType</a>,
-        <span class="changed">and the github/ordered}} flag, used to order
+        <span class="changed">and the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted</span>
         that all default to <code>false</code>.</p>
 
@@ -4877,7 +4877,7 @@
         <li>Initialize an empty <a>array</a> <var>result</var>.</li>
         <li>For each <var>subject</var> and <var>node</var> in <var>default graph</var>
           ordered lexicographically by <var>subject</var>
-          <span class="changed">if github/ordered}} is <code>true</code></span>:
+          <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
           <ol>
             <li>If <var>graph map</var> has a <var>subject</var> <a>entry</a>:
               <ol>
@@ -4885,7 +4885,7 @@
                   its value to an empty <a>array</a>.</li>
                 <li>For each key-value pair <var>s</var>-<var>n</var> in the <var>subject</var>
                   <a>entry</a> of <var>graph map</var> ordered lexicographically by <var>s</var>
-                  <span class="changed">if github/ordered}} is <code>true</code></span>,
+                  <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
                   append <var>n</var> to the <code>@graph</code> <a>entry</a> of <var>node</var> after
                   removing its <code>usages</code> <a>entry</a>, unless the only
                   remaining <a>entry</a> of <var>n</var> is <code>@id</code>.</li>
@@ -5262,8 +5262,8 @@
             an empty <a>map</a> as <var>inverse context</var>,
             <code>null</code> as <var>property</var>,
             <var>expanded input</var> as <var>element</var>,
-            and if passed, the github/compactArrays}}
-            <span class="changed">and github/ordered}}</span>
+            and if passed, the {{JsonLdOptions/compactArrays}}
+            <span class="changed">and {{JsonLdOptions/ordered}}</span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>Resolve the <var>promise</var> with <var>compacted output</var>
             <span class="changed">transforming <var>compacted output</var> from the
@@ -5298,7 +5298,7 @@
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
             for <a data-link-for="LoadDocumentCallback">url</a>,
-            the github/extractAllScripts}} option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
+            the {{JsonLdOptions/extractAllScripts}} option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
           <li class="changed">If <a data-link-for="RemoteDocument">document</a>
             from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
@@ -5308,11 +5308,11 @@
             The <a>base IRI</a> of the <var>active context</var> is set to the <a data-link-for="RemoteDocument">documentUrl</a>
             from <var>remote document</var>, if available;
             otherwise to <code>null</code>.
-            If set, the github/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
-          <li>If an github/expandContext}} option has been passed,
+            If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
+          <li>If an {{JsonLdOptions/expandContext}} option has been passed,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-            passing the github/expandContext}} as <var>local context</var>.
-            If github/expandContext}} is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
+            passing the {{JsonLdOptions/expandContext}} as <var>local context</var>.
+            If {{JsonLdOptions/expandContext}} is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
             pass that <a data-lt="entry">entry's</a> value instead.</li>
           <li>If <var>remote document</var> has a <a data-link-for="RemoteDocument">contextUrl</a>,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
@@ -5321,8 +5321,8 @@
             passing the <var>active context</var> and <a data-link-for="RemoteDocument">document</a>
             from <var>remote document</var>, or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
-            and if passed, the <span class="changed">github/frameExpansion}}</span>
-            <span class="changed">and github/ordered}}</span>
+            and if passed, the <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
+            <span class="changed">and {{JsonLdOptions/ordered}}</span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>Resolve the <var>promise</var> with <var>expanded output</var>
             <span class="changed">transforming <var>expanded output</var> from the
@@ -5352,13 +5352,13 @@
           <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-flatten-input">input</a>
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
-            <span class="changed">with github/ordered}} set to <code>false</code></span>,
-            <span class="changed">and github/extractAllScripts}} defaulting to <code>true</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
+            <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
           <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
             set <var>context</var> to that <a data-lt="entry">entry's</a> value,
             otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
           <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
-            the <a>base IRI</a> is set to the github/base}} option
+            the <a>base IRI</a> is set to the {{JsonLdOptions/base}} option
             from <a data-lt="jsonldprocessor-flatten-options">options</a>, if set;
             otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
             to the IRI of the currently being processed document, if available;
@@ -5367,8 +5367,8 @@
           <li>Set <var>flattened output</var> to the result of using the <a href="#flattening-algorithm">Flattening algorithm</a>,
             passing <var>expanded input</var> as <var>element</var>,
             <var>active context</var>,
-            and if passed, the github/compactArrays}}
-            <span class="changed">and github/ordered}}</span>
+            and if passed, the {{JsonLdOptions/compactArrays}}
+            <span class="changed">and {{JsonLdOptions/ordered}}</span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>Resolve the <var>promise</var> with <var>flattened output</var>
             <span class="changed">transforming <var>flattened output</var> from the
@@ -5437,8 +5437,8 @@
             <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>
-            <span class="changed">with github/ordered}} set to <code>false</code></span>,
-            <span class="changed">and github/extractAllScripts}} defaulting to <code>true</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
+            <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>map</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
@@ -5446,11 +5446,11 @@
             and <var>node map</var>.</li>
           <li>Invoke the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
             passing <var>node map</var>, <var>dataset</var>,
-            and if passed, the github/produceGeneralizedRdf}} flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.
+            and if passed, the {{JsonLdOptions/produceGeneralizedRdf}} flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.
             <div class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
               and may be removed in a future version of JSON-LD,
               as is the support for <a>generalized RDF Datasets</a>
-              and thus the github/produceGeneralizedRdf}} option may be also be removed.</div>
+              and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</div>
             </li>
           <li>Resolve the <var>promise</var> with <var>dataset</var>.</li>
         </ol>
@@ -5681,7 +5681,7 @@
         <div class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
           and may be removed in a future version of JSON-LD,
           as is the support for <a>generalized RDF Datasets</a>
-          and thus the github/produceGeneralizedRdf}} option may be also be removed.</div>
+          and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</div>
       </dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
@@ -5698,7 +5698,7 @@
         as they are reserved for future versions of this specification.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">compactToRelative</dfn></dt>
       <dd class="changed">Determines if IRIs are compacted
-        relative to the github/base}} option
+        relative to the {{JsonLdOptions/base}} option
         or document location when <a>compacting</a>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">frameExpansion</dfn></dt>
       <dd class="changed">Enables special frame processing rules for the <a href="#expansion-algorithm">Expansion Algorithm</a>.</dd>
@@ -6224,7 +6224,7 @@
   <ul>
     <li>The <a href="#expansion-algorithm">Expansion Algorithm</a>
       has a special <a>processing mode</a>, based on
-      the github/frameExpansion}} flag, to enable content associated with JSON-LD
+      the {{JsonLdOptions/frameExpansion}} flag, to enable content associated with JSON-LD
       frames, which may not otherwise be valid <a>JSON-LD documents</a>.</li>
     <li>An <a>expanded term definition</a> can now have an
       <code>@context</code> <a>entry</a>, which defines a context used for values of
@@ -6292,7 +6292,7 @@
       has been updated to ensure that only <a>well-formed</a> <a>triples</a>
       are emitted; previously, it only ensured that <a>triples</a> containing
       <a>relative IRIs</a> were excluded.</li>
-    <li>The API now adds an github/ordered}}
+    <li>The API now adds an {{JsonLdOptions/ordered}}
        option, defaulting to <code>false</code> This is used in algorithms to
        control interation of <a>map entry</a> keys. Previously, the
        algorithms always required such an order. The instructions for
@@ -6312,7 +6312,7 @@
     <li>The use of <a>blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD,
       as is the support for <a>generalized RDF Datasets</a>
-      and thus the github/produceGeneralizedRdf}} option may be also be removed.</li>
+      and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</li>
     <li>Added API steps to accept <code>text/html</code> as input,
       extracting either a specifically targeted <a data-cite="HTML/scripting.html#the-script-element">script element</a>,
       the first found <a>JSON-LD script element</a>,
