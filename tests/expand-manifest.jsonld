@@ -2369,6 +2369,14 @@
       "input": "expand/pr29-in.jsonld",
       "expect": "expand/pr29-out.jsonld"
     }, {
+      "@id": "#tpr30",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fails if trying to declare a keyword alias as prefix.",
+      "purpose": "Keyword aliases can not be used as prefixes.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr30-in.jsonld",
+      "expect": "invalid term definition"
+    }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@import is invalid in 1.0.",
