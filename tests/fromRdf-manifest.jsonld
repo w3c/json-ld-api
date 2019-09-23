@@ -268,6 +268,22 @@
       "expect": "invalid JSON literal",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
     }, {
+      "@id": "#tjs10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "JSON literal (string)",
+      "purpose": "Tests creating property with rdf:type rdf:JSON to a JSON literal (string).",
+      "input": "fromRdf/js10-in.nq",
+      "expect": "fromRdf/js10-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs11",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "JSON literal (null)",
+      "purpose": "Tests creating property with rdf:type rdf:JSON to a JSON literal (null).",
+      "input": "fromRdf/js11-in.nq",
+      "expect": "fromRdf/js11-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "@list containing empty @list",

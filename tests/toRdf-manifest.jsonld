@@ -1395,6 +1395,22 @@
       "expect": "toRdf/js13-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs14",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Tests transforming property with @type @json to a JSON literal (string)",
+      "purpose": "Tests transforming JSON literal with wierd canonicalization.",
+      "input": "toRdf/js14-in.jsonld",
+      "expect": "toRdf/js14-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs15",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Tests transforming property with @type @json to a JSON literal (null)",
+      "purpose": "Tests transforming JSON literal with wierd canonicalization.",
+      "input": "toRdf/js15-in.jsonld",
+      "expect": "toRdf/js15-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@list containing @list",

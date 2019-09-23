@@ -82,7 +82,7 @@ to the <a href="mailto:json-ld-wg@w3.org">JSON-LD Working Group mailing list</a>
 <dt>baseIri</dt>
 <dd>https://w3c.github.io/json-ld-api/tests/</dd>
 </dl>
-<p>JSON-LD to RDF tests.</p>
+<p>JSON-LD To RDF tests.</p>
 <section>
 <h2>
 Test sequence:
@@ -4474,6 +4474,62 @@ Test tjs13 Transform JSON literal with wierd canonicalization
 <dt>expect</dt>
 <dd>
 <a href='toRdf/js13-out.nq'>toRdf/js13-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs14'>
+Test tjs14 Tests transforming property with @type @json to a JSON literal (string)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs14</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests transforming JSON literal with wierd canonicalization.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/js14-in.jsonld'>toRdf/js14-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/js14-out.nq'>toRdf/js14-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs15'>
+Test tjs15 Tests transforming property with @type @json to a JSON literal (null)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs15</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests transforming JSON literal with wierd canonicalization.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/js15-in.jsonld'>toRdf/js15-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/js15-out.nq'>toRdf/js15-out.nq</a>
 </dd>
 <dt>Options</dt>
 <dd>

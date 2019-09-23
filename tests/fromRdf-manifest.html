@@ -865,6 +865,126 @@ Test tjs07 JSON literal (array)
 </dd>
 </dl>
 </dd>
+<dt id='tjs08'>
+Test tjs08 Invalid JSON literal (bare-word)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs08</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors must generate an error when deserializing an invalid JSON literal.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js08-in.nq'>fromRdf/js08-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid JSON literal
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs09'>
+Test tjs09 Invalid JSON literal (invalid structure)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs09</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors must generate an error when deserializing an invalid JSON literal.</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js09-in.nq'>fromRdf/js09-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid JSON literal
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs10'>
+Test tjs10 JSON literal (string)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs10</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (string).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js10-in.nq'>fromRdf/js10-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js10-out.jsonld'>fromRdf/js10-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs11'>
+Test tjs11 JSON literal (null)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs11</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests creating property with rdf:type rdf:JSON to a JSON literal (null).</dd>
+<dt>input</dt>
+<dd>
+<a href='fromRdf/js11-in.nq'>fromRdf/js11-in.nq</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='fromRdf/js11-out.jsonld'>fromRdf/js11-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tli01'>
 Test tli01 @list containing empty @list
 </dt>

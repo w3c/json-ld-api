@@ -1436,6 +1436,24 @@
       "context": "compact/js09-context.jsonld",
       "expect": "compact/js09-out.jsonld",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal (string)",
+      "purpose": "Tests compacting property with @type @json to a JSON literal (string).",
+      "input": "compact/js10-in.jsonld",
+      "context": "compact/js10-context.jsonld",
+      "expect": "compact/js10-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs11",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal (null)",
+      "purpose": "Tests compacting property with @type @json to a JSON literal (null).",
+      "input": "compact/js11-in.jsonld",
+      "context": "compact/js11-context.jsonld",
+      "expect": "compact/js11-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
    }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
