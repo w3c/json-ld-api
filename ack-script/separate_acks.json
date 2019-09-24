@@ -1,6 +1,7 @@
 [
     {
-        "name": "Pierre-Antoine Champin"
+        "name": "Pierre-Antoine Champin",
+        "editor" : true
     },
     {
         "name": "Timothy Cole"
@@ -16,7 +17,8 @@
         "name": "Jeff Mixter"
     },
     {
-        "name": "Dave Longley"
+        "name": "Dave Longley",
+        "editor" : true
     },
     {
         "name": "David Lehn"
