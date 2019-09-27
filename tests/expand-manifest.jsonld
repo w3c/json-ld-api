@@ -2369,6 +2369,30 @@
       "input": "expand/pr29-in.jsonld",
       "expect": "expand/pr29-out.jsonld"
     }, {
+      "@id": "#tpr30",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Keywords may be protected.",
+      "purpose": "Keywords may not be redefined other than to protect them.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr30-in.jsonld",
+      "expect": "expand/pr30-out.jsonld"
+    }, {
+      "@id": "#tpr31",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Protected keyword aliases cannot be overridden.",
+      "purpose": "Keywords may not be redefined other than to protect them.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr31-in.jsonld",
+      "expect": "protected term redefinition"
+    }, {
+      "@id": "#tpr32",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Protected @type cannot be overridden.",
+      "purpose": "Keywords may not be redefined other than to protect them.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr32-in.jsonld",
+      "expect": "protected term redefinition"
+    }, {
       "@id": "#tpr33",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Fails if trying to declare a keyword alias as prefix.",
