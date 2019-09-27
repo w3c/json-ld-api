@@ -7066,6 +7066,90 @@ Test tpr29 Does not expand a Compact IRI using a non-prefix term.
 </dd>
 </dl>
 </dd>
+<dt id='tpr30'>
+Test tpr30 Keywords may be protected.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr30</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Keywords may not be redefined other than to protect them.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr30-in.jsonld'>toRdf/pr30-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/pr30-out.nq'>toRdf/pr30-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr31'>
+Test tpr31 Protected keyword aliases cannot be overridden.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr31</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Keywords may not be redefined other than to protect them.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr31-in.jsonld'>toRdf/pr31-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+term redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr32'>
+Test tpr32 Protected @type cannot be overridden.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr32</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Keywords may not be redefined other than to protect them.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr32-in.jsonld'>toRdf/pr32-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+protected term redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tpr33'>
 Test tpr33 Fails if trying to declare a keyword alias as prefix.
 </dt>

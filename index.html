@@ -1365,8 +1365,10 @@
         <li class="changed">If <a>processing mode</a>
           is <code>json-ld-1.1</code>
           and <var>term</var> is <code>@type</code>, <var>value</var>
-          MUST be a <a>map</a> with the entry <code>@container</code>
-          and value <code>@set</code>. Any other value means that a
+          MUST be a <a>map</a> with only the entry <code>@container</code>
+          and value <code>@set</code>
+          and optional entry `@protected`.
+          Any other value means that a
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
           been detected and processing is aborted.</li>
         <li><span class="changed">Otherwise</span>, since <a>keywords</a> cannot be overridden,
