@@ -1222,7 +1222,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e111-in.jsonld",
       "expect": "toRdf/e111-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te112",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1230,7 +1230,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e112-in.jsonld",
       "expect": "toRdf/e112-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te113",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
