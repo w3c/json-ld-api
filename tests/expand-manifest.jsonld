@@ -828,7 +828,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0111-in.jsonld",
       "expect": "expand/0111-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0112",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -836,7 +836,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0112-in.jsonld",
       "expect": "expand/0112-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0113",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
