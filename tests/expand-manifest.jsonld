@@ -854,19 +854,19 @@
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0115",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Verifies that relative IRIs as properties with @vocab: '' in 1.0 are dropped",
-      "purpose": "Pathological relative property IRIs in 1.0",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Verifies that relative IRIs as properties with @vocab: '' in 1.0 generate an error",
+      "purpose": "Relative property IRIs with relative @vocab in 1.0",
       "input": "expand/0115-in.jsonld",
-      "expect": "expand/0115-out.jsonld",
+      "expect": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0116",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Verifies that relative IRIs as properties with relative @vocab in 1.0 are dropped",
-      "purpose": "Pathological relative property IRIs in 1.0",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Verifies that relative IRIs as properties with relative @vocab in 1.0 generate an error",
+      "purpose": "Relative property IRIs with relative @vocab in 1.0",
       "input": "expand/0116-in.jsonld",
-      "expect": "expand/0116-out.jsonld",
+      "expect": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#tc001",
