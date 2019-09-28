@@ -1372,7 +1372,9 @@
         <li><span class="changed">Otherwise</span>, since <a>keywords</a> cannot be overridden,
           <var>term</var> MUST NOT be a <a>keyword</a> and a
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
-          error has been detected and processing is aborted.</li>
+          error has been detected and processing is aborted.
+          If <var>term</var> as the form of a keyword (i.e., it begins with `"@"`),
+          processing is aborted and a processor SHOULD generate a warning.</li>
         <li class="changed">Set <var>previous definition</var> to any existing
           <a>term definition</a> for <var>term</var> in <var>active context</var>.</li>
         <li>Otherwise, remove any <var>previous definition</var> from
@@ -1421,6 +1423,9 @@
               is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
+            <li>If the value associated with the `@reverse` <a>entry</a> is a string
+              having the form of a keyword (i.e., it begins with `"@"`),
+              processing is aborted and processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
               passing <var>active context</var>, the value associated with
@@ -1457,6 +1462,9 @@
             <li>Otherwise, if the value associated with the <code>@id</code> <a>entry</a> is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
+            <li>If the value associated with the `@id` <a>entry</a> is a string
+              having the form of a keyword (i.e., it begins with `"@"`),
+              processing is aborted and processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
               <var>active context</var>, the value associated with the <code>@id</code> <a>entry</a> for
@@ -1621,7 +1629,9 @@
             <li>If the <a>prefix flag</a> of <var>definition</var>is set to <code>true</code>,
               and its <a>IRI mapping</a> is a <a>keyword</a>,
               an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
-              has been detected and processing is aborted.</li>
+              has been detected and processing is aborted.
+              Otherwise, if the <a>IRI mapping</a> has the form of the keyword, but beginning with `"@"`,
+              thre <a>prefix flag</a> is treated as `false`.</li>
           </ol>
         </li>
         <li>If the value contains any <a>entry</a> other than <code>@id</code>,
