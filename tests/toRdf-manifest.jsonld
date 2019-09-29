@@ -2111,6 +2111,14 @@
       "input": "toRdf/pr29-in.jsonld",
       "expect": "toRdf/pr29-out.nq"
     }, {
+      "@id": "#tpr33",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Fails if trying to declare a keyword alias as prefix.",
+      "purpose": "Keyword aliases can not be used as prefixes.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr33-in.jsonld",
+      "expect": "invalid term definition"
+    }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Representing numbers >= 1e21",
