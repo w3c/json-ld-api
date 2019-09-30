@@ -2119,6 +2119,54 @@
       "input": "toRdf/pr33-in.jsonld",
       "expect": "invalid term definition"
     }, {
+      "@id": "#tpr34",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignores a non-keyword term starting with '@'",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr34-in.jsonld",
+      "expect": "toRdf/pr34-out.nq"
+    }, {
+      "@id": "#tpr35",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignores a non-keyword term starting with '@' (with @vocab)",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr35-in.jsonld",
+      "expect": "toRdf/pr35-out.nq"
+    }, {
+      "@id": "#tpr36",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword.",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr36-in.jsonld",
+      "expect": "toRdf/pr36-out.nq"
+    }, {
+      "@id": "#tpr37",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword (with @vocab).",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr37-in.jsonld",
+      "expect": "toRdf/pr37-out.nq"
+    }, {
+      "@id": "#tpr38",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword (@reverse).",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr38-in.jsonld",
+      "expect": "invalid IRI mapping"
+    }, {
+      "@id": "#tpr39",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr39-in.jsonld",
+      "expect": "invalid IRI mapping"
+    }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Representing numbers >= 1e21",

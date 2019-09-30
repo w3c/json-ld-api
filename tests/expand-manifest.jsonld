@@ -2377,6 +2377,54 @@
       "input": "expand/pr33-in.jsonld",
       "expect": "invalid term definition"
     }, {
+      "@id": "#tpr34",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignores a non-keyword term starting with '@'",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr34-in.jsonld",
+      "expect": "expand/pr34-out.jsonld"
+    }, {
+      "@id": "#tpr35",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignores a non-keyword term starting with '@' (with @vocab)",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr35-in.jsonld",
+      "expect": "expand/pr35-out.jsonld"
+    }, {
+      "@id": "#tpr36",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword.",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr36-in.jsonld",
+      "expect": "expand/pr36-out.jsonld"
+    }, {
+      "@id": "#tpr37",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword (with @vocab).",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr37-in.jsonld",
+      "expect": "expand/pr37-out.jsonld"
+    }, {
+      "@id": "#tpr38",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword (@reverse).",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr38-in.jsonld",
+      "expect": "invalid IRI mapping"
+    }, {
+      "@id": "#tpr39",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr39-in.jsonld",
+      "expect": "invalid IRI mapping"
+    }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@import is invalid in 1.0.",
