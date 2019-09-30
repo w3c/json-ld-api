@@ -1373,7 +1373,7 @@
           <var>term</var> MUST NOT be a <a>keyword</a> and a
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
           error has been detected and processing is aborted.
-          If <var>term</var> as the form of a keyword (i.e., it begins with `"@"`),
+          If <var>term</var> has the form of a keyword (i.e., it begins with `"@"`),
           processing is aborted and a processor SHOULD generate a warning.</li>
         <li class="changed">Set <var>previous definition</var> to any existing
           <a>term definition</a> for <var>term</var> in <var>active context</var>.</li>
@@ -1700,6 +1700,11 @@
         in the process of being defined. We create a
         <a>term definition</a> by using the
         <a href="#create-term-definition">Create Term Definition algorithm</a>.</p>
+
+      <p class="changed note">Values that have the form of a keyword,
+        but are not keywords (i.e., they begin with `"@"`) do not
+        map to any value, as they are reserved for future use.
+        The algorithm returns `null`, so that they will be ignored when encountered.</p>
     </section>
 
     <section class="algorithm">
@@ -1721,6 +1726,9 @@
       <ol>
         <li>If <var>value</var> is a <a>keyword</a> or <code>null</code>,
           return <var>value</var> as is.</li>
+        <li class="changed">
+          If <var>value</var> has the form of a keyword (i.e., it begins with `"@"`),
+          a processor SHOULD generate a warning and return `null`.</li>
         <li>If <a>local context</a> is not <code>null</code>, it contains
           an <a>entry</a> with a key that equals <var>value</var>, and the value of the <a>entry</a>
           for <var>value</var> in <var>defined</var> is not <code>true</code>,
