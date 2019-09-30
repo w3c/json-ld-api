@@ -3335,6 +3335,15 @@ Test te092 Various relative IRIs as properties with with @vocab: ''
 <dd>
 <a href='toRdf/e092-out.nq'>toRdf/e092-out.nq</a>
 </dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
 </dl>
 </dd>
 <dt id='te093'>
@@ -3857,6 +3866,15 @@ Test te110 Various relative IRIs as properties with with relative @vocab
 <dd>
 <a href='toRdf/e110-out.nq'>toRdf/e110-out.nq</a>
 </dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
 </dl>
 </dd>
 <dt id='te111'>
@@ -3878,6 +3896,13 @@ Test te111 Various relative IRIs as properties with with relative @vocab itself 
 <dd>
 <a href='toRdf/e111-out.nq'>toRdf/e111-out.nq</a>
 </dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
 </dl>
 </dd>
 <dt id='te112'>
@@ -3898,6 +3923,13 @@ Test te112 Various relative IRIs as properties with with relative @vocab relativ
 <dt>expect</dt>
 <dd>
 <a href='toRdf/e112-out.nq'>toRdf/e112-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -3946,6 +3978,62 @@ Test te114 Expansion allows multiple properties expanding to @type
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te115'>
+Test te115 Verifies that relative IRIs as properties with @vocab: '' in 1.0 generate an error
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te115</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Pathological relative property IRIs in 1.0</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e115-in.jsonld'>toRdf/e115-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid vocab mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te116'>
+Test te116 Verifies that relative IRIs as properties with relative @vocab in 1.0 generate an error
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te116</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Pathological relative property IRIs in 1.0</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e116-in.jsonld'>toRdf/e116-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid vocab mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
 </dl>
 </dd>
 </dl>
@@ -6968,6 +7056,202 @@ Test tpr29 Does not expand a Compact IRI using a non-prefix term.
 <dt>expect</dt>
 <dd>
 <a href='toRdf/pr29-out.nq'>toRdf/pr29-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr33'>
+Test tpr33 Fails if trying to declare a keyword alias as prefix.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr33</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Keyword aliases can not be used as prefixes.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr33-in.jsonld'>toRdf/pr33-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr34'>
+Test tpr34 Ignores a non-keyword term starting with '@'
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr34</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr34-in.jsonld'>toRdf/pr34-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/pr34-out.nq'>toRdf/pr34-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr35'>
+Test tpr35 Ignores a non-keyword term starting with '@' (with @vocab)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr35</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr35-in.jsonld'>toRdf/pr35-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/pr35-out.nq'>toRdf/pr35-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr36'>
+Test tpr36 Ignores a term mapping to a value in the form of a keyword.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr36</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr36-in.jsonld'>toRdf/pr36-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/pr36-out.nq'>toRdf/pr36-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr37'>
+Test tpr37 Ignores a term mapping to a value in the form of a keyword (with @vocab).
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr37</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr37-in.jsonld'>toRdf/pr37-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/pr37-out.nq'>toRdf/pr37-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr38'>
+Test tpr38 Ignores a term mapping to a value in the form of a keyword (@reverse).
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr38</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr38-in.jsonld'>toRdf/pr38-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr39'>
+Test tpr39 Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr39</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr39-in.jsonld'>toRdf/pr39-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
 </dd>
 <dt>Options</dt>
 <dd>
