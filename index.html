@@ -1030,7 +1030,7 @@
         These are handled before any other <a>entries</a> in the <a>local context</a> because
         they affect how the other <a>entries</a> are processed.
         <span class="changed">If <a>context</a> contains <code>@import</code>, it is retrieved and is reverse-merged
-          into the containing context, allowing JSON-LD 1.0 contexts to be uplifed to JSON-LD 1.1.</span>
+          into the containing context, allowing JSON-LD 1.0 contexts to be upgraded to JSON-LD 1.1.</span>
         Please note that <code>@base</code> is ignored when processing remote contexts.</p>
 
       <p class="changed">If <a>context</a> is not to be propagated,
@@ -1466,7 +1466,7 @@
               error has been detected and processing is aborted.</li>
             <li>If the value associated with the `@id` <a>entry</a> is a string
               is not a <a>keyword</a>, but
-              havs the form of a <a>keyword</a> (i.e., it begins with `"@"`),
+              has the form of a <a>keyword</a> (i.e., it begins with `"@"`),
               processing is aborted and processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
@@ -3471,7 +3471,7 @@
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
             <li>If <var>value</var> is a <a class="changed">map</a>,
-              that contains the an <code>@index</code> <a>entry</a>,
+              that contains an <code>@index</code> <a>entry</a>,
               <span class="changed">and <var>value</var> is not a <a>graph object</a></span>
               then append the values <code>@index</code> <span class="changed">and <code>@index@set</code></span> to <var>containers</var>.</li>
             <li>If <var>reverse</var> is <code>true</code>, set <var>type/language</var>
@@ -3495,10 +3495,10 @@
                       <var>item type</var> to <code>@none</code>.</li>
                     <li>If <var>item</var> contains an <code>@value</code> <a>entry</a>:
                       <ol>
-                        <li>If <var>item</var> contains the an <code>@language</code> <a>entry</a>,
+                        <li>If <var>item</var> contains an <code>@language</code> <a>entry</a>,
                           then set <var>item language</var> to its associated
                           value.</li>
-                        <li>Otherwise, if <var>item</var> contains the a
+                        <li>Otherwise, if <var>item</var> contains a
                           <code>@type</code> <a>entry</a>, set <var>item type</var> to its
                           associated value.</li>
                         <li>Otherwise, set <var>item language</var> to
@@ -3821,7 +3821,7 @@
             <dt><var>preferred values</var></dt>
             <dd><code>["en", "@none"]</code></dd>
           </dl>
-          <p>The <var>value map</var> will be set to <code>{"@none"=>"t"}</code>,
+          <p>The <var>value map</var> will be set to <code>{"@none": "t"}</code>,
             as <var>preferred values</var> contains <code>"@none"</code>,
             the algorithm returns <code>"t"</code> as the term to use for compaction.</p>
         </aside>
@@ -4446,7 +4446,7 @@
         <a data-cite="Turtle#sec-grammar-grammar">EBNF for
         <strong>BLANK_NODE_LABEL</strong></a> as described in [[Turtle]].
         <span class="note">When following the algorithm described here,
-          all blank node identiers will be normalized using the <a
+          all blank node identifiers will be normalized using the <a
           href="#generate-blank-node-identifier">Generate Blank Node Identifier
           algorithm</a> and automatically adhere to this form.</span>
       </li>
@@ -4633,7 +4633,7 @@
             this specification will likely be updated to require such a canonical representation.
             Users are cautioned from depending on the
             <a>JSON literal</a> lexical representation as an <a>RDF literal</a>,
-            as the specifics of serialization may change in a future revison of this document.</div></li>
+            as the specifics of serialization may change in a future revision of this document.</div></li>
         <li>If <var>value</var> is <code>true</code> or
           <code>false</code>, set <var>value</var> to the <a>string</a>
           <code>true</code> or <code>false</code> which is the
@@ -5019,7 +5019,7 @@
               set the <code>@value</code> <a>entry</a> to the result of
               turning the lexical value of <var>value</var>
               into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.
-              If the the lexical value of <var>value</var> is not valid JSON according to
+              If the lexical value of <var>value</var> is not valid JSON according to
               the <a data-cite="RFC8259#section-2">JSON Grammar</a> [[RFC8259]],
               an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
               error has been detected and processing is aborted.</li>
@@ -5136,7 +5136,7 @@
       this specification will likely be updated to require such a canonical representation.
       Users are cautioned from depending on the
       <a>JSON literal</a> lexical representation as an <a>RDF literal</a>,
-      as the specifics of serialization may change in a future revison of this document.</p>
+      as the specifics of serialization may change in a future revision of this document.</p>
 
     <aside class="example changed" data-ignore
            title="Canonicalized JSON literal">
@@ -5932,7 +5932,7 @@
       <p>After <a href="#LoadDocumentCallback-step-5">step 5</a>, add the following processing step:
         Otherwise, if the retrieved resource's <a>Content-Type</a> is <code>text/html</code>:</p>
       <ol>
-        <li>Set <var>documentUrl</var> to the the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
+        <li>Set <var>documentUrl</var> to the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
           of <a data-link-for="LoadDocumentCallback">url</a>, as defined in [[HTML]],
           using the existing <var>documentUrl</var> as the document's URL.
         </li>
@@ -6305,7 +6305,7 @@
       In the <a href="#expansion-algorithm">Expansion Algorithm</a>, this is
       used to create a <a>named graph</a> from either a <a>node object</a>, or
       objects which are values of <a>entries</a> in an <a>id map</a> or <a>index map</a>.
-      the <a href="#compaction-algorithm">Compaction Algorithm</a> allows
+      The <a href="#compaction-algorithm">Compaction Algorithm</a> allows
       specific forms of graph objects to be compacted back to a set of <a>node
       objects</a>, or maps of <a>node objects</a>.</li>
     <li><a href="#value-expansion">Value Expansion</a> will not turn native values
@@ -6331,13 +6331,13 @@
       <a>relative IRIs</a> were excluded.</li>
     <li>The API now adds an {{JsonLdOptions/ordered}}
        option, defaulting to <code>false</code> This is used in algorithms to
-       control interation of <a>map entry</a> keys. Previously, the
+       control iteration of <a>map entry</a> keys. Previously, the
        algorithms always required such an order. The instructions for
        evaluating test results have been updated accordingly.</li>
     <li>The <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
       has been updated to remove the specifics of how new blank node
       identifiers are created.</li>
-    <li>Values of <code>@type</code>, or an alais of <code>@type</code>, may now have their <code>@container</code> set to <code>@set</code>
+    <li>Values of <code>@type</code>, or an alias of <code>@type</code>, may now have their <code>@container</code> set to <code>@set</code>
       to ensure that <code>@type</code> entries are always represented as an array. This
       also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>map</a>
       with <code>@container</code> set to <code>@set</code>.</li>
