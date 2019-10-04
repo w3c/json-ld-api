@@ -4947,7 +4947,7 @@
         that all default to <code>false</code>.</p>
 
       <p>The <var>dataset</var> is <a data-link-for="RdfDataset">iterable</a> to iterate over <a>graphs</a> and <a>graph names</a>
-        contained within the <a>RdfDataset</a>. Each <a>graph</a> is also <code>iterable</code>
+        contained within the <a>RdfDataset</a>. Each <a>graph</a> is also <a data-link-for="RdfGraph">iterable</a>
         for iterating over <a>triples</a> contained within the <a>RdfGraph</a>.</p>
 
       <ol>
@@ -5807,13 +5807,14 @@
         <dl class="parameters">
           <dt><dfn data-lt="RdfDataset-add-graphName" data-lt-noDefault>graphName</dfn></dt>
           <dd>The <a>graph name</a> associated with <a>graph</a>.
-            graphName MUST be a <a>well-formed</a> <a>IRI</a> or <a>blank node identifier</a>.
+            <a href="#dfn-rdfdataset-add-graphname">graphName</a> MUST be a
+            <a>well-formed</a> <a>IRI</a> or <a>blank node identifier</a>.
           </dd>
           <dt><dfn data-lt="RdfDataset-add-graph" data-lt-noDefault>graph</dfn></dt>
           <dd>The <a>RdfGraph</a> to add to the <a>RdfDataset</a>.</dd>
         </dl>
       </dd>
-      <dt><dfn data-dfn-for="RdfDataset">iterable</dfn></dt>
+      <dt><dfn data-dfn-for="RdfDataset"><code>iterable</code></dfn></dt>
       <dd>The <a data-cite="WEBIDL#dfn-value-pairs-to-iterate-over">value pairs to iterate over</a>
         are the list of <var>graph name</var>-<var>graph</var> pairs,
         with the <var>graph name</var> being <code>null</code>
@@ -5849,7 +5850,7 @@
           <dd>The <a>RdfTriple</a> to add to the <a>RdfGraph</a>.</dd>
         </dl>
       </dd>
-      <dt><code>iterable</code></dt>
+      <dt><dfn data-dfn-for="RdfGraph"><code>iterable</code></dfn></dt>
       <dd>A <a data-cite="WEBIDL#dfn-value-iterator">value iterator</a>
         over the <a>RdfTriple</a> instances associated with the graph.
         Note that a given <a>RdfTriple</a> instance may appear in more than one graph
