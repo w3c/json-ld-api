@@ -1,0 +1,7 @@
+<http://example.com/node> <http://example.com/vocab/property2> "Die Königin"@de .
+<http://example.com/node> <http://example.com/vocab/property2> "Ihre Majestät"@de .
+<http://example.com/node> <http://example.com/vocab/property2> "The Queen"@en .
+<http://example.com/node> <http://example.com/vocab/property> "einfacher String"@de .
+<http://example.com/node> <http://example.com/vocab/property> "woord"@nl-be .
+<http://example.com/node> <http://example.com/vocab/property> <http://example.com/propertyValueNode> .
+<http://example.com/propertyValueNode> <http://example.com/vocab/indexMap> "simple string"@en .

@@ -869,6 +869,13 @@
       "expect": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
+      "@id": "#t0117",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Language tags with mixed casing",
+      "purpose": "Language tags must be normalized to lowercase",
+      "input": "expand/0117-in.jsonld",
+      "expect": "expand/0117-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",

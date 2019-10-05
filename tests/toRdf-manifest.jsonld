@@ -1263,6 +1263,13 @@
       "expect": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
+      "@id": "#te117",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Language tags with mixed casing",
+      "purpose": "Language tags must be normalized to lowercase",
+      "input": "toRdf/e117-in.jsonld",
+      "expect": "toRdf/e117-out.nq",
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",

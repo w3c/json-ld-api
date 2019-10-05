@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "property": { "@id": "http://example.com/vocab/property", "@language": "DE" },
+    "indexMap": { "@id": "http://example.com/vocab/indexMap", "@language": "eN", "@container": "@index" },
+    "property2": { "@id": "http://example.com/vocab/property2", "@container": "@language" }
+  },
+  "@id": "http://example.com/node",
+  "property": [
+    {
+      "@id": "http://example.com/propertyValueNode",
+      "indexMap": {
+        "expands to english string": "simple string"
+      }
+    },
+    "einfacher String",
+	{
+	  "@value": "woord",
+	  "@language": "NL-be"
+	}
+  ],
+  "property2": {
+    "EN": "The Queen",
+    "dE": [ "Die Königin", "Ihre Majestät" ]
+  }
+}

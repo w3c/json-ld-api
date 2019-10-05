@@ -1,0 +1,39 @@
+[
+  {
+    "@id": "http://example.com/node",
+    "http://example.com/vocab/property": [
+      {
+        "@id": "http://example.com/propertyValueNode",
+        "http://example.com/vocab/indexMap": [
+          {
+            "@value": "simple string",
+            "@language": "en",
+            "@index": "expands to english string"
+          }
+        ]
+      },
+      {
+        "@value": "einfacher String",
+        "@language": "de"
+      },
+      {
+        "@value": "woord",
+        "@language": "nl-be"
+      }
+    ],
+	"http://example.com/vocab/property2": [
+	  {
+	    "@value": "The Queen",
+	    "@language": "en"
+	  },
+	  {
+	    "@value": "Die Königin",
+	    "@language": "de"
+	  },
+	  {
+	    "@value": "Ihre Majestät",
+	    "@language": "de"
+	  }
+	]
+  }
+]
