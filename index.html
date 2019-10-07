@@ -966,7 +966,7 @@
       <a>term definitions</a> which specify how
       keys and values have to be interpreted as well as the current <a>base IRI</a>,
       the <a>vocabulary mapping</a>, the <a>default language</a>,
-      <span class="changed">the <a>default direction</a>,
+      <span class="changed">the <a>default base direction</a>,
         and an optional <dfn>previous context</dfn>,
         used when a non-propagated <a>context</a> is defined</span>.
       Each <a>term definition</a> consists of:</p>
@@ -989,7 +989,7 @@
 
     <p>When processing, <var>active context</var> is initialized
       without any <a>term definitions</a>,
-      <a>vocabulary mapping</a>, <a class="changed">default direction</a>, or <a>default language</a>.
+      <a>vocabulary mapping</a>, <a class="changed">default base direction</a>, or <a>default language</a>.
       If a <a>local context</a> is encountered during processing, a new
       <var>active context</var> is created by cloning the existing
       <var>active context</var>. Then the information from the
@@ -1027,7 +1027,7 @@
         it is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.
         We first update
         the <a>base IRI</a>,
-        <span class="changed">the <a>default direction</a></span>,
+        <span class="changed">the <a>default base direction</a></span>,
         the <a>default language</a>,
         <span class="changed">context propagation</a></span>,
         <span class="changed">the <a>processing mode</a></span>,
@@ -1273,14 +1273,14 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
-            <li>If <var>context</var> has an <code>@direction</code> <a>entry</a>:
+            <li class="changed">If <var>context</var> has an <code>@direction</code> <a>entry</a>:
               <ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@direction</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove
-                  any <a>default direction</a> from <var>result</var>.</li>
+                  any <a>base direction</a> from <var>result</var>.</li>
                 <li>Otherwise, if <var>value</var> is <a>string</a>, the
-                  <a>default direction</a> of <var>result</var> is set to
+                  <a>base direction</a> of <var>result</var> is set to
                   <var>value</var>. If it is not `null`, `"ltr"`, or `"rtl"`, an
                   <a data-link-for="JsonLdErrorCode">invalid base direction</a>
                   error has been detected and processing is aborted.</li>
@@ -1839,7 +1839,6 @@
   </section> <!-- end of IRI Expansion -->
 </section> <!-- end of Context Processing section -->
 
-
 <section>
   <h1>Expansion Algorithms</h1>
 
@@ -1986,7 +1985,7 @@
         <li class="changed">If <var>active context</var> has a <a>previous context</a>,
           the <var>active context</var> is not propagated.
           If <var>from map</var> is undefined or <code>false</code>,
-          and <var>element</var> does not contain a <a>entry</a> expanding to <code>@value</code>,
+          and <var>element</var> does not contain an <a>entry</a> expanding to <code>@value</code>,
           and <var>element</var> does not consist of a single entry expanding to <code>@id</code>,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
@@ -2137,6 +2136,15 @@
                     may also be an empty <a>map</a> or an array of zero or
                     <a>strings</a>. <var>expanded value</var> will be an
                     <a>array</a> of one or more <a>string</a> values converted to lower case.</span></li>
+                <li class="changed">If <var>expanded property</var> is <code>@direction</code> and
+                  <var>value</var> is neither `"ltr"` nor `"rtl"`, an
+                  <a data-link-for="JsonLdErrorCode">invalid base direction</a>
+                  error has been detected and processing is aborted.
+                  Otherwise, set <var>expanded value</var> to <var>value</var>.
+                  When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
+                  may also be an empty <a>map</a> or an array of zero or
+                  <a>strings</a>. <var>expanded value</var> will be an
+                  <a>array</a> of one or more <a>string</a> values.</li>
                 <li>If <var>expanded property</var> is <code>@index</code> and
                   <var>value</var> is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid @index value</a>
@@ -2244,6 +2252,10 @@
               <ol>
                 <li>Initialize <var>expanded value</var> to an empty
                   <a>array</a>.</li>
+                <li class="changed">Initialize <var>direction</var> to the <a>default direction mapping</a> from <var>active context</var>.</li>
+                <li class="changed">If <var>key</var>'s <a>term definition</a> in <a>active context</a>
+                  has a <a>direction mapping</a>,
+                  update <var>direction</var> with that value.</li>
                 <li>For each key-value pair <var>language</var>-<var>language value</var>
                   in <var>value</var>, ordered lexicographically by <var>language</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
@@ -2252,19 +2264,23 @@
                       <var>language value</var>.</li>
                     <li>For each <var>item</var> in <var>language value</var>:
                       <ol>
-                        <li><var>item</var> must be a <a>string</a>
-                          <span class="changed">or <code>null</code></span>,
+                        <li class="changed">If <var>item</var> is `null`,
+                          continue to the next entry in <var>language value</var>.</li>
+                        <li><var>item</var> must be a <a>string</a>,
                           otherwise an
                           <a data-link-for="JsonLdErrorCode">invalid language map value</a>
                           error has been detected and processing is aborted.</li>
-                        <li>Append a <a class="changed">map</a> to
-                          <var>expanded value</var> that consists of two
+                        <li>Initialize a new <a class="changed">map</a> <var>v</var>
+                          consisteing of two
                           key-value pairs: (<code>@value</code>-<var>item</var>)
                           and (<code>@language</code>-lowercased
-                          <var>language</var>),
-                          <span class="changed">unless <var>item</var> is <code>null</code></span>.
-                          <span class="changed">If <var>language</var> is <code>@none</code>,
-                            or expands to <code>@none</code>, do not set the <code>@language</code> <a>entry</a>.</span></li>
+                          <var>language</var>).</li>
+                        <li class="changed">If <var>language</var> is <code>@none</code>,
+                          or expands to <code>@none</code>, remove <code>@language</code> from <var>v</var>.</li>
+                        <li class="changed">
+                          If <var>direction</var> is not `null`,
+                          add an <a>entry</a> for `@direction` to <var>v</var> with <var>direction</var>.</li>
+                        <li>Append <var>v</var> to <var>expanded value</var>.</li>
                       </ol>
                     </li>
                   </ol>
@@ -2433,11 +2449,14 @@
         <li>If <var>result</var> contains the <a>entry</a> <code>@value</code>:
           <ol>
             <li>The <var>result</var> must not contain any <a>entries</a> other than
-              <code>@value</code>, <code>@language</code>, <code>@type</code>,
-              and <code>@index</code>. It must not contain both a
-              <code>@language</code> <a>entry</a> and an <code>@type</code> <a>entry</a>.
-              Otherwise, an
-              <a data-link-for="JsonLdErrorCode">invalid value object</a>
+              <code class="changed">@direction</code>,
+              `@index`,
+              `@language`,
+              `@type`,
+              and `@value`.
+              It must not contain either
+              `@language` or `@direction` <a>entries</a> and an `@type` <a>entry</a>.
+              Otherwise, an <a data-link-for="JsonLdErrorCode">invalid value object</a>
               error has been detected and processing is aborted.</li>
             <li>If the value of <var>result</var>'s <code>@value</code> <a>entry</a> is
               <code>null</code>, then set <var>result</var> to <code>null</code>.</li>
@@ -2569,22 +2588,48 @@
         <li>If <var>active property</var> has a <a>type mapping</a> in
           <var>active context</var>,
           <span class="changed">other than <code>@id</code>, <code>@vocab</code>, or <code>@none</code>,</span>
-          add an <code>@type</code> <a>entry</a> to
+          add <code>@type</code> to
           <var>result</var> and set its value to the value associated with the
           <a>type mapping</a>.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>:
           <ol>
-            <li>If a <a>language mapping</a> is associated with
+            <li class="changed">If both a non-`null` <a>language mapping</a>
+              and a non-`null` <a>direction mapping</a> are associated with
               <var>active property</var> in <var>active context</var>,
-              add an <code>@language</code> to <var>result</var> and set its
-              value to the language code associated with the
-              <a>language mapping</a>; unless the
-              <a>language mapping</a> is set to <code>null</code> in
+              add <code>@language</code> to <var>result</var> and set its
+              value to the <a>language tag</a> associated with the
+              <a>language mapping</a>.
+              Add a <code>@direction</code> to <var>result</var> and set its
+              value to the <a>direction mapping</a>.</li>
+            </li>
+            <li class="changed">Otherwise, if a non-`null` <a>language mapping</a> is associated with
+              <var>active property</var> in <var>active context</var>,
+              add <code>@language</code> to <var>result</var> and set its
+              value to the <a>language tag</a> associated with the <a>language mapping</a>.
+              Add a <code>@direction</code> to <var>result</var> and set its
+              value to the <a>default base direction</a> from <a>active context</a>; unless the
+              <a>direction mapping</a> is set to <code>null</code> in
               which case no such <a>entry</a> is added.</li>
-            <li>Otherwise, if the <var>active context</var> has a
-              <a>default language</a>, add an <code>@language</code>
+            </li>
+            <li class="changed">Otherwise, if a non-`null` <a>direction mapping</a> is associated with
+              <var>active property</var> in <var>active context</var>,
+              add <code>@language</code> to <var>result</var> and set its
+              value to the <a>default language</a> from <a>active context</a>,
+              if <a>active context</a> has a <a>default language</a>,
+              and the <a>language mapping</a> is not `null`.
+              Add a <code>@direction</code> to <var>result</var> and set its
+              value to the <a>direction mapping</a>; unless the
+              <a>direction mapping</a> is set to <code>null</code> in
+              which case no such <a>entry</a> is added.</li>
+            </li>
+            <li>Otherwise, add <code>@language</code>
               to <var>result</var> and set its value to the
-              <a>default language</a>.</li>
+              <a>default language</a> if <a>active context</a> has a <a>default language</a>,
+              and the <a>language mapping</a> is not `null`.
+              <span class="changed">Add <code>@direction</code>
+                to <var>result</var> and set its value to the
+                <a>default base direction</a> if <a>active context</a> has a <a>default base direction</a>,
+                and the <a>direction mapping</a> is not `null`.</span></li>
           </ol>
         </li>
         <li>Return <var>result</var>.</li>
@@ -2906,8 +2951,11 @@
               then the compacted result will be inside of an <code>@index</code>
               container, drop the <code>@index</code> <a>entry</a> by continuing
               to the next <var>expanded property</var>.</li>
-            <li>Otherwise, if <var>expanded property</var> is <code>@index</code>,
-              <code>@value</code>, or <code>@language</code>:
+            <li>Otherwise, if <var>expanded property</var> is
+              <code class="changed">@direction</code>,
+              <code>@index</code>,
+              <code>@language</code>,
+              or <code>@value</code>:
               <ol>
                 <li>Initialize <var>alias</var> to the result of using
                   the <a href="#iri-compaction">IRI Compaction algorithm</a>,
@@ -3302,9 +3350,9 @@
 
       <ol>
         <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
-        <li>Initialize <var>default language</var> to <code>@none</code>. If the
-          <var>active context</var> has a <a>default language</a>,
-          set <var>default language</var> to it.</li>
+        <li>Initialize <var>default language</var> to <code>@none</code>.
+          If the <var>active context</var> has a <a>default language</a>,
+          set <var>default language</var> to the <a>language tag</a> from that <a>default language</a>.</li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
           first (breaking ties by choosing the lexicographically least
@@ -3322,7 +3370,7 @@
             <li>Initialize <var>var</var> to the value of the <a>IRI mapping</a>
               for the <a>term definition</a>.</li>
             <li>If <var>var</var> is not an <a>entry</a> of <var>result</var>, add
-              a <a>entry</a> where the key is <var>var</var> and the value
+              an <a>entry</a> where the key is <var>var</var> and the value
               is an empty <a class="changed">map</a> to <var>result</var>.</li>
             <li>Reference the value associated with the <var>var</var> <a>entry</a> in
               <var>result</var> using the variable <var>container map</var>.</li>
@@ -3337,12 +3385,12 @@
                 <code>@none</code> set to the <a>term</a> being processed</span>.</li>
             <li>Reference the value associated with the <var>container</var> <a>entry</a>
               in <var>container map</var> using the variable <var>type/language map</var>.</li>
+            <li>Reference the value associated with the <code>@type</code>
+              <a>entry</a> in <var>type/language map</var> using the variable
+              <var>type map</var>.</li>
             <li>If the <a>term definition</a> indicates that the <a>term</a>
               represents a <a>reverse property</a>:
               <ol>
-                <li>Reference the value associated with the <code>@type</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>type map</var>.</li>
                 <li>If <var>type map</var> does not have an <code>@reverse</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -3357,9 +3405,6 @@
                 <li>If <var>language map</var> does not have an <code>@any</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
-                <li>Reference the value associated with the <code>@type</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>type map</var>.</li>
                 <li>If <var>type map</var> does not have an <code>@any</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -3368,43 +3413,81 @@
             <li>Otherwise, if <a>term definition</a> has a
               <a>type mapping</a>:
               <ol>
-                <li>Reference the value associated with the <code>@type</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>type map</var>.</li>
-                <li>If <var>type map</var> does not have a <a>entry</a> corresponding
+                <li>If <var>type map</var> does not have an <a>entry</a> corresponding
                   to the <a>type mapping</a> in <a>term definition</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
             </li>
+            <li>Reference the value associated with the <code>@language</code>
+              <a>entry</a> in <var>type/language map</var> using the variable
+              <var>language map</var>.</li>
+            <li class="changed">if <a>term definition</a> has both
+              a <a>language mapping</a> and a <a>direction mapping</a>:
+              <ol>
+                <li>Create a new variable <var>lang dir</var>.</li>
+                <li>If neither the <a>language mapping</a> and the <a>direction mapping</a>
+                  are `null`, set <var>lang dir</var> to the concatenation
+                  of <a>language mapping</a> and <a>direction mapping</a>
+                  separated by an underscore (`"_"`).</li>
+                <li>Otherwise, if <a>language mapping</a> is not `null`,
+                  set <var>lang dir</var> to the <a>language tag</a> in <a>language mapping</a>.
+                <li>Otherwise, if <a>direction mapping</a> is not `null`,
+                  set <var>lang dir</var> to <a>direction mapping</a>
+                  preceded by an underscore (`"_"`).</li>
+                <li>Otherwise, set <var>lang dir</var> to `@null`.</li>
+              </ol>
+              <li>If <var>language map</var> does not have a <var>lang dir</var>
+                <a>entry</a>, create one and set its value to the <a>term</a>
+                being processed.</li>
+            </li>
             <li>Otherwise, if <a>term definition</a> has a
               <a>language mapping</a> (might be <code>null</code>):
               <ol>
-                <li>Reference the value associated with the <code>@language</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>language map</var>.</li>
                 <li>If the <a>language mapping</a> equals <code>null</code>,
                   set <var>language</var> to <code>@null</code>; otherwise set it
-                  to the language code in <a>language mapping</a>.</li>
+                  to the <a>language tag</a> in <a>language mapping</a>.</li>
                 <li>If <var>language map</var> does not have a <var>language</var> <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li class="changed">Otherwise, if <a>term definition</a> has a
+              <a>direction mapping</a> (might be <code>null</code>):
+              <ol>
+                <li>If the <a>direction mapping</a> equals <code>null</code>,
+                  set <var>direction</var> to <code>@none</code>; otherwise set it
+                  to <a>direction mapping</a> preceded by an underscore (`"_"`).</li>
+                <li>If <var>language map</var> does not have a <var>direction</var> <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li class="changed">Otherwise, if <var>active context</var> has a
+              <a>default base direction</a>:
+              <ol>
+                <li>Initialize a variable <var>lang dir</var>
+                  with the concatenation of <a>default language</a> and <a>default base direction</a>,
+                  separate by an underscore (`"_"`).</li>
+                <li>If <var>language map</var> does not have a <var>lang dir</var> <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>language map</var> does not have a `@none` <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>type map</var> does not have a `@none` <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
             </li>
             <li>Otherwise:
               <ol>
-                <li>Reference the value associated with the <code>@language</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>language map</var>.</li>
                 <li>If <var>language map</var> does not have a <var>default language</var>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
                 <li>If <var>language map</var> does not have an <code>@none</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
-                <li>Reference the value associated with the <code>@type</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>type map</var>.</li>
                 <li>If <var>type map</var> does not have an <code>@none</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -3429,38 +3512,42 @@
     <section class="informative">
       <h3>Overview</h3>
 
-      <p>If the passed <a>IRI</a> is <code>null</code>, we simply
-        return <code>null</code>. Otherwise, we first try to find a <a>term</a>
-        that the <a>IRI</a> or <a>keyword</a> can be compacted to if
-        it is relative to <a data-lt="active context">active context's</a>
-        <a>vocabulary mapping</a>. In order to select the most appropriate
-        <a>term</a>, we may have to collect information about the passed
-        <var>value</var>. This information includes which
-        <a>container mapping</a>
-        would be preferred for expressing the <var>value</var>, and what its
-        <a>type mapping</a> or <a>language mapping</a> is. For
-        <a data-lt="list object">JSON-LD lists</a>, the <a>type mapping</a>
+      <p>If the passed <a>IRI</a> is <code>null</code>,
+        we simply return <code>null</code>.
+        Otherwise, we first try to find a <a>term</a> that the <a>IRI</a> or <a>keyword</a>
+        can be compacted to if it is relative to
+        <a data-lt="active context">active context's</a> <a>vocabulary mapping</a>.
+        In order to select the most appropriate <a>term</a>,
+        we may have to collect information about the passed <var>value</var>.
+        This information includes determining the preferred <a>container mapping</a>,
+        <a>type mapping</a> or <a>language mapping</a>
+        for expressing the <var>value</var>.
+        For <a data-lt="list object">JSON-LD lists</a>, the <a>type mapping</a>
         or <a>language mapping</a> will be chosen based on the most
-        specific values that work for all items in the list. Once this
-        information is gathered, it is passed to the
-        <a href="#term-selection">Term Selection algorithm</a>, which will
-        return the most appropriate <a>term</a> to use.</p>
+        specific values that work for all items in the list.
+        Once this information is gathered,
+        it is passed to the <a href="#term-selection">Term Selection algorithm</a>,
+        which will return the most appropriate <a>term</a>.</p>
 
-      <p>If no <a>term</a> was found that could be used to compact the
-        <a>IRI</a>, an attempt is made to compact the <a>IRI</a> using the
-        <a data-lt="active context">active context's</a> <a>vocabulary mapping</a>,
-        if there is one. If the <a>IRI</a> could not be compacted, an
-        attempt is made to find a <a>compact IRI</a>.
+      <p>If no <a>term</a> was found that could be used to compact the <a>IRI</a>,
+        an attempt is made to compact the <a>IRI</a>
+        using the <a data-lt="active context">active context's</a> <a>vocabulary mapping</a>,
+        if there is one.
+        If the <a>IRI</a> could not be compacted,
+        an attempt is made to find a <a>compact IRI</a>.
         <span class="changed">A term will be used to create a <a>compact IRI</a>
           only if the <a>term definition</a> contains the <a>prefix flag</a>
           with the value <code>true</code>.</span>
         If there is no appropriate <a>compact IRI</a>,
-        <span class="changed">and the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <code>true</code>,</span>
-        the <a>IRI</a> is
-        transformed to a <a>relative IRI</a> using the document's
-        <a>base IRI</a>. Finally, if the <a>IRI</a> or
-        <a>keyword</a> still could not be compacted, it is returned
-        as is.</p>
+        <span class="changed">and the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <code>true</code></span>,
+        the <a>IRI</a> is transformed to a <a>relative IRI</a>
+        using the document's <a>base IRI</a>.
+        Finally, if the <a>IRI</a> or <a>keyword</a> still could not be compacted,
+        it is returned as is.</p>
+
+      <p class="changed">When considering <a>language mapping</a>,
+        the <a>direction mapping</a> is also considered, either with, or without,
+        a <a>language mapping</a>.</p>
 
       <p class="changed">In the case were this algorithm would return the input <a>IRI</a> as is,
         and that <a>IRI</a> can be mistaken for a <a>compact IRI</a> in the <a>active context</a>,
@@ -3473,24 +3560,31 @@
 
       <p>This algorithm takes three required inputs and three optional inputs.
         The required inputs are an <var>active context</var>, an <var>inverse context</var>,
-        and the <var>var</var> to be compacted. The optional inputs are a <var>value</var> associated
-        with the <var>var</var>, a <var>vocab</var> flag which specifies whether the
-        passed <var>var</var> should be compacted using the
-        <a data-lt="active context">active context's</a>
-        <a>vocabulary mapping</a>, and a <var>reverse</var> flag which specifies whether
-        a <a>reverse property</a> is being compacted. If not passed, <var>value</var> is set to
-        <code>null</code> and <var>vocab</var> and <var>reverse</var> are both set to
-        <code>false</code>.</p>
+        and the <var>var</var> to be compacted.
+        The optional inputs are a <var>value</var> associated with the <var>var</var>,
+        a <var>vocab</var> flag which specifies whether the passed <var>var</var>
+        should be compacted using the <a data-lt="active context">active context's</a> <a>vocabulary mapping</a>,
+        and a <var>reverse</var> flag which specifies whether a <a>reverse property</a> is being compacted.
+        If not passed, <var>value</var> is set to <code>null</code>
+        and both <var>vocab</var> and <var>reverse</var> are both set to <code>false</code>.</p>
 
       <ol>
         <li>If <var>var</var> is <code>null</code>, return <code>null</code>.</li>
         <li>If <var>vocab</var> is <code>true</code> and <var>var</var> is an
           <a>entry</a> of <var>inverse context</var>:
           <ol>
-            <li>Initialize <var>default language</var> to
-              <a data-lt="active context">active context's</a>
-              <a>default language</a>, if it has one, otherwise to
-              <code>@none</code>.</li>
+            <li class="changed">Initialize <var>default language</var>
+              based on the <a data-lt="active context">active context's</a>
+              <a>default language</a> and <a>default base direction</a>:
+              <ol>
+                <li>If the <a data-lt="active context">active context's</a> <a>default base direction</a>
+                  is not `null`, to the concatenation of
+                  the <a data-lt="active context">active context's</a> <a>default language</a>
+                  and <a>default base direction</a>, separated by an underscore (`"_"`).</li>
+                <li>Otherwise, to the <a data-lt="active context">active context's</a> <a>default language</a>,
+                  if it has one, otherwise to `@none`.</li>
+              </ol>
+            </li>
             <li class="changed">If <var>value</var> is a <a>map</a> containing
               the <a>entry</a> <code>@preserve</code>, use the first
               element from the value of <code>@preserve</code> as <var>value</var>.</li>
@@ -3533,7 +3627,11 @@
                       <var>item type</var> to <code>@none</code>.</li>
                     <li>If <var>item</var> contains an <code>@value</code> <a>entry</a>:
                       <ol>
-                        <li>If <var>item</var> contains an <code>@language</code> <a>entry</a>,
+                        <li class="changed">If <var>item</var> contains an `@direction` <a>entry</a>,
+                          then set <var>item language</var> to the concatenation of
+                          the <var>item</var>'s `@language` entry (if any)
+                          the <var>item</var>'s `@direction`, separated by an underscore (`"_"`).</li>
+                        <li>Otherwise, if <var>item</var> contains an <code>@language</code> <a>entry</a>,
                           then set <var>item language</var> to its associated
                           value.</li>
                         <li>Otherwise, if <var>item</var> contains a
@@ -3603,7 +3701,14 @@
               <ol>
                 <li>If <var>value</var> is a <a>value object</a>:
                   <ol>
-                    <li>If <var>value</var> contains an <code>@language</code> <a>entry</a>
+                    <li class="changed">If <var>value</var> contains an `@direction` <a>entry</a>
+                      and does not contain an `@index` <a>entry</a>,
+                      then set <var>type/language value</var> to the concatenation of
+                      the <var>value</var>'s `@language` entry (if any)
+                      the <var>value</var>'s `@direction`, separated by an underscore (`"_"`).
+                      Append `@language` and `@language@set` to
+                      <var>containers</var>.</li>
+                    <li>Otherwise, if <var>value</var> contains an <code>@language</code> <a>entry</a>
                       and does not contain an <code>@index</code> <a>entry</a>,
                       then set <var>type/language value</var> to its associated
                       value and, append <code>@language</code>
@@ -3628,12 +3733,12 @@
               be the last <a>container mapping</a> value to be checked as it
               is the most generic.</li>
             <li class="changed">
-              If <a>processing mode</a> is <code>json-ld-1.1</code> and value does not contain an <code>@index</code> <a>entry</a>, append
-              <code>@index</code> and <code>@index@set</code> to <var>containers</var>.
+              If <a>processing mode</a> is <code>json-ld-1.1</code> and value does not contain an <code>@index</code> <a>entry</a>,
+              append <code>@index</code> and <code>@index@set</code> to <var>containers</var>.
             </li>
             <li class="changed">
-              If <a>processing mode</a> is <code>json-ld-1.1</code> and value contains only an <code>@value</code> <a>entry</a>, append
-              <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
+              If <a>processing mode</a> is <code>json-ld-1.1</code> and value contains only an <code>@value</code> <a>entry</a>,
+              append <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
             </li>
             <li>If <var>type/language value</var> is <code>null</code>, set it to
               <code>@null</code>. This is the key under which <code>null</code> values
@@ -3666,6 +3771,10 @@
               <span class="changed">If <var>value</var> is an empty <a>list object</a>,
                 set <var>type/language</var> to <code>@any</code>.</span></li>
             <li class="changed">Append <code>@any</code> to <var>preferred values</var>.</li>
+            <li class="changed">If <var>preferred values</var>
+              contains any entry having an underscore (`"_"`),
+              append the substring of that entry from the underscore to the end of the string
+              to <var>preferred values</var>.</li>
             <li>Initialize <var>term</var> to the result of the
               <a href="#term-selection">Term Selection algorithm</a>, passing
               <var>inverse context</var>, <var>var</var>, <var>containers</var>,
@@ -3787,7 +3896,7 @@
           <var>var</var> in the <var>inverse context</var>.</li>
         <li>For each item <var>container</var> in <var>containers</var>:
           <ol>
-            <li>If <var>container</var> is not a <a>entry</a> of <var>container map</var>, then
+            <li>If <var>container</var> is not an <a>entry</a> of <var>container map</var>, then
               there is no <a>term</a> with a matching
               <a>container mapping</a> for it, so continue to the next
               <var>container</var>.</li>
@@ -3797,7 +3906,7 @@
               with <var>type/language</var> <a>entry</a> in <var>type/language map</var>.</li>
             <li>For each <var>item</var> in <var>preferred values</var>:
               <ol>
-                <li>If <var>item</var> is not a <a>entry</a> of <var>value map</var>,
+                <li>If <var>item</var> is not an <a>entry</a> of <var>value map</var>,
                   then there is no <a>term</a> with a matching
                   <a>type mapping</a> or <a>language mapping</a>,
                   so continue to the next <var>item</var>.</li>
@@ -4041,15 +4150,35 @@
           value matches the <a>type mapping</a> of <var>active property</var>,
           return the value associated with the <code>@value</code> <a>entry</a>
           of <var>value</var>.</li>
-        <li>Otherwise, if <var>value</var> has an <code>@language</code> <a>entry</a> whose
-          value matches the <a>language mapping</a> of
-          <var>active property</var>, return the value associated with the
+        <li class="changed">Otherwise, if <var>value</var> has both `@language` and `@direction <a>entries</a>,
+          and the `@language` <a>entry</a> matches either the <a>language mapping</a> of
+          <var>active property</var> or the <a>default language</a> of <var>active context</var>
+          and the `@direction` <a>entry</a> matches either the <a>direction mapping</a> of
+          <var>active property</var> or the <a>default base direction</a> of <var>active context</var>,
+          return the value associated with the
+          <code>@value</code> <a>entry</a> of <var>value</var>.</li>
+        <li class="changed">Otherwise, if <var>value</var> has a `@language` <a>entry</a>,
+          and the `@language` <a>entry</a> matches either the <a>language mapping</a> of
+          <var>active property</var> or the <a>default language</a> of <var>active context</var>
+          and the <a>direction mapping</a> of <var>active property</var> is `null`,
+          or there is no <a>default base direction</a> in <var>active context</var>,
+          return the value associated with the
+          <code>@value</code> <a>entry</a> of <var>value</var>.</li>
+        <li class="changed">Otherwise, if <var>value</var> has a `@direction` <a>entry</a>,
+          and the `@direction` <a>entry</a> matches either the <a>direction mapping</a> of
+          <var>active property</var> or the <a>default base direction</a> of <var>active context</var>
+          and the <a>language mapping</a> of <var>active property</var> is `null`,
+          or there is no <a>default language</a> in <var>active context</var>,
+          return the value associated with the
           <code>@value</code> <a>entry</a> of <var>value</var>.</li>
         <li>Otherwise, if <var>number entries</var> equals <code>1</code> and either
           the value of the <code>@value</code> <a>entry</a> is not a <a>string</a>,
-          or the <var>active context</var> has no <a>default language</a>,
-          or the <a>language mapping</a> of <var>active property</var>
-          is set to <code>null</code>, return the value associated with the
+          or the <var>active context</var> has no <a>default language</a>
+          <span class="changed">and no <a>default base direction</a></span>,
+          or both the <a>language mapping</a>
+          <span class="changed">and <a>direction mapping</a></span>
+          of <var>active property</var>
+          are set to <code>null</code>, return the value associated with the
           <code>@value</code> <a>entry</a>.</li>
         <li>Otherwise:
           <ol class="changed">
@@ -4174,7 +4303,7 @@
       represented in the passed expanded document. All <a>nodes</a> that are not
       uniquely identified by an IRI get assigned a (new) <a>blank node identifier</a>.
       The resulting <var>node map</var> will have an <a>map entry</a> for every graph in the document whose
-      value is another object with a <a>entry</a> for every <a>node</a> represented in the document.
+      value is another object with an <a>entry</a> for every <a>node</a> represented in the document.
       The default graph is stored under the <code>@default</code> <a>entry</a>, all other graphs are
       stored under their <a>graph name</a>.</p>
 
@@ -4277,7 +4406,7 @@
             <li>Otherwise, set <var>id</var> to the result of the
               <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
               passing <code>null</code> for <var>identifier</var>.</li>
-            <li>If <var>graph</var> does not contain a <a>entry</a> <var>id</var>, create one and initialize
+            <li>If <var>graph</var> does not contain an <a>entry</a> <var>id</var>, create one and initialize
               its value to a <a class="changed">map</a> consisting of a single <a>entry</a> <code>@id</code> whose
               value is <var>id</var>.</li>
             <li>Reference the value of the <var>id</var> <a>entry</a> of <var>graph</var> using the
@@ -4656,7 +4785,7 @@
           <a>entry</a> in <var>item</var>.
         <li>Initialize <var>datatype</var> to the value associated with the
           <code>@type</code> <a>entry</a> of <var>item</var> or <code>null</code> if
-          <var>item</var> does not have such a <a>entry</a>.</li>
+          <var>item</var> does not have such an <a>entry</a>.</li>
         <li class="changed">If <var>datatype</var> is not <a>well-formed</a>, return <code>null</code>.</li>
         <li class="changed">If <var>item</var> has an <code>@language</code>
           <a>entry</a> which is not <a>well-formed</a>, return <code>null</code>.</li>
@@ -4798,15 +4927,20 @@
         Unless the <a data-link-for="JsonLdOptions">useRdfType</a> flag is set to true, <code>rdf:type</code>
         predicates will be serialized as <code>@type</code> as long as the associated object is
         either an <a>IRI</a> or <a>blank node identifier</a>.</p>
+
+      <p>If the </p>
     </section>
 
     <section>
       <h2>Algorithm</h2>
 
-      <p>The algorithm takes one required and three optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
-        and the three flags <a data-link-for="JsonLdOptions">useNativeTypes</a>, <a data-link-for="JsonLdOptions">useRdfType</a>,
-        <span class="changed">and the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted</span>
+      <p>The algorithm takes one required and four optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
+        and the four flags
+        <span class="changed">{{JsonLdOptions/ordered}}, used to order
+          <a>map entry</a> keys lexicographically, where noted</span>,
+        <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
+        <a data-link-for="JsonLdOptions">useNativeTypes</a>,
+        and the <a data-link-for="JsonLdOptions">useRdfType</a>,
         that all default to <code>false</code>.</p>
 
       <p>The <var>dataset</var> is <a data-link-for="RdfDataset">iterable</a> to iterate over <a>graphs</a> and <a>graph names</a>
@@ -4828,7 +4962,7 @@
               its value to an empty <a class="changed">map</a>.</li>
             <li>If <var>graph</var> is not the <a>default graph</a> and
               <var>default graph</var> does not have a <var>name</var> <a>entry</a>,
-              create such a <a>entry</a> and initialize its value to a new
+              create such an <a>entry</a> and initialize its value to a new
               <a class="changed">map</a> with a single <a>entry</a> <code>@id</code>
               whose value is <var>name</var>.</li>
             <li>Reference the value of the <var>name</var> <a>entry</a> in <var>graph map</var>
@@ -4858,7 +4992,9 @@
                   <a>triple</a>.</li>
                 <li>Set <var>value</var> to the result of using the
                   <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
-                  passing <var>object</var> and <a data-link-for="JsonLdOptions">useNativeTypes</a>.</li>
+                  passing <var>object</var>,
+                  <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
+                  and <a data-link-for="JsonLdOptions">useNativeTypes</a>.</li>
                 <li>If <var>node</var> does not have a <var>predicate</var> <a>entry</a>, create one
                   and initialize its value to an empty <a>array</a>.</li>
                 <li>If there is no item equivalent to <var>value</var> in the <a>array</a>
@@ -4988,13 +5124,21 @@
       <p><a>RDF literals</a> are transformed to
         <a>value objects</a> whereas <a>IRIs</a> and
         <a>blank node identifiers</a> are
-        transformed to <a>node objects</a>.
-        <span class="changed">Literals with datatype <code>rdf:JSON</code>
-          are transformed into a value object using the internal representation
-          based on the lexical-to-value mapping defined in
-          <a data-cite="JSON-LD11#dfn-json-datatype" class="externalDfn">JSON datatype</a> in [[JSON-LD11]],
-          and <code>@type</code> of <code>@json</code>.</span>
-        If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
+        transformed to <a>node objects</a>.</p>
+      <p class="changed">Literals with datatype <code>rdf:JSON</code>
+        are transformed into a value object using the internal representation
+        based on the lexical-to-value mapping defined in
+        <a data-cite="JSON-LD11#dfn-json-datatype" class="externalDfn">JSON datatype</a> in [[JSON-LD11]],
+        and <code>@type</code> of <code>@json</code>.</p>
+      <p class="changed">With the {{JsonLdOptions/rdfDirection}} option set to `i18n-datatype`,
+        literals with datatype starting with `https://w3.org/ns/i18n#`
+        are transformed into a <a>value object</a> by decoding
+        the <a>language tag</a> and <a>base direction</a> from the datatype.</p>
+      <p class="changed">With the {{JsonLdOptions/rdfDirection}} option set to `compount-literal`,
+        blank node objects using `rdf:direction` are
+        are transformed into a <a>value object</a> by decoding
+        the `rdf:value`, `rdf:language`, and `rdf:direction` properties.</p>
+      <p>If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
         <a>RDF literals</a> with a
         <a>datatype IRI</a>
         that equals <code>xsd:integer</code> or <code>xsd:double</code> are converted
@@ -5010,8 +5154,10 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>This algorithm takes two required inputs: a <var>value</var> to be converted
-        to a <a class="changed">map</a> and a flag <a data-link-for="JsonLdOptions">useNativeTypes</a>.</p>
+      <p>This algorithm takes three required inputs:
+        a <var>value</var> to be converted to a <a class="changed">map</a>,
+        <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
+        and a flag <a data-link-for="JsonLdOptions">useNativeTypes</a>.</p>
 
       <ol>
         <li>If <var>value</var> is an <a>IRI</a> or a
@@ -5054,23 +5200,36 @@
             </li>
             <li class="changed">Otherwise, if <a>processing mode</a> is <code>json-ld-1.1</code>,
               and <var>value</var> is a <a>JSON literal</a>,
-              set the <code>@value</code> <a>entry</a> to the result of
+              set <var>converted value</var> to the result of
               turning the lexical value of <var>value</var>
               into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.
               If the lexical value of <var>value</var> is not valid JSON according to
               the <a data-cite="RFC8259#section-2">JSON Grammar</a> [[RFC8259]],
               an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
               error has been detected and processing is aborted.</li>
+            <li class="changed">Otherwise, if <a>processing mode</a> is `json-ld-1.1`,
+              the <a>datatype IRI</a> of <var>value</var> starts with `https://w3.org/ns/i18n#`,
+              and {{JsonLdOptions/rdfDirection}} is `i18n-datatype`:
+              <ol>
+                <li>Set <var>converted value</var> to the <a>lexical form</a> of <var>value</var>.</li>
+                <li>If the string prefix of the <a data-cite="RFC3986#section-3.5">fragment identifier</a>
+                  of the <a>datatype IRI</a> up until the underscore (`"_"`) is not empty,
+                  add an <a>entry</a> `@language` to <var>result</var> and set its value to that prefix.</li>
+                <li>Add an <a>entry</a> `@direction` to <var>result</var> and set its value to the substring of the
+                  <a data-cite="RFC3986#section-3.5">fragment identifier</a> following
+                  the underscore (`"_"`).</li>
+              </ol>
+            </li>
             <li>Otherwise, if <var>value</var> is a
               <a>language-tagged string</a>
-              add a <a>entry</a> <code>@language</code> to <var>result</var> and set its value to the
+              add an <a>entry</a> <code>@language</code> to <var>result</var> and set its value to the
               <a>language tag</a> of <var>value</var>.</li>
             <li>Otherwise, set <var>type</var> to the
               <a>datatype IRI</a>
               of <var>value</var>, unless it equals <code>xsd:string</code> which is ignored.</li>
-            <li>Add a <a>entry</a> <code>@value</code> to <var>result</var> whose value
+            <li>Add an <a>entry</a> <code>@value</code> to <var>result</var> whose value
               is set to <var>converted value</var>.</li>
-            <li>If <var>type</var> is not <code>null</code>, add a <a>entry</a> <code>@type</code>
+            <li>If <var>type</var> is not <code>null</code>, add an <a>entry</a> <code>@type</code>
               to <var>result</var> whose value is set to <var>type</var>.</li>
             <li>Return <var>result</var>.</li>
           </ol>
@@ -5720,6 +5879,7 @@
         boolean                ordered = false;
         USVString              processingMode = null;
         boolean                produceGeneralizedRdf = true;
+        USVString              rdfDirection = null;
         boolean                useNativeTypes = false;
         boolean                useRdfType = false;
       };
@@ -5789,6 +5949,22 @@
       <dd class="changed">If set to <code>true</code>,
         certain algorithm processing steps where indicated are ordered lexicographically.
         If <code>false</code>, order is not considered in processing.</dd>
+      <dt class="changed"><dfn data-dfn-for="JsonLdOptions">rdfDirection</dfn></dt>
+      <dd class="changed">Determines how <a>value objects</a> containing a <a data-cite="JSON-LD11#dfn-base-direction">base direction</a>
+        are transformed to and from RDF.
+        <ul>
+          <li>If set to `i18n-datatype`, an <a>RDF literal</a> is generated using a datatype IRI
+            based on `https://w3.org/ns/i18n#` with both the <a>language tag</a> (if present)
+            and <a data-cite="JSON-LD11#dfn-base-direction">base direction</a> encoded.
+            When transforming from RDF, this datatype is decoded to create a <a>value object</a>
+            containing `@language` (if present) and `@direction`.</li>
+          <li>If set to `compound-literal`, a <a>blank node</a> is emitted instead of a <a>literal</a>,
+            where the blank node is the subject of `rdf:value`, `rdf:direction`, and `rdf:language` (if present)
+            properties.
+            When transforming from RDF, this object is decoded to create a <a>value object</a>
+            containing `@language` (if present) and `@direction`.</li>
+        </ul>
+      </dd>
     </dl>
   </section> <!-- end JsonLdOptions -->
 
@@ -6315,7 +6491,7 @@
     <li>An <a>expanded term definition</a> can now have an
       <code>@nest</code> <a>entry</a>, which identifies a term expanding to
       <code>@nest</code> which is used for containing <a>properties</a> using the same
-      <code>@nest</code> mapping. When expanding, the values of a <a>entry</a>
+      <code>@nest</code> mapping. When expanding, the values of an <a>entry</a>
       expanding to <code>@nest</code> are treated as if they were contained
       within the enclosing <a>node object</a> directly.</li>
     <li><code>@container</code> values within an <a>expanded term definition</a> may now
