@@ -1173,6 +1173,14 @@
       "input": "expand/di08-in.jsonld",
       "expect": "invalid base direction"
     }, {
+      "@id": "#tdi09",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "@direction is incompatible with @type",
+      "purpose": "Value objects can have either @type but not @language or @direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di09-in.jsonld",
+      "expect": "invalid value object"
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",
