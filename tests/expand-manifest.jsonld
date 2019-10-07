@@ -1109,6 +1109,70 @@
       "expect": "invalid @propagate value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tdi01",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand string using default and term directions",
+      "purpose": "Strings are coerced to have @direction based on default and term direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di01-in.jsonld",
+      "expect": "expand/di01-out.jsonld"
+    }, {
+      "@id": "#tdi02",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand string using default and term directions and languages",
+      "purpose": "Strings are coerced to have @direction based on default and term direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di02-in.jsonld",
+      "expect": "expand/di02-out.jsonld"
+    }, {
+      "@id": "#tdi03",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "expand list values with @direction",
+      "purpose": "List values where the term has @direction are used in expansion.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di03-in.jsonld",
+      "expect": "expand/di03-out.jsonld"
+    }, {
+      "@id": "#tdi04",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "simple language map with term direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di04-in.jsonld",
+      "expect": "expand/di04-out.jsonld"
+    }, {
+      "@id": "#tdi05",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "simple language mapwith overriding term direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di05-in.jsonld",
+      "expect": "expand/di05-out.jsonld"
+    }, {
+      "@id": "#tdi06",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "simple language mapwith overriding null direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di06-in.jsonld",
+      "expect": "expand/di06-out.jsonld"
+    }, {
+      "@id": "#tdi07",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "simple language map with mismatching term direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di07-in.jsonld",
+      "expect": "expand/di07-out.jsonld"
+    }, {
+      "@id": "#tdi08",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "@direction must be one of ltr or rtl",
+      "purpose": "Generate an error if @direction has illegal value.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di08-in.jsonld",
+      "expect": "invalid base direction"
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",

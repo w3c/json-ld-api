@@ -3763,6 +3763,230 @@ invalid @propagate value
 </dd>
 </dl>
 </dd>
+<dt id='tdi01'>
+Test tdi01 Expand string using default and term directions
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi01</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Strings are coerced to have @direction based on default and term direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di01-in.jsonld'>expand/di01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di01-out.jsonld'>expand/di01-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi02'>
+Test tdi02 Expand string using default and term directions and languages
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi02</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Strings are coerced to have @direction based on default and term direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di02-in.jsonld'>expand/di02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di02-out.jsonld'>expand/di02-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi03'>
+Test tdi03 expand list values with @direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi03</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>List values where the term has @direction are used in expansion.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di03-in.jsonld'>expand/di03-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di03-out.jsonld'>expand/di03-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi04'>
+Test tdi04 simple language map with term direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi04</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di04-in.jsonld'>expand/di04-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di04-out.jsonld'>expand/di04-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi05'>
+Test tdi05 simple language mapwith overriding term direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi05</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di05-in.jsonld'>expand/di05-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di05-out.jsonld'>expand/di05-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi06'>
+Test tdi06 simple language mapwith overriding null direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi06</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di06-in.jsonld'>expand/di06-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di06-out.jsonld'>expand/di06-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi07'>
+Test tdi07 simple language map with mismatching term direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi07</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di07-in.jsonld'>expand/di07-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/di07-out.jsonld'>expand/di07-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi08'>
+Test tdi08 @direction must be one of ltr or rtl
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi08</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Generate an error if @direction has illegal value.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/di08-in.jsonld'>expand/di08-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid base direction
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='te001'>
 Test te001 Keywords cannot be aliased to other keywords
 </dt>

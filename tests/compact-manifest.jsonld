@@ -1176,6 +1176,69 @@
       "expect": "compact/c027-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tdi01",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "term direction null",
+      "purpose": "Uses term with null direction when two terms conflict on direction.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di01-in.jsonld",
+      "context": "compact/di01-context.jsonld",
+      "expect": "compact/di01-out.jsonld"
+    }, {
+      "@id": "#tdi02",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "use alias of @direction",
+      "purpose": "Use alias of @direction.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di02-in.jsonld",
+      "context": "compact/di02-context.jsonld",
+      "expect": "compact/di02-out.jsonld"
+    }, {
+      "@id": "#tdi03",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "term selection with lists and direction",
+      "purpose": "Term selection includes values of @list.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di03-in.jsonld",
+      "context": "compact/di03-context.jsonld",
+      "expect": "compact/di03-out.jsonld"
+    }, {
+      "@id": "#tdi04",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "simple language map with term direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di04-in.jsonld",
+      "context": "compact/di04-context.jsonld",
+      "expect": "compact/di04-out.jsonld"
+    }, {
+      "@id": "#tdi05",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "simple language mapwith overriding term direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di05-in.jsonld",
+      "context": "compact/di05-context.jsonld",
+      "expect": "compact/di05-out.jsonld"
+    }, {
+      "@id": "#tdi06",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "simple language mapwith overriding null direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di06-in.jsonld",
+      "context": "compact/di06-context.jsonld",
+      "expect": "compact/di06-out.jsonld"
+    }, {
+      "@id": "#tdi07",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
+      "name": "simple language map with mismatching term direction",
+      "purpose": "Term selection with language maps and @direction.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
+      "input": "compact/di07-in.jsonld",
+      "context": "compact/di07-context.jsonld",
+      "expect": "compact/di07-out.jsonld"
+    }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
       "name": "Compaction to list of lists",
