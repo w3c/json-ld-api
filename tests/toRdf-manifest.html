@@ -1255,6 +1255,358 @@ Test t0132 IRI Resolution (12)
 </dd>
 </dl>
 </dd>
+<dt id='tdi01'>
+Test tdi01 Expand string using default and term directions
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi01</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Strings are coerced to have @direction based on default and term direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di01-in.jsonld'>toRdf/di01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di01-out.nq'>toRdf/di01-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi02'>
+Test tdi02 Expand string using default and term directions and languages
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi02</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Strings are coerced to have @direction based on default and term direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di02-in.jsonld'>toRdf/di02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di02-out.nq'>toRdf/di02-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi03'>
+Test tdi03 expand list values with @direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi03</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List values where the term has @direction are used in expansion.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di03-in.jsonld'>toRdf/di03-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di03-out.nq'>toRdf/di03-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi04'>
+Test tdi04 simple language map with term direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi04</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di04-in.jsonld'>toRdf/di04-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di04-out.nq'>toRdf/di04-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi05'>
+Test tdi05 simple language mapwith overriding term direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi05</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di05-in.jsonld'>toRdf/di05-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di05-out.nq'>toRdf/di05-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi06'>
+Test tdi06 simple language mapwith overriding null direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi06</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di06-in.jsonld'>toRdf/di06-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di06-out.nq'>toRdf/di06-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi07'>
+Test tdi07 simple language map with mismatching term direction
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi07</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Term selection with language maps and @direction.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di07-in.jsonld'>toRdf/di07-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di07-out.nq'>toRdf/di07-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi08'>
+Test tdi08 @direction must be one of ltr or rtl
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi08</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Generate an error if @direction has illegal value.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di08-in.jsonld'>toRdf/di08-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid base direction
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi09'>
+Test tdi09 rdfDirection: i18n-datatype with direction and no language
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi09</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Generates i18n datatype from literal with direction with option.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di09-in.jsonld'>toRdf/di09-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di09-out.nq'>toRdf/di09-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+<dt>rdfDirection</dt>
+<dd>i18n-datatype</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi10'>
+Test tdi10 rdfDirection: i18n-datatype with direction and language
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi10</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Generates i18n datatype from literal with direction with option.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di10-in.jsonld'>toRdf/di10-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di10-out.nq'>toRdf/di10-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+<dt>rdfDirection</dt>
+<dd>i18n-datatype</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi11'>
+Test tdi11 rdfDirection: compound-literal with direction and no language
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi11</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Generates i18n datatype from literal with direction with option.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di11-in.jsonld'>toRdf/di11-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di11-out.nq'>toRdf/di11-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+<dt>rdfDirection</dt>
+<dd>compound-literal</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tdi12'>
+Test tdi12 rdfDirection: compound-literal with direction and language
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tdi12</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Generates compound literal from literal with direction with option.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/di12-in.jsonld'>toRdf/di12-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/di12-out.nq'>toRdf/di12-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+<dt>rdfDirection</dt>
+<dd>compound-literal</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='te001'>
 Test te001 drop free-floating nodes
 </dt>
