@@ -966,13 +966,15 @@
       <a>term definitions</a> which specify how
       keys and values have to be interpreted as well as the current <a>base IRI</a>,
       the <a>vocabulary mapping</a>, the <a>default language</a>,
-      <span class="changed">and an optional <dfn>previous context</dfn>,
+      <span class="changed">the <a>default direction</a>,
+        and an optional <dfn>previous context</dfn>,
         used when a non-propagated <a>context</a> is defined</span>.
       Each <a>term definition</a> consists of:</p>
     <ul>
       <li>an <dfn>IRI mapping</dfn>,</li>
       <li>a boolean flag <dfn>reverse property</dfn>,</li>
       <li>an optional <dfn>type mapping</dfn>, or <dfn>language mapping</dfn>,</li>
+      <li class="changed">an optional <dfn>direction mapping</dfn>,</li>
       <li class="changed">an optional <a>context</a>,</li>
       <li class="changed">an optional <dfn>nest value</dfn>,</li>
       <li class="changed">an optional <dfn>prefix flag</dfn>,</li>
@@ -987,7 +989,7 @@
 
     <p>When processing, <var>active context</var> is initialized
       without any <a>term definitions</a>,
-      <a>vocabulary mapping</a>, or <a>default language</a>.
+      <a>vocabulary mapping</a>, <a class="changed">default direction</a>, or <a>default language</a>.
       If a <a>local context</a> is encountered during processing, a new
       <var>active context</var> is created by cloning the existing
       <var>active context</var>. Then the information from the
@@ -1023,10 +1025,20 @@
 
       <p>If <a>context</a> is a <a class="changed">map</a>,
         it is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.
-        We first update the
-        <a>base IRI</a>, the <a>vocabulary mapping</a>, <a>processing mode</a>, and the
-        <a>default language</a> by processing three specific keywords:
-        <code>@base</code>, <code>@vocab</code>, <code>@version</code>, and <code>@language</code>.
+        We first update
+        the <a>base IRI</a>,
+        <span class="changed">the <a>default direction</a></span>,
+        the <a>default language</a>,
+        <span class="changed">context propagation</a></span>,
+        <span class="changed">the <a>processing mode</a></span>,
+        and the <a>vocabulary mapping</a>
+        by processing six specific keywords:
+        <code>@base</code>,
+        <code class='changed'>@direction</code>,
+        <code>@language</code>,
+        <code class="changed">@propagate</code>,
+        <code class="changed">@version</code>,
+        and <code>@vocab</code>.
         These are handled before any other <a>entries</a> in the <a>local context</a> because
         they affect how the other <a>entries</a> are processed.
         <span class="changed">If <a>context</a> contains <code>@import</code>, it is retrieved and is reverse-merged
@@ -1261,6 +1273,19 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
+            <li>If <var>context</var> has an <code>@direction</code> <a>entry</a>:
+              <ol>
+                <li>Initialize <var>value</var> to the value associated with the
+                  <code>@direction</code> <a>entry</a>.</li>
+                <li>If <var>value</var> is <code>null</code>, remove
+                  any <a>default direction</a> from <var>result</var>.</li>
+                <li>Otherwise, if <var>value</var> is <a>string</a>, the
+                  <a>default direction</a> of <var>result</var> is set to
+                  <var>value</var>. If it is not `null`, `"ltr"`, or `"rtl"`, an
+                  <a data-link-for="JsonLdErrorCode">invalid base direction</a>
+                  error has been detected and processing is aborted.</li>
+              </ol>
+            </li>
             <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
@@ -1279,6 +1304,7 @@
             <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
               <var>key</var> is not
               <code>@base</code>,
+              <code class="changed">@direction</code>,
               <code class="changed">@import</code>,
               <code>@language</code>,
               <code class="changed">@propagate</code>,
@@ -1605,6 +1631,18 @@
             <li>If <var>language</var> is a <a>string</a> set it to
               lowercased <var>language</var>. Set the <a>language mapping</a>
               of <var>definition</var> to <var>language</var>.</li>
+          </ol>
+        </li>
+        <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@direction</code> and
+          does not contain the <a>entry</a> <code>@type</code>:
+          <ol>
+            <li>Initialize <var>direction</var> to the value associated with the
+              <code>@direction</code> <a>entry</a>, which MUST be either <code>null</code>,
+              `"ltr"`, or `"rtl"`. Otherwise, an
+              <a data-link-for="JsonLdErrorCode">invalid base direction</a>
+              error has been detected and processing is aborted.</li>
+            <li>Set the <a>direction mapping</a>
+              of <var>definition</var> to <var>direction</var>.</li>
           </ol>
         </li>
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@nest</code>:
@@ -6226,6 +6264,9 @@
         <dd class="changed">An attempt was made to redefine a <a>protected</a> term.</dd>
         <dt class="changed"><dfn>invalid @included value</dfn></dt>
         <dd class="changed">An <a>included block</a> contains an invalid value.</dd>
+        <dt class="changed"><dfn>invalid base direction</dfn></dt>
+        <dd class="changed">The value of `@direction` is not `"ltr"`, `"rtl"`,
+          or <code>null</code> and thus invalid.</dd>
       </dl>
     </section>
   </section> <!-- end of Error Handling -->
