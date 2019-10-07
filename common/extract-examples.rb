@@ -119,6 +119,13 @@ def table_to_dataset(table)
           # We might think something was an IRI, but determine that it's not
           object = RDF::Literal(object.to_s, language: cell.to_sym)
         end
+      when 'Direction' 
+        case cell
+        when '-', /^\s*$/
+        else
+          object = RDF::Literal(object.to_s, datatype: RDF::URI("https://www.w3.org/i18n##{object.language}_#{cell}"))
+          # We might think something was an IRI, but determine that it's not
+        end
       end
     end
     repo << RDF::Statement.new(subject, predicate, object, graph_name: gname)
