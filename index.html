@@ -4924,14 +4924,16 @@
         predicates will be serialized as <code>@type</code> as long as the associated object is
         either an <a>IRI</a> or <a>blank node identifier</a>.</p>
 
-      <p>If the </p>
+      <p class="changed">If the {{JsonLdOptions/rdfDirection}} option is not `null`, then special processing is used to
+        convert from an `i18n-datatype` or `compound-literal` form.</p>
     </section>
 
     <section>
       <h2>Algorithm</h2>
 
-      <p>The algorithm takes one required and four optional inputs: an <a>RDF dataset</a>  <var>dataset</var>
-        and the four flags
+      <p>The algorithm takes one required and five optional inputs:
+        an <a>RDF dataset</a> <var>dataset</var>
+        and the five flags
         <span class="changed">{{JsonLdOptions/ordered}}, used to order
           <a>map entry</a> keys lexicographically, where noted</span>,
         <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
@@ -4949,12 +4951,15 @@
           of a single <a>entry</a> <code>@default</code> whose value references
           <var>default graph</var>.</li>
         <li class="changed">Initialize <var>referenced once</var> to an empty <a>map</a>.</li>
+        <li class="changed">Initialize <var>compound literal subjects</var> to an empty <a>map</a>.</li>
         <li>For each <var>graph</var> in  <var>dataset</var>:
           <ol>
             <li>If <var>graph</var> is the <a>default graph</a>,
               set <var>name</var> to <code>@default</code>, otherwise to the
               <a>graph name</a> associated with <var>graph</var>.</li>
             <li>If <var>graph map</var> has no <var>name</var> <a>entry</a>, create one and set
+              its value to an empty <a class="changed">map</a>.</li>
+            <li>If <var>compound literal subjects</var> has no <var>name</var> <a>entry</a>, create one and set
               its value to an empty <a class="changed">map</a>.</li>
             <li>If <var>graph</var> is not the <a>default graph</a> and
               <var>default graph</var> does not have a <var>name</var> <a>entry</a>,
@@ -4963,6 +4968,8 @@
               whose value is <var>name</var>.</li>
             <li>Reference the value of the <var>name</var> <a>entry</a> in <var>graph map</var>
               using the variable <var>node map</var>.</li>
+            <li class="changed">Reference the value of the <var>name</var> <a>entry</a> in <var>compound literal subjects</var>
+              using the variable <var>compound map</var>.</li>
             <li>For each <a>triple</a> in <var>graph</var>
               consisting of <var>subject</var>, <var>predicate</var>, and <var>object</var>:
               <ol>
@@ -4972,6 +4979,9 @@
                   set to <var>subject</var>.</li>
                 <li>Reference the value of the <var>subject</var> <a>entry</a> in <var>node map</var>
                   using the variable <var>node</var>.</li>
+                <li class="changed">If the {{JsonLdOptions/rdfDirection}} option
+                  is `compound-literal` and <var>predicate</var> is `rdf:direction`,
+                  add an entry in <var>compound map</var> for <var>subject</var> with the value `true`.</li>
                 <li>If <var>object</var> is an <a>IRI</a> or <a>blank node identifier</a>,
                   and <var>node map</var> does not have an <var>object</var> <a>entry</a>,
                   create one and initialize its value to a new <a class="changed">map</a>
@@ -5027,6 +5037,40 @@
         </li>
         <li>For each <var>name</var> and <var>graph object</var> in <var>graph map</var>:
           <ol>
+            <li class="change">If <var>compound literal subjects</var>
+              has an entry for <var>name</var>, then for each <var>cl</var>
+              which is a key in that entry:
+              <ol>
+                <li>Initialize <var>cl entry</var> to the value of <var>cl</var>
+                  in <var>referenced once</var>,
+                  continuing to the next <var>cl</var> if <var>cl entry</var> is not a <a>map</a>.</li>
+                <li>Initialize <var>node</var> to the value of `node` in <var>cl entry</var>.</li>
+                <li>Initialize <var>property</var> to value of `property` in <var>cl entry</var>.</li>
+                <li>Initialize <var>value</var> to value of `value` in <var>cl entry</var>.</li>
+                <li>Initialize <var>cl node</var> to the value of <var>cl</var>
+                  in <var>graph object</var>, and remove that <a>entry</a> from <var>graph object</var>,
+                  continuing to the next <var>cl</var> if <var>cl node</var> is not a <a>map</a>.</li>
+                <li>For each <var>cl reference</var> in the value of <var>property</var> in <var>node</var>
+                  where the value of `@id` in <var>cl reference</var> is <var>cl</var>:
+                  <ol>
+                    <li>Delete the `@id` entry in <var>node</var>.</li>
+                    <li>Add an <a>entry</a> to <var>node</var> for `@value` with the value taken
+                      from the `rdf:value` entry in <var>cl node</var>.</li>
+                    <li>Add an <a>entry</a> to <var>node</var> for `@language` with the value taken
+                      from the `rdf:language` entry in <var>cl node</var>, if any.
+                      If that value is not a <a>well-formed</a> according to
+                      <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
+                      an <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Add an <a>entry</a> to <var>node</var> for `@direction` with the value taken
+                      from the `rdf:direction` entry in <var>cl node</var>, if any.
+                      If that value is not `"ltr"` or `"rtl"`, an
+                      <a data-link-for="JsonLdErrorCode">invalid base direction</a>
+                      error has been detected and processing is aborted.</li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
             <li>If <var>graph object</var> has no <code>rdf:nil</code> <a>entry</a>, continue
               with the next <var>name</var>-<var>graph object</var> pair as the graph does
               not contain any lists that need to be converted.</li>
