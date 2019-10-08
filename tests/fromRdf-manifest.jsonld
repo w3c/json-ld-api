@@ -199,7 +199,7 @@
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: null with i18n literal with direction and no language",
-      "purpose": "Does not parse i18n datatiype without proper option.",
+      "purpose": "Does not parse i18n datatype without proper option.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
       "input": "fromRdf/di01-in.nq",
       "expect": "fromRdf/di01-out.jsonld"
@@ -207,7 +207,7 @@
       "@id": "#tdi02",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: null with i18n literal with direction and language",
-      "purpose": "Does not parse i18n datatiype without proper option.",
+      "purpose": "Does not parse i18n datatype without proper option.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
       "input": "fromRdf/di02-in.nq",
       "expect": "fromRdf/di02-out.jsonld"
@@ -232,7 +232,7 @@
       "@id": "#tdi05",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: i18n-datatype with i18n literal with direction and no language",
-      "purpose": "Parses i18n datatiype with proper option.",
+      "purpose": "Parses i18n datatype with proper option.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
       "input": "fromRdf/di05-in.nq",
       "expect": "fromRdf/di05-out.jsonld"
@@ -240,7 +240,7 @@
       "@id": "#tdi06",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: i18n-datatype with i18n literal with direction and language",
-      "purpose": "Parses i18n datatiype with proper option.",
+      "purpose": "Parses i18n datatype with proper option.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
       "input": "fromRdf/di06-in.nq",
       "expect": "fromRdf/di06-out.jsonld"
@@ -264,7 +264,7 @@
       "@id": "#tdi09",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: compound-literal with i18n literal with direction and no language",
-      "purpose": "Does not parse i18n datatiype without proper option.",
+      "purpose": "Does not parse i18n datatype without proper option.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "compound-literal"},
       "input": "fromRdf/di09-in.nq",
       "expect": "fromRdf/di09-out.jsonld"
@@ -272,7 +272,7 @@
       "@id": "#tdi10",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: compound-literal with i18n literal with direction and language",
-      "purpose": "Does not parse i18n datatiype without proper option.",
+      "purpose": "Does not parse i18n datatype without proper option.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "compound-literal"},
       "input": "fromRdf/di10-in.nq",
       "expect": "fromRdf/di10-out.jsonld"
