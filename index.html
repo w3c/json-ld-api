@@ -4599,6 +4599,9 @@
     <p class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD.</p>
 
+    <p class="changed">If the {{JsonLdOptions/rdfDirection}} option is not `null`, then special processing is used to
+      convert from an `i18n-datatype` or `compound-literal` form.</p>
+
     <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
       <a>triples</a> and <a>graph names</a>:</p>
     <ul>
@@ -4646,6 +4649,8 @@
       <p>The algorithm takes a <a>map</a> <var>node map</var>, which
         is the result of the <a href="#node-map-generation">Node Map Generation algorithm</a> and
         an <a>RDF dataset</a> <var>dataset</var> into which new <a>graphs</a> and <a>triples</a> are added.
+        It also takes two optional input variables {{JsonLdOptions/produceGeneralizedRdf}}
+        and <span clas="changed">{{JsonLdOptions/rdfDirection}}</span>.
         Unless the {{JsonLdOptions/produceGeneralizedRdf}} option
         is set to <code>true</code>, <a>triple</a>
         containing a <a>blank node</a> <a>predicate</a>
@@ -4826,7 +4831,34 @@
         <li>Otherwise, if <var>datatype</var> is <code>null</code>, set it to
           <code>xsd:string</code> or <code>rdf:langString</code>, depending on if
           item has an <code>@language</code> <a>entry</a>.</li>
-        <li>Initialize <var>literal</var> as an <a>RDF literal</a> using
+        <li class="changed">If <var>item</var> contains an `@direction` <a>entry</a>
+          and {{JsonLdOptions/rdfDirection}} is not `null`,
+          <var>item</var> is a <a>value object</a> which is serialized using special rules.
+          <ol>
+            <li>If {{JsonLdOptions/rdfDirection}} is `i18n-datatype`,
+              set <var>datatype</var> to the result of appending <var>language</var>
+              and the value of `@direction` in <var>item</var> separated by an underscore ('"_"`)
+              to `https://w3.org/ns/i18n#`.
+              Initialize <var>literal</var> as an <a>RDF literal</a> using
+              <var>value</var> and <var>datatype</var>.</li>
+            <li>Otherwise, if {{JsonLdOptions/rdfDirection}} is `compound-literal`:
+              <ol>
+                <li>Initialize <var>literal</var> as a new <a>blank node</a>.</li>
+                <li>Create a new triple using <var>literal</var> as the subject,
+                  `rdf:value` as the predicate, and the value of `@value` in <var>item</var>
+                  as the object, and add it to <var>list triples</var>.</li>
+                <li>If the <var>item</var> has an entry for `@language`,
+                  create a new triple using <var>literal</var> as the subject,
+                  `rdf:language` as the predicate, and the value of `@language` in <var>item</var>
+                  as the object, and add it to <var>list triples</var>.</li>
+                <li>Create a new triple using <var>literal</var> as the subject,
+                  `rdf:direction` as the predicate, and the value of `@direction` in <var>item</var>
+                  as the object, and add it to <var>list triples</var>.</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>Otherwise, initialize <var>literal</var> as an <a>RDF literal</a> using
           <var>value</var> and <var>datatype</var>. If <var>item</var> has an
           <code>@language</code> <a>entry</a>, add the value associated with the
           <code>@language</code> <a>entry</a> as the <a>language tag</a> of <var>literal</var>.</li>
