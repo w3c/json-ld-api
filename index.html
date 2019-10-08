@@ -973,7 +973,8 @@
     <ul>
       <li>an <dfn>IRI mapping</dfn>,</li>
       <li>a boolean flag <dfn>reverse property</dfn>,</li>
-      <li>an optional <dfn>type mapping</dfn>, or <dfn>language mapping</dfn>,</li>
+       <li>an optional <dfn>type mapping</dfn>,</li>
+       <li>an optional <dfn>language mapping</dfn>,</li>
       <li class="changed">an optional <dfn>direction mapping</dfn>,</li>
       <li class="changed">an optional <a>context</a>,</li>
       <li class="changed">an optional <dfn>nest value</dfn>,</li>
@@ -2271,7 +2272,7 @@
                           <a data-link-for="JsonLdErrorCode">invalid language map value</a>
                           error has been detected and processing is aborted.</li>
                         <li>Initialize a new <a class="changed">map</a> <var>v</var>
-                          consisteing of two
+                          consisting of two
                           key-value pairs: (<code>@value</code>-<var>item</var>)
                           and (<code>@language</code>-lowercased
                           <var>language</var>).</li>
@@ -4146,7 +4147,7 @@
           value matches the <a>type mapping</a> of <var>active property</var>,
           return the value associated with the <code>@value</code> <a>entry</a>
           of <var>value</var>.</li>
-        <li class="changed">Otherwise, if <var>value</var> has both `@language` and `@direction <a>entries</a>,
+        <li class="changed">Otherwise, if <var>value</var> has both `@language` and `@direction` <a>entries</a>,
           and the `@language` <a>entry</a> matches either the <a>language mapping</a> of
           <var>active property</var> or the <a>default language</a> of <var>active context</var>
           and the `@direction` <a>entry</a> matches either the <a>direction mapping</a> of
@@ -4155,7 +4156,7 @@
           <code>@value</code> <a>entry</a> of <var>value</var>.</li>
         <li class="changed">Otherwise, if <var>value</var> has a `@language` <a>entry</a>,
           and the `@language` <a>entry</a> matches either the <a>language mapping</a> of
-          <var>active property</var> or the <a>default language</a> of <var>active context</var>
+          <var>active property</var> and the <a>default language</a> of <var>active context</var>
           and the <a>direction mapping</a> of <var>active property</var> is `null`,
           or there is no <a>default base direction</a> in <var>active context</var>,
           return the value associated with the
@@ -4164,7 +4165,7 @@
           and the `@direction` <a>entry</a> matches either the <a>direction mapping</a> of
           <var>active property</var> or the <a>default base direction</a> of <var>active context</var>
           and the <a>language mapping</a> of <var>active property</var> is `null`,
-          or there is no <a>default language</a> in <var>active context</var>,
+          and there is no <a>default language</a> in <var>active context</var>,
           return the value associated with the
           <code>@value</code> <a>entry</a> of <var>value</var>.</li>
         <li>Otherwise, if <var>number entries</var> equals <code>1</code> and either
@@ -5206,7 +5207,7 @@
         literals with datatype starting with `https://w3.org/ns/i18n#`
         are transformed into a <a>value object</a> by decoding
         the <a>language tag</a> and <a>base direction</a> from the datatype.</p>
-      <p class="changed">With the {{JsonLdOptions/rdfDirection}} option set to `compount-literal`,
+      <p class="changed">With the {{JsonLdOptions/rdfDirection}} option set to `compound-literal`,
         blank node objects using `rdf:direction` are
         are transformed into a <a>value object</a> by decoding
         the `rdf:value`, `rdf:language`, and `rdf:direction` properties.</p>
