@@ -2253,7 +2253,7 @@
               <ol>
                 <li>Initialize <var>expanded value</var> to an empty
                   <a>array</a>.</li>
-                <li class="changed">Initialize <var>direction</var> to the <a>default direction mapping</a> from <var>active context</var>.</li>
+                <li class="changed">Initialize <var>direction</var> to the <a>default base direction</a> from <var>active context</var>.</li>
                 <li class="changed">If <var>key</var>'s <a>term definition</a> in <a>active context</a>
                   has a <a>direction mapping</a>,
                   update <var>direction</var> with that value.</li>
@@ -4107,24 +4107,6 @@
           <a>container mapping</a> associated to <var>active property</var>
           <span class="changed">includes</span> <code>@index</code>, decrease <var>number entries</var> by
           <code>1</code>.</li>
-        <li>If <var>number entries</var> is greater than <code>2</code>, return
-          <var>value</var> as it cannot be compacted.</li>
-        <li class="changed">If the <a>type mapping</a> of <var>active property</var> is <code>@none</code>,
-          leave <var>value</var> as is, as value compaction is disabled.
-          <ol>
-            <li>Replace any value of <code>@type</code> in <var>value</var> with the result of using the
-              <a href="#iri-compaction">IRI compaction algorithm</a>,
-              passing <var>active context</var>, <var>inverse context</var>,
-              the value of the <code>@type</code> <a>entry</a> for <var>var</var>, and
-              <code>true</code> for <var>vocab</var>.</li>
-            <li>Replace each key in <var>value</var> with the result of using the
-              <a href="#iri-compaction">IRI compaction algorithm</a>,
-              passing <var>active context</var>, <var>inverse context</var>,
-              the that key for <var>var</var>, and
-              <code>true</code> for <var>vocab</var>.</li>
-            <li>Return <var>value</var>.</li>
-          </ol>
-        </li>
         <li>If <var>value</var> has an <code>@id</code> <a>entry</a>:
           <ol>
             <li>If <var>number entries</var> is <code>1</code> and
@@ -4143,42 +4125,16 @@
             <li>Otherwise, return <var>value</var> as is.</li>
           </ol>
         </li>
-        <li>Otherwise, if <var>value</var> has an <code>@type</code> <a>entry</a> whose
+        <li>Otherwise, <var>value</var> is a <a>value object</a>.</li>
+        <li>If <var>value</var> has an <code>@type</code> <a>entry</a> whose
           value matches the <a>type mapping</a> of <var>active property</var>,
           return the value associated with the <code>@value</code> <a>entry</a>
           of <var>value</var>.</li>
-        <li class="changed">Otherwise, if <var>value</var> has both `@language` and `@direction` <a>entries</a>,
-          and the `@language` <a>entry</a> matches either the <a>language mapping</a> of
-          <var>active property</var> or the <a>default language</a> of <var>active context</var>
-          and the `@direction` <a>entry</a> matches either the <a>direction mapping</a> of
-          <var>active property</var> or the <a>default base direction</a> of <var>active context</var>,
-          return the value associated with the
-          <code>@value</code> <a>entry</a> of <var>value</var>.</li>
-        <li class="changed">Otherwise, if <var>value</var> has a `@language` <a>entry</a>,
-          and the `@language` <a>entry</a> matches either the <a>language mapping</a> of
-          <var>active property</var> and the <a>default language</a> of <var>active context</var>
-          and the <a>direction mapping</a> of <var>active property</var> is `null`,
-          or there is no <a>default base direction</a> in <var>active context</var>,
-          return the value associated with the
-          <code>@value</code> <a>entry</a> of <var>value</var>.</li>
-        <li class="changed">Otherwise, if <var>value</var> has a `@direction` <a>entry</a>,
-          and the `@direction` <a>entry</a> matches either the <a>direction mapping</a> of
-          <var>active property</var> or the <a>default base direction</a> of <var>active context</var>
-          and the <a>language mapping</a> of <var>active property</var> is `null`,
-          and there is no <a>default language</a> in <var>active context</var>,
-          return the value associated with the
-          <code>@value</code> <a>entry</a> of <var>value</var>.</li>
-        <li>Otherwise, if <var>number entries</var> equals <code>1</code> and either
-          the value of the <code>@value</code> <a>entry</a> is not a <a>string</a>,
-          or the <var>active context</var> has no <a>default language</a>
-          <span class="changed">and no <a>default base direction</a></span>,
-          or both the <a>language mapping</a>
-          <span class="changed">and <a>direction mapping</a></span>
-          of <var>active property</var>
-          are set to <code>null</code>, return the value associated with the
-          <code>@value</code> <a>entry</a>.</li>
-        <li>Otherwise:
-          <ol class="changed">
+        <li class="changed">If the <a>type mapping</a> of <var>active property</var> is <code>@none</code>,
+          or <var>value</var> has an `@type` <a>entry</a>,
+          and the value of `@type` in <var>value</var> does not match the <a>type mapping</a> of <var>active property</var>,
+          leave <var>value</var> as is, as value compaction is disabled.
+          <ol>
             <li>Replace any value of <code>@type</code> in <var>value</var> with the result of using the
               <a href="#iri-compaction">IRI compaction algorithm</a>,
               passing <var>active context</var>, <var>inverse context</var>,
@@ -4192,6 +4148,28 @@
             <li>Return <var>value</var>.</li>
           </ol>
         </li>
+        <li>Otherwise, <var>value</var> has no entries other than `@value`,
+          and possibly `@language` or `@direction`.</li>
+        <li>If the value of the <code>@value</code> <a>entry</a> is not a <a>string</a>,
+          return the value associated with the
+          <code>@value</code> <a>entry</a>.</li>
+        <li>Initialize <var>language</var> to the <a>language mapping</a> for <var>active property</var>
+          in <var>active context</var>, if any, otherwise to the <a>default language</a>
+          of <var>active context</var>.</li>
+        <li class="changed">Initialize <var>direction</var> to the <a>direction mapping</a> for <var>active property</var>
+          in <var>active context</var>, if any, otherwise to the <a>default base direction</a>
+          of <var>active context</var>.</li>
+        <li>If the value of `@language` in <var>item</var> exactly matches <var>language</var>,
+          if it is not `null`, or is no present, if it is `null`,
+          <span class="changed">and the value of `@direction` in <var>item</var> exactly matches <var>direction</var>,
+            if it is not `null`, or is no present, if it is `null`,</span>
+          return <var>value</var>.</li>
+        <li>Otherwise: Replace each key in <var>value</var> with the result of using the
+          <a href="#iri-compaction">IRI compaction algorithm</a>,
+          passing <var>active context</var>, <var>inverse context</var>,
+          the that key for <var>var</var>, and
+          <code>true</code> for <var>vocab</var>,
+          and return <var>value</var>.</li>
       </ol>
     </section>
   </section> <!-- end of Value Compaction algorithm -->
