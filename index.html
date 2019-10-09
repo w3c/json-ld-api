@@ -1360,8 +1360,10 @@
         the information in the <a>local context</a> for the given
         <a>term</a> is taken into account, creating the appropriate
         <a>IRI mapping</a>, <a>container mapping</a>, and
-        <a>type mapping</a> or <a>language mapping</a> for the
-        <a>term</a>.</p>
+        <a>type mapping</a>,
+        <a>language mapping</a>,
+        <span class="changed">or <a>direction mapping</a></span>
+        for the <a>term</a>.</p>
     </section>
 
     <section class="algorithm">
@@ -2598,14 +2600,13 @@
               and a non-`null` <a>direction mapping</a> are associated with
               <var>active property</var> in <var>active context</var>,
               add <code>@language</code> to <var>result</var> and set its
-              value to the <a>language tag</a> associated with the
-              <a>language mapping</a>.
+              value of the <a>language mapping</a>.
               Add a <code>@direction</code> to <var>result</var> and set its
               value to the <a>direction mapping</a>.</li>
               <li class="changed">Otherwise, if a non-`null` <a>language mapping</a> is associated with
               <var>active property</var> in <var>active context</var>,
               add <code>@language</code> to <var>result</var> and set its
-              value to the <a>language tag</a> associated with the <a>language mapping</a>.
+              value to the <a>language mapping</a>.
               Add a <code>@direction</code> to <var>result</var> and set its
               value to the <a>default base direction</a> from <a>active context</a>; unless the
               <a>direction mapping</a> is set to <code>null</code> in
@@ -3350,7 +3351,7 @@
         <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
         <li>Initialize <var>default language</var> to <code>@none</code>.
           If the <var>active context</var> has a <a>default language</a>,
-          set <var>default language</var> to the <a>language tag</a> from that <a>default language</a>.</li>
+          set <var>default language</var> to the <a>default language</a> from the <a>active context</a>.</li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
           first (breaking ties by choosing the lexicographically least
@@ -3429,7 +3430,7 @@
                   of <a>language mapping</a> and <a>direction mapping</a>
                   separated by an underscore (`"_"`).</li>
                 <li>Otherwise, if <a>language mapping</a> is not `null`,
-                  set <var>lang dir</var> to the <a>language tag</a> in <a>language mapping</a>.
+                  set <var>lang dir</var> to the <a>language mapping</a>.
                 <li>Otherwise, if <a>direction mapping</a> is not `null`,
                   set <var>lang dir</var> to <a>direction mapping</a>
                   preceded by an underscore (`"_"`).</li>
@@ -3443,7 +3444,7 @@
               <ol>
                 <li>If the <a>language mapping</a> equals <code>null</code>,
                   set <var>language</var> to <code>@null</code>; otherwise set it
-                  to the <a>language tag</a> in <a>language mapping</a>.</li>
+                  to the <a>language mapping</a>.</li>
                 <li>If <var>language map</var> does not have a <var>language</var> <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
