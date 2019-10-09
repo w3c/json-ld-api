@@ -980,7 +980,7 @@
       <li class="changed">an optional <dfn>nest value</dfn>,</li>
       <li class="changed">an optional <dfn>prefix flag</dfn>,</li>
       <li class="changed">an optional <dfn>index mapping</dfn>,</li>
-      <li class="changed">a <dfn>protected</dfn>, used to mark this as a protected term,</li>
+      <li class="changed">a <dfn>protected</dfn> flag, used to mark this as a protected term,</li>
       <li>and an optional <dfn>container mapping</dfn>.</li>
     </ul>
 
@@ -2457,7 +2457,7 @@
               `@language`,
               `@type`,
               and `@value`.
-              It must not contain a `@type` <a>entry</a> if it contains either `@language` or `@direction` <a>entries</a>.
+              It must not contain an `@type` <a>entry</a> if it contains either `@language` or `@direction` <a>entries</a>.
               Otherwise, an <a data-link-for="JsonLdErrorCode">invalid value object</a>
               error has been detected and processing is aborted.</li>
             <li>If the value of <var>result</var>'s <code>@value</code> <a>entry</a> is
@@ -3446,10 +3446,10 @@
                 <li>If <var>language map</var> does not have a <var>lang dir</var> <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
-                <li>If <var>language map</var> does not have a `@none` <a>entry</a>,
+                <li>If <var>language map</var> does not have an `@none` <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
-                <li>If <var>type map</var> does not have a `@none` <a>entry</a>,
+                <li>If <var>type map</var> does not have an `@none` <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
