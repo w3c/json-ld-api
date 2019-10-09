@@ -2457,8 +2457,7 @@
               `@language`,
               `@type`,
               and `@value`.
-              It must not contain either
-              `@language` or `@direction` <a>entries</a> and an `@type` <a>entry</a>.
+              It must not contain a `@type` <a>entry</a> if it contains either `@language` or `@direction` <a>entries</a>.
               Otherwise, an <a data-link-for="JsonLdErrorCode">invalid value object</a>
               error has been detected and processing is aborted.</li>
             <li>If the value of <var>result</var>'s <code>@value</code> <a>entry</a> is
@@ -2596,39 +2595,16 @@
           <a>type mapping</a>.</li>
         <li>Otherwise, if <var>value</var> is a <a>string</a>:
           <ol>
-            <li class="changed">If both a non-`null` <a>language mapping</a>
-              and a non-`null` <a>direction mapping</a> are associated with
-              <var>active property</var> in <var>active context</var>,
-              add <code>@language</code> to <var>result</var> and set its
-              value of the <a>language mapping</a>.
-              Add a <code>@direction</code> to <var>result</var> and set its
-              value to the <a>direction mapping</a>.</li>
-              <li class="changed">Otherwise, if a non-`null` <a>language mapping</a> is associated with
-              <var>active property</var> in <var>active context</var>,
-              add <code>@language</code> to <var>result</var> and set its
-              value to the <a>language mapping</a>.
-              Add a <code>@direction</code> to <var>result</var> and set its
-              value to the <a>default base direction</a> from <a>active context</a>; unless the
-              <a>direction mapping</a> is set to <code>null</code> in
-              which case no such <a>entry</a> is added.</li>
-              <li class="changed">Otherwise, if a non-`null` <a>direction mapping</a> is associated with
-              <var>active property</var> in <var>active context</var>,
-              add <code>@language</code> to <var>result</var> and set its
-              value to the <a>default language</a> from <a>active context</a>,
-              if <a>active context</a> has a <a>default language</a>,
-              and the <a>language mapping</a> is not `null`.
-              Add a <code>@direction</code> to <var>result</var> and set its
-              value to the <a>direction mapping</a>; unless the
-              <a>direction mapping</a> is set to <code>null</code> in
-              which case no such <a>entry</a> is added.</li>
-              <li>Otherwise, add <code>@language</code>
-              to <var>result</var> and set its value to the
-              <a>default language</a> if <a>active context</a> has a <a>default language</a>,
-              and the <a>language mapping</a> is not `null`.
-              <span class="changed">Add <code>@direction</code>
-                to <var>result</var> and set its value to the
-                <a>default base direction</a> if <a>active context</a> has a <a>default base direction</a>,
-                and the <a>direction mapping</a> is not `null`.</span></li>
+            <li>Initialize <var>language</var> to the <a>language mapping</a> for <var>active property</var>
+              in <var>active context</var>, if any, otherwise to the <a>default language</a>
+              of <var>active context</var>.</li>
+            <li class="changed">Initialize <var>direction</var> to the <a>direction mapping</a> for <var>active property</var>
+              in <var>active context</var>, if any, otherwise to the <a>default base direction</a>
+              of <var>active context</var>.</li>
+            <li>If <var>language</var> is not `null`,
+              add <code>@language</code> to <var>result</var> with the value <var>language</var>.</li>
+            <li class="changed">If <var>direction</var> is not `null`,
+              add <code>@direction</code> to <var>result</var> with the value <var>direction</var>.</li>
           </ol>
         </li>
         <li>Return <var>result</var>.</li>
