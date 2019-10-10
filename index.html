@@ -4802,7 +4802,10 @@
               and the value of `@direction` in <var>item</var> separated by an underscore (`"_"`)
               to `https://w3.org/ns/i18n#`.
               Initialize <var>literal</var> as an <a>RDF literal</a> using
-              <var>value</var> and <var>datatype</var>.</li>
+              <var>value</var> and <var>datatype</var>.
+              <div class="note">As `@direction` may be used without `@language`,
+                it is possible, and legitimate, to create a datatype IRI
+                such as `http://w3.org/ns/i18n#_ltr`, which does not encode a language tag.</div></li>
             <li>Otherwise, if {{JsonLdOptions/rdfDirection}} is `compound-literal`:
               <ol>
                 <li>Initialize <var>literal</var> as a new <a>blank node</a>.</li>
@@ -5256,7 +5259,10 @@
                 <li>Set <var>converted value</var> to the <a>lexical form</a> of <var>value</var>.</li>
                 <li>If the string prefix of the <a data-cite="RFC3986#section-3.5">fragment identifier</a>
                   of the <a>datatype IRI</a> up until the underscore (`"_"`) is not empty,
-                  add an <a>entry</a> `@language` to <var>result</var> and set its value to that prefix.</li>
+                  add an <a>entry</a> `@language` to <var>result</var> and set its value to that prefix.
+                  <div class="note">As `@direction` may be used without `@language`,
+                    it is possible, and legitimate, to create a datatype IRI
+                    such as `http://w3.org/ns/i18n#_ltr`, which does not encode a language tag.</div></li>
                 <li>Add an <a>entry</a> `@direction` to <var>result</var> and set its value to the substring of the
                   <a data-cite="RFC3986#section-3.5">fragment identifier</a> following
                   the underscore (`"_"`).</li>
