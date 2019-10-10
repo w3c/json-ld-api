@@ -4800,7 +4800,7 @@
             <li>If {{JsonLdOptions/rdfDirection}} is `i18n-datatype`,
               set <var>datatype</var> to the result of appending <var>language</var>
               and the value of `@direction` in <var>item</var> separated by an underscore (`"_"`)
-              to `https://w3.org/ns/i18n#`.
+              to `https://www.w3.org/ns/i18n#`.
               Initialize <var>literal</var> as an <a>RDF literal</a> using
               <var>value</var> and <var>datatype</var>.
               <div class="note">As `@direction` may be used without `@language`,
@@ -5176,7 +5176,7 @@
         <a data-cite="JSON-LD11#dfn-json-datatype" class="externalDfn">JSON datatype</a> in [[JSON-LD11]],
         and <code>@type</code> of <code>@json</code>.</p>
       <p class="changed">With the {{JsonLdOptions/rdfDirection}} option set to `i18n-datatype`,
-        literals with datatype starting with `https://w3.org/ns/i18n#`
+        literals with datatype starting with `https://www.w3.org/ns/i18n#`
         are transformed into a <a>value object</a> by decoding
         the <a>language tag</a> and <a>base direction</a> from the datatype.</p>
       <p class="changed">With the {{JsonLdOptions/rdfDirection}} option set to `compound-literal`,
@@ -5253,7 +5253,7 @@
               an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
               error has been detected and processing is aborted.</li>
             <li class="changed">Otherwise, if <a>processing mode</a> is `json-ld-1.1`,
-              the <a>datatype IRI</a> of <var>value</var> starts with `https://w3.org/ns/i18n#`,
+              the <a>datatype IRI</a> of <var>value</var> starts with `https://www.w3.org/ns/i18n#`,
               and {{JsonLdOptions/rdfDirection}} is `i18n-datatype`:
               <ol>
                 <li>Set <var>converted value</var> to the <a>lexical form</a> of <var>value</var>.</li>
@@ -6002,7 +6002,7 @@
         are transformed to and from RDF.
         <ul>
           <li>If set to `i18n-datatype`, an <a>RDF literal</a> is generated using a datatype IRI
-            based on `https://w3.org/ns/i18n#` with both the <a>language tag</a> (if present)
+            based on `https://www.w3.org/ns/i18n#` with both the <a>language tag</a> (if present)
             and <a data-cite="JSON-LD11#dfn-base-direction">base direction</a> encoded.
             When transforming from RDF, this datatype is decoded to create a <a>value object</a>
             containing `@language` (if present) and `@direction`.</li>
