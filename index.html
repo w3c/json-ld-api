@@ -909,7 +909,9 @@
 
   <p><a>JSON-LD Processors</a> MUST NOT
     attempt to correct malformed <a>IRIs</a> or language tags;
-    however, they MAY issue validation warnings. IRIs are not modified other
+    however, they SHOULD issue validation warnings.
+    <span class="changed">Invalid language tags MUST be ignored.</span>
+    IRIs are not modified other
     than conversion between <a data-lt="relative IRI">relative</a> and
     <a>absolute IRIs</a>.</p>
 
@@ -1269,9 +1271,12 @@
                   any <a>default language</a> from <var>result</var>.</li>
                 <li>Otherwise, if <var>value</var> is <a>string</a>, the
                   <a>default language</a> of <var>result</var> is set to
-                  lowercased <var>value</var>. If it is not a <a>string</a>, an
+                  <var>value</var>.
+                  If it is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid default language</a>
-                  error has been detected and processing is aborted.</li>
+                  error has been detected and processing is aborted.
+                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+                </li>
               </ol>
             </li>
             <li class="changed">If <var>context</var> has an <code>@direction</code> <a>entry</a>:
@@ -1631,9 +1636,9 @@
               or a <a>string</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
               error has been detected and processing is aborted.</li>
-            <li>If <var>language</var> is a <a>string</a> set it to
-              lowercased <var>language</var>. Set the <a>language mapping</a>
-              of <var>definition</var> to <var>language</var>.</li>
+            <li>Set the <a>language mapping</a> of <var>definition</var> to <var>language</var>.
+              <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+            </li>
           </ol>
         </li>
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@direction</code> and
@@ -2134,11 +2139,13 @@
                   <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
                   error has been detected and processing is aborted.
                   <span class="changed">
-                    Otherwise, set <var>expanded value</var> to lowercased <var>value</var>.
+                    Otherwise, set <var>expanded value</var> to <var>value</var>.
                     When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
                     may also be an empty <a>map</a> or an array of zero or
                     <a>strings</a>. <var>expanded value</var> will be an
-                    <a>array</a> of one or more <a>string</a> values converted to lower case.</span></li>
+                    <a>array</a> of one or more <a>string</a> values.</span>
+                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+                </li>
                 <li class="changed">If <var>expanded property</var> is <code>@direction</code> and
                   <var>value</var> is neither `"ltr"` nor `"rtl"`, an
                   <a data-link-for="JsonLdErrorCode">invalid base direction</a>
@@ -2276,8 +2283,9 @@
                         <li>Initialize a new <a class="changed">map</a> <var>v</var>
                           consisting of two
                           key-value pairs: (<code>@value</code>-<var>item</var>)
-                          and (<code>@language</code>-lowercased
-                          <var>language</var>).</li>
+                          and (<code>@language</code>-<var>language</var>).
+                          <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+                        </li>
                         <li class="changed">If <var>language</var> is <code>@none</code>,
                           or expands to <code>@none</code>, remove <code>@language</code> from <var>v</var>.</li>
                         <li class="changed">
@@ -6660,6 +6668,9 @@
       to that content.</li>
     <li><a>Value objects</a>, and associated <a>context</a> and <a>term definitions</a> have been updated to 
       support `@direction` for setting the <a>base direction</a> of strings.</li>
+    <li>It is no longer required that language tags be normalized to lowercase,
+      other than for testing considerations.
+      Language tags that are not valid according to [[BCP47]] are rejected.</li>
   </ul>
 </section>
 

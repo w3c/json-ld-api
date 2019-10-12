@@ -100,9 +100,10 @@
 
       JSON-LD Object comparison compares JSON objects, arrays, and values recursively for equality.
 
-      * JSON objects are compared member by member without regard to the ordering of members within the object. Each member must have a corresponding member in the object being compared to. Values are compared recursively.
+      * JSON objects are compared entry by entry without regard to the ordering of entriess within the object. Each entry must have a corresponding entry in the object being compared to. Values are compared recursively.
       * JSON arrays are generally compared without regard to order (the lone exception being if the referencing key is `@list`). Each item within the array must be equivalent to an item in the array being compared to by using the comparison algorithm recursively. For values of `@list`, the order of these items is significant.
       * JSON values are compared using strict equality.
+      * Values of `@language`, and other places where language tags may be used are specified in lowercase in the test results. Implementations should either normalize language tags for testing purposes, or compare language tags in a case-independent way.
 
       Note that some tests require re-expansion and comparison, as list values may exist as values of properties that have `@container: @list` and the comparison algorithm will not consider ordering significant.
 
