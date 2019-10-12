@@ -4126,10 +4126,10 @@
               set <var>result</var> to the value associated with the `@value` <a>entry</a>.</li>
           </ol>
         </li>
-        <li>If the value of `@language` in <var>item</var> exactly matches <var>language</var>,
-          if it is not `null`, or is not present, if it is `null`,
+        <li>Otherwise, if the value of `@language` in <var>item</var> exactly matches <var>language</var>,
+          if it is not `null`, or is not present, if <var>language</var> is `null`,
           <span class="changed">and the value of `@direction` in <var>item</var> exactly matches <var>direction</var>,
-            if it is not `null`, or is not present, if it is `null`</span>:
+            if it is not `null`, or is not present, if <var>direction</var> is `null`</span>:
           <ol>
             <li>If <var>value</var> has an `@index` <a>entry</a>,
               and the <a>container mapping</a> associated to <var>active property</var>
