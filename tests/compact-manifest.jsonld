@@ -1214,7 +1214,7 @@
     }, {
       "@id": "#tdi05",
       "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
-      "name": "simple language mapwith overriding term direction",
+      "name": "simple language map with overriding term direction",
       "purpose": "Term selection with language maps and @direction.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
       "input": "compact/di05-in.jsonld",
@@ -1223,7 +1223,7 @@
     }, {
       "@id": "#tdi06",
       "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
-      "name": "simple language mapwith overriding null direction",
+      "name": "simple language map with overriding null direction",
       "purpose": "Term selection with language maps and @direction.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"},
       "input": "compact/di06-in.jsonld",
@@ -1517,7 +1517,15 @@
       "context": "compact/js11-context.jsonld",
       "expect": "compact/js11-out.jsonld",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
-     }, {
+    }, {
+      "@id": "#tla01",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "most specific term matching in @list.",
+      "purpose": "The most specific term that matches all of the elements in the list, taking into account the default language, must be selected, without considering case of language.",
+      "input": "compact/la01-in.jsonld",
+      "context": "compact/la01-context.jsonld",
+      "expect": "compact/la01-out.jsonld"
+    }, {
       "@id": "#tli01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:CompactTest" ],
       "name": "coerced @list containing an empty list",
@@ -1562,7 +1570,7 @@
       "context": "compact/li05-context.jsonld",
       "expect": "compact/li05-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
-  }, {
+   }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Indexes to object not having an @id",
