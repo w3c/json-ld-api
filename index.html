@@ -1275,7 +1275,10 @@
                   If it is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid default language</a>
                   error has been detected and processing is aborted.
-                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+                  <span class="changed">If <var>value</var> is not a <a>well-formed</a> according to
+                    <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
+                    processors SHOULD issue a warning.</span>
+                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
                 </li>
               </ol>
             </li>
@@ -1633,11 +1636,14 @@
           <ol>
             <li>Initialize <var>language</var> to the value associated with the
               <code>@language</code> <a>entry</a>, which MUST be either <code>null</code>
-              or a <a>string</a>. Otherwise, an
-              <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
+              or a <a>string</a>.
+              <span class="changed">If <var>language</var> is not a <a>well-formed</a> according to
+                <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
+                processors SHOULD issue a warning.</span>
+              Otherwise, an <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set the <a>language mapping</a> of <var>definition</var> to <var>language</var>.
-              <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+              <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
             </li>
           </ol>
         </li>
@@ -2138,13 +2144,16 @@
                   <var>value</var> is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
                   error has been detected and processing is aborted.
+                  <span class="changed">If <var>value</var> is not a <a>well-formed</a> according to
+                    <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
+                    processors SHOULD issue a warning.</span>
                   <span class="changed">
                     Otherwise, set <var>expanded value</var> to <var>value</var>.
                     When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
                     may also be an empty <a>map</a> or an array of zero or
                     <a>strings</a>. <var>expanded value</var> will be an
                     <a>array</a> of one or more <a>string</a> values.</span>
-                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
                 </li>
                 <li class="changed">If <var>expanded property</var> is <code>@direction</code> and
                   <var>value</var> is neither `"ltr"` nor `"rtl"`, an
@@ -2284,7 +2293,10 @@
                           consisting of two
                           key-value pairs: (<code>@value</code>-<var>item</var>)
                           and (<code>@language</code>-<var>language</var>).
-                          <span class="changed note">Processors MAY normalize <a>language tags</a> to lowercase.</span>
+                          <span class="changed">If <var>item</var> is neither `@none` nor a <a>well-formed</a> according to
+                            <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
+                            processors SHOULD issue a warning.</span>
+                          <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
                         </li>
                         <li class="changed">If <var>language</var> is <code>@none</code>,
                           or expands to <code>@none</code>, remove <code>@language</code> from <var>v</var>.</li>
@@ -3323,6 +3335,11 @@
         to choosing more generic <a>terms</a> when a more
         specifically-matching <a>term</a> is not available for a particular
         <a>IRI</a> and value combination.</p>
+
+      <p class="changed">Although normalizing <a>language tags</a> is optional,
+        the <a>inverse context</a> creates entries based on normalized
+        <a>language tags</a>, so that the proper term can be selected
+        regardless of representation.</p>
     </section>
 
     <section class="algorithm">
@@ -3335,7 +3352,8 @@
         <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
         <li>Initialize <var>default language</var> to <code>@none</code>.
           If the <var>active context</var> has a <a>default language</a>,
-          set <var>default language</var> to the <a>default language</a> from the <a>active context</a>.</li>
+          set <var>default language</var> to the <a>default language</a> from the <a>active context</a>
+          <span class="changed">normalized to lower case</span>.</li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
           first (breaking ties by choosing the lexicographically least
@@ -3412,9 +3430,11 @@
                 <li>If neither the <a>language mapping</a> nor the <a>direction mapping</a>
                   are `null`, set <var>lang dir</var> to the concatenation
                   of <a>language mapping</a> and <a>direction mapping</a>
-                  separated by an underscore (`"_"`).</li>
+                  separated by an underscore (`"_"`)
+                  normalized to lower case.</li>
                 <li>Otherwise, if <a>language mapping</a> is not `null`,
-                  set <var>lang dir</var> to the <a>language mapping</a>.
+                  set <var>lang dir</var> to the <a>language mapping</a>,
+                  normalized to lower case.
                 <li>Otherwise, if <a>direction mapping</a> is not `null`,
                   set <var>lang dir</var> to <a>direction mapping</a>
                   preceded by an underscore (`"_"`).</li>
@@ -3428,7 +3448,8 @@
               <ol>
                 <li>If the <a>language mapping</a> equals <code>null</code>,
                   set <var>language</var> to <code>@null</code>; otherwise set it
-                  to the <a>language mapping</a>.</li>
+                  to the <a>language mapping</a>,
+                  <span class="changed">normalized to lower case</span>.</li>
                 <li>If <var>language map</var> does not have a <var>language</var> <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -3450,7 +3471,8 @@
               <ol>
                 <li>Initialize a variable <var>lang dir</var>
                   with the concatenation of <a>default language</a> and <a>default base direction</a>,
-                  separate by an underscore (`"_"`).</li>
+                  separate by an underscore (`"_"`),
+                  normalized to lower case.</li>
                 <li>If <var>language map</var> does not have a <var>lang dir</var> <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -3464,8 +3486,9 @@
             </li>
             <li>Otherwise:
               <ol>
-                <li>If <var>language map</var> does not have a <var>default language</var>
-                  <a>entry</a>, create one and set its value to the <a>term</a>
+                <li>If <var>language map</var> does not have a <var>default language</var> <a>entry</a>
+                  <span class="changed">(after being normalized to lower case)</span>,
+                  create one and set its value to the <a>term</a>
                   being processed.</li>
                 <li>If <var>language map</var> does not have an <code>@none</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
@@ -3529,7 +3552,8 @@
 
       <p class="changed">When considering <a>language mapping</a>,
         the <a>direction mapping</a> is also considered, either with, or without,
-        a <a>language mapping</a>.</p>
+        a <a>language mapping</a>,
+        and the <a>language mapping</a> is normalized to lower case.</p>
 
       <p class="changed">In the case were this algorithm would return the input <a>IRI</a> as is,
         and that <a>IRI</a> can be mistaken for a <a>compact IRI</a> in the <a>active context</a>,
@@ -3557,14 +3581,17 @@
           <ol>
             <li class="changed">Initialize <var>default language</var>
               based on the <a data-lt="active context">active context's</a>
-              <a>default language</a> and <a>default base direction</a>:
+              <a>default language</a>, normalized to lower case and <a>default base direction</a>:
               <ol>
                 <li>If the <a data-lt="active context">active context's</a> <a>default base direction</a>
                   is not `null`, to the concatenation of
                   the <a data-lt="active context">active context's</a> <a>default language</a>
-                  and <a>default base direction</a>, separated by an underscore (`"_"`).</li>
+                  and <a>default base direction</a>, separated by an underscore (`"_"`),
+                  normalized to lower case.</li>
                 <li>Otherwise, to the <a data-lt="active context">active context's</a> <a>default language</a>,
-                  if it has one, otherwise to `@none`.</li>
+                  if it has one,
+                  normalized to lower case,
+                  otherwise to `@none`.</li>
               </ol>
             </li>
             <li class="changed">If <var>value</var> is a <a>map</a> containing
@@ -3612,10 +3639,11 @@
                         <li class="changed">If <var>item</var> contains an `@direction` <a>entry</a>,
                           then set <var>item language</var> to the concatenation of
                           the <var>item</var>'s `@language` entry (if any)
-                          the <var>item</var>'s `@direction`, separated by an underscore (`"_"`).</li>
+                          the <var>item</var>'s `@direction`, separated by an underscore (`"_"`),
+                          normalized to lower case.</li>
                         <li>Otherwise, if <var>item</var> contains an <code>@language</code> <a>entry</a>,
-                          then set <var>item language</var> to its associated
-                          value.</li>
+                          then set <var>item language</var> to its associated value,
+                          normalized to lower case.</li>
                         <li>Otherwise, if <var>item</var> contains a
                           <code>@type</code> <a>entry</a>, set <var>item type</var> to its
                           associated value.</li>
@@ -3687,13 +3715,15 @@
                       and does not contain an `@index` <a>entry</a>,
                       then set <var>type/language value</var> to the concatenation of
                       the <var>value</var>'s `@language` entry (if any)
-                      the <var>value</var>'s `@direction`, separated by an underscore (`"_"`).
+                      the <var>value</var>'s `@direction`, separated by an underscore (`"_"`),
+                      normalized to lower case.
                       Append `@language` and `@language@set` to
                       <var>containers</var>.</li>
                     <li>Otherwise, if <var>value</var> contains an <code>@language</code> <a>entry</a>
                       and does not contain an <code>@index</code> <a>entry</a>,
                       then set <var>type/language value</var> to its associated
-                      value and, append <code>@language</code>
+                      value and, append <code>@language</code>,
+                      normalized to lower case,
                       <span class="changed">and <code>@language@set</code></span> to
                       <var>containers</var>.</li>
                     <li>Otherwise, if <var>value</var> contains a
@@ -4809,6 +4839,7 @@
               set <var>datatype</var> to the result of appending <var>language</var>
               and the value of `@direction` in <var>item</var> separated by an underscore (`"_"`)
               to `https://www.w3.org/ns/i18n#`.
+              <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
               Initialize <var>literal</var> as an <a>RDF literal</a> using
               <var>value</var> and <var>datatype</var>.
               <div class="note">As `@direction` may be used without `@language`,
@@ -4823,7 +4854,8 @@
                 <li>If the <var>item</var> has an entry for `@language`,
                   create a new triple using <var>literal</var> as the subject,
                   `rdf:language` as the predicate, and the value of `@language` in <var>item</var>
-                  as the object, and add it to <var>list triples</var>.</li>
+                  as the object, and add it to <var>list triples</var>.
+                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span></li>
                 <li>Create a new triple using <var>literal</var> as the subject,
                   `rdf:direction` as the predicate, and the value of `@direction` in <var>item</var>
                   as the object, and add it to <var>list triples</var>.</li>
@@ -5373,7 +5405,7 @@
       <li>Native Numeric values SHOULD be serialized according to
         <a data-cite="?ECMASCRIPT#sec-tostring-applied-to-the-number-type">Section 7.1.12.1</a> of [[?ECMASCRIPT]],</li>
       <li>Strings SHOULD be serialized with Unicode codepoints from <code>U+0000</code> through <code>U+001F</code>
-        using lowercase hexadecimal Unicode notation (<code>\uhhhh</code>) unless in the set
+        using lower case hexadecimal Unicode notation (<code>\uhhhh</code>) unless in the set
         of predefined JSON control characters <code>U+0008</code>, <code>U+0009</code>,
         <code>U+000A</code>, <code>U+000C</code> or <code>U+000D</code>
         which SHOULD be serialized as <code>\b</code>, <code>\t</code>, <code>\n</code>, <code>\f</code> and <code>\r</code> respectively.
@@ -6668,7 +6700,7 @@
       to that content.</li>
     <li><a>Value objects</a>, and associated <a>context</a> and <a>term definitions</a> have been updated to 
       support `@direction` for setting the <a>base direction</a> of strings.</li>
-    <li>It is no longer required that language tags be normalized to lowercase,
+    <li>It is no longer required that language tags be normalized to lower case,
       other than for testing considerations.
       Language tags that are not valid according to [[BCP47]] are rejected.</li>
   </ul>
