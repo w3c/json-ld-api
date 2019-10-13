@@ -407,7 +407,7 @@ Test t0013 @value with @language
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
 <dt>Purpose</dt>
-<dd>Values with @language remain in expended form by default</dd>
+<dd>Values with @language remain in expanded form by default</dd>
 <dt>input</dt>
 <dd>
 <a href='compact/0013-in.jsonld'>compact/0013-in.jsonld</a>
@@ -4227,7 +4227,7 @@ Test tdi04 simple language map with term direction
 </dl>
 </dd>
 <dt id='tdi05'>
-Test tdi05 simple language mapwith overriding term direction
+Test tdi05 simple language map with overriding term direction
 </dt>
 <dd>
 <dl class='entry'>
@@ -4261,7 +4261,7 @@ Test tdi05 simple language mapwith overriding term direction
 </dl>
 </dd>
 <dt id='tdi06'>
-Test tdi06 simple language mapwith overriding null direction
+Test tdi06 simple language map with overriding null direction
 </dt>
 <dd>
 <dl class='entry'>
@@ -5359,6 +5359,191 @@ Test tjs11 Compact JSON literal (null)
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
 <dt>processingMode</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tla01'>
+Test tla01 most specific term matching in @list.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tla01</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>The most specific term that matches all of the elements in the list, taking into account the default language, must be selected, without considering case of language.</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/la01-in.jsonld'>compact/la01-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/la01-context.jsonld'>compact/la01-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/la01-out.jsonld'>compact/la01-out.jsonld</a>
+</dd>
+</dl>
+</dd>
+<dt id='tli01'>
+Test tli01 coerced @list containing an empty list
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli01</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>Lists of Lists</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/li01-in.jsonld'>compact/li01-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/li01-context.jsonld'>compact/li01-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/li01-out.jsonld'>compact/li01-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli02'>
+Test tli02 coerced @list containing a list
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli02</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>Lists of Lists</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/li02-in.jsonld'>compact/li02-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/li02-context.jsonld'>compact/li02-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/li02-out.jsonld'>compact/li02-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli03'>
+Test tli03 coerced @list containing an deep list
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli03</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>Lists of Lists</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/li03-in.jsonld'>compact/li03-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/li03-context.jsonld'>compact/li03-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/li03-out.jsonld'>compact/li03-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli04'>
+Test tli04 coerced @list containing multiple lists
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli04</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>Lists of Lists</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/li04-in.jsonld'>compact/li04-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/li04-context.jsonld'>compact/li04-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/li04-out.jsonld'>compact/li04-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli05'>
+Test tli05 coerced @list containing mixed list values
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli05</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>Lists of Lists</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/li05-in.jsonld'>compact/li05-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/li05-context.jsonld'>compact/li05-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/li05-out.jsonld'>compact/li05-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
 </dl>
 </dd>
@@ -7216,166 +7401,6 @@ Test ts002 @context with array including @set uses array values
 <dl class='options'>
 <dt>processingMode</dt>
 <dd>json-ld-1.1</dd>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tli01'>
-Test tli01 coerced @list containing an empty list
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tli01</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
-<dt>Purpose</dt>
-<dd>Lists of Lists</dd>
-<dt>input</dt>
-<dd>
-<a href='compact/li01-in.jsonld'>compact/li01-in.jsonld</a>
-</dd>
-<dt>context</dt>
-<dd>
-<a href='compact/li01-context.jsonld'>compact/li01-context.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='compact/li01-out.jsonld'>compact/li01-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tli02'>
-Test tli02 coerced @list containing a list
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tli02</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
-<dt>Purpose</dt>
-<dd>Lists of Lists</dd>
-<dt>input</dt>
-<dd>
-<a href='compact/li02-in.jsonld'>compact/li02-in.jsonld</a>
-</dd>
-<dt>context</dt>
-<dd>
-<a href='compact/li02-context.jsonld'>compact/li02-context.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='compact/li02-out.jsonld'>compact/li02-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tli03'>
-Test tli03 coerced @list containing an deep list
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tli03</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
-<dt>Purpose</dt>
-<dd>Lists of Lists</dd>
-<dt>input</dt>
-<dd>
-<a href='compact/li03-in.jsonld'>compact/li03-in.jsonld</a>
-</dd>
-<dt>context</dt>
-<dd>
-<a href='compact/li03-context.jsonld'>compact/li03-context.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='compact/li03-out.jsonld'>compact/li03-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tli04'>
-Test tli04 coerced @list containing multiple lists
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tli04</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
-<dt>Purpose</dt>
-<dd>Lists of Lists</dd>
-<dt>input</dt>
-<dd>
-<a href='compact/li04-in.jsonld'>compact/li04-in.jsonld</a>
-</dd>
-<dt>context</dt>
-<dd>
-<a href='compact/li04-context.jsonld'>compact/li04-context.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='compact/li04-out.jsonld'>compact/li04-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tli05'>
-Test tli05 coerced @list containing mixed list values
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tli05</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
-<dt>Purpose</dt>
-<dd>Lists of Lists</dd>
-<dt>input</dt>
-<dd>
-<a href='compact/li05-in.jsonld'>compact/li05-in.jsonld</a>
-</dd>
-<dt>context</dt>
-<dd>
-<a href='compact/li05-context.jsonld'>compact/li05-context.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='compact/li05-out.jsonld'>compact/li05-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
 </dl>
