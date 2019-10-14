@@ -908,12 +908,10 @@
       the algorithms defined in this specification</span>.</p>
 
   <p><a>JSON-LD Processors</a> MUST NOT
-    attempt to correct malformed <a>IRIs</a> or language tags;
+    attempt to correct malformed <a>IRIs</a> or <a>language tags</a>;
     however, they SHOULD issue validation warnings.
-    <span class="changed">Invalid language tags MUST be ignored.</span>
-    IRIs are not modified other
-    than conversion between <a data-lt="relative IRI">relative</a> and
-    <a>absolute IRIs</a>.</p>
+    IRIs are not modified other than conversion between
+    <a data-lt="relative IRI">relative</a> and <a>absolute IRIs</a>.</p>
 
   <p>A conforming <dfn data-lt="RDF Serializers/Deserializers">RDF Serializer/Deserializer</dfn> is a system that can
     <a href="#deserialize-json-ld-to-rdf-algorithm">deserialize JSON-LD to RDF</a> and
