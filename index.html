@@ -1273,7 +1273,7 @@
                   If it is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid default language</a>
                   error has been detected and processing is aborted.
-                  <span class="changed">If <var>value</var> is not a <a>well-formed</a> according to
+                  <span class="changed">If <var>value</var> is not <a>well-formed</a> according to
                     <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                     processors SHOULD issue a warning.</span>
                   <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
@@ -1635,7 +1635,7 @@
             <li>Initialize <var>language</var> to the value associated with the
               <code>@language</code> <a>entry</a>, which MUST be either <code>null</code>
               or a <a>string</a>.
-              <span class="changed">If <var>language</var> is not a <a>well-formed</a> according to
+              <span class="changed">If <var>language</var> is not <a>well-formed</a> according to
                 <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                 processors SHOULD issue a warning.</span>
               Otherwise, an <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
@@ -2142,7 +2142,7 @@
                   <var>value</var> is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
                   error has been detected and processing is aborted.
-                  <span class="changed">If <var>value</var> is not a <a>well-formed</a> according to
+                  <span class="changed">If <var>value</var> is not <a>well-formed</a> according to
                     <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                     processors SHOULD issue a warning.</span>
                   <span class="changed">
@@ -2291,7 +2291,7 @@
                           consisting of two
                           key-value pairs: (<code>@value</code>-<var>item</var>)
                           and (<code>@language</code>-<var>language</var>).
-                          <span class="changed">If <var>item</var> is neither `@none` nor a <a>well-formed</a> according to
+                          <span class="changed">If <var>item</var> is neither `@none` nor <a>well-formed</a> according to
                             <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                             processors SHOULD issue a warning.</span>
                           <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
@@ -5101,7 +5101,7 @@
                       from the `rdf:value` entry in <var>cl node</var>.</li>
                     <li>Add an <a>entry</a> to <var>node</var> for `@language` with the value taken
                       from the `rdf:language` entry in <var>cl node</var>, if any.
-                      If that value is not a <a>well-formed</a> according to
+                      If that value is not <a>well-formed</a> according to
                       <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                       an <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
                       error has been detected and processing is aborted.</li>
