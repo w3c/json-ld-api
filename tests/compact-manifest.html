@@ -46,7 +46,7 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 <p>JSON-LD Object comparison compares JSON objects, arrays, and values recursively for equality.</p>
 
 <ul>
-<li>JSON objects are compared entry by entry without regard to the ordering of entries within the object. Each entry must have a corresponding entry in the object being compared to. Values are compared recursively.</li>
+<li>JSON objects are compared entry by entry without regard to the ordering of entriess within the object. Each entry must have a corresponding entry in the object being compared to. Values are compared recursively.</li>
 <li>JSON arrays are generally compared without regard to order (the lone exception being if the referencing key is <code>@list</code>). Each item within the array must be equivalent to an item in the array being compared to by using the comparison algorithm recursively. For values of <code>@list</code>, the order of these items is significant.</li>
 <li>JSON values are compared using strict equality.</li>
 <li>Values of <code>@language</code>, and other places where language tags may be used are specified in lowercase in the test results. Implementations should either normalize language tags for testing purposes, or compare language tags in a case-independent way.</li>
@@ -4426,38 +4426,6 @@ invalid @nest value
 </dd>
 </dl>
 </dd>
-<dt id='tep04'>
-Test tep04 Processing mode is implicitly json-ld-1.0
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tep04</dd>
-<dt>Type</dt>
-<dd>jld:NegativeEvaluationTest, jld:CompactTest</dd>
-<dt>Purpose</dt>
-<dd>If not specified using processingMode, processing mode is taken as json-ld-1.0</dd>
-<dt>input</dt>
-<dd>
-<a href='compact/ep04-in.jsonld'>compact/ep04-in.jsonld</a>
-</dd>
-<dt>context</dt>
-<dd>
-<a href='compact/ep04-context.jsonld'>compact/ep04-context.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-invalid container mapping
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
 <dt id='tep05'>
 Test tep05 processingMode json-ld-1.0 conflicts with @version: 1.1
 </dt>
@@ -4468,7 +4436,7 @@ Test tep05 processingMode json-ld-1.0 conflicts with @version: 1.1
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:CompactTest</dd>
 <dt>Purpose</dt>
-<dd>If not specified using processingMode, processing mode is taken as json-ld-1.0</dd>
+<dd>If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.</dd>
 <dt>input</dt>
 <dd>
 <a href='compact/ep05-in.jsonld'>compact/ep05-in.jsonld</a>
