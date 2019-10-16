@@ -1266,19 +1266,10 @@
       "expect": "invalid @nest value",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tep04",
-      "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
-      "name": "Processing mode is implicitly json-ld-1.0",
-      "purpose": "If not specified using processingMode, processing mode is taken as json-ld-1.0",
-      "option": {"specVersion": "json-ld-1.1"},
-      "input": "compact/ep04-in.jsonld",
-      "context": "compact/ep04-context.jsonld",
-      "expect": "invalid container mapping"
-    }, {
       "@id": "#tep05",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
       "name": "processingMode json-ld-1.0 conflicts with @version: 1.1",
-      "purpose": "If not specified using processingMode, processing mode is taken as json-ld-1.0",
+      "purpose": "If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.",
       "input": "compact/ep05-in.jsonld",
       "context": "compact/ep05-context.jsonld",
       "expect": "processing mode conflict",
