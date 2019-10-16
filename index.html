@@ -928,8 +928,9 @@
     also apply to <a>keyword aliases</a>.</p>
 
   <p class="note">Implementers can partially check their level of conformance to
-    this specification by successfully passing the test cases of the JSON-LD test
-    suite [[JSON-LD-TESTS]]. Note, however, that passing all the tests in the test
+    this specification by successfully passing the test cases of the
+    <a href="https://w3c.github.io/json-ld-api/tests/">JSON-LD test suite</a>.
+    Note, however, that passing all the tests in the test
     suite does not imply complete conformance to this specification. It only implies
     that the implementation conforms to aspects tested by the test suite.</p>
 
@@ -952,11 +953,11 @@
   </table>
 </section> <!-- end of Conformance section -->
 
-<section>
-  <h1>Context Processing Algorithms</h1>
+<section><h1>Context Processing Algorithms</h1>
 
-  <section>
-    <h2>Context Processing Algorithm</h2>
+  <p>The following sections describe algorithms for processing a JSON-LD context.</p>
+
+  <section><h2>Context Processing Algorithm</h2>
 
     <p>When processing a JSON-LD data structure, each processing rule is applied
       using information provided by the <a>active context</a>. This
@@ -1336,8 +1337,7 @@
     </section>
   </section> <!-- end of Context Processing -->
 
-  <section>
-    <h2>Create Term Definition</h2>
+  <section><h2>Create Term Definition</h2>
 
     <p>This algorithm is called from the
       <a href="#context-processing-algorithm">Context Processing algorithm</a>
@@ -1710,152 +1710,444 @@
     </section>
   </section> <!-- end of Term Creation -->
 
-  <section>
-    <h2>IRI Expansion</h2>
+  <section><h2>Inverse Context Creation</h2>
 
-    <p>In JSON-LD documents, some keys and values may represent
-      <a>IRIs</a>. This section defines an algorithm for
-      transforming a <a>string</a> that represents an <a>IRI</a> into
-      an <a>absolute IRI</a> or <a>blank node identifier</a>.
-      It also covers transforming <a>keyword aliases</a>
-      into <a>keywords</a>.</p>
+    <p>When there is more than one <a>term</a> that could be chosen
+      to compact an <a>IRI</a>, it has to be ensured that the <a>term</a>
+      selection is both deterministic and represents the most context-appropriate
+      choice whilst taking into consideration algorithmic complexity.</p>
 
-    <p><a>IRI</a> expansion may occur during context processing or during
-      any of the other JSON-LD algorithms. If IRI expansion occurs during context
-      processing, then the <a>local context</a> and its related <var>defined</var>
-      map from the <a href="#context-processing-algorithm">Context Processing algorithm</a>
-      are passed to this algorithm. This allows for <a>term definition</a>
-      dependencies to be processed via the
-      <a href="#create-term-definition">Create Term Definition algorithm</a>.</p>
+    <p>In order to make <a>term</a> selections, the concept of an
+      <a>inverse context</a> is introduced. An <dfn>inverse context</dfn>
+      is essentially a reverse lookup table that maps
+      <a>container mapping</a>,
+      <a>type mappings</a>, and
+      <a>language mappings</a> to a simple
+      <a>term</a> for a given <a>active context</a>. A
+      <a>inverse context</a> only needs to be generated for an
+      <a>active context</a> if it is being used for <a>compaction</a>.</p>
+
+    <p>To make use of an <a>inverse context</a>, a list of preferred
+      <a>container mapping</a> and the
+      <a>type mapping</a> or <a>language mapping</a> are gathered
+      for a particular value associated with an <a>IRI</a>. These parameters
+      are then fed to the <a href="#term-selection">Term Selection algorithm</a>,
+      which will find the <a>term</a> that most appropriately
+      matches the value's mappings.</p>
 
     <section class="informative">
       <h3>Overview</h3>
 
-      <p>In order to expand <var>value</var> to an <a>absolute IRI</a>, we must
-        first determine if it is <code>null</code>, a <a>term</a>, a
-        <a>keyword alias</a>, or some form of <a>IRI</a>. Based on what
-        we find, we handle the specific kind of expansion; for example, we expand
-        a <a>keyword alias</a> to a <a>keyword</a> and a <a>term</a>
-        to an <a>absolute IRI</a> according to its <a>IRI mapping</a>
-        in the <a>active context</a>. While inspecting <var>value</var> we
-        may also find that we need to create <a>term definition</a>
-        dependencies because we're running this algorithm during context processing.
-        We can tell whether or not we're running during context processing by
-        checking <a>local context</a> against <code>null</code>.
-        We know we need to create a <a>term definition</a> in the
-        <a>active context</a> when <var>value</var> is
-        an <a>entry</a> in the <a>local context</a> and the <var>defined</var> map
-        does not have an <a>entry</a> for <var>value</var> with an associated value of
-        <code>true</code>. The <var>defined</var> map is used during
-        <a href="#context-processing-algorithm">Context Processing</a> to keep track of
-        which <a>terms</a> have already been defined or are
-        in the process of being defined. We create a
-        <a>term definition</a> by using the
-        <a href="#create-term-definition">Create Term Definition algorithm</a>.</p>
+      <p>To create an <a>inverse context</a> for a given
+        <a>active context</a>, each <a>term</a> in the
+        <a>active context</a> is visited, ordered by length, shortest
+        first (ties are broken by choosing the lexicographically least
+        <a>term</a>). For each <a>term</a>, an entry is added to
+        the <a>inverse context</a> for each possible combination of
+        <a>container mapping</a> and <a>type mapping</a>
+        or <a>language mapping</a> that would legally match the
+        <a>term</a>. Illegal matches include differences between a
+        value's <a>type mapping</a> or <a>language mapping</a> and
+        that of the <a>term</a>. If a <a>term</a> has no
+        <a>container mapping</a>, <a>type mapping</a>, or
+        <a>language mapping</a> (or some combination of these), then it
+        will have an entry in the <a>inverse context</a> using the special
+        key <code>@none</code>. This allows the
+        <a href="#term-selection">Term Selection algorithm</a> to fall back
+        to choosing more generic <a>terms</a> when a more
+        specifically-matching <a>term</a> is not available for a particular
+        <a>IRI</a> and value combination.</p>
 
-      <p class="changed note">Values that have the form of a keyword,
-        but are not keywords (i.e., they begin with `"@"`) do not
-        map to any value, as they are reserved for future use.
-        The algorithm returns `null`, so that they will be ignored when encountered.</p>
+      <p class="changed">Although normalizing <a>language tags</a> is optional,
+        the <a>inverse context</a> creates entries based on normalized
+        <a>language tags</a>, so that the proper term can be selected
+        regardless of representation.</p>
     </section>
 
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes two required and four optional input variables. The
-        required inputs are an <var>active context</var> and a <var>value</var>
-        to be expanded. The optional inputs are two flags,
-        <var>document relative</var> and <var>vocab</var>, that specifying
-        whether <var>value</var> can be interpreted as a <a>relative IRI</a>
-        against the document's base <a>IRI</a> or the
-        <a data-lt="active context">active context's</a>
-        <a>vocabulary mapping</a>, respectively, and
-        a <a>local context</a> and a map <var>defined</var> to be used when
-        this algorithm is used during <a href="#context-processing-algorithm">Context Processing</a>.
-        If not passed, the two flags are set to <code>false</code> and
-        <a>local context</a> and <var>defined</var> are initialized to <code>null</code>.</p>
+      <p>The algorithm takes one required input: the <var>active context</var> that
+        the <a>inverse context</a> is being created for.</p>
 
       <ol>
-        <li>If <var>value</var> is a <a>keyword</a> or <code>null</code>,
-          return <var>value</var> as is.</li>
-        <li class="changed">
-          If <var>value</var> has the form of a keyword (i.e., it begins with `"@"`),
-          a processor SHOULD generate a warning and return `null`.</li>
-        <li>If <a>local context</a> is not <code>null</code>, it contains
-          an <a>entry</a> with a key that equals <var>value</var>, and the value of the <a>entry</a>
-          for <var>value</var> in <var>defined</var> is not <code>true</code>,
-          invoke the <a href="#create-term-definition">Create Term Definition algorithm</a>,
-          passing <var>active context</var>, <a>local context</a>,
-          <var>value</var> as <var>term</var>, and <var>defined</var>. This will ensure that
-          a <a>term definition</a> is created for <var>value</var> in
-          <var>active context</var> during <a href="#context-processing-algorithm">Context Processing</a>.
-        </li>
-        <li class="changed">If <var>active context</var> has a <a>term definition</a> for
-          <var>value</var>, and the associated <a>IRI mapping</a> is a <a>keyword</a>,
-          return that <a>keyword</a>.</li>
-        <li>If <var>vocab</var> is <code>true</code> and the
-          <var>active context</var> has a <a>term definition</a> for
-          <var>value</var>, return the associated <a>IRI mapping</a>.</li>
-        <li>If <var>value</var> contains a colon (<code>:</code>), it is either
-          an <a>absolute IRI</a>, a <a>compact IRI</a>, or a
-          <a>blank node identifier</a>:
+        <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
+        <li>Initialize <var>default language</var> to <code>@none</code>.
+          If the <var>active context</var> has a <a>default language</a>,
+          set <var>default language</var> to the <a>default language</a> from the <a>active context</a>
+          <span class="changed">normalized to lower case</span>.</li>
+        <li>For each key <a>term</a> and value <a>term definition</a> in
+          the <var>active context</var>, ordered by shortest <a>term</a>
+          first (breaking ties by choosing the lexicographically least
+          <a>term</a>):
           <ol>
-            <li>Split <var>value</var> into a <var>prefix</var> and <var>suffix</var>
-              at the first occurrence of a colon (<code>:</code>).</li>
-            <li>If <var>prefix</var> is underscore (<code>_</code>)
-              or <var>suffix</var> begins with double-forward-slash
-              (<code>//</code>), return <var>value</var> as it is already an
-              <a>absolute IRI</a> or a <a>blank node identifier</a>.</li>
-            <li>If <a>local context</a> is not <code>null</code>, it
-              contains a <var>prefix</var> <a>entry</a>, and the value
-              of the <var>prefix</var> <a>entry</a> in <var>defined</var>
-              is not <code>true</code>, invoke the
-              <a href="#create-term-definition">Create Term Definition algorithm</a>,
-              passing <var>active context</var>,
-              <a>local context</a>, <var>prefix</var> as <var>term</var>,
-              and <var>defined</var>. This will ensure that a
-              <a>term definition</a> is created for <a>prefix</a>
-              in <var>active context</var> during
-              <a href="#context-processing-algorithm">Context Processing</a>.</li>
-            <li>If <var>active context</var> contains a <a>term definition</a>
-              for <var>prefix</var>
-              <span class="changed">having a non-<code>null</code> <a>IRI mapping</a>
-                and the <a>prefix flag</a> of the <a>term definition</a> is <code>true</code></span>,
-              return the result of concatenating the <a>IRI mapping</a>
-              associated with <var>prefix</var> and <var>suffix</var>.
-              <p class="ednote">A more conservative change, although more involved,
-                would to restrict looking at the <a>prefix flag</a> unless
-                the <a>processing mode</a> is <code>json-ld-1.1</code>.</p></li>
-            <li><span class="changed">If <var>value</var> has the form of an <a>absolute IRI</a></span>,
-              return <var>value</var>.</li>
+            <li>If the <a>term definition</a> is <code>null</code>,
+              <a>term</a> cannot be selected during <a>compaction</a>,
+              so continue to the next <a>term</a>.</li>
+            <li>Initialize <var>container</var> to <code>@none</code>.
+              <span class="changed">
+                If the <a>container mapping</a> is not empty, set <var>container</var>
+                to the concatenation of all values of the <a>container mapping</a>
+                in lexicographically order
+              </span>.</li>
+            <li>Initialize <var>var</var> to the value of the <a>IRI mapping</a>
+              for the <a>term definition</a>.</li>
+            <li>If <var>var</var> is not an <a>entry</a> of <var>result</var>, add
+              an <a>entry</a> where the key is <var>var</var> and the value
+              is an empty <a class="changed">map</a> to <var>result</var>.</li>
+            <li>Reference the value associated with the <var>var</var> <a>entry</a> in
+              <var>result</var> using the variable <var>container map</var>.</li>
+            <li>If <var>container map</var> has no <var>container</var> <a>entry</a>,
+              create one and set its value to a new
+              <a class="changed">map</a> with <span class="changed">three</span> <a>entries</a>.
+              The first <a>entry</a> is <code>@language</code> and its value is a new empty
+              <a class="changed">map</a>, the second <a>entry</a> is <code>@type</code>
+              and its value is a new empty <a class="changed">map</a>,
+              <span class="changed">and the third <a>entry</a> is <code>@any</code>
+                and its value is a new <a>map</a> with the <a>entry</a>
+                <code>@none</code> set to the <a>term</a> being processed</span>.</li>
+            <li>Reference the value associated with the <var>container</var> <a>entry</a>
+              in <var>container map</var> using the variable <var>type/language map</var>.</li>
+            <li>Reference the value associated with the <code>@type</code>
+              <a>entry</a> in <var>type/language map</var> using the variable
+              <var>type map</var>.</li>
+            <li>If the <a>term definition</a> indicates that the <a>term</a>
+              represents a <a>reverse property</a>:
+              <ol>
+                <li>If <var>type map</var> does not have an <code>@reverse</code>
+                  <a>entry</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li class="changed">Otherwise, if <a>term definition</a> has a
+              <a>type mapping</a> which is <code>@none</code>:
+              <ol>
+                <li>Reference the value associated with the <code>@language</code>
+                  <a>entry</a> in <var>type/language map</var> using the variable
+                  <var>language map</var>.</li>
+                <li>If <var>language map</var> does not have an <code>@any</code>
+                  <a>entry</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>type map</var> does not have an <code>@any</code>
+                  <a>entry</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li>Otherwise, if <a>term definition</a> has a
+              <a>type mapping</a>:
+              <ol>
+                <li>If <var>type map</var> does not have an <a>entry</a> corresponding
+                  to the <a>type mapping</a> in <a>term definition</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li>Reference the value associated with the <code>@language</code>
+              <a>entry</a> in <var>type/language map</var> using the variable
+              <var>language map</var>.</li>
+            <li class="changed">If <a>term definition</a> has both
+              a <a>language mapping</a> and a <a>direction mapping</a>:
+              <ol>
+                <li>Create a new variable <var>lang dir</var>.</li>
+                <li>If neither the <a>language mapping</a> nor the <a>direction mapping</a>
+                  are `null`, set <var>lang dir</var> to the concatenation
+                  of <a>language mapping</a> and <a>direction mapping</a>
+                  separated by an underscore (`"_"`)
+                  normalized to lower case.</li>
+                <li>Otherwise, if <a>language mapping</a> is not `null`,
+                  set <var>lang dir</var> to the <a>language mapping</a>,
+                  normalized to lower case.
+                <li>Otherwise, if <a>direction mapping</a> is not `null`,
+                  set <var>lang dir</var> to <a>direction mapping</a>
+                  preceded by an underscore (`"_"`).</li>
+                <li>Otherwise, set <var>lang dir</var> to `@null`.</li>
+              </ol>
+              <li>If <var>language map</var> does not have a <var>lang dir</var>
+                <a>entry</a>, create one and set its value to the <a>term</a>
+                being processed.</li>
+            <li>Otherwise, if <a>term definition</a> has a
+              <a>language mapping</a> (might be <code>null</code>):
+              <ol>
+                <li>If the <a>language mapping</a> equals <code>null</code>,
+                  set <var>language</var> to <code>@null</code>; otherwise set it
+                  to the <a>language mapping</a>,
+                  <span class="changed">normalized to lower case</span>.</li>
+                <li>If <var>language map</var> does not have a <var>language</var> <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li class="changed">Otherwise, if <a>term definition</a> has a
+              <a>direction mapping</a> (might be <code>null</code>):
+              <ol>
+                <li>If the <a>direction mapping</a> equals <code>null</code>,
+                  set <var>direction</var> to <code>@none</code>; otherwise set it
+                  to <a>direction mapping</a> preceded by an underscore (`"_"`).</li>
+                <li>If <var>language map</var> does not have a <var>direction</var> <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li class="changed">Otherwise, if <var>active context</var> has a
+              <a>default base direction</a>:
+              <ol>
+                <li>Initialize a variable <var>lang dir</var>
+                  with the concatenation of <a>default language</a> and <a>default base direction</a>,
+                  separate by an underscore (`"_"`),
+                  normalized to lower case.</li>
+                <li>If <var>language map</var> does not have a <var>lang dir</var> <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>language map</var> does not have an `@none` <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>type map</var> does not have an `@none` <a>entry</a>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
+            <li>Otherwise:
+              <ol>
+                <li>If <var>language map</var> does not have a <var>default language</var> <a>entry</a>
+                  <span class="changed">(after being normalized to lower case)</span>,
+                  create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>language map</var> does not have an <code>@none</code>
+                  <a>entry</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+                <li>If <var>type map</var> does not have an <code>@none</code>
+                  <a>entry</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
+              </ol>
+            </li>
           </ol>
         </li>
-        <li>If <var>vocab</var> is <code>true</code>, and
-          <var>active context</var> has a <a>vocabulary mapping</a>,
-          return the result of concatenating the <a>vocabulary mapping</a>
-          with <var>value</var>.</li>
-        <li>Otherwise, if <var>document relative</var> is <code>true</code>
-          set <var>value</var> to the result of resolving <var>value</var> against
-          the <a>base IRI</a>. Only the basic algorithm in
-          <a data-cite="RFC3986#section-5.2">section 5.2</a>
-          of [[RFC3986]] is used; neither
-          <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
-          <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
-          are performed. Characters additionally allowed in IRI references are treated
-          in the same way that unreserved characters are treated in URI references, per
-          <a data-cite="RFC3987#section-6.5">section 6.5</a>
-          of [[RFC3987]].</li>
-        <li>Return <var>value</var> as is.</li>
+        <li>Return <var>result</var>.</li>
       </ol>
     </section>
-  </section> <!-- end of IRI Expansion -->
+  </section> <!-- end of Inverse Context Creation -->
+
+  <section><h2>Term Selection</h2>
+
+    <p>This algorithm, invoked via the <a href="#iri-compaction">IRI Compaction algorithm</a>,
+      makes use of an <a data-lt="active context">active context's</a>
+      <a>inverse context</a> to find the <a>term</a> that is best
+      used to <a>compact</a> an <a>IRI</a>. Other
+      information about a value associated with the <a>IRI</a> is given,
+      including which <a>container mapping</a>
+      and which <a>type mapping</a> or <a>language mapping</a> would
+      be best used to express the value.</p>
+
+    <section class="informative">
+      <h3>Overview</h3>
+
+      <p>The <a data-lt="inverse context">inverse context's</a> entry for
+        the <a>IRI</a> will be first searched according to the preferred
+        <a>container mapping</a>, in the order
+        that they are given. Amongst <a>terms</a> with a matching
+        <a>container mapping</a>, preference will be given to those
+        with a matching <a>type mapping</a> or <a>language mapping</a>,
+        over those without a <a>type mapping</a> or
+        <a>language mapping</a>. If there is no <a>term</a>
+        with a matching <a>container mapping</a> then the <a>term</a>
+        without a <a>container mapping</a> that matches the given
+        <a>type mapping</a> or <a>language mapping</a> is selected. If
+        there is still no selected <a>term</a>, then a <a>term</a>
+        with no <a>type mapping</a> or <a>language mapping</a> will
+        be selected if available. No <a>term</a> will be selected that
+        has a conflicting <a>type mapping</a> or <a>language mapping</a>.
+        Ties between <a>terms</a> that have the same
+        mappings are resolved by first choosing the shortest terms, and then by
+        choosing the lexicographically least term. Note that these ties are
+        resolved automatically because they were previously resolved when the
+        <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
+        was used to create the <a>inverse context</a>.</p>
+    </section>
+
+    <section class="algorithm">
+      <h3>Algorithm</h3>
+
+      <p>This algorithm has five required inputs. They are:
+        an <var>inverse context</var>, a <a>keyword</a> or <a>IRI</a>
+        <var>var</var>, an <a>array</a> <var>containers</var> that represents an
+        ordered list of preferred <a>container mapping</a>,
+        a <a>string</a> <var>type/language</var> that indicates whether
+        to look for a <a>term</a> with a matching <a>type mapping</a>
+        or <a>language mapping</a>, and an <a>array</a> representing
+        an ordered list of <var>preferred values</var> for the <a>type mapping</a>
+        or <a>language mapping</a> to look for.</p>
+
+      <ol>
+        <li>Initialize <var>container map</var> to the value associated with
+          <var>var</var> in the <var>inverse context</var>.</li>
+        <li>For each item <var>container</var> in <var>containers</var>:
+          <ol>
+            <li>If <var>container</var> is not an <a>entry</a> of <var>container map</var>, then
+              there is no <a>term</a> with a matching
+              <a>container mapping</a> for it, so continue to the next
+              <var>container</var>.</li>
+            <li>Initialize <var>type/language map</var> to the value associated
+              with the <var>container</var> <a>entry</a> in <var>container map</var>.</li>
+            <li>Initialize <var>value map</var> to the value associated
+              with <var>type/language</var> <a>entry</a> in <var>type/language map</var>.</li>
+            <li>For each <var>item</var> in <var>preferred values</var>:
+              <ol>
+                <li>If <var>item</var> is not an <a>entry</a> of <var>value map</var>,
+                  then there is no <a>term</a> with a matching
+                  <a>type mapping</a> or <a>language mapping</a>,
+                  so continue to the next <var>item</var>.</li>
+                <li>Otherwise, a matching term has been found, return the value
+                  associated with the <var>item</var> <a>entry</a> in
+                  <var>value map</var>.</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>No matching term has been found. Return <code>null</code>.</li>
+      </ol>
+    </section>
+
+    <section class="informative">
+      <h3>Examples</h3>
+      <p>The following examples are intended to illustrate how the term selection algorithm
+        behaves for different term definitions and values. It is not comprehensive, but
+        intended to illustrate different parts of the algorithm.</p>
+
+      <section>
+        <h4>Language Map Term</h4>
+        <p>If the term definition has <code>"@container": "@language"</code>, it will only match a
+          <a>value object</a> having no <code>@type</code>.</p>
+
+        <aside class="example" data-ignore
+               title="Term definition with language map">
+          <pre data-transform="updateExample">
+          <!--
+          {
+            "@context": {"t": {"@id": "http://example.org/t", "@container": "@language"}}
+          }
+          -->
+          </pre>
+
+          <p>The inverse context will contain the following:</p>
+
+          <pre data-transform="updateExample">
+          <!--
+          {
+            "@language": {
+              "@language": {"@none": "t"},
+              "@type": {"@none": "t"},
+              "@any": {"@none": "t"}
+            }
+          }
+          -->
+          </pre>
+        </aside>
+
+        <aside class="example" data-ignore title="Language map term with language value">
+          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
+            The algorithm will be invoked as follows:</p>
+          <dl>
+            <dt><var>containers</var></dt>
+            <dd><code>["@language", "@language@set", "@set", "@none", "@index", "@index@set"]</code></dd>
+            <dt><var>type/language</var></dt>
+            <dd><code>@language</code></dd>
+            <dt><var>preferred values</var></dt>
+            <dd><code>["en", "@none"]</code></dd>
+          </dl>
+          <p>The <var>value map</var> will be set to <code>{"@none": "t"}</code>,
+            as <var>preferred values</var> contains <code>"@none"</code>,
+            the algorithm returns <code>"t"</code> as the term to use for compaction.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h4>Datatyped Term</h4>
+        <p>If the term definition has a datatype, it will only match a
+          <a>value object</a> having a matching datatype.</p>
+
+        <aside class="example" data-ignore
+               title="Term definition with datatype">
+          <pre data-transform="updateExample">
+          <!--
+          {
+            "@context": {"t": {"@id": "http://example.org/t", "@type": "http:/example.org/type"}}
+          }
+          -->
+          </pre>
+
+          <p>The inverse context will contain the following:</p>
+
+          <pre data-transform="updateExample">
+          <!--
+          {
+            "@none": {
+              "@language": {},
+              "@type": {"http:/example.org/type": "t"},
+              "@any": {"@none": "t"}
+            }
+          }
+          -->
+          </pre>
+        </aside>
+
+        <aside class="example" data-ignore title="Datatyped term with datatyped value">
+          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
+            The algorithm will be invoked as follows:</p>
+          <dl>
+            <dt><var>containers</var></dt>
+            <dd><code>["@set", "@none", "@index", "@index@set"]</code></dd>
+            <dt><var>type/language</var></dt>
+            <dd><code>@type</code></dd>
+            <dt><var>preferred values</var></dt>
+            <dd><code>["http:/example.org/type", "@none"]</code></dd>
+          </dl>
+          <p>The <var>value map</var> will be set to <code>{"http:/example.org/type": "t"}</code>,
+            as <var>preferred values</var> contains <code>"http:/example.org/type"</code>,
+            the algorithm returns <code>"t"</code> as the term to use for compaction.</p>
+        </aside>
+
+        <aside class="example" data-ignore title="Datatyped term with simple value">
+          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@value": "foo"}}</code>,
+            The algorithm will be invoked as follows:</p>
+          <dl>
+            <dt><var>containers</var></dt>
+            <dd><code>["@set", "@none", "@index", "@index@set", "@language", "@language@set"]</code></dd>
+            <dt><var>type/language</var></dt>
+            <dd><code>@language</code></dd>
+            <dt><var>preferred values</var></dt>
+            <dd><code>["@null", "@none"]</code></dd>
+          </dl>
+          <p>The <var>value map</var> will be set to <code>{"@none": "t"}</code>,
+            as no key in <var>preferred values</var> matches a key in <var>value map</var>,
+            the algorithm returns <code>null</code> and no term is found.</p>
+        </aside>
+
+        <aside class="example" data-ignore title="Datatyped term with object value">
+          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@id": "http://example.org/id"}}</code>,
+            The algorithm will be invoked as follows:</p>
+          <dl>
+            <dt><var>containers</var></dt>
+            <dd><code>["@id", "@id@set", "@type", "@set@type", "@set", "@none", "@index", "@index@set"]</code></dd>
+            <dt><var>type/language</var></dt>
+            <dd><code>@type</code></dd>
+            <dt><var>preferred values</var></dt>
+            <dd><code>["@id", "@vocab", "@none"]</code></dd>
+          </dl>
+          <p>The <var>value map</var> will be set to <code>{"http:/example.org/type": "t"}</code>,
+            as no key in <var>preferred values</var> matches a key in <var>value map</var>,
+            the algorithm returns <code>null</code> and no term is found.</p>
+        </aside>
+      </section>
+    </section>
+  </section> <!-- end of Term Selection -->
 </section> <!-- end of Context Processing section -->
 
-<section>
-  <h1>Expansion Algorithms</h1>
+<section><h1>Expansion Algorithms</h1>
 
-  <section>
-    <h2>Expansion Algorithm</h2>
+  <p>The following sections describe algorithms for expanding JSON-LD
+    documents, IRIs and values.</p>
+
+  <section><h2>Expansion Algorithm</h2>
 
     <p>This algorithm expands a JSON-LD document, such that all <a>context</a>
       definitions are removed, all <a>terms</a> and
@@ -2536,9 +2828,146 @@
     </section>
   </section> <!-- end of Expansion Algorithm -->
 
+  <section><h2>IRI Expansion</h2>
 
-  <section>
-    <h2>Value Expansion</h2>
+    <p>In JSON-LD documents, some keys and values may represent
+      <a>IRIs</a>. This section defines an algorithm for
+      transforming a <a>string</a> that represents an <a>IRI</a> into
+      an <a>absolute IRI</a> or <a>blank node identifier</a>.
+      It also covers transforming <a>keyword aliases</a>
+      into <a>keywords</a>.</p>
+
+    <p><a>IRI</a> expansion may occur during context processing or during
+      any of the other JSON-LD algorithms. If IRI expansion occurs during context
+      processing, then the <a>local context</a> and its related <var>defined</var>
+      map from the <a href="#context-processing-algorithm">Context Processing algorithm</a>
+      are passed to this algorithm. This allows for <a>term definition</a>
+      dependencies to be processed via the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>.</p>
+
+    <section class="informative">
+      <h3>Overview</h3>
+
+      <p>In order to expand <var>value</var> to an <a>absolute IRI</a>, we must
+        first determine if it is <code>null</code>, a <a>term</a>, a
+        <a>keyword alias</a>, or some form of <a>IRI</a>. Based on what
+        we find, we handle the specific kind of expansion; for example, we expand
+        a <a>keyword alias</a> to a <a>keyword</a> and a <a>term</a>
+        to an <a>absolute IRI</a> according to its <a>IRI mapping</a>
+        in the <a>active context</a>. While inspecting <var>value</var> we
+        may also find that we need to create <a>term definition</a>
+        dependencies because we're running this algorithm during context processing.
+        We can tell whether or not we're running during context processing by
+        checking <a>local context</a> against <code>null</code>.
+        We know we need to create a <a>term definition</a> in the
+        <a>active context</a> when <var>value</var> is
+        an <a>entry</a> in the <a>local context</a> and the <var>defined</var> map
+        does not have an <a>entry</a> for <var>value</var> with an associated value of
+        <code>true</code>. The <var>defined</var> map is used during
+        <a href="#context-processing-algorithm">Context Processing</a> to keep track of
+        which <a>terms</a> have already been defined or are
+        in the process of being defined. We create a
+        <a>term definition</a> by using the
+        <a href="#create-term-definition">Create Term Definition algorithm</a>.</p>
+
+      <p class="changed note">Values that have the form of a keyword,
+        but are not keywords (i.e., they begin with `"@"`) do not
+        map to any value, as they are reserved for future use.
+        The algorithm returns `null`, so that they will be ignored when encountered.</p>
+    </section>
+
+    <section class="algorithm">
+      <h3>Algorithm</h3>
+
+      <p>The algorithm takes two required and four optional input variables. The
+        required inputs are an <var>active context</var> and a <var>value</var>
+        to be expanded. The optional inputs are two flags,
+        <var>document relative</var> and <var>vocab</var>, that specifying
+        whether <var>value</var> can be interpreted as a <a>relative IRI</a>
+        against the document's base <a>IRI</a> or the
+        <a data-lt="active context">active context's</a>
+        <a>vocabulary mapping</a>, respectively, and
+        a <a>local context</a> and a map <var>defined</var> to be used when
+        this algorithm is used during <a href="#context-processing-algorithm">Context Processing</a>.
+        If not passed, the two flags are set to <code>false</code> and
+        <a>local context</a> and <var>defined</var> are initialized to <code>null</code>.</p>
+
+      <ol>
+        <li>If <var>value</var> is a <a>keyword</a> or <code>null</code>,
+          return <var>value</var> as is.</li>
+        <li class="changed">
+          If <var>value</var> has the form of a keyword (i.e., it begins with `"@"`),
+          a processor SHOULD generate a warning and return `null`.</li>
+        <li>If <a>local context</a> is not <code>null</code>, it contains
+          an <a>entry</a> with a key that equals <var>value</var>, and the value of the <a>entry</a>
+          for <var>value</var> in <var>defined</var> is not <code>true</code>,
+          invoke the <a href="#create-term-definition">Create Term Definition algorithm</a>,
+          passing <var>active context</var>, <a>local context</a>,
+          <var>value</var> as <var>term</var>, and <var>defined</var>. This will ensure that
+          a <a>term definition</a> is created for <var>value</var> in
+          <var>active context</var> during <a href="#context-processing-algorithm">Context Processing</a>.
+        </li>
+        <li class="changed">If <var>active context</var> has a <a>term definition</a> for
+          <var>value</var>, and the associated <a>IRI mapping</a> is a <a>keyword</a>,
+          return that <a>keyword</a>.</li>
+        <li>If <var>vocab</var> is <code>true</code> and the
+          <var>active context</var> has a <a>term definition</a> for
+          <var>value</var>, return the associated <a>IRI mapping</a>.</li>
+        <li>If <var>value</var> contains a colon (<code>:</code>), it is either
+          an <a>absolute IRI</a>, a <a>compact IRI</a>, or a
+          <a>blank node identifier</a>:
+          <ol>
+            <li>Split <var>value</var> into a <var>prefix</var> and <var>suffix</var>
+              at the first occurrence of a colon (<code>:</code>).</li>
+            <li>If <var>prefix</var> is underscore (<code>_</code>)
+              or <var>suffix</var> begins with double-forward-slash
+              (<code>//</code>), return <var>value</var> as it is already an
+              <a>absolute IRI</a> or a <a>blank node identifier</a>.</li>
+            <li>If <a>local context</a> is not <code>null</code>, it
+              contains a <var>prefix</var> <a>entry</a>, and the value
+              of the <var>prefix</var> <a>entry</a> in <var>defined</var>
+              is not <code>true</code>, invoke the
+              <a href="#create-term-definition">Create Term Definition algorithm</a>,
+              passing <var>active context</var>,
+              <a>local context</a>, <var>prefix</var> as <var>term</var>,
+              and <var>defined</var>. This will ensure that a
+              <a>term definition</a> is created for <a>prefix</a>
+              in <var>active context</var> during
+              <a href="#context-processing-algorithm">Context Processing</a>.</li>
+            <li>If <var>active context</var> contains a <a>term definition</a>
+              for <var>prefix</var>
+              <span class="changed">having a non-<code>null</code> <a>IRI mapping</a>
+                and the <a>prefix flag</a> of the <a>term definition</a> is <code>true</code></span>,
+              return the result of concatenating the <a>IRI mapping</a>
+              associated with <var>prefix</var> and <var>suffix</var>.
+              <p class="ednote">A more conservative change, although more involved,
+                would to restrict looking at the <a>prefix flag</a> unless
+                the <a>processing mode</a> is <code>json-ld-1.1</code>.</p></li>
+            <li><span class="changed">If <var>value</var> has the form of an <a>absolute IRI</a></span>,
+              return <var>value</var>.</li>
+          </ol>
+        </li>
+        <li>If <var>vocab</var> is <code>true</code>, and
+          <var>active context</var> has a <a>vocabulary mapping</a>,
+          return the result of concatenating the <a>vocabulary mapping</a>
+          with <var>value</var>.</li>
+        <li>Otherwise, if <var>document relative</var> is <code>true</code>
+          set <var>value</var> to the result of resolving <var>value</var> against
+          the <a>base IRI</a>. Only the basic algorithm in
+          <a data-cite="RFC3986#section-5.2">section 5.2</a>
+          of [[RFC3986]] is used; neither
+          <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
+          <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
+          are performed. Characters additionally allowed in IRI references are treated
+          in the same way that unreserved characters are treated in URI references, per
+          <a data-cite="RFC3987#section-6.5">section 6.5</a>
+          of [[RFC3987]].</li>
+        <li>Return <var>value</var> as is.</li>
+      </ol>
+    </section>
+  </section> <!-- end of IRI Expansion -->
+
+  <section><h2>Value Expansion</h2>
 
     <p>Some values in JSON-LD can be expressed in a
       <a>compact form</a>. These values are required
@@ -2633,11 +3062,12 @@
 </section> <!-- end of Expansion section -->
 
 
-<section>
-  <h1>Compaction Algorithms</h1>
+<section><h1>Compaction Algorithms</h1>
 
-  <section>
-    <h2>Compaction Algorithm</h2>
+  <p>The following sections describe algorithms for compacting JSON-LD
+    documents, IRIs and values.</p>
+
+  <section><h2>Compaction Algorithm</h2>
 
     <p>This algorithm compacts a JSON-LD document, such that the given
       <a>context</a> is applied. This must result in shortening
@@ -3285,226 +3715,7 @@
     </section>
   </section> <!-- end of Compaction -->
 
-  <section>
-    <h2>Inverse Context Creation</h2>
-
-    <p>When there is more than one <a>term</a> that could be chosen
-      to compact an <a>IRI</a>, it has to be ensured that the <a>term</a>
-      selection is both deterministic and represents the most context-appropriate
-      choice whilst taking into consideration algorithmic complexity.</p>
-
-    <p>In order to make <a>term</a> selections, the concept of an
-      <a>inverse context</a> is introduced. An <dfn>inverse context</dfn>
-      is essentially a reverse lookup table that maps
-      <a>container mapping</a>,
-      <a>type mappings</a>, and
-      <a>language mappings</a> to a simple
-      <a>term</a> for a given <a>active context</a>. A
-      <a>inverse context</a> only needs to be generated for an
-      <a>active context</a> if it is being used for <a>compaction</a>.</p>
-
-    <p>To make use of an <a>inverse context</a>, a list of preferred
-      <a>container mapping</a> and the
-      <a>type mapping</a> or <a>language mapping</a> are gathered
-      for a particular value associated with an <a>IRI</a>. These parameters
-      are then fed to the <a href="#term-selection">Term Selection algorithm</a>,
-      which will find the <a>term</a> that most appropriately
-      matches the value's mappings.</p>
-
-    <section class="informative">
-      <h3>Overview</h3>
-
-      <p>To create an <a>inverse context</a> for a given
-        <a>active context</a>, each <a>term</a> in the
-        <a>active context</a> is visited, ordered by length, shortest
-        first (ties are broken by choosing the lexicographically least
-        <a>term</a>). For each <a>term</a>, an entry is added to
-        the <a>inverse context</a> for each possible combination of
-        <a>container mapping</a> and <a>type mapping</a>
-        or <a>language mapping</a> that would legally match the
-        <a>term</a>. Illegal matches include differences between a
-        value's <a>type mapping</a> or <a>language mapping</a> and
-        that of the <a>term</a>. If a <a>term</a> has no
-        <a>container mapping</a>, <a>type mapping</a>, or
-        <a>language mapping</a> (or some combination of these), then it
-        will have an entry in the <a>inverse context</a> using the special
-        key <code>@none</code>. This allows the
-        <a href="#term-selection">Term Selection algorithm</a> to fall back
-        to choosing more generic <a>terms</a> when a more
-        specifically-matching <a>term</a> is not available for a particular
-        <a>IRI</a> and value combination.</p>
-
-      <p class="changed">Although normalizing <a>language tags</a> is optional,
-        the <a>inverse context</a> creates entries based on normalized
-        <a>language tags</a>, so that the proper term can be selected
-        regardless of representation.</p>
-    </section>
-
-    <section class="algorithm">
-      <h3>Algorithm</h3>
-
-      <p>The algorithm takes one required input: the <var>active context</var> that
-        the <a>inverse context</a> is being created for.</p>
-
-      <ol>
-        <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
-        <li>Initialize <var>default language</var> to <code>@none</code>.
-          If the <var>active context</var> has a <a>default language</a>,
-          set <var>default language</var> to the <a>default language</a> from the <a>active context</a>
-          <span class="changed">normalized to lower case</span>.</li>
-        <li>For each key <a>term</a> and value <a>term definition</a> in
-          the <var>active context</var>, ordered by shortest <a>term</a>
-          first (breaking ties by choosing the lexicographically least
-          <a>term</a>):
-          <ol>
-            <li>If the <a>term definition</a> is <code>null</code>,
-              <a>term</a> cannot be selected during <a>compaction</a>,
-              so continue to the next <a>term</a>.</li>
-            <li>Initialize <var>container</var> to <code>@none</code>.
-              <span class="changed">
-                If the <a>container mapping</a> is not empty, set <var>container</var>
-                to the concatenation of all values of the <a>container mapping</a>
-                in lexicographically order
-              </span>.</li>
-            <li>Initialize <var>var</var> to the value of the <a>IRI mapping</a>
-              for the <a>term definition</a>.</li>
-            <li>If <var>var</var> is not an <a>entry</a> of <var>result</var>, add
-              an <a>entry</a> where the key is <var>var</var> and the value
-              is an empty <a class="changed">map</a> to <var>result</var>.</li>
-            <li>Reference the value associated with the <var>var</var> <a>entry</a> in
-              <var>result</var> using the variable <var>container map</var>.</li>
-            <li>If <var>container map</var> has no <var>container</var> <a>entry</a>,
-              create one and set its value to a new
-              <a class="changed">map</a> with <span class="changed">three</span> <a>entries</a>.
-              The first <a>entry</a> is <code>@language</code> and its value is a new empty
-              <a class="changed">map</a>, the second <a>entry</a> is <code>@type</code>
-              and its value is a new empty <a class="changed">map</a>,
-              <span class="changed">and the third <a>entry</a> is <code>@any</code>
-                and its value is a new <a>map</a> with the <a>entry</a>
-                <code>@none</code> set to the <a>term</a> being processed</span>.</li>
-            <li>Reference the value associated with the <var>container</var> <a>entry</a>
-              in <var>container map</var> using the variable <var>type/language map</var>.</li>
-            <li>Reference the value associated with the <code>@type</code>
-              <a>entry</a> in <var>type/language map</var> using the variable
-              <var>type map</var>.</li>
-            <li>If the <a>term definition</a> indicates that the <a>term</a>
-              represents a <a>reverse property</a>:
-              <ol>
-                <li>If <var>type map</var> does not have an <code>@reverse</code>
-                  <a>entry</a>, create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li class="changed">Otherwise, if <a>term definition</a> has a
-              <a>type mapping</a> which is <code>@none</code>:
-              <ol>
-                <li>Reference the value associated with the <code>@language</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>language map</var>.</li>
-                <li>If <var>language map</var> does not have an <code>@any</code>
-                  <a>entry</a>, create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>type map</var> does not have an <code>@any</code>
-                  <a>entry</a>, create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li>Otherwise, if <a>term definition</a> has a
-              <a>type mapping</a>:
-              <ol>
-                <li>If <var>type map</var> does not have an <a>entry</a> corresponding
-                  to the <a>type mapping</a> in <a>term definition</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li>Reference the value associated with the <code>@language</code>
-              <a>entry</a> in <var>type/language map</var> using the variable
-              <var>language map</var>.</li>
-            <li class="changed">If <a>term definition</a> has both
-              a <a>language mapping</a> and a <a>direction mapping</a>:
-              <ol>
-                <li>Create a new variable <var>lang dir</var>.</li>
-                <li>If neither the <a>language mapping</a> nor the <a>direction mapping</a>
-                  are `null`, set <var>lang dir</var> to the concatenation
-                  of <a>language mapping</a> and <a>direction mapping</a>
-                  separated by an underscore (`"_"`)
-                  normalized to lower case.</li>
-                <li>Otherwise, if <a>language mapping</a> is not `null`,
-                  set <var>lang dir</var> to the <a>language mapping</a>,
-                  normalized to lower case.
-                <li>Otherwise, if <a>direction mapping</a> is not `null`,
-                  set <var>lang dir</var> to <a>direction mapping</a>
-                  preceded by an underscore (`"_"`).</li>
-                <li>Otherwise, set <var>lang dir</var> to `@null`.</li>
-              </ol>
-              <li>If <var>language map</var> does not have a <var>lang dir</var>
-                <a>entry</a>, create one and set its value to the <a>term</a>
-                being processed.</li>
-            <li>Otherwise, if <a>term definition</a> has a
-              <a>language mapping</a> (might be <code>null</code>):
-              <ol>
-                <li>If the <a>language mapping</a> equals <code>null</code>,
-                  set <var>language</var> to <code>@null</code>; otherwise set it
-                  to the <a>language mapping</a>,
-                  <span class="changed">normalized to lower case</span>.</li>
-                <li>If <var>language map</var> does not have a <var>language</var> <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li class="changed">Otherwise, if <a>term definition</a> has a
-              <a>direction mapping</a> (might be <code>null</code>):
-              <ol>
-                <li>If the <a>direction mapping</a> equals <code>null</code>,
-                  set <var>direction</var> to <code>@none</code>; otherwise set it
-                  to <a>direction mapping</a> preceded by an underscore (`"_"`).</li>
-                <li>If <var>language map</var> does not have a <var>direction</var> <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li class="changed">Otherwise, if <var>active context</var> has a
-              <a>default base direction</a>:
-              <ol>
-                <li>Initialize a variable <var>lang dir</var>
-                  with the concatenation of <a>default language</a> and <a>default base direction</a>,
-                  separate by an underscore (`"_"`),
-                  normalized to lower case.</li>
-                <li>If <var>language map</var> does not have a <var>lang dir</var> <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>language map</var> does not have an `@none` <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>type map</var> does not have an `@none` <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li>Otherwise:
-              <ol>
-                <li>If <var>language map</var> does not have a <var>default language</var> <a>entry</a>
-                  <span class="changed">(after being normalized to lower case)</span>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>language map</var> does not have an <code>@none</code>
-                  <a>entry</a>, create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>type map</var> does not have an <code>@none</code>
-                  <a>entry</a>, create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-        <li>Return <var>result</var>.</li>
-      </ol>
-    </section>
-  </section> <!-- end of Inverse Context Creation -->
-
-  <section>
-    <h2>IRI Compaction</h2>
+  <section><h2>IRI Compaction</h2>
 
     <p>This algorithm compacts an <a>IRI</a> to a <a>term</a> or
       <a>compact IRI</a>, or a <a>keyword</a> to a
@@ -3850,223 +4061,7 @@
     </section>
   </section> <!-- end of IRI Compaction -->
 
-  <section>
-    <h2>Term Selection</h2>
-
-    <p>This algorithm, invoked via the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-      makes use of an <a data-lt="active context">active context's</a>
-      <a>inverse context</a> to find the <a>term</a> that is best
-      used to <a>compact</a> an <a>IRI</a>. Other
-      information about a value associated with the <a>IRI</a> is given,
-      including which <a>container mapping</a>
-      and which <a>type mapping</a> or <a>language mapping</a> would
-      be best used to express the value.</p>
-
-    <section class="informative">
-      <h3>Overview</h3>
-
-      <p>The <a data-lt="inverse context">inverse context's</a> entry for
-        the <a>IRI</a> will be first searched according to the preferred
-        <a>container mapping</a>, in the order
-        that they are given. Amongst <a>terms</a> with a matching
-        <a>container mapping</a>, preference will be given to those
-        with a matching <a>type mapping</a> or <a>language mapping</a>,
-        over those without a <a>type mapping</a> or
-        <a>language mapping</a>. If there is no <a>term</a>
-        with a matching <a>container mapping</a> then the <a>term</a>
-        without a <a>container mapping</a> that matches the given
-        <a>type mapping</a> or <a>language mapping</a> is selected. If
-        there is still no selected <a>term</a>, then a <a>term</a>
-        with no <a>type mapping</a> or <a>language mapping</a> will
-        be selected if available. No <a>term</a> will be selected that
-        has a conflicting <a>type mapping</a> or <a>language mapping</a>.
-        Ties between <a>terms</a> that have the same
-        mappings are resolved by first choosing the shortest terms, and then by
-        choosing the lexicographically least term. Note that these ties are
-        resolved automatically because they were previously resolved when the
-        <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
-        was used to create the <a>inverse context</a>.</p>
-    </section>
-
-    <section class="algorithm">
-      <h3>Algorithm</h3>
-
-      <p>This algorithm has five required inputs. They are:
-        an <var>inverse context</var>, a <a>keyword</a> or <a>IRI</a>
-        <var>var</var>, an <a>array</a> <var>containers</var> that represents an
-        ordered list of preferred <a>container mapping</a>,
-        a <a>string</a> <var>type/language</var> that indicates whether
-        to look for a <a>term</a> with a matching <a>type mapping</a>
-        or <a>language mapping</a>, and an <a>array</a> representing
-        an ordered list of <var>preferred values</var> for the <a>type mapping</a>
-        or <a>language mapping</a> to look for.</p>
-
-      <ol>
-        <li>Initialize <var>container map</var> to the value associated with
-          <var>var</var> in the <var>inverse context</var>.</li>
-        <li>For each item <var>container</var> in <var>containers</var>:
-          <ol>
-            <li>If <var>container</var> is not an <a>entry</a> of <var>container map</var>, then
-              there is no <a>term</a> with a matching
-              <a>container mapping</a> for it, so continue to the next
-              <var>container</var>.</li>
-            <li>Initialize <var>type/language map</var> to the value associated
-              with the <var>container</var> <a>entry</a> in <var>container map</var>.</li>
-            <li>Initialize <var>value map</var> to the value associated
-              with <var>type/language</var> <a>entry</a> in <var>type/language map</var>.</li>
-            <li>For each <var>item</var> in <var>preferred values</var>:
-              <ol>
-                <li>If <var>item</var> is not an <a>entry</a> of <var>value map</var>,
-                  then there is no <a>term</a> with a matching
-                  <a>type mapping</a> or <a>language mapping</a>,
-                  so continue to the next <var>item</var>.</li>
-                <li>Otherwise, a matching term has been found, return the value
-                  associated with the <var>item</var> <a>entry</a> in
-                  <var>value map</var>.</li>
-              </ol>
-            </li>
-          </ol>
-        </li>
-        <li>No matching term has been found. Return <code>null</code>.</li>
-      </ol>
-    </section>
-
-    <section class="informative">
-      <h3>Examples</h3>
-      <p>The following examples are intended to illustrate how the term selection algorithm
-        behaves for different term definitions and values. It is not comprehensive, but
-        intended to illustrate different parts of the algorithm.</p>
-
-      <section>
-        <h4>Language Map Term</h4>
-        <p>If the term definition has <code>"@container": "@language"</code>, it will only match a
-          <a>value object</a> having no <code>@type</code>.</p>
-
-        <aside class="example" data-ignore
-               title="Term definition with language map">
-          <pre data-transform="updateExample">
-          <!--
-          {
-            "@context": {"t": {"@id": "http://example.org/t", "@container": "@language"}}
-          }
-          -->
-          </pre>
-
-          <p>The inverse context will contain the following:</p>
-
-          <pre data-transform="updateExample">
-          <!--
-          {
-            "@language": {
-              "@language": {"@none": "t"},
-              "@type": {"@none": "t"},
-              "@any": {"@none": "t"}
-            }
-          }
-          -->
-          </pre>
-        </aside>
-
-        <aside class="example" data-ignore title="Language map term with language value">
-          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
-            The algorithm will be invoked as follows:</p>
-          <dl>
-            <dt><var>containers</var></dt>
-            <dd><code>["@language", "@language@set", "@set", "@none", "@index", "@index@set"]</code></dd>
-            <dt><var>type/language</var></dt>
-            <dd><code>@language</code></dd>
-            <dt><var>preferred values</var></dt>
-            <dd><code>["en", "@none"]</code></dd>
-          </dl>
-          <p>The <var>value map</var> will be set to <code>{"@none": "t"}</code>,
-            as <var>preferred values</var> contains <code>"@none"</code>,
-            the algorithm returns <code>"t"</code> as the term to use for compaction.</p>
-        </aside>
-      </section>
-
-      <section>
-        <h4>Datatyped Term</h4>
-        <p>If the term definition has a datatype, it will only match a
-          <a>value object</a> having a matching datatype.</p>
-
-        <aside class="example" data-ignore
-               title="Term definition with datatype">
-          <pre data-transform="updateExample">
-          <!--
-          {
-            "@context": {"t": {"@id": "http://example.org/t", "@type": "http:/example.org/type"}}
-          }
-          -->
-          </pre>
-
-          <p>The inverse context will contain the following:</p>
-
-          <pre data-transform="updateExample">
-          <!--
-          {
-            "@none": {
-              "@language": {},
-              "@type": {"http:/example.org/type": "t"},
-              "@any": {"@none": "t"}
-            }
-          }
-          -->
-          </pre>
-        </aside>
-
-        <aside class="example" data-ignore title="Datatyped term with datatyped value">
-          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@value": "foo", "@type": "http:/example.org/type"}}</code>,
-            The algorithm will be invoked as follows:</p>
-          <dl>
-            <dt><var>containers</var></dt>
-            <dd><code>["@set", "@none", "@index", "@index@set"]</code></dd>
-            <dt><var>type/language</var></dt>
-            <dd><code>@type</code></dd>
-            <dt><var>preferred values</var></dt>
-            <dd><code>["http:/example.org/type", "@none"]</code></dd>
-          </dl>
-          <p>The <var>value map</var> will be set to <code>{"http:/example.org/type": "t"}</code>,
-            as <var>preferred values</var> contains <code>"http:/example.org/type"</code>,
-            the algorithm returns <code>"t"</code> as the term to use for compaction.</p>
-        </aside>
-
-        <aside class="example" data-ignore title="Datatyped term with simple value">
-          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@value": "foo"}}</code>,
-            The algorithm will be invoked as follows:</p>
-          <dl>
-            <dt><var>containers</var></dt>
-            <dd><code>["@set", "@none", "@index", "@index@set", "@language", "@language@set"]</code></dd>
-            <dt><var>type/language</var></dt>
-            <dd><code>@language</code></dd>
-            <dt><var>preferred values</var></dt>
-            <dd><code>["@null", "@none"]</code></dd>
-          </dl>
-          <p>The <var>value map</var> will be set to <code>{"@none": "t"}</code>,
-            as no key in <var>preferred values</var> matches a key in <var>value map</var>,
-            the algorithm returns <code>null</code> and no term is found.</p>
-        </aside>
-
-        <aside class="example" data-ignore title="Datatyped term with object value">
-          <p>Given the <a>entry</a> <code>{"http://example.org/t": {"@id": "http://example.org/id"}}</code>,
-            The algorithm will be invoked as follows:</p>
-          <dl>
-            <dt><var>containers</var></dt>
-            <dd><code>["@id", "@id@set", "@type", "@set@type", "@set", "@none", "@index", "@index@set"]</code></dd>
-            <dt><var>type/language</var></dt>
-            <dd><code>@type</code></dd>
-            <dt><var>preferred values</var></dt>
-            <dd><code>["@id", "@vocab", "@none"]</code></dd>
-          </dl>
-          <p>The <var>value map</var> will be set to <code>{"http:/example.org/type": "t"}</code>,
-            as no key in <var>preferred values</var> matches a key in <var>value map</var>,
-            the algorithm returns <code>null</code> and no term is found.</p>
-        </aside>
-      </section>
-    </section>
-  </section> <!-- end of Term Selection -->
-
-  <section>
-    <h2>Value Compaction</h2>
+  <section><h2>Value Compaction</h2>
 
     <p><a>Expansion</a> transforms all values into <a>expanded form</a>
       in JSON-LD. This algorithm performs the opposite operation, transforming
@@ -4187,12 +4182,12 @@
   </section> <!-- end of Value Compaction algorithm -->
 </section> <!-- end of Compaction section -->
 
+<section><h1>Flattening Algorithms</h1>
 
-<section>
-  <h1>Flattening Algorithms</h1>
+  <p>The following sections describe algorithms for flattening JSON-LD documents,
+    creating node maps, and generating blank nodes.</p>
 
-  <section>
-    <h2>Flattening Algorithm</h2>
+  <section><h2>Flattening Algorithm</h2>
 
     <p>This algorithm flattens an expanded JSON-LD document by collecting all
       <a>properties</a> of a <a>node</a> in a single <a class="changed">map</a>
@@ -4282,8 +4277,7 @@
     </section>
   </section> <!-- end of Flattening Algorithm -->
 
-  <section>
-    <h2>Node Map Generation</h2>
+  <section><h2>Node Map Generation</h2>
 
     <p>This algorithm creates a <a class="changed">map</a> <var>node map</var> holding an indexed
       representation of the <a>graphs</a> and <a>nodes</a>
@@ -4495,8 +4489,33 @@
     </section>
   </section> <!-- end of Node Map Generation -->
 
-  <section>
-    <h2>Generate Blank Node Identifier</h2>
+  <section class="changed algorithm"><h3>Merge Node Maps</h3>
+    <p>This algorithm creates a new map of <a>subjects</a> to <a>nodes</a> using all graphs
+      contained in the <var>graph map</var> created using the <a href="#node-map-generation">Node Map Generation algorithm</a>
+      to create merged <a>node objects</a> containing information defined for a given <a>subject</a>
+      in each graph contained in the <var>node map</var>.</p>
+
+    <ol>
+      <li>Create <var>result</var> as an empty <a>map</a></li>
+      <li>For each <var>graph name</var> and <var>node map</var> in <var>graph map</var>
+        and for each <var>id</var> and <var>node</var> in <var>node map</var>:
+        <ol>
+          <li>Set <var>merged node</var> to the value for <var>id</var> in <var>result</var>, initializing it
+            with a new <a>map</a> consisting of a single <a>entry</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
+          <li>For each <var>property</var> and <var>values</var> in <var>node</var>:
+            <ol>
+              <li>If <var>property</var> is a <a>keyword</a>, add <var>property</var> and values to <var>merged node</var>.</li>
+              <li>Otherwise, merge each element from <var>values</var> into the values for <var>property</var>
+                in <var>merged node</var>, initializing it to an empty <a>array</a> if necessary.</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li>Return <var>result</var>.</li>
+    </ol>
+  </section> <!-- end of Merge Node Maps-->
+
+  <section><h2>Generate Blank Node Identifier</h2>
 
     <p>This algorithm is used to generate new
       <a>blank node identifiers</a> or to
@@ -4541,45 +4560,15 @@
     </section>
   </section> <!-- end of Generate Blank Node Identifier -->
 
-  <section class="changed algorithm">
-    <h3>Merge Node Maps</h3>
-    <p>This algorithm creates a new map of <a>subjects</a> to <a>nodes</a> using all graphs
-      contained in the <var>graph map</var> created using the <a href="#node-map-generation">Node Map Generation algorithm</a>
-      to create merged <a>node objects</a> containing information defined for a given <a>subject</a>
-      in each graph contained in the <var>node map</var>.</p>
-
-    <ol>
-      <li>Create <var>result</var> as an empty <a>map</a></li>
-      <li>For each <var>graph name</var> and <var>node map</var> in <var>graph map</var>
-        and for each <var>id</var> and <var>node</var> in <var>node map</var>:
-        <ol>
-          <li>Set <var>merged node</var> to the value for <var>id</var> in <var>result</var>, initializing it
-            with a new <a>map</a> consisting of a single <a>entry</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
-          <li>For each <var>property</var> and <var>values</var> in <var>node</var>:
-            <ol>
-              <li>If <var>property</var> is a <a>keyword</a>, add <var>property</var> and values to <var>merged node</var>.</li>
-              <li>Otherwise, merge each element from <var>values</var> into the values for <var>property</var>
-                in <var>merged node</var>, initializing it to an empty <a>array</a> if necessary.</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>Return <var>result</var>.</li>
-    </ol>
-  </section> <!-- end of Merge Node Maps-->
-
 </section> <!-- end of Flattening section -->
 
-
-<section>
-  <h1>RDF Serialization/Deserialization Algorithms</h1>
+<section><h1>RDF Serialization/Deserialization Algorithms</h1>
 
   <p>This section describes algorithms to deserialize a JSON-LD document to an
     <a>RDF dataset</a> and vice versa. The algorithms are designed for in-memory
     implementations with random access to <a class="changed">map</a> elements.</p>
 
-  <section>
-    <h2>Deserialize JSON-LD to RDF Algorithm</h2>
+  <section><h2>Deserialize JSON-LD to RDF Algorithm</h2>
 
     <p>This algorithm deserializes a JSON-LD document to an <a>RDF dataset</a>.
       Please note that RDF does not allow a <a>blank node</a> to be used
@@ -4736,8 +4725,7 @@
     </section>
   </section> <!-- end of Deserialize JSON-LD to RDF Algorithm -->
 
-  <section>
-    <h3>Object to RDF Conversion</h3>
+  <section><h3>Object to RDF Conversion</h3>
 
     <p>This algorithm takes a <a>node object</a>, <a class="changed">list object</a>, or <a>value object</a>
       and transforms it into an <a>resource</a> to be used as the <a>object</a> of an <a>triple</a>.
@@ -4871,8 +4859,7 @@
     </section>
   </section> <!-- end of Object to RDF Conversion -->
 
-  <section>
-    <h3>List to RDF Conversion</h3>
+  <section><h3>List to RDF Conversion</h3>
 
     <p>List Conversion is the process of taking a <a>list object</a>
       and transforming it into an
@@ -4926,8 +4913,7 @@
     </section>
   </section> <!-- end of List to RDF -->
 
-  <section class="algorithm">
-    <h2>Serialize RDF as JSON-LD Algorithm</h2>
+  <section class="algorithm"><h2>Serialize RDF as JSON-LD Algorithm</h2>
 
     <p>This algorithm serializes an <a>RDF dataset</a> consisting of a
       <a>default graph</a> and zero or more
@@ -5196,8 +5182,7 @@
     </section>
   </section> <!-- end of Serialize RDF as JSON-LD Algorithm -->
 
-  <section>
-    <h2>RDF to Object Conversion</h2>
+  <section><h2>RDF to Object Conversion</h2>
 
     <p>This algorithm transforms an RDF literal to a JSON-LD <a>value object</a>
       and a RDF <a>blank node</a> or <a>IRI</a> to an JSON-LD <a>node object</a>.</p>
@@ -5325,8 +5310,7 @@
     </section>
   </section> <!-- end of RDF to Object Conversion -->
 
-  <section>
-    <h2>Data Round Tripping</h2>
+  <section><h2>Data Round Tripping</h2>
 
     <p>When <a href="#deserialize-json-ld-to-rdf-algorithm">deserializing JSON-LD to RDF</a>
       JSON-native <a>numbers</a> are automatically
@@ -5498,8 +5482,7 @@
   </section> <!-- end of Data Round Tripping -->
 </section>
 
-<section>
-  <h2>The Application Programming Interface</h2>
+<section><h2>The Application Programming Interface</h2>
 
   <p>This API provides a clean mechanism that enables developers to convert
     JSON-LD data into a variety of output formats that are often easier to
@@ -5513,8 +5496,7 @@
   <p class="note">Interfaces are marked `[Exposed=(Window,Worker)]`,
     but the API is also intended for use outside of a browser context.</p>
 
-  <section>
-    <h3>The <dfn>JsonLdProcessor</dfn> Interface</h3>
+  <section><h3>The <dfn>JsonLdProcessor</dfn> Interface</h3>
 
     <p>The <a>JsonLdProcessor</a> interface is the high-level programming structure
       that developers use to access the JSON-LD transformation methods.</p>
@@ -5818,8 +5800,7 @@
       or an array of <a class="changed">maps</a> and <a>strings</a>.</p>
   </section>
 
-  <section>
-    <h3>RDF Dataset Interfaces</h3>
+  <section><h3>RDF Dataset Interfaces</h3>
 
     <p>The <dfn>RdfDataset</dfn> interface describes operations on an <a>RDF dataset</a>
       used by the <a data-link-for="JsonLdProcessor">fromRdf()</a>
@@ -5952,8 +5933,7 @@
     </dl>
   </section> <!-- end of RdfDataset -->
 
-  <section>
-    <h3>The JsonLdOptions Type</h3>
+  <section><h3>The JsonLdOptions Type</h3>
 
     <p>The <dfn>JsonLdOptions</dfn> type is used to pass various options to the
       <a>JsonLdProcessor</a> methods.</p>
@@ -6059,8 +6039,7 @@
     </dl>
   </section> <!-- end JsonLdOptions -->
 
-  <section>
-    <h3>Remote Document and Context Retrieval</h3>
+  <section><h3>Remote Document and Context Retrieval</h3>
 
     <p>Users of an API implementation can utilize a callback to control how
       remote documents and contexts are retrieved.
@@ -6218,8 +6197,7 @@
     </section>
   </section> <!-- end of Remote Document and Context Retrieval -->
 
-  <section class="changed">
-    <h2>HTML Content Algorithms</h2>
+  <section class="changed"><h2>HTML Content Algorithms</h2>
     <p class="note">This section describes optional features available
       with a <a data-link-for="JsonLdOptions">documentLoader</a> supporting HTML script extraction.</p>
     <p>Implementations of a <a data-link-for="JsonLdOptions">documentLoader</a> MAY support extracting JSON-LD from
@@ -6317,8 +6295,7 @@
     </section>
   </section>
 
-  <section>
-    <h3>Error Handling</h3>
+  <section><h3>Error Handling</h3>
 
     <p>This section describes the datatype definitions
       used within the JSON-LD API for error handling.</p>
@@ -6539,33 +6516,28 @@
   </section> <!-- end of Error Handling -->
 </section> <!-- end of The Application Programming Interfaces -->
 
-<section id="security">
-  <h3>Security Considerations</h3>
+<section id="security"><h3>Security Considerations</h3>
   <p>See, <a data-cite="JSON-LD11#security">Security Considerations</a> in [[JSON-LD11]].</p>
 </section>
 
-<section id="privacy">
-  <h3>Privacy Considerations</h3>
+<section id="privacy"><h3>Privacy Considerations</h3>
   <p>See, <a data-cite="JSON-LD11#privacy">Privacy Considerations</a> in [[JSON-LD11]].</p>
 </section>
 
-<section id="internationalization">
-  <h3>Internationalization Considerations</h3>
+<section id="internationalization"><h3>Internationalization Considerations</h3>
   <p>See, <a data-cite="JSON-LD11#internationalization">Internationalization Considerations</a> in [[JSON-LD11]].</p>
 </section>
 
 <section id="idl-index" class="appendix informative">
 </section>
 
-<section class="appendix informative preserve">
-  <h2>Open Issues</h2>
+<section class="appendix informative preserve"><h2>Open Issues</h2>
   <p>The following is a list of issues open at the time of publication.</p>
   <p class="issue" data-number="76">More compact @prefix.</p>
   <p class="issue" data-number="94">Expansion concept "key's term definition" is unclear with compact IRI keys.</p>
 </section>
 
-<section class="appendix informative">
-  <h2>Changes since 1.0 Recommendation of 16 January 2014</h2>
+<section class="appendix informative"><h2>Changes since 1.0 Recommendation of 16 January 2014</h2>
   <ul>
     <li>The <a href="#expansion-algorithm">Expansion Algorithm</a>
       has a special <a>processing mode</a>, based on
@@ -6629,8 +6601,7 @@
   <p>Additionally, see <a href="#changes-from-cg" class="sectionRef"></a>.</p>
 </section>
 
-<section class="appendix informative" id="changes-from-cg">
-  <h2>Changes since JSON-LD Community Group Final Report</h2>
+<section class="appendix informative" id="changes-from-cg"><h2>Changes since JSON-LD Community Group Final Report</h2>
   <ul>
     <li><a>Lists</a> may now have items which are themselves <a>lists</a>.</li>
     <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
