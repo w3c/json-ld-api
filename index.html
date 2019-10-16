@@ -276,7 +276,80 @@
     text-decoration: none;
     color: #666;
   }
+
+  .algorithm summary::before {
+    content: "// ";
+  }
+
+  .algorithm summary {
+    padding-left: 2em;
+    font-style: italic;
+  }
 </style>
+<script>
+  // functions related to foldable algorithm parts
+
+  (function() {
+    function beforePrint() {
+      console.debug("opening details before printing");
+      var algoDetails = document.querySelectorAll('.algorithm details');
+      var c = 0;
+      for (var dt of algoDetails) {
+
+        if (!dt.open) {
+          dt.setAttribute("data-was-closed", "");
+          dt.open = true;
+          c += 1;
+        }
+      }
+      console.debug(c, "details opended before printing");
+    }
+
+    function afterPrint() {
+      console.debug("closing details after printing");
+      var algoDetails = document.querySelectorAll('.algorithm details');
+      var c = 0;
+      for (var dt of algoDetails) {
+        if (dt.hasAttribute("data-was-closed")) {
+          dt.removeAttribute("data-was-closed");
+          dt.open = false;
+          c += 1;
+        }
+      }
+      console.debug(c, "details closed after printing");
+    }
+
+    // using matchMedia
+    window.matchMedia('print').addListener(function (mql) {
+      if (mql.matches) {
+        beforePrint();
+      } else {
+        afterPrint();
+      }
+    });
+    // using events
+    window.addEventListener('beforeprint', beforePrint);
+    window.addEventListener('afterprint', afterPrint);
+    window.addEventListener('load', function() {
+      console.debug("coucou");
+      document.getElementById('fold-all-algorithms').addEventListener('click', function() {
+        var algoDetails = document.querySelectorAll('.algorithm details');
+        for (var dt of algoDetails) {
+          dt.open = false;
+        }
+        console.debug("fold");
+      });
+      document.getElementById('unfold-all-algorithms').addEventListener('click', function() {
+        var algoDetails = document.querySelectorAll('.algorithm details');
+        for (var dt of algoDetails) {
+          dt.open = true;
+        }
+        console.debug("unfold");
+      });
+      console.debug("coucou");
+    });
+  })();
+</script>
 </head>
 
 <body>
@@ -355,6 +428,20 @@
   <section class="informative">
     <h2>Typographical conventions</h2>
     <div data-include="common/typographical-conventions.html"></div>
+
+    <section>
+      <h3>Summarized algorithm sections</h3>
+      <p>In order to make the algorithms easier to read,
+        some parts of them are initially hidden and replaced by a short summary.
+        Clicking on that summary will toggle between detailed and summarised view.
+        Using the buttons below, you can display or hide the details in all algorithms at once.
+        Note that, when printing, all details are always shown.
+      </p>
+      <p>
+        <button id="unfold-all-algorithms">Show all details in all algorithms</button>
+        <button id="fold-all-algorithms">Hide all details in all algorithms</button>
+      </p>
+    </section>
   </section>
 
   <section class="normative">
@@ -1099,7 +1186,7 @@
           For each item <var>context</var> in <var>local context</var>:
           <ol>
             <li>If <var>context</var> is <code>null</code>:
-              <ol>
+              <details><summary>clear context (unless protected)</summary><ol>
                 <li class="changed">If <var>override protected</var> is <code>false</code> and <var>active context</var>
                   contains any <a>protected</a> <a>term definitions</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid context nullification</a>
@@ -1112,10 +1199,10 @@
                   <span class="note">In [[[JSON-LD10]]], the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
                     in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
-                  </ol>
+              </ol></details>
             </li>
-            <li>If <var>context</var> is a <a>string</a>,
-              <ol>
+            <li>If <var>context</var> is a <a>string</a>:
+              <details><summary>dereference and process</summary><ol>
                 <li>Set <var>context</var> to the result of resolving <var>value</var> against
                   the base IRI which is established as specified in
                   <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
@@ -1155,14 +1242,14 @@
                   passing <var>result</var> for <var>active context</var>,
                   <var>context</var> for <var>local context</var>, and <span class="changed">a copy of</span> <var>remote contexts</var>.</li>
                 <li>Continue with the next <var>context</var>.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> is not a <a class="changed">map</a>, an
               <a data-link-for="JsonLdErrorCode">invalid local context</a>
               error has been detected and processing is aborted.</li>
             <li>Otherwise, <var>context</var> is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.</li>
             <li class="changed">If <var>context</var> has an <code>@version</code> <a>entry</a>:
-              <ol>
+              <details><summary>set processing mode</summary><ol>
                 <li>If the associated value is not <code>1.1</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
                   has been detected, and processing is aborted.</li>
@@ -1172,10 +1259,10 @@
                   error has been detected and processing is aborted.</li>
                 <li>Set <a>processing mode</a>,
                   to <code>json-ld-1.1</code>, if not already set.</li>
-              </ol>
+              </ol></details>
             </li>
             <li class="changed">If <var>context</var> has an <code>@import</code> <a>entry</a>:
-              <ol>
+              <details><summary>merge imported context</summary><ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
@@ -1217,11 +1304,11 @@
                 <li>Set <var>context</var> to the result of merging <var>context</var>
                   into <var>import context</var>, replacing common entries
                   with those from <var>context</var>.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> has an <code>@base</code> <a>entry</a> and <var>remote contexts</var> is empty, i.e., the currently
               being processed context is not a remote context:
-              <ol>
+              <details><summary>reset <a>base IRI</a></summary><ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@base</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove the
@@ -1236,10 +1323,10 @@
                 <li>Otherwise, an
                   <a data-link-for="JsonLdErrorCode">invalid base IRI</a>
                   error has been detected and processing is aborted.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> has an <code>@vocab</code> <a>entry</a>:
-              <ol>
+              <details><summary>reset <a>vocabulary mapping</a></summary><ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@vocab</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <a>null</a>, remove
@@ -1260,10 +1347,10 @@
                   error has been detected and processing is aborted.
                   <div class="note">The use of <a>blank node identifiers</a> to value for <code>@vocab</code> is obsolete,
                     and may be removed in a future version of JSON-LD.</div></li>
-              </ol>
+              </ol></details>
             </li>
             <li>If <var>context</var> has an <code>@language</code> <a>entry</a>:
-              <ol>
+              <details><summary>reset <a>default language</a></summary><ol>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@language</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove
@@ -1292,10 +1379,10 @@
                   <var>value</var>. If it is not `null`, `"ltr"`, or `"rtl"`, an
                   <a data-link-for="JsonLdErrorCode">invalid base direction</a>
                   error has been detected and processing is aborted.</li>
-              </ol>
+              </ol></details>
             </li>
             <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
-              <ol>
+              <details><summary>check its validity</summary><ol>
                 <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
@@ -1304,7 +1391,7 @@
                   error has been detected and processing is aborted.</li>
                 <li>Otherwise, <a>previous context</a> was determined before,
                   and no further processing is necessary.</li>
-              </ol>
+              </ol></details>
             </li>
             <li>Create a <a class="changed">map</a> <var>defined</var> to keep
               track of whether or not a <a>term</a> has already been defined
