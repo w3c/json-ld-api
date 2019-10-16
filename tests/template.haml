@@ -7,7 +7,7 @@
     %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
     %title
       = manifest['name']
-    %link{rel: "alternate", href: json_file}
+    %link{rel: "alternate", href: "#{json_file}"}
     %link{rel: "stylesheet", href: "https://www.w3.org/StyleSheets/TR/base"}
   %body
     %p
@@ -16,7 +16,7 @@
     %h1<=manifest['name']
     :markdown
       This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at
-      [#{json_file}](json_file). The manifest vocabulary is described in the [JSON-LD Test Vocabulary](vocab.html) ([JSON-LD](vocab.jsonld), [Turtle](vocab.ttl)) and is based on the [RDF Test Vocabulary](http://www.w3.org/TR/2014/NOTE-rdf11-testcases-20140225/).
+      [#{json_file}](#{json_file}). The manifest vocabulary is described in the [JSON-LD Test Vocabulary](vocab.html) ([JSON-LD](vocab.jsonld), [Turtle](vocab.ttl)) and is based on the [RDF Test Vocabulary](http://www.w3.org/TR/2014/NOTE-rdf11-testcases-20140225/).
 
       The JSON-LD Test Suite is a set of tests that can
       be used to verify JSON-LD Processor conformance to the set of specifications
