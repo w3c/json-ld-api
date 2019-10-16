@@ -1099,7 +1099,7 @@
       "purpose": "@propagate is invalid in 1.0",
       "input": "expand/c029-in.jsonld",
       "expect": "invalid context member",
-      "option": {"specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"}
     }, {
       "@id": "#tc030",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -1476,8 +1476,9 @@
    }, {
       "@id": "#te042",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-      "name": "Keywords may not be redefined",
+      "name": "Keywords may not be redefined in 1.0",
       "purpose": "Verifies that an exception is raised on expansion when processing an invalid context attempting to define @container on a keyword",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/e042-in.jsonld",
       "expect": "keyword redefinition"
     }, {
@@ -1577,18 +1578,10 @@
       "expect": "invalid reverse property",
       "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tep01",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "Processing mode is implicitly json-ld-1.0",
-      "purpose": "If not specified using processingMode, processing mode is taken as json-ld-1.0",
-      "option": {"specVersion": "json-ld-1.1"},
-      "input": "expand/ep01-in.jsonld",
-      "expect": "invalid container mapping"
-    }, {
       "@id": "#tep02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "processingMode json-ld-1.0 conflicts with @version: 1.1",
-      "purpose": "If not specified using processingMode, processing mode is taken as json-ld-1.0",
+      "purpose": "If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.",
       "input": "expand/ep02-in.jsonld",
       "expect": "processing mode conflict",
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"}
@@ -2605,7 +2598,7 @@
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@type: @none is illegal in 1.0.",
       "purpose": "@type: @none is illegal in json-ld-1.0.",
-      "option": {"specVersion": "json-ld-1.1"},
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/tn01-in.jsonld",
       "expect": "invalid type mapping"
     }, {

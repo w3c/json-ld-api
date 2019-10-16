@@ -3732,6 +3732,8 @@ invalid context member
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
 </dl>
 </dd>
 </dl>
@@ -4922,7 +4924,7 @@ invalid set or list object
 </dl>
 </dd>
 <dt id='te042'>
-Test te042 Keywords may not be redefined
+Test te042 Keywords may not be redefined in 1.0
 </dt>
 <dd>
 <dl class='entry'>
@@ -4939,6 +4941,15 @@ Test te042 Keywords may not be redefined
 <dt>expect</dt>
 <dd>
 keyword redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -5294,34 +5305,6 @@ invalid reverse property
 </dd>
 </dl>
 </dd>
-<dt id='tep01'>
-Test tep01 Processing mode is implicitly json-ld-1.0
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tep01</dd>
-<dt>Type</dt>
-<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
-<dt>Purpose</dt>
-<dd>If not specified using processingMode, processing mode is taken as json-ld-1.0</dd>
-<dt>input</dt>
-<dd>
-<a href='expand/ep01-in.jsonld'>expand/ep01-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-invalid container mapping
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
 <dt id='tep02'>
 Test tep02 processingMode json-ld-1.0 conflicts with @version: 1.1
 </dt>
@@ -5332,7 +5315,7 @@ Test tep02 processingMode json-ld-1.0 conflicts with @version: 1.1
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>If not specified using processingMode, processing mode is taken as json-ld-1.0</dd>
+<dd>If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/ep02-in.jsonld'>expand/ep02-in.jsonld</a>
@@ -8968,6 +8951,8 @@ invalid type mapping
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
 </dl>
 </dd>
 </dl>
