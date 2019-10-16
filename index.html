@@ -91,7 +91,7 @@
           url:        "https://digitalbazaar.com/",
           company:    "Digital Bazaar",
           companyURL: "https://digitalbazaar.com/",
-          note:       "v1.0" },
+          note:       "v1.0 and v1.1" },
         { name:       "Gregg Kellogg",
           url:        "https://greggkellogg.net/",
           w3cid:      "44770",
@@ -455,10 +455,11 @@
   <p class="changed">JSON-LD 1.1 introduces new features that are
     compatible with [[[JSON-LD10]]] [[JSON-LD10]],
     but if processed by a JSON-LD 1.0 processor may produce different results.
-    In order to detect this JSON-LD 1.1 requires that the <a>processing
-    mode</a> be explicitly set to <code>json-ld-1.1</code>, either through the
-    <a data-link-for="JsonLdOptions">processingMode</a> API option, or using the
-    <code>@version</code> <a>map entry</a> within a <a>context</a>.</p>
+    Processors default to `json-ld-1.1`, unless the
+    <a data-link-for="JsonLdOptions">processingMode</a> API option
+    is explicitly set to `json-ld-1.0`.
+    Publishers are encouraged to use the <code>@version</code> <a>map entry</a> within a <a>context</a>
+    set to `1.1` to ensure that JSON-LD 1.0 processors will not misinterpret JSON-LD 1.1 features.</p>
 
   <p>There are four major types of transformation that are discussed in this
     document: expansion, compaction, flattening, and RDF serialization/deserialization.</p>
@@ -918,6 +919,18 @@
     <a href="#serialize-rdf-as-json-ld-algorithm">serialize RDF as JSON-LD</a> as
     defined in this specification.</p>
 
+  <p class="changed">Unless specified using
+    <a data-link-for="JsonLdOptions">processingMode</a> API option,
+    the <a>processing mode</a> is set using the <code>@version</code> <a>entry</a>
+    in a local <a>context</a> and
+    affects the behavior of algorithms including <a>expansion</a> and <a>compaction</a>.
+    Once set, it is an error to attempt to change to a different processing mode,
+    and processors MUST generate,
+    a <a data-link-for="JsonLdErrorCode">processing mode conflict</a>
+    error and abort further processing.
+    If unspecified, processors MUST set <a>processing mode</a> to `json-ld-1.1`
+    on the first attempt to use a JSON-LD 1.1 feature.</p>
+
   <p>The algorithms in this specification are generally written with more concern for clarity
     than efficiency. Thus, <a>JSON-LD Processors</a> may
     implement the algorithms given in this specification in any way desired,
@@ -1009,12 +1022,6 @@
         <a class="changed">map</a>, a <a>string</a>, or an <a>array</a> containing
         a combination of the two. Finally we process each <a>context</a> contained
         in the <a>local context</a> <a>array</a> as follows.</p>
-
-      <p class="changed">Unless specified using
-        <a data-link-for="JsonLdOptions">processingMode</a> API option,
-        the <a>processing mode</a> is set using the <code>@version</code> <a>entry</a>
-        in a local <a>context</a> and
-        affects the behavior of algorithms including <a>expansion</a> and <a>compaction</a>.</p>
 
       <p>If <a>context</a> is a <a>string</a>, it represents a reference to
         a remote context. We dereference the remote context and replace <a>context</a>
@@ -1167,18 +1174,19 @@
                   an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
                   has been detected, and processing is aborted.</li>
                 <li>If <a>processing mode</a>
-                  is set to <code>json-ld-1.0</code>,
+                  is set to `json-ld-1.0`,
                   a <a data-link-for="JsonLdErrorCode">processing mode conflict</a>
                   error has been detected and processing is aborted.</li>
                 <li>Set <a>processing mode</a>,
-                  to <code>json-ld-1.1</code>, if not already set.</li>
+                  to `json-ld-1.1`, if not already set.</li>
               </ol>
             </li>
             <li class="changed">If <var>context</var> has an <code>@import</code> <a>entry</a>:
               <ol>
-                <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
+                <li>If <a>processing mode</a> is `json-ld-1.0`,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
-                  error has been detected and processing is aborted.</li>
+                  error has been detected and processing is aborted.
+                  Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
                 <li>Otherwise, if its value is not a <a>string</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid @import value</a>
                   error has been detected and processing is aborted.</li>
@@ -1283,6 +1291,10 @@
             </li>
             <li class="changed">If <var>context</var> has an <code>@direction</code> <a>entry</a>:
               <ol>
+                <li>If <a>processing mode</a> is `json-ld-1.0`,
+                  an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
+                  error has been detected and processing is aborted.
+                  Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@direction</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove
@@ -1296,9 +1308,10 @@
             </li>
             <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
               <ol>
-                <li>If <a>processing mode</a> is <code>json-ld-1.0</code>,
+                <li>If <a>processing mode</a> is `json-ld-1.0`,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
-                  error has been detected and processing is aborted.</li>
+                  error has been detected and processing is aborted.
+                  Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
                 <li>Otherwise, if its value is not <a>boolean</a> <code>true</code> or <code>false</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @propagate value</a>
                   error has been detected and processing is aborted.</li>
@@ -1397,9 +1410,12 @@
           is now being created but is not yet complete.</li>
         <li>Initialize <var>value</var> to a copy of the value associated with the <a>entry</a>
           <var>term</var> in <var>local context</var>.</li>
-        <li class="changed">If <a>processing mode</a>
-          is <code>json-ld-1.1</code>
-          and <var>term</var> is <code>@type</code>, <var>value</var>
+        <li class="changed">If <var>term</var> is `@type`,
+          and <a>processing mode</a> is `json-ld-1.0`,
+          a <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
+          been detected and processing is aborted.
+          Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.
+          At this point, <var>value</var>
           MUST be a <a>map</a> with only the entry <code>@container</code>
           and value <code>@set</code>
           and optional entry `@protected`.
@@ -1429,7 +1445,12 @@
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
         <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
         <li class="changed">If the <code>@protected</code> entry in <var>value</var>
-          is <code>true</code>, or there is no <code>@protected</code> entry in <var>value</var>
+          is <code>true</code> set the <a>protected</a> in <var>definition</var> to true.
+          If <a>processing mode</a> is `json-ld-1.0`,
+          an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
+          has been detected and processing is aborted.
+          Set <a>processing mode</a>, to `json-ld-1.1`, if not already set. </li>
+        <li class="changed">Otherwise, if there is no <code>@protected</code> entry in <var>value</var>
           and the <var>protected</var> parameter is <code>true</code>,
           set the <a>protected</a> in <var>definition</var> to true.</li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@type</code>:
@@ -1442,11 +1463,16 @@
               <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
               <var>active context</var>, <var>type</var> for <var>value</var>,
               <code>true</code> for <var>vocab</var>,
-              <var>local context</var>, and <var>defined</var>. If the expanded <var>type</var> is
+              <var>local context</var>, and <var>defined</var>.</li>
+            <li class="changed">If the expanded <var>type</var> is
+              `@json` or `@none`, and <a>processing mode</a> is `json-ld-1.0`,
+              an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
+              error has been detected and processing is aborted.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
+            <li>Otherwise, if the expanded <var>type</var> is
               neither <code>@id</code>, nor <code>@vocab</code>,
-              <span class="changed">nor, if <a>processing mode</a> is <code>json-ld-1.1</code>, <code>@json</code> nor <code>@none</code>,</span>
-              nor an <a>absolute IRI</a>, an
-              <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
+              nor an <a>absolute IRI</a>,
+              an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set the <a>type mapping</a> for <var>definition</var> to <var>type</var>.</li>
           </ol>
@@ -1564,8 +1590,8 @@
               <code>@index</code>,
               <code>@language</code>,
               <code>@list</code>,
-              <code>@set</code>, or
-              <code>@type</code>.
+              <code>@set</code>,
+              <code class="changed">@type</code>,
               <span class="changed">
                 or an <a>array</a> containing exactly any one of those
                 keywords, an <a>array</a> containing <code>@graph</code> and
@@ -1578,11 +1604,11 @@
               Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid container mapping</a>
               has been detected and processing is aborted.</li>
-            <li class="changed">If <a>processing mode</a>
-              is <code>json-ld-1.0</code> and the container value
-              is <code>@graph</code>, <code>@id</code>, or <code>@type</code>, or is otherwise not a <a>string</a>, an
-              <a data-link-for="JsonLdErrorCode">invalid container mapping</a>
-              has been detected and processing is aborted.</li>
+            <li class="changed">If the container value
+              is <code>@graph</code>, <code>@id</code>, or <code>@type</code>, or is otherwise not a <a>string</a>,
+              generate an <a data-link-for="JsonLdErrorCode">invalid container mapping</a>
+              error and abort processing if <a>processing mode</a> is `json-ld-1.0`.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
             <li>Set the <a>container mapping</a> of <var>definition</var> to
               <var>container</var>.</li>
             <li class="changed">If <a>container mapping</a> is `@type`:
@@ -1597,10 +1623,11 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@index</code>:
           <ol>
-            <li>If <a>processing mode</a> is <code>json-ld-1.0</code> or
+            <li>If <a>processing mode</a> is `json-ld-1.0` or
               <a>container mapping</a> does not include <code>@index</code>,
               an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
-              has been detected and processing is aborted.</li>
+              has been detected and processing is aborted.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
             <li>Initialize <var>index</var> to the value associated with the
               <code>@index</code> <a>entry</a>, which MUST a <a>string</a> expanding to an <a>absolute IRI</a>.
               Otherwise, an
@@ -1611,9 +1638,10 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@context</code>:
           <ol>
-            <li>If <a>processing mode</a> is <code>json-ld-1.0</code>, an
+            <li>If <a>processing mode</a> is `json-ld-1.0`, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
-              has been detected and processing is aborted.</li>
+              has been detected and processing is aborted.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
             <li>Initialize <var>context</var> to the value associated with the
               <code>@context</code> <a>entry</a>, which is treated as a <var>local context</var>.</li>
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
@@ -1659,9 +1687,10 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@nest</code>:
           <ol>
-            <li>If <a>processing mode</a> is <code>json-ld-1.0</code>, an
+            <li>If <a>processing mode</a> is `json-ld-1.0`, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
-              has been detected and processing is aborted.</li>
+              has been detected and processing is aborted.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
             <li>Initialize <a>nest value</a> in <var>definition</var> to the value associated with the
               <code>@nest</code> <a>entry</a>, which MUST be a <a>string</a> and
               MUST NOT be a keyword other than <code>@nest</code>. Otherwise, an
@@ -1671,10 +1700,11 @@
         </li>
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@prefix</code>:
           <ol>
-            <li>If <a>processing mode</a> is <code>json-ld-1.0</code>, or if
+            <li>If <a>processing mode</a> is `json-ld-1.0`, or if
               <var>term</var> contains a colon (<code>:</code>), an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
-              has been detected and processing is aborted.</li>
+              has been detected and processing is aborted.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
             <li>Initialize the <a>prefix flag</a> to the value associated with the
               <code>@prefix</code> <a>entry</a>, which MUST be a <a>boolean</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @prefix value</a>
@@ -2348,9 +2378,13 @@
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
                 <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
-                  <span class="changed">other than `@included` or `@type`</span>,
+                  <span class="changed">other than `@included` or `@type`
+                  (unless <a>processing mode</a> is `json-ld-1.0`)</span>,
                   a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
+                <li class="changed">If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
+                  for `@included` or `@type`.
+                  Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
                   <var>value</var> is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid @id value</a>
@@ -2398,38 +2432,49 @@
                     and {{JsonLdOptions/ordered}} flags</span>,
                   <span class="changed">
                     ensuring that <var>expanded value</var> is an <a>array</a> of one or more <a>maps</a></span>.</li>
-                <li class="changed">If <var>expanded property</var> is `@included`
-                  and <a>processing mode</a> is `json-ld-1.1`,
-                  set <var>expanded value</var> to the result of using
-                  this algorithm recursively passing <var>active context</var>,
-                  <var>active property</var>, <var>value</var> for <var>element</var>,
-                  and the {{JsonLdOptions/frameExpansion}}
-                  and {{JsonLdOptions/ordered}} flags,
-                  ensuring that the result is an <a>array</a>.
-                  If any element of <var>included result</var> is not a <a>node object</a>,
-                  an <a data-link-for="JsonLdErrorCode">invalid @included value</a>
-                  error has been detected and processing is aborted.
-                  If <var>result</var> already has an entry for `@include`,
-                  prepend the value of `@include` in <var>result</var> to <var>expanded value</var>.</li>
-                <li>Otherwise, if <var>expanded property</var> is <code>@value</code>,
-                  <span class="changed"><a>processing mode</a> is <code>json-ld-1.1</code>, and
-                    <var>input type</var> is <code>@json</code>,
-                    set <var>expanded value</var> to <var>value</var>.
-                    Otherwise, if</span>
-                  <var>value</var> is not a <a>scalar</a> or <code>null</code>, an
-                  <a data-link-for="JsonLdErrorCode">invalid value object value</a>
-                  error has been detected and processing is aborted. Otherwise,
-                  set <var>expanded value</var> to <var>value</var>. If <var>expanded value</var>
-                  is <code>null</code>, set the <code>@value</code>
-                  <a>entry</a> of <var>result</var> to <code>null</code> and continue with the
-                  next <var>key</var> from <var>element</var>. Null values need to be preserved
-                  in this case as the meaning of an <code>@type</code> <a>entry</a> depends
-                  on the existence of an <code>@value</code> <a>entry</a>.
-                  <span class="changed">
-                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
-                    may also be an empty <a>map</a> or an array of
-                    <a>scalar</a> values. <var>expanded value</var> will be <a>null</a>, or an
-                    <a>array</a> of one or more <a>scalar</a> values.</span></li>
+                <li class="changed">If <var>expanded property</var> is `@included`:
+                  <ol>
+                    <li>If <a>processing mode</a> is `json-ld-1.0`,
+                      continue with the next <var>key</var> from <var>element</var>.
+                      Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
+                    <li>Set <var>expanded value</var> to the result of using
+                      this algorithm recursively passing <var>active context</var>,
+                      <var>active property</var>, <var>value</var> for <var>element</var>,
+                      and the {{JsonLdOptions/frameExpansion}}
+                      and {{JsonLdOptions/ordered}} flags,
+                      ensuring that the result is an <a>array</a>.</li>
+                    <li>If any element of <var>included result</var> is not a <a>node object</a>,
+                      an <a data-link-for="JsonLdErrorCode">invalid @included value</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>If <var>result</var> already has an entry for `@include`,
+                      prepend the value of `@include` in <var>result</var> to <var>expanded value</var>.</li>
+                  </ol>
+                </li>
+                <li>Otherwise, if <var>expanded property</var> is <code>@value</code>:
+                  <ol>
+                    <li class="changed">If <var>input type</var> is <code>@json</code>,
+                      set <var>expanded value</var> to <var>value</var>.
+                      If <a>processing mode</a> is `json-ld-1.0`,
+                      an <a data-link-for="JsonLdErrorCode">invalid value object value</a>
+                      error has been detected and processing is aborted.
+                      Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
+                    <li>Otherwise, if <var>value</var> is not a <a>scalar</a> or <code>null</code>,
+                      an <a data-link-for="JsonLdErrorCode">invalid value object value</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Otherwise, set <var>expanded value</var> to <var>value</var>.</li>
+                    <li>If <var>expanded value</var>
+                      is <code>null</code>, set the <code>@value</code>
+                      <a>entry</a> of <var>result</var> to <code>null</code> and continue with the
+                      next <var>key</var> from <var>element</var>. Null values need to be preserved
+                      in this case as the meaning of an <code>@type</code> <a>entry</a> depends
+                      on the existence of an <code>@value</code> <a>entry</a>.</li>
+                    <li class="changed">
+                      When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
+                      may also be an empty <a>map</a> or an array of
+                      <a>scalar</a> values. <var>expanded value</var> will be <a>null</a>, or an
+                      <a>array</a> of one or more <a>scalar</a> values.</li>
+                  </ol>
+                </li>
                 <li>If <var>expanded property</var> is <code>@language</code> and
                   <var>value</var> is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
@@ -2445,15 +2490,21 @@
                     <a>array</a> of one or more <a>string</a> values.</span>
                   <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
                 </li>
-                <li class="changed">If <var>expanded property</var> is <code>@direction</code> and
-                  <var>value</var> is neither `"ltr"` nor `"rtl"`, an
-                  <a data-link-for="JsonLdErrorCode">invalid base direction</a>
-                  error has been detected and processing is aborted.
-                  Otherwise, set <var>expanded value</var> to <var>value</var>.
-                  When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
-                  may also be an empty <a>map</a> or an array of zero or
-                  <a>strings</a>. <var>expanded value</var> will be an
-                  <a>array</a> of one or more <a>string</a> values.</li>
+                <li class="changed">If <var>expanded property</var> is <code>@direction</code>:
+                  <ol>
+                    <li>If <a>processing mode</a> is `json-ld-1.0`,
+                      continue with the next <var>key</var> from <var>element</var>.
+                      Otherwise, set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
+                    <li>If <var>value</var> is neither `"ltr"` nor `"rtl"`, an
+                      <a data-link-for="JsonLdErrorCode">invalid base direction</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Otherwise, set <var>expanded value</var> to <var>value</var>.</li>
+                    <li>When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
+                      may also be an empty <a>map</a> or an array of zero or
+                      <a>strings</a>. <var>expanded value</var> will be an
+                      <a>array</a> of one or more <a>string</a> values.</li>
+                  </ol>
+                </li>
                 <li>If <var>expanded property</var> is <code>@index</code> and
                   <var>value</var> is not a <a>string</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid @index value</a>
@@ -2528,6 +2579,7 @@
                 <li class="changed">If <var>expanded property</var> is <code>@nest</code>,
                   add <var>key</var> to <var>nests</var>, initializing it to an empty <a>array</a>,
                   if necessary.
+                  Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.
                   Continue with the next <var>key</var> from <var>element</var>.</li>
                 <li class="changed">When the {{JsonLdOptions/frameExpansion}} flag is set,
                   if <var>expanded property</var> is any other
@@ -2942,7 +2994,7 @@
               associated with <var>prefix</var> and <var>suffix</var>.
               <p class="ednote">A more conservative change, although more involved,
                 would to restrict looking at the <a>prefix flag</a> unless
-                the <a>processing mode</a> is <code>json-ld-1.1</code>.</p></li>
+                the <a>processing mode</a> is `json-ld-1.1`.</p></li>
             <li><span class="changed">If <var>value</var> has the form of an <a>absolute IRI</a></span>,
               return <var>value</var>.</li>
           </ol>
@@ -3294,8 +3346,7 @@
                   passing <var>active context</var>, <var>inverse context</var>,
                   <var>expanded property</var> for <var>var</var>,
                   and <code>true</code> for <var>vocab</var>.</li>
-                <li class="changed">If <a>processing mode</a> is <code>json-ld-1.1</code>,
-                  and the <a>term definition</a> for <var>alias</var> in the
+                <li class="changed">If the <a>term definition</a> for <var>alias</var> in the
                   <var>active context</var> has a <a>container mapping</a> including <code>@set</code>,
                   ensure that <var>compacted value</var> is an <a>array</a>.</li>
                 <li>Add an <a>entry</a> <var>alias</var> to <var>result</var> whose value is
@@ -3954,11 +4005,11 @@
               be the last <a>container mapping</a> value to be checked as it
               is the most generic.</li>
             <li class="changed">
-              If <a>processing mode</a> is <code>json-ld-1.1</code> and value does not contain an <code>@index</code> <a>entry</a>,
+              If <a>processing mode</a> is `json-ld-1.1` and value does not contain an <code>@index</code> <a>entry</a>,
               append <code>@index</code> and <code>@index@set</code> to <var>containers</var>.
             </li>
             <li class="changed">
-              If <a>processing mode</a> is <code>json-ld-1.1</code> and value contains only an <code>@value</code> <a>entry</a>,
+              If <a>processing mode</a> is `json-ld-1.1` and value contains only an <code>@value</code> <a>entry</a>,
               append <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
             </li>
             <li>If <var>type/language value</var> is <code>null</code>, set it to
@@ -5267,17 +5318,17 @@
                   to a JSON <a>number</a>.</li>
               </ol>
             </li>
-            <li class="changed">Otherwise, if <a>processing mode</a> is <code>json-ld-1.1</code>,
+            <li class="changed">Otherwise, if <a>processing mode</a> is not `json-ld-1.0`,
               and <var>value</var> is a <a>JSON literal</a>,
               set <var>converted value</var> to the result of
               turning the lexical value of <var>value</var>
               into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.
+              Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.
               If the lexical value of <var>value</var> is not valid JSON according to
               the <a data-cite="RFC8259#section-2">JSON Grammar</a> [[RFC8259]],
               an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
               error has been detected and processing is aborted.</li>
-            <li class="changed">Otherwise, if <a>processing mode</a> is `json-ld-1.1`,
-              the <a>datatype IRI</a> of <var>value</var> starts with `https://www.w3.org/ns/i18n#`,
+            <li class="changed">Otherwise, if the <a>datatype IRI</a> of <var>value</var> starts with `https://www.w3.org/ns/i18n#`,
               and {{JsonLdOptions/rdfDirection}} is `i18n-datatype`:
               <ol>
                 <li>Set <var>converted value</var> to the <a>lexical form</a> of <var>value</var>.</li>
@@ -5991,7 +6042,7 @@
       </dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
-        If set to <code>json-ld-1.0</code> or <code>json-ld-1.1</code>,
+        If set to `json-ld-1.0` or `json-ld-1.1`,
         the implementation must produce exactly the same results as the
         algorithms defined in this specification.
         If set to another value,
