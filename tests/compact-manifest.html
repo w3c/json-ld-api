@@ -4426,6 +4426,38 @@ invalid @nest value
 </dd>
 </dl>
 </dd>
+<dt id='tep04'>
+Test tep04 Processing mode is implicitly json-ld-1.0
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tep04</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>If not specified using processingMode, processing mode is taken as json-ld-1.0</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/ep04-in.jsonld'>compact/ep04-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/ep04-context.jsonld'>compact/ep04-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid container mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tep05'>
 Test tep05 processingMode json-ld-1.0 conflicts with @version: 1.1
 </dt>
@@ -4436,7 +4468,7 @@ Test tep05 processingMode json-ld-1.0 conflicts with @version: 1.1
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:CompactTest</dd>
 <dt>Purpose</dt>
-<dd>If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.</dd>
+<dd>If not specified using processingMode, processing mode is taken as json-ld-1.0</dd>
 <dt>input</dt>
 <dd>
 <a href='compact/ep05-in.jsonld'>compact/ep05-in.jsonld</a>

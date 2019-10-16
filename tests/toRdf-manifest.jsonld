@@ -2379,7 +2379,7 @@
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
       "name": "@type: @none is illegal in 1.0.",
       "purpose": "@type: @none is illegal in json-ld-1.0.",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
+      "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/tn01-in.jsonld",
       "expect": "invalid type mapping"
     }, {
