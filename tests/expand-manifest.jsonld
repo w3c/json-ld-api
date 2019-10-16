@@ -568,7 +568,7 @@
       "purpose": "Use of @graph containers",
       "input": "expand/0079-in.jsonld",
       "expect": "expand/0079-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0080",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -576,7 +576,7 @@
       "purpose": "Use of [@graph, @set] containers",
       "input": "expand/0080-in.jsonld",
       "expect": "expand/0080-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0081",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -584,7 +584,7 @@
       "purpose": "Don't double-expand an already expanded graph",
       "input": "expand/0081-in.jsonld",
       "expect": "expand/0081-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0082",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -592,7 +592,7 @@
       "purpose": "Use of @graph containers with @index",
       "input": "expand/0082-in.jsonld",
       "expect": "expand/0082-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0083",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -600,7 +600,7 @@
       "purpose": "Use of @graph containers with @index and @set",
       "input": "expand/0083-in.jsonld",
       "expect": "expand/0083-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0084",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -608,7 +608,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "expand/0084-in.jsonld",
       "expect": "expand/0084-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0085",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -616,7 +616,7 @@
       "purpose": "Use of @graph containers with @id",
       "input": "expand/0085-in.jsonld",
       "expect": "expand/0085-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0086",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -624,7 +624,7 @@
       "purpose": "Use of @graph containers with @id and @set",
       "input": "expand/0086-in.jsonld",
       "expect": "expand/0086-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0087",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -632,7 +632,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "expand/0087-in.jsonld",
       "expect": "expand/0087-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0088",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -677,7 +677,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0092-in.jsonld",
       "expect": "expand/0092-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0093",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -685,7 +685,7 @@
       "purpose": "Use of @graph containers",
       "input": "expand/0093-in.jsonld",
       "expect": "expand/0093-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0094",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -693,7 +693,7 @@
       "purpose": "Use of [@graph, @set] containers",
       "input": "expand/0094-in.jsonld",
       "expect": "expand/0094-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0095",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -701,7 +701,7 @@
       "purpose": "Double-expand an already expanded graph",
       "input": "expand/0095-in.jsonld",
       "expect": "expand/0095-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0096",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -709,7 +709,7 @@
       "purpose": "Use of @graph containers with @index",
       "input": "expand/0096-in.jsonld",
       "expect": "expand/0096-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0097",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -717,7 +717,7 @@
       "purpose": "Use of @graph containers with @index and @set",
       "input": "expand/0097-in.jsonld",
       "expect": "expand/0097-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0098",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -725,7 +725,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "expand/0098-in.jsonld",
       "expect": "expand/0098-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0099",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -733,7 +733,7 @@
       "purpose": "Use of @graph containers with @id",
       "input": "expand/0099-in.jsonld",
       "expect": "expand/0099-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0100",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -741,7 +741,7 @@
       "purpose": "Use of @graph containers with @id and @set",
       "input": "expand/0100-in.jsonld",
       "expect": "expand/0100-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0101",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -749,7 +749,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "expand/0101-in.jsonld",
       "expect": "expand/0101-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0102",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -757,7 +757,7 @@
       "purpose": "Creates a new graph object if indexed value is already a graph object",
       "input": "expand/0102-in.jsonld",
       "expect": "expand/0102-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0103",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -765,7 +765,7 @@
       "purpose": "Creates a new graph object if indexed value is already a graph object",
       "input": "expand/0103-in.jsonld",
       "expect": "expand/0103-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0104",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -773,7 +773,7 @@
       "purpose": "Double-expand an already expanded graph",
       "input": "expand/0104-in.jsonld",
       "expect": "expand/0104-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0105",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -781,7 +781,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "expand/0105-in.jsonld",
       "expect": "expand/0105-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0106",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -789,7 +789,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "expand/0106-in.jsonld",
       "expect": "expand/0106-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0107",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -797,7 +797,7 @@
       "purpose": "Use of @graph containers with @index",
       "input": "expand/0107-in.jsonld",
       "expect": "expand/0107-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0108",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -805,7 +805,7 @@
       "purpose": "Use of @graph containers with @id",
       "input": "expand/0108-in.jsonld",
       "expect": "expand/0108-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0109",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -820,7 +820,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "expand/0110-in.jsonld",
       "expect": "expand/0110-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0111",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -875,7 +875,7 @@
       "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
       "input": "expand/c001-in.jsonld",
       "expect": "expand/c001-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc002",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -883,7 +883,7 @@
       "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
       "input": "expand/c002-in.jsonld",
       "expect": "expand/c002-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc003",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -891,7 +891,7 @@
       "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
       "input": "expand/c003-in.jsonld",
       "expect": "expand/c003-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc004",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -899,7 +899,7 @@
       "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
       "input": "expand/c004-in.jsonld",
       "expect": "expand/c004-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc005",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -907,7 +907,7 @@
       "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
       "input": "expand/c005-in.jsonld",
       "expect": "expand/c005-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc006",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -915,7 +915,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c006-in.jsonld",
       "expect": "expand/c006-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc007",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -923,7 +923,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c007-in.jsonld",
       "expect": "expand/c007-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc008",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -931,7 +931,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c008-in.jsonld",
       "expect": "expand/c008-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc009",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -939,7 +939,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c009-in.jsonld",
       "expect": "expand/c009-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc010",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -947,7 +947,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c010-in.jsonld",
       "expect": "expand/c010-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc011",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -955,7 +955,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c011-in.jsonld",
       "expect": "expand/c011-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc012",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -963,7 +963,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c012-in.jsonld",
       "expect": "expand/c012-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc013",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -971,7 +971,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/c013-in.jsonld",
       "expect": "expand/c013-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc014",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -979,7 +979,7 @@
       "purpose": "type-scoped context nullification",
       "input": "expand/c014-in.jsonld",
       "expect": "expand/c014-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc015",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -987,7 +987,7 @@
       "purpose": "type-scoped base",
       "input": "expand/c015-in.jsonld",
       "expect": "expand/c015-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc016",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -995,7 +995,7 @@
       "purpose": "type-scoped vocab",
       "input": "expand/c016-in.jsonld",
       "expect": "expand/c016-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc017",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1003,7 +1003,7 @@
       "purpose": "multiple type-scoped contexts are property reverted",
       "input": "expand/c017-in.jsonld",
       "expect": "expand/c017-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc018",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1011,7 +1011,7 @@
       "purpose": "multiple type-scoped types resolved against previous context",
       "input": "expand/c018-in.jsonld",
       "expect": "expand/c018-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc019",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1019,7 +1019,7 @@
       "purpose": "type-scoped context with multiple property scoped terms",
       "input": "expand/c019-in.jsonld",
       "expect": "expand/c019-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc020",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1027,7 +1027,7 @@
       "purpose": "type-scoped value",
       "input": "expand/c020-in.jsonld",
       "expect": "expand/c020-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc021",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1035,7 +1035,7 @@
       "purpose": "type-scoped value mix",
       "input": "expand/c021-in.jsonld",
       "expect": "expand/c021-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc022",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1043,7 +1043,7 @@
       "purpose": "type-scoped property-scoped contexts including @type:@vocab",
       "input": "expand/c022-in.jsonld",
       "expect": "expand/c022-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc023",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1051,7 +1051,7 @@
       "purpose": "composed type-scoped property-scoped contexts including @type:@vocab",
       "input": "expand/c023-in.jsonld",
       "expect": "expand/c023-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc024",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1059,7 +1059,7 @@
       "purpose": "type-scoped + property-scoped + values evaluates against previous context",
       "input": "expand/c024-in.jsonld",
       "expect": "expand/c024-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc025",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1067,7 +1067,7 @@
       "purpose": "type-scoped + graph container",
       "input": "expand/c025-in.jsonld",
       "expect": "expand/c025-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc026",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1520,7 +1520,7 @@
       "purpose": "Verifies that an exception is raised on expansion when a invalid term definition is found",
       "input": "expand/ec01-in.jsonld",
       "expect": "invalid term definition",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tem01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1528,7 +1528,7 @@
       "purpose": "Verifies that an exception is raised on expansion when a invalid container mapping is found",
       "input": "expand/em01-in.jsonld",
       "expect": "invalid container mapping",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1536,7 +1536,7 @@
       "purpose": "container: @nest",
       "input": "expand/en01-in.jsonld",
       "expect": "invalid @nest value",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten02",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1544,7 +1544,7 @@
       "purpose": "Transparent Nesting",
       "input": "expand/en02-in.jsonld",
       "expect": "invalid @nest value",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten03",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1552,7 +1552,7 @@
       "purpose": "Transparent Nesting",
       "input": "expand/en03-in.jsonld",
       "expect": "invalid @nest value",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten04",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1560,7 +1560,7 @@
       "purpose": "Transparent Nesting",
       "input": "expand/en04-in.jsonld",
       "expect": "invalid @nest value",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten05",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1568,7 +1568,7 @@
       "purpose": "Transparent Nesting",
       "input": "expand/en05-in.jsonld",
       "expect": "invalid @nest value",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten06",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1576,7 +1576,7 @@
       "purpose": "Transparent Nesting",
       "input": "expand/en06-in.jsonld",
       "expect": "invalid reverse property",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tep02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -1608,7 +1608,7 @@
       "purpose": "Testing legal combinations of @set with other container values",
       "input": "expand/es02-in.jsonld",
       "expect": "invalid container mapping",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1752,7 +1752,7 @@
       "purpose": "Tests expanding JSON literal in expanded form.",
       "input": "expand/js09-in.jsonld",
       "expect": "expand/js09-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tjs10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1872,7 +1872,7 @@
       "purpose": "Expansion using @container: @id",
       "input": "expand/m001-in.jsonld",
       "expect": "expand/m001-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm002",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1880,7 +1880,7 @@
       "purpose": "Expansion using @container: @id",
       "input": "expand/m002-in.jsonld",
       "expect": "expand/m002-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm003",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1888,7 +1888,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "expand/m003-in.jsonld",
       "expect": "expand/m003-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm004",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1896,7 +1896,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "expand/m004-in.jsonld",
       "expect": "expand/m004-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm005",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1904,7 +1904,7 @@
       "purpose": "Expansion using @container: @id",
       "input": "expand/m005-in.jsonld",
       "expect": "expand/m005-out.jsonld",
-      "option": {"base": "http://example.org/", "processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"base": "http://example.org/", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm006",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1912,7 +1912,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "expand/m006-in.jsonld",
       "expect": "expand/m006-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm007",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1920,7 +1920,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "expand/m007-in.jsonld",
       "expect": "expand/m007-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm008",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1928,7 +1928,7 @@
       "purpose": "scoped context on @type",
       "input": "expand/m008-in.jsonld",
       "expect": "expand/m008-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm009",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1936,7 +1936,7 @@
       "purpose": "index on @language",
       "input": "expand/m009-in.jsonld",
       "expect": "expand/m009-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm010",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1944,7 +1944,7 @@
       "purpose": "index on @language",
       "input": "expand/m010-in.jsonld",
       "expect": "expand/m010-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm011",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1952,7 +1952,7 @@
       "purpose": "index on @id",
       "input": "expand/m011-in.jsonld",
       "expect": "expand/m011-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm012",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1960,7 +1960,7 @@
       "purpose": "index on @type",
       "input": "expand/m012-in.jsonld",
       "expect": "expand/m012-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm013",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1968,7 +1968,7 @@
       "purpose": "index on @graph and @index",
       "input": "expand/m013-in.jsonld",
       "expect": "expand/m013-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm014",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1976,7 +1976,7 @@
       "purpose": "index on @graph and @index",
       "input": "expand/m014-in.jsonld",
       "expect": "expand/m014-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm015",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1984,7 +1984,7 @@
       "purpose": "index on @graph and @index",
       "input": "expand/m015-in.jsonld",
       "expect": "expand/m015-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm016",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -1992,7 +1992,7 @@
       "purpose": "index on @graph and @index",
       "input": "expand/m016-in.jsonld",
       "expect": "expand/m016-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm017",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2000,7 +2000,7 @@
       "purpose": "index on @type",
       "input": "expand/m017-in.jsonld",
       "expect": "expand/m017-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm018",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2008,7 +2008,7 @@
       "purpose": "index on @type",
       "input": "expand/m018-in.jsonld",
       "expect": "expand/m018-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm019",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2016,7 +2016,7 @@
       "purpose": "index on @type",
       "input": "expand/m019-in.jsonld",
       "expect": "expand/m019-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm020",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2024,7 +2024,7 @@
       "purpose": "index on @type",
       "input": "expand/m020-in.jsonld",
       "expect": "invalid type mapping",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2032,7 +2032,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n001-in.jsonld",
       "expect": "expand/n001-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn002",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2040,7 +2040,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n002-in.jsonld",
       "expect": "expand/n002-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn003",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2048,7 +2048,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n003-in.jsonld",
       "expect": "expand/n003-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn004",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2056,7 +2056,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n004-in.jsonld",
       "expect": "expand/n004-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn005",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2064,7 +2064,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n005-in.jsonld",
       "expect": "expand/n005-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn006",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2072,7 +2072,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n006-in.jsonld",
       "expect": "expand/n006-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn007",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2080,7 +2080,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n007-in.jsonld",
       "expect": "expand/n007-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn008",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2088,7 +2088,7 @@
       "purpose": "Expansion using @nest",
       "input": "expand/n008-in.jsonld",
       "expect": "expand/n008-out.jsonld",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tp001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2124,9 +2124,9 @@
     }, {
       "@id": "#tpi01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "error if @version is not json-ld-1.1 for property-valued index",
+      "name": "error if @version is json-ld-1.0 for property-valued index",
       "purpose": "Expanding index maps where index is a property.",
-      "option": {"specVersion": "json-ld-1.1"},
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/pi01-in.jsonld",
       "expect": "invalid term definition"
     }, {

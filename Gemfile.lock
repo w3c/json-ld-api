@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ruby-rdf/json-ld.git
-  revision: 565f89265c1fc06d2fd5b761bdbf95b905065d3a
+  revision: 94a5f041320f71ef89e4e82c73a01fd07ab4af27
   branch: develop
   specs:
     json-ld (3.0.2)
@@ -33,10 +33,10 @@ GEM
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
     htmlentities (4.3.4)
-    i18n (1.6.0)
+    i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     json-canonicalization (0.1.0)
-    json-ld-preloaded (3.0.4)
+    json-ld-preloaded (3.0.5)
       json-ld (~> 3.0)
       multi_json (~> 1.12)
       rdf (~> 3.0)
@@ -73,7 +73,7 @@ GEM
       sparql (~> 3.0)
       sparql-client (~> 3.0)
     mini_portile2 (2.4.0)
-    multi_json (1.13.1)
+    multi_json (1.14.1)
     net-http-persistent (3.1.0)
       connection_pool (~> 2.2)
     nokogiri (1.10.4)
@@ -82,7 +82,7 @@ GEM
       nokogiri
     public_suffix (4.0.1)
     rack (2.0.7)
-    rake (12.3.3)
+    rake (13.0.0)
     rdf (3.0.12)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
@@ -134,7 +134,7 @@ GEM
     rdf-turtle (3.0.6)
       ebnf (~> 1.1)
       rdf (~> 3.0)
-    rdf-vocab (3.0.10)
+    rdf-vocab (3.0.11)
       rdf (~> 3.0, >= 3.0.11)
     rdf-xsd (3.0.1)
       rdf (~> 3.0)
@@ -160,8 +160,8 @@ GEM
       rdf (~> 3.0)
     sxp (1.0.2)
       rdf (~> 3.0)
-    temple (0.8.1)
-    tilt (2.0.9)
+    temple (0.8.2)
+    tilt (2.0.10)
 
 PLATFORMS
   ruby

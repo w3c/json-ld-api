@@ -464,7 +464,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "rdfDirection: i18n-datatype with direction and no language",
       "purpose": "Generates i18n datatype from literal with direction with option.",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
       "input": "toRdf/di09-in.jsonld",
       "expect": "toRdf/di09-out.nq"
     }, {
@@ -472,7 +472,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "rdfDirection: i18n-datatype with direction and language",
       "purpose": "Generates i18n datatype from literal with direction with option.",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
       "input": "toRdf/di10-in.jsonld",
       "expect": "toRdf/di10-out.nq"
     }, {
@@ -480,7 +480,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "rdfDirection: compound-literal with direction and no language",
       "purpose": "Generates i18n datatype from literal with direction with option.",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "compound-literal"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal"},
       "input": "toRdf/di11-in.jsonld",
       "expect": "toRdf/di11-out.nq"
     }, {
@@ -488,7 +488,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "rdfDirection: compound-literal with direction and language",
       "purpose": "Generates compound literal from literal with direction with option.",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1", "rdfDirection": "compound-literal"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal"},
       "input": "toRdf/di12-in.jsonld",
       "expect": "toRdf/di12-out.nq"
     }, {
@@ -1058,7 +1058,7 @@
       "purpose": "Use of @graph containers",
       "input": "toRdf/e079-in.jsonld",
       "expect": "toRdf/e079-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te080",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1066,7 +1066,7 @@
       "purpose": "Use of [@graph, @set] containers",
       "input": "toRdf/e080-in.jsonld",
       "expect": "toRdf/e080-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te081",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1074,7 +1074,7 @@
       "purpose": "Don't double-expand an already expanded graph",
       "input": "toRdf/e081-in.jsonld",
       "expect": "toRdf/e081-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te082",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1082,7 +1082,7 @@
       "purpose": "Use of @graph containers with @index",
       "input": "toRdf/e082-in.jsonld",
       "expect": "toRdf/e082-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te083",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1090,7 +1090,7 @@
       "purpose": "Use of @graph containers with @index and @set",
       "input": "toRdf/e083-in.jsonld",
       "expect": "toRdf/e083-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te084",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1098,7 +1098,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e084-in.jsonld",
       "expect": "toRdf/e084-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te085",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1106,7 +1106,7 @@
       "purpose": "Use of @graph containers with @id",
       "input": "toRdf/e085-in.jsonld",
       "expect": "toRdf/e085-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te086",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1114,7 +1114,7 @@
       "purpose": "Use of @graph containers with @id and @set",
       "input": "toRdf/e086-in.jsonld",
       "expect": "toRdf/e086-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te087",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1122,7 +1122,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e087-in.jsonld",
       "expect": "toRdf/e087-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te088",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1167,7 +1167,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e092-in.jsonld",
       "expect": "toRdf/e092-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te093",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1175,7 +1175,7 @@
       "purpose": "Use of @graph containers",
       "input": "toRdf/e093-in.jsonld",
       "expect": "toRdf/e093-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te094",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1183,7 +1183,7 @@
       "purpose": "Use of [@graph, @set] containers",
       "input": "toRdf/e094-in.jsonld",
       "expect": "toRdf/e094-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te095",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1191,7 +1191,7 @@
       "purpose": "Don't double-expand an already expanded graph",
       "input": "toRdf/e095-in.jsonld",
       "expect": "toRdf/e095-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te096",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1199,7 +1199,7 @@
       "purpose": "Use of @graph containers with @index",
       "input": "toRdf/e096-in.jsonld",
       "expect": "toRdf/e096-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te097",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1207,7 +1207,7 @@
       "purpose": "Use of @graph containers with @index and @set",
       "input": "toRdf/e097-in.jsonld",
       "expect": "toRdf/e097-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te098",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1215,7 +1215,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e098-in.jsonld",
       "expect": "toRdf/e098-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te099",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1223,7 +1223,7 @@
       "purpose": "Use of @graph containers with @id",
       "input": "toRdf/e099-in.jsonld",
       "expect": "toRdf/e099-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te100",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1231,7 +1231,7 @@
       "purpose": "Use of @graph containers with @id and @set",
       "input": "toRdf/e100-in.jsonld",
       "expect": "toRdf/e100-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te101",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1239,7 +1239,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e101-in.jsonld",
       "expect": "toRdf/e101-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te102",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1247,7 +1247,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e102-in.jsonld",
       "expect": "toRdf/e102-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te103",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1255,7 +1255,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e103-in.jsonld",
       "expect": "toRdf/e103-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te104",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1263,7 +1263,7 @@
       "purpose": "Don't double-expand an already expanded graph",
       "input": "toRdf/e104-in.jsonld",
       "expect": "toRdf/e104-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te105",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1271,7 +1271,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e105-in.jsonld",
       "expect": "toRdf/e105-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te106",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1279,7 +1279,7 @@
       "purpose": "Does not create a new graph object if indexed value is already a graph object",
       "input": "toRdf/e106-in.jsonld",
       "expect": "toRdf/e106-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te107",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1287,7 +1287,7 @@
       "purpose": "Use of @graph containers with @index",
       "input": "toRdf/e107-in.jsonld",
       "expect": "toRdf/e107-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te108",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1295,7 +1295,7 @@
       "purpose": "Use of @graph containers with @id",
       "input": "toRdf/e108-in.jsonld",
       "expect": "toRdf/e108-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te109",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1310,7 +1310,7 @@
       "purpose": "Pathological relative property IRIs",
       "input": "toRdf/e110-in.jsonld",
       "expect": "toRdf/e110-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te111",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1477,7 +1477,7 @@
       "purpose": "Tests transforming JSON literal with string canonicalization.",
       "input": "toRdf/js09-in.jsonld",
       "expect": "toRdf/js09-out.nq",
-      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tjs10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1549,7 +1549,7 @@
       "purpose": "Expansion using @container: @id",
       "input": "toRdf/m001-in.jsonld",
       "expect": "toRdf/m001-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm002",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1557,7 +1557,7 @@
       "purpose": "Expansion using @container: @id",
       "input": "toRdf/m002-in.jsonld",
       "expect": "toRdf/m002-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm003",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1565,7 +1565,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "toRdf/m003-in.jsonld",
       "expect": "toRdf/m003-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm004",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1573,7 +1573,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "toRdf/m004-in.jsonld",
       "expect": "toRdf/m004-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm005",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1581,7 +1581,7 @@
       "purpose": "Expansion using @container: @id",
       "input": "toRdf/m005-in.jsonld",
       "expect": "toRdf/m005-out.nq",
-      "option": {"base": "http://example.org/", "processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"base": "http://example.org/", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm006",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1589,7 +1589,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "toRdf/m006-in.jsonld",
       "expect": "toRdf/m006-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm007",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1597,7 +1597,7 @@
       "purpose": "Expansion using @container: @type",
       "input": "toRdf/m007-in.jsonld",
       "expect": "toRdf/m007-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm008",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1605,7 +1605,7 @@
       "purpose": "scoped context on @type",
       "input": "toRdf/m008-in.jsonld",
       "expect": "toRdf/m008-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm009",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1613,7 +1613,7 @@
       "purpose": "index on @language",
       "input": "toRdf/m009-in.jsonld",
       "expect": "toRdf/m009-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm010",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1621,7 +1621,7 @@
       "purpose": "index on @language",
       "input": "toRdf/m010-in.jsonld",
       "expect": "toRdf/m010-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm011",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1629,7 +1629,7 @@
       "purpose": "index on @id",
       "input": "toRdf/m011-in.jsonld",
       "expect": "toRdf/m011-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm012",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1637,7 +1637,7 @@
       "purpose": "index on @type",
       "input": "toRdf/m012-in.jsonld",
       "expect": "toRdf/m012-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm013",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1645,7 +1645,7 @@
       "purpose": "index on @graph and @index",
       "input": "toRdf/m013-in.jsonld",
       "expect": "toRdf/m013-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm014",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1653,7 +1653,7 @@
       "purpose": "index on @graph and @index",
       "input": "toRdf/m014-in.jsonld",
       "expect": "toRdf/m014-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm015",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1661,7 +1661,7 @@
       "purpose": "index on @graph and @index",
       "input": "toRdf/m015-in.jsonld",
       "expect": "toRdf/m015-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm016",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1669,7 +1669,7 @@
       "purpose": "index on @graph and @index",
       "input": "toRdf/m016-in.jsonld",
       "expect": "toRdf/m016-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
       }, {
       "@id": "#tm017",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1677,7 +1677,7 @@
       "purpose": "index on @type",
       "input": "toRdf/m017-in.jsonld",
       "expect": "toRdf/m017-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm018",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1685,7 +1685,7 @@
       "purpose": "index on @type",
       "input": "toRdf/m018-in.jsonld",
       "expect": "toRdf/m018-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm019",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1693,7 +1693,7 @@
       "purpose": "index on @type",
       "input": "toRdf/m019-in.jsonld",
       "expect": "toRdf/m019-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm020",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -1701,7 +1701,7 @@
       "purpose": "index on @type",
       "input": "toRdf/m020-in.jsonld",
       "expect": "invalid type mapping",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1709,7 +1709,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n001-in.jsonld",
       "expect": "toRdf/n001-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn002",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1717,7 +1717,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n002-in.jsonld",
       "expect": "toRdf/n002-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn003",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1725,7 +1725,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n003-in.jsonld",
       "expect": "toRdf/n003-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn004",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1733,7 +1733,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n004-in.jsonld",
       "expect": "toRdf/n004-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn005",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1741,7 +1741,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n005-in.jsonld",
       "expect": "toRdf/n005-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn006",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1749,7 +1749,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n006-in.jsonld",
       "expect": "toRdf/n006-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn007",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1757,7 +1757,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n007-in.jsonld",
       "expect": "toRdf/n007-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn008",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1765,7 +1765,7 @@
       "purpose": "Expansion using @nest",
       "input": "toRdf/n008-in.jsonld",
       "expect": "toRdf/n008-out.nq",
-      "option": {"processingMode": "json-ld-1.1", "specVersion": "json-ld-1.1"}
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tnt01",
       "@type": ["jld:PositiveSyntaxTest", "jld:ToRDFTest"],
@@ -1897,9 +1897,9 @@
     }, {
       "@id": "#tpi01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
-      "name": "error if @version is not json-ld-1.1 for property-valued index",
+      "name": "error if @version is json-ld-1.0 for property-valued index",
       "purpose": "Expanding index maps where index is a property.",
-      "option": {"specVersion": "json-ld-1.1"},
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "toRdf/pi01-in.jsonld",
       "expect": "invalid term definition"
     }, {
