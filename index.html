@@ -2377,12 +2377,12 @@
                 <li>If <var>active property</var> equals <code>@reverse</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid reverse property map</a>
                   error has been detected and processing is aborted.</li>
-                <li>If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
+                <li>If <var>result</var> already has an <var>expanded property</var> <a>entry</a>,
                   <span class="changed">other than `@included` or `@type`
                   (unless <a>processing mode</a> is `json-ld-1.0`)</span>,
                   a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
-                <li class="changed">If <var>result</var> has already an <var>expanded property</var> <a>entry</a>,
+                <li class="changed">If <var>result</var> already has an <var>expanded property</var> <a>entry</a>,
                   for `@included` or `@type`.
                   Set <a>processing mode</a>, to `json-ld-1.1`, if not already set.</li>
                 <li>If <var>expanded property</var> is <code>@id</code> and
@@ -4483,7 +4483,7 @@
               <var>node</var> unless it is already in that <a>array</a>. Finally
               remove the <code>@type</code> <a>entry</a> from <var>element</var>.</li>
             <li>If <var>element</var> has an <code>@index</code> <a>entry</a>, set the <code>@index</code>
-              <a>entry</a> of <var>node</var> to its value. If <a>node</a> has already an
+              <a>entry</a> of <var>node</var> to its value. If <a>node</a> already has an
               <code>@index</code> <a>entry</a> with a different value, a
               <a data-link-for="JsonLdErrorCode">conflicting indexes</a>
               error has been detected and processing is aborted. Otherwise, continue by
