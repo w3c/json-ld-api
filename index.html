@@ -2663,20 +2663,18 @@
                   in <var>value</var>, ordered lexicographically by <var>index</var>
                   <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
-                    <li class="changed">If <var>container mapping</var> includes <code>@type</code>:
-                      <ol>
-                        <li>Set <var>map context</var> to the <a>previous context</a>
-                          from <var>active context</var> if it exists, or <var>active context</var> otherwise.</li>
-                        <li>If <var>index</var>'s <a>term definition</a> in
-                          <var>map context</var> has a <a>local context</a>, update
-                          <var>map context</var> to the result of the
-                          <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-                          passing <var>map context</var> as <var>active context</var>
-                          and the value of the <var>index</var>'s <a>local context</a>
-                          as <var>local context</var>.</li>
-                      </ol>
-                    </li>
-                    <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
+                    <li class="changed">If <var>container mapping</var> includes `@id` or `@type`,
+                      set <var>map context</var> to the <a>previous context</a>
+                      from <var>active context</var> if it exists, or <var>active context</var> otherwise.</li>
+                    <li class="changed">If <var>container mapping</var> includes <code>@type</code>
+                      and <var>index</var>'s <a>term definition</a> in
+                      <var>map context</var> has a <a>local context</a>, update
+                      <var>map context</var> to the result of the
+                      <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+                      passing <var>map context</var> as <var>active context</var>
+                      and the value of the <var>index</var>'s <a>local context</a>
+                      as <var>local context</var>.</li>
+                      <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
                     <li>Set <var>expanded index</var> to the result of using the
                       <a href="#iri-expansion">IRI Expansion algorithm</a>,
                       passing <var>active context</var>, <var>index</var>, and <code>true</code>
