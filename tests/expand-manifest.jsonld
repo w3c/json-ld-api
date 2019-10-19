@@ -1514,6 +1514,22 @@
       "expect": "expand/e047-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te048",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Invalid term as relative IRI",
+      "purpose": "Verifies that a relative IRI cannot be used as a term.",
+      "input": "expand/e048-in.jsonld",
+      "expect": "invalid IRI mapping",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te049",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "A relative IRI cannot be used as a prefix",
+      "purpose": "Verifies that a relative IRI cannot be used as a term.",
+      "input": "expand/e049-in.jsonld",
+      "expect": "invalid term definition",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",

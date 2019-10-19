@@ -1530,14 +1530,15 @@
               error has been detected and processing is aborted; if it equals <code>@context</code>, an
               <a data-link-for="JsonLdErrorCode">invalid keyword alias</a>
               error has been detected and processing is aborted.</li>
-            <li class="changed">If the <var>term</var> contains a colon (<code>:</code>)
+            <li class="changed">If the <var>term</var> contains a colon (`:`)
               anywhere but as the last character of <var>term</var>,
-              and the result of expanding <var>term</var>
+              or if it contains a slash (`/`) anywhere,
+              and for either case, the result of expanding <var>term</var>
               using the <a href="#iri-expansion">IRI Expansion algorithm</a>
               is not the same as the <a>IRI mapping</a> of <var>definition</var>,
               an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
-            <li class="changed">If <var>term</var> does not contain a colon (<code>:</code>),
+            <li class="changed">If <var>term</var> neither a colon (`:`) nor a slash (`/`),
               <span class="changed"><var>simple term</var> is <code>true</code></span>, and the,
               <a>IRI mapping</a> of <var>definition</var> ends with a URI
               <a data-cite="RFC3986#section-2.2">gen-delim</a> character,
@@ -1545,7 +1546,7 @@
           </ol>
         </li>
         <li>
-          Otherwise if the <var>term</var> contains a colon (<code>:</code>):
+          Otherwise if the <var>term</var> contains a colon (`:`):
           <ol>
             <li>If <var>term</var> is a <a>compact IRI</a> with a
               <a>prefix</a> that is an <a>entry</a> in <var>local context</var>
@@ -1560,6 +1561,20 @@
             <li>Otherwise, <var>term</var> is an <a>absolute IRI</a> or
               <a>blank node identifier</a>. Set the <a>IRI mapping</a>
               of <var>definition</var> to <var>term</var>.</li>
+          </ol>
+        </li>
+        <li class="changed">
+          Otherwise if the <var>term</var> contains a slash (`/`):
+          <ol>
+            <li><var>Term</var> is a <a>relative IRI</a>.</li>
+            <li>Set the <a>IRI mapping</a> of <var>definition</var> to the
+              result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
+              <var>active context</var>,
+              <var>term</var> for <var>value</var>, and
+              <code>true</code> for <var>vocab</var>.
+              If the resulting <a>IRI mapping</a> is not an <a>absolute IRI</a>, an
+              <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
+              error has been detected and processing is aborted.</li>
           </ol>
         </li>
         <li class="changed">Otherwise, if term is <code>@type</code>, set the <a>IRI mapping</a>
@@ -1687,7 +1702,7 @@
         <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@prefix</code>:
           <ol>
             <li>If <a>processing mode</a> is `json-ld-1.0`, or if
-              <var>term</var> contains a colon (<code>:</code>), an
+              <var>term</var> contains a colon (<code>:</code>) or slash (`/`), an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize the <a>prefix flag</a> to the value associated with the
@@ -2945,7 +2960,7 @@
         <li>If <var>vocab</var> is <code>true</code> and the
           <var>active context</var> has a <a>term definition</a> for
           <var>value</var>, return the associated <a>IRI mapping</a>.</li>
-        <li>If <var>value</var> contains a colon (<code>:</code>), it is either
+        <li>If <var>value</var> contains a colon (`:`), it is either
           an <a>absolute IRI</a>, a <a>compact IRI</a>, or a
           <a>blank node identifier</a>:
           <ol>
