@@ -2415,7 +2415,9 @@
                     transforming it into an <a>array</a>, if necessary.</span>
                   <span class="changed">
                     When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
-                    may also be an empty <a>map</a>.
+                    may also be an empty <a>map</a>, or a <a>default object</a>.
+                    For a <a>default object</a>, the value of `@default` is restricted to be
+                    an <a>IRI</a>, which is expanded as above.
                   </span>
                   <div class="note">
                     No transformation from a <a>string</a> <var>value</var> to an <a>array</a>
