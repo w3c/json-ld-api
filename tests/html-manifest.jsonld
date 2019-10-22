@@ -75,7 +75,7 @@
     "name": "Errors if no element found at target",
     "purpose": "Tests embedded JSON-LD in HTML with fragment identifier that doesn't exist",
     "input": "html/e011-in.html#third",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te012",
@@ -83,7 +83,7 @@
     "name": "Errors if targeted element is not a script element",
     "purpose": "Tests embedded JSON-LD in HTML which isn't a script element",
     "input": "html/e012-in.html#first",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te013",
@@ -91,7 +91,7 @@
     "name": "Errors if targeted element does not have type application/ld+json",
     "purpose": "Tests embedded JSON-LD in HTML with wrong type",
     "input": "html/e013-in.html#first",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te014",
@@ -99,7 +99,7 @@
     "name": "Errors if uncommented script text contains comment",
     "purpose": "Tests embedded JSON-LD in HTML with comments leftover",
     "input": "html/e014-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te015",
@@ -107,7 +107,7 @@
     "name": "Errors if end comment missing",
     "purpose": "Tests embedded JSON-LD in HTML with unballanced comments",
     "input": "html/e015-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te016",
@@ -115,7 +115,7 @@
     "name": "Errors if start comment missing",
     "purpose": "Tests embedded JSON-LD in HTML with unballanced comments",
     "input": "html/e016-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te017",
@@ -123,7 +123,7 @@
     "name": "Errors if uncommented script is not valid JSON",
     "purpose": "Tests embedded JSON-LD in HTML which is invalid JSON",
     "input": "html/e017-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te018",
@@ -307,7 +307,7 @@
     "name": "Errors if no element found at target",
     "purpose": "Tests embedded JSON-LD in HTML with fragment identifier that doesn't exist",
     "input": "html/r011-in.html#third",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr012",
@@ -315,7 +315,7 @@
     "name": "Errors if targeted element is not a script element",
     "purpose": "Tests embedded JSON-LD in HTML which isn't a script element",
     "input": "html/r012-in.html#first",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr013",
@@ -323,7 +323,7 @@
     "name": "Errors if targeted element does not have type application/ld+json",
     "purpose": "Tests embedded JSON-LD in HTML with wrong type",
     "input": "html/r013-in.html#first",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr014",
@@ -331,7 +331,7 @@
     "name": "Errors if uncommented script text contains comment",
     "purpose": "Tests embedded JSON-LD in HTML with comments leftover",
     "input": "html/r014-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr015",
@@ -339,7 +339,7 @@
     "name": "Errors if end comment missing",
     "purpose": "Tests embedded JSON-LD in HTML with unballanced comments",
     "input": "html/r015-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr016",
@@ -347,7 +347,7 @@
     "name": "Errors if start comment missing",
     "purpose": "Tests embedded JSON-LD in HTML with unballanced comments",
     "input": "html/r016-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr017",
@@ -355,7 +355,7 @@
     "name": "Errors if uncommented script is not valid JSON",
     "purpose": "Tests embedded JSON-LD in HTML which is invalid JSON",
     "input": "html/r017-in.html",
-    "expect": "invalid script element",
+    "expectErrorCode": "invalid script element",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#tr018",
