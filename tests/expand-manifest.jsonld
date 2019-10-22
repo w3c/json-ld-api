@@ -858,7 +858,7 @@
       "name": "Verifies that relative IRIs as properties with @vocab: '' in 1.0 generate an error",
       "purpose": "Relative property IRIs with relative @vocab in 1.0",
       "input": "expand/0115-in.jsonld",
-      "expect": "invalid vocab mapping",
+      "expectErrorCode": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0116",
@@ -866,7 +866,7 @@
       "name": "Verifies that relative IRIs as properties with relative @vocab in 1.0 generate an error",
       "purpose": "Relative property IRIs with relative @vocab in 1.0",
       "input": "expand/0116-in.jsonld",
-      "expect": "invalid vocab mapping",
+      "expectErrorCode": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#tc001",
@@ -1098,7 +1098,7 @@
       "name": "@propagate is invalid in 1.0",
       "purpose": "@propagate is invalid in 1.0",
       "input": "expand/c029-in.jsonld",
-      "expect": "invalid context member",
+      "expectErrorCode": "invalid context member",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"}
     }, {
       "@id": "#tc030",
@@ -1106,7 +1106,7 @@
       "name": "@propagate must be boolean valued",
       "purpose": "@propagate must be boolean valued",
       "input": "expand/c030-in.jsonld",
-      "expect": "invalid @propagate value",
+      "expectErrorCode": "invalid @propagate value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tdi01",
@@ -1171,7 +1171,7 @@
       "purpose": "Generate an error if @direction has illegal value.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/di08-in.jsonld",
-      "expect": "invalid base direction"
+      "expectErrorCode": "invalid base direction"
     }, {
       "@id": "#tdi09",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1179,21 +1179,21 @@
       "purpose": "Value objects can have either @type but not @language or @direction.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/di09-in.jsonld",
-      "expect": "invalid value object"
+      "expectErrorCode": "invalid value object"
     }, {
       "@id": "#te001",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Keywords cannot be aliased to other keywords",
       "purpose": "Verifies that an exception is raised on expansion when processing an invalid context aliasing a keyword to another keyword",
       "input": "expand/e001-in.jsonld",
-      "expect": "keyword redefinition"
+      "expectErrorCode": "keyword redefinition"
     }, {
       "@id": "#te002",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "A context may not include itself recursively (direct)",
       "purpose": "Verifies that an exception is raised on expansion when processing a context referencing itself",
       "input": "expand/e002-in.jsonld",
-      "expect": "recursive context inclusion",
+      "expectErrorCode": "recursive context inclusion",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te003",
@@ -1201,7 +1201,7 @@
       "name": "A context may not include itself recursively (indirect)",
       "purpose": "Verifies that an exception is raised on expansion when processing a context referencing itself indirectly",
       "input": "expand/e003-in.jsonld",
-      "expect": "recursive context inclusion",
+      "expectErrorCode": "recursive context inclusion",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te004",
@@ -1209,14 +1209,14 @@
       "name": "Error dereferencing a remote context",
       "purpose": "Verifies that an exception is raised on expansion when a context dereference results in an error",
       "input": "expand/e004-in.jsonld",
-      "expect": "loading remote context failed"
+      "expectErrorCode": "loading remote context failed"
     }, {
       "@id": "#te005",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid remote context",
       "purpose": "Verifies that an exception is raised on expansion when a remote context is not an object containing @context",
       "input": "expand/e005-in.jsonld",
-      "expect": "invalid remote context",
+      "expectErrorCode": "invalid remote context",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te006",
@@ -1224,112 +1224,112 @@
       "name": "Invalid local context",
       "purpose": "Verifies that an exception is raised on expansion when a context is not a string or object",
       "input": "expand/e006-in.jsonld",
-      "expect": "invalid local context"
+      "expectErrorCode": "invalid local context"
     }, {
       "@id": "#te007",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid base IRI",
       "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @base",
       "input": "expand/e007-in.jsonld",
-      "expect": "invalid base IRI"
+      "expectErrorCode": "invalid base IRI"
     }, {
       "@id": "#te008",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid vocab mapping",
       "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @vocab mapping",
       "input": "expand/e008-in.jsonld",
-      "expect": "invalid vocab mapping"
+      "expectErrorCode": "invalid vocab mapping"
     }, {
       "@id": "#te009",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid default language",
       "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @language",
       "input": "expand/e009-in.jsonld",
-      "expect": "invalid default language"
+      "expectErrorCode": "invalid default language"
     }, {
       "@id": "#te010",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Cyclic IRI mapping",
       "purpose": "Verifies that an exception is raised on expansion when a cyclic IRI mapping is found",
       "input": "expand/e010-in.jsonld",
-      "expect": "cyclic IRI mapping"
+      "expectErrorCode": "cyclic IRI mapping"
     }, {
       "@id": "#te011",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid term definition",
       "purpose": "Verifies that an exception is raised on expansion when a invalid term definition is found",
       "input": "expand/e011-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#te012",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid type mapping (not a string)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid type mapping is found",
       "input": "expand/e012-in.jsonld",
-      "expect": "invalid type mapping"
+      "expectErrorCode": "invalid type mapping"
     }, {
       "@id": "#te013",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid type mapping (not absolute IRI)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid type mapping is found",
       "input": "expand/e013-in.jsonld",
-      "expect": "invalid type mapping"
+      "expectErrorCode": "invalid type mapping"
     }, {
       "@id": "#te014",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid reverse property (contains @id)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid reverse property is found",
       "input": "expand/e014-in.jsonld",
-      "expect": "invalid reverse property"
+      "expectErrorCode": "invalid reverse property"
     }, {
       "@id": "#te015",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid IRI mapping (@reverse not a string)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid IRI mapping is found",
       "input": "expand/e015-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#te016",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid IRI mapping (not an absolute IRI)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid IRI mapping is found",
       "input": "expand/e016-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#te017",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid reverse property (invalid @container)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid reverse property is found",
       "input": "expand/e017-in.jsonld",
-      "expect": "invalid reverse property"
+      "expectErrorCode": "invalid reverse property"
     }, {
       "@id": "#te018",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid IRI mapping (@id not a string)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid IRI mapping is found",
       "input": "expand/e018-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#te019",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword alias",
       "purpose": "Verifies that an exception is raised on expansion when a invalid keyword alias is found",
       "input": "expand/e019-in.jsonld",
-      "expect": "invalid keyword alias"
+      "expectErrorCode": "invalid keyword alias"
     }, {
       "@id": "#te020",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid IRI mapping (no vocab mapping)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid IRI mapping is found",
       "input": "expand/e020-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#te021",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid container mapping",
       "purpose": "Verifies that an exception is raised on expansion when a invalid container mapping is found",
       "input": "expand/e021-in.jsonld",
-      "expect": "invalid container mapping",
+      "expectErrorCode": "invalid container mapping",
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te022",
@@ -1337,21 +1337,21 @@
       "name": "Invalid language mapping",
       "purpose": "Verifies that an exception is raised on expansion when a invalid language mapping is found",
       "input": "expand/e022-in.jsonld",
-      "expect": "invalid language mapping"
+      "expectErrorCode": "invalid language mapping"
     }, {
       "@id": "#te023",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid IRI mapping (relative IRI in @type)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid type mapping is found",
       "input": "expand/e023-in.jsonld",
-      "expect": "invalid type mapping"
+      "expectErrorCode": "invalid type mapping"
     }, {
       "@id": "#te024",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "List of lists (from array)",
       "purpose": "Verifies that an exception is raised in Expansion when a list of lists is found",
       "input": "expand/e024-in.jsonld",
-      "expect": "list of lists",
+      "expectErrorCode": "list of lists",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te025",
@@ -1359,56 +1359,56 @@
       "name": "Invalid reverse property map",
       "purpose": "Verifies that an exception is raised in Expansion when a invalid reverse property map is found",
       "input": "expand/e025-in.jsonld",
-      "expect": "invalid reverse property map"
+      "expectErrorCode": "invalid reverse property map"
     }, {
       "@id": "#te026",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Colliding keywords",
       "purpose": "Verifies that an exception is raised in Expansion when colliding keywords are found",
       "input": "expand/e026-in.jsonld",
-      "expect": "colliding keywords"
+      "expectErrorCode": "colliding keywords"
     }, {
       "@id": "#te027",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid @id value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid @id value is found",
       "input": "expand/e027-in.jsonld",
-      "expect": "invalid @id value"
+      "expectErrorCode": "invalid @id value"
     }, {
       "@id": "#te028",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid type value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid type value is found",
       "input": "expand/e028-in.jsonld",
-      "expect": "invalid type value"
+      "expectErrorCode": "invalid type value"
     }, {
       "@id": "#te029",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid value object value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid value object value is found",
       "input": "expand/e029-in.jsonld",
-      "expect": "invalid value object value"
+      "expectErrorCode": "invalid value object value"
     }, {
       "@id": "#te030",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid language-tagged string",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid language-tagged string value is found",
       "input": "expand/e030-in.jsonld",
-      "expect": "invalid language-tagged string"
+      "expectErrorCode": "invalid language-tagged string"
     }, {
       "@id": "#te031",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid @index value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid @index value value is found",
       "input": "expand/e031-in.jsonld",
-      "expect": "invalid @index value"
+      "expectErrorCode": "invalid @index value"
     }, {
       "@id": "#te032",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "List of lists (from array)",
       "purpose": "Verifies that an exception is raised in Expansion when a list of lists is found",
       "input": "expand/e032-in.jsonld",
-      "expect": "list of lists",
+      "expectErrorCode": "list of lists",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te033",
@@ -1416,63 +1416,63 @@
       "name": "Invalid @reverse value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid @reverse value is found",
       "input": "expand/e033-in.jsonld",
-      "expect": "invalid @reverse value"
+      "expectErrorCode": "invalid @reverse value"
     }, {
       "@id": "#te034",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid reverse property value (in @reverse)",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid reverse property value is found",
       "input": "expand/e034-in.jsonld",
-      "expect": "invalid reverse property value"
+      "expectErrorCode": "invalid reverse property value"
     }, {
       "@id": "#te035",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid language map value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid language map value is found",
       "input": "expand/e035-in.jsonld",
-      "expect": "invalid language map value"
+      "expectErrorCode": "invalid language map value"
     }, {
       "@id": "#te036",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid reverse property value (through coercion)",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid reverse property value is found",
       "input": "expand/e036-in.jsonld",
-      "expect": "invalid reverse property value"
+      "expectErrorCode": "invalid reverse property value"
     }, {
       "@id": "#te037",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid value object (unexpected keyword)",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid value object is found",
       "input": "expand/e037-in.jsonld",
-      "expect": "invalid value object"
+      "expectErrorCode": "invalid value object"
     }, {
       "@id": "#te038",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid value object (@type and @language)",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid value object is found",
       "input": "expand/e038-in.jsonld",
-      "expect": "invalid value object"
+      "expectErrorCode": "invalid value object"
     }, {
       "@id": "#te039",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid language-tagged value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid language-tagged value is found",
       "input": "expand/e039-in.jsonld",
-      "expect": "invalid language-tagged value"
+      "expectErrorCode": "invalid language-tagged value"
     }, {
       "@id": "#te040",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid typed value",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid typed value is found",
       "input": "expand/e040-in.jsonld",
-      "expect": "invalid typed value"
+      "expectErrorCode": "invalid typed value"
     }, {
       "@id": "#te041",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid set or list object",
       "purpose": "Verifies that an exception is raised in Expansion when an invalid set or list object is found",
       "input": "expand/e041-in.jsonld",
-      "expect": "invalid set or list object"
+      "expectErrorCode": "invalid set or list object"
    }, {
       "@id": "#te042",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -1480,14 +1480,14 @@
       "purpose": "Verifies that an exception is raised on expansion when processing an invalid context attempting to define @container on a keyword",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/e042-in.jsonld",
-      "expect": "keyword redefinition"
+      "expectErrorCode": "keyword redefinition"
     }, {
       "@id": "#te043",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Term definition with @id: @type",
       "purpose": "Expanding term mapping to @type uses @type syntax now illegal",
       "input": "expand/e043-in.jsonld",
-      "expect": "invalid IRI mapping",
+      "expectErrorCode": "invalid IRI mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te044",
@@ -1495,7 +1495,7 @@
       "name": "Redefine terms looking like compact IRIs",
       "purpose": "Term definitions may look like compact IRIs, but must be consistent.",
       "input": "expand/e044-in.jsonld",
-      "expect": "invalid IRI mapping",
+      "expectErrorCode": "invalid IRI mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te046",
@@ -1519,7 +1519,7 @@
       "name": "Invalid term as relative IRI",
       "purpose": "Verifies that a relative IRI cannot be used as a term.",
       "input": "expand/e048-in.jsonld",
-      "expect": "invalid IRI mapping",
+      "expectErrorCode": "invalid IRI mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#te049",
@@ -1527,7 +1527,7 @@
       "name": "A relative IRI cannot be used as a prefix",
       "purpose": "Verifies that a relative IRI cannot be used as a term.",
       "input": "expand/e049-in.jsonld",
-      "expect": "invalid term definition",
+      "expectErrorCode": "invalid term definition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tec01",
@@ -1535,7 +1535,7 @@
       "name": "Invalid keyword in term definition",
       "purpose": "Verifies that an exception is raised on expansion when a invalid term definition is found",
       "input": "expand/ec01-in.jsonld",
-      "expect": "invalid term definition",
+      "expectErrorCode": "invalid term definition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tem01",
@@ -1543,7 +1543,7 @@
       "name": "Invalid container mapping",
       "purpose": "Verifies that an exception is raised on expansion when a invalid container mapping is found",
       "input": "expand/em01-in.jsonld",
-      "expect": "invalid container mapping",
+      "expectErrorCode": "invalid container mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten01",
@@ -1551,7 +1551,7 @@
       "name": "@nest MUST NOT have a string value",
       "purpose": "container: @nest",
       "input": "expand/en01-in.jsonld",
-      "expect": "invalid @nest value",
+      "expectErrorCode": "invalid @nest value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten02",
@@ -1559,7 +1559,7 @@
       "name": "@nest MUST NOT have a boolen value",
       "purpose": "Transparent Nesting",
       "input": "expand/en02-in.jsonld",
-      "expect": "invalid @nest value",
+      "expectErrorCode": "invalid @nest value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten03",
@@ -1567,7 +1567,7 @@
       "name": "@nest MUST NOT have a numeric value",
       "purpose": "Transparent Nesting",
       "input": "expand/en03-in.jsonld",
-      "expect": "invalid @nest value",
+      "expectErrorCode": "invalid @nest value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten04",
@@ -1575,7 +1575,7 @@
       "name": "@nest MUST NOT have a value object value",
       "purpose": "Transparent Nesting",
       "input": "expand/en04-in.jsonld",
-      "expect": "invalid @nest value",
+      "expectErrorCode": "invalid @nest value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten05",
@@ -1583,7 +1583,7 @@
       "name": "does not allow a keyword other than @nest for the value of @nest",
       "purpose": "Transparent Nesting",
       "input": "expand/en05-in.jsonld",
-      "expect": "invalid @nest value",
+      "expectErrorCode": "invalid @nest value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#ten06",
@@ -1591,7 +1591,7 @@
       "name": "does not allow @nest with @reverse",
       "purpose": "Transparent Nesting",
       "input": "expand/en06-in.jsonld",
-      "expect": "invalid reverse property",
+      "expectErrorCode": "invalid reverse property",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tep02",
@@ -1599,7 +1599,7 @@
       "name": "processingMode json-ld-1.0 conflicts with @version: 1.1",
       "purpose": "If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.",
       "input": "expand/ep02-in.jsonld",
-      "expect": "processing mode conflict",
+      "expectErrorCode": "processing mode conflict",
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tep03",
@@ -1608,14 +1608,14 @@
       "purpose": "If @version is specified, it must be 1.1",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/ep03-in.jsonld",
-      "expect": "invalid @version value"
+      "expectErrorCode": "invalid @version value"
     }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Using an array value for @context is illegal in JSON-LD 1.0",
       "purpose": "Verifies that an exception is raised on expansion when a invalid container mapping is found",
       "input": "expand/es01-in.jsonld",
-      "expect": "invalid container mapping",
+      "expectErrorCode": "invalid container mapping",
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tes02",
@@ -1623,7 +1623,7 @@
       "name": "Mapping @container: [@list, @set] is invalid",
       "purpose": "Testing legal combinations of @set with other container values",
       "input": "expand/es02-in.jsonld",
-      "expect": "invalid container mapping",
+      "expectErrorCode": "invalid container mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin01",
@@ -1679,7 +1679,7 @@
       "name": "Error if @included value is a string",
       "purpose": "Tests included maps.",
       "input": "expand/in07-in.jsonld",
-      "expect": "invalid @included value",
+      "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin08",
@@ -1687,7 +1687,7 @@
       "name": "Error if @included value is a value object",
       "purpose": "Tests included maps.",
       "input": "expand/in08-in.jsonld",
-      "expect": "invalid @included value",
+      "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin09",
@@ -1695,7 +1695,7 @@
       "name": "Error if @included value is a list object",
       "purpose": "Tests included maps.",
       "input": "expand/in09-in.jsonld",
-      "expect": "invalid @included value",
+      "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tjs01",
@@ -2039,7 +2039,7 @@
       "name": "string value of type map must not be a literal",
       "purpose": "index on @type",
       "input": "expand/m020-in.jsonld",
-      "expect": "invalid type mapping",
+      "expectErrorCode": "invalid type mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn001",
@@ -2144,7 +2144,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/pi01-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2152,7 +2152,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pi02-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2160,7 +2160,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pi03-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi04",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2168,7 +2168,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pi04-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi05",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2176,7 +2176,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pi05-in.jsonld",
-      "expect": "invalid value object"
+      "expectErrorCode": "invalid value object"
     }, {
       "@id": "#tpi06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2232,7 +2232,7 @@
       "purpose": "Check error when overriding a protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr01-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2248,7 +2248,7 @@
       "purpose": "A protected context protects all term definitions.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr03-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr04",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2256,7 +2256,7 @@
       "purpose": "A protected context does not protect terms with @protected: false.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr04-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr05",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2264,7 +2264,7 @@
       "purpose": "The Active context be set to null from an embedded context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr05-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2280,7 +2280,7 @@
       "purpose": "A scoped context can protect terms.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr08-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr09",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2288,7 +2288,7 @@
       "purpose": "A protected term cannot redefine another protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr09-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2304,7 +2304,7 @@
       "purpose": "Fail to override protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr11-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr12",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2312,7 +2312,7 @@
       "purpose": "Scoped context fail to override protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr12-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr13",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2352,7 +2352,7 @@
       "purpose": "Fail to override protected terms with type.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr17-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr18",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2360,7 +2360,7 @@
       "purpose": "Fail to override protected terms with type+null+ctx.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr18-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr19",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2376,7 +2376,7 @@
       "purpose": "Fail with mix of protected and unprotected terms with type+null+ctx.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr20-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr21",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2384,7 +2384,7 @@
       "purpose": "Fail with mix of protected and unprotected terms with type+null.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr21-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr22",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2424,7 +2424,7 @@
       "purpose": "Fails on redefinition of terms with scoped contexts using different definitions.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr26-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr27",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2440,7 +2440,7 @@
       "purpose": "A protected term with a null IRI mapping cannot be redefined.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr28-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr29",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2464,7 +2464,7 @@
       "purpose": "Keywords may not be redefined other than to protect them.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr31-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr32",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2472,7 +2472,7 @@
       "purpose": "Keywords may not be redefined other than to protect them.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr32-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr33",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2480,7 +2480,7 @@
       "purpose": "Keyword aliases can not be used as prefixes.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr33-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpr34",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2520,7 +2520,7 @@
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr38-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#tpr39",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2528,7 +2528,7 @@
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr39-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2536,7 +2536,7 @@
       "purpose": "@import is invalid in 1.0.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so01-in.jsonld",
-      "expect": "invalid context member"
+      "expectErrorCode": "invalid context member"
     }, {
       "@id": "#tso02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2544,7 +2544,7 @@
       "purpose": "@import must be a string.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so02-in.jsonld",
-      "expect": "invalid @import value"
+      "expectErrorCode": "invalid @import value"
     }, {
       "@id": "#tso03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
@@ -2552,7 +2552,7 @@
       "purpose": "Processors must detect source contexts that include @import.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so03-in.jsonld",
-      "expect": "invalid context member"
+      "expectErrorCode": "invalid context member"
     }, {
       "@id": "#tso05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2576,7 +2576,7 @@
       "purpose": "A protected context protects all term definitions.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so07-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tso08",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2600,7 +2600,7 @@
       "purpose": "The containing context is merged into the source context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so10-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tso11",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -2616,7 +2616,7 @@
       "purpose": "@type: @none is illegal in json-ld-1.0.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/tn01-in.jsonld",
-      "expect": "invalid type mapping"
+      "expectErrorCode": "invalid type mapping"
     }, {
       "@id": "#ttn02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],

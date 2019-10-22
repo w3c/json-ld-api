@@ -1246,7 +1246,7 @@
       "option": {"specVersion": "json-ld-1.0"},
       "input": "compact/e001-in.jsonld",
       "context": "compact/e001-context.jsonld",
-      "expect": "compaction to list of lists"
+      "expectErrorCode": "compaction to list of lists"
     }, {
       "@id": "#te002",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
@@ -1255,7 +1255,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/e002-in.jsonld",
       "context": "compact/e002-context.jsonld",
-      "expect": "IRI confused with prefix"
+      "expectErrorCode": "IRI confused with prefix"
     }, {
       "@id": "#ten01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:CompactTest" ],
@@ -1263,7 +1263,7 @@
       "purpose": "Transparent Nesting",
       "input": "compact/en01-in.jsonld",
       "context": "compact/en01-context.jsonld",
-      "expect": "invalid @nest value",
+      "expectErrorCode": "invalid @nest value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tep05",
@@ -1272,7 +1272,7 @@
       "purpose": "If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.",
       "input": "compact/ep05-in.jsonld",
       "context": "compact/ep05-context.jsonld",
-      "expect": "processing mode conflict",
+      "expectErrorCode": "processing mode conflict",
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tep06",
@@ -1282,7 +1282,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/ep06-in.jsonld",
       "context": "compact/ep06-context.jsonld",
-      "expect": "invalid @version value"
+      "expectErrorCode": "invalid @version value"
     }, {
       "@id": "#tep07",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1291,7 +1291,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep07-in.jsonld",
       "context": "compact/ep07-context.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tep08",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1300,7 +1300,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/ep08-in.jsonld",
       "context": "compact/ep08-context.jsonld",
-      "expect": "invalid @prefix value"
+      "expectErrorCode": "invalid @prefix value"
     }, {
       "@id": "#tep09",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1309,7 +1309,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/ep09-in.jsonld",
       "context": "compact/ep09-context.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tep10",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1318,7 +1318,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep10-in.jsonld",
       "context": "compact/ep10-context.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tep11",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1327,7 +1327,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep11-in.jsonld",
       "context": "compact/ep11-context.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tep12",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1336,7 +1336,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep12-in.jsonld",
       "context": "compact/ep12-context.jsonld",
-      "expect": "invalid container mapping"
+      "expectErrorCode": "invalid container mapping"
     }, {
       "@id": "#tep13",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1345,7 +1345,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep13-in.jsonld",
       "context": "compact/ep13-context.jsonld",
-      "expect": "invalid container mapping"
+      "expectErrorCode": "invalid container mapping"
     }, {
       "@id": "#tep14",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1354,7 +1354,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep14-in.jsonld",
       "context": "compact/ep14-context.jsonld",
-      "expect": "invalid container mapping"
+      "expectErrorCode": "invalid container mapping"
     }, {
       "@id": "#tep15",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1363,7 +1363,7 @@
       "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"},
       "input": "compact/ep15-in.jsonld",
       "context": "compact/ep15-context.jsonld",
-      "expect": "invalid container mapping"
+      "expectErrorCode": "invalid container mapping"
     }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
@@ -1983,7 +1983,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/pr01-in.jsonld",
       "context": "compact/pr01-context.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr02",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -1992,7 +1992,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/pr02-in.jsonld",
       "context": "compact/pr02-context.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr03",
       "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
@@ -2001,7 +2001,7 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "compact/pr03-in.jsonld",
       "context": "compact/pr03-context.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr04",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],

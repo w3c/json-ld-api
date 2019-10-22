@@ -354,7 +354,7 @@
       "name": "Invalid JSON literal (bare-word)",
       "purpose": "Processors must generate an error when deserializing an invalid JSON literal.",
       "input": "fromRdf/js08-in.nq",
-      "expect": "invalid JSON literal",
+      "expectErrorCode": "invalid JSON literal",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tjs09",
@@ -362,7 +362,7 @@
       "name": "Invalid JSON literal (invalid structure)",
       "purpose": "Processors must generate an error when deserializing an invalid JSON literal.",
       "input": "fromRdf/js09-in.nq",
-      "expect": "invalid JSON literal",
+      "expectErrorCode": "invalid JSON literal",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tjs10",

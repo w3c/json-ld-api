@@ -357,7 +357,7 @@
       "purpose": "Verifies that an exception is raised in Flattening when conflicting indexes are found",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "flatten/e001-in.jsonld",
-      "expect": "conflicting indexes"
+      "expectErrorCode": "conflicting indexes"
     }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],

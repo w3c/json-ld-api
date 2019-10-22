@@ -458,7 +458,7 @@
       "purpose": "Generate an error if @direction has illegal value.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/di08-in.jsonld",
-      "expect": "invalid base direction"
+      "expectErrorCode": "invalid base direction"
     }, {
       "@id": "#tdi09",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
@@ -1348,7 +1348,7 @@
       "name": "Verifies that relative IRIs as properties with @vocab: '' in 1.0 generate an error",
       "purpose": "Pathological relative property IRIs in 1.0",
       "input": "toRdf/e115-in.jsonld",
-      "expect": "invalid vocab mapping",
+      "expectErrorCode": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#te116",
@@ -1356,7 +1356,7 @@
       "name": "Verifies that relative IRIs as properties with relative @vocab in 1.0 generate an error",
       "purpose": "Pathological relative property IRIs in 1.0",
       "input": "toRdf/e116-in.jsonld",
-      "expect": "invalid vocab mapping",
+      "expectErrorCode": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#tin01",
@@ -1700,7 +1700,7 @@
       "name": "string value of type map must not be a literal",
       "purpose": "index on @type",
       "input": "toRdf/m020-in.jsonld",
-      "expect": "invalid type mapping",
+      "expectErrorCode": "invalid type mapping",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tn001",
@@ -1901,7 +1901,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "toRdf/pi01-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -1909,7 +1909,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pi02-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -1917,7 +1917,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pi03-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi04",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -1925,7 +1925,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pi04-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpi05",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -1933,7 +1933,7 @@
       "purpose": "Expanding index maps where index is a property.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pi05-in.jsonld",
-      "expect": "invalid value object"
+      "expectErrorCode": "invalid value object"
     }, {
       "@id": "#tpi06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -1989,7 +1989,7 @@
       "purpose": "Check error when overriding a protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr01-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2005,7 +2005,7 @@
       "purpose": "A protected context protects all term definitions.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr03-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr04",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2013,7 +2013,7 @@
       "purpose": "A protected context does not protect terms with @protected: false.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr04-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr05",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2021,7 +2021,7 @@
       "purpose": "The Active context be set to null from an embedded context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr05-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2037,7 +2037,7 @@
       "purpose": "A scoped context can protect terms.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr08-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr09",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2045,7 +2045,7 @@
       "purpose": "A protected term cannot redefine another protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr09-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr10",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2061,7 +2061,7 @@
       "purpose": "Fail to override protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr11-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr12",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2069,7 +2069,7 @@
       "purpose": "Scoped context fail to override protected term.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr12-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr13",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2109,7 +2109,7 @@
       "purpose": "Fail to override protected terms with type.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr17-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr18",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2117,7 +2117,7 @@
       "purpose": "Fail to override protected terms with type+null+ctx.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr18-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr19",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2133,7 +2133,7 @@
       "purpose": "Fail with mix of protected and unprotected terms with type+null+ctx.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr20-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr21",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2141,7 +2141,7 @@
       "purpose": "Fail with mix of protected and unprotected terms with type+null.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr21-in.jsonld",
-      "expect": "invalid context nullification"
+      "expectErrorCode": "invalid context nullification"
     }, {
       "@id": "#tpr22",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2181,7 +2181,7 @@
       "purpose": "Fails on redefinition of terms with scoped contexts using different definitions.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr26-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr27",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2197,7 +2197,7 @@
       "purpose": "A protected term with a null IRI mapping cannot be redefined.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr28-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr29",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2221,7 +2221,7 @@
       "purpose": "Keywords may not be redefined other than to protect them.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr31-in.jsonld",
-      "expect": "term redefinition"
+      "expectErrorCode": "term redefinition"
     }, {
       "@id": "#tpr32",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2229,7 +2229,7 @@
       "purpose": "Keywords may not be redefined other than to protect them.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr32-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr33",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2237,7 +2237,7 @@
       "purpose": "Keyword aliases can not be used as prefixes.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr33-in.jsonld",
-      "expect": "invalid term definition"
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpr34",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2277,7 +2277,7 @@
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr38-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#tpr39",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2285,7 +2285,7 @@
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr39-in.jsonld",
-      "expect": "invalid IRI mapping"
+      "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2301,7 +2301,7 @@
       "purpose": "@import is invalid in 1.0.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so01-in.jsonld",
-      "expect": "invalid context member"
+      "expectErrorCode": "invalid context member"
     }, {
       "@id": "#tso02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2309,7 +2309,7 @@
       "purpose": "@import must be a string.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so02-in.jsonld",
-      "expect": "invalid @import value"
+      "expectErrorCode": "invalid @import value"
     }, {
       "@id": "#tso03",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2317,7 +2317,7 @@
       "purpose": "Processors must detect source contexts that include @import.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so03-in.jsonld",
-      "expect": "invalid context member"
+      "expectErrorCode": "invalid context member"
     }, {
       "@id": "#tso05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2341,7 +2341,7 @@
       "purpose": "A protected context protects all term definitions.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so07-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tso08",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2365,7 +2365,7 @@
       "purpose": "The containing context is merged into the source context.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so10-in.jsonld",
-      "expect": "protected term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tso11",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
@@ -2381,7 +2381,7 @@
       "purpose": "@type: @none is illegal in json-ld-1.0.",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "toRdf/tn01-in.jsonld",
-      "expect": "invalid type mapping"
+      "expectErrorCode": "invalid type mapping"
     }, {
       "@id": "#ttn02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],

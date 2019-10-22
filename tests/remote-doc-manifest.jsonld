@@ -39,7 +39,7 @@
         "contentType": "application/jldTest"
       },
       "input": "remote-doc/0004-in.jldte",
-      "expect": "loading document failed"
+      "expectErrorCode": "loading document failed"
     }, {
       "@id": "#t0005",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -79,7 +79,7 @@
       "name": "Non-existant file (404)",
       "purpose": "Loading a non-existant file raises loading document failed error",
       "input": "remote-doc/missing-in.jsonld",
-      "expect": "loading document failed"
+      "expectErrorCode": "loading document failed"
     }, {
       "@id": "#t0009",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -123,7 +123,7 @@
         ]
       },
       "input": "remote-doc/0012-in.json",
-      "expect": "multiple context link headers"
+      "expectErrorCode": "multiple context link headers"
     }, {
       "@id": "#t0013",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
