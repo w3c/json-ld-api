@@ -25,7 +25,8 @@
     All JSON-LD tests have an input file referenced using
     `mf:action` (aliased as "input" in test manifest).
     Positive and Negative Evaluation Tests also have a result file
-    referenced using `mf:result` (aliased as "expect" in test manifest).
+    referenced using `mf:result` (aliased as "expect" and "expectErrorCode" for
+    respectively Positive and Negative Evaluation Tests in test manifest).
     Other tests may take different inputs and options as defined for each test class.
     Tests should be run with the processingMode option set to "json-ld-1.1",
     unless specified explicitly as a test option.
@@ -44,13 +45,13 @@
   """ .
 
 :NegativeEvaluationTest a rdfs:Class ;
-  rdfs:label "Positive Evaluation Test" ;
+  rdfs:label "Negative Evaluation Test" ;
   rdfs:subClassOf :Test ;
   rdfs:comment """
     A Negative Evaluation test is successful when the result of processing
     the input file specified as `mf:action` (aliased as "input" in test manifest)
     results in the error identified by the literal value of
-    `mf:result` (aliased as "expect" in test manifest).
+    `mf:result` (aliased as "expectErrorCode" in test manifest).
     The specifics of invoking test, including
     the interpretation of options (`:option`) and other input files are
     specified through another class.

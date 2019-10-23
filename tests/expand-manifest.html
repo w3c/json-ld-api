@@ -4961,6 +4961,62 @@ Test te047 term as @vocab
 </dd>
 </dl>
 </dd>
+<dt id='te048'>
+Test te048 Invalid term as relative IRI
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te048</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that a relative IRI cannot be used as a term.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/e048-in.jsonld'>expand/e048-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te049'>
+Test te049 A relative IRI cannot be used as a prefix
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te049</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that a relative IRI cannot be used as a term.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/e049-in.jsonld'>expand/e049-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tec01'>
 Test tec01 Invalid keyword in term definition
 </dt>

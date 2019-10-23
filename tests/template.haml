@@ -177,7 +177,7 @@
                   %dt="expect"
                   %dd
                     - if entry['@type'].to_s.include?('Negative')
-                      =entry['expect']
+                      =entry['expectErrorCode']
                     - else
                       %a{href: entry['expect']}=entry['expect']
                   - if entry['option']
