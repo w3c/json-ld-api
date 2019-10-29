@@ -1036,7 +1036,7 @@
         the <a>base IRI</a>,
         <span class="changed">the <a>default base direction</a></span>,
         the <a>default language</a>,
-        <span class="changed">context propagation</a></span>,
+        <span class="changed">context propagation</span>,
         <span class="changed">the <a>processing mode</a></span>,
         and the <a>vocabulary mapping</a>
         by processing six specific keywords:
@@ -2381,46 +2381,59 @@
                   (unless <a>processing mode</a> is `json-ld-1.0`)</span>,
                   a <a data-link-for="JsonLdErrorCode">colliding keywords</a>
                   error has been detected and processing is aborted.</li>
-                <li>If <var>expanded property</var> is <code>@id</code> and
-                  <var>value</var> is not a <a>string</a>, an
-                  <a data-link-for="JsonLdErrorCode">invalid @id value</a>
-                  error has been detected and processing is aborted. Otherwise,
-                  set <var>expanded value</var> to the result of using the
-                  <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                  passing <var>active context</var>, <var>value</var>, and <code>true</code>
-                  for <var>document relative</var>.
-                  <span class="changed">
-                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
-                    may be an empty <a>map</a>, or an <a>array</a> of one
-                    or more <a>strings</a>. <var>expanded value</var> will be
-                    an <a>array</a> of one or more of these, with <a>string</a>
-                    values expanded using the <a
-                    href="#iri-expansion">IRI Expansion Algorithm</a>.</span></li>
-                <li>If <var>expanded property</var> is <code>@type</code> and <var>value</var>
-                  is neither a <a>string</a> nor an <a>array</a> of
-                  <a>strings</a>, an
-                  <a data-link-for="JsonLdErrorCode">invalid type value</a>
-                  error has been detected and processing is aborted. Otherwise,
-                  set <var>expanded value</var> to the result of using the
-                  <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-                  <var class="changed">type-scoped context</var> for <var>active context</var>,
-                  <code>true</code> for <var>vocab</var>,
-                  and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
-                  or each of its items.
-                  <span class="changed">If <var>result</var> already has an entry for `@type`,
-                    prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
-                    transforming it into an <a>array</a>, if necessary.</span>
-                  <span class="changed">
-                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
-                    may also be an empty <a>map</a>, or a <a>default object</a>.
-                    For a <a>default object</a>, the value of `@default` is restricted to be
-                    an <a>IRI</a>, which is expanded as above.
-                  </span>
-                  <div class="note">
-                    No transformation from a <a>string</a> <var>value</var> to an <a>array</a>
-                    <var>expanded value</var> is implied, and the form or <var>value</var>
-                    should be preserved in <var>expanded value</var>.
-                  </div>
+                <li class="changed">If <var>result</var> already has an <var>expanded property</var> <a>entry</a>,
+                  for `@included` or `@type`.</li>
+                <li>If <var>expanded property</var> is <code>@id</code>:
+                  <ol>
+                    <li>If <var>value</var> is not a <a>string</a>, an
+                      <a data-link-for="JsonLdErrorCode">invalid @id value</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Otherwise,
+                      set <var>expanded value</var> to the result of using the
+                      <a href="#iri-expansion">IRI Expansion algorithm</a>,
+                      passing <var>active context</var>, <var>value</var>, and <code>true</code>
+                      for <var>document relative</var>.
+                      <span class="changed">
+                        When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
+                        may be an empty <a>map</a>, or an <a>array</a> of one
+                        or more <a>strings</a>. <var>expanded value</var> will be
+                        an <a>array</a> of one or more of these, with <a>string</a>
+                        values expanded using the <a
+                        href="#iri-expansion">IRI Expansion Algorithm</a>.</span></li>
+                  </ol>
+                </li>
+                <li>If <var>expanded property</var> is <code>@type</code>:
+                  <ol>
+                    <li>If <var>value</var>
+                      is neither a <a>string</a> nor an <a>array</a> of
+                      <a>strings</a>, an
+                      <a data-link-for="JsonLdErrorCode">invalid type value</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Otherwise,
+                      set <var>expanded value</var> to the result of using the
+                      <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
+                      <var class="changed">type-scoped context</var> for <var>active context</var>,
+                      <code>true</code> for <var>vocab</var>,
+                      and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
+                      or each of its items.
+                      <span class="changed">If <var>result</var> already has an entry for `@type`,
+                        prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
+                        transforming it into an <a>array</a>, if necessary.</span>
+                      <span class="changed">
+                        When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
+                        may also be an empty <a>map</a>, or a <a>default object</a>.
+                        For a <a>default object</a>, the value of `@default` is restricted to be
+                        an <a>IRI</a>, which is expanded as above.
+                      </span></li>
+                    <li><span class="changed">If <var>result</var> already has an entry for `@type`,
+                      prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
+                      transforming it into an <a>array</a>, if necessary.</span>
+                      <div class="note">
+                        No transformation from a <a>string</a> <var>value</var> to an <a>array</a>
+                        <var>expanded value</var> is implied, and the form or <var>value</var>
+                        should be preserved in <var>expanded value</var>.
+                      </div></li>
+                  </ol>
                 </li>
                 <li>If <var>expanded property</var> is <code>@graph</code>, set
                   <var>expanded value</var> to the result of using this algorithm
@@ -2447,7 +2460,7 @@
                       prepend the value of `@include` in <var>result</var> to <var>expanded value</var>.</li>
                   </ol>
                 </li>
-                <li>Otherwise, if <var>expanded property</var> is <code>@value</code>:
+                <li>If <var>expanded property</var> is <code>@value</code>:
                   <ol>
                     <li class="changed">If <var>input type</var> is <code>@json</code>,
                       set <var>expanded value</var> to <var>value</var>.
@@ -2471,20 +2484,23 @@
                       <a>array</a> of one or more <a>scalar</a> values.</li>
                   </ol>
                 </li>
-                <li>If <var>expanded property</var> is <code>@language</code> and
-                  <var>value</var> is not a <a>string</a>, an
-                  <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
-                  error has been detected and processing is aborted,
-                  <span class="changed">
-                    otherwise, set <var>expanded value</var> to <var>value</var>.
-                    If <var>value</var> is not <a>well-formed</a> according to
-                    <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
-                    processors SHOULD issue a warning.
-                    When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
-                    may also be an empty <a>map</a> or an array of zero or
-                    <a>strings</a>. <var>expanded value</var> will be an
-                    <a>array</a> of one or more <a>string</a> values.</span>
-                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
+                <li>If <var>expanded property</var> is <code>@language</code>:
+                  <ol>
+                    <li>If <var>value</var> is not a <a>string</a>, an
+                      <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
+                      error has been detected and processing is aborted.</li>
+                    <li><span class="changed">
+                      Otherwise, set <var>expanded value</var> to <var>value</var>.
+                      If <var>value</var> is not <a>well-formed</a> according to
+                      <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
+                      processors SHOULD issue a warning.
+                      When the {{JsonLdOptions/frameExpansion}} flag is set, <var>value</var>
+                      may also be an empty <a>map</a> or an array of zero or
+                      <a>strings</a>. <var>expanded value</var> will be an
+                      <a>array</a> of one or more <a>string</a> values.</span>
+                      <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div>
+                      </li>
+                    </ol>
                 </li>
                 <li class="changed">If <var>expanded property</var> is <code>@direction</code>:
                   <ol>
@@ -2500,11 +2516,15 @@
                       <a>array</a> of one or more <a>string</a> values.</li>
                   </ol>
                 </li>
-                <li>If <var>expanded property</var> is <code>@index</code> and
-                  <var>value</var> is not a <a>string</a>, an
-                  <a data-link-for="JsonLdErrorCode">invalid @index value</a>
-                  error has been detected and processing is aborted. Otherwise,
-                  set <var>expanded value</var> to <var>value</var>.</li>
+                <li>If <var>expanded property</var> is <code>@index</code>:
+                  <ol>
+                    <li>If <var>value</var> is not a <a>string</a>, an
+                      <a data-link-for="JsonLdErrorCode">invalid @index value</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Otherwise,
+                      set <var>expanded value</var> to <var>value</var>.</li>
+                  </ol>
+                </li>
                 <li>If <var>expanded property</var> is <code>@list</code>:
                   <ol>
                     <li>If <var>active property</var> is <code>null</code> or
@@ -2523,12 +2543,12 @@
                   <var>active property</var>, <var>value</var> for <var>element</var>,
                   <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
-                <li>If <var>expanded property</var> is <code>@reverse</code> and
-                  <var>value</var> is not a <a class="changed">map</a>, an
-                  <a data-link-for="JsonLdErrorCode">invalid @reverse value</a>
-                  error has been detected and processing is aborted. Otherwise
+                <li>If <var>expanded property</var> is <code>@reverse</code>:
                   <ol>
-                    <li>Initialize <var>expanded value</var> to the result of using this
+                    <li>If <var>value</var> is not a <a class="changed">map</a>, an
+                      <a data-link-for="JsonLdErrorCode">invalid @reverse value</a>
+                      error has been detected and processing is aborted.</li>
+                    <li>Otherwise initialize <var>expanded value</var> to the result of using this
                       algorithm recursively, passing <var>active context</var>,
                       <code>@reverse</code> as <var>active property</var>,
                       <var>value</var> as <var>element</var>,
