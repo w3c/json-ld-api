@@ -1421,9 +1421,8 @@
           If <var>term</var> has the form of a keyword (i.e., it begins with `"@"`),
           processing is aborted and a processor SHOULD generate a warning.</li>
         <li class="changed">Set <var>previous definition</var> to any existing
-          <a>term definition</a> for <var>term</var> in <var>active context</var>.</li>
-        <li>Otherwise, remove any <var>previous definition</var> from
-          <var>active context</var>.</li>
+          <a>term definition</a> for <var>term</var> in <var>active context</var>,
+          removing that <a>term definition</a> from <var>active context</var>.</li>
         <li class="changed">If <var>value</var> is <code>null</code>,
           convert it to a <a class="changed">map</a> consisting of a single <a>entry</a> whose
           key is <code>@id</code> and whose value is <code>null</code>.</li>
