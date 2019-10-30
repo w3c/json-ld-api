@@ -2846,14 +2846,14 @@
               set <var>result</var> to the <a data-lt="entry">entry's</a> associated value.</li>
           </ol>
         </li>
-        <li>If <var>result</var> contains only the <a>entry</a>
+        <li>If <var>result</var> is a <a>map</a> that contains only the <a>entry</a>
           <code>@language</code>, set <var>result</var> to <code>null</code>.</li>
         <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
           drop free-floating values as follows:
           <ol>
-            <li>If <var>result</var> is an empty <a class="changed">map</a> or contains
-              the <a>entries</a> <code>@value</code> or <code>@list</code>, set <var>result</var> to
-              <code>null</code>.</li>
+            <li>If <var>result</var> is a <a>map</a> which is empty,
+              or contains only the <a>entries</a> <code>@value</code> or <code>@list</code>,
+              set <var>result</var> to <code>null</code>.</li>
             <li>Otherwise, if <var>result</var> is a <a class="changed">map</a> whose only
               <a>entry</a> is <code>@id</code>, set <var>result</var> to <code>null</code>.
               <span class="changed">
