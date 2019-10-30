@@ -2861,15 +2861,15 @@
                 containing only the <code>@id</code> <a>entry</a> is retained.</span></li>
           </ol>
         </li>
+        <li>If <var>result</var> is a
+          <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>,
+          set <var>result</var> that value.</li>
+        <li>Otherwise, if <var>result</var> is <code>null</code>,
+          set <var>result</var> to an empty <a>array</a>.</li>
+        <li>If <var>result</var> is not an <a>array</a>,
+          set <var>result</var> to an <a>array</a> containing only <var>result</var>.</li>
         <li>Return <var>result</var>.</li>
       </ol>
-
-      <p>If, after the above algorithm is run, the result is a
-        <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>, set the
-        result to the value of <code>@graph</code>'s value. Otherwise, if the result
-        is <code>null</code>, set it to an empty <a>array</a>. Finally, if
-        the result is not an <a>array</a>, then set the result to an
-        <a>array</a> containing only the result.</p>
     </section>
   </section> <!-- end of Expansion Algorithm -->
 
