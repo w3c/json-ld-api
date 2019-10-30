@@ -74,7 +74,7 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 
 <p>Developers are encouraged to make a local copy of the test suite (available on <a href="http://github.com/w3c/json-ld-api/tests/">GitHub</a>) and simulate the behavior of fetching test files remotely and setting HTTP headers as described in a particular test entry.</p>
 
-<h2>JSON-LD Object comparison</h2>
+<h2 id="json-ld-object-comparison">JSON-LD Object comparison</h2>
 
 <p>If algorithms are invoked with the <code>ordered</code> flag set to <code>true</code>, simple JSON Object comparison may be used, as the order of all arrays will be preserved (except for <em>fromRdf</em>, unless the input quads are also ordered). If <code>ordered</code> is <code>false</code>, then the following algorithm will ensure arrays other than values of <code>@list</code> are compared without regard to order.</p>
 
