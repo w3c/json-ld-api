@@ -1490,7 +1490,8 @@
               error has been detected and processing is aborted.</li>
             <li>If <var>value</var> contains an <code>@container</code> <a>entry</a>,
               set the <a>container mapping</a> of <var>definition</var>
-              to its value; if its value is neither <code>@set</code>, nor
+              to <span class="changed">an <a>array</a> containing</span> its value;
+              if its value is neither <code>@set</code>, nor
               <code>@index</code>, nor <code>null</code>, an
               <a data-link-for="JsonLdErrorCode">invalid reverse property</a>
               error has been detected (reverse properties only support set- and
@@ -1613,8 +1614,9 @@
               generate an <a data-link-for="JsonLdErrorCode">invalid container mapping</a>
               error and abort processing if <a>processing mode</a> is `json-ld-1.0`.</li>
             <li>Set the <a>container mapping</a> of <var>definition</var> to
-              <var>container</var>.</li>
-            <li class="changed">If <a>container mapping</a> is `@type`:
+              <var>container</var>
+              <span class="changed">coercing to an <a>array</a>, if necessary</span>.</li>
+            <li class="changed">If the <a>container mapping</a> of <var>definition</var> includes `@type`:
               <ol>
                 <li>If <var>type mapping</var> in <var>definition</var> is undefined, set it to `@id`.</li>
                 <li>If <var>type mapping</var> in <var>definition</var> is neither `@id` nor `@vocab`,
@@ -3268,7 +3270,7 @@
           return that result.</li>
         <li class="changed">If <var>element</var> is a
           <a>list object</a>, and the <a>container mapping</a> for
-          <var>active property</var> in <var>active context</var> is <code>@list</code>,
+          <var>active property</var> in <var>active context</var> <span class="changed">includes</span> <code>@list</code>,
           return the result of using this algorithm recursively, passing
           <var>active context</var>, <var>inverse context</var>,
           <var>active property</var>, value of <code>@list</code>
