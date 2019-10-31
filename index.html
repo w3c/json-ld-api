@@ -1419,7 +1419,7 @@
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
           error has been detected and processing is aborted.
           If <var>term</var> has the form of a keyword (i.e., it begins with `"@"`),
-          processing is aborted and a processor SHOULD generate a warning.</li>
+          return; processors SHOULD generate a warning.</li>
         <li class="changed">Set <var>previous definition</var> to any existing
           <a>term definition</a> for <var>term</var> in <var>active context</var>,
           removing that <a>term definition</a> from <var>active context</var>.</li>
@@ -1477,7 +1477,7 @@
               error has been detected and processing is aborted.</li>
             <li>If the value associated with the `@reverse` <a>entry</a> is a string
               having the form of a keyword (i.e., it begins with `"@"`),
-              processing is aborted and processors SHOULD generate a warning.</li>
+              return; processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
               passing <var>active context</var>, the value associated with
@@ -1517,7 +1517,7 @@
             <li>If the value associated with the `@id` <a>entry</a>
               is not a <a>keyword</a>, but
               has the form of a <a>keyword</a> (i.e., it begins with `"@"`),
-              processing is aborted and processors SHOULD generate a warning.</li>
+              return; processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
               <var>active context</var>, the value associated with the <code>@id</code> <a>entry</a> for
