@@ -801,7 +801,7 @@
       <code>_:b0</code>.</p>
 
     <p>To make it easier for humans to read or for certain applications to
-      process it, a flattened document can be compacted by passing a context. Using
+      process it, a flattened document can be compacted by passing a <a>context</a>. Using
       the same context as the input document, the flattened and compacted document
       looks as follows:</p>
 
@@ -1253,7 +1253,7 @@
                   of <var>result</var> is set to
                   <span class="changed">the result of using the 
                     <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                    passing <var>result</var> as the <a>active context</a>,
+                    passing <var>result</var> for <var>active context</var>,
                     <var>value</var>,
                     <code>true</code> for <var>vocab</var>, and
                     <code>true</code> for <var>document relative</var>.
@@ -1646,7 +1646,7 @@
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <var>context</var> to the value associated with the
-              <code>@context</code> <a>entry</a>, which is treated as a <var>local context</var>.</li>
+              <code>@context</code> <a>entry</a>, which is treated as a <a>local context</a>.</li>
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
               using the <var>active context</var>, <var>context</var> as <var>local context</var>,
               and <code>true</code> for <var>override protected</var>.
@@ -1657,7 +1657,7 @@
                 is discarded; it is called to detect errors at definition time.
                 If used, the context will be re-processed and applied to the <a>active context</a>
                 as part of <a>expansion</a> or <a>compaction</a>.</p></li>
-            <li>Set the <var>local context</var> of <var>definition</var> to <var>context</var>.</li>
+            <li>Set the <a>local context</a> of <var>definition</var> to <var>context</var>.</li>
           </ol>
         </li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@language</code> and
@@ -2953,10 +2953,10 @@
         against the document's base <a>IRI</a> or the
         <a data-lt="active context">active context's</a>
         <a>vocabulary mapping</a>, respectively, and
-        a <a>local context</a> and a map <var>defined</var> to be used when
+        a <var>local context</var> and a map <var>defined</var> to be used when
         this algorithm is used during <a href="#context-processing-algorithm">Context Processing</a>.
         If not passed, the two flags are set to <code>false</code> and
-        <a>local context</a> and <var>defined</var> are initialized to <code>null</code>.</p>
+        <var>local context</var> and <var>defined</var> are initialized to <code>null</code>.</p>
 
       <ol>
         <li>If <var>value</var> is a <a>keyword</a> or <code>null</code>,
@@ -2964,11 +2964,11 @@
         <li class="changed">
           If <var>value</var> has the form of a keyword (i.e., it begins with `"@"`),
           a processor SHOULD generate a warning and return `null`.</li>
-        <li>If <a>local context</a> is not <code>null</code>, it contains
+        <li>If <var>local context</var> is not <code>null</code>, it contains
           an <a>entry</a> with a key that equals <var>value</var>, and the value of the <a>entry</a>
           for <var>value</var> in <var>defined</var> is not <code>true</code>,
           invoke the <a href="#create-term-definition">Create Term Definition algorithm</a>,
-          passing <var>active context</var>, <a>local context</a>,
+          passing <var>active context</var>, <var>local context</var>,
           <var>value</var> as <var>term</var>, and <var>defined</var>. This will ensure that
           a <a>term definition</a> is created for <var>value</var> in
           <var>active context</var> during <a href="#context-processing-algorithm">Context Processing</a>.
@@ -2989,13 +2989,13 @@
               or <var>suffix</var> begins with double-forward-slash
               (<code>//</code>), return <var>value</var> as it is already an
               <a>IRI</a> or a <a>blank node identifier</a>.</li>
-            <li>If <a>local context</a> is not <code>null</code>, it
+            <li>If <var>local context</var> is not <code>null</code>, it
               contains a <var>prefix</var> <a>entry</a>, and the value
               of the <var>prefix</var> <a>entry</a> in <var>defined</var>
               is not <code>true</code>, invoke the
               <a href="#create-term-definition">Create Term Definition algorithm</a>,
               passing <var>active context</var>,
-              <a>local context</a>, <var>prefix</var> as <var>term</var>,
+              <var>local context</var>, <var>prefix</var> as <var>term</var>,
               and <var>defined</var>. This will ensure that a
               <a>term definition</a> is created for <a>prefix</a>
               in <var>active context</var> during
