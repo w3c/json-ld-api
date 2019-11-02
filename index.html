@@ -571,7 +571,7 @@
     <p><a>Expansion</a> has two important goals: removing any contextual
       information from the document, and ensuring all values are represented
       in a regular form. These goals are accomplished by expanding all <a>entry</a> keys
-      to <a>absolute IRIs</a> and by expressing all
+      to <a>IRIs</a> and by expressing all
       values in <a>arrays</a> in
       <a>expanded form</a>. <a>Expanded form</a> is the most verbose
       and regular way of expressing of values in JSON-LD; all contextual
@@ -912,7 +912,7 @@
     attempt to correct malformed <a>IRIs</a> or <a>language tags</a>;
     however, they SHOULD issue validation warnings.
     IRIs are not modified other than conversion between
-    <a data-lt="relative IRI">relative</a> and <a>absolute IRIs</a>.</p>
+    <a data-lt="relative IRI reference">relative</a> and absolute <a>IRIs</a>.</p>
 
   <p>A conforming <dfn data-lt="RDF Serializers/Deserializers">RDF Serializer/Deserializer</dfn> is a system that can
     <a href="#deserialize-json-ld-to-rdf-algorithm">deserialize JSON-LD to RDF</a> and
@@ -1229,9 +1229,9 @@
                   <code>@base</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove the
                   <a>base IRI</a> of <var>result</var>.</li>
-                <li>Otherwise, if <var>value</var> is an <a>absolute IRI</a>,
+                <li>Otherwise, if <var>value</var> is an <a>IRI</a>,
                   the <a>base IRI</a> of <var>result</var> is set to <var>value</var>.</li>
-                <li>Otherwise, if <var>value</var> is a <a>relative IRI</a> and
+                <li>Otherwise, if <var>value</var> is a <a>relative IRI reference</a> and
                   the <a>base IRI</a> of <var>result</var> is not <code>null</code>,
                   set the <a>base IRI</a> of <var>result</var> to the result of
                   resolving <var>value</var> against the current <a>base IRI</a>
@@ -1460,7 +1460,7 @@
               error has been detected and processing is aborted.</li>
             <li>Otherwise, if the expanded <var>type</var> is
               neither <code>@id</code>, nor <code>@vocab</code>,
-              nor an <a>absolute IRI</a>,
+              nor an <a>IRI</a>,
               an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set the <a>type mapping</a> for <var>definition</var> to <var>type</var>.</li>
@@ -1484,7 +1484,7 @@
               the <code>@reverse</code> <a>entry</a> for <var>value</var>, <code>true</code>
               for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the result
-              is neither an <a>absolute IRI</a> nor a <a>blank node identifier</a>,
+              is neither an <a>IRI</a> nor a <a>blank node identifier</a>,
               i.e., it contains no colon (<code>:</code>), an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1525,7 +1525,7 @@
               <var>value</var>, <code>true</code> for <var>vocab</var>,
               <var>local context</var>, and <var>defined</var>. If the resulting
               <a>IRI mapping</a> is neither a <a>keyword</a>, nor an
-              <a>absolute IRI</a>, nor a <a>blank node identifier</a>, an
+              <a>IRI</a>, nor a <a>blank node identifier</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted; if it equals <code>@context</code>, an
               <a data-link-for="JsonLdErrorCode">invalid keyword alias</a>
@@ -1558,7 +1558,7 @@
               the <a>IRI mapping</a> of <var>definition</var> to the result of
               concatenating the value associated with the <a data-lt="prefix">prefix's</a>
               <a>IRI mapping</a> and the <var>term</var>'s <var>suffix</var>.</li>
-            <li>Otherwise, <var>term</var> is an <a>absolute IRI</a> or
+            <li>Otherwise, <var>term</var> is an <a>IRI</a> or
               <a>blank node identifier</a>. Set the <a>IRI mapping</a>
               of <var>definition</var> to <var>term</var>.</li>
           </ol>
@@ -1566,13 +1566,13 @@
         <li class="changed">
           Otherwise if the <var>term</var> contains a slash (`/`):
           <ol>
-            <li><var>Term</var> is a <a>relative IRI</a>.</li>
+            <li><var>Term</var> is a <a>relative IRI reference</a>.</li>
             <li>Set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
               <var>active context</var>,
               <var>term</var> for <var>value</var>, and
               <code>true</code> for <var>vocab</var>.
-              If the resulting <a>IRI mapping</a> is not an <a>absolute IRI</a>, an
+              If the resulting <a>IRI mapping</a> is not an <a>IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
           </ol>
@@ -1633,7 +1633,7 @@
               an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <var>index</var> to the value associated with the
-              <code>@index</code> <a>entry</a>, which MUST a <a>string</a> expanding to an <a>absolute IRI</a>.
+              <code>@index</code> <a>entry</a>, which MUST a <a>string</a> expanding to an <a>IRI</a>.
               Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
@@ -2183,7 +2183,7 @@
     <p>This algorithm expands a JSON-LD document, such that all <a>context</a>
       definitions are removed, all <a>terms</a> and
       <a>compact IRIs</a> are expanded to
-      <a>absolute IRIs</a>,
+      <a>IRIs</a>,
       <a>blank node identifiers</a>, or
       <a>keywords</a> and all
       <a>JSON-LD values</a> are expressed in
@@ -2899,7 +2899,7 @@
     <p>In JSON-LD documents, some keys and values may represent
       <a>IRIs</a>. This section defines an algorithm for
       transforming a <a>string</a> that represents an <a>IRI</a> into
-      an <a>absolute IRI</a> or <a>blank node identifier</a>.
+      an absolute <a>IRI</a> or <a>blank node identifier</a>.
       It also covers transforming <a>keyword aliases</a>
       into <a>keywords</a>.</p>
 
@@ -2914,12 +2914,12 @@
     <section class="informative">
       <h3>Overview</h3>
 
-      <p>In order to expand <var>value</var> to an <a>absolute IRI</a>, we must
+      <p>In order to expand <var>value</var> to an <a>IRI</a>, we must
         first determine if it is <code>null</code>, a <a>term</a>, a
         <a>keyword alias</a>, or some form of <a>IRI</a>. Based on what
         we find, we handle the specific kind of expansion; for example, we expand
         a <a>keyword alias</a> to a <a>keyword</a> and a <a>term</a>
-        to an <a>absolute IRI</a> according to its <a>IRI mapping</a>
+        to an <a>IRI</a> according to its <a>IRI mapping</a>
         in the <a>active context</a>. While inspecting <var>value</var> we
         may also find that we need to create <a>term definition</a>
         dependencies because we're running this algorithm during context processing.
@@ -2949,7 +2949,7 @@
         required inputs are an <var>active context</var> and a <var>value</var>
         to be expanded. The optional inputs are two flags,
         <var>document relative</var> and <var>vocab</var>, that specifying
-        whether <var>value</var> can be interpreted as a <a>relative IRI</a>
+        whether <var>value</var> can be interpreted as a <a>relative IRI reference</a>
         against the document's base <a>IRI</a> or the
         <a data-lt="active context">active context's</a>
         <a>vocabulary mapping</a>, respectively, and
@@ -2980,7 +2980,7 @@
           <var>active context</var> has a <a>term definition</a> for
           <var>value</var>, return the associated <a>IRI mapping</a>.</li>
         <li>If <var>value</var> contains a colon (`:`), it is either
-          an <a>absolute IRI</a>, a <a>compact IRI</a>, or a
+          an <a>IRI</a>, a <a>compact IRI</a>, or a
           <a>blank node identifier</a>:
           <ol>
             <li>Split <var>value</var> into a <var>prefix</var> and <var>suffix</var>
@@ -2988,7 +2988,7 @@
             <li>If <var>prefix</var> is underscore (<code>_</code>)
               or <var>suffix</var> begins with double-forward-slash
               (<code>//</code>), return <var>value</var> as it is already an
-              <a>absolute IRI</a> or a <a>blank node identifier</a>.</li>
+              <a>IRI</a> or a <a>blank node identifier</a>.</li>
             <li>If <a>local context</a> is not <code>null</code>, it
               contains a <var>prefix</var> <a>entry</a>, and the value
               of the <var>prefix</var> <a>entry</a> in <var>defined</var>
@@ -3009,7 +3009,7 @@
               <p class="ednote">A more conservative change, although more involved,
                 would to restrict looking at the <a>prefix flag</a> if
                 the <a>processing mode</a> is `json-ld-1.0`.</p></li>
-            <li><span class="changed">If <var>value</var> has the form of an <a>absolute IRI</a></span>,
+            <li><span class="changed">If <var>value</var> has the form of an <a>IRI</a></span>,
               return <var>value</var>.</li>
           </ol>
         </li>
@@ -3067,7 +3067,7 @@
         are <em>vocabulary relative</em>, meaning that they need to be either
         a defined <a>term</a>, a <a>compact IRI</a>
         where the <a>prefix</a> is a <a>term</a>,
-        or a string which is turned into an <a>absolute IRI</a> using
+        or a string which is turned into an <a>IRI</a> using
         the <a>vocabulary mapping</a>.</p>
     </section>
 
@@ -3819,7 +3819,7 @@
           with the value <code>true</code>.</span>
         If there is no appropriate <a>compact IRI</a>,
         <span class="changed">and the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <code>true</code></span>,
-        the <a>IRI</a> is transformed to a <a>relative IRI</a>
+        the <a>IRI</a> is transformed to a <a>relative IRI reference</a>
         using the document's <a>base IRI</a>.
         Finally, if the <a>IRI</a> or <a>keyword</a> still could not be compacted,
         it is returned as is.</p>
@@ -4111,7 +4111,7 @@
           </ol>
         </li>
         <li>If <var>compact IRI</var> is not <code>null</code>, return <var>compact IRI</var>.</li>
-        <li class="changed">To ensure that the <a>absolute IRI</a> <var>var</var> is
+        <li class="changed">To ensure that the <a>IRI</a> <var>var</var> is
           not confused with a <a>compact IRI</a>,
           if the <a data-cite="RFC3986#section-3.1">IRI scheme</a> of <var>var</var>
           matches any term in <a>active context</a> with <a>prefix flag</a> set to <code>true</code>,
@@ -4119,7 +4119,7 @@
           an <a data-link-for="JsonLdErrorCode">IRI confused with prefix</a> error has been detected,
           and processing is aborted.</li>
         <li>If <var>vocab</var> is <code>false</code>,
-          transform <var>var</var> to a <a>relative IRI</a> using
+          transform <var>var</var> to a <a>relative IRI reference</a> using
           the <span class="changed"><a>base IRI</a> from <var>active context</var>, if it exists</span>.</li>
         <li>Finally, return <var>var</var> as is.</li>
       </ol>
@@ -4758,7 +4758,7 @@
                     <li>Otherwise, if <var>property</var> is
                       <span class="changed">not <a>well-formed</a></span>,
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
-                    <li>Otherwise, <var>property</var> is an <a>absolute IRI</a> or
+                    <li>Otherwise, <var>property</var> is an <a>IRI</a> or
                       <a>blank node identifier</a>. For each <var>item</var>
                       in <var>values</var>:
                       <ol>
@@ -4794,7 +4794,7 @@
 
     <p>This algorithm takes a <a>node object</a>, <a class="changed">list object</a>, or <a>value object</a>
       and transforms it into an <a>resource</a> to be used as the <a>object</a> of an <a>triple</a>.
-      If a <a>node object</a> containing a <a>relative IRI</a> is passed to
+      If a <a>node object</a> containing a <a>relative IRI reference</a> is passed to
       the algorithm, <code>null</code> is returned which then causes the resulting
       <a>triple</a> to be ignored.
       <span class="changed">If the input is a <a>list object</a>, it will also
@@ -4939,7 +4939,7 @@
         <code>rdf:rest</code>. The
         algorithm returns the list head, which is either the first allocated
         <a>blank node identifier</a> or <code>rdf:nil</code> if the
-        <a>list</a> is empty. If a list element represents a <a>relative IRI</a>,
+        <a>list</a> is empty. If a list element represents an <a>IRI</a>,
         the corresponding <code>rdf:first</code> triple is omitted.</p>
     </section>
 
@@ -6474,7 +6474,7 @@
           with an out of range value.</dd>
         <dt><dfn>invalid base IRI</dfn></dt>
         <dd>An invalid <a>base IRI</a> has been detected, i.e.,
-          it is neither an <a>absolute IRI</a> nor <code>null</code>.</dd>
+          it is neither an <a>IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid container mapping</dfn></dt>
         <dd>An <code>@container</code> <a>entry</a> was encountered
           whose value was not one of the following <a>strings</a>:
@@ -6530,7 +6530,7 @@
         <dd>An invalid <a>term definition</a> has been detected.</dd>
         <dt><dfn>invalid type mapping</dfn></dt>
         <dd>An <code>@type</code> <a>entry</a> in a <a>term definition</a>
-          was encountered whose value could not be expanded to an <a>absolute IRI</a>.</dd>
+          was encountered whose value could not be expanded to an <a>IRI</a>.</dd>
         <dt><dfn>invalid type value</dfn></dt>
         <dd>An invalid value for an <code>@type</code> <a>entry</a> has been detected,
           i.e., the value was neither a <a>string</a> nor an <a>array</a> of <a>strings</a>.</dd>
@@ -6546,8 +6546,9 @@
         <dd>An invalid <a>vocabulary mapping</a> has been detected,
           i.e., it is neither an <a>IRI</a> nor <code>null</code>.</dd>
         <dt class="changed"><dfn>IRI confused with prefix</dfn></dt>
-        <dd>When compacting an <a>absolute IRI</a> would result in an <a>absolute IRI</a>
-          which could be confused with a compact IRI (because its <a data-cite="RFC3986#section-3.1">IRI scheme</a> matches a <a>term definition</a> and it has no <a data-cite="RFC3986#section-3.1">IRI authority</a>).</dd>
+        <dd>When compacting an <a>IRI</a> would result in an <a>IRI</a>
+          which could be confused with a <a>compact IRI</a>
+          (because its <a data-cite="RFC3986#section-3.1">IRI scheme</a> matches a <a>term definition</a> and it has no <a data-cite="RFC3986#section-3.1">IRI authority</a>).</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
         <dt><dfn>loading document failed</dfn></dt>
@@ -6636,7 +6637,7 @@
       This allows a way to ensure that such <a>entry</a> values will always
       be expressed in <a>array</a> form.</li>
     <li>Added support for the <a data-link-for="JsonLdOptions">compactToRelative</a> option to allow IRI compaction (<a href="#iri-compaction" class="sectionRef"></a>)
-      to document relative IRIs to be disabled.</li>
+      to document-relative IRIs to be disabled.</li>
     <li>In JSON-LD 1.1, terms will be used as <a>compact IRI</a> prefixes
       when compacting only if
       a <a>simple term definition</a> is used where the value ends with a URI <a data-cite="RFC3986#section-2.2">gen-delim</a> character,
@@ -6671,7 +6672,7 @@
     <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
       has been updated to ensure that only <a>well-formed</a> <a>triples</a>
       are emitted; previously, it only ensured that <a>triples</a> containing
-      <a>relative IRIs</a> were excluded.</li>
+      <a>relative IRI references</a> were excluded.</li>
     <li>The API now adds an {{JsonLdOptions/ordered}}
        option, defaulting to <code>false</code> This is used in algorithms to
        control iteration of <a>map entry</a> keys. Previously, the
@@ -6687,7 +6688,7 @@
     <li>Updated the <a href="#iri-expansion">IRI Expansion algorithm</a> so that
       if <var>value</var> contains a colon (<code>:</code>), but
       <var>prefix</var> is not a <a>term</a>, to only return <var>value</var>
-      if it has the form of an <a>absolute IRI</a>, otherwise fall through to
+      if it has the form of an <a>IRI</a>, otherwise fall through to
       the rest of the algorithm.</li>
     <li>The use of <a>blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD,
@@ -6703,12 +6704,12 @@
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
     <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
     <li>Added support for <a>JSON literals</a>.</li>
-    <li><a>Term definitions</a> with keys which are of the form of a <a>compact IRI</a> or <a>absolute IRI</a> MUST NOT
+    <li><a>Term definitions</a> with keys which are of the form of an <a>IRI</a> or a <a>compact IRI</a> MUST NOT
       expand to an <a>IRI</a> other than the expansion of the key itself.</li>
     <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
     <li>The <a href="#iri-compaction">IRI compaction algorithm</a> may generate an error if the result is an
-      <a>absolute IRI</a> which could be confused with a compact IRI in the
+      <a>IRI</a> which could be confused with a <a>compact IRI</a> in the
       <a>active context</a>.</li>
     <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
       <a>type-scoped contexts</a>. This can be controlled using the <code>@propagate</code>
@@ -6725,8 +6726,8 @@
       This allows the use of the object form of a JSON-LD document when there is more
       than one <a>node object</a> being defined, and where those <a>node objects</a>
       are not embedded as values of the containing <a>node object</a>.</li>
-    <li>A <a>relative IRI</a> has been added as a possible value for <code>@vocab</code> in
-      a context. When this is set, vocabulary-relative IRIs, such as the
+    <li>A <a>relative IRI reference</a> has been added as a possible value for <code>@vocab</code> in
+      a context. When this is set, vocabulary-relative IRI references, such as the
       <a>entries</a> of <a>node objects</a>, are expanded or compacted relative
       to the <a>base IRI</a> and the <a>vocabulary mapping</a> using string concatenation.</li>
     <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not any JSON media type
@@ -6739,6 +6740,7 @@
       Language tags that are not valid according to [[BCP47]] are rejected.</li>
     <li>The <a>processing mode</a> is now implicitly `json-ld-1.1`, unless set
       explicitly to `json-ld-1.0`.</li>
+    <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
   </ul>
 </section>
 
