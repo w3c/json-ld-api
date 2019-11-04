@@ -2732,13 +2732,13 @@
                           and <var>expanded index</var> is not <code>@none</code>,
                           add the key-value pair (<code>@index</code>-<var>index</var>) to <var>item</var>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@id</code>
-                          and <var>item</var> does not have the <a>entry</a> <code>@id</code>,
+                          <var>item</var> does not have the <a>entry</a> <code>@id</code>,
+                          and <var>expanded index</var> is not `@none`,
                           add the key-value pair (<code>@id</code>-<var>expanded index</var>) to <var>item</var>,
                           where <var>expanded index</var> is set to the result of using the
                           <a href="#iri-expansion">IRI Expansion algorithm</a>,
                           passing <var>active context</var>, <var>index</var>, and <code>true</code>
-                          for <var>document relative</var>, unless <var>expanded index</var>
-                          is already set to <code>@none</code>.</li>
+                          for <var>document relative</var>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@type</code>
                           set <var>types</var> to the concatenation of <var>expanded index</var>
                           with any existing values of <code>@type</code> in <var>item</var>.
