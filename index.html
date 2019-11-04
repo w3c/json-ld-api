@@ -1182,7 +1182,7 @@
                 <li>If <a>processing mode</a> is `json-ld-1.0`,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
-                <li>Otherwise, if its value is not a <a>string</a>,
+                <li>Otherwise, if the value of `@import` is not a <a>string</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid @import value</a>
                   error has been detected and processing is aborted.</li>
                 <li>Set <var>import</var> to the result of resolving the value of <code>@import</code> against
@@ -1305,11 +1305,12 @@
                 <li>If <a>processing mode</a> is `json-ld-1.0`,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
                   error has been detected and processing is aborted.</li>
-                <li>Otherwise, if its value is not <a>boolean</a> <code>true</code> or <code>false</code>,
+                <li>Otherwise, if the value of `@propagate` is not <a>boolean</a> <code>true</code> or <code>false</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @propagate value</a>
-                  error has been detected and processing is aborted.</li>
-                <li>Otherwise, <a>previous context</a> was determined before,
-                  and no further processing is necessary.</li>
+                  error has been detected and processing is aborted.
+                  <div class="note">The <a>previous context</a> is actually set earlier in this algorithm;
+                    the previous two steps exist for error checking only.</div>
+                  </li>
               </ol>
             </li>
             <li>Create a <a class="changed">map</a> <var>defined</var> to keep
