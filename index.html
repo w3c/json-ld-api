@@ -133,8 +133,8 @@
 //]]>
 </script>
 <script>
-  // Add example button selection logic
   document.addEventListener("DOMContentLoaded", () => {
+    // Add example button selection logic
     for (const button of document.querySelectorAll(".ds-selector-tabs .selectors button")) {
       button.onclick = () => {
         const ex = button.closest(".ds-selector-tabs");
@@ -144,7 +144,26 @@
         ex.querySelector("." + button.dataset.selects).classList.add("selected");
       }
     }
-  })
+
+    // Toggle show/hide changes
+    for (const elem of document.querySelectorAll(".show-changes")) {
+      elem.onclick = () => {
+        if (elem.classList.contains("selected")) {
+          // Remove highlight class from elements having "changed" class
+          elem.classList.remove("selected");
+          for (const changed of document.querySelectorAll(".changed")) {
+            changed.classList.remove("highlight");
+          }
+        } else {
+          // Add highlight class to elements having "changed" class
+          elem.classList.add("selected");
+          for (const changed of document.querySelectorAll(".changed")) {
+            changed.classList.add("highlight");
+          }
+        }
+      }
+    }
+  });
 </script>
 <style>
   .hl-bold {font-weight: bold; color: #0a3;}
@@ -206,15 +225,14 @@
     counter-increment: numsection;
     content: counters(numsection, ".") ") ";
   }
-  .changed {
-    background-color: rgb(215, 238, 197);
+  .highlight.changed, .show-changes {
+    background-color: lime;
   }
-  .changed:hover {
-    color:  green;
-    background-color: inherit;
+  .show-changes.selected:before {
+    content: "de-highlight";
   }
-  aside.example {
-    overflow-y: hidden;
+  .show-changes:before {
+    content: "highlight";
   }
   /* example tab selection */
   .ds-selector-tabs {
@@ -334,6 +352,27 @@
     familiar with the basic RDF concepts [[RDF11-CONCEPTS]].</p>
 
   <section class="informative">
+    <h2>How to Read this Document</h2>
+
+    <p>This document is a detailed specification for a serialization of Linked
+      Data in JSON. The document is primarily intended for the following audiences:</p>
+
+    <ul>
+      <li>Software developers who want to implement processors and APIs for
+        JSON-LD</li>
+    </ul>
+
+    <p>A companion document, the JSON-LD 1.1 specification
+      [[JSON-LD11]], specifies the grammar of JSON-LD documents.</p>
+
+    <p>To understand the basics in this specification you must first be familiar with
+      <a data-cite="RFC8259" data-no-xref="">JSON</a>, which is detailed in [[RFC8259]].</p>
+
+    <p>This document can highlight changes since the [[[JSON-LD10]]] version.
+      Select to <button class="show-changes"></button> changes.</p>
+  </section>
+
+  <section class="informative">
     <h2>Contributing</h2>
 
     <p>There are a number of ways that one may participate in the development of
@@ -343,8 +382,8 @@
       <li>Technical discussion typically occurs on the public mailing list:
         <a href="https://lists.w3.org/Archives/Public/public-json-ld-wg/">public-json-ld-wg@w3.org</a></li>
 
-      <!--<li><a href="https://json-ld.org/minutes/">Public teleconferences</a> are held
-        on Tuesdays at 1500UTC on the second and fourth week of each month.</li> -->
+      <li>The working group uses <a href="http://irc.w3.org/?channels=json-ld">#json-ld</a>
+        IRC channel is available for real-time discussion on <a href="http://irc.w3.org">irc.w3.org</a>.</li>
 
       <li>The #json-ld
         IRC channel is available for real-time discussion on <a href="http://irc.w3.org">irc.w3c.org</a>.</li>
