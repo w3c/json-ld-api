@@ -1571,7 +1571,7 @@
               <a data-link-for="JsonLdErrorCode">invalid keyword alias</a>
               error has been detected and processing is aborted.</li>
             <li class="changed">If the <var>term</var> contains a colon (`:`)
-              anywhere but as the last character of <var>term</var>,
+              anywhere but as the first or last character of <var>term</var>,
               or if it contains a slash (`/`) anywhere,
               and for either case, the result of expanding <var>term</var>
               using the <a href="#iri-expansion">IRI Expansion algorithm</a>
@@ -1586,7 +1586,8 @@
           </ol>
         </li>
         <li>
-          Otherwise if the <var>term</var> contains a colon (`:`):
+          Otherwise if the <var>term</var> contains a colon (`:`)
+          <span class="changed">anywhere after the first character</span>:
           <ol>
             <li>If <var>term</var> is a <a>compact IRI</a> with a
               <a>prefix</a> that is an <a>entry</a> in <var>local context</var>
@@ -3020,7 +3021,9 @@
         <li>If <var>vocab</var> is <code>true</code> and the
           <var>active context</var> has a <a>term definition</a> for
           <var>value</var>, return the associated <a>IRI mapping</a>.</li>
-        <li>If <var>value</var> contains a colon (`:`), it is either
+        <li>If <var>value</var> contains a colon (`:`)
+          <span class="changed">anywhere after the first character</span>,
+          it is either
           an <a>IRI</a>, a <a>compact IRI</a>, or a
           <a>blank node identifier</a>:
           <ol>

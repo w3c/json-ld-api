@@ -869,6 +869,22 @@
       "expectErrorCode": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
     }, {
+      "@id": "#t0117",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "A term starting with a colon can expand to a different IRI",
+      "purpose": "Terms may begin with a colon and not be treated as IRIs.",
+      "input": "expand/0117-in.jsonld",
+      "expect": "expand/0117-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0118",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expanding a value staring with a colon does not treat that value as an IRI",
+      "purpose": "Terms may begin with a colon and not be treated as IRIs.",
+      "input": "expand/0118-in.jsonld",
+      "expect": "expand/0118-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
