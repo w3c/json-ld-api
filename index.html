@@ -1520,14 +1520,12 @@
               return; processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-              passing <var>active context</var>, the value associated with
-              the <code>@reverse</code> <a>entry</a> for <var>value</var>, <code>true</code>
-              for <var>vocab</var>,
-              <var>local context</var>, and <var>defined</var>. If the result
-              is neither an <a>IRI</a> nor a <a>blank node identifier</a>,
-              i.e., it contains no colon (<code>:</code>), an
-              <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
-              error has been detected and processing is aborted.</li>
+              passing <var>active context</var>,
+              the value associated with the <code>@reverse</code> <a>entry</a> for <var>value</var>,
+              `true` for <var>vocab</var>,
+              `true` for <var>document relative</var>,
+              <var>local context</var>,
+              and <var>defined</var>.</li>
             <li>If <var>value</var> contains an <code>@container</code> <a>entry</a>,
               set the <a>container mapping</a> of <var>definition</var>
               to <span class="changed">an <a>array</a> containing</span> its value;
@@ -3049,10 +3047,7 @@
               <span class="changed">having a non-<code>null</code> <a>IRI mapping</a>
                 and the <a>prefix flag</a> of the <a>term definition</a> is <code>true</code></span>,
               return the result of concatenating the <a>IRI mapping</a>
-              associated with <var>prefix</var> and <var>suffix</var>.
-              <p class="ednote">A more conservative change, although more involved,
-                would to restrict looking at the <a>prefix flag</a> if
-                the <a>processing mode</a> is `json-ld-1.0`.</p></li>
+              associated with <var>prefix</var> and <var>suffix</var>.</li>
             <li><span class="changed">If <var>value</var> has the form of an <a>IRI</a></span>,
               return <var>value</var>.</li>
           </ol>
