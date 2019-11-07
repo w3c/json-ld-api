@@ -1546,6 +1546,13 @@
       "expectErrorCode": "invalid term definition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te050",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid reverse id",
+      "purpose": "Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.",
+      "input": "expand/e050-in.jsonld",
+      "expectErrorCode": "invalid IRI mapping"
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",
