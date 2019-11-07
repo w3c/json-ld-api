@@ -845,6 +845,13 @@
       "input": "toRdf/e050-in.jsonld",
       "expect": "toRdf/e050-out.nq"
     }, {
+      "@id": "#tee50",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Invalid reverse id",
+      "purpose": "Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.",
+      "input": "toRdf/ee50-in.jsonld",
+      "expectErrorCode": "invalid IRI mapping"
+    }, {
       "@id": "#te051",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Expansion of keyword aliases in term definitions",
@@ -1358,6 +1365,22 @@
       "input": "toRdf/e116-in.jsonld",
       "expectErrorCode": "invalid vocab mapping",
       "option": {"specVersion": "json-ld-1.0"}
+    }, {
+      "@id": "#te117",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "A term starting with a colon can expand to a different IRI",
+      "purpose": "Terms may begin with a colon and not be treated as IRIs.",
+      "input": "toRdf/e117-in.jsonld",
+      "expect": "toRdf/e117-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te118",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Expanding a value staring with a colon does not treat that value as an IRI",
+      "purpose": "Terms may begin with a colon and not be treated as IRIs.",
+      "input": "toRdf/e118-in.jsonld",
+      "expect": "toRdf/e118-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
