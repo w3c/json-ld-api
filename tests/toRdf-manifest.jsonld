@@ -1382,6 +1382,38 @@
       "expect": "toRdf/e118-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te119",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignore some terms with @, allow others.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore terms having the form of a keyword.",
+      "input": "toRdf/e119-in.jsonld",
+      "expect": "toRdf/e119-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te120",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignore some values of @id with @, allow others.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore values of @id having the form of a keyword.",
+      "input": "toRdf/e120-in.jsonld",
+      "expect": "toRdf/e120-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te121",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignore some values of @reverse with @, allow others.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore values of @reverse having the form of a keyword.",
+      "input": "toRdf/e121-in.jsonld",
+      "expect": "toRdf/e121-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te122",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Ignore some IRIs when that start with @ when expanding.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore IRIs having the form of a keyword.",
+      "input": "toRdf/e122-in.jsonld",
+      "expect": "toRdf/e122-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
