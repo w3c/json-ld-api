@@ -2671,6 +2671,27 @@ Test te050 Term definitions with prefix separate from prefix definitions
 </dd>
 </dl>
 </dd>
+<dt id='tee50'>
+Test tee50 Invalid reverse id
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tee50</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ee50-in.jsonld'>toRdf/ee50-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+</dl>
+</dd>
 <dt id='te051'>
 Test te051 Expansion of keyword aliases in term definitions
 </dt>
@@ -4328,6 +4349,62 @@ invalid vocab mapping
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te117'>
+Test te117 A term starting with a colon can expand to a different IRI
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te117</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms may begin with a colon and not be treated as IRIs.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e117-in.jsonld'>toRdf/e117-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e117-out.nq'>toRdf/e117-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te118'>
+Test te118 Expanding a value staring with a colon does not treat that value as an IRI
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te118</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Terms may begin with a colon and not be treated as IRIs.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e118-in.jsonld'>toRdf/e118-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e118-out.nq'>toRdf/e118-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
 </dl>
 </dd>
 </dl>
