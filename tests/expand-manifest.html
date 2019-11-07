@@ -2820,24 +2820,24 @@ invalid vocab mapping
 </dd>
 </dl>
 </dd>
-<dt id='t0117'>
-Test t0117 A term starting with a colon can expand to a different IRI
+<dt id='t0119'>
+Test t0119 Ignore some terms with @, allow others.
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
-<dd>#t0117</dd>
+<dd>#t0119</dd>
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Terms may begin with a colon and not be treated as IRIs.</dd>
+<dd>Processors SHOULD generate a warning and MUST ignore terms having the form of a keyword.</dd>
 <dt>input</dt>
 <dd>
-<a href='expand/0117-in.jsonld'>expand/0117-in.jsonld</a>
+<a href='expand/0119-in.jsonld'>expand/0119-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='expand/0117-out.jsonld'>expand/0117-out.jsonld</a>
+<a href='expand/0119-out.jsonld'>expand/0119-out.jsonld</a>
 </dd>
 <dt>Options</dt>
 <dd>
@@ -2848,24 +2848,80 @@ Test t0117 A term starting with a colon can expand to a different IRI
 </dd>
 </dl>
 </dd>
-<dt id='t0118'>
-Test t0118 Expanding a value staring with a colon does not treat that value as an IRI
+<dt id='t0120'>
+Test t0120 Ignore some values of @id with @, allow others.
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
-<dd>#t0118</dd>
+<dd>#t0120</dd>
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Terms may begin with a colon and not be treated as IRIs.</dd>
+<dd>Processors SHOULD generate a warning and MUST ignore values of @id having the form of a keyword.</dd>
 <dt>input</dt>
 <dd>
-<a href='expand/0118-in.jsonld'>expand/0118-in.jsonld</a>
+<a href='expand/0120-in.jsonld'>expand/0120-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='expand/0118-out.jsonld'>expand/0118-out.jsonld</a>
+<a href='expand/0120-out.jsonld'>expand/0120-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0121'>
+Test t0121 Ignore some values of @reverse with @, allow others.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0121</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Processors SHOULD generate a warning and MUST ignore values of @reverse having the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/0121-in.jsonld'>expand/0121-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/0121-out.jsonld'>expand/0121-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0122'>
+Test t0122 Ignore some IRIs when that start with @ when expanding.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0122</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Processors SHOULD generate a warning and MUST ignore IRIs having the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/0122-in.jsonld'>expand/0122-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/0122-out.jsonld'>expand/0122-out.jsonld</a>
 </dd>
 <dt>Options</dt>
 <dd>

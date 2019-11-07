@@ -885,6 +885,38 @@
       "expect": "expand/0118-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0119",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignore some terms with @, allow others.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore terms having the form of a keyword.",
+      "input": "expand/0119-in.jsonld",
+      "expect": "expand/0119-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0120",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignore some values of @id with @, allow others.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore values of @id having the form of a keyword.",
+      "input": "expand/0120-in.jsonld",
+      "expect": "expand/0120-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0121",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignore some values of @reverse with @, allow others.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore values of @reverse having the form of a keyword.",
+      "input": "expand/0121-in.jsonld",
+      "expect": "expand/0121-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0122",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Ignore some IRIs when that start with @ when expanding.",
+      "purpose": "Processors SHOULD generate a warning and MUST ignore IRIs having the form of a keyword.",
+      "input": "expand/0122-in.jsonld",
+      "expect": "expand/0122-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
