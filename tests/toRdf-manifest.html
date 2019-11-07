@@ -4409,6 +4409,118 @@ Test te118 Expanding a value staring with a colon does not treat that value as a
 </dd>
 </dl>
 </dd>
+<dt id='te119'>
+Test te119 Ignore some terms with @, allow others.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te119</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors SHOULD generate a warning and MUST ignore terms having the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e119-in.jsonld'>toRdf/e119-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e119-out.nq'>toRdf/e119-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te120'>
+Test te120 Ignore some values of @id with @, allow others.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te120</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors SHOULD generate a warning and MUST ignore values of @id having the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e120-in.jsonld'>toRdf/e120-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e120-out.nq'>toRdf/e120-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te121'>
+Test te121 Ignore some values of @reverse with @, allow others.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te121</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors SHOULD generate a warning and MUST ignore values of @reverse having the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e121-in.jsonld'>toRdf/e121-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e121-out.nq'>toRdf/e121-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te122'>
+Test te122 Ignore some IRIs when that start with @ when expanding.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te122</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors SHOULD generate a warning and MUST ignore IRIs having the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e122-in.jsonld'>toRdf/e122-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e122-out.nq'>toRdf/e122-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tin01'>
 Test tin01 Basic Included array
 </dt>
