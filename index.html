@@ -1486,9 +1486,11 @@
         <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
         <li class="changed">If the <code>@protected</code> entry in <var>value</var>
           is <code>true</code> set the <a>protected</a> in <var>definition</var> to true.
+          If the value of `@protected` is not a <a>boolean</a>,
+          an <a data-link-for="JsonLdErrorCode">invalid @protected value</a> error has been detected and processing is aborted.
           If <a>processing mode</a> is `json-ld-1.0`,
           an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
-          has been detected and processing is aborted. </li>
+          has been detected and processing is aborted.</li>
         <li class="changed">Otherwise, if there is no <code>@protected</code> entry in <var>value</var>
           and the <var>protected</var> parameter is <code>true</code>,
           set the <a>protected</a> in <var>definition</var> to true.</li>
@@ -6453,6 +6455,7 @@
             "invalid @nest value",
             "invalid @prefix value",
             "invalid @propagate value",
+            "invalid @protected value",
             "invalid @reverse value",
             "invalid @import value",
             "invalid @version value",
@@ -6517,6 +6520,8 @@
         <dd class="changed">An invalid value for <code>@prefix</code> has been found.</dd>
         <dt class="changed"><dfn>invalid @propagate value</dfn></dt>
         <dd class="changed">An invalid value for <code>@propagate</code> has been found.</dd>
+        <dt class="changed">invalid @protected value</dt>
+        <dd class="changed">An invalid value for `@protected` has been found.</dd>
         <dt><dfn>invalid @reverse value</dfn></dt>
         <dd>An invalid value for an <code>@reverse</code> <a>entry</a> has been detected,
           i.e., the value was not a <a class="changed">map</a>.</dd>
