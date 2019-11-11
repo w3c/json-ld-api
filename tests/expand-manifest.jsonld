@@ -1360,7 +1360,7 @@
     }, {
       "@id": "#te019",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-      "name": "Invalid keyword alias",
+      "name": "Invalid keyword alias (@context)",
       "purpose": "Verifies that an exception is raised on expansion when a invalid keyword alias is found",
       "input": "expand/e019-in.jsonld",
       "expectErrorCode": "invalid keyword alias"
@@ -1584,6 +1584,13 @@
       "purpose": "Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.",
       "input": "expand/e050-in.jsonld",
       "expectErrorCode": "invalid IRI mapping"
+    }, {
+      "@id": "#te051",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid keyword alias (@base)",
+      "purpose": "Verifies that an exception is raised on expansion when a invalid keyword alias is found",
+      "input": "expand/e051-in.jsonld",
+      "expectErrorCode": "invalid keyword alias"
     }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],

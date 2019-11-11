@@ -1587,7 +1587,9 @@
               anywhere but as the first or last character of <var>term</var>,
               or if it contains a slash (`/`) anywhere,
               and for either case, the result of expanding <var>term</var>
-              using the <a href="#iri-expansion">IRI Expansion algorithm</a>
+              using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
+              <var>active context</var>, <var>term</var> for <var>value</var>, <code>true</code> for <var>vocab</var>,
+              <var>local context</var>, and <var>defined</var>,
               is not the same as the <a>IRI mapping</a> of <var>definition</var>,
               an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
