@@ -579,12 +579,16 @@
     </aside>
 
     <p>The next input example uses one <a>IRI</a> to express a <a>property</a>
-    and an <a>array</a> to encapsulate another, but
+    and a <a>map</a> to encapsulate a value, but
     leaves the rest of the information untouched.</p>
 
     <aside class="example ds-selector-tabs"
            title="Sample JSON-LD document using an IRI instead of a term to express a property">
       <div class="selectors">
+        <button class="selected input" data-selects="compacted">Compacted (Input)</button>
+        <button data-selects="expanded">Expanded (Result)</button>
+        <button data-selects="statements">Statements</button>
+        <button data-selects="turtle">Turtle</button>
         <a class="playground" target="_blank"></a>
       </div>
       <pre class="compacted input selected nohighlight" data-transform="updateExample">
@@ -597,6 +601,41 @@
         "****http://xmlns.com/foaf/0.1/name****": "Markus Lanthaler",
         ****"website"****: ****{ "@id":**** "http://www.markus-lanthaler.com/" ****}****
       }
+      -->
+      </pre>
+      <pre class="expanded result"
+           data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-compacted"
+           data-transform="updateExample">
+      <!--
+      [{
+        "@id": "http://me.markus-lanthaler.com/",
+        "http://xmlns.com/foaf/0.1/name": [
+          {"@value": "Markus Lanthaler"}
+        ],
+        "http://xmlns.com/foaf/0.1/homepage": [
+          {"@id": "http://www.markus-lanthaler.com/"}
+        ]
+      }]
+      -->
+      </pre>
+      <table class="statements"
+             data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-expanded">
+        <thead><tr><th>Subject</th><th>Property</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>http://me.markus-lanthaler.com/</td><td>foaf:name</td><td>Markus Lanthaler</td></tr>
+          <tr><td>http://me.markus-lanthaler.com/</td><td>http://xmlns.com/foaf/0.1/homepage</td><td>http://www.markus-lanthaler.com/</td></tr>
+        </tbody>
+      </table>
+      <pre class="turtle"
+           data-content-type="text/turtle"
+           data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-expanded"
+           data-transform="updateExample"
+           data-to-rdf>
+      <!--
+      @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+      <http://me.markus-lanthaler.com/> foaf:name "Markus Lanthaler";
+        foaf:homepage <http://www.markus-lanthaler.com/> .
       -->
       </pre>
     </aside>
@@ -1022,7 +1061,7 @@
       <li>an optional <a>default language</a> (<a>string</a>),</li>
       <li class="changed">an optional <a>default base direction</a>  (`"ltr"` or `"rtl"`),</li>
       <li class="changed">and an optional <dfn>previous context</dfn> (<a>context</a>),
-        used when a non-propagated <a>context</a> is defined</span>.</li>
+        used when a non-propagated <a>context</a> is defined.</li>
     </ul>
 
     <p>Each <a>term definition</a> consists of:</p>
