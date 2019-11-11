@@ -1137,7 +1137,8 @@
           <var>active context</var>.</li>
         <li class="changed">If <var>local context</var> is an object containing the member <code>@propagate</code>,
           its value MUST be <a>boolean</a> <code>true</code> or <code>false</code>,
-          set <var>propagate</var> to that value.</li>
+          set <var>propagate</var> to that value.
+          <span class="note">Error handling is performed in <a href="#step-propagate-entry">step 5.11</a>.</span></li>
         <li class="changed">If <var>propagate</var> is <code>false</code>, and <var>result</var>
           does not have a <a>previous context</a>, set <a>previous context</a>
           in <var>result</var> to <var>active context</var>.</li>
@@ -1344,7 +1345,7 @@
                   error has been detected and processing is aborted.</li>
               </ol>
             </li>
-            <li class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
+            <li id="step-propagate-entry" class="changed">If <var>context</var> has an <code>@propagate</code> <a>entry</a>:
               <ol>
                 <li>If <a>processing mode</a> is `json-ld-1.0`,
                   an <a data-link-for="JsonLdErrorCode">invalid context entry</a>
