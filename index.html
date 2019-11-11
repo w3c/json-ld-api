@@ -1196,7 +1196,7 @@
                   contains any <a>protected</a> <a>term definitions</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid context nullification</a>
                   has been detected and processing is aborted.</li>
-                <li>Otherwise, set <var>result</var> to a
+                <li>Otherwise, initialize <var>result</var> as a
                   newly-initialized <var>active context</var>,
                   <span class="changed">setting <a>previous context</a> in <var>result</var>
                     to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code></span>.
@@ -1208,7 +1208,7 @@
             </li>
             <li>If <var>context</var> is a <a>string</a>,
               <ol>
-                <li>Set <var>context</var> to the result of resolving <var>context</var> against
+                <li>Initialize <var>context</var> to the result of resolving <var>context</var> against
                   the <a>base IRI</a>
                   of the document containing the <var>local context</var>
                   which is established as specified in
@@ -1274,7 +1274,7 @@
                 <li>Otherwise, if the value of `@import` is not a <a>string</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid @import value</a>
                   error has been detected and processing is aborted.</li>
-                <li>Set <var>import</var> to the result of resolving the value of <code>@import</code> against
+                <li>Initialize <var>import</var> to the result of resolving the value of <code>@import</code> against
                   the base IRI which is established as specified in
                   <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
                   of [[RFC3986]]. Only the basic algorithm in
@@ -1511,7 +1511,7 @@
           If <var>term</var> has the form of a keyword
           (i.e., it matches the ABNF rule `"@"1*ALPHA` from [[RFC5234]]),
           return; processors SHOULD generate a warning.</li>
-        <li class="changed">Set <var>previous definition</var> to any existing
+        <li class="changed">Initialize <var>previous definition</var> to any existing
           <a>term definition</a> for <var>term</var> in <var>active context</var>,
           removing that <a>term definition</a> from <var>active context</var>.</li>
         <li class="changed">If <var>value</var> is <code>null</code>,
@@ -1527,7 +1527,7 @@
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
         <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
         <li class="changed">If the <code>@protected</code> entry in <var>value</var>
-          is <code>true</code> set the <a>protected</a> in <var>definition</var> to true.
+          is <code>true</code> set the <a>protected</a> flag in <var>definition</var> to true.
           If the value of `@protected` is not a <a>boolean</a>,
           an <a data-link-for="JsonLdErrorCode">invalid @protected value</a> error has been detected and processing is aborted.
           If <a>processing mode</a> is `json-ld-1.0`,
@@ -2371,9 +2371,9 @@
         <ol>
         <li>If <var>element</var> is <code>null</code>, return <code>null</code>.</li>
         <li class="changed">If <var>active property</var> is <code>@default</code>,
-          set the {{JsonLdOptions/frameExpansion}} flag to <code>false</code>.</li>
+          initialize the {{JsonLdOptions/frameExpansion}} flag to <code>false</code>.</li>
         <li class="changed">If <var>active property</var> has a <a>term definition</a> in <var>active context</var>
-          with a <a>local context</a>, set <var>property scoped context</var> to that <a>local context</a>.</li>
+          with a <a>local context</a>, initialize <var>property scoped context</var> to that <a>local context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>,
           <ol>
             <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
@@ -2431,7 +2431,7 @@
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
           passing <var>active context</var> and the value of the
           <code>@context</code> <a>entry</a> as <var>local context</var>.</li>
-        <li class="changed">Set <var>type-scoped context</var> to <var>active context</var>.
+        <li class="changed">Initialize <var>type-scoped context</var> to <var>active context</var>.
           This is used for expanding values that may be relevant to any previous
           <a>type-scoped context</a>.</li>
         <li class="changed">For each <var>key</var> and <var>value</var> in <var>element</var>
@@ -2455,7 +2455,7 @@
         </li>
         <li>Initialize two empty <a class="changed">maps</a>, <var>result</var>
           <span class="changed">and <var>nests</var>.
-            Set <var>input type</var> to the last value of the first <a>entry</a> in <var>element</var>
+            Initialize <var>input type</var> to the last value of the first <a>entry</a> in <var>element</var>
             expanding to <code>@type</code>, ordering <a>entries</a> lexicographically by key</span>.
         </li>
         <li id="alg-expand-each-key-value">
@@ -2464,7 +2464,7 @@
           <ol>
             <li>If <var>key</var> is <code>@context</code>, continue to
               the next <var>key</var>.</li>
-            <li>Set <var>expanded property</var> to the result of
+            <li>Initialize <var>expanded property</var> to the result of
               using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
               passing <var>active context</var>, <var>key</var> for
               <var>value</var>, and <code>true</code> for <var>vocab</var>.</li>
@@ -2714,7 +2714,7 @@
                 <li>Continue with the next <var>key</var> from <var>element</var>.</li>
               </ol>
             </li>
-            <li>Set <var>container mapping</var> to <var>key</var>'s <a>container mapping</a> in
+            <li>Initialize <var>container mapping</var> to <var>key</var>'s <a>container mapping</a> in
               <var>active context</var>.</li>
             <li class="changed">If <var>key</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>type mapping</a> of <code>@json</code>,
@@ -2781,7 +2781,7 @@
                   <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
                     <li class="changed">If <var>container mapping</var> includes `@id` or `@type`,
-                      set <var>map context</var> to the <a>previous context</a>
+                      initialize <var>map context</var> to the <a>previous context</a>
                       from <var>active context</var> if it exists,
                       otherwise, set <var>map context</var> to <var>active context</var>.</li>
                     <li class="changed">If <var>container mapping</var> includes <code>@type</code>
@@ -2793,7 +2793,7 @@
                       and the value of the <var>index</var>'s <a>local context</a>
                       as <var>local context</var>.</li>
                       <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
-                    <li>Set <var>expanded index</var> to the result of using the
+                    <li>Initialize <var>expanded index</var> to the result of using the
                       <a href="#iri-expansion">IRI Expansion algorithm</a>,
                       passing <var>active context</var>, <var>index</var>, and <code>true</code>
                       for <var>vocab</var>.</li>
@@ -2817,7 +2817,7 @@
                           <var>index key</var> is not <code>@index</code>,
                           <var>item</var> does not have an <a>entry</a> <code>@index</code>
                           and <var>expanded index</var> is not <code>@none</code>,
-                          set <var>index property values</var> to the concatenation of
+                          initialize <var>index property values</var> to the concatenation of
                           <var>expanded index</var> with any existing values of
                           <var>index key</var> in <var>item</var>.
                           Add the key-value pair (<var>expanded index</var>-<var>index property values</var>) to <var>item</var>.
@@ -2838,7 +2838,7 @@
                           passing <var>active context</var>, <var>index</var>, and <code>true</code>
                           for <var>document relative</var>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@type</code>
-                          set <var>types</var> to the concatenation of <var>expanded index</var>
+                          initialize <var>types</var> to the concatenation of <var>expanded index</var>
                           with any existing values of <code>@type</code> in <var>item</var>.
                           If <var>expanded index</var> is <code>@none</code>,
                           do not concatenate <var>expanded index</var> to <var>types</var>.
@@ -2908,7 +2908,7 @@
             </li>
             <li class="changed">For each key <var>nesting-key</var> in <var>nests</var>
               <ol>
-                <li>Set <var>nested values</var> to the value of <var>nesting-key</var>
+                <li>Initialize <var>nested values</var> to the value of <var>nesting-key</var>
                   in <var>element</var>, ensuring that it is an <a>array</a>.</li>
                 <li>For each <var>nested value</var> in <var>nested values</var>:
                   <ol>
@@ -3306,7 +3306,7 @@
         <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
 
       <ol>
-        <li class="changed">Set <var>type-scoped context</var> to <var>active context</var>.
+        <li class="changed">Initialize <var>type-scoped context</var> to <var>active context</var>.
           This is used for compacting values that may be relevant to any previous
           <a>type-scoped context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>, it is already in its most
@@ -3770,13 +3770,13 @@
                       <var class="changed">nest result</var>, initialize it to an empty <a class="changed">map</a>.
                       Initialize <var>map object</var> to the value of <var>item active property</var>
                       in <var class="changed">nest result</var>.</li>
-                    <li>Set <var>container key</var> to the result of calling the
+                    <li>Initialize <var>container key</var> to the result of calling the
                       <a href="#iri-compaction">IRI Compaction algorithm</a>
                       passing <var>active context</var>, <var>inverse context</var>,
                       either <code>@language</code>, <code>@index</code>, <code>@id</code>, or <code>@type</code>
                       based on the contents of <var>container</var>, as <var>var</var>, and <code>true</code>
                       for <var>vocab</var>.</li>
-                    <li class="changed">Set <var>index key</var> to the value of <a>index mapping</a> in
+                    <li class="changed">Initialize <var>index key</var> to the value of <a>index mapping</a> in
                       the <a>term definition</a> associated with <var>item active property</var> in <var>active context</var>,
                       or <code>@index</code>, if no such value exists.</li>
                     <li>If <var>container</var> includes <code>@language</code> and
@@ -4605,7 +4605,7 @@
               <ol>
                 <li>Create a <a class="changed">map</a> <var>referenced node</var> with a single <a>entry</a> <code>@id</code> whose
                   value is <var>id</var>.</li>
-                <li>Set <var>reverse map</var> to the value of the <code>@reverse</code> <a>entry</a> of
+                <li>Initialize <var>reverse map</var> to the value of the <code>@reverse</code> <a>entry</a> of
                   <var>element</var>.</li>
                 <li>For each key-value pair <var>property</var>-<var>values</var> in <var>reverse map</var>:
                   <ol>
@@ -4664,7 +4664,7 @@
       <li>For each <var>graph name</var> and <var>node map</var> in <var>graph map</var>
         and for each <var>id</var> and <var>node</var> in <var>node map</var>:
         <ol>
-          <li>Set <var>merged node</var> to the value for <var>id</var> in <var>result</var>, initializing it
+          <li>Initialize <var>merged node</var> to the value for <var>id</var> in <var>result</var>, initializing it
             with a new <a>map</a> consisting of a single <a>entry</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
           <li>For each <var>property</var> and <var>values</var> in <var>node</var>:
             <ol>
@@ -4820,8 +4820,8 @@
             <li>If <var>graph name</var> is
               <span class="changed">not <a>well-formed</a></span>, continue
               with the next <var>graph name</var>-<var>graph</var> pair.</li>
-            <li class="changed">If <var>graph name</var> is <code>@default</code>, set
-              set <var>triples</var> to the value of the <a data-link-for="RdfDataset">defaultGraph</a>
+            <li class="changed">If <var>graph name</var> is <code>@default</code>,
+              initialize <var>triples</var> to the value of the <a data-link-for="RdfDataset">defaultGraph</a>
               attribute of <var>dataset</var>.
               Otherwise, initialize <var>graph</var> as an empty <a>RdfGraph</a>
               and add to <var>dataset</var> using its
@@ -5064,7 +5064,7 @@
             <li>Unless <var>object</var> is <code>null</code>, append a <a>triple</a>
               composed of <var>subject</var>, <code>rdf:first</code>, and <var>object</var>
               to <var>list triples</var>.</li>
-            <li>Set <var>rest</var> as the next entry in <var>bnodes</var>, or if that
+            <li>Initialize <var>rest</var> as the next entry in <var>bnodes</var>, or if that
               does not exist, <code>rdf:nil</code>. Append a
               <a>triple</a> composed of <var>subject</var>,
               <code>rdf:rest</code>, and <var>rest</var> to <var>list triples</var>.</li>
@@ -5149,7 +5149,7 @@
         <li>For each <var>graph</var> in  <var>dataset</var>:
           <ol>
             <li>If <var>graph</var> is the <a>default graph</a>,
-              set <var>name</var> to <code>@default</code>, otherwise to the
+              initialize <var>name</var> to <code>@default</code>, otherwise to the
               <a>graph name</a> associated with <var>graph</var>.</li>
             <li>If <var>graph map</var> has no <var>name</var> <a>entry</a>, create one and set
               its value to an empty <a class="changed">map</a>.</li>
@@ -5190,7 +5190,7 @@
                   and initialize it to an <a>array</a> whose only item is
                   <var>object</var>. Finally, continue to the next
                   <a>triple</a>.</li>
-                <li>Set <var>value</var> to the result of using the
+                <li>Initialize <var>value</var> to the result of using the
                   <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
                   passing <var>object</var>,
                   <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
