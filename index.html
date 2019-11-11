@@ -1166,8 +1166,10 @@
             </li>
             <li>If <var>context</var> is a <a>string</a>,
               <ol>
-                <li>Set <var>context</var> to the result of resolving <var>value</var> against
-                  the base IRI which is established as specified in
+                <li>Set <var>context</var> to the result of resolving <var>context</var> against
+                  the <a>base IRI</a>
+                  of the document containing the <var>local context</var>
+                  which is established as specified in
                   <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
                   of [[RFC3986]]. Only the basic algorithm in
                   <a data-cite="RFC3986#section-5.2">section 5.2</a>
