@@ -1013,26 +1013,31 @@
       using information provided by the <a>active context</a>. This
       section describes how to produce an <a>active context</a>.</p>
 
-    <p>The <a>active context</a> contains the active
-      <a>term definitions</a> which specify how
-      keys and values have to be interpreted as well as the current <a>base IRI</a>,
-      the <a>vocabulary mapping</a>, the <a>default language</a>,
-      <span class="changed">the <a>default base direction</a>,
-        and an optional <dfn>previous context</dfn>,
-        used when a non-propagated <a>context</a> is defined</span>.
-      Each <a>term definition</a> consists of:</p>
+    <p>The <a>active context</a> consists of:</p>
     <ul>
-      <li>an <dfn>IRI mapping</dfn>,</li>
-      <li>a boolean flag <dfn>reverse property</dfn>,</li>
-       <li>an optional <dfn>type mapping</dfn>,</li>
-       <li>an optional <dfn>language mapping</dfn>,</li>
-      <li class="changed">an optional <dfn>direction mapping</dfn>,</li>
-      <li class="changed">an optional <a>context</a>,</li>
-      <li class="changed">an optional <dfn>nest value</dfn>,</li>
-      <li class="changed">an optional <dfn>prefix flag</dfn>,</li>
-      <li class="changed">an optional <dfn>index mapping</dfn>,</li>
-      <li class="changed">a <dfn>protected</dfn> flag, used to mark this as a protected term,</li>
-      <li>and an optional <dfn>container mapping</dfn>.</li>
+      <li>the active <a>term definitions</a> which specify how
+        keys and values have to be interpreted (<a>array</a> of <a>term definitions</a>),</li>
+      <li>the current <a>base IRI</a> (<a>IRI</a>),</li>
+      <li>an optional <a>vocabulary mapping</a> (<a>IRI</a>),</li>
+      <li>an optional <a>default language</a> (<a>string</a>),</li>
+      <li class="changed">an optional <a>default base direction</a>  (`"ltr"` or `"rtl"`),</li>
+      <li class="changed">and an optional <dfn>previous context</dfn> (<a>context</a>),
+        used when a non-propagated <a>context</a> is defined</span>.</li>
+    </ul>
+
+    <p>Each <a>term definition</a> consists of:</p>
+    <ul>
+      <li>an <dfn>IRI mapping</dfn> (<a>IRI</a>),</li>
+      <li>a flag <dfn>reverse property</dfn> (<a>boolean</a>),</li>
+       <li>an optional <dfn>type mapping</dfn> (<a>IRI</a>),</li>
+       <li>an optional <dfn>language mapping</dfn> (<a>string</a>),</li>
+      <li class="changed">an optional <dfn>direction mapping</dfn> (`"ltr"` or `"rtl"`),</li>
+      <li class="changed">an optional <a>context</a> (<a>context</a>),</li>
+      <li class="changed">an optional <dfn>nest value</dfn> (<a>string</a>),</li>
+      <li class="changed">an optional <dfn>prefix flag</dfn> (<a>boolean</a>),</li>
+      <li class="changed">an optional <dfn>index mapping</dfn> (<a>string</a>),</li>
+      <li class="changed">a <dfn>protected</dfn> flag (<a>boolean</a>),</li>
+      <li>and an optional <dfn>container mapping</dfn> (<a>array</a> of <a>strings</a>).</li>
     </ul>
 
     <p>A <a>term definition</a> can not only be used to map a <a>term</a>
