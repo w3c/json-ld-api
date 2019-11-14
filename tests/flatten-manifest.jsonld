@@ -40,7 +40,8 @@
       "name": "do not expand aliased @id/@type",
       "purpose": "If a keyword is aliased, it is not used when flattening",
       "input": "flatten/0005-in.jsonld",
-      "expect": "flatten/0005-out.jsonld"
+      "expect": "flatten/0005-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0006",
       "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest"],

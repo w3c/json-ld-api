@@ -1703,6 +1703,13 @@ Test te005 do not expand aliased @id/@type
 <dd>
 <a href='toRdf/e005-out.nq'>toRdf/e005-out.nq</a>
 </dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
 </dl>
 </dd>
 <dt id='te006'>
@@ -2693,23 +2700,30 @@ invalid IRI mapping
 </dl>
 </dd>
 <dt id='te051'>
-Test te051 Expansion of keyword aliases in term definitions
+Test te051 Error if terms that aren't, but look like keywords are used.
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
 <dd>#te051</dd>
 <dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
 <dt>Purpose</dt>
-<dd>RDF version of expand-0051</dd>
+<dd>Terms MUST NOT have the form of a keyword.</dd>
 <dt>input</dt>
 <dd>
-<a href='toRdf/e051-in.jsonld'>toRdf/e051-in.jsonld</a>
+<a href='expand/e051-in.jsonld'>expand/e051-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='toRdf/e051-out.nq'>toRdf/e051-out.nq</a>
+keyword redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -4410,7 +4424,7 @@ Test te118 Expanding a value staring with a colon does not treat that value as a
 </dl>
 </dd>
 <dt id='te119'>
-Test te119 Ignore some terms with @, allow others.
+Test te119 Allow some terms with @.
 </dt>
 <dd>
 <dl class='entry'>
@@ -7606,23 +7620,23 @@ invalid term definition
 </dl>
 </dd>
 <dt id='tpr34'>
-Test tpr34 Ignores a non-keyword term starting with '@'
+Test tpr34 Errors on a non-keyword term starting with '@'
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
 <dd>#tpr34</dd>
 <dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
 <dt>Purpose</dt>
-<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dd>Terms in the form of a keyword, which are not keywords, are errors.</dd>
 <dt>input</dt>
 <dd>
 <a href='toRdf/pr34-in.jsonld'>toRdf/pr34-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='toRdf/pr34-out.nq'>toRdf/pr34-out.nq</a>
+keyword redefinition
 </dd>
 <dt>Options</dt>
 <dd>
@@ -7634,23 +7648,23 @@ Test tpr34 Ignores a non-keyword term starting with '@'
 </dl>
 </dd>
 <dt id='tpr35'>
-Test tpr35 Ignores a non-keyword term starting with '@' (with @vocab)
+Test tpr35 Errors on a non-keyword term starting with '@' (with @vocab)
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
 <dd>#tpr35</dd>
 <dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
 <dt>Purpose</dt>
-<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dd>Terms in the form of a keyword, which are not keywords, are errors.</dd>
 <dt>input</dt>
 <dd>
 <a href='toRdf/pr35-in.jsonld'>toRdf/pr35-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='toRdf/pr35-out.nq'>toRdf/pr35-out.nq</a>
+keyword redefinition
 </dd>
 <dt>Options</dt>
 <dd>

@@ -200,6 +200,13 @@ Test t0005 do not expand aliased @id/@type
 <dd>
 <a href='expand/0005-out.jsonld'>expand/0005-out.jsonld</a>
 </dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
 </dl>
 </dd>
 <dt id='t0006'>
@@ -2877,7 +2884,7 @@ Test t0118 Expanding a value staring with a colon does not treat that value as a
 </dl>
 </dd>
 <dt id='t0119'>
-Test t0119 Ignore some terms with @, allow others.
+Test t0119 Allow some terms with @.
 </dt>
 <dd>
 <dl class='entry'>
@@ -4482,7 +4489,7 @@ invalid IRI mapping
 </dl>
 </dd>
 <dt id='te019'>
-Test te019 Invalid keyword alias
+Test te019 Invalid keyword alias (@context)
 </dt>
 <dd>
 <dl class='entry'>
@@ -5203,6 +5210,34 @@ Test te050 Invalid reverse id
 <dt>expect</dt>
 <dd>
 invalid IRI mapping
+</dd>
+</dl>
+</dd>
+<dt id='te051'>
+Test te051 Error if terms that aren't, but look like keywords are used.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te051</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Terms MUST NOT have the form of a keyword.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/e051-in.jsonld'>expand/e051-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+keyword redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -8547,23 +8582,23 @@ invalid term definition
 </dl>
 </dd>
 <dt id='tpr34'>
-Test tpr34 Ignores a non-keyword term starting with '@'
+Test tpr34 Errors on a non-keyword term starting with '@'
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
 <dd>#tpr34</dd>
 <dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dd>Terms in the form of a keyword, which are not keywords, are errors.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/pr34-in.jsonld'>expand/pr34-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='expand/pr34-out.jsonld'>expand/pr34-out.jsonld</a>
+keyword redefinition
 </dd>
 <dt>Options</dt>
 <dd>
@@ -8575,23 +8610,23 @@ Test tpr34 Ignores a non-keyword term starting with '@'
 </dl>
 </dd>
 <dt id='tpr35'>
-Test tpr35 Ignores a non-keyword term starting with '@' (with @vocab)
+Test tpr35 Errors on a non-keyword term starting with '@' (with @vocab)
 </dt>
 <dd>
 <dl class='entry'>
 <dt>id</dt>
 <dd>#tpr35</dd>
 <dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Terms in the form of a keyword, which are not keywords, are ignored.</dd>
+<dd>Terms in the form of a keyword, which are not keywords, are errors.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/pr35-in.jsonld'>expand/pr35-in.jsonld</a>
 </dd>
 <dt>expect</dt>
 <dd>
-<a href='expand/pr35-out.jsonld'>expand/pr35-out.jsonld</a>
+keyword redefinition
 </dd>
 <dt>Options</dt>
 <dd>

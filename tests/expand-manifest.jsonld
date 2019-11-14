@@ -40,7 +40,8 @@
       "name": "do not expand aliased @id/@type",
       "purpose": "If a keyword is aliased, it is not used when expanding",
       "input": "expand/0005-in.jsonld",
-      "expect": "expand/0005-out.jsonld"
+      "expect": "expand/0005-out.jsonld",
+      "option": {"specVersion": "json-ld-1.0"}
     }, {
       "@id": "#t0006",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
@@ -887,7 +888,7 @@
     }, {
       "@id": "#t0119",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Ignore some terms with @, allow others.",
+      "name": "Allow some terms with @.",
       "purpose": "Processors SHOULD generate a warning and MUST ignore terms having the form of a keyword.",
       "input": "expand/0119-in.jsonld",
       "expect": "expand/0119-out.jsonld",
@@ -1586,11 +1587,12 @@
       "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#te051",
-      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-      "name": "Invalid keyword alias (@base)",
-      "purpose": "Verifies that an exception is raised on expansion when a invalid keyword alias is found",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Error if terms that aren't, but look like keywords are used.",
+      "purpose": "Terms MUST NOT have the form of a keyword.",
       "input": "expand/e051-in.jsonld",
-      "expectErrorCode": "invalid keyword alias"
+      "expectErrorCode": "keyword redefinition",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
@@ -2545,20 +2547,20 @@
       "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tpr34",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Ignores a non-keyword term starting with '@'",
-      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Errors on a non-keyword term starting with '@'",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are errors.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr34-in.jsonld",
-      "expect": "expand/pr34-out.jsonld"
+      "expectErrorCode": "keyword redefinition"
     }, {
       "@id": "#tpr35",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Ignores a non-keyword term starting with '@' (with @vocab)",
-      "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Errors on a non-keyword term starting with '@' (with @vocab)",
+      "purpose": "Terms in the form of a keyword, which are not keywords, are errors.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr35-in.jsonld",
-      "expect": "expand/pr35-out.jsonld"
+      "expectErrorCode": "keyword redefinition"
     }, {
       "@id": "#tpr36",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],

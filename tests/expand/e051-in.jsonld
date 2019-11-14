@@ -1,0 +1,6 @@
+{
+  "@context": {
+    "@iri": "http://example/cant-be-used-as-a-term"
+  },
+  "@iri": "http://example.org/iri"
+}

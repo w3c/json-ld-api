@@ -1505,12 +1505,12 @@
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
           been detected and processing is aborted.</li>
         <li><span class="changed">Otherwise</span>, since <a>keywords</a> cannot be overridden,
-          <var>term</var> MUST NOT be a <a>keyword</a> and a
-          <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
-          error has been detected and processing is aborted.
-          If <var>term</var> has the form of a keyword
+          <var>term</var> MUST NOT be a <a>keyword</a>,
+          or have the form of a keyword
           (i.e., it matches the ABNF rule `"@"1*ALPHA` from [[RFC5234]]),
-          return; processors SHOULD generate a warning.</li>
+          and a
+          <a data-link-for="JsonLdErrorCode">keyword redefinition</a>
+          error has been detected and processing is aborted.</li>
         <li class="changed">Initialize <var>previous definition</var> to any existing
           <a>term definition</a> for <var>term</var> in <var>active context</var>,
           removing that <a>term definition</a> from <var>active context</var>.</li>
@@ -6867,7 +6867,8 @@
     <li>The <a>processing mode</a> is now implicitly `json-ld-1.1`, unless set
       explicitly to `json-ld-1.0`.</li>
     <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
-    <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
+    <li>Ignore IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
+    <li>Error on terms that have the form of a keyword (`"@"1*ALPHA`).</li>
   </ul>
 </section>
 
