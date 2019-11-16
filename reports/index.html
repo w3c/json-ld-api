@@ -41,7 +41,7 @@ JSON-LD 1.1 Processor Conformance
     td.passed-all {color: green;}
     td.passed-most {color: darkorange;}
     td.passed-some {color: red;}
-    em.rfc2119 { 
+    em.rfc2119 {
       text-transform: lowercase;
       font-variant:   small-caps;
       font-style:     normal;
@@ -74,8 +74,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2019-09-08' property='dc:issued'>
-08 September 2019
+<time class='dt-published' datetime='2019-11-16' property='dc:issued'>
+16 November 2019
 </time>
 </h2>
 <dl>
@@ -240,12 +240,7 @@ Report Generation Software
 <h2 id="instructions-for-submitting-implementation-reports">Instructions for submitting implementation reports</h2>
 <p>Tests should be run using the test manifests defined in the <a href="#test-manifests">Test Manifests</a> Section.</p>
 <p>The assumed base URI for the tests is <code>&lt;http://example/base/&gt;</code> if needed.</p>
-<p>Reports should be submitted in Turtle format to <script type="text/javascript">
-<!--
-h='&#x77;&#x33;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#112;&#x75;&#98;&#108;&#x69;&#x63;&#x2d;&#106;&#x73;&#x6f;&#110;&#x2d;&#108;&#100;&#x2d;&#x77;&#x67;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'Public JSON-LD WG'+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#80;&#x75;&#98;&#108;&#x69;&#x63;&#32;&#74;&#x53;&#x4f;&#78;&#x2d;&#76;&#68;&#32;&#x57;&#x47;&#32;&#40;&#112;&#x75;&#98;&#108;&#x69;&#x63;&#x2d;&#106;&#x73;&#x6f;&#110;&#x2d;&#108;&#100;&#x2d;&#x77;&#x67;&#32;&#x61;&#116;&#32;&#x77;&#x33;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;&#x29;</noscript> and include an <code>earl:Assertion</code> for each test, referencing the test resource from the associated manifest and the test subject being reported upon. An example test entry is be the following:</p>
+<p>Reports should be submitted in Turtle format to <a href="mailto:public-json-ld-wg@w3.org">Public JSON-LD WG</a> and include an <code>earl:Assertion</code> for each test, referencing the test resource from the associated manifest and the test subject being reported upon. An example test entry is be the following:</p>
 <pre><code>  [ a earl:Assertion;&#x000A;    earl:assertedBy &lt;--your-developer-identifier--&gt;;&#x000A;    earl:subject &lt;--your-software-identifier--&gt;;&#x000A;    earl:test &lt;--uri-of-test-from-manifest&gt;;&#x000A;    earl:result [&#x000A;      a earl:TestResult;&#x000A;      earl:outcome earl:passed;&#x000A;      dc:date &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime];&#x000A;    earl:mode earl:automatic ] .</code></pre>
 <p>The Test Subject should be defined as a <code>doap:Project</code>, including the name, homepage and developer(s) of the software (see <a href="https://github.com/edumbill/doap/wiki">DOAP</a>). Optionally, including the project description and programming language. An example test subject description is the following:</p>
 <pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool JSON-LD Parser&quot; ;&#x000A;    doap:revision      &quot;Software version number&quot; ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .</code></pre>
@@ -1369,6 +1364,62 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi01'>Test tdi01: term direction null(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi02'>Test tdi02: use alias of @direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi03'>Test tdi03: term selection with lists and direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi04'>Test tdi04: simple language map with term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi05'>Test tdi05: simple language map with overriding term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi06'>Test tdi06: simple language map with overriding null direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi07'>Test tdi07: simple language map with mismatching term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#te002'>Test te002: Absolute IRI confused with Compact IRI(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -1378,14 +1429,6 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#ten01'>Test ten01: Nest term not defined(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
-<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tep04'>Test tep04: Processing mode is implicitly json-ld-1.0(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -1586,6 +1629,70 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs09'>Test tjs09: Compact already expanded JSON literal with aliased keys(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs10'>Test tjs10: Compact JSON literal (string)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs11'>Test tjs11: Compact JSON literal (null)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tla01'>Test tla01: most specific term matching in @list.</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli01'>Test tli01: coerced @list containing an empty list(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli02'>Test tli02: coerced @list containing a list(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli03'>Test tli03: coerced @list containing an deep list(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli04'>Test tli04: coerced @list containing multiple lists(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli05'>Test tli05: coerced @list containing mixed list values(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -2033,46 +2140,6 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli01'>Test tli01: coerced @list containing an empty list(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
-<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli02'>Test tli02: coerced @list containing a list(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
-<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli03'>Test tli03: coerced @list containing an deep list(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
-<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli04'>Test tli04: coerced @list containing multiple lists(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
-<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli05'>Test tli05: coerced @list containing mixed list values(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#ttn01'>Test ttn01: @type: @none does not compact values(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -2097,7 +2164,7 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 228 Tests
+Percentage passed out of 237 Tests
 </td>
 <td class='passed-all'>
 100.0%
@@ -2825,7 +2892,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0092'>Test t0092: Various relative IRIs as properties with with @vocab: &#39;&#39;</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0092'>Test t0092: Various relative IRIs as properties with with @vocab: &#39;&#39;(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -2969,7 +3036,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0110'>Test t0110: Various relative IRIs as properties with with relative @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0110'>Test t0110: Various relative IRIs as properties with with relative @vocab(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -2977,7 +3044,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0111'>Test t0111: Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0111'>Test t0111: Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -2985,7 +3052,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0112'>Test t0112: Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0112'>Test t0112: Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3002,6 +3069,54 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0114'>Test t0114: Expansion allows multiple properties expanding to @type(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0117'>Test t0117: A term starting with a colon can expand to a different IRI(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0118'>Test t0118: Expanding a value staring with a colon does not treat that value as an IRI(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0119'>Test t0119: Ignore some terms with @, allow others.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0120'>Test t0120: Ignore some values of @id with @, allow others.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0121'>Test t0121: Ignore some values of @reverse with @, allow others.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0122'>Test t0122: Ignore some IRIs when that start with @ when expanding.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3242,6 +3357,78 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc030'>Test tc030: @propagate must be boolean valued(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi01'>Test tdi01: Expand string using default and term directions(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi02'>Test tdi02: Expand string using default and term directions and languages(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi03'>Test tdi03: expand list values with @direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi04'>Test tdi04: simple language map with term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi05'>Test tdi05: simple language mapwith overriding term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi06'>Test tdi06: simple language mapwith overriding null direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi07'>Test tdi07: simple language map with mismatching term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi08'>Test tdi08: @direction must be one of ltr or rtl(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi09'>Test tdi09: @direction is incompatible with @type(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3545,7 +3732,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te042'>Test te042: Keywords may not be redefined</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te042'>Test te042: Keywords may not be redefined in 1.0(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3578,6 +3765,30 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te047'>Test te047: term as @vocab(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te048'>Test te048: Invalid term as relative IRI(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te049'>Test te049: A relative IRI cannot be used as a prefix(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te050'>Test te050: Invalid reverse id</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3642,14 +3853,6 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ten06'>Test ten06: does not allow @nest with @reverse(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tep01'>Test tep01: Processing mode is implicitly json-ld-1.0(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3834,6 +4037,22 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs10'>Test tjs10: Expand JSON literal aleady in expanded form with aliased keys(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs11'>Test tjs11: Expand JSON literal (string)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs12'>Test tjs12: Expand JSON literal (null)(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4185,7 +4404,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi01'>Test tpi01: error if @version is not json-ld-1.1 for property-valued index(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi01'>Test tpi01: error if @version is json-ld-1.0 for property-valued index(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4497,6 +4716,86 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr30'>Test tpr30: Keywords may be protected.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr31'>Test tpr31: Protected keyword aliases cannot be overridden.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr32'>Test tpr32: Protected @type cannot be overridden.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr33'>Test tpr33: Fails if trying to declare a keyword alias as prefix.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr34'>Test tpr34: Ignores a non-keyword term starting with &#39;@&#39;(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr35'>Test tpr35: Ignores a non-keyword term starting with &#39;@&#39; (with @vocab)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr36'>Test tpr36: Ignores a term mapping to a value in the form of a keyword.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr37'>Test tpr37: Ignores a term mapping to a value in the form of a keyword (with @vocab).(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr38'>Test tpr38: Ignores a term mapping to a value in the form of a keyword (@reverse).(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr39'>Test tpr39: Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso01'>Test tso01: @import is invalid in 1.0.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -4593,7 +4892,7 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 309 Tests
+Percentage passed out of 338 Tests
 </td>
 <td class='passed-all'>
 100.0%
@@ -5153,7 +5452,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0011'>Test t0011: @embed true/false</a>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0011'>Test t0011: @embed true/false(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -5537,7 +5836,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0059'>Test t0059: @embed: @last replaces previous embed values with node reference</a>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0059'>Test t0059: @embed: @last replaces previous embed values with node reference(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -5545,7 +5844,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0060'>Test t0060: @embed: @once only embeds first value with node reference</a>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0060'>Test t0060: @embed: @once only embeds first value with node reference(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -5553,7 +5852,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0061'>Test t0061: Matching embedded nodes with @default</a>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0061'>Test t0061: Matching embedded nodes with @default(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -5561,7 +5860,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0062'>Test t0062: An array with a single value remains an array if container is @set.</a>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0062'>Test t0062: An array with a single value remains an array if container is @set.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -5569,7 +5868,15 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0063'>Test t0063: Using @null in @default.</a>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0063'>Test t0063: Using @null in @default.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0064'>Test t0064: Using @default in @type.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -5753,7 +6060,7 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 84 Tests
+Percentage passed out of 85 Tests
 </td>
 <td class='passed-all'>
 100.0%
@@ -6259,16 +6566,16 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/remote-doc-manifest#t0010'>Test t0010: load JSON document with link</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/remote-doc-manifest#t0011'>Test t0011: load JSON document with extension-type with link</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -6283,16 +6590,16 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/remote-doc-manifest#t0013'>Test t0013: load JSON document with link to HTML document</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/remote-doc-manifest#tla01'>Test tla01: Redirects if type is text/html</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -6323,16 +6630,16 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/remote-doc-manifest#tla05'>Test tla05: Base is that of the alternate URL</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr class='summary'>
 <td>
 Percentage passed out of 18 Tests
 </td>
-<td class='passed-some'>
-72.2%
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -6619,8 +6926,8 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0035'>Test t0035: non-fractional numbers converted to xsd:double</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -6675,8 +6982,8 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0118'>Test t0118: produce generalized RDF flag</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -6771,8 +7078,8 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0130'>Test t0130: IRI Resolution (10)</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -6786,6 +7093,102 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0132'>Test t0132: IRI Resolution (12)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi01'>Test tdi01: Expand string using default and term directions(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi02'>Test tdi02: Expand string using default and term directions and languages(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi03'>Test tdi03: expand list values with @direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi04'>Test tdi04: simple language map with term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi05'>Test tdi05: simple language mapwith overriding term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi06'>Test tdi06: simple language mapwith overriding null direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi07'>Test tdi07: simple language map with mismatching term direction(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi08'>Test tdi08: @direction must be one of ltr or rtl(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi09'>Test tdi09: rdfDirection: i18n-datatype with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi10'>Test tdi10: rdfDirection: i18n-datatype with direction and language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi11'>Test tdi11: rdfDirection: compound-literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tdi12'>Test tdi12: rdfDirection: compound-literal with direction and language(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7169,6 +7572,14 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tee50'>Test tee50: Invalid reverse id</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te051'>Test te051: Expansion of keyword aliases in term definitions</a>
 </td>
 <td class='PASS'>
@@ -7355,8 +7766,8 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te075'>Test te075: @vocab as blank node identifier</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -7489,7 +7900,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te092'>Test te092: Various relative IRIs as properties with with @vocab: &#39;&#39;</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te092'>Test te092: Various relative IRIs as properties with with @vocab: &#39;&#39;(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7633,7 +8044,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te110'>Test te110: Various relative IRIs as properties with with relative @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te110'>Test te110: Various relative IRIs as properties with with relative @vocab(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7641,7 +8052,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te111'>Test te111: Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te111'>Test te111: Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7649,7 +8060,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te112'>Test te112: Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te112'>Test te112: Various relative IRIs as properties with with relative @vocab relative to another relative vocabulary base(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7666,6 +8077,54 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te114'>Test te114: Expansion allows multiple properties expanding to @type(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te117'>Test te117: A term starting with a colon can expand to a different IRI(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te118'>Test te118: Expanding a value staring with a colon does not treat that value as an IRI(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te119'>Test te119: Ignore some terms with @, allow others.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te120'>Test te120: Ignore some values of @id with @, allow others.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te121'>Test te121: Ignore some values of @reverse with @, allow others.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te122'>Test te122: Ignore some IRIs when that start with @ when expanding.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7818,6 +8277,22 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs13'>Test tjs13: Transform JSON literal with wierd canonicalization(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs14'>Test tjs14: Tests transforming property with @type @json to a JSON literal (string)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs15'>Test tjs15: Tests transforming property with @type @json to a JSON literal (null)(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8225,10 +8700,10 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpi01'>Test tpi01: error if @version is not json-ld-1.1 for property-valued index(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpi01'>Test tpi01: error if @version is json-ld-1.0 for property-valued index(new in JSON-LD 1.1)</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -8537,6 +9012,86 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr30'>Test tpr30: Keywords may be protected.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr31'>Test tpr31: Protected keyword aliases cannot be overridden.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr32'>Test tpr32: Protected @type cannot be overridden.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr33'>Test tpr33: Fails if trying to declare a keyword alias as prefix.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr34'>Test tpr34: Ignores a non-keyword term starting with &#39;@&#39;(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr35'>Test tpr35: Ignores a non-keyword term starting with &#39;@&#39; (with @vocab)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr36'>Test tpr36: Ignores a term mapping to a value in the form of a keyword.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr37'>Test tpr37: Ignores a term mapping to a value in the form of a keyword (with @vocab).(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr38'>Test tpr38: Ignores a term mapping to a value in the form of a keyword (@reverse).(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tpr39'>Test tpr39: Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#trt01'>Test trt01: Representing numbers &gt;= 1e21(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -8697,10 +9252,10 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 293 Tests
+Percentage passed out of 324 Tests
 </td>
-<td class='passed-most'>
-98.3%
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -8883,8 +9438,8 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0022'>Test t0022: list from duplicate triples</a>
 </td>
-<td class='FAIL'>
-FAIL
+<td class='PASS'>
+PASS
 </td>
 </tr>
 <tr>
@@ -8914,6 +9469,102 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0026'>Test t0026: triple with rdf:first property and rdf:nil value</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi01'>Test tdi01: rdfDirection: null with i18n literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi02'>Test tdi02: rdfDirection: null with i18n literal with direction and language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi03'>Test tdi03: rdfDirection: null with compound literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi04'>Test tdi04: rdfDirection: null with compound literal with direction and language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi05'>Test tdi05: rdfDirection: i18n-datatype with i18n literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi06'>Test tdi06: rdfDirection: i18n-datatype with i18n literal with direction and language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi07'>Test tdi07: rdfDirection: i18n-datatype with compound literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi08'>Test tdi08: rdfDirection: i18n-datatype with compound literal with direction and language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi09'>Test tdi09: rdfDirection: compound-literal with i18n literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi10'>Test tdi10: rdfDirection: compound-literal with i18n literal with direction and language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi11'>Test tdi11: rdfDirection: compound-literal with compound literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi12'>Test tdi12: rdfDirection: compound-literal with compound literal with direction and language(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8977,6 +9628,38 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs08'>Test tjs08: Invalid JSON literal (bare-word)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs09'>Test tjs09: Invalid JSON literal (invalid structure)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs10'>Test tjs10: JSON literal (string)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs11'>Test tjs11: JSON literal (null)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli01'>Test tli01: @list containing empty @list(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -9001,10 +9684,10 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 35 Tests
+Percentage passed out of 51 Tests
 </td>
-<td class='passed-most'>
-97.1%
+<td class='passed-all'>
+100.0%
 </td>
 </tr>
 </table>
@@ -9056,7 +9739,7 @@ Test Suite Compliance
 Compaction
 </td>
 <td class='passed-all'>
-228/228 (100.0%)
+237/237 (100.0%)
 </td>
 </tr>
 <tr>
@@ -9064,7 +9747,7 @@ Compaction
 Expansion
 </td>
 <td class='passed-all'>
-309/309 (100.0%)
+338/338 (100.0%)
 </td>
 </tr>
 <tr>
@@ -9080,7 +9763,7 @@ Flattening
 Framing
 </td>
 <td class='passed-all'>
-84/84 (100.0%)
+85/85 (100.0%)
 </td>
 </tr>
 <tr>
@@ -9095,24 +9778,24 @@ HTML
 <td>
 Remote document
 </td>
-<td class='passed-some'>
-13/18 (72.2%)
+<td class='passed-all'>
+18/18 (100.0%)
 </td>
 </tr>
 <tr>
 <td>
 Transform JSON-LD to RDF
 </td>
-<td class='passed-most'>
-288/293 (98.3%)
+<td class='passed-all'>
+324/324 (100.0%)
 </td>
 </tr>
 <tr>
 <td>
 Transform RDF to JSON-LD
 </td>
-<td class='passed-most'>
-34/35 (97.1%)
+<td class='passed-all'>
+51/51 (100.0%)
 </td>
 </tr>
 </tbody>
@@ -9136,7 +9819,7 @@ Individual test results used to construct this report are available here:
 </li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
 <h2>
 <span class='secno'>D.</span>
 Report Generation Software
