@@ -1261,7 +1261,14 @@
               <ol>
                 <li>If the associated value is not <code>1.1</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
-                  has been detected, and processing is aborted.</li>
+                  has been detected, and processing is aborted.
+                <div class="note">The use of `1.1` for the value of `@version` is used to
+                  create a value that would cause a JSON-LD 1.0 processor to stop processing.
+                  Although it is clearly meant to be related to JSON-LD 1.1, it does not
+                  otherwise adhere to the requirements for <a href="https://semver.org/">Semantic Versioning</a>.
+                  Implementations may require special consideration when comparing
+                  the values of <a>numbers</a> with a non-zero fractional part.</div>
+                </li>
                 <li>If <a>processing mode</a>
                   is set to `json-ld-1.0`,
                   a <a data-link-for="JsonLdErrorCode">processing mode conflict</a>
