@@ -5675,9 +5675,12 @@
     work with.</p>
 
   <p>The JSON-LD API uses <a data-cite="ECMASCRIPT#sec-promise-objects">Promises</a> to represent
-    the result of the various asynchronous operations.
+    the result of the various deferred operations.
     <a data-cite="ECMASCRIPT#sec-promise-objects">Promises</a> are defined in [[ECMASCRIPT]].
-    General use within specifications can be found in [[promises-guide]].</p>
+    General use within specifications can be found in [[promises-guide]].
+    <span class="changed">Implementations MAY chose to implement in an appropriate way for their native environments
+      as long as they generally use the same methods, arguments and options
+      and return the same results.</span></p>
 
   <p class="note">Interfaces are marked `[Exposed=(Window,Worker)]`,
     but the API is also intended for use outside of a browser context.</p>
@@ -5734,7 +5737,7 @@
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
-            The following steps are then executed asynchronously.</li>
+            The following steps are then deferred.</li>
           <li>Set <var>expanded input</var> to the result of
             using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-compact-input">input</a>
@@ -5785,7 +5788,7 @@
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
-            The following steps are then executed asynchronously.</li>
+            The following steps are then deferred.</li>
           <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
@@ -5840,7 +5843,7 @@
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
-            The following steps are then executed asynchronously.</li>
+            The following steps are then deferred.</li>
           <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-flatten-input">input</a>
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
@@ -5896,7 +5899,7 @@
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
-            The following steps are then executed asynchronously.</li>
+            The following steps are then deferred.</li>
           <li>Set <var>expanded result</var> to the result of invoking the
             <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
             using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
@@ -5924,7 +5927,7 @@
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
-            The following steps are then executed asynchronously.</li>
+            The following steps are then deferred.</li>
           <li>Set <var>expanded input</var> to the result of using the
             <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
@@ -6260,7 +6263,7 @@
 
       <ol class="changed">
         <li>Create a new {{Promise}} <var>promise</var> and return it.
-          The following steps are then executed asynchronously.</li>
+          The following steps are then deferred.</li>
         <li id="LoadDocumentCallback-step-2">Set <var>document</var> to the body retrieved from
           the resource identified by <a data-link-for="LoadDocumentCallback">url</a>,
           or by otherwise locating a resource associated with <a data-link-for="LoadDocumentCallback">url</a>.
