@@ -1589,7 +1589,7 @@
               `true` for <var>vocab</var>,
               <var>local context</var>,
               and <var>defined</var>.
-              If the result does not have the form of an <a>IRI</a> or a <a>blank node identifier</a>,
+              If the result does not have the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a> or a <a>blank node identifier</a>,
               an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
             <li>If <var>value</var> contains an <code>@container</code> <a>entry</a>,
@@ -3139,7 +3139,7 @@
                 and the <a>prefix flag</a> of the <a>term definition</a> is <code>true</code></span>,
               return the result of concatenating the <a>IRI mapping</a>
               associated with <var>prefix</var> and <var>suffix</var>.</li>
-            <li><span class="changed">If <var>value</var> has the form of an <a>IRI</a></span>,
+            <li><span class="changed">If <var>value</var> has the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a></span>,
               return <var>value</var>.</li>
           </ol>
         </li>
@@ -6825,7 +6825,7 @@
     <li>Updated the <a href="#iri-expansion">IRI Expansion algorithm</a> so that
       if <var>value</var> contains a colon (<code>:</code>), but
       <var>prefix</var> is not a <a>term</a>, to only return <var>value</var>
-      if it has the form of an <a>IRI</a>, otherwise fall through to
+      if it has the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a>, otherwise fall through to
       the rest of the algorithm.</li>
     <li>The use of <a>blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD,
@@ -6841,7 +6841,7 @@
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
     <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
     <li>Added support for <a>JSON literals</a>.</li>
-    <li><a>Term definitions</a> with keys which are of the form of an <a>IRI</a> or a <a>compact IRI</a> MUST NOT
+    <li><a>Term definitions</a> with keys which are of the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a> or a <a>compact IRI</a> MUST NOT
       expand to an <a>IRI</a> other than the expansion of the key itself.</li>
     <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
