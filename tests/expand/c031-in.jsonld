@@ -1,0 +1,6 @@
+{
+  "@context": "subdir/c031-a.jsonld",
+  "outer": {
+    "inner": "ab"
+  }
+}
