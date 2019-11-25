@@ -1157,6 +1157,14 @@
       "expectErrorCode": "invalid @propagate value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc031",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "@context resolutions respects relative URLs.",
+      "purpose": "URL resolution follows RFC3986",
+      "input": "expand/c031-in.jsonld",
+      "expect": "expand/c031-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
       "name": "Expand string using default and term directions",
