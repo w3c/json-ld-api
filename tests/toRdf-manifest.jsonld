@@ -396,6 +396,254 @@
       "input": "toRdf/0132-in.jsonld",
       "expect": "toRdf/0132-out.nq"
     }, {
+      "@id": "#tc001",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "adding new term",
+      "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
+      "input": "toRdf/c001-in.jsonld",
+      "expect": "toRdf/c001-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc002",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "overriding a term",
+      "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
+      "input": "toRdf/c002-in.jsonld",
+      "expect": "toRdf/c002-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc003",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "property and value with different terms mapping to the same expanded property",
+      "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
+      "input": "toRdf/c003-in.jsonld",
+      "expect": "toRdf/c003-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc004",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "deep @context affects nested nodes",
+      "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
+      "input": "toRdf/c004-in.jsonld",
+      "expect": "toRdf/c004-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc005",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "scoped context layers on intemediate contexts",
+      "purpose": "Expansion using a scoped context uses term scope for selecting proper term",
+      "input": "toRdf/c005-in.jsonld",
+      "expect": "toRdf/c005-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc006",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "adding new term",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c006-in.jsonld",
+      "expect": "toRdf/c006-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc007",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "overriding a term",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c007-in.jsonld",
+      "expect": "toRdf/c007-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc008",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "alias of @type",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c008-in.jsonld",
+      "expect": "toRdf/c008-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc009",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "deep @type-scoped @context does NOT affect nested nodes",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c009-in.jsonld",
+      "expect": "toRdf/c009-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc010",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "scoped context layers on intemediate contexts",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c010-in.jsonld",
+      "expect": "toRdf/c010-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc011",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "orders @type terms when applying scoped contexts",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c011-in.jsonld",
+      "expect": "toRdf/c011-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc012",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "deep property-term scoped @context in @type-scoped @context affects nested nodes",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c012-in.jsonld",
+      "expect": "toRdf/c012-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc013",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type maps use scoped context from type index and not scoped context from containing",
+      "purpose": "scoped context on @type",
+      "input": "toRdf/c013-in.jsonld",
+      "expect": "toRdf/c013-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc014",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped context nullification",
+      "purpose": "type-scoped context nullification",
+      "input": "toRdf/c014-in.jsonld",
+      "expect": "toRdf/c014-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc015",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped base",
+      "purpose": "type-scoped base",
+      "input": "toRdf/c015-in.jsonld",
+      "expect": "toRdf/c015-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc016",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped vocab",
+      "purpose": "type-scoped vocab",
+      "input": "toRdf/c016-in.jsonld",
+      "expect": "toRdf/c016-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc017",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "multiple type-scoped contexts are properly reverted",
+      "purpose": "multiple type-scoped contexts are property reverted",
+      "input": "toRdf/c017-in.jsonld",
+      "expect": "toRdf/c017-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc018",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "multiple type-scoped types resolved against previous context",
+      "purpose": "multiple type-scoped types resolved against previous context",
+      "input": "toRdf/c018-in.jsonld",
+      "expect": "toRdf/c018-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc019",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped context with multiple property scoped terms",
+      "purpose": "type-scoped context with multiple property scoped terms",
+      "input": "toRdf/c019-in.jsonld",
+      "expect": "toRdf/c019-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc020",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped value",
+      "purpose": "type-scoped value",
+      "input": "toRdf/c020-in.jsonld",
+      "expect": "toRdf/c020-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc021",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped value mix",
+      "purpose": "type-scoped value mix",
+      "input": "toRdf/c021-in.jsonld",
+      "expect": "toRdf/c021-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc022",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped property-scoped contexts including @type:@vocab",
+      "purpose": "type-scoped property-scoped contexts including @type:@vocab",
+      "input": "toRdf/c022-in.jsonld",
+      "expect": "toRdf/c022-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc023",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "composed type-scoped property-scoped contexts including @type:@vocab",
+      "purpose": "composed type-scoped property-scoped contexts including @type:@vocab",
+      "input": "toRdf/c023-in.jsonld",
+      "expect": "toRdf/c023-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc024",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped + property-scoped + values evaluates against previous context",
+      "purpose": "type-scoped + property-scoped + values evaluates against previous context",
+      "input": "toRdf/c024-in.jsonld",
+      "expect": "toRdf/c024-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc025",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "type-scoped + graph container",
+      "purpose": "type-scoped + graph container",
+      "input": "toRdf/c025-in.jsonld",
+      "expect": "toRdf/c025-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc026",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@propagate: true on type-scoped context",
+      "purpose": "type-scoped context with @propagate: true survive node-objects",
+      "input": "toRdf/c026-in.jsonld",
+      "expect": "toRdf/c026-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc027",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@propagate: false on property-scoped context",
+      "purpose": "property-scoped context with @propagate: false do not survive node-objects",
+      "input": "toRdf/c027-in.jsonld",
+      "expect": "toRdf/c027-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc028",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@propagate: false on embedded context",
+      "purpose": "embedded context with @propagate: false do not survive node-objects",
+      "input": "toRdf/c028-in.jsonld",
+      "expect": "toRdf/c028-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc029",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@propagate is invalid in 1.0",
+      "purpose": "@propagate is invalid in 1.0",
+      "input": "toRdf/c029-in.jsonld",
+      "expectErrorCode": "invalid context member",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"}
+    }, {
+      "@id": "#tc030",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@propagate must be boolean valued",
+      "purpose": "@propagate must be boolean valued",
+      "input": "toRdf/c030-in.jsonld",
+      "expectErrorCode": "invalid @propagate value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc031",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@context resolutions respects relative URLs.",
+      "purpose": "URL resolution follows RFC3986",
+      "input": "toRdf/c031-in.jsonld",
+      "expect": "toRdf/c031-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
