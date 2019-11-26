@@ -1,5 +1,8 @@
 {
-  "@context": "subdir/c031-a.jsonld",
+  "@context": [
+    {"@base": "http://example.org/a/"},
+    "c031/c031-context.jsonld"
+  ],
   "outer": {
     "inner": "ab"
   }
