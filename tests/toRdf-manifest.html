@@ -1256,6 +1256,876 @@ Test t0132 IRI Resolution (12)
 </dd>
 </dl>
 </dd>
+<dt id='tc001'>
+Test tc001 adding new term
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc001</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Expansion using a scoped context uses term scope for selecting proper term</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c001-in.jsonld'>toRdf/c001-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c001-out.nq'>toRdf/c001-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc002'>
+Test tc002 overriding a term
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc002</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Expansion using a scoped context uses term scope for selecting proper term</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c002-in.jsonld'>toRdf/c002-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c002-out.nq'>toRdf/c002-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc003'>
+Test tc003 property and value with different terms mapping to the same expanded property
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc003</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Expansion using a scoped context uses term scope for selecting proper term</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c003-in.jsonld'>toRdf/c003-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c003-out.nq'>toRdf/c003-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc004'>
+Test tc004 deep @context affects nested nodes
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc004</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Expansion using a scoped context uses term scope for selecting proper term</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c004-in.jsonld'>toRdf/c004-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c004-out.nq'>toRdf/c004-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc005'>
+Test tc005 scoped context layers on intemediate contexts
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc005</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Expansion using a scoped context uses term scope for selecting proper term</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c005-in.jsonld'>toRdf/c005-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c005-out.nq'>toRdf/c005-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc006'>
+Test tc006 adding new term
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc006</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c006-in.jsonld'>toRdf/c006-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c006-out.nq'>toRdf/c006-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc007'>
+Test tc007 overriding a term
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc007</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c007-in.jsonld'>toRdf/c007-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c007-out.nq'>toRdf/c007-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc008'>
+Test tc008 alias of @type
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc008</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c008-in.jsonld'>toRdf/c008-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c008-out.nq'>toRdf/c008-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc009'>
+Test tc009 deep @type-scoped @context does NOT affect nested nodes
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc009</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c009-in.jsonld'>toRdf/c009-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c009-out.nq'>toRdf/c009-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc010'>
+Test tc010 scoped context layers on intemediate contexts
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc010</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c010-in.jsonld'>toRdf/c010-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c010-out.nq'>toRdf/c010-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc011'>
+Test tc011 orders @type terms when applying scoped contexts
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc011</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c011-in.jsonld'>toRdf/c011-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c011-out.nq'>toRdf/c011-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc012'>
+Test tc012 deep property-term scoped @context in @type-scoped @context affects nested nodes
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc012</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c012-in.jsonld'>toRdf/c012-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c012-out.nq'>toRdf/c012-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc013'>
+Test tc013 type maps use scoped context from type index and not scoped context from containing
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc013</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>scoped context on @type</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c013-in.jsonld'>toRdf/c013-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c013-out.nq'>toRdf/c013-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc014'>
+Test tc014 type-scoped context nullification
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc014</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped context nullification</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c014-in.jsonld'>toRdf/c014-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c014-out.nq'>toRdf/c014-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc015'>
+Test tc015 type-scoped base
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc015</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped base</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c015-in.jsonld'>toRdf/c015-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c015-out.nq'>toRdf/c015-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc016'>
+Test tc016 type-scoped vocab
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc016</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped vocab</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c016-in.jsonld'>toRdf/c016-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c016-out.nq'>toRdf/c016-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc017'>
+Test tc017 multiple type-scoped contexts are properly reverted
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc017</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>multiple type-scoped contexts are property reverted</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c017-in.jsonld'>toRdf/c017-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c017-out.nq'>toRdf/c017-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc018'>
+Test tc018 multiple type-scoped types resolved against previous context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc018</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>multiple type-scoped types resolved against previous context</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c018-in.jsonld'>toRdf/c018-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c018-out.nq'>toRdf/c018-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc019'>
+Test tc019 type-scoped context with multiple property scoped terms
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc019</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped context with multiple property scoped terms</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c019-in.jsonld'>toRdf/c019-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c019-out.nq'>toRdf/c019-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc020'>
+Test tc020 type-scoped value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc020</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped value</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c020-in.jsonld'>toRdf/c020-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c020-out.nq'>toRdf/c020-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc021'>
+Test tc021 type-scoped value mix
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc021</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped value mix</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c021-in.jsonld'>toRdf/c021-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c021-out.nq'>toRdf/c021-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc022'>
+Test tc022 type-scoped property-scoped contexts including @type:@vocab
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc022</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped property-scoped contexts including @type:@vocab</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c022-in.jsonld'>toRdf/c022-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c022-out.nq'>toRdf/c022-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc023'>
+Test tc023 composed type-scoped property-scoped contexts including @type:@vocab
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc023</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>composed type-scoped property-scoped contexts including @type:@vocab</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c023-in.jsonld'>toRdf/c023-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c023-out.nq'>toRdf/c023-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc024'>
+Test tc024 type-scoped + property-scoped + values evaluates against previous context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc024</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped + property-scoped + values evaluates against previous context</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c024-in.jsonld'>toRdf/c024-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c024-out.nq'>toRdf/c024-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc025'>
+Test tc025 type-scoped + graph container
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc025</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped + graph container</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c025-in.jsonld'>toRdf/c025-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c025-out.nq'>toRdf/c025-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc026'>
+Test tc026 @propagate: true on type-scoped context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc026</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>type-scoped context with @propagate: true survive node-objects</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c026-in.jsonld'>toRdf/c026-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c026-out.nq'>toRdf/c026-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc027'>
+Test tc027 @propagate: false on property-scoped context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc027</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>property-scoped context with @propagate: false do not survive node-objects</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c027-in.jsonld'>toRdf/c027-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c027-out.nq'>toRdf/c027-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc028'>
+Test tc028 @propagate: false on embedded context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc028</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>embedded context with @propagate: false do not survive node-objects</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c028-in.jsonld'>toRdf/c028-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c028-out.nq'>toRdf/c028-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc029'>
+Test tc029 @propagate is invalid in 1.0
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc029</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>@propagate is invalid in 1.0</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c029-in.jsonld'>toRdf/c029-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid context member
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc030'>
+Test tc030 @propagate must be boolean valued
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc030</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>@propagate must be boolean valued</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c030-in.jsonld'>toRdf/c030-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @propagate value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc031'>
+Test tc031 @context resolutions respects relative URLs.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc031</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>URL resolution follows RFC3986</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c031-in.jsonld'>toRdf/c031-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/c031-out.nq'>toRdf/c031-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tdi01'>
 Test tdi01 Expand string using default and term directions
 </dt>

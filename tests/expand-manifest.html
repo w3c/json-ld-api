@@ -3830,6 +3830,34 @@ invalid @propagate value
 </dd>
 </dl>
 </dd>
+<dt id='tc031'>
+Test tc031 @context resolutions respects relative URLs.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc031</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>URL resolution follows RFC3986</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/c031-in.jsonld'>expand/c031-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/c031-out.jsonld'>expand/c031-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tdi01'>
 Test tdi01 Expand string using default and term directions
 </dt>
@@ -4482,7 +4510,7 @@ invalid IRI mapping
 </dl>
 </dd>
 <dt id='te019'>
-Test te019 Invalid keyword alias
+Test te019 Invalid keyword alias (@context)
 </dt>
 <dd>
 <dl class='entry'>
