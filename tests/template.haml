@@ -23,7 +23,7 @@
       that constitute JSON-LD. The goal of the suite is to provide an easy and
       comprehensive JSON-LD testing solution for developers creating JSON-LD Processors.
 
-      The [JSON-LD Framing Specification](https://w3.org/TR/json-ld11-framing) maintains it's own
+      The [JSON-LD Framing Specification](https://w3.org/TR/json-ld11-framing) maintains its own
       [test suite](https://w3c.github.io/json-ld-framing/tests/).
 
       ## General instructions for running the JSON-LD Test suites
@@ -100,7 +100,7 @@
 
       JSON-LD Object comparison compares JSON objects, arrays, and values recursively for equality.
 
-      * JSON objects are compared entry by entry without regard to the ordering of entriess within the object. Each entry must have a corresponding entry in the object being compared to. Values are compared recursively.
+      * JSON objects are compared entry by entry without regard to the ordering of entries within the object. Each entry must have a corresponding entry in the object being compared to. Values are compared recursively.
       * JSON arrays are generally compared without regard to order (the lone exception being if the referencing key is `@list`). Each item within the array must be equivalent to an item in the array being compared to by using the comparison algorithm recursively. For values of `@list`, the order of these items is significant.
       * JSON values are compared using strict equality.
       * Values of `@language`, and other places where language tags may be used are specified in lowercase in the test results. Implementations should either normalize language tags for testing purposes, or compare language tags in a case-independent way.
