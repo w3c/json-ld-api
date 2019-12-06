@@ -1053,7 +1053,7 @@
       "@id": "#tc014",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "type-scoped context nullification",
-      "purpose": "type-scoped context nullification",
+      "purpose": "Nullifying a type-scoped context continues to use the previous context when compacting @type.",
       "input": "compact/c014-in.jsonld",
       "context": "compact/c014-context.jsonld",
       "expect": "compact/c014-out.jsonld",
