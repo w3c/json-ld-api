@@ -1100,6 +1100,13 @@
       "input": "toRdf/ee50-in.jsonld",
       "expectErrorCode": "invalid IRI mapping"
     }, {
+      "@id": "#tee51",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Invalid value object value using a value alias",
+      "purpose": "Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias",
+      "input": "toRdf/ee51-in.jsonld",
+      "expectErrorCode": "invalid value object value"
+    }, {
       "@id": "#te051",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Expansion of keyword aliases in term definitions",
