@@ -1857,6 +1857,22 @@
       "expect": "expand/js12-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs13",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal with aliased @type",
+      "purpose": "Tests expanding JSON literal with aliased @type.",
+      "input": "expand/js13-in.jsonld",
+      "expect": "expand/js13-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs14",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal with aliased @value",
+      "purpose": "Tests expanding JSON literal with aliased @value.",
+      "input": "expand/js14-in.jsonld",
+      "expect": "expand/js14-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tl001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Language map with null value",
