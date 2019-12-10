@@ -1837,6 +1837,22 @@
       "expect": "toRdf/js15-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs16",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal with aliased @type",
+      "purpose": "Tests transforming JSON literal with aliased @type.",
+      "input": "toRdf/js16-in.jsonld",
+      "expect": "toRdf/js16-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs17",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal with aliased @value",
+      "purpose": "Tests transforming JSON literal with aliased @value.",
+      "input": "toRdf/js17-in.jsonld",
+      "expect": "toRdf/js17-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@list containing @list",
