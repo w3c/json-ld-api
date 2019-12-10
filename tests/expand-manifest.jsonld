@@ -1593,6 +1593,13 @@
       "input": "expand/e050-in.jsonld",
       "expectErrorCode": "invalid IRI mapping"
     }, {
+      "@id": "#te051",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid value object value using a value alias",
+      "purpose": "Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias",
+      "input": "expand/e051-in.jsonld",
+      "expectErrorCode": "invalid value object value"
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",
