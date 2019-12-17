@@ -1704,7 +1704,7 @@
           error been detected and processing is aborted.</li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@container</code>:
           <ol>
-            <li>Initialize <var>container</var> to the value associated with the
+            <li id="ctd-container">Initialize <var>container</var> to the value associated with the
               <code>@container</code> <a>entry</a>, which MUST be either
               <code class="changed">@graph</code>,
               <code class="changed">@id</code>,
@@ -1714,12 +1714,13 @@
               <code>@set</code>,
               <code class="changed">@type</code>,
               <span class="changed">
-                or an <a>array</a> containing exactly any one of those
-                keywords, an <a>array</a> containing <code>@graph</code> and
+                or an <a>array</a> containing exactly any one of those keywords,
+                an <a>array</a> containing <code>@graph</code> and
                 either <code>@id</code> or <code>@index</code> optionally
-                including <code>@set</code>, or an <a>array</a> containing a
-                combination of <code>@set</code> and any of
-                <code>@index</code>, <code>@id</code>, <code>@type</code>,
+                including <code>@set</code>,
+                or an <a>array</a> containing a combination of <code>@set</code> and any of
+                <code>@index</code>, <code>@graph</code>,
+                <code>@id</code>, <code>@type</code>,
                 <code>@language</code> in any order
               </span>.
               Otherwise, an
@@ -6895,6 +6896,10 @@
       <a href="#create-term-definition">Create Term Definition algorithm</a>
       that remaining steps are skipped if the value of `@id` is `null`.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/241">Issue 241</a>.</li>
+    <li>Clarified step <a href="#ctd-container">21.1</a> of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>
+      that `@graph` may be used with `@set`.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/242">Issue 242</a>.</li>
   </ul>
 </section>
 
