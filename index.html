@@ -1619,9 +1619,10 @@
         <li>If <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
-            <li>If <var>value</var> contains the <code>@id</code> <a>entry</a>
+            <li id="ctd-id-null" class="changed">If <var>value</var> contains the <code>@id</code> <a>entry</a>
               is <code>null</code>, the term is not used for IRI expansion, but is
-              retained to be able to detect future redefinitions of this term.</li>
+              retained to be able to detect future redefinitions of this term
+              and the following sub-steps are skipped.</li>
             <li>Otherwise, if the value associated with the <code>@id</code> <a>entry</a> is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
@@ -6885,6 +6886,15 @@
       explicitly to `json-ld-1.0`.</li>
     <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
     <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
+  </ul>
+</section>
+<section class="appendix informative" id="changes-from-cg">
+  <h2>Changes since Candidate Release of 12 November 2019</h2>
+  <ul>
+    <li>Clarified step <a href="#ctd-id-null">16.1</a> of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>
+      that remaining steps are skipped if the value of `@id` is `null`.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/241">Issue 241</a>.</li>
   </ul>
 </section>
 
