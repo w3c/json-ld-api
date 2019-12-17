@@ -2544,17 +2544,14 @@
                       <var class="changed">type-scoped context</var> for <var>active context</var>,
                       <code>true</code> for <var>vocab</var>,
                       and <code>true</code> for <var>document relative</var> to expand that value.</li>
-                    <li>Otherwise,
+                    <li id="expansion-tsc">Otherwise,
                       set <var>expanded value</var> to the result of using the
                       <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
                       <var class="changed">type-scoped context</var> for <var>active context</var>,
                       <code>true</code> for <var>vocab</var>,
                       and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
                       or each of its items.
-                      <span class="changed">If <var>result</var> already has an entry for `@type`,
-                        prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
-                        transforming it into an <a>array</a>, if necessary.</span>
-                      </li>
+                    </li>
                     <li><span class="changed">If <var>result</var> already has an entry for `@type`,
                       prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
                       transforming it into an <a>array</a>, if necessary.</span>
@@ -6900,6 +6897,10 @@
       <a href="#create-term-definition">Create Term Definition algorithm</a>
       that `@graph` may be used with `@set`.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/242">Issue 242</a>.</li>
+    <li>Remove text from  <a href="#expansion-tsc">13.4.4.4</a> of the
+      <a href="#expansion-algorithm">Expansion algorithm</a>
+      that duplicate the following step.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 243</a>.</li>
   </ul>
 </section>
 
