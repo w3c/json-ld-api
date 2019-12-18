@@ -6314,8 +6314,8 @@
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</p>
           <p>Processors MAY transform <var>document</var> to the <a>internal representation</a>.</p>
-          <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>
-            or <code>text/html</code>.</p>
+          <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>,
+            <code>text/html</code>, or <code>application/xhtml+xml</code>.</p>
         </li>
         <li>Otherwise, the retrieved document's <a>Content-Type</a> is neither
           <code>application/json</code>,
@@ -6357,7 +6357,8 @@
           unless a specific <a data-cite="RFC3986#section-3.5">fragment identifier</a> is targeted,
           extracts all encountered <a>JSON-LD script elements</a> using an <a>array</a> form, if necessary.</dd>
         <dt><dfn data-dfn-for="LoadDocumentOptions">profile</dfn></dt>
-        <dd>When the resulting <a data-link-for="RemoteDocument">contentType</a> is <code>text/html</code>,
+        <dd>When the resulting <a data-link-for="RemoteDocument">contentType</a> is <code>text/html</code>
+          or <code>application/xhtml+xml</code>,
           this option determines the profile to use for selecting a <a>JSON-LD script elements</a>.</dd>
         <dt><dfn data-dfn-for="LoadDocumentOptions">requestProfile</dfn></dt>
         <dd>One or more IRIs to use in the request as a <code>profile</code> parameter.
@@ -6419,11 +6420,13 @@
       <p>This sections describe an extension to the algorithm specified
         in <a>LoadDocumentCallback</a> to support extracting JSON-LD from HTML.</p>
 
-      <p><a href="#LoadDocumentCallback-step-2">Step 2</a> is updated to add the following: A processor supporting <a>HTML script extraction</a> MUST include <code>text/html</code> at any preference level,
+      <p><a href="#LoadDocumentCallback-step-2">Step 2</a> is updated to add the following: A processor supporting <a>HTML script extraction</a> MUST include <code>text/html</code> at any preference level
+        and MAY include <code>application/xhtml+xml</code> at any preference level,
         unless <a data-link-for="LoadDocumentOptions">requestProfile</a> is `http://www.w3.org/ns/json-ld#context`.</p>
 
       <p>After <a href="#LoadDocumentCallback-step-5">step 5</a>, add the following processing step:
-        Otherwise, if the retrieved resource's <a>Content-Type</a> is <code>text/html</code>:</p>
+        Otherwise, if the retrieved resource's <a>Content-Type</a> is either <code>text/html</code>
+        or <code>application/xhtml+xml</code>:</p>
       <ol>
         <li>Set <var>documentUrl</var> to the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
           of <a data-link-for="LoadDocumentCallback">url</a>, as defined in [[HTML]],
@@ -6909,6 +6912,10 @@
       <a href="#expansion-algorithm">Expansion algorithm</a>
       that duplicate the following step.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 243</a>.</li>
+    <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
+      in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
+      and as a use of the {{LoadDocumentOptions/profile}} API option.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/244">Issue 244</a>.</li>
     <li>Updated step <a href="#ctd-contains-colon">16.5</a> of the
       <a href="#create-term-definition">Create Term Definition algorithm</a>
       to prevent an issue where <var>term</var> might not be defined at the time it is expanded.
