@@ -1642,16 +1642,24 @@
               error has been detected and processing is aborted; if it equals <code>@context</code>, an
               <a data-link-for="JsonLdErrorCode">invalid keyword alias</a>
               error has been detected and processing is aborted.</li>
-            <li class="changed">If the <var>term</var> contains a colon (`:`)
+            <li id="ctd-contains-colon" class="changed">If the <var>term</var> contains a colon (`:`)
               anywhere but as the first or last character of <var>term</var>,
-              or if it contains a slash (`/`) anywhere,
-              and for either case, the result of expanding <var>term</var>
-              using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-              <var>active context</var>, <var>term</var> for <var>value</var>, <code>true</code> for <var>vocab</var>,
-              <var>local context</var>, and <var>defined</var>,
-              is not the same as the <a>IRI mapping</a> of <var>definition</var>,
-              an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
-              error has been detected and processing is aborted.</li>
+              or if it contains a slash (`/`) anywhere:
+              <ol>
+                <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
+                  <code>true</code>.</li>
+                <li>If the result of expanding <var>term</var>
+                  using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
+                  passing <var>active context</var>,
+                  <var>term</var> for <var>value</var>,
+                  <code>true</code> for <var>vocab</var>,
+                  <var>local context</var>,
+                  and <var>defined</var>,
+                  is not the same as the <a>IRI mapping</a> of <var>definition</var>,
+                  an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
+                  error has been detected and processing is aborted.</li>
+              </ol>
+            </li>
             <li class="changed">If <var>term</var> contains neither a colon (`:`) nor a slash (`/`),
               <span class="changed"><var>simple term</var> is <code>true</code></span>,
               and if the <a>IRI mapping</a> of <var>definition</var>
@@ -6901,6 +6909,10 @@
       <a href="#expansion-algorithm">Expansion algorithm</a>
       that duplicate the following step.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 243</a>.</li>
+    <li>Updated step <a href="#ctd-contains-colon">16.5</a> of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>
+      to prevent an issue where <var>term</var> might not be defined at the time it is expanded.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/245">Issue 245</a>.</li>
   </ul>
 </section>
 
