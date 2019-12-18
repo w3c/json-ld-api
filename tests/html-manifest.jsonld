@@ -14,6 +14,14 @@
     "expect": "html/e001-out.jsonld",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
+    "@id": "#tex01",
+    "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest", "jld:HtmlTest"],
+    "name": "Expands embedded JSON-LD script element (xhtml)",
+    "purpose": "Tests embedded JSON-LD in XHTML",
+    "input": "html/e001-in.html",
+    "expect": "html/e001-out.jsonld",
+    "option": {"specVersion": "json-ld-1.1", "contentType": "application/xhtml+xml"}
+  }, {
     "@id": "#te002",
     "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest", "jld:HtmlTest"],
     "name": "Expands first embedded JSON-LD script element",
