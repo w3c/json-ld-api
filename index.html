@@ -2469,14 +2469,16 @@
           <var>value</var>, and <code>true</code> for <var>vocab</var>:
           <ol>
             <li>Convert <var>value</var> into an <a>array</a>, if necessary.</li>
-            <li>For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
+            <li id="expand-type-scoped-context">For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
               if <var>term</var> is a <a>string</a>,
               and <var>term</var>'s <a>term definition</a> in <var>active context</var>
               has a <a>local context</a>, set <var>active context</var> to the result
               to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var>, and the value of the
-              <var>term</var>'s <a>local context</a> as <var>local context</var>.</li>
+              passing <var>active context</var>,
+              the value of the
+              <var>term</var>'s <a>local context</a> as <var>local context</var>,
+              and `false` for <var>propagate</var>.</li>
           </ol>
         </li>
         <li>Initialize two empty <a class="changed">maps</a>, <var>result</var>
@@ -6920,6 +6922,10 @@
       <a href="#create-term-definition">Create Term Definition algorithm</a>
       to prevent an issue where <var>term</var> might not be defined at the time it is expanded.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/245">Issue 245</a>.</li>
+    <li>Update step <a href="#expand-type-scoped-context">11.1</a> of the
+      <a href="#expansion-algorithm">Expansion algorithm</a>
+      to make sure the <a>type-scoped context</a> is not propagated by default.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 246</a>.</li>
   </ul>
 </section>
 
