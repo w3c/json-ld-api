@@ -1928,6 +1928,14 @@
       "expect": "expand/js20-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs21",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal with @context",
+      "purpose": "Tests expanding JSON literal with a @context.",
+      "input": "expand/js21-in.jsonld",
+      "expect": "expand/js21-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tl001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Language map with null value",

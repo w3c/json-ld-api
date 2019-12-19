@@ -1877,6 +1877,14 @@
       "expect": "toRdf/js20-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs21",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal with @context",
+      "purpose": "Tests transforming JSON literal with a @context.",
+      "input": "toRdf/js21-in.jsonld",
+      "expect": "toRdf/js21-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@list containing @list",
