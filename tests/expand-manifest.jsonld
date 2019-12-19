@@ -1699,7 +1699,7 @@
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Basic Included array",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in01-in.jsonld",
       "expect": "expand/in01-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1707,7 +1707,7 @@
       "@id": "#tin02",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Basic Included object",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in02-in.jsonld",
       "expect": "expand/in02-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1715,7 +1715,7 @@
       "@id": "#tin03",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Multiple properties mapping to @included are folded together",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in03-in.jsonld",
       "expect": "expand/in03-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1723,7 +1723,7 @@
       "@id": "#tin04",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Included containing @included",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in04-in.jsonld",
       "expect": "expand/in04-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1731,7 +1731,7 @@
       "@id": "#tin05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Property value with @included",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in05-in.jsonld",
       "expect": "expand/in05-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1739,7 +1739,7 @@
       "@id": "#tin06",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "json.api example",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in06-in.jsonld",
       "expect": "expand/in06-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1747,7 +1747,7 @@
       "@id": "#tin07",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Error if @included value is a string",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in07-in.jsonld",
       "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1755,7 +1755,7 @@
       "@id": "#tin08",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Error if @included value is a value object",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in08-in.jsonld",
       "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
@@ -1763,7 +1763,7 @@
       "@id": "#tin09",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Error if @included value is a list object",
-      "purpose": "Tests included maps.",
+      "purpose": "Tests included blocks.",
       "input": "expand/in09-in.jsonld",
       "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
