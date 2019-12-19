@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><table class="statements" data-result-for="Sample JSON-LD document using an IRI instead of a term to express a property-expanded">
+        <thead><tr>
+<th>Subject</th>
+<th>Property</th>
+<th>Value</th>
+</tr></thead>
+        <tbody>
+          <tr>
+<td>http://me.markus-lanthaler.com/</td>
+<td>foaf:name</td>
+<td>Markus Lanthaler</td>
+</tr>
+          <tr>
+<td>http://me.markus-lanthaler.com/</td>
+<td>http://xmlns.com/foaf/0.1/homepage</td>
+<td>http://www.markus-lanthaler.com/</td>
+</tr>
+        </tbody>
+      </table></body></html>

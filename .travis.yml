@@ -16,7 +16,7 @@ jobs:
     - stage: examples
       name: "Verify examples are consistent"
       language: ruby
-      rvm: 2.5
+      rvm: 2.6
       before_install:
         - 'gem update --system --conservative || (gem i "rubygems-update:~>2.7" --no-document && update_rubygems)'
         - 'gem update bundler --conservative'
@@ -30,7 +30,7 @@ jobs:
       # Because (alas) rawgit is end of life, we'll run this only on the master branch.
       if: branch = master
       language: ruby
-      rvm: 2.5
+      rvm: 2.6
       before_install:
         - 'gem update --system --conservative || (gem i "rubygems-update:~>2.7" --no-document && update_rubygems)'
         - 'gem update bundler --conservative'
