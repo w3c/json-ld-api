@@ -17,7 +17,6 @@ jobs:
       name: "Verify examples are consistent"
       language: ruby
       rvm: 2.6
-      bundler_args: --without debug
       script: "bundle exec rake test"
     - stage: links
       name: "Check internal links and HTML"
