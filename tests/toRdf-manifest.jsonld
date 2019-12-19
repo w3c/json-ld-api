@@ -1967,7 +1967,7 @@
     }, {
       "@id": "#tm013",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "index map with @none",
+      "name": "graph index map with @none",
       "purpose": "index on @graph and @index",
       "input": "toRdf/m013-in.jsonld",
       "expect": "toRdf/m013-out.nq",
@@ -1975,7 +1975,7 @@
     }, {
       "@id": "#tm014",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "index map with alias @none",
+      "name": "graph index map with alias @none",
       "purpose": "index on @graph and @index",
       "input": "toRdf/m014-in.jsonld",
       "expect": "toRdf/m014-out.nq",
@@ -1983,16 +1983,16 @@
     }, {
       "@id": "#tm015",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "index map with alias @none",
-      "purpose": "index on @graph and @index",
+      "name": "graph id index map with aliased @none",
+      "purpose": "index on @graph and @id with @none",
       "input": "toRdf/m015-in.jsonld",
       "expect": "toRdf/m015-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tm016",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "index map with alias @none",
-      "purpose": "index on @graph and @index",
+      "name": "graph id index map with aliased @none",
+      "purpose": "index on @graph and @id with @none",
       "input": "toRdf/m016-in.jsonld",
       "expect": "toRdf/m016-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
