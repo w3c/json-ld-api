@@ -1567,8 +1567,10 @@
               `@json` or `@none`, and <a>processing mode</a> is `json-ld-1.0`,
               an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
-            <li>Otherwise, if the expanded <var>type</var> is
-              neither <code>@id</code>, nor <code>@vocab</code>, nor <code>@json</code>,
+            <li id="ctd-invalid-type">Otherwise, if the expanded <var>type</var> is
+              neither <code>@id</code>, nor <code>@json</code>,
+              not <code>@none</code>,
+              nor <code>@vocab</code>, 
               nor an <a>IRI</a>,
               an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
@@ -6929,6 +6931,9 @@
       <a href="#expansion-algorithm">Expansion algorithm</a>
       to make sure the <a>type-scoped context</a> is not propagated by default.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 246</a>.</li>
+    <li>Added missing `@none` in <a href="#ctd-invalid-type">13.4</a> of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/259">Issue 259</a>.</li>
     <li>Added missing keyworkds <a href="#ctd-invalid-entries">28</a> of the
       <a href="#create-term-definition">Create Term Definition algorithm</a>
       that remaining steps are skipped if the value of `@id` is `null`.
