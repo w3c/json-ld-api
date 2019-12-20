@@ -1616,14 +1616,12 @@
         </li>
         <li>Set the <a>reverse property</a> flag of <var>definition</var>
           to <code>false</code>.</li>
-        <li>If <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
-          does not equal <var>term</var>:
+        <li class="changed">If <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
+          neither equals <var>term</var> nor is <code>null</code>
+          <span id="ctd-id-null" class="note">If `null`, the term is not used for IRI expansion, but is
+            retained to be able to detect future redefinitions of this term.</span>:
           <ol>
-            <li id="ctd-id-null" class="changed">If the value associated with the `@id` <a>entry</a>
-              is <code>null</code>, the term is not used for IRI expansion, but is
-              retained to be able to detect future redefinitions of this term
-              and the following sub-steps are skipped.</li>
-            <li>Otherwise, if the value associated with the <code>@id</code> <a>entry</a> is not a <a>string</a>, an
+            <li>If the value associated with the <code>@id</code> <a>entry</a> is not a <a>string</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
             <li>If the value associated with the `@id` <a>entry</a>
@@ -6901,6 +6899,10 @@
 <section class="appendix informative" id="changes-from-cr">
   <h2>Changes since Candidate Release of 12 December 2019</h2>
   <ul>
+    <li>Merged <a href="#ctd-id-null">the former substep 16.1</a> into step 16 of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>,
+      to make the control flow clearer and homogeneous with the rest of the specification.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/241">Issue 241</a>.</li>
     <li>Clarified step <a href="#ctd-id-null">16.1</a> of the
       <a href="#create-term-definition">Create Term Definition algorithm</a>
       that remaining steps are skipped if the value of `@id` is `null`.
