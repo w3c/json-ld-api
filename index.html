@@ -2763,8 +2763,9 @@
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li id="alg-expand-expanded-property-to-result">Unless <var>expanded value</var> is <code>null</code>,
                   <span class="changed">and <var>expanded property</var> is `@value`,
-                    and <var>input type</var> is not <code>null</code>, set
-                  the <var>expanded property</var> <a>entry</a> of <var>result</var> to
+                    and <var>input type</var> is not <code>null</code>, it was determined in step <a href="#alg-initialize-vars">12</a>
+                    that <var>element</var> is a <a>value object</a> representing a <a>JSON literal</a>.
+                    Set the <var>expanded property</var> <a>entry</a> of <var>result</var> to
                   <var>expanded value</var>.</li>
                 <li>Continue with the next <var>key</var> from <var>element</var>.</li>
               </ol>
