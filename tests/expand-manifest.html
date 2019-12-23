@@ -5614,7 +5614,7 @@ Test tin01 Basic Included array
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in01-in.jsonld'>expand/in01-in.jsonld</a>
@@ -5642,7 +5642,7 @@ Test tin02 Basic Included object
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in02-in.jsonld'>expand/in02-in.jsonld</a>
@@ -5670,7 +5670,7 @@ Test tin03 Multiple properties mapping to @included are folded together
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in03-in.jsonld'>expand/in03-in.jsonld</a>
@@ -5698,7 +5698,7 @@ Test tin04 Included containing @included
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in04-in.jsonld'>expand/in04-in.jsonld</a>
@@ -5726,7 +5726,7 @@ Test tin05 Property value with @included
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in05-in.jsonld'>expand/in05-in.jsonld</a>
@@ -5754,7 +5754,7 @@ Test tin06 json.api example
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in06-in.jsonld'>expand/in06-in.jsonld</a>
@@ -5782,7 +5782,7 @@ Test tin07 Error if @included value is a string
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in07-in.jsonld'>expand/in07-in.jsonld</a>
@@ -5810,7 +5810,7 @@ Test tin08 Error if @included value is a value object
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in08-in.jsonld'>expand/in08-in.jsonld</a>
@@ -5838,7 +5838,7 @@ Test tin09 Error if @included value is a list object
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Tests included maps.</dd>
+<dd>Tests included blocks.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/in09-in.jsonld'>expand/in09-in.jsonld</a>
@@ -6416,62 +6416,6 @@ Test tjs20 Expand JSON literal with aliased @value
 </dd>
 </dl>
 </dd>
-<dt id='tjs13'>
-Test tjs13 Expand JSON literal with aliased @type
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tjs13</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
-<dt>Purpose</dt>
-<dd>Tests expanding JSON literal with aliased @type.</dd>
-<dt>input</dt>
-<dd>
-<a href='expand/js13-in.jsonld'>expand/js13-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='expand/js13-out.jsonld'>expand/js13-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tjs14'>
-Test tjs14 Expand JSON literal with aliased @value
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tjs14</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
-<dt>Purpose</dt>
-<dd>Tests expanding JSON literal with aliased @value.</dd>
-<dt>input</dt>
-<dd>
-<a href='expand/js14-in.jsonld'>expand/js14-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='expand/js14-out.jsonld'>expand/js14-out.jsonld</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
 <dt id='tjs21'>
 Test tjs21 Expand JSON literal with @context
 </dt>
@@ -6490,6 +6434,62 @@ Test tjs21 Expand JSON literal with @context
 <dt>expect</dt>
 <dd>
 <a href='expand/js21-out.jsonld'>expand/js21-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs22'>
+Test tjs22 Expand JSON literal (null).
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs22</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Tests expanding property with @type @json to a JSON literal (null).</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/js22-in.jsonld'>expand/js22-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/js22-out.jsonld'>expand/js22-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tjs23'>
+Test tjs23 Expand JSON literal (null) aleady in expanded form.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tjs23</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Tests expanding property with @type @json to a JSON literal (null).</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/js23-in.jsonld'>expand/js23-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/js23-out.jsonld'>expand/js23-out.jsonld</a>
 </dd>
 <dt>Options</dt>
 <dd>
@@ -7147,7 +7147,7 @@ Test tm012 type map with alias of @none
 </dl>
 </dd>
 <dt id='tm013'>
-Test tm013 index map with @none
+Test tm013 graph index map with @none
 </dt>
 <dd>
 <dl class='entry'>
@@ -7175,7 +7175,7 @@ Test tm013 index map with @none
 </dl>
 </dd>
 <dt id='tm014'>
-Test tm014 index map with alias @none
+Test tm014 graph index map with alias @none
 </dt>
 <dd>
 <dl class='entry'>
@@ -7203,7 +7203,7 @@ Test tm014 index map with alias @none
 </dl>
 </dd>
 <dt id='tm015'>
-Test tm015 index map with alias @none
+Test tm015 graph id index map with aliased @none
 </dt>
 <dd>
 <dl class='entry'>
@@ -7212,7 +7212,7 @@ Test tm015 index map with alias @none
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>index on @graph and @index</dd>
+<dd>index on @graph and @id with @none</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/m015-in.jsonld'>expand/m015-in.jsonld</a>
@@ -7231,7 +7231,7 @@ Test tm015 index map with alias @none
 </dl>
 </dd>
 <dt id='tm016'>
-Test tm016 index map with alias @none
+Test tm016 graph id index map with aliased @none
 </dt>
 <dd>
 <dl class='entry'>
@@ -7240,7 +7240,7 @@ Test tm016 index map with alias @none
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>index on @graph and @index</dd>
+<dd>index on @graph and @id with @none</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/m016-in.jsonld'>expand/m016-in.jsonld</a>
