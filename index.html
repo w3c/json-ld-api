@@ -2487,7 +2487,7 @@
               and `false` for <var>propagate</var>.</li>
           </ol>
         </li>
-        <li>Initialize two empty <a class="changed">maps</a>, <var>result</var>
+        <li id="alg-initialize-vars">Initialize two empty <a class="changed">maps</a>, <var>result</var>
           <span class="changed">and <var>nests</var>.
             Initialize <var>input type</var> to the last value of the first <a>entry</a> in <var>element</var>
             expanding to <code>@type</code> (if any), ordering <a>entries</a> lexicographically by key</span>.
@@ -2607,7 +2607,9 @@
                   <ol>
                     <li id="alg-expand-type-json" class="changed">If
                       <var>input type</var> is not <code>null</code>,
-                      set <var>expanded value</var> to <var>value</var>.
+                      it was determined in step <a href="#alg-initialize-vars">12</a>
+                      that <var>element</var> is a <a>value object</a> representing a <a>JSON literal</a>.
+                      Set <var>expanded value</var> to <var>value</var>.
                       If <a>processing mode</a> is `json-ld-1.0`,
                       an <a data-link-for="JsonLdErrorCode">invalid value object value</a>
                       error has been detected and processing is aborted.</li>
@@ -6959,7 +6961,7 @@
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
     <li>Updated step <a href="#alg-expand-type-json">13.4.7.1</a> of the
       <a href="#expansion-algorithm">Expansion algorithm</a>
-      to expand <var>input type</var> before comparing to <code>@json</code>.
+      check of <var>input type</var> is <code>null</code>, which is a simpler and more correct test.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
   </ul>
 </section>
