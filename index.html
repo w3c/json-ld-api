@@ -2761,9 +2761,9 @@
                   <var>active property</var>, <var>value</var> for <var>element</var>,
                   <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
-                <li>Unless <var>expanded value</var> is <code>null</code>,
+                <li id="alg-expand-expanded-property-to-result">Unless <var>expanded value</var> is <code>null</code>,
                   <span class="changed">and <var>expanded property</var> is `@value`,
-                    and <var>input type</var> is `@json`</span>, set
+                    and <var>input type</var> is not <code>null</code>, set
                   the <var>expanded property</var> <a>entry</a> of <var>result</var> to
                   <var>expanded value</var>.</li>
                 <li>Continue with the next <var>key</var> from <var>element</var>.</li>
@@ -6945,7 +6945,9 @@
       of the <a href="#expansion-algorithm">Expansion algorithm</a> to exclude
       the <var>expanded index</var> being `@none`.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
-    <li>Updated step <a href="#alg-expand-type-json">13.4.7.1</a> of the
+    <li>Updated steps <a href="#alg-expand-type-json">13.4.7.1</a>
+      and <a href="#alg-expand-expanded-property-to-result">13.4.16</a>
+      of the
       <a href="#expansion-algorithm">Expansion algorithm</a>
       check of <var>input type</var> is <code>null</code>, which is a simpler and more correct test.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
