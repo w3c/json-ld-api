@@ -2888,7 +2888,7 @@
                           <a href="#iri-expansion">IRI Expansion algorithm</a>,
                           passing <var>active context</var>, <var>index</var>, and <code>true</code>
                           for <var>document relative</var>.</li>
-                        <li>Otherwise, if <var>container mapping</var> includes <code>@type</code>
+                        <li id="alg-expand-container-mapping-type">Otherwise, if <var>container mapping</var> includes <code>@type</code>
                           and <var>expanded index</var> is not <code>@none</code>,
                           initialize <var>types</var> to a new <a>array</a>
                           consisting of <var>expanded index</var> followed by any existing
@@ -6937,6 +6937,10 @@
     <li>Added missing keywords to step <a href="#ctd-invalid-entries">28</a> of the
       <a href="#create-term-definition">Create Term Definition algorithm</a>.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/261">Issue 261</a>.</li>
+    <li>Improved text in step <a href="#alg-expand-container-mapping-type">13.8.3.7.5</a>
+      of the <a href="#expansion-algorithm">Expansion algorithm</a> to exclude
+      the <var>expanded index</var> being `@none`.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
   </ul>
 </section>
 
