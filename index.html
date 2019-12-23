@@ -2889,10 +2889,10 @@
                           passing <var>active context</var>, <var>index</var>, and <code>true</code>
                           for <var>document relative</var>.</li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@type</code>
-                          initialize <var>types</var> to the concatenation of <var>expanded index</var>
-                          with any existing values of <code>@type</code> in <var>item</var>.
-                          If <var>expanded index</var> is <code>@none</code>,
-                          do not concatenate <var>expanded index</var> to <var>types</var>.
+                          and <var>expanded index</var> is not <code>@none</code>,
+                          initialize <var>types</var> to a new <a>array</a>
+                          consisting of <var>expanded index</var> followed by any existing
+                          values of <code>@type</code> in <var>item</var>.
                           Add the key-value pair (<code>@type</code>-<var>types</var>) to <var>item</var>.</li>
                         <li>Append <var>item</var> to <var>expanded value</var>.</li>
                       </ol>
@@ -4680,7 +4680,7 @@
               <var>node map</var>, and <var>id</var> for <var>active graph</var> before removing
               the <code>@graph</code> <a>entry</a> from <var>element</var>.</li>
             <li class="changed">If <var>element</var> has an `@included` <a>entry</a>,
-              recursively invoke this algorithm passing the value of the `@included <a>entry</a> for <var>element</var>,
+              recursively invoke this algorithm passing the value of the `@included` <a>entry</a> for <var>element</var>,
               <var>node map</var>, and <var>active graph</var>
               before removing the `@included` <a>entry</a> from <var>element</var>.</li>
             <li>Finally, for each key-value pair <var>property</var>-<var>value</var> in <var>element</var> ordered by
