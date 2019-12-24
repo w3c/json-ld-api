@@ -4926,9 +4926,11 @@
                       <a>blank node identifier</a>. For each <var>item</var>
                       in <var>values</var>:
                       <ol>
-                        <li><var>item</var> is a <a>value object</a>, <a class="changed">list object</a>,
-                          or a <a>node object</a>.</li>
-                        <li class="changed">Initialize <var>list triples</var> as an empty <a>array</a>.</li>
+                        <li id="alg-jld2rdf-init-list-triples" class="changed">Initialize <var>list triples</var> as an empty <a>array</a>.
+                          <div class="note">
+                            <var>item</var> is a <a>value object</a>, <a class="changed">list object</a>,
+                            or a <a>node object</a>.</div>
+                        </li>
                         <li>Append a <a>triple</a>
                           composed of <var>subject</var>, <var>property</var>, and
                           the result of using the
@@ -6965,6 +6967,13 @@
       <a href="#expansion-algorithm">Expansion algorithm</a>
       <var>input type</var> to use the expanded value.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
+    <li>Misclaneous updates to <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>:
+      <ul>
+        <li>Changed step <a href="#alg-jld2rdf-init-list-triples">1.3.2.5.1</a>
+          to be a note on the following step, as it was non-procedural.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/278">Issue 278</a>.</li>
+       </ul>
+    </li>
   </ul>
 </section>
 
