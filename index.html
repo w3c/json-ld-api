@@ -4890,7 +4890,7 @@
               attribute of <var>dataset</var>.
               Otherwise, initialize <var>graph</var> as an empty <a>RdfGraph</a>
               and add to <var>dataset</var> using its
-              <a data-link-for="RdfDataset">add</a> method along with <var>graph name</var>
+              {{RdfDataset/add}} method along with <var>graph name</var>
               for <a data-lt="RdfDataset-add-graphName">`graphName`</a>.</li>
             <li>For each <var>subject</var> and <var>node</var> in <var>graph</var> ordered
               by <var>subject</var>:
@@ -4907,7 +4907,7 @@
                       composed of <var>subject</var>, <code>rdf:type</code> for <a data-link-for="rdftriple">predicate</a>,
                       and <var>type</var> for <a data-link-for="rdftriple">object</a>
                       <span class="changed">and add to <var>triples</var>
-                      using its <a data-link-for="RdfGraph">add</a> method,
+                      using its {{RdfGraph/add}} method,
                       unless <var>type</var> is not <a>well-formed</a></span>.</li>
                     <li>Otherwise, if <var>property</var> is a <a>keyword</a>
                       continue with the next <var>property</var>-<var>values</var> pair.</li>
@@ -4931,19 +4931,20 @@
                             <var>item</var> is a <a>value object</a>, <a class="changed">list object</a>,
                             or a <a>node object</a>.</div>
                         </li>
-                        <li>Append a <a>triple</a>
+                        <li id="alg-jld2rdf-add-list-triples">Add a <a>triple</a>
                           composed of <var>subject</var>, <var>property</var>, and
                           the result of using the
                           <a href="#object-to-rdf-conversion">Object to RDF Conversion algorithm</a>
                           passing <var>item</var>
                           <span class="changed">and <var>list triples</var></span>
-                          to <var>triples</var>, unless the result is
-                          <code>null</code>, indicating a
-                          <span class="changed">non-<a>well-formed</a> <a>resource</a></span>
+                          to <var>triples</var> using
+                          its using its {{RdfGraph/add}} method,
+                          unless the result is <code>null</code>,
+                          indicating a <span class="changed">non-<a>well-formed</a> <a>resource</a></span>
                           that has to be ignored.</li>
                         <li class="changed">Add all <a>RdfTriple</a> instances from
                           <var>list triples</var> to <var>triples</var> using
-                          its using its <a data-link-for="RdfGraph">add</a> method.</li>
+                          its using its {{RdfGraph/add}} method.</li>
                       </ol>
                     </li>
                   </ol>
@@ -6972,7 +6973,10 @@
         <li>Changed step <a href="#alg-jld2rdf-init-list-triples">1.3.2.5.1</a>
           to be a note on the following step, as it was non-procedural.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/278">Issue 278</a>.</li>
-       </ul>
+        <li>Changed step <a href="#alg-jld2rdf-add-list-triples">1.3.2.5.2</a>
+          to use the {{RdfGraph/add}} method, rather than use "append".
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/279">Issue 279</a>.</li>
+      </ul>
     </li>
   </ul>
 </section>
