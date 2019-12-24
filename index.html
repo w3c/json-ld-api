@@ -1190,7 +1190,7 @@
         <li class="changed">If <var>local context</var> is an object containing the member <code>@propagate</code>,
           its value MUST be <a>boolean</a> <code>true</code> or <code>false</code>,
           set <var>propagate</var> to that value.
-          <span class="note">Error handling is performed in <a href="#step-propagate-entry">step 5.11</a>.</span></li>
+          <div class="note">Error handling is performed in <a href="#step-propagate-entry">step 5.11</a>.</div></li>
         <li class="changed">If <var>propagate</var> is <code>false</code>, and <var>result</var>
           does not have a <a>previous context</a>, set <a>previous context</a>
           in <var>result</var> to <var>active context</var>.</li>
@@ -1211,9 +1211,9 @@
                   <span class="changed">setting <a>previous context</a> in <var>result</var>
                     to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code></span>.
                   Continue with the next <var>context</var>.
-                  <span class="note">In [[[JSON-LD10]]], the <a>base IRI</a> was given
+                  <div class="note">In [[[JSON-LD10]]], the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
-                    in <a href="#the-application-programming-interface" class="sectionRef"></a>.</span></li>
+                    in <a href="#the-application-programming-interface" class="sectionRef"></a>.</div></li>
                   </ol>
             </li>
             <li>If <var>context</var> is a <a>string</a>,
@@ -1387,7 +1387,7 @@
                   <span class="changed">If <var>value</var> is not <a>well-formed</a> according to
                     <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                     processors SHOULD issue a warning.</span>
-                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
+                  <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div>
                 </li>
               </ol>
             </li>
@@ -1798,7 +1798,7 @@
               Otherwise, an <a data-link-for="JsonLdErrorCode">invalid language mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set the <a>language mapping</a> of <var>definition</var> to <var>language</var>.
-              <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
+              <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div>
             </li>
           </ol>
         </li>
@@ -2808,7 +2808,7 @@
                           <span class="changed">If <var>item</var> is neither `@none` nor <a>well-formed</a> according to
                             <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                             processors SHOULD issue a warning.</span>
-                          <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
+                          <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div>
                         </li>
                         <li class="changed">If <var>language</var> is <code>@none</code>,
                           or expands to <code>@none</code>, remove <code>@language</code> from <var>v</var>.</li>
@@ -4828,10 +4828,10 @@
       <li>A <a>blank node identifier</a> is <a>well-formed</a> if it matches the
         <a data-cite="Turtle#sec-grammar-grammar">EBNF for
         <strong>BLANK_NODE_LABEL</strong></a> as described in [[Turtle]].
-        <span class="note">When following the algorithm described here,
+        <div class="note">When following the algorithm described here,
           all blank node identifiers will be normalized using the <a
           href="#generate-blank-node-identifier">Generate Blank Node Identifier
-          algorithm</a> and automatically adhere to this form.</span>
+          algorithm</a> and automatically adhere to this form.</div>
       </li>
       <li>A <a>literal</a> is <a>well-formed</a> if it has the
         <a>lexical form</a> of a <a>string</a>, any <a>datatype IRI</a> is
@@ -5062,9 +5062,9 @@
               set <var>datatype</var> to the result of appending <var>language</var>
               and the value of `@direction` in <var>item</var> separated by an underscore (`"_"`)
               to `https://www.w3.org/ns/i18n#`.
-              <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span>
               Initialize <var>literal</var> as an <a>RDF literal</a> using
               <var>value</var> and <var>datatype</var>.
+              <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div>
               <div class="note">As `@direction` may be used without `@language`,
                 it is possible, and legitimate, to create a datatype IRI
                 such as `http://w3.org/ns/i18n#_ltr`, which does not encode a language tag.</div></li>
@@ -5078,7 +5078,7 @@
                   create a new triple using <var>literal</var> as the subject,
                   `rdf:language` as the predicate, and the value of `@language` in <var>item</var>
                   as the object, and add it to <var>list triples</var>.
-                  <span class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</span></li>
+                  <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div></li>
                 <li>Create a new triple using <var>literal</var> as the subject,
                   `rdf:direction` as the predicate, and the value of `@direction` in <var>item</var>
                   as the object, and add it to <var>list triples</var>.</li>
