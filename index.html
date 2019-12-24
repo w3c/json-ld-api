@@ -4885,10 +4885,10 @@
             <li>If <var>graph name</var> is
               <span class="changed">not <a>well-formed</a></span>, continue
               with the next <var>graph name</var>-<var>graph</var> pair.</li>
-            <li class="changed">If <var>graph name</var> is <code>@default</code>,
+            <li id="alg-jld2rdf-init-triples" class="changed">If <var>graph name</var> is <code>@default</code>,
               initialize <var>triples</var> to the value of the <a data-link-for="RdfDataset">defaultGraph</a>
               attribute of <var>dataset</var>.
-              Otherwise, initialize <var>graph</var> as an empty <a>RdfGraph</a>
+              Otherwise, initialize <var>triples</var> as an empty <a>RdfGraph</a>
               and add to <var>dataset</var> using its
               {{RdfDataset/add}} method along with <var>graph name</var>
               for <a data-lt="RdfDataset-add-graphName">`graphName`</a>.</li>
@@ -6970,6 +6970,9 @@
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
     <li>Misclaneous updates to <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>:
       <ul>
+        <li>Changed step <a href="#alg-jld2rdf-init-triples">1.2</a>
+          to initialize <var>triple</var>, not <var>graph</var>, which is an input.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/281">Issue 281</a>.</li>
         <li>Changed step <a href="#alg-jld2rdf-init-list-triples">1.3.2.5.1</a>
           to be a note on the following step, as it was non-procedural.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/278">Issue 278</a>.</li>
