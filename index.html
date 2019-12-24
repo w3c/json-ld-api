@@ -4564,8 +4564,8 @@
           <var>active subject</var> is <code>null</code>, set <var>node</var> to <code>null</code>
           otherwise reference the <var>active subject</var> <a>entry</a> of <var>graph</var> using the
           variable <var>subject node</var>.</li>
-        <li>If <var>element</var> has an <code>@type</code> <a>entry</a>, perform for each
-          <var>item</var> the following steps:
+        <li id="alg-nmg-each-type">For each <var>item</var> in the `@type` <a>entry</a> of <var>element</var>,
+          if any:
           <ol>
             <li>If <var>item</var> is a <a>blank node identifier</a>, replace it with a newly
               <a href="#generate-blank-node-identifier">generated blank node identifier</a>
@@ -6996,6 +6996,10 @@
           in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
           and as a use of the {{LoadDocumentOptions/profile}} API option.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/244">Issue 244</a>.</li>
+        <li>Improved text in step <a href="#alg-nmg-each-type">3</a> of the
+          <a href="#node-map-generation">Node Map Generation algorithm</a> to clarify
+          that the steps iterates over any `@type` entries.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/276">Issue 276</a>.</li>
       </ul>
     </li>
   </ul>
