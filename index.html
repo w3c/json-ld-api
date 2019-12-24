@@ -5054,6 +5054,9 @@
           and {{JsonLdOptions/rdfDirection}} is not `null`,
           <var>item</var> is a <a>value object</a> which is serialized using special rules.
           <ol>
+            <li id="alg-obj2rdf-direction-language">
+              Initialize <var>language</var> to the value of `@language` in <var>item</var>,
+              or the empty string (`""`) if there is no such entry.</li>
             <li>If {{JsonLdOptions/rdfDirection}} is `i18n-datatype`,
               set <var>datatype</var> to the result of appending <var>language</var>
               and the value of `@direction` in <var>item</var> separated by an underscore (`"_"`)
@@ -6979,6 +6982,12 @@
         <li>Changed step <a href="#alg-jld2rdf-add-list-triples">1.3.2.5.2</a>
           to use the {{RdfGraph/add}} method, rather than use "append".
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/279">Issue 279</a>.</li>
+      </ul>
+    </li>
+    <li>Misclaneous updates to <a href="#object-to-rdf-conversion" class="sectionRef"></a>:
+      <ul>
+        <li>Added a new step <a href="#alg-obj2rdf-direction-language">13.1</a> to create a variable for `@language`.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/277">Issue 277</a>.</li>
       </ul>
     </li>
   </ul>
