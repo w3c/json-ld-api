@@ -2487,10 +2487,13 @@
               and `false` for <var>propagate</var>.</li>
           </ol>
         </li>
-        <li id="alg-initialize-vars">Initialize two empty <a class="changed">maps</a>, <var>result</var>
+        <li id="alg-expand-initialize-vars">Initialize two empty <a class="changed">maps</a>, <var>result</var>
           <span class="changed">and <var>nests</var>.
-            Initialize <var>input type</var> to the last value of the first <a>entry</a> in <var>element</var>
+            Initialize <var>input type</var> to expansion of the last value of the first <a>entry</a> in <var>element</var>
             expanding to <code>@type</code> (if any), ordering <a>entries</a> lexicographically by key</span>.
+            Both the key and value of the matched entry are expanded using the
+            <a href="#iri-expansion">IRI Expansion algorithm</a>,
+            passing <var>active context</var>, and <code>true</code> for <var>vocab</var>.
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
@@ -2606,10 +2609,8 @@
                 <li>If <var>expanded property</var> is <code>@value</code>:
                   <ol>
                     <li id="alg-expand-type-json" class="changed">If
-                      <var>input type</var> is not <code>null</code>,
-                      it was determined in step <a href="#alg-initialize-vars">12</a>
-                      that <var>element</var> is a <a>value object</a> representing a <a>JSON literal</a>.
-                      Set <var>expanded value</var> to <var>value</var>.
+                      <var>input type</var> is <code>@json</code>,
+                      set <var>expanded value</var> to <var>value</var>.
                       If <a>processing mode</a> is `json-ld-1.0`,
                       an <a data-link-for="JsonLdErrorCode">invalid value object value</a>
                       error has been detected and processing is aborted.</li>
@@ -2762,10 +2763,9 @@
                   <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li id="alg-expand-expanded-property-to-result">Unless <var>expanded value</var> is <code>null</code>,
-                  <span class="changed">and <var>expanded property</var> is `@value`,
-                    and <var>input type</var> is not <code>null</code>, it was determined in step <a href="#alg-initialize-vars">12</a>
-                    that <var>element</var> is a <a>value object</a> representing a <a>JSON literal</a>.
-                    Set the <var>expanded property</var> <a>entry</a> of <var>result</var> to
+                  <span class="changed"><var>expanded property</var> is <code>@value</code>,
+                    and <var>input type</var> is not <code>@json</code>,</span>
+                    set the <var>expanded property</var> <a>entry</a> of <var>result</var> to
                   <var>expanded value</var>.</li>
                 <li>Continue with the next <var>key</var> from <var>element</var>.</li>
               </ol>
@@ -6946,11 +6946,10 @@
       of the <a href="#expansion-algorithm">Expansion algorithm</a> to exclude
       the <var>expanded index</var> being `@none`.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
-    <li>Updated steps <a href="#alg-expand-type-json">13.4.7.1</a>
-      and <a href="#alg-expand-expanded-property-to-result">13.4.16</a>
+    <li>Updated step <a href="#alg-expand-initialize-vars">12</a>
       of the
       <a href="#expansion-algorithm">Expansion algorithm</a>
-      check of <var>input type</var> is <code>null</code>, which is a simpler and more correct test.
+      <var>input type</var> to use the expanded value.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
   </ul>
 </section>
