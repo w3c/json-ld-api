@@ -2972,7 +2972,15 @@
                   has been detected and processing is aborted.</li>
                 <li>Recursively repeat steps <a href="#alg-expand-each-key-value">13</a>
                   and <a href="#alg-expand-resolve-nest">14</a>
-                  using <var>nested value</var> for <var>element</var>.</li>
+                  using <var>nested value</var> for <var>element</var>.
+                  <div class="note">By invoking steps <a href="#alg-expand-each-key-value">13</a>
+                    and <a href="#alg-expand-resolve-nest">14</a> on <var>nested value</var>
+                    we are able to unfold arbitrary levels of nesting, with results being merged into
+                    <var>result</var>.
+                    Step <a href="#alg-expand-each-key-value">13</a> iterates through each
+                    entry in <var>nested value</var> and expands it, while collecting new
+                    <var>nested values</var> found at each level, until all nesting has been extracted.</div>
+                </li>
               </ol>
             </li>
           </ol>
