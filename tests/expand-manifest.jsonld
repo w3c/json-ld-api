@@ -1944,6 +1944,14 @@
       "expect": "expand/js22-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs23",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (empty array).",
+      "purpose": "Tests expanding property with @type @json to a JSON literal (empty array).",
+      "input": "expand/js23-in.jsonld",
+      "expect": "expand/js23-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tl001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Language map with null value",

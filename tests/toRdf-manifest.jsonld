@@ -1893,6 +1893,14 @@
       "expect": "toRdf/js22-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs23",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal (empty array).",
+      "purpose": "Tests transforming property with @type @json to a JSON literal (empty array).",
+      "input": "toRdf/js23-in.jsonld",
+      "expect": "toRdf/js23-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@list containing @list",
