@@ -1938,18 +1938,10 @@
     }, {
       "@id": "#tjs22",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Expand JSON literal (null).",
+      "name": "Expand JSON literal (null) aleady in expanded form.",
       "purpose": "Tests expanding property with @type @json to a JSON literal (null).",
       "input": "expand/js22-in.jsonld",
       "expect": "expand/js22-out.jsonld",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#tjs23",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Expand JSON literal (null) aleady in expanded form.",
-      "purpose": "Tests expanding property with @type @json to a JSON literal (null).",
-      "input": "expand/js23-in.jsonld",
-      "expect": "expand/js23-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tl001",
