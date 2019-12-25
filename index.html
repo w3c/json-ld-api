@@ -3031,8 +3031,8 @@
               set <var>result</var> to the <a data-lt="entry">entry's</a> associated value.</li>
           </ol>
         </li>
-        <li>If <var>result</var> is a <a>map</a> that contains only the <a>entry</a>
-          <code>@language</code>, set <var>result</var> to <code>null</code>.</li>
+        <li id="alg-expand-only-language">If <var>result</var> is a <a>map</a> that contains only the <a>entry</a>
+          <code>@language</code>, <span class="changed">return</span> <code>null</code>.</li>
         <li>If <var>active property</var> is <code>null</code> or <code>@graph</code>,
           drop free-floating values as follows:
           <ol>
@@ -6971,6 +6971,9 @@
       <a href="#expansion-algorithm">Expansion algorithm</a>
       <var>input type</var> to use the expanded value.
       This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
+    <li>Changed step <a href="#alg-expand-only-language">18</a> of the <a href="#expansion-algorithm">Expansion algorithm</a>
+      to return `null`, not set <var>result</var> to `null`.
+      This is in response to <a href="https://github.com/w3c/json-ld-api/issues/284">Issue 284</a>.</li>
     <li>Misclaneous updates to <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>:
       <ul>
         <li>Changed step <a href="#alg-jld2rdf-init-triples">1.2</a>
