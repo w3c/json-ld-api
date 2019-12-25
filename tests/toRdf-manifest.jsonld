@@ -1885,6 +1885,14 @@
       "expect": "toRdf/js21-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs22",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal (null) aleady in expanded form.",
+      "purpose": "Tests transforming property with @type @json to a JSON literal (null).",
+      "input": "toRdf/js22-in.jsonld",
+      "expect": "toRdf/js22-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "@list containing @list",
