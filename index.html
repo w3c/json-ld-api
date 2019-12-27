@@ -6966,8 +6966,9 @@
       <ul>
         <li>Added missing `@none` in <a href="#ctd-invalid-type">13.4</a>.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/259">Issue 259</a>.</li>
-        <li>Merged <a href="#ctd-id-null">the former substep 16.1</a> into step 16
-          to make the control flow clearer and homogeneous with the rest of the specification.
+        <li>Moved step <a href="#ctd-id-not-null">16.2</a>,
+          and subsequent substeps of step 16 into a new grouping, to separate the logic
+          from step <a href="#ctd-id-not-null">16.1</a>.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/241">Issue 241</a>.</li>
         <li>Updated step <a href="#ctd-contains-colon">16.4</a>
           to prevent an issue where <var>term</var> might not be defined at the time it is expanded.
