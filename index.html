@@ -1213,10 +1213,20 @@
                   Continue with the next <var>context</var>.
                   <div class="note">In [[[JSON-LD10]]], the <a>base IRI</a> was given
                     a default value here; this is now described conditionally
-                    in <a href="#the-application-programming-interface" class="sectionRef"></a>.</div></li>
-                  </ol>
+                    in the {{JsonLdOptions/base}} option
+                    of the <a href="#the-application-programming-interface" class="sectionRef"></a>.
+                  </div>
+                </li>
+              </ol>
             </li>
-            <li>If <var>context</var> is a <a>string</a>,
+            <li id="alg-context-string">If <var>context</var> is a <a>string</a>,
+              <div class="note">
+                In order to prevent being overly prescriptive,
+                this algorithm makes no statement about how internal state is kept for dereferenced context documents
+                and broadly applies error handling checks.
+                Provided that the output of the algorithm is unchanged,
+                implementations may employ optimizations.
+              </div>
               <ol>
                 <li>Initialize <var>context</var> to the result of resolving <var>context</var> against
                   the <a>base IRI</a>
@@ -1232,7 +1242,15 @@
                   references are treated in the same way that unreserved
                   characters are treated in URI references, per
                   <a data-cite="RFC3987#section-6.5">section 6.5</a>
-                  of [[RFC3987]].</li>
+                  of [[RFC3987]].
+                  <div class="note">
+                    The <a>base IRI</a> of the document containing the <var>local context</var>
+                    is often not the same as {{JsonLdOptions/base}}
+                    or the <a>base IRI</a> of the <var>active context</var>.
+                    Processors are responsible for retaining the {{RemoteDocument/documentUrl}}
+                    for documents being processed via this algorithm for use in resolving <var>context</var>.
+                  </div>
+                </li>
                 <li>If the number of entries in the <var>remote contexts</var> array
                   exceeds a processor defined limit, a
                   <a data-link-for="JsonLdErrorCode">context overflow</a>
@@ -1241,20 +1259,25 @@
                 <li class="changed">If <var>context</var> was previously dereferenced,
                   then the processor MUST NOT do a further dereference, and
                   <a>context</a> is set to the
-                  previously established <a>internal representation</a>.</li>
+                  previously established <a>internal representation</a>.
+                  <div class="note">Only the `@context` <a>entry</a> need be retained.</div>
+                </li>
                 <li class="changed">Otherwise, dereference <var>context</var> using
                   the <a>LoadDocumentCallback</a>, passing <var>context</var>
                   for <a data-link-for="LoadDocumentCallback">url</a>,
                   and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a>
-                  and for <a data-link-for="LoadDocumentOptions">requestProfile</a>.</li>
-                <li>If <var>context</var> cannot be dereferenced,
-                  <span class="changed">or cannot be transformed into the <a>internal representation</a></span>,
-                  a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
-                  error has been detected and processing is aborted. If the dereferenced document has no
-                  top-level <a class="changed">map</a> with an <code>@context</code> <a>entry</a>, an
-                  <a data-link-for="JsonLdErrorCode">invalid remote context</a>
-                  has been detected and processing is aborted; otherwise,
-                  set <var>context</var> to the value of that <a>entry</a>.</li>
+                  and for <a data-link-for="LoadDocumentOptions">requestProfile</a>.
+                  <ol>
+                    <li id="alg-context-deref-error">If <var>context</var> cannot be dereferenced,
+                      <span class="changed">or cannot be transformed into the <a>internal representation</a></span>,
+                      a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
+                      error has been detected and processing is aborted. If the dereferenced document has no
+                      top-level <a class="changed">map</a> with an <code>@context</code> <a>entry</a>, an
+                      <a data-link-for="JsonLdErrorCode">invalid remote context</a>
+                      has been detected and processing is aborted.</li>
+                    <li>Otherwise, set <var>context</var> to the value of that <a>entry</a>.</li>
+                  </ol>
+                </li>
                 <li>Set <var>result</var> to the result of recursively calling this algorithm,
                   passing <var>result</var> for <var>active context</var>,
                   <var>context</var> for <var>local context</var>, and <span class="changed">a copy of</span> <var>remote contexts</var>.</li>
@@ -6992,6 +7015,10 @@
     </li>
     <li>Other changes:
       <ul>
+        <li>Added explanitory notes to step <a href="#alg-context-string">5.2</a>
+          of <a href="#context-processing-algorithm" class="sectionRef"></a>,
+          and moved the former step 5.2.5 to <a href="#alg-context-deref-error">5.2.4.1</a>.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/265">Issue 265</a>.</li>
         <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
           in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
           and as a use of the {{LoadDocumentOptions/profile}} API option.
