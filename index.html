@@ -4565,7 +4565,7 @@
           otherwise reference the <var>active subject</var> <a>entry</a> of <var>graph</var> using the
           variable <var>subject node</var>.</li>
         <li id="alg-nmg-each-type">For each <var>item</var> in the `@type` <a>entry</a> of <var>element</var>,
-          if any:
+          if any, or for the value of `@type`, if the value of `@type` exists and is not an <a>array</a>:
           <ol>
             <li>If <var>item</var> is a <a>blank node identifier</a>, replace it with a newly
               <a href="#generate-blank-node-identifier">generated blank node identifier</a>
