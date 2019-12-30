@@ -2901,10 +2901,14 @@
                               passing the <var>active context</var>,
                               <var>index key</var> as <var>active property</var>,
                               and <var>index</var> as <var>value</var>.</li>
+                            <li>Initialize <var>expanded index key</var> to the result of calling
+                              the <a href="#iri-expansion">IRI Expansion algorithm</a>,
+                              passing <var>active context</var>, <var>index key</var>, and <code>true</code>
+                              for <var>vocab</var>.</li>
                             <li>Initialize <var>index property values</var> to the concatenation of
                               <var>re-expanded index</var> with any existing values of
-                              <var>index key</var> in <var>item</var>.</li>
-                            <li>Add the key-value pair (<var>index key</var>-<var>index property values</var>)
+                              <var>expanded index key</var> in <var>item</var>.</li>
+                            <li>Add the key-value pair (<var>expanded index key</var>-<var>index property values</var>)
                               to <var>item</var>.</li>
                             <li>If <var>item</var> is a value object,
                               it MUST NOT contain any extra properties;
