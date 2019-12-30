@@ -240,7 +240,7 @@
     "@id": "#tf004",
     "@type": ["jld:PositiveEvaluationTest", "jld:FlattenTest", "jld:HtmlTest"],
     "name": "Flattens all script elements by default",
-    "purpose": "Tests embedded JSON-LD in HTML with fragment identifier",
+    "purpose": "Tests embedded JSON-LD in HTML multiple script elements",
     "input": "html/f004-in.html",
     "context": "html/f004-context.jsonld",
     "expect": "html/f004-out.jsonld",
