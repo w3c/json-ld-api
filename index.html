@@ -3023,11 +3023,11 @@
               It must not contain an `@type` <a>entry</a> if it contains either `@language` or `@direction` <a>entries</a>.
               Otherwise, an <a data-link-for="JsonLdErrorCode">invalid value object</a>
               error has been detected and processing is aborted.</li>
-            <li>If the value of <var>result</var>'s <code>@value</code> <a>entry</a> is
-              <code>null</code>, then set <var>result</var> to <code>null</code>.</li>
-            <li class="changed">Otherwise, if the <var>result</var>'s <code>@type</code> <a>entry</a>
+            <li class="changed">If the <var>result</var>'s <code>@type</code> <a>entry</a>
               is <code>@json</code>, then the <code>@value</code> <a>entry</a> may
               contain any value, and is treated as a <a>JSON literal</a>.</li>
+            <li id="alg-expand-null-value">Otherwise, if the value of <var>result</var>'s <code>@value</code> <a>entry</a> is
+              <code>null</code>, or an empty <a>array</a>, return <code>null</code>.</li>
             <li>Otherwise, if the value of <var>result</var>'s <code>@value</code> <a>entry</a>
               is not a <a>string</a> and <var>result</var> contains the <a>entry</a>
               <code>@language</code>, an
@@ -6985,6 +6985,9 @@
           as it had accidentally been set to run for every entry in the object, rather than
           after all entries had been expanded.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/262">Issue 262</a>.</li>
+        <li>Move step <a href="#alg-expand-null-value">15.3</a> down one, and return
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/292">Issue 292</a>.</li>
+          </li>
         <li>Changed step <a href="#alg-expand-only-language">18</a>
           to return `null`, not set <var>result</var> to `null`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/284">Issue 284</a>.</li>
