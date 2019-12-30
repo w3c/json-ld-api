@@ -2892,18 +2892,26 @@
                           set <var>item</var> to a new <a>map</a> containing the key-value pair
                           <code>@graph</code>-<var>item</var>,
                           ensuring that the value is represented using an <a>array</a>.</li>
-                        <li class="changed">If <var>container mapping</var> includes <code>@index</code>,
+                        <li id="alg-expand-container-index-not-index" class="changed">If <var>container mapping</var> includes <code>@index</code>,
                           <var>index key</var> is not <code>@index</code>,
-                          <var>item</var> does not have an <a>entry</a> <code>@index</code>
-                          and <var>expanded index</var> is not <code>@none</code>,
-                          initialize <var>index property values</var> to the concatenation of
-                          <var>expanded index</var> with any existing values of
-                          <var>index key</var> in <var>item</var>.
-                          Add the key-value pair (<var>expanded index</var>-<var>index property values</var>) to <var>item</var>.
-                          If <var>item</var> is a value object,
-                          it MUST NOT contain any extra properties;
-                          an <a data-link-for="JsonLdErrorCode">invalid value object</a>
-                          error has been detected and processing is aborted.</li>
+                          and <var>expanded index</var> is not <code>@none</code>:
+                          <ol>
+                            <li>Initialize <var>re-expanded index</var> to the result of calling
+                              the <a href="#value-expansion">Value Expansion algorithm</a>,
+                              passing the <var>active context</var>,
+                              <var>index key</var> as <var>active property</var>,
+                              and <var>index</var> as <var>value</var>.</li>
+                            <li>Initialize <var>index property values</var> to the concatenation of
+                              <var>re-expanded index</var> with any existing values of
+                              <var>index key</var> in <var>item</var>.</li>
+                            <li>Add the key-value pair (<var>index key</var>-<var>index property values</var>)
+                              to <var>item</var>.</li>
+                            <li>If <var>item</var> is a value object,
+                              it MUST NOT contain any extra properties;
+                              an <a data-link-for="JsonLdErrorCode">invalid value object</a>
+                              error has been detected and processing is aborted.</li>
+                          </ol>
+                        </li>
                         <li>Otherwise, if <var>container mapping</var> includes <code>@index</code>,
                           <var>item</var> does not have an <a>entry</a> <code>@index</code>,
                           and <var>expanded index</var> is not <code>@none</code>,
@@ -6978,6 +6986,10 @@
         <li>Remove text from  <a href="#expansion-tsc">13.4.4.4</a>
           that duplicate the following step.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 243</a>.</li>
+        <li>Changed text in step <a href="#alg-expand-container-index-not-index">3.8.3.7.2</a>
+          to re-expand the index as a value before using it to update any existing
+          value for the associated property.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 290</a>.</li>
         <li>Improved text in step <a href="#alg-expand-container-mapping-type">13.8.3.7.5</a>
           to exclude the <var>expanded index</var> being `@none`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
