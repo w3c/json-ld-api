@@ -3005,7 +3005,8 @@
             </li>
           </ol>
         </li>
-        <li id="alg-expand-resolve-nest" class="changed">For each key <var>nesting-key</var> in <var>nests</var>
+        <li id="alg-expand-resolve-nest" class="changed">For each key <var>nesting-key</var> in <var>nests</var>,
+          ordered lexicographically if {{JsonLdOptions/ordered}} is <code>true</code>:
           <ol>
             <li>Initialize <var>nested values</var> to the value of <var>nesting-key</var>
               in <var>element</var>, ensuring that it is an <a>array</a>.</li>
@@ -7013,6 +7014,9 @@
         <li>Improved text in step <a href="#alg-expand-container-mapping-type">13.8.3.7.5</a>
           to exclude the <var>expanded index</var> being `@none`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
+        <li>Update step <a href="#alg-expand-resolve-nest">14</a>
+          to order by <var>nesting-key</var>, if `ordered` is `true`.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/295">Issue 295</a>.</li>
         <li>Move step 13.15 of the expansion algorithm up one level to step <a href="#alg-expand-resolve-nest">14</a>,
           as it had accidentally been set to run for every entry in the object, rather than
           after all entries had been expanded.
