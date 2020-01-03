@@ -2483,10 +2483,11 @@
           and <var>element</var> does not consist of a single entry expanding to <code>@id</code>,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
-        <li class="changed">If <var>property-scoped context</var> is defined,
+        <li id="alg-expand-property-scoped-context" class="changed">If <var>property-scoped context</var> is defined,
           set <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-          passing <var>active context</var> and <var>property-scoped context</var> as <var>local context</var>.</li>
+          passing <var>active context</var>, <var>property-scoped context</var> as <var>local context</var>,
+          and `true` for <var>override protected</var>.</li>
         <li>If <var>element</var> contains the <a>entry</a> <code>@context</code>, set
           <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
@@ -6991,6 +6992,9 @@
     </li>
     <li>Misclaneous updates to <a href="#expansion" class="sectionRef"></a>:
       <ul>
+        <li>Update step <a href="#alg-expand-property-scoped-context">8</a></li>
+          to pass <var>override context</var> when creating a property-scoped context.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/301">Issue 301</a>.</li>
         <li>Update step <a href="#expand-type-scoped-context">11.2</a>
           to make sure the <a>type-scoped context</a> is not propagated by default.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 246</a>.</li>
