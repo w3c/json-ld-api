@@ -5044,7 +5044,8 @@
         <li>Initialize <var>datatype</var> to the value associated with the
           <code>@type</code> <a>entry</a> of <var>item</var> or <code>null</code> if
           <var>item</var> does not have such an <a>entry</a>.</li>
-        <li id="alg-obj2rdf-datatype" class="changed">If <var>datatype</var> is not `null` and not a <a>well-formed</a> <a>IRI</a>,
+        <li id="alg-obj2rdf-datatype" class="changed">If <var>datatype</var> is not `null`
+          and neither a <a>well-formed</a> <a>IRI</a> nor <code>@json</code>,
           return <code>null</code>.</li>
         <li class="changed">If <var>item</var> has an <code>@language</code>
           <a>entry</a> which is not <a>well-formed</a>, return <code>null</code>.</li>
@@ -7029,9 +7030,10 @@
     <li>Misclaneous updates to <a href="#object-to-rdf-conversion" class="sectionRef"></a>:
       <ul>
         <li>Updated step <a href="#alg-obj2rdf-datatype">6</a>
-          to only check that a datatype is well-formed if it is not null,
+          to only check that a datatype is well-formed if it is not `null` or `@json`,
           and to specify that the check is for a well-formed IRI.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/282">Issue 282</a>.</li>
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/282">Issue 282</a>
+          and <a href="https://github.com/w3c/json-ld-api/issues/298">Issue 298</a>.</li>
         <li>Added a new step <a href="#alg-obj2rdf-direction-language">13.1</a> to create a variable for `@language`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/277">Issue 277</a>.</li>
       </ul>
