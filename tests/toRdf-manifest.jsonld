@@ -2595,7 +2595,7 @@
       "purpose": "Keywords may not be redefined other than to protect them.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr31-in.jsonld",
-      "expectErrorCode": "term redefinition"
+      "expectErrorCode": "protected term redefinition"
     }, {
       "@id": "#tpr32",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
