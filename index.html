@@ -2892,7 +2892,8 @@
                         and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
-                        <li>If <var>container mapping</var> includes <code>@graph</code>,
+                        <li id="alg-expand-container-index-graph">If <var>container mapping</var> includes <code>@graph</code>,
+                          <span class="changed">and <var>item</var> is not a <a>graph object</a>,</span>
                           set <var>item</var> to a new <a>map</a> containing the key-value pair
                           <code>@graph</code>-<var>item</var>,
                           ensuring that the value is represented using an <a>array</a>.</li>
@@ -7019,6 +7020,9 @@
           step <a href="#api-expand-post-processing">7.1</a> of
           the <a data-link-for="JsonLdProcessor">expand()</a> method of the
           <a>JsonLdProcessor</a> interface.
+          Additionally, in step <a href="#alg-expand-container-index-graph">13.8.3.7.1</a>,
+          when expanding properties where container includes both `@index` and `@graph`,
+          don't transform an item into a <a>graph object</a> repetitively.
           This corrects an issue introduced in <a href="https://github.com/w3c/json-ld-api/pull/184">PR 184</a> and is
           in response to <a href="https://github.com/w3c/json-ld-api/issues/294">Issue 294</a>.</li>
       </ul>
