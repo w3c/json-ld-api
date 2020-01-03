@@ -3085,14 +3085,7 @@
                 containing only the <code>@id</code> <a>entry</a> is retained.</span></li>
           </ol>
         </li>
-        <li>If <var>result</var> is a
-          <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>,
-          set <var>result</var> that value.</li>
-        <li>If <var>result</var> is <code>null</code>,
-          set <var>result</var> to an empty <a>array</a>.</li>
-        <li>If <var>result</var> is not an <a>array</a>,
-          set <var>result</var> to an <a>array</a> containing only <var>result</var>.</li>
-        <li>Return <var>result</var>.</li>
+        <li id="alg-expand-return">Return <var>result</var>.</li>
       </ol>
     </section>
   </section> <!-- end of Expansion Algorithm -->
@@ -5906,7 +5899,17 @@
             if there is no <var>remote document</var> as <var>element</var>,
             and if passed, the <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
             <span class="changed">and {{JsonLdOptions/ordered}}</span>
-            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
+            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.
+            <ol id="api-expand-post-processing" class="changed">
+              <li>If <var>expanded output</var> is a
+                <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>,
+                set <var>expanded output</var> that value.</li>
+              <li>If <var>expanded output</var> is <code>null</code>,
+                set <var>expanded output</var> to an empty <a>array</a>.</li>
+              <li>If <var>expanded output</var> is not an <a>array</a>,
+                set <var>expanded output</var> to an <a>array</a> containing only <var>expanded output</var>.</li>
+            </ol>
+          </li>
           <li>Resolve the <var>promise</var> with <var>expanded output</var>
             <span class="changed">transforming <var>expanded output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
@@ -7012,6 +7015,12 @@
         <li>Changed step <a href="#alg-expand-only-language">18</a>
           to return `null`, not set <var>result</var> to `null`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/284">Issue 284</a>.</li>
+        <li>Moved three steps prior to step <a href="#alg-expand-return">20</a> to
+          step <a href="#api-expand-post-processing">7.1</a> of
+          the <a data-link-for="JsonLdProcessor">expand()</a> method of the
+          <a>JsonLdProcessor</a> interface.
+          This corrects an issue introduced in <a href="https://github.com/w3c/json-ld-api/pull/184">PR 184</a> and is
+          in response to <a href="https://github.com/w3c/json-ld-api/issues/294">Issue 294</a>.</li>
       </ul>
     </li>
     <li>Misclaneous updates to <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>:
