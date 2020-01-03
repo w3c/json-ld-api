@@ -2234,7 +2234,7 @@
     }, {
       "@id": "#tn004",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
-      "name": "Appends nested values from all @nest aliases in term order",
+      "name": "Appends nested values from all @nest aliases",
       "purpose": "Expansion using @nest",
       "input": "expand/n004-in.jsonld",
       "expect": "expand/n004-out.jsonld",
