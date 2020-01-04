@@ -5421,6 +5421,34 @@ Test te122 Ignore some IRIs when that start with @ when expanding.
 </dd>
 </dl>
 </dd>
+<dt id='te123'>
+Test te123 Value objects including invalid literal datatype IRIs are rejected
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te123</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Processors MUST validate datatype IRIs.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e123-in.jsonld'>toRdf/e123-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid typed value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tin01'>
 Test tin01 Basic Included array
 </dt>
@@ -9393,34 +9421,6 @@ Test twf05 Triples including invalid language tags are rejected
 <dt>expect</dt>
 <dd>
 <a href='toRdf/wf05-out.nq'>toRdf/wf05-out.nq</a>
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='twf06'>
-Test twf06 Triples including invalid literal datatype IRIs are rejected
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#twf06</dd>
-<dt>Type</dt>
-<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
-<dt>Purpose</dt>
-<dd>ToRdf emits only well-formed statements.</dd>
-<dt>input</dt>
-<dd>
-<a href='toRdf/wf06-in.jsonld'>toRdf/wf06-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-<a href='toRdf/wf06-out.nq'>toRdf/wf06-out.nq</a>
 </dd>
 <dt>Options</dt>
 <dd>

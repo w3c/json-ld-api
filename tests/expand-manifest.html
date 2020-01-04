@@ -2997,6 +2997,34 @@ Test t0122 Ignore some IRIs when that start with @ when expanding.
 </dd>
 </dl>
 </dd>
+<dt id='t9123'>
+Test t9123 Value objects including invalid literal datatype IRIs are rejected
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t9123</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Processors MUST validate datatype IRIs.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/0123-in.jsonld'>expand/0123-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid typed value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tc001'>
 Test tc001 adding new term
 </dt>

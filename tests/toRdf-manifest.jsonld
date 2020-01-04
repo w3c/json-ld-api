@@ -1669,6 +1669,14 @@
       "expect": "toRdf/e122-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te123",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Value objects including invalid literal datatype IRIs are rejected",
+      "purpose": "Processors MUST validate datatype IRIs.",
+      "input": "toRdf/e123-in.jsonld",
+      "expectErrorCode": "invalid typed value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
@@ -2803,14 +2811,6 @@
       "purpose": "ToRdf emits only well-formed statements.",
       "input": "toRdf/wf05-in.jsonld",
       "expect": "toRdf/wf05-out.nq",
-      "option": {"specVersion": "json-ld-1.1"}
-    }, {
-      "@id": "#twf06",
-      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "Triples including invalid literal datatype IRIs are rejected",
-      "purpose": "ToRdf emits only well-formed statements.",
-      "input": "toRdf/wf06-in.jsonld",
-      "expect": "toRdf/wf06-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#twf07",
