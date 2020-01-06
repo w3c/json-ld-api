@@ -917,7 +917,7 @@
       "expect": "expand/0122-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#t9123",
+      "@id": "#t0123",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Value objects including invalid literal datatype IRIs are rejected",
       "purpose": "Processors MUST validate datatype IRIs.",
