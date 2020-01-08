@@ -233,6 +233,14 @@
   rdfs:domain	 :Option ;
   rdfs:range   xsd:boolean .
 
+:useJCS a rdf:Property ;
+  rdfs:label "use JCS";
+  rdfs:comment """
+    Requires the use of JSON Canonicalization Scheme when generating RDF literals from JSON literal values.
+    """ ;
+  rdfs:domain	 :Option ;
+  rdfs:range   xsd:boolean .
+
 :useRdfType a rdf:Property ;
   rdfs:label "use RDF types";
   rdfs:comment """

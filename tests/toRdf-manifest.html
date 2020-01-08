@@ -66,6 +66,7 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 </ul></li>
 <li>The media type for the file associated with the <em>input</em> property can be overridden using the <code>contentType</code> option.</li>
 <li>Some algorithms, particularly <em>fromRdf</em>, may not preserve the order of statements listed in the input document, and provision should be taken for performing unordered array comparison, for arrays other than values of <code>@list</code>. (This may be difficult for compacted results, where array value ordering is dependent on the associated term definition).</li>
+<li>Some <em>toRdf</em> tests require the use of <a href="https://tools.ietf.org/html/draft-rundgren-json-canonicalization-scheme-05">JSON Canonicalization Scheme</a> to properly generate RDF Literals from JSON literal values. This algorithm is non-normative, but is assumed to be used to properly compare results using <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism">RDF Dataset Isomorphism</a>. These tests are marked using the <code>useJCS</code> option.</li>
 <li>When comparing documents after flattening, framing or generating RDF, blank node identifiers may not be predictable. Implementations using the JSON-LD 1.0 algorithm, where output is always sorted and blank node identifiers are generated sequentially from <code>_:b0</code> may continue to use a simple object comparison. Otherwise, implementations should take this into consideration. (One way to do this may be to reduce both results and <em>expected</em> to datsets to extract a bijective mapping of blank node labels between the two datasets as described in <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism">RDF Dataset Isomorphism</a>).</li>
 </ul>
 
@@ -5641,6 +5642,8 @@ Test tjs01 Transform JSON literal (boolean true)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5669,6 +5672,8 @@ Test tjs02 Transform JSON literal (boolean false)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5697,6 +5702,8 @@ Test tjs03 Transform JSON literal (double)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5725,6 +5732,8 @@ Test tjs04 Transform JSON literal (double-zero)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5753,6 +5762,8 @@ Test tjs05 Transform JSON literal (integer)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5781,6 +5792,8 @@ Test tjs06 Transform JSON literal (object)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5809,6 +5822,8 @@ Test tjs07 Transform JSON literal (array)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5837,6 +5852,8 @@ Test tjs08 Transform JSON literal with array canonicalization
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5865,6 +5882,8 @@ Test tjs09 Transform JSON literal with string canonicalization
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5893,6 +5912,8 @@ Test tjs10 Transform JSON literal with structural canonicalization
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5921,6 +5942,8 @@ Test tjs11 Transform JSON literal with unicode canonicalization
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5949,6 +5972,8 @@ Test tjs12 Transform JSON literal with value canonicalization
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -5977,6 +6002,8 @@ Test tjs13 Transform JSON literal with wierd canonicalization
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6005,6 +6032,8 @@ Test tjs14 Transform JSON literal without expanding contents
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6033,6 +6062,8 @@ Test tjs15 Transform JSON literal aleady in expanded form
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6061,6 +6092,8 @@ Test tjs16 Transform JSON literal aleady in expanded form with aliased keys
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6089,6 +6122,8 @@ Test tjs17 Transform JSON literal (string)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6117,6 +6152,8 @@ Test tjs18 Transform JSON literal (null)
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6145,6 +6182,8 @@ Test tjs19 Transform JSON literal with aliased @type
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6173,6 +6212,8 @@ Test tjs20 Transform JSON literal with aliased @value
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6201,6 +6242,8 @@ Test tjs21 Transform JSON literal with @context
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6229,6 +6272,8 @@ Test tjs22 Transform JSON literal (null) aleady in expanded form.
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
@@ -6257,6 +6302,8 @@ Test tjs23 Transform JSON literal (empty array).
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>useJCS</dt>
+<dd>true</dd>
 </dl>
 </dd>
 </dl>
