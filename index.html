@@ -2506,7 +2506,7 @@
             <li>Convert <var>value</var> into an <a>array</a>, if necessary.</li>
             <li id="expand-type-scoped-context">For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
               if <var>term</var> is a <a>string</a>,
-              and <var>term</var>'s <a>term definition</a> in <var>active context</var>
+              and <var>term</var>'s <a>term definition</a> in <var>type-scoped context</var>
               has a <a>local context</a>, set <var>active context</var> to the result
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
               passing <var>active context</var>,
@@ -6996,8 +6996,10 @@
           to pass <var>override context</var> when creating a property-scoped context.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/301">Issue 301</a>.</li>
         <li>Update step <a href="#expand-type-scoped-context">11.2</a>
-          to make sure the <a>type-scoped context</a> is not propagated by default.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 246</a>.</li>
+          to make sure the <a>type-scoped context</a> is not propagated by default
+          and to use the <a>type-scoped context</a> when finding a <a>local context</a>.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 246</a>
+          and <a href="https://github.com/w3c/json-ld-api/issues/304">Issue 304</a>.</li>
         <li>Updated step <a href="#alg-expand-initialize-vars">12</a>
           <var>input type</var> to use the expanded value.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
