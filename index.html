@@ -2476,11 +2476,14 @@
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
-        <li class="changed">If <var>active context</var> has a <a>previous context</a>,
+        <li id="alg-expand-prev-context" class="changed">If <var>active context</var> has a <a>previous context</a>,
           the <var>active context</var> is not propagated.
           If <var>from map</var> is undefined or <code>false</code>,
           and <var>element</var> does not contain an <a>entry</a> expanding to <code>@value</code>,
-          and <var>element</var> does not consist of a single entry expanding to <code>@id</code>,
+          and <var>element</var> does not consist of a single <a>entry</a> expanding to <code>@id</code>
+          (where <a>entries</a> are expanded using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
+          passing <var>active context</var>, the <a>entry</a> key for
+          <var>value</var>, and <code>true</code> for <var>vocab</var>),
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
         <li id="alg-expand-property-scoped-context" class="changed">If <var>property-scoped context</var> is defined,
@@ -6993,6 +6996,9 @@
     </li>
     <li>Misclaneous updates to <a href="#expansion" class="sectionRef"></a>:
       <ul>
+        <li>Update step <a href="#alg-expand-prev-context">7</a>
+          to describe using the <a href="#iri-expansion">IRI Expansion algorithm</a> for expanding entries.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/309">Issue 309</a>.</li>
         <li>Update step <a href="#alg-expand-property-scoped-context">8</a>
           to pass <var>override context</var> when creating a property-scoped context.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/301">Issue 301</a>.</li>
