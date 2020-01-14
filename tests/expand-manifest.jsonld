@@ -2698,8 +2698,8 @@
     }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "@import is invalid in 1.0.",
-      "purpose": "@import is invalid in 1.0.",
+      "name": "@import may not be used in an imported context.",
+      "purpose": "@import only valid within a term definition.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so01-in.jsonld",
       "expectErrorCode": "invalid context member"
