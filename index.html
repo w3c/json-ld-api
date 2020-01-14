@@ -5405,7 +5405,7 @@
     </section>
   </section> <!-- end of RDF to Object Conversion -->
 
-  <section><h2>Data Round Tripping</h2>
+  <section id="data-round-tripping"><h2>Data Round Tripping</h2>
 
     <p>When <a href="#deserialize-json-ld-to-rdf-algorithm">deserializing JSON-LD to RDF</a>
       JSON-native <a>numbers</a> are automatically
@@ -5438,7 +5438,7 @@
 
     <p>The <a>canonical lexical form</a> of a <em>double</em>, i.e., a
       <a>number</a>
-      <span class="changed">which cannot be represented as an <em>integer</em></span>,
+      <span class="changed">with a non-zero fractional part or an exponent greater than <code>20</code></span>,
       or a <a>number</a>
       coerced to <code>xsd:double</code>, consists of a mantissa followed by the
       character <code>E</code>, followed by an exponent. The mantissa is a
@@ -6951,6 +6951,8 @@
           step <a href="#api-compact-post-processing">7</a> of
           the <a data-link-for="JsonLdProcessor">compact()</a> method of the
           <a>JsonLdProcessor</a> interface.</li>
+        <li>Clarified the handling of big integers in <a href="#data-round-tripping" class="sectionRef"></a>
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
       </ul>
     </li>
   </ul>
