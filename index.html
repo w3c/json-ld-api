@@ -2714,11 +2714,12 @@
                     <li>If <var>active property</var> is <code>null</code> or
                       <code>@graph</code>, continue with the next <var>key</var>
                       from <var>element</var> to remove the free-floating list.</li>
-                    <li>Otherwise, initialize <var>expanded value</var> to the result of using
+                    <li id="alg-expand-list-value">Otherwise, initialize <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
                       <span class="changed">and the {{JsonLdOptions/frameExpansion}}
-                        and {{JsonLdOptions/ordered}} flags</span>.</li>
+                        and {{JsonLdOptions/ordered}} flags,
+                        ensuring that the result is an <a>array</a>.</span>.</li>
                   </ol>
                 </li>
                 <li>If <var>expanded property</var> is <code>@set</code>, set
@@ -7007,6 +7008,9 @@
         <li>Remove text from  <a href="#expansion-tsc">13.4.4.4</a>
           that duplicate the following step.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 243</a>.</li>
+        <li>Add text to step  <a href="#alg-expand-list-value">13.4.11.2</a>
+          to ensure that the result is an array.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/310">Issue 310</a>.</li>
         <li>Changed text in step <a href="#alg-expand-container-index-not-index">3.8.3.7.2</a>
           to re-expand the index as a value before using it to update any existing
           value for the associated property.
