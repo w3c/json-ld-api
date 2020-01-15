@@ -4425,10 +4425,12 @@
               set <var>result</var> to the value associated with the `@value` <a>entry</a>.</li>
           </ol>
         </li>
-        <li>Otherwise, if the value of `@language` in <var>item</var> exactly matches <var>language</var>,
+        <li id="alg-valcompact-lang-dir">Otherwise, if <var>value</var> has an <code>@language</code> <a>entry</a>
+          whose value exactly matches <var>language</var>,
           <span class="changed">using a case-insensitive comparison</span>
           if it is not `null`, or is not present, if <var>language</var> is `null`,
-          <span class="changed">and the value of `@direction` in <var>item</var> exactly matches <var>direction</var>,
+          <span class="changed">and the <var>value</var> has an <code>@direction</code> <a>entry</a>
+            whose value exactly matches <var>direction</var>,
             if it is not `null`, or is not present, if <var>direction</var> is `null`</span>:
           <ol>
             <li>If <var>value</var> has an `@index` <a>entry</a>,
@@ -4437,7 +4439,7 @@
               or <var>value</var> has no `@index` <a>entry</a>,
               set <var>result</var> to the value associated with the `@value` <a>entry</a>.</li>
           </ol>
-          return <var>value</var>.</li>
+        </li>
         <li>If <var>result</var> is a <var>map</var>,
           replace each key in <var>result</var> with the result of using the
           <a href="#iri-compaction">IRI compaction algorithm</a>,
@@ -7085,6 +7087,9 @@
           <a href="#node-map-generation">Node Map Generation algorithm</a> to clarify
           that the steps iterates over any `@type` entries.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/276">Issue 276</a>.</li>
+        <li>Updated the language in step <a href="alg-valcompact-lang-dir">8</a>
+          of <a href="#value-compaction" class="sectionRef"></a> to be consistent with other steps.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/313">Issue 313</a>.</li>
       </ul>
     </li>
   </ul>
