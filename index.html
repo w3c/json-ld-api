@@ -4384,16 +4384,15 @@
         <li class="changed">Initialize <var>direction</var> to the <a>direction mapping</a> for <var>active property</var>
           in <var>active context</var>, if any, otherwise to the <a>default base direction</a>
           of <var>active context</var>.</li>
-        <li>If <var>value</var> has an <code>@id</code> <a>entry</a>
+        <li id="alg-compval-id-index">If <var>value</var> has an <code>@id</code> <a>entry</a>
           and has no other <a>entries</a> other than `@index`:
           <ol>
-            <li>If <var>value</var> and
-              the <a>type mapping</a> of <var>active property</var>
+            <li>If the <a>type mapping</a> of <var>active property</var>
               is set to <code>@id</code>, set <var>result</var> to the result of using the
               <a href="#iri-compaction">IRI compaction algorithm</a>,
               passing <var>active context</var>, <var>inverse context</var>,
               and the value of the <code>@id</code> <a>entry</a> for <var>var</var>.</li>
-            <li>Otherwise, the <a>type mapping</a> of <var>active property</var>
+            <li>Otherwise, if the <a>type mapping</a> of <var>active property</var>
               is set to <code>@vocab</code>, set <var>result</var> to the result of using the
               <a href="#iri-compaction">IRI compaction algorithm</a>,
               passing <var>active context</var>, <var>inverse context</var>,
@@ -7087,6 +7086,9 @@
           <a href="#node-map-generation">Node Map Generation algorithm</a> to clarify
           that the steps iterates over any `@type` entries.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/276">Issue 276</a>.</li>
+        <li>Clarify sub-steps of step <a href="#alg-compval-id-index">4</a>
+          of the <a href="#value-compaction">Value Compaction algorithm</a>.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/321">Issue 321</a>.</li>
         <li>Updated the language in step <a href="alg-valcompact-lang-dir">8</a>
           of <a href="#value-compaction" class="sectionRef"></a> to be consistent with other steps.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/313">Issue 313</a>.</li>
