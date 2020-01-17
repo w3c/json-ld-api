@@ -2966,11 +2966,13 @@
               and then by setting it to a <a class="changed">map</a> containing
               the key-value pair <code>@list</code>-<var>expanded value</var>.</li>
             <li class="changed">If <var>container mapping</var> <span>includes</span>
-              <code>@graph</code>, convert <var>expanded value</var> into an <a>array</a>, if necessary,
+              <code>@graph</code>,
+              and includes neither <code>@id</code> nor <code>@index</code>,
+              convert <var>expanded value</var> into an <a>array</a>, if necessary,
               then convert each value <var>ev</var> in <var>expanded value</var> into a
               <a>graph object</a>:
               <ol>
-                <li>Convert var>ev</var> into
+                <li>Convert <var>ev</var> into
                   a <a>graph object</a> by creating a <a>map</a> containing the key-value
                   pair <code>@graph</code>-<var>ev</var>
                   where <var>ev</var> is represented as an <a>array</a>.
