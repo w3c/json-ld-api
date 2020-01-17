@@ -3383,12 +3383,6 @@
           specified in the context such as <code>@index</code> or <code>@language</code>
           maps.</li>
       </ol>
-
-      <p>The final output is a <a class="changed">map</a> with an <code>@context</code>
-        <a>entry</a>, if a non-empty <a>context</a> was given, where the <a class="changed">map</a>
-        is either <var>result</var> or a wrapper for it where <var>result</var> appears
-        as the value of an (aliased) <code>@graph</code> <a>entry</a> because <var>result</var>
-        contained two or more items in an <a>array</a>.</p>
     </section>
 
     <section class="algorithm">
@@ -3970,18 +3964,6 @@
         </li>
         <li>Return <var>result</var>.</li>
       </ol>
-
-      <p>If, after the algorithm outlined above is run, <var>result</var>
-        <span class="changed">is an empty <a>array</a>, replace it with a new <a>map</a></span>.
-        Otherwise, if <var>result</var> is an <a>array</a>, replace it with a new
-        <a class="changed">map</a> with a single <a>entry</a> whose key is the result
-        of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-        passing <var>active context</var>, <var>inverse context</var>, and
-        <code>@graph</code> as <var>var</var> and whose value is the <a>array</a>
-        <var>result</var>.</p>
-      <p>Finally, if a non-empty <var>context</var> has been passed,
-        add an <code>@context</code> <a>entry</a> to <var>result</var> and set its value
-        to the passed <var>context</var>.</p>
     </section>
   </section> <!-- end of Compaction -->
 
@@ -5826,6 +5808,12 @@
         <p><a>Compacts</a> the given <a data-lt="jsonldprocessor-compact-input">input</a> using the
           <var>context</var> according to the steps in the <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
 
+        <p class="changed">The final output is an <a>map</a> with an <code>@context</code>
+          <a>entry</a>, if a non-empty <a>context</a> was given, where the <a>map</a>
+          is either <var>compacted output</var> or a wrapper for it where <var>compacted output</var> appears
+          as the value of an (aliased) <code>@graph</code> <a>entry</a> because <var>compacted output</var>
+          contained two or more items in an <a>array</a>.</p>
+
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
@@ -5850,7 +5838,21 @@
             <var>expanded input</var> as <var>element</var>,
             and if passed, the {{JsonLdOptions/compactArrays}}
             <span class="changed">and {{JsonLdOptions/ordered}}</span>
-            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
+            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.
+            <ol id = "api-compact-post-processing" class="changed">
+              <li>If <var>compacted output</var> is an empty <a>array</a>,
+                replace it with a new <a>map</a>.</li>
+              <li>Otherwise, if <var>compacted output</var> is an <a>array</a>,
+                replace it with a new <a>map</a> with a single <a>entry</a>
+                whose key is the result of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
+                passing <var>active context</var>, <var>inverse context</var>, and
+                <code>@graph</code> as <var>var</var> and whose value is the <a>array</a>
+                <var>compacted output</var>.</li>
+              <li>If a non-empty <var>context</var> has been passed,
+                add an <code>@context</code> <a>entry</a> to <var>compacted output</var> and set its value
+                to the passed <var>context</var>.</li>
+            </ol>
+          </li>
           <li>Resolve the <var>promise</var> with <var>compacted output</var>
             <span class="changed">transforming <var>compacted output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
@@ -7094,6 +7096,10 @@
         <li>Updated the language in step <a href="alg-valcompact-lang-dir">8</a>
           of <a href="#value-compaction" class="sectionRef"></a> to be consistent with other steps.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/313">Issue 313</a>.</li>
+        <li>Moved the last part of the compaction algorithm to
+          step <a href="#api-compact-post-processing">5</a> of
+          the <a data-link-for="JsonLdProcessor">compact()</a> method of the
+          <a>JsonLdProcessor</a> interface.</li>
       </ul>
     </li>
   </ul>
