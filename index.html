@@ -2970,10 +2970,12 @@
               then convert each value <var>ev</var> in <var>expanded value</var> into a
               <a>graph object</a>:
               <ol>
-                <li>If <var>ev</var> is not a <a>graph object</a>, convert it into
-                  one by creating a <a>map</a> containing the key-value
+                <li>Convert var>ev</var> into
+                  a <a>graph object</a> by creating a <a>map</a> containing the key-value
                   pair <code>@graph</code>-<var>ev</var>
-                  where <var>ev</var> is represented as an <a>array</a>.</li>
+                  where <var>ev</var> is represented as an <a>array</a>.
+                  <div class="note">This may lead to a <a>graph object</a> including another <a>graph object</a>,
+                    if <var>ev</var> was already in the form of a <a>graph object</a>.</div></li>
               </ol>
             </li>
             <li>If the <a>term definition</a> associated to
