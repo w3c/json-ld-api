@@ -3395,17 +3395,8 @@
         <span class="changed">The optional inputs are the
           {{JsonLdOptions/compactArrays}} flag
           and the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted</span>.
-        To begin, the <var>active context</var> is set to the result of
-        performing <a href="#context-processing-algorithm">Context Processing</a>
-        on the passed <a>context</a>, the <var>inverse context</var> is
-        set to the result of performing the
-        <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
-        on <var>active context</var>, the <var>active property</var> is
-        set to <code>null</code>, <var>element</var> is set to the result of
-        performing the <a href="#expansion-algorithm">Expansion algorithm</a>
-        on the <a>JSON-LD input</a>.
-        <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
+          <a>map entry</a> keys lexicographically, where noted.
+          If not passed, the both flags are set to <code>false</code></span>.</p>
 
       <ol>
         <li class="changed">Initialize <var>type-scoped context</var> to <var>active context</var>.
@@ -5826,20 +5817,25 @@
           <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
             set <var>context</var> to that <a data-lt="entry">entry's</a> value,
             otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
-          <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
-            the <a>base IRI</a> is set to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
+          <li class="changed">Initialize <var>active context</var>
+            to the result of the <a href="#context-processing-algorithm">Context Processing algorithm</a>
+            passing a new empty <a>context</a> as <var>active context</var>
+            and <var>context</var> as <var>local context</var>.</li>
+          <li>Initialize <var>inverse context</var> to the result of performing the
+            <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>.</li>
+          <li>Initialize <a>base IRI</a> to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
             otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
             to the IRI of the currently being processed document, if available;
             otherwise to <code>null</code>.</li>
           <li>Set <var>compacted output</var> to the result of using the <a href="#compaction-algorithm">Compaction algorithm</a>,
             using <a>active context</a>,
-            an empty <a>map</a> as <var>inverse context</var>,
-            <code>null</code> as <var>property</var>,
+            <var>inverse context</var>,
+            <code>null</code> for <var>active property</var>,
             <var>expanded input</var> as <var>element</var>,
             and if passed, the {{JsonLdOptions/compactArrays}}
             <span class="changed">and {{JsonLdOptions/ordered}}</span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.
-            <ol id = "api-compact-post-processing" class="changed">
+            <ol id="api-compact-post-processing" class="changed">
               <li>If <var>compacted output</var> is an empty <a>array</a>,
                 replace it with a new <a>map</a>.</li>
               <li>Otherwise, if <var>compacted output</var> is an <a>array</a>,
@@ -7097,7 +7093,7 @@
           of <a href="#value-compaction" class="sectionRef"></a> to be consistent with other steps.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/313">Issue 313</a>.</li>
         <li>Moved the last part of the compaction algorithm to
-          step <a href="#api-compact-post-processing">5</a> of
+          step <a href="#api-compact-post-processing">7</a> of
           the <a data-link-for="JsonLdProcessor">compact()</a> method of the
           <a>JsonLdProcessor</a> interface.</li>
       </ul>
