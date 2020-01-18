@@ -5760,14 +5760,14 @@
         constructor();
         static Promise&lt;JsonLdDictionary> compact(
           JsonLdInput input,
-          optional JsonLdContext context = {},
+          optional JsonLdContext context = null,
           optional JsonLdOptions options = {});
         static Promise&lt;sequence&lt;JsonLdDictionary>> expand(
           JsonLdInput input,
           optional JsonLdOptions options = {});
         static Promise&lt;JsonLdDictionary> flatten(
           JsonLdInput input,
-          optional JsonLdContext context = {},
+          optional JsonLdContext context = null,
           optional JsonLdOptions options = {});
         static Promise&lt;sequence&lt;JsonLdDictionary>> fromRdf(
           RdfDataset input,
@@ -5790,8 +5790,8 @@
           included with an entry of (a possibly aliased) <code>@graph</code>
           with the value of <var>compacted output</var>,
           otherwise <var>compacted output</var> is used as the <a>map</a> result.
-          If a non-empty <var>context</var> was given,
-          it an <code>@context</code> entry is added to the <a>map</a> result.</p>
+          If <a data-lt="jsonldprocessor-compact-context">context</a> not <code>null</code>,
+          an <code>@context</code> entry is added to the <a>map</a> result.</p>
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
@@ -5833,7 +5833,7 @@
                 passing <var>active context</var>, <var>inverse context</var>, and
                 <code>@graph</code> as <var>var</var> and whose value is the <a>array</a>
                 <var>compacted output</var>.</li>
-              <li>If a non-empty <var>context</var> has been passed,
+              <li>If <a data-lt="jsonldprocessor-compact-context">context</a> was not <code>null</code>,
                 add an <code>@context</code> <a>entry</a> to <var>compacted output</var> and set its value
                 to the passed <var>context</var>.</li>
             </ol>
@@ -5892,7 +5892,6 @@
             passing the <a data-link-for="RemoteDocument">contextUrl</a> as <var>local context</var>.</li>
           <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
             passing the <var>active context</var>,
-            <code>null</code> for <var>active property</var>,
             and <a data-link-for="RemoteDocument">document</a>
             from <var>remote document</var>, or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
@@ -5950,7 +5949,7 @@
             <span class="changed">and if passed, the {{JsonLdOptions/ordered}} flag
               in <a data-lt="jsonldprocessor-flatten-options">options</a></span>.
             <ol id="api-flatten-post-processing" class="changed">
-              <li>If a non-empty <a data-lt="jsonldprocessor-flatten-context">context</a> has been passed,
+              <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is not <code>null</code>,
                 set <var>flattened output</var> to the result of
                 using the <a data-link-for="JsonLdProcessor">compact()</a> method
                 using <var>flattened output</var> for <a data-lt="jsonldprocessor-compact-input">input</a>,
@@ -5960,7 +5959,8 @@
           </li>
           <li>Resolve the <var>promise</var> with <var>flattened output</var>
             <span class="changed">transforming <var>flattened output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+              <a>internal representation</a> to a JSON serialization</span>,
+              if necessary.</li>
         </ol>
 
         <dl class="parameters">
