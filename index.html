@@ -3714,11 +3714,10 @@
                   Set <var>nest result</var> to the value of <var>nest term</var> in <var>result</var>,
                   initializing it to a new <a class="changed">map</a>, if necessary; otherwise
                   set <var>nest result</var> to <var>result</var>.</li>
-                <li>Initialize <var>container</var> to <code>null</code>. If there
-                  is a <a>container mapping</a> for
+                <li>Initialize <var>container</var> to the 
+                  to a new empty <a>array</a>. If there <a>container mapping</a> for
                   <var>item active property</var> in <var>active context</var>,
-                  set <var>container</var> to <span class="changed">the first</span>
-                  such value <span class="changed">other than <code>@set</code></span>.</li>
+                  or to a new empty <a>array</a>, if there is no such <a>container mapping</a>.</li>
                 <li class="changed">Initialize <var>as array</var> to
                   <code>true</code> or <code>false</code> depending on if the <a>container mapping</a> for
                   <var>item active property</var> in <var>active context</var>
@@ -3740,7 +3739,7 @@
                     <li>If <var>compacted item</var> is not an <a>array</a>,
                       then set it to an <a>array</a> containing only
                       <var>compacted item</var>.</li>
-                    <li>If <var>container</var> is not <code>@list</code>:
+                    <li>If <var>container</var> does not include <code>@list</code>:
                       <ol>
                         <li>Convert <var>compacted item</var> to a
                           <a>list object</a> by setting it to a
@@ -3908,7 +3907,7 @@
                     <li class="changed">Otherwise, if <var>container</var> includes <code>@id</code>, set
                       <var>map key</var> to the value of <var>container key</var> in
                       <var>compacted item</var> and remove <var>container key</var> from <var>compacted item</var>.</li>
-                    <li class="changed">Otherwise, if <var>container</var> is <code>@type</code>:
+                    <li class="changed">Otherwise, if <var>container</var> includes <code>@type</code>:
                       <ol>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
                         <li>If there are remaining values in <var>compacted item</var>
