@@ -2394,10 +2394,8 @@
           the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted,
           and the <var>from map</var> flag, used to control reverting
-          previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.</span>
-        To begin, the <var>active property</var> is set to <code>null</code>,
-        and <var>element</var> is set to the <a>JSON-LD input</a>.
-        <span class="changed">If not passed, the both flags are set to <code>false</code></span>.</p>
+          previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.
+          If not passed, the both flags are set to <code>false</code></span>.</p>
 
       <p class="changed">The algorithm also performs processing steps specific to expanding
         a <a>JSON-LD Frame</a>. For a <a>frame</a>, the <code>@id</code> and
@@ -5902,7 +5900,9 @@
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the <a data-link-for="RemoteDocument">contextUrl</a> as <var>local context</var>.</li>
           <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
-            passing the <var>active context</var> and <a data-link-for="RemoteDocument">document</a>
+            passing the <var>active context</var>,
+            <code>null</code> for <var>active property</var>,
+            and <a data-link-for="RemoteDocument">document</a>
             from <var>remote document</var>, or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
             and if passed, the <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
