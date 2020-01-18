@@ -4444,22 +4444,18 @@
         which collects all <a>properties</a> of a <a>node</a> in a single
         <a class="changed">map</a>. In the next step, the <var>node map</var> is
         converted to a JSON-LD document in
-        <a data-cite="JSON-LD11#flattened-document-form">flattened document form</a>.
-        Finally, if a <a>context</a> has been passed, the flattened document
-        is compacted using the <a href="#compaction-algorithm">Compaction algorithm</a>
-        before being returned.</p>
+        <a data-cite="JSON-LD11#flattened-document-form">flattened document form</a>.</p>
     </section>
 
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes <span class="changed">one required and two optional</span> input variables.
+      <p>The algorithm takes <span class="changed">one required and one optional</span> input variables.
         The required input is an <var>element</var> to flatten.
-        The optional inputs are the <var>context</var> used to compact the flattened document
-        <span class="changed">and the {{JsonLdOptions/ordered}} flag, used to order
+        <span class="changed">The optional input is
+          the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted</span>.
-        If not passed, <var>context</var> is set to <code>null</code>
-        <span class="changed">and, the {{JsonLdOptions/ordered}} flag is set to <code>false</code></span>.</p>
+        If not passed, the {{JsonLdOptions/ordered}} flag is set to <code>false</code></span>.</p>
 
       <p>This algorithm uses the
         <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
@@ -4505,14 +4501,7 @@
           <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
           add <var>node</var> to <var>flattened</var>,
           unless the only <a>entry</a> of <var>node</var> is <code>@id</code>.</li>
-        <li>If <var>context</var> is <code>null</code>, return <var>flattened</var>.</li>
-        <li>Otherwise, return the result of <a>compacting</a> <var>flattened</var> according the
-          <a href="#compaction-algorithm">Compaction algorithm</a> passing <var>context</var>
-          <span class="changed">and the {{JsonLdOptions/ordered}} flag</span>
-          ensuring that the compaction result has only the <code>@graph</code> keyword (or its alias)
-          at the top-level other than <code>@context</code>, even if the context is empty or if there is only one element to
-          put in the <code>@graph</code> <a>array</a>. This ensures that the returned
-          document has a deterministic structure.</li>
+        <li>Return <var>flattened</var>.</li>
       </ol>
     </section>
   </section> <!-- end of Flattening Algorithm -->
@@ -5939,7 +5928,7 @@
       <dt><dfn data-dfn-for="JsonLdProcessor">flatten()</dfn></dt>
       <dd class="algorithm">
         <p><a href="#flattening">Flattens</a> the given <a data-lt="jsonldprocessor-flatten-input">input</a>
-          and <a>compacts</a> it using the passed <a data-lt="jsonldprocessor-flatten-context">context</a>
+          and optionally <a>compacts</a> it using the passed <a data-lt="jsonldprocessor-flatten-context">context</a>
           according to the steps in the <a href="#flattening-algorithm">Flattening algorithm</a>:</p>
 
         <ol>
@@ -5950,11 +5939,7 @@
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
             <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
             <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
-          <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
-            set <var>context</var> to that <a data-lt="entry">entry's</a> value,
-            otherwise to <a data-lt="jsonldprocessor-flatten-context">context</a>.</li>
-          <li class="changed">Initialize an <var>active context</var> using <var>context</var>;
-            the <a>base IRI</a> is set to the {{JsonLdOptions/base}} option
+          <li class="changed">Initialize the <a>base IRI</a> to the {{JsonLdOptions/base}} option
             from <a data-lt="jsonldprocessor-flatten-options">options</a>, if set;
             otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
             to the IRI of the currently being processed document, if available;
@@ -5962,10 +5947,17 @@
           <li>Initialize an empty <var>identifier map</var>.</li>
           <li>Set <var>flattened output</var> to the result of using the <a href="#flattening-algorithm">Flattening algorithm</a>,
             passing <var>expanded input</var> as <var>element</var>,
-            <var>active context</var>,
-            and if passed, the {{JsonLdOptions/compactArrays}}
-            <span class="changed">and {{JsonLdOptions/ordered}}</span>
-            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
+            <span class="changed">and if passed, the {{JsonLdOptions/ordered}} flag
+              in <a data-lt="jsonldprocessor-flatten-options">options</a></span>.
+            <ol id="api-flatten-post-processing" class="changed">
+              <li>If a non-empty <a data-lt="jsonldprocessor-flatten-context">context</a> has been passed,
+                set <var>flattened output</var> to the result of
+                using the <a data-link-for="JsonLdProcessor">compact()</a> method
+                using <var>flattened output</var> for <a data-lt="jsonldprocessor-compact-input">input</a>,
+                <a data-lt="jsonldprocessor-flatten-context">context</a>,
+                and <a data-lt="jsonldprocessor-flatten-options">options</a>.</li>
+            </ol>
+          </li>
           <li>Resolve the <var>promise</var> with <var>flattened output</var>
             <span class="changed">transforming <var>flattened output</var> from the
               <a>internal representation</a> to a JSON serialization</span>.</li>
