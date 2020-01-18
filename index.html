@@ -5797,11 +5797,14 @@
         <p><a>Compacts</a> the given <a data-lt="jsonldprocessor-compact-input">input</a> using the
           <var>context</var> according to the steps in the <a href="#compaction-algorithm">Compaction algorithm</a>:</p>
 
-        <p class="changed">The final output is an <a>map</a> with an <code>@context</code>
-          <a>entry</a>, if a non-empty <a>context</a> was given, where the <a>map</a>
-          is either <var>compacted output</var> or a wrapper for it where <var>compacted output</var> appears
-          as the value of an (aliased) <code>@graph</code> <a>entry</a> because <var>compacted output</var>
-          contained two or more items in an <a>array</a>.</p>
+        <p class="changed">The final output is a <a>map</a>
+          derived from <var>compacted output</var>.
+          If <var>compacted output</var> is an <a>array</a>, it is
+          included with an entry of (a possibly aliased) <code>@graph</code>
+          with the value of <var>compacted output</var>,
+          otherwise <var>compacted output</var> is used as the <a>map</a> result.
+          If a non-empty <var>context</var> was given,
+          it an <code>@context</code> entry is added to the <a>map</a> result.</p>
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
@@ -5811,8 +5814,9 @@
             using <a data-lt="jsonldprocessor-compact-input">input</a>
             and <a data-lt="jsonldprocessor-compact-options">options</a>,
             <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
-            <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>false</code></span>.
-          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
+            <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>false</code></span>.</li>
+          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a>
+            having an <code>@context</code> <a>entry</a>,
             set <var>context</var> to that <a data-lt="entry">entry's</a> value,
             otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
           <li class="changed">Initialize <var>active context</var>
