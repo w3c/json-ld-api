@@ -2744,18 +2744,16 @@
                       i.e., <a>properties</a> that are reversed twice, execute for each of its
                       <var>property</var> and <var>item</var> the following steps:
                       <ol>
-                        <li>If <var>result</var> does not have a <var>property</var> <a>entry</a>, create
-                          one and set its value to an empty <a>array</a>.</li>
-                        <li>Append <var>item</var> to the value of the <var>property</var> <a>entry</a>
-                          of <var>result</var>.</li>
+                        <li class="changed">Use <a>add value</a> to add <var>item</var>
+                          to the <var>property</var> <a>entry</a> in <var>result</var>
+                          using `true` for <var>as array</var>.</li>
                       </ol>
                     </li>
                     <li>If <var>expanded value</var> contains an <a>entry</a> other than <code>@reverse</code>:
                       <ol>
-                        <li>If <var>result</var> does not have an <code>@reverse</code> <a>entry</a>, create
-                          one and set its value to an empty <a class="changed">map</a>.</li>
-                        <li>Reference the value of the <code>@reverse</code> <a>entry</a> in <var>result</var>
-                          using the variable <var>reverse map</var>.</li>
+                        <li class="changed">Set <var>reverse map</var> to the value
+                          of the `@reverse` entry in <var>result</var>,
+                          initializing it to an empty <a>map</a>, if necessary.</li>
                         <li>For each <var>property</var> and <var>items</var> in <var>expanded value</var>
                           other than <code>@reverse</code>:
                           <ol>
@@ -2764,10 +2762,9 @@
                                 <li>If <var>item</var> is a <a>value object</a> or <a>list object</a>, an
                                   <a data-link-for="JsonLdErrorCode">invalid reverse property value</a>
                                   has been detected and processing is aborted.</li>
-                                <li>If <var>reverse map</var> has no <var>property</var> <a>entry</a>, create one
-                                  and initialize its value to an empty <a>array</a>.</li>
-                                <li>Append <var>item</var> to the value of the <var>property</var>
-                                  <a>entry</a> in <var>reverse map</var>.</li>
+                                <li class="changed">Use <a>add value</a> to add <var>item</var>
+                                  to the <var>property</var> <a>entry</a> in <var>reverse map</var>
+                                  using `true` for <var>as array</var>.</li>
                               </ol>
                             </li>
                           </ol>
@@ -2994,20 +2991,17 @@
                       has been detected and processing is aborted.</li>
                     <li>If <var>reverse map</var> has no <var>expanded property</var> <a>entry</a>,
                       create one and initialize its value to an empty <a>array</a>.</li>
-                    <li>Append <var>item</var> to the value of the <var>expanded property</var>
-                      <a>entry</a> of <var>reverse map</var>.</li>
+                    <li class="changed">Use <a>add value</a> to add <var>item</var>
+                      to the <var>expanded property</var> <a>entry</a> in <var>reverse map</var>
+                      using `true` for <var>as array</var>.</li>
                   </ol>
                 </li>
               </ol>
             </li>
-            <li>Otherwise, <var>key</var> is not a <a>reverse property</a>:
-              <ol>
-                <li>If <var>result</var> does not have an <var>expanded property</var>
-                  <a>entry</a>, create one and initialize its value to an empty
-                  <a>array</a>.</li>
-                <li>Append <var>expanded value</var> to value of the <var>expanded property</var>
-                  <a>entry</a> of <var>result</var>.</li>
-              </ol>
+            <li>Otherwise, <var>key</var> is not a <a>reverse property</a>
+              <span class="changed">use <a>add value</a> to add <var>expanded value</var>
+                to the <var>expanded property</var> <a>entry</a> in <var>result</var>
+                using `true` for <var>as array</var>.</span>
             </li>
           </ol>
         </li>
@@ -3537,9 +3531,6 @@
                         <li>Append <var>term</var>, to <var>compacted value</var>.</li>
                       </ol>
                     </li>
-                    <li>If <var>compacted value</var> contains only one
-                      item (it has a length of <code>1</code>), then
-                      set <var>compacted value</var> to its only item.</li>
                   </ol>
                 </li>
                 <li>Initialize <var>alias</var> to the result of using the
@@ -3547,12 +3538,14 @@
                   passing <var>active context</var>, <var>inverse context</var>,
                   <var>expanded property</var> for <var>var</var>,
                   and <code>true</code> for <var>vocab</var>.</li>
-                <li class="changed">If the <a>term definition</a> for <var>alias</var> in the
-                  <var>active context</var> has a <a>container mapping</a> including <code>@set</code>,
-                  ensure that <var>compacted value</var> is an <a>array</a>.</li>
-                <li>Add an <a>entry</a> <var>alias</var> to <var>result</var> whose value is
-                  set to <var>compacted value</var> and continue to the next
-                  <var>expanded property</var>.</li>
+                <li class="changed">Initialize <var>as array</var>
+                  to <code>true</code> if the <a>container mapping</a> for <var>alias</var> in the
+                  <var>active context</var> includes <code>@set</code>,
+                  otherwise to the negation of {{JsonLdOptions/compactArrays}}.</li>
+                <li class="changed">Use <a>add value</a> to add <var>compacted value</var>
+                  to the <var>alias</var> <a>entry</a> in <var>result</var>
+                  using <var>as array</var>.</li>
+                <li>Continue to the next <var>expanded property</var>.</li>
               </ol>
             </li>
             <li>If <var>expanded property</var> is <code>@reverse</code>:
@@ -3569,22 +3562,14 @@
                     <li>If the <a>term definition</a> for <var>property</var> in the
                       <var>active context</var> indicates that <var>property</var> is
                       a <a>reverse property</a>
-                            <ol>
-                        <li>If the <a>term definition</a> for <var>property</var> in
-                          the <var>active context</var> has a
-                          <a>container mapping</a> <span class="changed">including</span> <code>@set</code> or
-                          {{JsonLdOptions/compactArrays}}
-                          is <code>false</code>, and <var>value</var> is not an
-                          <a>array</a>, set <var>value</var> to a new
-                          <a>array</a> containing only <var>value</var>.</li>
-                        <li>If <var>property</var> is not an <a>entry</a> of
-                          <var>result</var>, add one and set its value to <var>value</var>.</li>
-                        <li>Otherwise, if the value of the <var>property</var> <a>entry</a> of
-                          <var>result</var> is not an <a>array</a>, set it to a new
-                          <a>array</a> containing only the value. Then
-                          append <var>value</var> to its value if <var>value</var>
-                          is not an <a>array</a>, otherwise append each
-                          of its items.</li>
+                      <ol>
+                        <li class="changed">Initialize <var>as array</var>
+                          to <code>true</code> if the <a>container mapping</a> for <var>property</var> in the
+                          <var>active context</var> includes <code>@set</code>,
+                          otherwise the negation of {{JsonLdOptions/compactArrays}}.</li>
+                        <li class="changed">Use <a>add value</a> to add <var>value</var>
+                          to the <var>property</var> <a>entry</a> in <var>result</var>
+                          using <var>as array</var>.</li>
                         <li>Remove the <var>property</var> <a>entry</a> from
                           <var>compacted value</var>.</li>
                       </ol>
@@ -3652,23 +3637,22 @@
                   <code>true</code> for <var>vocab</var>, and
                   <var>inside reverse</var> for the <var>reverse</var> flag.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
-                  in the <var>active context</var> has a <a>nest value</a>, that value (<var>nest term</var>) must be
-                  <code>@nest</code>, or a <a>term</a> in the
-                  <var>active context</var> that expands to <code>@nest</code>,
-                  otherwise an <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
-                  error has been detected, and processing is aborted.
-                  If <var>result</var> does not have a <var>nest term</var> <a>entry</a>,
-                  initialize it to an empty <a>map</a> (<var>nest object</var>).
-                  If <var>nest object</var> does not have an <var>item active property</var> <a>entry</a>,
-                  set this <a data-lt="entry">entry's</a>
-                  value in <var>nest object</var> to an empty
-                  <a>array</a>.Otherwise, if the <a data-lt="entry">entry's</a> value is not an
-                  <a>array</a>, then set it to one containing only the value.</li>
-                <li>Otherwise, if <var>result</var> does not have an
-                  <var>item active property</var> <a>entry</a>, set this <a data-lt="entry">entry's</a> value in
-                  <var>result</var> to an empty <a>array</a>. Otherwise, if
-                  the <a data-lt="entry">entry's</a> value is not an <a>array</a>, then set it
-                  to one containing only the value.</li>
+                  in the <var>active context</var> has a <a>nest value</a>
+                  <a>entry</a> (<var>nest term</var>).
+                  <ol>
+                    <li>If <var>nest term</var> is not <code>@nest</code>,
+                      or a <a>term</a> in the <var>active context</var> that expands to <code>@nest</code>,
+                      an <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
+                      error has been detected, and processing is aborted.</li>
+                    <li>If <var>result</var> does not have a <var>nest term</var> <a>entry</a>,
+                      initialize it to an empty <a>map</a>.</li>
+                    <li>Initialize <var>nest result</var> to the value of <var>nest term</var> in <var>result</var>.</li>
+                  </ol>
+                </li>
+                <li class="changed">Otherwise, initialize <var>nest result</var> to <var>result</var>.</li>
+                <li class="changed">Use <a>add value</a> to add an empty <a>array</a>
+                  to the <var>item active property</var> <a>entry</a> in <var>nest result</var>
+                  using <code>true</code> for <var>as array</var>.</li>
               </ol>
             </li>
             <li>
@@ -3686,22 +3670,25 @@
                   <var>inside reverse</var> for the <var>reverse</var> flag.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
                   in the <var>active context</var> has a <a>nest value</a>
-                  <a>entry</a>, that value (<var>nest term</var>) must be
-                  <code>@nest</code>, or a <a>term</a> in the
-                  <var>active context</var> that expands to <code>@nest</code>,
-                  otherwise an <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
-                  error has been detected, and processing is aborted.
-                  Set <var>nest result</var> to the value of <var>nest term</var> in <var>result</var>,
-                  initializing it to a new <a class="changed">map</a>, if necessary; otherwise
-                  set <var>nest result</var> to <var>result</var>.</li>
+                  <a>entry</a> (<var>nest term</var>).
+                  <ol>
+                    <li>If <var>nest term</var> is not <code>@nest</code>,
+                      or a <a>term</a> in the <var>active context</var> that expands to <code>@nest</code>,
+                      an <a data-link-for="JsonLdErrorCode">invalid @nest value</a>
+                      error has been detected, and processing is aborted.</li>
+                    <li>If <var>result</var> does not have a <var>nest term</var> <a>entry</a>,
+                      initialize it to an empty <a>map</a>.</li>
+                    <li>Initialize <var>nest result</var> to the value of <var>nest term</var> in <var>result</var>.</li>
+                  </ol>
+                </li>
+                <li>Otherwise, initialize <var>nest result</var> to <var>result</var>.</li>
                 <li>Initialize <var>container</var> to <a>container mapping</a> for
                   <var>item active property</var> in <var>active context</var>,
                   or to a new empty <a>array</a>, if there is no such <a>container mapping</a>.</li>
-                <li class="changed">Initialize <var>as array</var> to
-                  <code>true</code> or <code>false</code> depending on if the <a>container mapping</a> for
-                  <var>item active property</var> in <var>active context</var>
-                  includes <code>@set</code> or if <var>item active property</var>
-                  is <code>@graph</code> or <code>@list</code>.</li>
+                <li class="changed">Initialize <var>as array</var>
+                  to <code>true</code> if <var>container</var> includes <code>@set</code>,
+                  or if <var>item active property</var> is <code>@graph</code> or <code>@list</code>,
+                  otherwise the negation of {{JsonLdOptions/compactArrays}}.</li>
                 <li>Initialize <var>compacted item</var> to the result of using
                   this algorithm recursively, passing
                   <var>active context</var>, <var>inverse context</var>,
@@ -3712,11 +3699,10 @@
                   otherwise pass the value of the <a>entry</a> for <var>element</var>.
                   <span class="changed">Along with the {{JsonLdOptions/compactArrays}}
                     and {{JsonLdOptions/ordered}} flags</span></li>
-                <li>
-                  If <var>expanded item</var> is a <a>list object</a>:
+                <li>If <var>expanded item</var> is a <a>list object</a>:
                   <ol>
                     <li>If <var>compacted item</var> is not an <a>array</a>,
-                      then set it to an <a>array</a> containing only
+                      then set <var>compacted item</var> to an <a>array</a> containing only
                       <var>compacted item</var>.</li>
                     <li>If <var>container</var> does not include <code>@list</code>:
                       <ol>
@@ -3735,64 +3721,51 @@
                           passing <var>active context</var>, <var>inverse context</var>,
                           <code>@index</code> as <var>var</var>, and the value associated with the
                           <code>@index</code> <a>entry</a> in <var>expanded item</var> as <var>value</var>.</li>
+                        <li>Use <a>add value</a> to add <var>compacted item</var>
+                          to the <var>item active property</var> <a>entry</a> in
+                          <var>nest result</var>
+                          using <var>as array</var>.</li>
                       </ol>
                     </li>
-                    <li class="changed">Otherwise, append <var>compacted item</var>
-                      to the value associated with the
-                      <var>item active property</var> <a>entry</a> in
-                      <var>nest result</var>, initializing it to a new empty <a>array</a>, if
-                      necessary.</li>
+                    <li class="changed">Otherwise, set the value of the <var>item active property</var> entry
+                      in <var>nest result</var> to <var>compacted item</var>.</li>
                   </ol>
                 </li>
-                <li class="changed">
-                  If <var>expanded item</var> is a <a>graph object</a>:
+                <li class="changed">If <var>expanded item</var> is a <a>graph object</a>:
                   <ol>
                     <li>If <var>container</var> includes <code>@graph</code> and <code>@id</code>:
                       <ol>
                         <li>Initialize <var>map object</var> to the value of <var>item active property</var>
-                          in <var>nest result</var>.</li>
+                          in <var>nest result</var>,
+                          initializing it to a new empty <a>map</a>, if necessary.</li>
                         <li>Initialize <var>map key</var> to the result of calling the
                           <a href="#iri-compaction">IRI Compaction algorithm</a>
                           passing <var>active context</var>, <var>inverse context</var>, and the value of <code>@id</code> in <var>expanded item</var>
                           or <code>@none</code> if no such value exists as <var>var</var>, with <var>vocab</var> set to <code>true</code>
                           if there is no <code>@id</code> <a>entry</a> in <var>expanded item</var>.</li>
-                        <li>If <var>compacted item</var> is not an
-                          <a>array</a> and <var>as array</var> is <code>true</code>,
-                          set <var>compacted item</var> to an <a>array</a> containing that value.</li>
-                        <li>If <var>map key</var> is not an <a>entry</a> in <var>map object</var>,
-                          then set this <a data-lt="entry">entry's</a> value in <var>map object</var>
-                          to <var>compacted item</var>. Otherwise, if the value
-                          is not an <a>array</a>, then set it to one
-                          containing only the value and then append
-                          <var>compacted item</var> to it.</li>
+                        <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
+                          to the <var>map key</var> entry in <var>map object</var>
+                          using <var>as array</var>.</li>
                       </ol>
                     </li>
                     <li>Otherwise, if <var>container</var> includes <code>@graph</code> and <code>@index</code>
                       and <var>expanded item</var> is a <a>simple graph object</a>:
                       <ol>
                         <li>Initialize <var>map object</var> to the value of <var>item active property</var>
-                          in <var>nest result</var>.</li>
+                          in <var>nest result</var>,
+                          initializing it to a new empty <a>map</a>, if necessary.</li>
                         <li>Initialize <var>map key</var> the value of <code>@index</code> in
                           <var>expanded item</var> or <code>@none</code>, if no such
                           value exists.</li>
-                        <li>If <var>compacted item</var> is not an
-                          <a>array</a> and <var>as array</var> is <code>true</code>,
-                          set <var>compacted item</var> to an <a>array</a> containing that value.</li>
-                        <li>If <var>map key</var> is not an <a>entry</a> in <var>map object</var>,
-                          then set this <a data-lt="entry">entry's</a> value in <var>map object</var>
-                          to <var>compacted item</var>. Otherwise, if the value
-                          is not an <a>array</a>, then set it to one
-                          containing only the value and then append
-                          <var>compacted item</var> to it.</li>
+                        <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
+                          to the <var>map key</var> entry in <var>map object</var>
+                          using <var>as array</var>.</li>
                       </ol>
                     </li>
                     <li>Otherwise, if <var>container</var> includes <code>@graph</code>
                       and <var>expanded item</var> is a <a>simple graph object</a>
                       the value cannot be represented as a map object.
                       <ol>
-                        <li>If <var>compacted item</var> is not an <a>array</a>
-                          and <var>as array</var> is <code>true</code>,
-                          set <var>compacted item</var> to an <a>array</a> containing that value.</li>
                         <li>If <var>compacted item</var> is an <a>array</a>
                           with more than one value, it cannot be directly represented,
                           as multiple objects would be interpreted as different named graphs.
@@ -3801,16 +3774,13 @@
                           passing <var>active context</var>, <var>inverse context</var>, `@included` as
                           <var>var</var>, and `true` for
                           <var>vocab</var> and the original <var>compacted item</var> as the value. </li>
-                        <li>If the value of an <var>item active property</var> <a>entry</a> in <var>nest result</var>
-                          is not an <a>array</a>,
-                          set it to a new <a>array</a> containing only the value.</li>
-                        <li>Then append <var>compacted item</var> to the value if
-                          <var>compacted item</var> is not an <a>array</a>,
-                          otherwise, concatenate <var>compacted item</var> to the value.</li>
+                        <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
+                          to the <var>item active property</var> entry in <var>nest result</var>
+                          using <var>as array</var>.</li>
                       </ol>                      
                     </li>
                     <li>Otherwise, <var>container</var> does not include <code>@graph</code>
-                      or otherwise does not match one of the previous cases, redo <var>compacted item</var>.
+                      or otherwise does not match one of the previous cases.
                       <ol>
                         <li>Set <var>compacted item</var> to a new map containing
                           the key resulting from calling the <a
@@ -3836,12 +3806,9 @@
                           <var>var</var>, and <code>true</code> for
                           <var>vocab</var> using the value of <code>@index</code>
                           in <var>expanded item</var> to <var>compacted item</var>.</li>
-                        <li>If <var>as array</var> is <code>true</code>,
-                          set <var>compacted item</var> to an <a>array</a>
-                          containing that value.</li>
-                        <li>Then append <var>compacted item</var> to the value if
-                          <var>compacted item</var> is not an <a>array</a>,
-                          otherwise, concatenate <var>compacted item</var> to the value.</li>
+                        <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
+                          to the <var>item active property</var> entry in <var>nest result</var>
+                          using <var>as array</var>.</li>
                       </ol>
                     </li>
                   </ol>
@@ -3852,10 +3819,9 @@
                     or <code>@type</code></span>
                     <span class="changed">and <var>container</var> does not include <code>@graph</code></span>:
                   <ol>
-                    <li>If <var>item active property</var> is not an <a>entry</a> in
-                      <var class="changed">nest result</var>, initialize it to an empty <a class="changed">map</a>.
-                      Initialize <var>map object</var> to the value of <var>item active property</var>
-                      in <var class="changed">nest result</var>.</li>
+                    <li class="changed">Initialize <var>map object</var> to the value of <var>item active property</var>
+                      in <var>nest result</var>,
+                      initializing it to a new empty <a>map</a>, if necessary.</li>
                     <li>Initialize <var>container key</var> to the result of calling the
                       <a href="#iri-compaction">IRI Compaction algorithm</a>
                       passing <var>active context</var>, <var>inverse context</var>,
@@ -3906,44 +3872,19 @@
                         </li>
                       </ol>
                     </li>
-                    <li class="changed">If <var>compacted item</var> is not an
-                      <a>array</a> and <var>as array</var> is <code>true</code>,
-                      set <var>compacted item</var> to an <a>array</a> containing that value.</li>
                     <li>If <var>map key</var> is <code>null</code>, set it to the result of calling the
                       <a href="#iri-compaction">IRI Compaction algorithm</a>
                       passing <var>active context</var>, <var>inverse context</var>, <code>@none</code> as
                       <var>var</var>, and <code>true</code> for
                       <var>vocab</var>.</li>
-                    <li>If <var>map key</var> is not an <a>entry</a> of <var>map object</var>,
-                      then set this <a data-lt="entry">entry's</a> value in <var>map object</var>
-                      to <var>compacted item</var>. Otherwise, if the value
-                      is not an <a>array</a>, then set it to one
-                      containing only the value and then append
-                      <var>compacted item</var> to it.</li>
+                    <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
+                      to the <var>map key</var> entry in <var>map object</var>
+                      using <var>as array</var>.</li>
                   </ol>
                 </li>
-                <li>
-                  Otherwise,
-                  <ol>
-                    <li>If
-                      {{JsonLdOptions/compactArrays}}
-                      is <code>false</code>, <var>as array</var> is <code>true</code> and
-                      <var>compacted item</var> is not an <a>array</a>,
-                      set it to a new <a>array</a>
-                      containing only <var>compacted item</var>.</li>
-                    <li>If <var>item active property</var> is not an <a>entry</a> in
-                      <var>result</var> then add the <a>entry</a>,
-                      (<var>item active property</var>-<var>compacted item</var>),
-                      to <var class="changed">nest result</var>.</li>
-                    <li>Otherwise, if the value associated with the 
-                      <var>item active property</var> <a>entry</a> in <var class="changed">nest result</var>
-                      is not an <a>array</a>, set it to a new
-                      <a>array</a> containing only the value. Then
-                      append <var>compacted item</var> to the value if
-                      <var>compacted item</var> is not an <a>array</a>,
-                      otherwise, concatenate <var>compacted item</var> to the value.</li>
-                  </ol>
-                </li>
+                <li class="changed">Otherwise, use <a>add value</a> to add <var>compacted item</var>
+                  to the <var>item active property</var> entry in <var>result</var>
+                  using <var>as array</var>.</li>
               </ol>
             </li>
           </ol>
