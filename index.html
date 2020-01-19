@@ -1195,7 +1195,7 @@
           does not have a <a>previous context</a>, set <a>previous context</a>
           in <var>result</var> to <var>active context</var>.</li>
         <li>If <var>local context</var> is not an <a>array</a>,
-          set it to an <a>array</a> containing only
+          set <var>local context</var> to an <a>array</a> containing only
           <var>local context</var>.</li>
         <li>
           For each item <var>context</var> in <var>local context</var>:
@@ -2059,7 +2059,7 @@
               <a>language mapping</a> (might be <code>null</code>):
               <ol>
                 <li>If the <a>language mapping</a> equals <code>null</code>,
-                  set <var>language</var> to <code>@null</code>; otherwise set it
+                  set <var>language</var> to <code>@null</code>; otherwise
                   to the <a>language mapping</a>,
                   <span class="changed">normalized to lower case</span>.</li>
                 <li>If <var>language map</var> does not have a <var>language</var> <a>entry</a>,
@@ -2071,7 +2071,7 @@
               <a>direction mapping</a> (might be <code>null</code>):
               <ol>
                 <li>If the <a>direction mapping</a> equals <code>null</code>,
-                  set <var>direction</var> to <code>@none</code>; otherwise set it
+                  set <var>direction</var> to <code>@none</code>; otherwise
                   to <a>direction mapping</a> preceded by an underscore (`"_"`).</li>
                 <li>If <var>language map</var> does not have a <var>direction</var> <a>entry</a>,
                   create one and set its value to the <a>term</a>
@@ -2821,7 +2821,7 @@
                   in <var>value</var>, ordered lexicographically by <var>language</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
                     <li>If <var>language value</var> is not an <a>array</a>
-                      set it to an <a>array</a> containing only
+                      set <var>language value</var> to an <a>array</a> containing only
                       <var>language value</var>.</li>
                     <li>For each <var>item</var> in <var>language value</var>:
                       <ol>
@@ -2884,7 +2884,7 @@
                       passing <var>active context</var>, <var>index</var>, and <code>true</code>
                       for <var>vocab</var>.</li>
                     <li>If <var>index value</var> is not an <a>array</a>
-                      set it to an <a>array</a> containing only
+                      set <var>index value</var> to an <a>array</a> containing only
                       <var>index value</var>.</li>
                     <li>Initialize <var>index value</var> to the result of
                       using this algorithm recursively, passing
@@ -3450,7 +3450,7 @@
           <a>entry</a> and the result of using the
           <a href="#value-compaction">Value Compaction algorithm</a>,
           passing <var>active context</var>, <var>inverse context</var>,
-          <var>active property</var>,and <var>element</var> as <var>value</var> is
+          <var>active property</var>, and <var>element</var> as <var>value</var> is
           a <a>scalar</a>,
           <span class="changed">or the <a>term definition</a> for <var>active property</var>
             has a <a>type mapping</a> of <code>@json</code>,</span>
@@ -4099,15 +4099,15 @@
                       </ol>
                     </li>
                     <li>Otherwise, set <var>item type</var> to <code>@id</code>.</li>
-                    <li>If <var>common language</var> is <code>null</code>, set it
-                      to <var>item language</var>.</li>
+                    <li>If <var>common language</var> is <code>null</code>,
+                      set <var>common language</var> to <var>item language</var>.</li>
                     <li>Otherwise, if <var>item language</var> does not equal
                       <var>common language</var> and <var>item</var> contains a
                       <code>@value</code> <a>entry</a>, then set <var>common language</var>
                       to <code>@none</code> because list items have conflicting
                       languages.</li>
-                    <li>If <var>common type</var> is <code>null</code>, set it
-                      to <var>item type</var>.</li>
+                    <li>If <var>common type</var> is <code>null</code>,
+                      set <var>common type</var> to <var>item type</var>.</li>
                     <li>Otherwise, if <var>item type</var> does not equal
                       <var>common type</var>, then set <var>common type</var>
                       to <code>@none</code> because list items have conflicting
@@ -4119,10 +4119,10 @@
                       the items.</li>
                   </ol>
                 </li>
-                <li>If <var>common language</var> is <code>null</code>, set it to
-                  <code>@none</code>.</li>
-                <li>If <var>common type</var> is <code>null</code>, set it to
-                  <code>@none</code>.</li>
+                <li>If <var>common language</var> is <code>null</code>,
+                  set <var>common language</var> to <code>@none</code>.</li>
+                <li>If <var>common type</var> is <code>null</code>,
+                  set <var>common type</var> to <code>@none</code>.</li>
                 <li>If <var>common type</var> is not <code>@none</code> then set
                   <var>type/language</var> to <code>@type</code> and
                   <var>type/language value</var> to <var>common type</var>.</li>
@@ -4199,8 +4199,9 @@
               If <a>processing mode</a> is not `json-ld-1.0` and value contains only an <code>@value</code> <a>entry</a>,
               append <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
             </li>
-            <li>If <var>type/language value</var> is <code>null</code>, set it to
-              <code>@null</code>. This is the key under which <code>null</code> values
+            <li>If <var>type/language value</var> is <code>null</code>,
+              set <var>type/language value</var> to <code>@null</code>.
+              This is the key under which <code>null</code> values
               are stored in the <var>inverse context</var> <var>entry</var>.</li>
             <li>Initialize <var>preferred values</var> to an empty <a>array</a>.
               This <a>array</a> will indicate, in order, the preferred values for
@@ -5026,8 +5027,8 @@
           <code>true</code> or <code>false</code> which is the
           <a>canonical lexical form</a> as described in
           <a class="sectionRef" href="#data-round-tripping"></a>
-          If <var>datatype</var> is <code>null</code>, set it to
-          <code>xsd:boolean</code>.</li>
+          If <var>datatype</var> is <code>null</code>,
+          set <var>datatype</var> to <code>xsd:boolean</code>.</li>
         <li>Otherwise, if <var>value</var> is a <a>number</a> with a non-zero fractional
           part (the result of a modulo&#8209;1 operation) or <var>value</var> is a <a>number</a>
           and <var>datatype</var> equals <code>xsd:double</code>, convert <var>value</var> to a
@@ -5035,8 +5036,8 @@
           an <a data-cite="XMLSCHEMA11-2#double"><code>xsd:double</code></a> as defined in [[XMLSCHEMA11-2]]
           and described in
           <a class="sectionRef" href="#data-round-tripping"></a>.
-          If <var>datatype</var> is <code>null</code>, set it to
-          <code>xsd:double</code>.</li>
+          If <var>datatype</var> is <code>null</code>,
+          set <var>datatype</var> to <code>xsd:double</code>.</li>
         <li>Otherwise, if <var>value</var> is a <a>number</a> with no non-zero
           fractional part (the result of a modulo&#8209;1 operation) or <var>value</var>
           is a <a>number</a> and <var>datatype</var>
@@ -5045,11 +5046,11 @@
           an <a data-cite="XMLSCHEMA11-2#integer"><code>xsd:integer</code></a> as defined in [[XMLSCHEMA11-2]]
           and described in
           <a class="sectionRef" href="#data-round-tripping"></a>.
-          If <var>datatype</var> is <code>null</code>, set it to
-          <code>xsd:integer</code>.</li>
-        <li>Otherwise, if <var>datatype</var> is <code>null</code>, set it to
-          <code>xsd:string</code> or <code>rdf:langString</code>, depending on if
-          item has an <code>@language</code> <a>entry</a>.</li>
+          If <var>datatype</var> is <code>null</code>,
+          set <var>datatype</var> to <code>xsd:integer</code>.</li>
+        <li>Otherwise, if <var>datatype</var> is <code>null</code>,
+          set <var>datatype</var> to <code>xsd:string</code> or <code>rdf:langString</code>,
+          depending on if item has an <code>@language</code> <a>entry</a>.</li>
         <li class="changed">If <var>item</var> contains an `@direction` <a>entry</a>
           and {{JsonLdOptions/rdfDirection}} is not `null`,
           <var>item</var> is a <a>value object</a> which is serialized using special rules.
