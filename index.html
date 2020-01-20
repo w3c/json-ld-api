@@ -3417,16 +3417,13 @@
                   it to <var>result</var>.</li>
               </ol>
             </li>
-            <li>If <var>result</var> contains only one item (it has a length of
-              <code>1</code>),
-              <span class="changed">
-                <var>active property</var> is not <code>@graph</code> or <code>@set</code>,
-                or the <a>container mapping</a> for <var>active property</var> in
-                <var>active context</var> does not include <code>@list</code> or <code>@set</code>,
-              </span>
-              and {{JsonLdOptions/compactArrays}}
-              is <code>true</code>, set <var>result</var> to its only item.</li>
-            <li>Return <var>result</var>.</li>
+            <li>If <var>result</var> is empty or contains more than one value,
+              or {{JsonLdOptions/compactArrays}} is `false`,
+              or <span class="changed">or <var>active property</var> is either `@graph` or `@set`,
+              or <a>container mapping</a> for <var>active property</var> in
+              <var>active context</var> includes either <code>@list</code> or <code>@set</code></span>,
+              return <var>result</var>.</li>
+            <li>Otherwise, return the first value in <var>result</var>.</li>
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
