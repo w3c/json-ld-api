@@ -3465,10 +3465,8 @@
         <li class="changed">If <var>element</var> has an <code>@type</code> <a>entry</a>,
           create a new array <var>compacted types</var> initialized
           by transforming each <var>expanded type</var> of that <a>entry</a>
-          into its compacted form using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-          passing <var>active context</var>, <var>inverse context</var>,
-          <var>expanded type</var> for <var>var</var>,
-          and <code>true</code> for <var>vocab</var>.
+          into its compacted form
+          <span class="changed">by <a>iri compacting</a> <var>expanded context</var></span>.
           Then, for each <var>term</var>
           in <var>compacted types</var> ordered lexicographically:
           <ol>
@@ -3493,15 +3491,11 @@
             <li>If <var>expanded property</var> is <code>@id</code>:
               <ol>
                 <li>If <var>expanded value</var> is a <a>string</a>,
-                  then initialize <var>compacted value</var> to the result
-                  of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  and <var>expanded value</var> for <var>var</var>.</li>
-                <li>Initialize <var>alias</var> to the result of using the
-                  <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  <var>expanded property</var> for <var>var</var>,
-                  and <code>true</code> for <var>vocab</var>.</li>
+                  then initialize <var>compacted value</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded value</var>
+                    with <var>vocab</var> set to `false`</span>.</li>
+                <li>Initialize <var>alias</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var></span>.</li>
                 <li>Add an <a>entry</a> <var>alias</var> to <var>result</var> whose value is
                   set to <var>compacted value</var> and continue to the next
                   <var>expanded property</var>.</li>
@@ -3510,11 +3504,9 @@
             <li>If <var>expanded property</var> is <code>@type</code>:
               <ol>
                 <li>If <var>expanded value</var> is a <a>string</a>,
-                  then initialize <var>compacted value</var> to the result
-                  of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>type-scoped context</var> for <var>active context</var>, <var>inverse context</var>,
-                  <var>expanded value</var> for <var>var</var>,
-                  and <code>true</code> for <var>vocab</var>.</li>
+                  then initialize <var>compacted value</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded value</var>
+                    using <var>type-scoped context</var> for <var>active context</var></span>.</li>
                 <li>Otherwise, <var>expanded value</var> must be a
                   <code>@type</code> <a>array</a>:
                   <ol>
@@ -3523,21 +3515,16 @@
                     <li>For each item <var>expanded type</var> in
                       <var>expanded value</var>:
                       <ol>
-                        <li>Set <var>term</var> to the result of
-                          of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                          passing <var>type-scoped context</var> for <var>active context</var>, <var>inverse context</var>,
-                          <var>expanded type</var> for <var>var</var>, and
-                          <code>true</code> for <var>vocab</var>.</li>
+                        <li>Set <var>term</var>
+                          <span class="changed">by <a>iri compacting</a> <var>expanded type</var>
+                            using <var>type-scoped context</var> for <var>active context</var></span>.</li>
                         <li>Append <var>term</var>, to <var>compacted value</var>.</li>
                       </ol>
                     </li>
                   </ol>
                 </li>
-                <li>Initialize <var>alias</var> to the result of using the
-                  <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  <var>expanded property</var> for <var>var</var>,
-                  and <code>true</code> for <var>vocab</var>.</li>
+                <li>Initialize <var>alias</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var></span>.</li>
                 <li class="changed">Initialize <var>as array</var>
                   to <code>true</code> if the <a>container mapping</a> for <var>alias</var> in the
                   <var>active context</var> includes <code>@set</code>,
@@ -3579,11 +3566,8 @@
                 <li>If <var>compacted value</var> has some remaining <a>map entries</a>, i.e.,
                   it is not an empty <a class="changed">map</a>:
                   <ol>
-                    <li>Initialize <var>alias</var> to the result of using the
-                      <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                      passing <var>active context</var>, <var>inverse context</var>,
-                      <code>@reverse</code> for <var>var</var>,
-                      and <code>true</code> for <var>vocab</var>.</li>
+                    <li>Initialize <var>alias</var>
+                      <span class="changed">by <a>iri compacting</a> `@reverse`</span>.</li>
                     <li>Set the value of the <var>alias</var> <a>entry</a> of <var>result</var> to
                       <var>compacted value</var>.</li>
                   </ol>
@@ -3617,11 +3601,8 @@
               <code>@language</code>,
               or <code>@value</code>:
               <ol>
-                <li>Initialize <var>alias</var> to the result of using
-                  the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  <var>expanded property</var> for <var>var</var>,
-                  and <code>true</code> for <var>vocab</var>.</li>
+                <li>Initialize <var>alias</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var></span>.</li>
                 <li>Add an <a>entry</a> <var>alias</var> to <var>result</var> whose value is
                   set to <var>expanded value</var> and continue with the next
                   <var>expanded property</var>.</li>
@@ -3629,13 +3610,10 @@
             </li>
             <li>If <var>expanded value</var> is an empty <a>array</a>:
               <ol>
-                <li>Initialize <var>item active property</var> to the result of
-                  using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  <var>expanded property</var> for <var>var</var>,
-                  <var>expanded value</var> for <var>value</var>,
-                  <code>true</code> for <var>vocab</var>, and
-                  <var>inside reverse</var> for the <var>reverse</var> flag.</li>
+                <li>Initialize <var>item active property</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var>
+                    using <var>expanded value</var> for <var>value</var>
+                    and <var>inside reverse</var> for <var>reverse</var></span>.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
                   in the <var>active context</var> has a <a>nest value</a>
                   <a>entry</a> (<var>nest term</var>):
@@ -3661,13 +3639,10 @@
               <a href="#expansion-algorithm">Expansion algorithm</a>.
               For each item <var>expanded item</var> in <var>expanded value</var>:
               <ol>
-                <li>Initialize <var>item active property</var> to the result of using
-                  the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  <var>expanded property</var> for <var>var</var>,
-                  <var>expanded item</var> for <var>value</var>,
-                  <code>true</code> for <var>vocab</var>, and
-                  <var>inside reverse</var> for the <var>reverse</var> flag.</li>
+                <li>Initialize <var>item active property</var>
+                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var>
+                    using <var>expanded item</var> for <var>value</var>
+                    and <var>inside reverse</var> for <var>reverse</var></span>.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
                   in the <var>active context</var> has a <a>nest value</a>
                   <a>entry</a> (<var>nest term</var>):
@@ -3709,18 +3684,15 @@
                         <li>Convert <var>compacted item</var> to a
                           <a>list object</a> by setting it to a
                           <a class="changed">map</a> containing an <a>entry</a>
-                          where the key is the result of the
-                          <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                          passing <var>active context</var>, <var>inverse context</var>,
-                          <code>@list</code> for <var>var</var>, and <var>compacted item</var>
-                          for <var>value</var> and the value is the original <var>compacted item</var>.</li>
+                          where the key is the result of
+                          <span class="changed"><a>iri compacting</a> `@list`</span>
+                          and the value is the original <var>compacted item</var>.</li>
                         <li>If <var>expanded item</var> contains the <a>entry</a>
-                          <code>@index</code>, then add an <a>entry</a>
+                          <code>@index</code>-<var>value</var>, then add an <a>entry</a>
                           to <var>compacted item</var> where the key is the
-                          result of the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                          passing <var>active context</var>, <var>inverse context</var>,
-                          <code>@index</code> as <var>var</var>, and the value associated with the
-                          <code>@index</code> <a>entry</a> in <var>expanded item</var> as <var>value</var>.</li>
+                          result of
+                          <span class="changed"><a>iri compacting</a> `@index`</span>
+                          and value is <var>value</var>.</li>
                         <li>Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> <a>entry</a> in
                           <var>nest result</var>
@@ -3738,11 +3710,12 @@
                         <li>Initialize <var>map object</var> to the value of <var>item active property</var>
                           in <var>nest result</var>,
                           initializing it to a new empty <a>map</a>, if necessary.</li>
-                        <li>Initialize <var>map key</var> to the result of calling the
-                          <a href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <var>inverse context</var>, and the value of <code>@id</code> in <var>expanded item</var>
-                          or <code>@none</code> if no such value exists as <var>var</var>, with <var>vocab</var> set to <code>true</code>
-                          if there is no <code>@id</code> <a>entry</a> in <var>expanded item</var>.</li>
+                        <li>Initialize <var>map key</var>
+                          <span class="changed">by <a>iri compacting</a>
+                            the value of `@id` in <var>expanded item</var>
+                            or <code>@none</code> if no such value exists
+                            with <var>vocab</var> set to <code>false</code>
+                            if there is an <code>@id</code> <a>entry</a> in <var>expanded item</var></span>.</li>
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>map key</var> entry in <var>map object</var>
                           using <var>as array</var>.</li>
@@ -3770,10 +3743,9 @@
                           with more than one value, it cannot be directly represented,
                           as multiple objects would be interpreted as different named graphs.
                           Set <var>compacted item</var> to a new <a>map</a>,
-                          containing the key created by calling the <a href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <var>inverse context</var>, `@included` as
-                          <var>var</var>, and `true` for
-                          <var>vocab</var> and the original <var>compacted item</var> as the value. </li>
+                          containing the key
+                          from <span class="changed"><a>iri compacting</a> `@included`</span>
+                          and the original <var>compacted item</var> as the value. </li>
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> entry in <var>nest result</var>
                           using <var>as array</var>.</li>
@@ -3783,29 +3755,19 @@
                       or otherwise does not match one of the previous cases.
                       <ol>
                         <li>Set <var>compacted item</var> to a new map containing
-                          the key resulting from calling the <a
-                          href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <var>inverse context</var>, <code>@graph</code> as
-                          <var>var</var>, and <code>true</code> for
-                          <var>vocab</var> using the original
-                          <var>compacted item</var> as a value.</li>
+                          the key
+                          from <span class="changed"><a>iri compacting</a> `@graph`</span>
+                          using the original <var>compacted item</var> as a value.</li>
                         <li>If expanded item contains an <code>@id</code> <a>entry</a>,
-                          add the key resulting from calling the <a
-                          href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <var>inverse context</var>, <code>@id</code> as
-                          <var>var</var>, and <code>true</code> for
-                          <var>vocab</var> using the value resulting from calling the <a
-                          href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <var>inverse context</var>, the value of <code>@id</code>
-                          in <var>expanded item</var> as
-                          <var>var</var> to <var>compacted item</var>.</li>
+                          add an entry in <var>compacted item</var> using the key
+                          from <span class="changed"><a>iri compacting</a> `@id`</span>
+                          using the value
+                          of <span class="changed"><a>iri compacting</a> the value of `@id` in <var>expanded item</var>
+                            using `false` for <var>vocab</var></span>.</li>
                         <li>If expanded item contains an <code>@index</code> <a>entry</a>,
-                          add the key resulting from calling the <a
-                          href="#iri-compaction">IRI Compaction algorithm</a>
-                          passing <var>active context</var>, <var>inverse context</var>, <code>@index</code> as
-                          <var>var</var>, and <code>true</code> for
-                          <var>vocab</var> using the value of <code>@index</code>
-                          in <var>expanded item</var> to <var>compacted item</var>.</li>
+                          add an entry in <var>compacted item</var> using the key
+                          from <span class="changed"><a>iri compacting</a> `@index`</span>
+                          and the value of <code>@index</code> in <var>expanded item</var>.</li>
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> entry in <var>nest result</var>
                           using <var>as array</var>.</li>
@@ -3822,12 +3784,10 @@
                     <li class="changed">Initialize <var>map object</var> to the value of <var>item active property</var>
                       in <var>nest result</var>,
                       initializing it to a new empty <a>map</a>, if necessary.</li>
-                    <li>Initialize <var>container key</var> to the result of calling the
-                      <a href="#iri-compaction">IRI Compaction algorithm</a>
-                      passing <var>active context</var>, <var>inverse context</var>,
+                    <li>Initialize <var>container key</var>
+                      by <span class="changed"><a>iri compacting</a></span>
                       either <code>@language</code>, <code>@index</code>, <code>@id</code>, or <code>@type</code>
-                      based on the contents of <var>container</var>, as <var>var</var>, and <code>true</code>
-                      for <var>vocab</var>.</li>
+                      based on the contents of <var>container</var>.</li>
                     <li class="changed">Initialize <var>index key</var> to the value of <a>index mapping</a> in
                       the <a>term definition</a> associated with <var>item active property</var> in <var>active context</var>,
                       or <code>@index</code>, if no such value exists.</li>
@@ -3872,11 +3832,9 @@
                         </li>
                       </ol>
                     </li>
-                    <li>If <var>map key</var> is <code>null</code>, set it to the result of calling the
-                      <a href="#iri-compaction">IRI Compaction algorithm</a>
-                      passing <var>active context</var>, <var>inverse context</var>, <code>@none</code> as
-                      <var>var</var>, and <code>true</code> for
-                      <var>vocab</var>.</li>
+                    <li>If <var>map key</var> is <code>null</code>,
+                      set it to the result of
+                      <span class="changed"><a>iri compacting</a> `@none`</span>.</li>
                     <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                       to the <var>map key</var> entry in <var>map object</var>
                       using <var>as array</var>.</li>
@@ -4153,12 +4111,10 @@
             <li>If <var>type/language value</var> is <code>@id</code> or <code>@reverse</code>
               and <var>value</var> has an <code>@id</code> <a>entry</a>:
               <ol>
-                <li>If the result of using the
-                  <a href="#iri-compaction">IRI compaction algorithm</a>,
-                  passing <var>active context</var>, <var>inverse context</var>,
-                  the value associated with the <code>@id</code> <a>entry</a> in <var>value</var> for
-                  <var>var</var>, and <code>true</code> for <var>vocab</var> has a
-                  <a>term definition</a> in the <var>active context</var>
+                <li>If the result of
+                  <span class="changed"><a>iri compacting</a>
+                    the value associated with the <code>@id</code> <a>entry</a> in <var>value</var></span>
+                  has a <a>term definition</a> in the <var>active context</var>
                   with an <a>IRI mapping</a> that equals the value associated
                   with the <code>@id</code> <a>entry</a> in <var>value</var>,
                   then append <code>@vocab</code>, <code>@id</code>, and
@@ -4300,16 +4256,14 @@
           and has no other <a>entries</a> other than `@index`:
           <ol>
             <li>If the <a>type mapping</a> of <var>active property</var>
-              is set to <code>@id</code>, set <var>result</var> to the result of using the
-              <a href="#iri-compaction">IRI compaction algorithm</a>,
-              passing <var>active context</var>, <var>inverse context</var>,
-              and the value of the <code>@id</code> <a>entry</a> for <var>var</var>.</li>
+              is set to <code>@id</code>, set <var>result</var> to the result of
+              <span class="changed"><a>iri compacting</a>
+                the value associated with the <code>@id</code> <a>entry</a>
+                using `false` for <var>vocab</var></span>.</li>
             <li>Otherwise, if the <a>type mapping</a> of <var>active property</var>
-              is set to <code>@vocab</code>, set <var>result</var> to the result of using the
-              <a href="#iri-compaction">IRI compaction algorithm</a>,
-              passing <var>active context</var>, <var>inverse context</var>,
-              the value of the <code>@id</code> <a>entry</a> for <var>var</var>, and
-              <code>true</code> for <var>vocab</var>.</li>
+              is set to <code>@vocab</code>, set <var>result</var> to the result of
+              <span class="changed"><a>iri compacting</a>
+                the value associated with the <code>@id</code> <a>entry</a></span>.</li>
           </ol>
         </li>
         <li>Otherwise, if <var>value</var> has an <code>@type</code> <a>entry</a> whose
@@ -4321,11 +4275,9 @@
           and the value of `@type` in <var>value</var> does not match the <a>type mapping</a> of <var>active property</var>,
           leave <var>value</var> as is, as value compaction is disabled.
           <ol>
-            <li>Replace any value of <code>@type</code> in <var>result</var> with the result of using the
-              <a href="#iri-compaction">IRI compaction algorithm</a>,
-              passing <var>active context</var>, <var>inverse context</var>,
-              the value of the <code>@type</code> <a>entry</a> for <var>var</var>, and
-              <code>true</code> for <var>vocab</var>.</li>
+            <li>Replace any value of <code>@type</code> in <var>result</var> with the result of
+              <span class="changed"><a>iri compacting</a></span>
+              the value of the <code>@type</code> <a>entry</a>.</li>
           </ol>
         </li>
         <li>Otherwise, if the value of the <code>@value</code> <a>entry</a> is not a <a>string</a>:
@@ -4352,11 +4304,8 @@
           </ol>
         </li>
         <li>If <var>result</var> is a <var>map</var>,
-          replace each key in <var>result</var> with the result of using the
-          <a href="#iri-compaction">IRI compaction algorithm</a>,
-          passing <var>active context</var>, <var>inverse context</var>,
-          the that key for <var>var</var>, and
-          <code>true</code> for <var>vocab</var>.</li>
+          replace each key in <var>result</var> with the result of
+          <span class="changed"><a>iri compacting</a> that key</span>.</li>
         <li>Return <var>result</var>.</li>
       </ol>
     </section>
@@ -5770,10 +5719,9 @@
                 replace it with a new <a>map</a>.</li>
               <li>Otherwise, if <var>compacted output</var> is an <a>array</a>,
                 replace it with a new <a>map</a> with a single <a>entry</a>
-                whose key is the result of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
-                passing <var>active context</var>, <var>inverse context</var>, and
-                <code>@graph</code> as <var>var</var> and whose value is the <a>array</a>
-                <var>compacted output</var>.</li>
+                whose key is the result of
+                <span class="changed"><a>iri compacting</a> `@graph`</span>
+                and value is <var>compacted output</var>.</li>
               <li>If <a data-lt="jsonldprocessor-compact-context">context</a> was not <code>null</code>,
                 add an <code>@context</code> <a>entry</a> to <var>compacted output</var> and set its value
                 to the passed <var>context</var>.</li>

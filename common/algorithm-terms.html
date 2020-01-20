@@ -40,6 +40,24 @@
     used internally to help determine if object embedding is appropriate,</span>
     the <a>explicit inclusion flag</a>,
     and the <a>omit default flag</a>.</dd>
+  <dt><dfn data-cite="JSON-LD11-API#dfn-iri-compacting">iri compacting</dfn></dt><dd class="algorithm">
+    Used as a macro within various algorithms as to reduce the language used to describe
+    the process of compacting a <a>string</a> <var>var</var> representing an <a>IRI</a> or <a>keyword</a>
+    relative to an <var>active context</var> either specified directly, or coming from the scope of
+    the algorithm step using this term and <var>inverse context</var> also taken
+    from the scope of the algorithm step using this term.
+    An optional <var>value</var> is used, if explicitly provided.
+    Unless specified, the <var>vocab</var>
+    flag defaults to `true`, and the <var>reverse</var> flag defaults to `false`.
+    <ol>
+      <li>Return the result of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
+        passing <var>active context</var>, <var>inverse context</var>,
+        <var>var</var>,
+        <var>value</var> (if supplied),
+        <var>vocab</var>,
+        and <var>result</var>.</li>
+    </ol>
+  </dd>
   <dt><dfn data-cite="JSON-LD11-FRAMING#dfn-input-frame">input frame</dfn></dt><dd>
     The initial <a>Frame</a> provided to the framing algorithm.</dd>
   <dt><dfn data-cite="JSON-LD11-API#dfn-json-ld-input">JSON-LD input</dfn></dt><dd>
