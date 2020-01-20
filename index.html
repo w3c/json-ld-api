@@ -1381,12 +1381,9 @@
                   an <a>IRI</a>
                   or <a>blank node identifier</a>, the <a>vocabulary mapping</a>
                   of <var>result</var> is set to
-                  <span class="changed">the result of using the 
-                    <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                    passing <var>result</var> for <var>active context</var>,
-                    <var>value</var>,
-                    <code>true</code> for <var>vocab</var>, and
-                    <code>true</code> for <var>document relative</var>.
+                  <span class="changed">the result of
+                    <a>iri expanding</a> <var>value</var>
+                    using <code>true</code> for <var>document relative</var>.
                   </span>.
                   If it is not an <a>IRI</a>, or a <a>blank node identifier</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid vocab mapping</a>
@@ -1581,11 +1578,9 @@
               <code>@type</code> <a>entry</a>, which MUST be a <a>string</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
-            <li>Set <var>type</var> to the result of using the
-              <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-              <var>active context</var>, <var>type</var> for <var>value</var>,
-              <code>true</code> for <var>vocab</var>,
-              <var>local context</var>, and <var>defined</var>.</li>
+            <li>Set <var>type</var> to the result of
+              <span class="changed"><a>iri expanding</a> <var>type</var></span>,
+              using <var>local context</var>, and <var>defined</var>.</li>
             <li class="changed">If the expanded <var>type</var> is
               `@json` or `@none`, and <a>processing mode</a> is `json-ld-1.0`,
               an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
@@ -1614,12 +1609,10 @@
               (i.e., it matches the ABNF rule `"@"1*ALPHA` from [[RFC5234]]),
               return; processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
-              result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-              passing <var>active context</var>,
-              the value associated with the <code>@reverse</code> <a>entry</a> for <var>value</var>,
-              `true` for <var>vocab</var>,
-              <var>local context</var>,
-              and <var>defined</var>.
+              result of
+              <span class="changed"><a>iri expanding</a></span>
+              the value associated with the <code>@reverse</code> <a>entry</a>,
+              using <var>local context</var>, and <var>defined</var>.
               If the result does not have the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a> or a <a>blank node identifier</a>,
               an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1658,11 +1651,11 @@
                   (i.e., it matches the ABNF rule `"@"1*ALPHA` from [[RFC5234]]),
                   return; processors SHOULD generate a warning.</li>
                 <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
-                  result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-                  <var>active context</var>, the value associated with the <code>@id</code> <a>entry</a> for
-                  <var>value</var>, <code>true</code> for <var>vocab</var>,
-                  <var>local context</var>, and <var>defined</var>. If the resulting
-                  <a>IRI mapping</a> is neither a <a>keyword</a>, nor an
+                  result of
+                  <span class="changed"><a>iri expanding</a></span>
+                  the value associated with the <code>@id</code> <a>entry</a>,
+                  using <var>local context</var>, and <var>defined</var>.
+                  If the resulting <a>IRI mapping</a> is neither a <a>keyword</a>, nor an
                   <a>IRI</a>, nor a <a>blank node identifier</a>, an
                   <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
                   error has been detected and processing is aborted; if it equals <code>@context</code>, an
@@ -1674,13 +1667,8 @@
                   <ol>
                     <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
                       <code>true</code>.</li>
-                    <li>If the result of expanding <var>term</var>
-                      using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                      passing <var>active context</var>,
-                      <var>term</var> for <var>value</var>,
-                      <code>true</code> for <var>vocab</var>,
-                      <var>local context</var>,
-                      and <var>defined</var>,
+                    <li>If the result of <span class="changed"><a>iri expanding</a></span> <var>term</var>
+                      using <var>local context</var>, and <var>defined</var>,
                       is not the same as the <a>IRI mapping</a> of <var>definition</var>,
                       an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
                       error has been detected and processing is aborted.</li>
@@ -1720,10 +1708,7 @@
           <ol>
             <li><var>Term</var> is a <a>relative IRI reference</a>.</li>
             <li>Set the <a>IRI mapping</a> of <var>definition</var> to the
-              result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-              <var>active context</var>,
-              <var>term</var> for <var>value</var>, and
-              <code>true</code> for <var>vocab</var>.
+              result of <span class="changed"><a>iri expanding</a></span> <var>term</var>.
               If the resulting <a>IRI mapping</a> is not an <a>IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
@@ -2479,9 +2464,7 @@
           If <var>from map</var> is undefined or <code>false</code>,
           and <var>element</var> does not contain an <a>entry</a> expanding to <code>@value</code>,
           and <var>element</var> does not consist of a single <a>entry</a> expanding to <code>@id</code>
-          (where <a>entries</a> are expanded using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-          passing <var>active context</var>, the <a>entry</a> key for
-          <var>value</var>, and <code>true</code> for <var>vocab</var>),
+          (where <a>entries</a> are <span class="changed"><a data-lt="iri expanding">iri expanded</a></span>,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
         <li id="alg-expand-property-scoped-context" class="changed">If <var>property-scoped context</var> is defined,
@@ -2499,10 +2482,7 @@
           <a>type-scoped context</a>.</li>
         <li class="changed">For each <var>key</var> and <var>value</var> in <var>element</var>
           ordered lexicographically by <var>key</var>
-          where <var>key</var> expands to <code>@type</code> using the
-          <a href="#iri-expansion">IRI Expansion algorithm</a>,
-          passing <var>active context</var>, <var>key</var> for
-          <var>value</var>, and <code>true</code> for <var>vocab</var>:
+          where <var>key</var> <span class="changed"><a data-lt="iri expanding">iri expands</a></span> to <code>@type</code>:
           <ol>
             <li>Convert <var>value</var> into an <a>array</a>, if necessary.</li>
             <li id="expand-type-scoped-context">For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
@@ -2520,9 +2500,8 @@
           <span class="changed">and <var>nests</var>.
             Initialize <var>input type</var> to expansion of the last value of the first <a>entry</a> in <var>element</var>
             expanding to <code>@type</code> (if any), ordering <a>entries</a> lexicographically by key</span>.
-            Both the key and value of the matched entry are expanded using the
-            <a href="#iri-expansion">IRI Expansion algorithm</a>,
-            passing <var>active context</var>, and <code>true</code> for <var>vocab</var>.
+            Both the key and value of the matched entry are
+            <span class="changed"><a data-lt="iri expanding">iri expanded</a></span>.
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
@@ -2531,9 +2510,7 @@
             <li>If <var>key</var> is <code>@context</code>, continue to
               the next <var>key</var>.</li>
             <li>Initialize <var>expanded property</var> to the result of
-              using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-              passing <var>active context</var>, <var>key</var> for
-              <var>value</var>, and <code>true</code> for <var>vocab</var>.</li>
+              <span class="changed"><a>iri expanding</a></span> <var>key</var>.</li>
             <li>If <var>expanded property</var> is <code>null</code> or it neither
               contains a colon (<code>:</code>) nor it is a <a>keyword</a>,
               drop <var>key</var> by continuing to the next <var>key</var>.</li>
@@ -2557,10 +2534,10 @@
                         MAY be an empty <a>map</a>, or an <a>array</a> of one
                         or more <a>strings</a>.</span></li>
                     <li>Otherwise,
-                      set <var>expanded value</var> to the result of using the
-                      <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                      passing <var>active context</var>, <var>value</var>, and <code>true</code>
-                      for <var>document relative</var>.
+                      set <var>expanded value</var> to the result of
+                      <span class="changed"><a>iri expanding</a></span> <var>value</var>
+                      using <code>true</code> for <var>document relative</var>
+                      and `false` for <var>vocab</var>.
                       <span class="changed">
                         When the {{JsonLdOptions/frameExpansion}} flag is set, <var>expanded value</var> will be
                         an <a>array</a> of one or more of the values, with <a>string</a>
@@ -2587,18 +2564,16 @@
                     <li class="changed">Otherwise, if <var>value</var>
                       is a <a>default object</a>, set <var>expanded value</var> to
                       a new <a>default object</a> with the value of `@default` set
-                      to the result of using the
-                      <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-                      <var class="changed">type-scoped context</var> for <var>active context</var>,
-                      <code>true</code> for <var>vocab</var>,
-                      and <code>true</code> for <var>document relative</var> to expand that value.</li>
+                      to the result of
+                      <span class="changed"><a>iri expanding</a></span> <var>value</var>
+                      using <var class="changed">type-scoped context</var> for <var>active context</var>,
+                      and <code>true</code> for <var>document relative</var>.</li>
                     <li id="expansion-tsc">Otherwise,
-                      set <var>expanded value</var> to the result of using the
-                      <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-                      <var class="changed">type-scoped context</var> for <var>active context</var>,
-                      <code>true</code> for <var>vocab</var>,
-                      and <code>true</code> for <var>document relative</var> to expand the <var>value</var>
-                      or each of its items.
+                      set <var>expanded value</var> to the result of
+                      <span class="changed"><a>iri expanding</a></span>
+                      each of its values
+                      using <var class="changed">type-scoped context</var> for <var>active context</var>,
+                      and <code>true</code> for <var>document relative</var>.
                     </li>
                     <li><span class="changed">If <var>result</var> already has an entry for `@type`,
                       prepend the value of `@type` in <var>result</var> to <var>expanded value</var>,
@@ -2876,10 +2851,8 @@
                       and the value of the <var>index</var>'s <a>local context</a>
                       as <var>local context</var>.</li>
                       <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
-                    <li>Initialize <var>expanded index</var> to the result of using the
-                      <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                      passing <var>active context</var>, <var>index</var>, and <code>true</code>
-                      for <var>vocab</var>.</li>
+                    <li>Initialize <var>expanded index</var> to the result of
+                      <span class="changed"><a>iri expanding</a></span> <var>index</var>.</li>
                     <li>If <var>index value</var> is not an <a>array</a>
                       set <var>index value</var> to an <a>array</a> containing only
                       <var>index value</var>.</li>
@@ -2906,10 +2879,8 @@
                               passing the <var>active context</var>,
                               <var>index key</var> as <var>active property</var>,
                               and <var>index</var> as <var>value</var>.</li>
-                            <li>Initialize <var>expanded index key</var> to the result of calling
-                              the <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                              passing <var>active context</var>, <var>index key</var>, and <code>true</code>
-                              for <var>vocab</var>.</li>
+                            <li>Initialize <var>expanded index key</var> to the result of
+                              <span class="changed"><a>iri expanding</a></span> <var>index key</var>.</li>
                             <li>Initialize <var>index property values</var> to the concatenation of
                               <var>re-expanded index</var> with any existing values of
                               <var>expanded index key</var> in <var>item</var>.</li>
@@ -2929,10 +2900,10 @@
                           <var>item</var> does not have the <a>entry</a> <code>@id</code>,
                           and <var>expanded index</var> is not `@none`,
                           add the key-value pair (<code>@id</code>-<var>expanded index</var>) to <var>item</var>,
-                          where <var>expanded index</var> is set to the result of using the
-                          <a href="#iri-expansion">IRI Expansion algorithm</a>,
-                          passing <var>active context</var>, <var>index</var>, and <code>true</code>
-                          for <var>document relative</var>.</li>
+                          where <var>expanded index</var> is set to the result of
+                          <span class="changed"><a>iri expanding</a></span><var>index</var>
+                          using `true` for <var>document relative</var>
+                          and `false` for <var>vocab</var>.</li>
                         <li id="alg-expand-container-mapping-type">Otherwise, if <var>container mapping</var> includes <code>@type</code>
                           and <var>expanded index</var> is not <code>@none</code>,
                           initialize <var>types</var> to a new <a>array</a>
@@ -3282,20 +3253,18 @@
           <span class="changed">and the <var>value</var> is a <a>string</a>,</span>
           return a new
           <a class="changed">map</a> containing a single <a>entry</a> where the
-          key is <code>@id</code> and the value is the result of using the
-          <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-          <var>active context</var>, <var>value</var>, and <code>true</code> for
-          <var>document relative</var>.</li>
+          key is <code>@id</code> and the value is the result
+          <span class="changed"><a>iri expanding</a></span> <var>value</var>
+          using `true` for <var>document relative</var>
+          and `false` for <var>vocab</var>.</li>
         <li>If <var>active property</var> has a <a>type mapping</a> in
           <var>active context</var> that is <code>@vocab</code>,
           <span class="changed">and the <var>value</var> is a <a>string</a>,</span>
           return a new
           <a class="changed">map</a> containing a single <a>entry</a> where the
-          key is <code>@id</code> and the value is the result of using the
-          <a href="#iri-expansion">IRI Expansion algorithm</a>, passing
-          <var>active context</var>, <var>value</var>, <code>true</code> for
-          <var>vocab</var>, and <code>true</code> for
-          <var>document relative</var>.</li>
+          key is <code>@id</code> and the value is the result of
+          <span class="changed"><a>iri expanding</a></span> <var>value</var>
+          using <code>true</code> for <var>document relative</var>.</li>
         <li>Otherwise, initialize <var>result</var> to a <a class="changed">map</a>
           with an <code>@value</code> <a>entry</a> whose value is set to
           <var>value</var>.</li>
@@ -6957,6 +6926,8 @@
     </li>
     <li>Other changes:
       <ul>
+        <li>Created <a>add value</a>, <a>iri expanding</a>, and <a>iri compacting</a>
+          macros to reduce boilerplate in algorithmic language.</li>
         <li>Added explanatory notes to step <a href="#alg-context-string">5.2</a>
           of <a href="#context-processing-algorithm" class="sectionRef"></a>,
           and moved the former step 5.2.5 to <a href="#alg-context-deref-error">5.2.4.1</a>.
