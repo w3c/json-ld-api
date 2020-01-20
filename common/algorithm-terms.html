@@ -43,12 +43,13 @@
   <dt><dfn data-cite="JSON-LD11-API#dfn-iri-compacting">iri compacting</dfn></dt><dd class="algorithm">
     Used as a macro within various algorithms as to reduce the language used to describe
     the process of compacting a <a>string</a> <var>var</var> representing an <a>IRI</a> or <a>keyword</a>
-    relative to an <var>active context</var> either specified directly, or coming from the scope of
+    using an <var>active context</var> either specified directly, or coming from the scope of
     the algorithm step using this term and <var>inverse context</var> also taken
     from the scope of the algorithm step using this term.
     An optional <var>value</var> is used, if explicitly provided.
-    Unless specified, the <var>vocab</var>
-    flag defaults to `true`, and the <var>reverse</var> flag defaults to `false`.
+    Unless specified,
+    the <var>vocab</var> flag defaults to `true`,
+    and the <var>reverse</var> flag defaults to `false`.
     <ol>
       <li>Return the result of using the <a href="#iri-compaction">IRI Compaction algorithm</a>,
         passing <var>active context</var>, <var>inverse context</var>,
@@ -56,6 +57,25 @@
         <var>value</var> (if supplied),
         <var>vocab</var>,
         and <var>result</var>.</li>
+    </ol>
+  </dd>
+  <dt><dfn data-cite="JSON-LD11-API#dfn-iri-expanding">iri expanding</dfn></dt><dd class="algorithm">
+    Used as a macro within various algorithms as to reduce the language used to describe
+    the process of expanding a <a>string</a> <var>value</var> representing an <a>IRI</a> or <a>keyword</a>
+    using an <var>active context</var> either specified directly, or coming from the scope of
+    the algorithm step using this term.
+    Optional <var>defined</var> and <var>local context</var> arguments are used, if explicitly provided.
+    Unless specified,
+    the <var>document relative</var> flag defaults to `false`,
+    and the <var>vocab</var> flag defaults to `true`.
+    <ol>
+      <li>Return the result of using the <a href="#iri-expansion">IRI Expansion algorithm</a>,
+        passing <var>active context</var>,
+        <var>value</var>,
+        <var>local context</var> (if supplied),
+        <var>defined</var> (if supplied),
+        <var>document relative</var>,
+        and <var>vocab</var>.</li>
     </ol>
   </dd>
   <dt><dfn data-cite="JSON-LD11-FRAMING#dfn-input-frame">input frame</dfn></dt><dd>
