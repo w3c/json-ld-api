@@ -2136,6 +2136,34 @@ Test tc031 @context resolutions respects relative URLs.
 </dd>
 </dl>
 </dd>
+<dt id='tc032'>
+Test tc032 Unused embedded context with error.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc032</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>An embedded context which is never used should still be checked.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/c032-in.jsonld'>toRdf/c032-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid scoped context
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tdi01'>
 Test tdi01 Expand string using default and term directions
 </dt>

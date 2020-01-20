@@ -644,6 +644,14 @@
       "expect": "toRdf/c031-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc032",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Unused embedded context with error.",
+      "purpose": "An embedded context which is never used should still be checked.",
+      "input": "toRdf/c032-in.jsonld",
+      "expectErrorCode": "invalid scoped context",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
