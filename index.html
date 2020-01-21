@@ -2036,10 +2036,11 @@
                   set <var>lang dir</var> to <a>direction mapping</a>
                   preceded by an underscore (`"_"`).</li>
                 <li>Otherwise, set <var>lang dir</var> to `@null`.</li>
+                <li>If <var>language map</var> does not have a <var>lang dir</var>
+                  <a>entry</a>, create one and set its value to the <a>term</a>
+                  being processed.</li>
               </ol>
-              <li>If <var>language map</var> does not have a <var>lang dir</var>
-                <a>entry</a>, create one and set its value to the <a>term</a>
-                being processed.</li>
+            </li>
             <li>Otherwise, if <a>term definition</a> has a
               <a>language mapping</a> (might be <code>null</code>):
               <ol>
