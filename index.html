@@ -1382,7 +1382,7 @@
                   or <a>blank node identifier</a>, the <a>vocabulary mapping</a>
                   of <var>result</var> is set to
                   <span class="changed">the result of
-                    <a>iri expanding</a> <var>value</var>
+                    <a>IRI expanding</a> <var>value</var>
                     using <code>true</code> for <var>document relative</var>
                   </span>.
                   If it is not an <a>IRI</a>, or a <a>blank node identifier</a>, an
@@ -1579,7 +1579,7 @@
               <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
             <li>Set <var>type</var> to the result of
-              <span class="changed"><a>iri expanding</a> <var>type</var></span>,
+              <span class="changed"><a>IRI expanding</a> <var>type</var></span>,
               using <var>local context</var>, and <var>defined</var>.</li>
             <li class="changed">If the expanded <var>type</var> is
               `@json` or `@none`, and <a>processing mode</a> is `json-ld-1.0`,
@@ -1610,7 +1610,7 @@
               return; processors SHOULD generate a warning.</li>
             <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
               result of
-              <span class="changed"><a>iri expanding</a></span>
+              <span class="changed"><a>IRI expanding</a></span>
               the value associated with the <code>@reverse</code> <a>entry</a>,
               using <var>local context</var>, and <var>defined</var>.
               If the result does not have the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a> or a <a>blank node identifier</a>,
@@ -1652,7 +1652,7 @@
                   return; processors SHOULD generate a warning.</li>
                 <li>Otherwise, set the <a>IRI mapping</a> of <var>definition</var> to the
                   result of
-                  <span class="changed"><a>iri expanding</a></span>
+                  <span class="changed"><a>IRI expanding</a></span>
                   the value associated with the <code>@id</code> <a>entry</a>,
                   using <var>local context</var>, and <var>defined</var>.
                   If the resulting <a>IRI mapping</a> is neither a <a>keyword</a>, nor an
@@ -1667,7 +1667,7 @@
                   <ol>
                     <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
                       <code>true</code>.</li>
-                    <li>If the result of <span class="changed"><a>iri expanding</a></span> <var>term</var>
+                    <li>If the result of <span class="changed"><a>IRI expanding</a></span> <var>term</var>
                       using <var>local context</var>, and <var>defined</var>,
                       is not the same as the <a>IRI mapping</a> of <var>definition</var>,
                       an <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
@@ -1708,7 +1708,7 @@
           <ol>
             <li><var>Term</var> is a <a>relative IRI reference</a>.</li>
             <li>Set the <a>IRI mapping</a> of <var>definition</var> to the
-              result of <span class="changed"><a>iri expanding</a></span> <var>term</var>.
+              result of <span class="changed"><a>IRI expanding</a></span> <var>term</var>.
               If the resulting <a>IRI mapping</a> is not an <a>IRI</a>, an
               <a data-link-for="JsonLdErrorCode">invalid IRI mapping</a>
               error has been detected and processing is aborted.</li>
@@ -2464,7 +2464,7 @@
           If <var>from map</var> is undefined or <code>false</code>,
           and <var>element</var> does not contain an <a>entry</a> expanding to <code>@value</code>,
           and <var>element</var> does not consist of a single <a>entry</a> expanding to <code>@id</code>
-          (where <a>entries</a> are <span class="changed"><a data-lt="iri expanding">iri expanded</a></span>,
+          (where <a>entries</a> are <span class="changed"><a data-lt="IRI expanding">IRI expanded</a></span>,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
         <li id="alg-expand-property-scoped-context" class="changed">If <var>property-scoped context</var> is defined,
@@ -2482,7 +2482,7 @@
           <a>type-scoped context</a>.</li>
         <li class="changed">For each <var>key</var> and <var>value</var> in <var>element</var>
           ordered lexicographically by <var>key</var>
-          where <var>key</var> <span class="changed"><a data-lt="iri expanding">iri expands</a></span> to <code>@type</code>:
+          where <var>key</var> <span class="changed"><a data-lt="IRI expanding">IRI expands</a></span> to <code>@type</code>:
           <ol>
             <li>Convert <var>value</var> into an <a>array</a>, if necessary.</li>
             <li id="expand-type-scoped-context">For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
@@ -2501,7 +2501,7 @@
             Initialize <var>input type</var> to expansion of the last value of the first <a>entry</a> in <var>element</var>
             expanding to <code>@type</code> (if any), ordering <a>entries</a> lexicographically by key</span>.
             Both the key and value of the matched entry are
-            <span class="changed"><a data-lt="iri expanding">iri expanded</a></span>.
+            <span class="changed"><a data-lt="IRI expanding">IRI expanded</a></span>.
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
@@ -2510,7 +2510,7 @@
             <li>If <var>key</var> is <code>@context</code>, continue to
               the next <var>key</var>.</li>
             <li>Initialize <var>expanded property</var> to the result of
-              <span class="changed"><a>iri expanding</a></span> <var>key</var>.</li>
+              <span class="changed"><a>IRI expanding</a></span> <var>key</var>.</li>
             <li>If <var>expanded property</var> is <code>null</code> or it neither
               contains a colon (<code>:</code>) nor it is a <a>keyword</a>,
               drop <var>key</var> by continuing to the next <var>key</var>.</li>
@@ -2535,7 +2535,7 @@
                         or more <a>strings</a>.</span></li>
                     <li>Otherwise,
                       set <var>expanded value</var> to the result of
-                      <span class="changed"><a>iri expanding</a></span> <var>value</var>
+                      <span class="changed"><a>IRI expanding</a></span> <var>value</var>
                       using <code>true</code> for <var>document relative</var>
                       and `false` for <var>vocab</var>.
                       <span class="changed">
@@ -2565,12 +2565,12 @@
                       is a <a>default object</a>, set <var>expanded value</var> to
                       a new <a>default object</a> with the value of `@default` set
                       to the result of
-                      <span class="changed"><a>iri expanding</a></span> <var>value</var>
+                      <span class="changed"><a>IRI expanding</a></span> <var>value</var>
                       using <var class="changed">type-scoped context</var> for <var>active context</var>,
                       and <code>true</code> for <var>document relative</var>.</li>
                     <li id="expansion-tsc">Otherwise,
                       set <var>expanded value</var> to the result of
-                      <span class="changed"><a>iri expanding</a></span>
+                      <span class="changed"><a>IRI expanding</a></span>
                       each of its values
                       using <var class="changed">type-scoped context</var> for <var>active context</var>,
                       and <code>true</code> for <var>document relative</var>.
@@ -2852,7 +2852,7 @@
                       as <var>local context</var>.</li>
                       <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
                     <li>Initialize <var>expanded index</var> to the result of
-                      <span class="changed"><a>iri expanding</a></span> <var>index</var>.</li>
+                      <span class="changed"><a>IRI expanding</a></span> <var>index</var>.</li>
                     <li>If <var>index value</var> is not an <a>array</a>
                       set <var>index value</var> to an <a>array</a> containing only
                       <var>index value</var>.</li>
@@ -2880,7 +2880,7 @@
                               <var>index key</var> as <var>active property</var>,
                               and <var>index</var> as <var>value</var>.</li>
                             <li>Initialize <var>expanded index key</var> to the result of
-                              <span class="changed"><a>iri expanding</a></span> <var>index key</var>.</li>
+                              <span class="changed"><a>IRI expanding</a></span> <var>index key</var>.</li>
                             <li>Initialize <var>index property values</var> to the concatenation of
                               <var>re-expanded index</var> with any existing values of
                               <var>expanded index key</var> in <var>item</var>.</li>
@@ -2901,7 +2901,7 @@
                           and <var>expanded index</var> is not `@none`,
                           add the key-value pair (<code>@id</code>-<var>expanded index</var>) to <var>item</var>,
                           where <var>expanded index</var> is set to the result of
-                          <span class="changed"><a>iri expanding</a></span><var>index</var>
+                          <span class="changed"><a>IRI expanding</a></span><var>index</var>
                           using `true` for <var>document relative</var>
                           and `false` for <var>vocab</var>.</li>
                         <li id="alg-expand-container-mapping-type">Otherwise, if <var>container mapping</var> includes <code>@type</code>
@@ -3254,7 +3254,7 @@
           return a new
           <a class="changed">map</a> containing a single <a>entry</a> where the
           key is <code>@id</code> and the value is the result
-          <span class="changed"><a>iri expanding</a></span> <var>value</var>
+          <span class="changed"><a>IRI expanding</a></span> <var>value</var>
           using `true` for <var>document relative</var>
           and `false` for <var>vocab</var>.</li>
         <li>If <var>active property</var> has a <a>type mapping</a> in
@@ -3263,7 +3263,7 @@
           return a new
           <a class="changed">map</a> containing a single <a>entry</a> where the
           key is <code>@id</code> and the value is the result of
-          <span class="changed"><a>iri expanding</a></span> <var>value</var>
+          <span class="changed"><a>IRI expanding</a></span> <var>value</var>
           using <code>true</code> for <var>document relative</var>.</li>
         <li>Otherwise, initialize <var>result</var> to a <a class="changed">map</a>
           with an <code>@value</code> <a>entry</a> whose value is set to
@@ -3435,7 +3435,7 @@
           create a new array <var>compacted types</var> initialized
           by transforming each <var>expanded type</var> of that <a>entry</a>
           into its compacted form
-          <span class="changed">by <a>iri compacting</a> <var>expanded type</var></span>.
+          <span class="changed">by <a>IRI compacting</a> <var>expanded type</var></span>.
           Then, for each <var>term</var>
           in <var>compacted types</var> ordered lexicographically:
           <ol>
@@ -3461,10 +3461,10 @@
               <ol>
                 <li>If <var>expanded value</var> is a <a>string</a>,
                   then initialize <var>compacted value</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded value</var>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded value</var>
                     with <var>vocab</var> set to `false`</span>.</li>
                 <li>Initialize <var>alias</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var></span>.</li>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded property</var></span>.</li>
                 <li>Add an <a>entry</a> <var>alias</var> to <var>result</var> whose value is
                   set to <var>compacted value</var> and continue to the next
                   <var>expanded property</var>.</li>
@@ -3474,7 +3474,7 @@
               <ol>
                 <li>If <var>expanded value</var> is a <a>string</a>,
                   then initialize <var>compacted value</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded value</var>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded value</var>
                     using <var>type-scoped context</var> for <var>active context</var></span>.</li>
                 <li>Otherwise, <var>expanded value</var> must be a
                   <code>@type</code> <a>array</a>:
@@ -3485,7 +3485,7 @@
                       <var>expanded value</var>:
                       <ol>
                         <li>Set <var>term</var>
-                          <span class="changed">by <a>iri compacting</a> <var>expanded type</var>
+                          <span class="changed">by <a>IRI compacting</a> <var>expanded type</var>
                             using <var>type-scoped context</var> for <var>active context</var></span>.</li>
                         <li>Append <var>term</var>, to <var>compacted value</var>.</li>
                       </ol>
@@ -3493,7 +3493,7 @@
                   </ol>
                 </li>
                 <li>Initialize <var>alias</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var></span>.</li>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded property</var></span>.</li>
                 <li class="changed">Initialize <var>as array</var>
                   to <code>true</code> if the <a>container mapping</a> for <var>alias</var> in the
                   <var>active context</var> includes <code>@set</code>,
@@ -3536,7 +3536,7 @@
                   it is not an empty <a class="changed">map</a>:
                   <ol>
                     <li>Initialize <var>alias</var>
-                      <span class="changed">by <a>iri compacting</a> `@reverse`</span>.</li>
+                      <span class="changed">by <a>IRI compacting</a> `@reverse`</span>.</li>
                     <li>Set the value of the <var>alias</var> <a>entry</a> of <var>result</var> to
                       <var>compacted value</var>.</li>
                   </ol>
@@ -3571,7 +3571,7 @@
               or <code>@value</code>:
               <ol>
                 <li>Initialize <var>alias</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var></span>.</li>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded property</var></span>.</li>
                 <li>Add an <a>entry</a> <var>alias</var> to <var>result</var> whose value is
                   set to <var>expanded value</var> and continue with the next
                   <var>expanded property</var>.</li>
@@ -3580,7 +3580,7 @@
             <li>If <var>expanded value</var> is an empty <a>array</a>:
               <ol>
                 <li>Initialize <var>item active property</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded property</var>
                     using <var>expanded value</var> for <var>value</var>
                     and <var>inside reverse</var> for <var>reverse</var></span>.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
@@ -3609,7 +3609,7 @@
               For each item <var>expanded item</var> in <var>expanded value</var>:
               <ol>
                 <li>Initialize <var>item active property</var>
-                  <span class="changed">by <a>iri compacting</a> <var>expanded property</var>
+                  <span class="changed">by <a>IRI compacting</a> <var>expanded property</var>
                     using <var>expanded item</var> for <var>value</var>
                     and <var>inside reverse</var> for <var>reverse</var></span>.</li>
                 <li class="changed">If the <a>term definition</a> for <var>item active property</var>
@@ -3654,13 +3654,13 @@
                           <a>list object</a> by setting it to a
                           <a class="changed">map</a> containing an <a>entry</a>
                           where the key is the result of
-                          <span class="changed"><a>iri compacting</a> `@list`</span>
+                          <span class="changed"><a>IRI compacting</a> `@list`</span>
                           and the value is the original <var>compacted item</var>.</li>
                         <li>If <var>expanded item</var> contains the <a>entry</a>
                           <code>@index</code>-<var>value</var>, then add an <a>entry</a>
                           to <var>compacted item</var> where the key is the
                           result of
-                          <span class="changed"><a>iri compacting</a> `@index`</span>
+                          <span class="changed"><a>IRI compacting</a> `@index`</span>
                           and value is <var>value</var>.</li>
                         <li>Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> <a>entry</a> in
@@ -3680,7 +3680,7 @@
                           in <var>nest result</var>,
                           initializing it to a new empty <a>map</a>, if necessary.</li>
                         <li>Initialize <var>map key</var>
-                          <span class="changed">by <a>iri compacting</a>
+                          <span class="changed">by <a>IRI compacting</a>
                             the value of `@id` in <var>expanded item</var>
                             or <code>@none</code> if no such value exists
                             with <var>vocab</var> set to <code>false</code>
@@ -3713,7 +3713,7 @@
                           as multiple objects would be interpreted as different named graphs.
                           Set <var>compacted item</var> to a new <a>map</a>,
                           containing the key
-                          from <span class="changed"><a>iri compacting</a> `@included`</span>
+                          from <span class="changed"><a>IRI compacting</a> `@included`</span>
                           and the original <var>compacted item</var> as the value. </li>
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> entry in <var>nest result</var>
@@ -3725,17 +3725,17 @@
                       <ol>
                         <li>Set <var>compacted item</var> to a new map containing
                           the key
-                          from <span class="changed"><a>iri compacting</a> `@graph`</span>
+                          from <span class="changed"><a>IRI compacting</a> `@graph`</span>
                           using the original <var>compacted item</var> as a value.</li>
                         <li>If expanded item contains an <code>@id</code> <a>entry</a>,
                           add an entry in <var>compacted item</var> using the key
-                          from <span class="changed"><a>iri compacting</a> `@id`</span>
+                          from <span class="changed"><a>IRI compacting</a> `@id`</span>
                           using the value
-                          of <span class="changed"><a>iri compacting</a> the value of `@id` in <var>expanded item</var>
+                          of <span class="changed"><a>IRI compacting</a> the value of `@id` in <var>expanded item</var>
                             using `false` for <var>vocab</var></span>.</li>
                         <li>If expanded item contains an <code>@index</code> <a>entry</a>,
                           add an entry in <var>compacted item</var> using the key
-                          from <span class="changed"><a>iri compacting</a> `@index`</span>
+                          from <span class="changed"><a>IRI compacting</a> `@index`</span>
                           and the value of <code>@index</code> in <var>expanded item</var>.</li>
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> entry in <var>nest result</var>
@@ -3754,7 +3754,7 @@
                       in <var>nest result</var>,
                       initializing it to a new empty <a>map</a>, if necessary.</li>
                     <li>Initialize <var>container key</var>
-                      by <span class="changed"><a>iri compacting</a></span>
+                      by <span class="changed"><a>IRI compacting</a></span>
                       either <code>@language</code>, <code>@index</code>, <code>@id</code>, or <code>@type</code>
                       based on the contents of <var>container</var>.</li>
                     <li class="changed">Initialize <var>index key</var> to the value of <a>index mapping</a> in
@@ -3803,7 +3803,7 @@
                     </li>
                     <li>If <var>map key</var> is <code>null</code>,
                       set it to the result of
-                      <span class="changed"><a>iri compacting</a> `@none`</span>.</li>
+                      <span class="changed"><a>IRI compacting</a> `@none`</span>.</li>
                     <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                       to the <var>map key</var> entry in <var>map object</var>
                       using <var>as array</var>.</li>
@@ -4081,7 +4081,7 @@
               and <var>value</var> has an <code>@id</code> <a>entry</a>:
               <ol>
                 <li>If the result of
-                  <span class="changed"><a>iri compacting</a>
+                  <span class="changed"><a>IRI compacting</a>
                     the value associated with the <code>@id</code> <a>entry</a> in <var>value</var></span>
                   has a <a>term definition</a> in the <var>active context</var>
                   with an <a>IRI mapping</a> that equals the value associated
@@ -4226,12 +4226,12 @@
           <ol>
             <li>If the <a>type mapping</a> of <var>active property</var>
               is set to <code>@id</code>, set <var>result</var> to the result of
-              <span class="changed"><a>iri compacting</a>
+              <span class="changed"><a>IRI compacting</a>
                 the value associated with the <code>@id</code> <a>entry</a>
                 using `false` for <var>vocab</var></span>.</li>
             <li>Otherwise, if the <a>type mapping</a> of <var>active property</var>
               is set to <code>@vocab</code>, set <var>result</var> to the result of
-              <span class="changed"><a>iri compacting</a>
+              <span class="changed"><a>IRI compacting</a>
                 the value associated with the <code>@id</code> <a>entry</a></span>.</li>
           </ol>
         </li>
@@ -4245,7 +4245,7 @@
           leave <var>value</var> as is, as value compaction is disabled.
           <ol>
             <li>Replace any value of <code>@type</code> in <var>result</var> with the result of
-              <span class="changed"><a>iri compacting</a></span>
+              <span class="changed"><a>IRI compacting</a></span>
               the value of the <code>@type</code> <a>entry</a>.</li>
           </ol>
         </li>
@@ -4274,7 +4274,7 @@
         </li>
         <li>If <var>result</var> is a <var>map</var>,
           replace each key in <var>result</var> with the result of
-          <span class="changed"><a>iri compacting</a> that key</span>.</li>
+          <span class="changed"><a>IRI compacting</a> that key</span>.</li>
         <li>Return <var>result</var>.</li>
       </ol>
     </section>
@@ -5689,7 +5689,7 @@
               <li>Otherwise, if <var>compacted output</var> is an <a>array</a>,
                 replace it with a new <a>map</a> with a single <a>entry</a>
                 whose key is the result of
-                <span class="changed"><a>iri compacting</a> `@graph`</span>
+                <span class="changed"><a>IRI compacting</a> `@graph`</span>
                 and value is <var>compacted output</var>.</li>
               <li>If <a data-lt="jsonldprocessor-compact-context">context</a> was not <code>null</code>,
                 add an <code>@context</code> <a>entry</a> to <var>compacted output</var> and set its value
@@ -6926,7 +6926,7 @@
     </li>
     <li>Other changes:
       <ul>
-        <li>Created <a>add value</a>, <a>iri expanding</a>, and <a>iri compacting</a>
+        <li>Created <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
           macros to reduce boilerplate in algorithmic language.</li>
         <li>Added explanatory notes to step <a href="#alg-context-string">5.2</a>
           of <a href="#context-processing-algorithm" class="sectionRef"></a>,
