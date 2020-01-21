@@ -3419,11 +3419,11 @@
             </li>
             <li>If <var>result</var> is empty or contains more than one value,
               or {{JsonLdOptions/compactArrays}} is `false`,
-              or <span class="changed">or <var>active property</var> is either `@graph` or `@set`,
+              <span class="changed">or <var>active property</var> is either `@graph` or `@set`,
               or <a>container mapping</a> for <var>active property</var> in
-              <var>active context</var> includes either <code>@list</code> or <code>@set</code></span>,
+              <var>active context</var> includes either <code>@list</code> or <code>@set</code>,</span>
               return <var>result</var>.</li>
-            <li>Otherwise, return the first value in <var>result</var>.</li>
+            <li>Otherwise, return the value in <var>result</var>.</li>
           </ol>
         </li>
         <li>Otherwise <var>element</var> is a <a class="changed">map</a>.</li>
