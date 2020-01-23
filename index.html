@@ -4123,26 +4123,24 @@
           Try to create a <a>compact IRI</a>, starting by initializing
           <var>compact IRI</var> to <code>null</code>. This variable will be used to
           store the created <a>compact IRI</a>, if any.</li>
-        <li>For each key <a>term</a> and value <a>term definition</a> in
-          the <var>active context</var>:
+        <li>For each <a>term definition</a> <var>definition</var> in <var>active context</var>:
           <ol>
-            <li>If the <a>term definition</a> is <code>null</code>,
-              its <a>IRI mapping</a> equals <var>var</var>, its
-              <a>IRI mapping</a> is not a substring at the beginning of
+            <li>If the <a>IRI mapping</a> of <var>definition</var> is `null`,
+              its <a>IRI mapping</a> equals <var>var</var>,
+              its <a>IRI mapping</a> is not a substring at the beginning of
               <var>var</var>,
-              <span class="changed"> or the term definition does not contain
-                the <a>prefix flag</a> having a value of <code>true</code>,</span>
-              the <a>term</a> cannot be used as a <a>prefix</a>.
-              Continue with the next <a>term</a>.</li>
-            <li>Initialize <var>candidate</var> by concatenating <a>term</a>,
+              <span class="changed"> or <var>definition</var> does not have
+                a <code>true</code> <a>prefix flag</a>,</span>
+              <var>definition</var>'s key cannot be used as a <a>prefix</a>.
+              Continue with the next <var>definition</var>.</li>
+            <li>Initialize <var>candidate</var> by concatenating <var>definition</var> key,
               a colon (<code>:</code>), and the substring of <var>var</var>
               that follows after the value of the
-              <a data-lt="term definition">term definition's</a>
-              <a>IRI mapping</a>.</li>
+              <var>definition</var>'s <a>IRI mapping</a>.</li>
             <li>If either <var>compact IRI</var> is <code>null</code>, <var>candidate</var> is
               shorter or the same length but lexicographically less than
               <var>compact IRI</var> and <var>candidate</var> does not have a
-              <a>term definition</a> in <var>active context</var>, or if the
+              <a>term definition</a> in <var>active context</var>, or if that
               <a>term definition</a> has an <a>IRI mapping</a>
               that equals <var>var</var> and <var>value</var> is <code>null</code>,
               set <var>compact IRI</var> to <var>candidate</var>.</li>
