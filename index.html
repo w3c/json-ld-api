@@ -3910,8 +3910,7 @@
                   otherwise to `@none`.</li>
               </ol>
             </li>
-            <li class="changed">If <var>value</var> is a <a>map</a> containing
-              the <a>entry</a> <code>@preserve</code>, use the first
+            <li class="changed">If `@preserve` is an <a>entry</a> in <var>value</var>, use the first
               element from the value of <code>@preserve</code> as <var>value</var>.</li>
             <li>Initialize <var>containers</var> to an empty <a>array</a>. This
               <a>array</a> will be used to keep track of an ordered list of
@@ -3927,8 +3926,7 @@
               variables will keep track of the preferred
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
-            <li>If <var>value</var> is a <a class="changed">map</a>,
-              that contains an <code>@index</code> <a>entry</a>,
+            <li>If `@index` is an <a>entry</a> in <var>value</var> is a <a class="changed">map</a>,
               <span class="changed">and <var>value</var> is not a <a>graph object</a></span>
               then append the values <code>@index</code> <span class="changed">and <code>@index@set</code></span> to <var>containers</var>.</li>
             <li>If <var>reverse</var> is <code>true</code>, set <var>type/language</var>
@@ -4002,19 +4000,19 @@
             <li class="changed">Otherwise, if <var>value</var> is a <a>graph object</a>,
               prefer a mapping most appropriate for the particular value.
               <ol>
-                <li>If value contains an <code>@index</code> <a>entry</a>,
+                <li>If <var>value</var> contains an <code>@index</code> <a>entry</a>,
                   append the values <code>@graph@index</code> and <code>@graph@index@set</code>
                   to <var>containers</var>.</li>
-                <li>If the value contains an <code>@id</code> <a>entry</a>,
+                <li>If <var>value</var> contains an <code>@id</code> <a>entry</a>,
                   append the values <code>@graph@id</code> and <code>@graph@id@set</code>
                   to <var>containers</var>.</li>
                 <li>Append the values <code>@graph</code> <code>@graph@set</code>,
                   and <code>@set</code>
                   to <var>containers</var>.</li>
-                <li>If value does not contain an <code>@index</code> <a>entry</a>,
+                <li>If <var>value</var> does not contain an <code>@index</code> <a>entry</a>,
                   append the values <code>@graph@index</code> and <code>@graph@index@set</code>
                   to <var>containers</var>.</li>
-                <li>If the value does not contain an <code>@id</code> <a>entry</a>,
+                <li>If the <var>value</var> does not contain an <code>@id</code> <a>entry</a>,
                   append the values <code>@graph@id</code> and <code>@graph@id@set</code>
                   to <var>containers</var>.</li>
                 <li>Append the values <code>@index</code> and <code>@index@set</code>
@@ -4030,11 +4028,10 @@
                     <li class="changed">If <var>value</var> contains an `@direction` <a>entry</a>
                       and does not contain an `@index` <a>entry</a>,
                       then set <var>type/language value</var> to the concatenation of
-                      the <var>value</var>'s `@language` entry (if any)
-                      the <var>value</var>'s `@direction`, separated by an underscore (`"_"`),
+                      the <var>value</var>'s `@language` <a>entry</a> (if any)
+                      and the <var>value</var>'s `@direction` <a>entry</a>, separated by an underscore (`"_"`),
                       normalized to lower case.
-                      Append `@language` and `@language@set` to
-                      <var>containers</var>.</li>
+                      Append `@language` and `@language@set` to <var>containers</var>.</li>
                     <li>Otherwise, if <var>value</var> contains an <code>@language</code> <a>entry</a>
                       and does not contain an <code>@index</code> <a>entry</a>,
                       then set <var>type/language value</var> to
@@ -4061,11 +4058,11 @@
               be the last <a>container mapping</a> value to be checked as it
               is the most generic.</li>
             <li class="changed">
-              If <a>processing mode</a> not `json-ld-1.0` and <var>value</var> does not contain an <code>@index</code> <a>entry</a>,
+              If <a>processing mode</a> is not `json-ld-1.0` and <var>value</var> does not contain an <code>@index</code> <a>entry</a>,
               append <code>@index</code> and <code>@index@set</code> to <var>containers</var>.
             </li>
             <li class="changed">
-              If <a>processing mode</a> is not `json-ld-1.0` and value contains only an <code>@value</code> <a>entry</a>,
+              If <a>processing mode</a> is not `json-ld-1.0` and `@value` is the only <a>entry</a> in <var>value</var>,
               append <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
             </li>
             <li>If <var>type/language value</var> is <code>null</code>,
@@ -4079,14 +4076,13 @@
             <li>If <var>type/language value</var> is <code>@reverse</code>, append
               <code>@reverse</code> to <var>preferred values</var>.</li>
             <li>If <var>type/language value</var> is <code>@id</code> or <code>@reverse</code>
-              and <var>value</var> has an <code>@id</code> <a>entry</a>:
+              and `@id` is an <a>entry</a> in <var>value</var>:
               <ol>
                 <li>If the result of
                   <span class="changed"><a>IRI compacting</a>
-                    the value associated with the <code>@id</code> <a>entry</a> in <var>value</var></span>
+                    the value of the <code>@id</code> <a>entry</a> in <var>value</var></span>
                   has a <a>term definition</a> in the <var>active context</var>
-                  with an <a>IRI mapping</a> that equals the value associated
-                  with the <code>@id</code> <a>entry</a> in <var>value</var>,
+                  with an <a>IRI mapping</a> that equals the value of the <code>@id</code> <a>entry</a> in <var>value</var>,
                   then append <code>@vocab</code>, <code>@id</code>, and
                   <code>@none</code>, in that order, to <var>preferred values</var>.</li>
                 <li>Otherwise, append <code>@id</code>, <code>@vocab</code>, and
