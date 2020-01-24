@@ -5598,8 +5598,7 @@
 
     <p>It is important to highlight that implementations do not modify the input parameters.
       If an error is detected, the {{Promise}} is
-      rejected <a>JsonLdError</a> with the corresponding error
-      <a data-link-for="JsonLdError">code</a>
+      rejected with a <a>JsonLdError</a> with an appropriate {{JsonLdError/code}}
       and processing is stopped.</p>
 
     <p>If the <a data-link-for="JsonLdOptions">documentLoader</a>
@@ -6239,7 +6238,7 @@
           and the response has an HTTP Link Header [[RFC8288]] using the <code>http://www.w3.org/ns/json-ld#context</code> link relation,
           set <var>contextUrl</var> to the associated <code>href</code>.
           <p>If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
-            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
+            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</p>
           <p>Processors MAY transform <var>document</var> to the <a>internal representation</a>.</p>
           <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>,
@@ -6319,7 +6318,7 @@
           the HTTP Link Header is ignored.
           If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
           the {{Promise}} of the <a>LoadDocumentCallback</a> is rejected
-          with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>.</dd>
+          with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>.</dd>
         <dt><dfn data-dfn-for="RemoteDocument">documentUrl</dfn></dt>
         <dd>The final URL of the loaded document.
           This is important to handle HTTP redirects properly.</dd>
@@ -6368,7 +6367,7 @@
           that matches the fragment identifier, after decoding <a data-cite="RFC3986#section-2.1">percent encoded sequences</a>.
           <p>If no such element is found,
             or the located element is not a <a>JSON-LD script element</a>,
-            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
             and processing is terminated.</p>
         </li>
         <li>Otherwise, if the <a data-link-for="LoadDocumentOptions">profile</a>
@@ -6384,7 +6383,7 @@
           of the first <a>JSON-LD script element</a> in <var>document</var>.
           <p>If no such element is found,
             or the located element is not a <a>JSON-LD script element</a>,
-            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+            the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
             and processing is terminated.</p></li>
         <li>If <var>source</var> is defined,
           set <var>document</var> to the result of the
@@ -6396,7 +6395,7 @@
         <li>Otherwise, <var>source</var> is undefined.
           <ol>
             <li>If the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
-              the <var>promise</var> is rejected with a <a>JsonLdError</a> whose code is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
+              the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
               and processing is terminated.</li>              
             <li>Otherwise, the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is <code>true</code>.
               Set <var>document</var> to a new empty <a>array</a>.
