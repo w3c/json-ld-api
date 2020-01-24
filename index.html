@@ -4889,8 +4889,10 @@
           <a class="sectionRef" href="#data-round-tripping"></a>
           If <var>datatype</var> is <code>null</code>,
           set <var>datatype</var> to <code>xsd:boolean</code>.</li>
-        <li>Otherwise, if <var>value</var> is a <a>number</a> with a non-zero fractional
-          part (the result of a modulo&#8209;1 operation) or <var>value</var> is a <a>number</a>
+        <li id="alg-obj2rdf-double">Otherwise, if <var>value</var> is a <a>number</a> with a non-zero fractional
+          part (the result of a modulo&#8209;1 operation)
+          <span class="changed">or an absolute value greater or equal to 10<sup>21</sup></span>,
+          or <var>value</var> is a <a>number</a>
           and <var>datatype</var> equals <code>xsd:double</code>, convert <var>value</var> to a
           <a>string</a> in <a>canonical lexical form</a> of
           an <a data-cite="XMLSCHEMA11-2#double"><code>xsd:double</code></a> as defined in [[XMLSCHEMA11-2]]
@@ -6921,6 +6923,9 @@
           and to specify that the check is for a well-formed IRI.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/282">Issue 282</a>
           and <a href="https://github.com/w3c/json-ld-api/issues/298">Issue 298</a>.</li>
+        <li>Updated step <a href="#alg-obj2rdf-double">10</a>
+            to also catch big integers.
+            This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
         <li>Added a new step <a href="#alg-obj2rdf-direction-language">13.1</a> to create a variable for `@language`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/277">Issue 277</a>.</li>
       </ul>
