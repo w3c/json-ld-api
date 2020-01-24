@@ -4900,16 +4900,15 @@
           <a class="sectionRef" href="#data-round-tripping"></a>.
           If <var>datatype</var> is <code>null</code>,
           set <var>datatype</var> to <code>xsd:double</code>.</li>
-        <li>Otherwise, if <var>value</var> is a <a>number</a> with no non-zero
-          fractional part (the result of a modulo&#8209;1 operation) or <var>value</var>
-          is a <a>number</a> and <var>datatype</var>
-          equals <code>xsd:integer</code>, convert <var>value</var> to a
-          <a>string</a> in <a>canonical lexical form</a> of
+        <li id="alg-obj2rdf-integer">Otherwise, if <var>value</var> is a <a>number</a>,
+          convert it to a <a>string</a> in <a>canonical lexical form</a> of
           an <a data-cite="XMLSCHEMA11-2#integer"><code>xsd:integer</code></a> as defined in [[XMLSCHEMA11-2]]
           and described in
           <a class="sectionRef" href="#data-round-tripping"></a>.
           If <var>datatype</var> is <code>null</code>,
           set <var>datatype</var> to <code>xsd:integer</code>.</li>
+          <div class="note">It follows from the previous step that <var>value</var>
+            has no non-zero fractional part.</div>
         <li>Otherwise, if <var>datatype</var> is <code>null</code>,
           set <var>datatype</var> to <code>xsd:string</code> or <code>rdf:langString</code>,
           depending on if item has an <code>@language</code> <a>entry</a>.</li>
@@ -6924,8 +6923,11 @@
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/282">Issue 282</a>
           and <a href="https://github.com/w3c/json-ld-api/issues/298">Issue 298</a>.</li>
         <li>Updated step <a href="#alg-obj2rdf-double">10</a>
-            to also catch big integers.
-            This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
+          to also catch big integers.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
+        <li>Simplified step <a href="#alg-obj2rdf-integer">11</a>
+          to remove redundant conditions, adding a note instead.
+          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
         <li>Added a new step <a href="#alg-obj2rdf-direction-language">13.1</a> to create a variable for `@language`.
           This is in response to <a href="https://github.com/w3c/json-ld-api/issues/277">Issue 277</a>.</li>
       </ul>
