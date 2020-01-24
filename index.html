@@ -5405,7 +5405,7 @@
     </section>
   </section> <!-- end of RDF to Object Conversion -->
 
-  <section id="data-round-tripping"><h2>Data Round Tripping</h2>
+  <section><h2>Data Round Tripping</h2>
 
     <p>When <a href="#deserialize-json-ld-to-rdf-algorithm">deserializing JSON-LD to RDF</a>
       JSON-native <a>numbers</a> are automatically
@@ -5420,7 +5420,7 @@
 
     <p>The <a>canonical lexical form</a> of an <em>integer</em>, i.e., a
       <a>number</a> with no non-zero fractional part
-      <span class="changed">and an exponent less than <code>21</code>,</span>
+      <span class="changed">and an absolute value less than 10<sup>21</sup>,</span>
       or a <a>number</a> coerced to <code>xsd:integer</code>,
       is a finite-length sequence of decimal
       digits (<code>0-9</code>) with an optional leading minus sign; leading
@@ -5438,7 +5438,7 @@
 
     <p>The <a>canonical lexical form</a> of a <em>double</em>, i.e., a
       <a>number</a>
-      <span class="changed">with a non-zero fractional part or an exponent greater than <code>20</code></span>,
+      <span class="changed">with a non-zero fractional part or an absolute value greater or equal to 10<sup>21</sup></span>,
       or a <a>number</a>
       coerced to <code>xsd:double</code>, consists of a mantissa followed by the
       character <code>E</code>, followed by an exponent. The mantissa is a
