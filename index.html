@@ -5598,7 +5598,7 @@
 
     <p>It is important to highlight that implementations do not modify the input parameters.
       If an error is detected, the {{Promise}} is
-      rejected with a <a>JsonLdError</a> with an appropriate {{JsonLdError/code}}
+      rejected with a <a>JsonLdError</a> having an appropriate {{JsonLdError/code}}
       and processing is stopped.</p>
 
     <p>If the <a data-link-for="JsonLdOptions">documentLoader</a>
@@ -6189,7 +6189,7 @@
       <p>The <dfn>LoadDocumentCallback</dfn> defines a callback that custom document loaders
         have to implement to be used to retrieve remote documents and contexts.
         The callback returns a {{Promise}} resolving to a <a>RemoteDocument</a>.
-        On failure, the {{Promise}} is rejected with an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
+        On failure, the {{Promise}} with a a <a>JsonLdError</a> having an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
 
       <pre class="idl">
         callback LoadDocumentCallback = Promise&lt;RemoteDocument> (
