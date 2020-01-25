@@ -6822,143 +6822,27 @@
       explicitly to `json-ld-1.0`.</li>
     <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
     <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
+    <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
+      in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
+      and as a use of the {{LoadDocumentOptions/profile}} API option.</li>
+    <li>Added <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
+      macros to reduce boilerplate in algorithmic language.</li>
+    <li>Improved algorithms in
+      <a href="#context-processing-algorithm" class="sectionRef"></a>,
+      <a href="#create-term-definition" class="sectionRef"></a>,
+      <a href="#expansion" class="sectionRef"></a>,
+      <a href="#compaction" class="sectionRef"></a>,
+      <a href="#value-compaction" class="sectionRef"></a>,
+      <a href="#node-map-generation" class="sectionRef"></a>,
+      and <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>.
+    </li>
   </ul>
 </section>
-<section class="appendix informative" id="changes-from-cr">
+<!--section class="appendix informative" id="changes-from-cr">
   <h2>Changes since Candidate Release of 12 December 2019</h2>
   <ul>
-    <li>Miscellaneous updates to <a href="#create-term-definition" class="sectionRef"></a>:
-      <ul>
-        <li>Added missing `@none` in <a href="#ctd-invalid-type">13.4</a>.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/259">Issue 259</a>.</li>
-        <li>Moved step <a href="#ctd-id-not-null">16.2</a>,
-          and subsequent substeps of step 16 into a new grouping, to separate the logic
-          from step <a href="#ctd-id-not-null">16.1</a>.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/241">Issue 241</a>.</li>
-        <li>Updated step <a href="#ctd-contains-colon">16.4</a>
-          to prevent an issue where <var>term</var> might not be defined at the time it is expanded.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/245">Issue 245</a>.</li>
-        <li>Clarified step <a href="#ctd-container">21.1</a>
-          that `@graph` may be used with `@set`.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/242">Issue 242</a>.</li>
-        <li>Added missing keywords to step <a href="#ctd-invalid-entries">28</a>.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/261">Issue 261</a>.</li>
-      </ul>
-    </li>
-    <li>Miscellaneous updates to <a href="#expansion" class="sectionRef"></a>:
-      <ul>
-        <li>Update step <a href="#alg-expand-prev-context">7</a>
-          to describe using the <a href="#iri-expansion">IRI Expansion algorithm</a> for expanding entries.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/309">Issue 309</a>.</li>
-        <li>Update step <a href="#alg-expand-property-scoped-context">8</a>
-          to pass <var>override context</var> when creating a property-scoped context.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/301">Issue 301</a>.</li>
-        <li>Update step <a href="#expand-type-scoped-context">11.2</a>
-          to make sure the <a>type-scoped context</a> is not propagated by default
-          and to use the <a>type-scoped context</a> when finding a <a>local context</a>.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 246</a>
-          and <a href="https://github.com/w3c/json-ld-api/issues/304">Issue 304</a>.</li>
-        <li>Updated step <a href="#alg-expand-initialize-vars">12</a>
-          <var>input type</var> to use the expanded value.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/269">Issue 269</a>.</li>
-        <li>Remove text from  <a href="#expansion-tsc">13.4.4.4</a>
-          that duplicate the following step.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/243">Issue 243</a>.</li>
-        <li>Add text to step  <a href="#alg-expand-list-value">13.4.11.2</a>
-          to ensure that the result is an array.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/310">Issue 310</a>.</li>
-        <li>Changed text in step <a href="#alg-expand-container-index-not-index">3.8.3.7.2</a>
-          to re-expand the index as a value before using it to update any existing
-          value for the associated property.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 290</a>.</li>
-        <li>Improved text in step <a href="#alg-expand-container-mapping-type">13.8.3.7.5</a>
-          to exclude the <var>expanded index</var> being `@none`.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/264">Issue 264</a>.</li>
-        <li>Update step <a href="#alg-expand-resolve-nest">14</a>
-          to order by <var>nesting-key</var>, if `ordered` is `true`.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/295">Issue 295</a>.</li>
-        <li>Move step 13.15 of the expansion algorithm up one level to step <a href="#alg-expand-resolve-nest">14</a>,
-          as it had accidentally been set to run for every entry in the object, rather than
-          after all entries had been expanded.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/262">Issue 262</a>.</li>
-        <li>Move step <a href="#alg-expand-null-value">15.3</a> down one, and return `null`.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/292">Issue 292</a>.</li>
-        <li>Changed step <a href="#alg-expand-only-language">18</a>
-          to return `null`, not set <var>result</var> to `null`.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/284">Issue 284</a>.</li>
-        <li>Moved three steps prior to step <a href="#alg-expand-return">20</a> to
-          step <a href="#api-expand-post-processing">7.1</a> of
-          the <a data-link-for="JsonLdProcessor">expand()</a> method of the
-          <a>JsonLdProcessor</a> interface.
-          Additionally, in step <a href="#alg-expand-container-index-graph">13.8.3.7.1</a>,
-          when expanding properties where container includes both `@index` and `@graph`,
-          don't transform an item into a <a>graph object</a> repetitively.
-          This corrects an issue introduced in <a href="https://github.com/w3c/json-ld-api/pull/184">PR 184</a> and is
-          in response to <a href="https://github.com/w3c/json-ld-api/issues/294">Issue 294</a>.</li>
-      </ul>
-    </li>
-    <li>Miscellaneous updates to <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>:
-      <ul>
-        <li>Changed step <a href="#alg-jld2rdf-init-triples">1.2</a>
-          to initialize <var>triple</var>, not <var>graph</var>, which is an input.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/281">Issue 281</a>.</li>
-        <li>Changed step <a href="#alg-jld2rdf-init-list-triples">1.3.2.5.1</a>
-          to be a note on the following step, as it was non-procedural.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/278">Issue 278</a>.</li>
-        <li>Changed step <a href="#alg-jld2rdf-add-list-triples">1.3.2.5.2</a>
-          to use the {{RdfGraph/add}} method, rather than use "append".
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/279">Issue 279</a>.</li>
-      </ul>
-    </li>
-    <li>Miscellaneous updates to <a href="#object-to-rdf-conversion" class="sectionRef"></a>:
-      <ul>
-        <li>Updated step <a href="#alg-obj2rdf-datatype">6</a>
-          to only check that a datatype is well-formed if it is not `null` or `@json`,
-          and to specify that the check is for a well-formed IRI.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/282">Issue 282</a>
-          and <a href="https://github.com/w3c/json-ld-api/issues/298">Issue 298</a>.</li>
-        <li>Updated step <a href="#alg-obj2rdf-double">10</a>
-          to also catch big integers.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
-        <li>Simplified step <a href="#alg-obj2rdf-integer">11</a>
-          to remove redundant conditions, adding a note instead.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
-        <li>Added a new step <a href="#alg-obj2rdf-direction-language">13.1</a> to create a variable for `@language`.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/277">Issue 277</a>.</li>
-      </ul>
-    </li>
-    <li>Other changes:
-      <ul>
-        <li>Created <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
-          macros to reduce boilerplate in algorithmic language.</li>
-        <li>Added explanatory notes to step <a href="#alg-context-string">5.2</a>
-          of <a href="#context-processing-algorithm" class="sectionRef"></a>,
-          and moved the former step 5.2.5 to <a href="#alg-context-deref-error">5.2.4.1</a>.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/265">Issue 265</a>.</li>
-        <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
-          in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
-          and as a use of the {{LoadDocumentOptions/profile}} API option.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/244">Issue 244</a>.</li>
-        <li>Improved text in step <a href="#alg-nmg-each-type">3</a> of the
-          <a href="#node-map-generation">Node Map Generation algorithm</a> to clarify
-          that the steps iterates over any `@type` entries.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/276">Issue 276</a>.</li>
-        <li>Clarify sub-steps of step <a href="#alg-compval-id-index">4</a>
-          of the <a href="#value-compaction">Value Compaction algorithm</a>.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/321">Issue 321</a>.</li>
-        <li>Updated the language in step <a href="alg-valcompact-lang-dir">8</a>
-          of <a href="#value-compaction" class="sectionRef"></a> to be consistent with other steps.
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/313">Issue 313</a>.</li>
-        <li>Moved the last part of the compaction algorithm to
-          step <a href="#api-compact-post-processing">7</a> of
-          the <a data-link-for="JsonLdProcessor">compact()</a> method of the
-          <a>JsonLdProcessor</a> interface.</li>
-        <li>Clarified the handling of big integers in <a href="#data-round-tripping" class="sectionRef"></a>
-          This is in response to <a href="https://github.com/w3c/json-ld-api/issues/312">Issue 312</a>.</li>
-      </ul>
-    </li>
   </ul>
-</section>
+</section-->
 
 <section id="ack"
 class="appendix informative"
