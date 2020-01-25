@@ -1181,6 +1181,14 @@
       "expectErrorCode": "invalid scoped context",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc033",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Unused context with an embedded context error.",
+      "purpose": "An unused context with an embedded context should still be checked.",
+      "input": "expand/c033-in.jsonld",
+      "expectErrorCode": "invalid scoped context",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
       "name": "Expand string using default and term directions",
