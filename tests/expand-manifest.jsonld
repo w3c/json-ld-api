@@ -2714,9 +2714,9 @@
     }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
-      "name": "@import may not be used in an imported context.",
-      "purpose": "@import only valid within a term definition.",
-      "option": {"specVersion": "json-ld-1.1"},
+      "name": "@import is invalid in 1.0.",
+      "purpose": "@import is invalid in 1.0.",
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "expand/so01-in.jsonld",
       "expectErrorCode": "invalid context entry"
     }, {
@@ -2791,6 +2791,14 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/so11-in.jsonld",
       "expect": "expand/so11-out.jsonld"
+    }, {
+      "@id": "#tso12",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "@import may not be used in an imported context.",
+      "purpose": "@import only valid within a term definition.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/so12-in.jsonld",
+      "expectErrorCode": "invalid context entry"
     }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],

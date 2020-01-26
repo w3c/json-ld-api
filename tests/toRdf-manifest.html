@@ -9080,6 +9080,8 @@ invalid context entry
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
 </dl>
 </dd>
 </dl>
@@ -9326,6 +9328,34 @@ Test tso11 Override protected terms in sourced context
 <dt>expect</dt>
 <dd>
 <a href='toRdf/so11-out.nq'>toRdf/so11-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tso12'>
+Test tso12 @import may not be used in an imported context.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tso12</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>@import only valid within a term definition.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/so12-in.jsonld'>toRdf/so12-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid context entry
 </dd>
 <dt>Options</dt>
 <dd>
