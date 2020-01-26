@@ -2781,6 +2781,14 @@
       "input": "toRdf/so12-in.jsonld",
       "expectErrorCode": "invalid context entry"
     }, {
+      "@id": "#tso13",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@import can only reference a single context",
+      "purpose": "@import can only reference a single context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/so13-in.jsonld",
+      "expectErrorCode": "invalid remote context"
+    }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
       "name": "@type: @none is illegal in 1.0.",
