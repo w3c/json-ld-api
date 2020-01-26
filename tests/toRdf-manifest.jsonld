@@ -2697,7 +2697,7 @@
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
       "name": "@import is invalid in 1.0.",
       "purpose": "@import is invalid in 1.0.",
-      "option": {"specVersion": "json-ld-1.1"},
+      "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"},
       "input": "toRdf/so01-in.jsonld",
       "expectErrorCode": "invalid context entry"
     }, {
@@ -2772,6 +2772,14 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so11-in.jsonld",
       "expect": "toRdf/so11-out.nq"
+    }, {
+      "@id": "#tso12",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@import may not be used in an imported context.",
+      "purpose": "@import only valid within a term definition.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/so12-in.jsonld",
+      "expectErrorCode": "invalid context entry"
     }, {
       "@id": "#ttn01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],

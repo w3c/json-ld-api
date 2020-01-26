@@ -9166,7 +9166,7 @@ invalid IRI mapping
 </dl>
 </dd>
 <dt id='tso01'>
-Test tso01 @import may not be used in an imported context.
+Test tso01 @import is invalid in 1.0.
 </dt>
 <dd>
 <dl class='entry'>
@@ -9175,7 +9175,7 @@ Test tso01 @import may not be used in an imported context.
 <dt>Type</dt>
 <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>@import only valid within a term definition.</dd>
+<dd>@import is invalid in 1.0.</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/so01-in.jsonld'>expand/so01-in.jsonld</a>
@@ -9189,6 +9189,8 @@ invalid context entry
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
 </dl>
 </dd>
 </dl>
@@ -9435,6 +9437,34 @@ Test tso11 Override protected terms in sourced context
 <dt>expect</dt>
 <dd>
 <a href='expand/so11-out.jsonld'>expand/so11-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tso12'>
+Test tso12 @import may not be used in an imported context.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tso12</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>@import only valid within a term definition.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/so12-in.jsonld'>expand/so12-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid context entry
 </dd>
 <dt>Options</dt>
 <dd>
