@@ -625,7 +625,7 @@
       "name": "@propagate is invalid in 1.0",
       "purpose": "@propagate is invalid in 1.0",
       "input": "toRdf/c029-in.jsonld",
-      "expectErrorCode": "invalid context member",
+      "expectErrorCode": "invalid context entry",
       "option": {"specVersion": "json-ld-1.1", "processingMode": "json-ld-1.0"}
     }, {
       "@id": "#tc030",
@@ -2699,7 +2699,7 @@
       "purpose": "@import is invalid in 1.0.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so01-in.jsonld",
-      "expectErrorCode": "invalid context member"
+      "expectErrorCode": "invalid context entry"
     }, {
       "@id": "#tso02",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
@@ -2715,7 +2715,7 @@
       "purpose": "Processors must detect source contexts that include @import.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/so03-in.jsonld",
-      "expectErrorCode": "invalid context member"
+      "expectErrorCode": "invalid context entry"
     }, {
       "@id": "#tso05",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
