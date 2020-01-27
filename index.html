@@ -1080,16 +1080,19 @@
     <p>Each <a>term definition</a> consists of:</p>
     <ul>
       <li>an <dfn>IRI mapping</dfn> (<a>IRI</a>),</li>
-      <li>a flag <dfn>reverse property</dfn> (<a>boolean</a>),</li>
-       <li>an optional <dfn>type mapping</dfn> (<a>IRI</a>),</li>
-       <li>an optional <dfn>language mapping</dfn> (<a>string</a>),</li>
-      <li class="changed">an optional <dfn>direction mapping</dfn> (`"ltr"` or `"rtl"`),</li>
-      <li class="changed">an optional <a>context</a> (<a>context</a>),</li>
-      <li class="changed">an optional <dfn>nest value</dfn> (<a>string</a>),</li>
-      <li class="changed">an optional <dfn>prefix flag</dfn> (<a>boolean</a>),</li>
-      <li class="changed">an optional <dfn>index mapping</dfn> (<a>string</a>),</li>
+      <li class="changed">a <dfn>prefix flag</dfn> (<a>boolean</a>),</li>
       <li class="changed">a <dfn>protected</dfn> flag (<a>boolean</a>),</li>
-      <li>and an optional <dfn>container mapping</dfn> (<a>array</a> of <a>strings</a>).</li>
+      <li>a <dfn>reverse property</dfn> flag (<a>boolean</a>),</li>
+      <li class="changed">an optional <dfn>base URL</dfn> (<a>IRI</a>),</li>
+      <li class="changed">an optional <a>context</a> (<a>context</a>),</li>
+      <li>an optional <dfn>container mapping</dfn> (<a>array</a> of <a>strings</a>),
+      <li class="changed">an optional <a>context</a> (<a>context</a>),</li>
+      <li class="changed">an optional <dfn>direction mapping</dfn> (`"ltr"` or `"rtl"`),</li>
+      <li class="changed">an optional <dfn>index mapping</dfn> (<a>string</a>),</li>
+      <li>an optional <dfn>language mapping</dfn> (<a>string</a>),</li>
+      <li class="changed">an optional <dfn>nest value</dfn> (<a>string</a>),</li>
+      <li>and an optional <dfn>type mapping</dfn> (<a>IRI</a>).</li>
+      </li>
     </ul>
 
     <p>A <a>term definition</a> can not only be used to map a <a>term</a>
@@ -1171,11 +1174,15 @@
       <h3>Algorithm</h3>
 
       <p>This algorithm specifies how a new <a>active context</a> is updated
-        with a <a>local context</a>. The algorithm takes two required
+        with a <a>local context</a>. The algorithm takes three required
         <span class="changed">and three optional</span>
         input variables.
-        The required inputs are an <var>active context</var> and a <var>local context</var>.
-        The optional inputs are an <a>array</a> <var>remote contexts</var>,
+        The required inputs are
+        an <var>active context</var>,
+        a <var>local context</var>,
+        <span class="changed">and a <var>base URL</var> used when resolving relative context URLs</span>.
+        The optional inputs are
+        an <a>array</a> <var>remote contexts</var>,
         defaulting to a new empty <a>array</a>, which is used to detect cyclical context inclusions,
         <span class="changed">
           <var>override protected</var>, defaulting to <code>false</code>,
@@ -1209,46 +1216,21 @@
                 <li>Otherwise, initialize <var>result</var> as a
                   newly-initialized <var>active context</var>,
                   <span class="changed">setting <a>previous context</a> in <var>result</var>
-                    to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code></span>.
+                    to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code></span>
+                    and <a>base IRI</a> to the value of the {{JsonLdOptions/base}} option
+                    of the <a href="#the-application-programming-interface" class="sectionRef"></a>,
+                    if provided, otherwise to <var>base URL</var>.
                   Continue with the next <var>context</var>.
-                  <div class="note">In [[[JSON-LD10]]], the <a>base IRI</a> was given
-                    a default value here; this is now described conditionally
-                    in the {{JsonLdOptions/base}} option
-                    of the <a href="#the-application-programming-interface" class="sectionRef"></a>.
-                  </div>
                 </li>
               </ol>
             </li>
             <li id="alg-context-string">If <var>context</var> is a <a>string</a>,
-              <div class="note">
-                In order to prevent being overly prescriptive,
-                this algorithm makes no statement about how internal state is kept for dereferenced context documents
-                and broadly applies error handling checks.
-                Provided that the output of the algorithm is unchanged,
-                implementations may employ optimizations.
-              </div>
               <ol>
                 <li>Initialize <var>context</var> to the result of resolving <var>context</var> against
-                  the <a>base IRI</a>
-                  of the document containing the <var>local context</var>
-                  which is established as specified in
-                  <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
-                  of [[RFC3986]]. Only the basic algorithm in
-                  <a data-cite="RFC3986#section-5.2">section 5.2</a>
-                  of [[RFC3986]] is used; neither
-                  <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
-                  <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
-                  are performed. Characters additionally allowed in IRI
-                  references are treated in the same way that unreserved
-                  characters are treated in URI references, per
-                  <a data-cite="RFC3987#section-6.5">section 6.5</a>
-                  of [[RFC3987]].
+                  <var>base URL</var>.
                   <div class="note">
-                    The <a>base IRI</a> of the document containing the <var>local context</var>
-                    is often not the same as {{JsonLdOptions/base}}
+                    <var>base URL</var> is often not the same as {{JsonLdOptions/base}}
                     or the <a>base IRI</a> of the <var>active context</var>.
-                    Processors are responsible for retaining the {{RemoteDocument/documentUrl}}
-                    for documents being processed via this algorithm for use in resolving <var>context</var>.
                   </div>
                 </li>
                 <li>If the number of entries in the <var>remote contexts</var> array
@@ -1262,25 +1244,39 @@
                   previously established <a>internal representation</a>.
                   <div class="note">Only the `@context` <a>entry</a> need be retained.</div>
                 </li>
-                <li class="changed">Otherwise, dereference <var>context</var> using
+                <li class="changed">Otherwise, set <var>context document</var>
+                  to the {{RemoteDocument}} obtained
+                  by dereferencing <var>context</var> using
                   the <a>LoadDocumentCallback</a>, passing <var>context</var>
                   for <a data-link-for="LoadDocumentCallback">url</a>,
                   and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a>
                   and for <a data-link-for="LoadDocumentOptions">requestProfile</a>.
                   <ol>
                     <li id="alg-context-deref-error">If <var>context</var> cannot be dereferenced,
-                      <span class="changed">or cannot be transformed into the <a>internal representation</a></span>,
+                      <span class="changed">
+                        or the {{RemoteDocument/document}} from <var>context document</var>
+                        cannot be transformed into the <a>internal representation</a>
+                      </span>,
                       a <a data-link-for="JsonLdErrorCode">loading remote context failed</a>
-                      error has been detected and processing is aborted. If the dereferenced document has no
+                      error has been detected and processing is aborted.</li>
+                    <li>If the {{RemoteDocument/document}} has no
                       top-level <a class="changed">map</a> with an <code>@context</code> <a>entry</a>, an
                       <a data-link-for="JsonLdErrorCode">invalid remote context</a>
                       has been detected and processing is aborted.</li>
-                    <li>Otherwise, set <var>context</var> to the value of that <a>entry</a>.</li>
+                    <li>Set <var>loaded context</var> to the value of that <a>entry</a>.</li>
                   </ol>
                 </li>
                 <li>Set <var>result</var> to the result of recursively calling this algorithm,
                   passing <var>result</var> for <var>active context</var>,
-                  <var>context</var> for <var>local context</var>, and <span class="changed">a copy of</span> <var>remote contexts</var>.</li>
+                  <var>loaded context</var> for <var>local context</var>,
+                  <span class="changed">
+                    the {{RemoteDocument/documentUrl}} of <var>context document</var> for <var>base URL</var>,
+                  </span>
+                  and <span class="changed">a copy of</span> <var>remote contexts</var>.
+                  <div class="note">If <var>context</var> was previously dereferenced,
+                    <a>processors</a> MUST make provisions for retaining the <var>base URL</var>
+                    of that <a>context</a> for this step.</div>
+                </li>
                 <li>Continue with the next <var>context</var>.</li>
               </ol>
             </li>
@@ -1316,18 +1312,7 @@
                   an <a data-link-for="JsonLdErrorCode">invalid @import value</a>
                   error has been detected and processing is aborted.</li>
                 <li>Initialize <var>import</var> to the result of resolving the value of <code>@import</code> against
-                  the base IRI which is established as specified in
-                  <a data-cite="RFC3986#section-5.1">section 5.1 Establishing a Base URI</a>
-                  of [[RFC3986]]. Only the basic algorithm in
-                  <a data-cite="RFC3986#section-5.2">section 5.2</a>
-                  of [[RFC3986]] is used; neither
-                  <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
-                  <a data-cite="RFC3986#section-6.2.3">Scheme-Based Normalization</a>
-                  are performed. Characters additionally allowed in IRI
-                  references are treated in the same way that unreserved
-                  characters are treated in URI references, per
-                  <a data-cite="RFC3987#section-6.5">section 6.5</a>
-                  of [[RFC3987]].</li>
+                  <var>base URL</var>.</li>
                 <li>Dereference <var>import</var> using
                   the <a>LoadDocumentCallback</a>, passing <var>import</var>
                   for <a data-link-for="LoadDocumentCallback">url</a>,
@@ -1459,6 +1444,7 @@
               <var>context</var> for <var>local context</var>, <var>key</var>,
               <var>defined</var>,
               <span class="changed">
+                <var>base URL</var>,
                 and the value of the <code>@protected</code>
                 entry from <var>context</var>, if any, for <var>protected</var>
               </span>.
@@ -1508,11 +1494,14 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm has four required <span class="changed">and two optional</span> inputs.
+      <p>The algorithm has four required <span class="changed">and three optional</span> inputs.
         The required inputs are
-        an <var>active context</var>, a <var>local context</var>,
-        a <var>term</var>, and a map <var>defined</var>.
+        an <var>active context</var>,
+        a <var>local context</var>,
+        a <var>term</var>,
+        and a map <var>defined</var>.
         <span class="changed">The optional inputs are
+          <var>base URL</var>,
           <var>protected</var> which defaults to <code>false</code>,
           and <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms.</span>.
@@ -1561,7 +1550,10 @@
           <a data-link-for="JsonLdErrorCode">invalid term definition</a>
           error has been detected and processing is aborted.
           <span class="changed">Set <var>simple term</var> to <code>false</code></span>.</li>
-        <li>Create a new <a>term definition</a>, <var>definition</var>.</li>
+        <li>Create a new <a>term definition</a>, <var>definition</var>,
+          <span class="changed">initializing <a>prefix flag</a> to `false`,
+            <a>protected</a> to <var>protected</var>,
+            and <a>reverse property</a> to `false`</span>.</li>
         <li class="changed">If the <code>@protected</code> entry in <var>value</var>
           is <code>true</code> set the <a>protected</a> flag in <var>definition</var> to true.
           If the value of `@protected` is not a <a>boolean</a>,
@@ -1569,9 +1561,6 @@
           If <a>processing mode</a> is `json-ld-1.0`,
           an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
           has been detected and processing is aborted.</li>
-        <li class="changed">Otherwise, if there is no <code>@protected</code> entry in <var>value</var>
-          and the <var>protected</var> parameter is <code>true</code>,
-          set the <a>protected</a> in <var>definition</var> to true.</li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@type</code>:
           <ol>
             <li>Initialize <var>type</var> to the value associated with the
@@ -1632,8 +1621,6 @@
               <code>true</code> and return.</li>
           </ol>
         </li>
-        <li>Set the <a>reverse property</a> flag of <var>definition</var>
-          to <code>false</code>.</li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
@@ -1787,6 +1774,7 @@
               <code>@context</code> <a>entry</a>, which is treated as a <a>local context</a>.</li>
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
               using the <var>active context</var>, <var>context</var> as <var>local context</var>,
+              <var>base URL</var>,
               and <code>true</code> for <var>override protected</var>.
               If any error is detected, an
               <a data-link-for="JsonLdErrorCode">invalid scoped context</a> error
@@ -1795,7 +1783,8 @@
                 is discarded; it is called to detect errors at definition time.
                 If used, the context will be re-processed and applied to the <a>active context</a>
                 as part of <a>expansion</a> or <a>compaction</a>.</p></li>
-            <li>Set the <a>local context</a> of <var>definition</var> to <var>context</var>.</li>
+            <li>Set the <a>local context</a> of <var>definition</var> to <var>context</var>,
+              and <a>base URL</a> to <var>base URL</var>.</li>
           </ol>
         </li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@language</code> and
@@ -1844,7 +1833,7 @@
               <var>term</var> contains a colon (<code>:</code>) or slash (`/`), an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
-            <li>Initialize the <a>prefix flag</a> to the value associated with the
+            <li>Set the <a>prefix flag</a> to the value associated with the
               <code>@prefix</code> <a>entry</a>, which MUST be a <a>boolean</a>. Otherwise, an
               <a data-link-for="JsonLdErrorCode">invalid @prefix value</a>
               error has been detected and processing is aborted.</li>
@@ -2371,9 +2360,11 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes three required <span class="changed">and three optional</span> input variables.
+      <p>The algorithm takes four required <span class="changed">and three optional</span> input variables.
         The required inputs are an <var>active context</var>,
-        an <var>active property</var>, and an <var>element</var> to be expanded.
+        an <var>active property</var>, an <var>element</var> to be expanded,
+        <span class="changed">and a <var>base URL</var> associated with the {{RemoteDocument/documentUrl}} of the original
+          document to expand</span>.
         <span class="changed">The optional inputs are the
           {{JsonLdOptions/frameExpansion}}
           flag allowing special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a>,
@@ -2426,7 +2417,9 @@
             <li class="changed">If <var>property-scoped context</var> is defined,
               set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var> and <var>property-scoped context</var> as <var>local context</var>.</li>
+              passing <var>active context</var>, <var>property-scoped context</var> as <var>local context</var>,
+              and <var>base URL</var> from the <a>term definition</a> for <var>active property</var>
+              in <var>active context</var>.</li>
             <li>Return the result of the
               <a href="#value-expansion">Value Expansion algorithm</a>, passing the
               <var>active context</var>, <var>active property</var>, and
@@ -2441,6 +2434,7 @@
                 <li>Initialize <var>expanded item</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>item</var> as <var>element</var>,
+                  <var class="changed">base URL</var>,
                   <span class="changed">the {{JsonLdOptions/frameExpansion}}
                     {{JsonLdOptions/ordered}}</span>,
                     and <var>from map</var> flags.</li>
@@ -2472,12 +2466,15 @@
           set <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
           passing <var>active context</var>, <var>property-scoped context</var> as <var>local context</var>,
+          <var>base URL</var> from the <a>term definition</a> for <var>active property</var>,
+          in <var>active context</var>
           and `true` for <var>override protected</var>.</li>
         <li>If <var>element</var> contains the <a>entry</a> <code>@context</code>, set
           <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-          passing <var>active context</var> and the value of the
-          <code>@context</code> <a>entry</a> as <var>local context</var>.</li>
+          passing <var>active context</var>, the value of the
+          <code>@context</code> <a>entry</a> as <var>local context</var>
+          <span class="changed">and <var>base URL</var>.</li>
         <li class="changed">Initialize <var>type-scoped context</var> to <var>active context</var>.
           This is used for expanding values that may be relevant to any previous
           <a>type-scoped context</a>.</li>
@@ -2494,6 +2491,8 @@
               passing <var>active context</var>,
               the value of the
               <var>term</var>'s <a>local context</a> as <var>local context</var>,
+              <var>base URL</var> from the <a>term definition</a> for <var>value</var>
+              in <var>active context</var>,
               and `false` for <var>propagate</var>.</li>
           </ol>
         </li>
@@ -2590,6 +2589,7 @@
                   <var>expanded value</var> to the result of using this algorithm
                   recursively passing <var>active context</var>, <code>@graph</code>
                   for <var>active property</var>, <var>value</var> for <var>element</var>,
+                  <var class="changed">base URL</var>,
                   <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                     and {{JsonLdOptions/ordered}} flags</span>,
                   <span class="changed">
@@ -2601,6 +2601,7 @@
                     <li>Set <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
+                      <var>base URL</var>,
                       and the {{JsonLdOptions/frameExpansion}}
                       and {{JsonLdOptions/ordered}} flags,
                       ensuring that the result is an <a>array</a>.</li>
@@ -2694,6 +2695,7 @@
                     <li id="alg-expand-list-value">Otherwise, initialize <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
                       <var>active property</var>, <var>value</var> for <var>element</var>,
+                      <var class="changed">base URL</var>,
                       <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                         and {{JsonLdOptions/ordered}} flags,
                         ensuring that the result is an <a>array</a>.</span>.</li>
@@ -2703,6 +2705,7 @@
                   <var>expanded value</var> to the result of using this algorithm
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
+                  <var class="changed">base URL</var>,
                   <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li>If <var>expanded property</var> is <code>@reverse</code>:
@@ -2714,6 +2717,7 @@
                       algorithm recursively, passing <var>active context</var>,
                       <code>@reverse</code> as <var>active property</var>,
                       <var>value</var> as <var>element</var>,
+                      <var class="changed">base URL</var>,
                       <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                         and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>If <var>expanded value</var> contains an <code>@reverse</code> <a>entry</a>,
@@ -2763,6 +2767,7 @@
                   <a href="#expansion-algorithm">Expansion Algorithm</a>
                   recursively, passing <var>active context</var>,
                   <var>active property</var>, <var>value</var> for <var>element</var>,
+                  <var>base URL</var>,
                   <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
                 <li id="alg-expand-expanded-property-to-result">Unless <var>expanded value</var> is <code>null</code>,
@@ -2849,8 +2854,10 @@
                       <var>map context</var> to the result of the
                       <a href="#context-processing-algorithm">Context Processing algorithm</a>,
                       passing <var>map context</var> as <var>active context</var>
-                      and the value of the <var>index</var>'s <a>local context</a>
-                      as <var>local context</var>.</li>
+                      the value of the <var>index</var>'s <a>local context</a>
+                      as <var>local context</var>
+                      and <var>base URL</var> from the <a>term definition</a> for <var>index</var>
+                      in <var>map context</var>.</li>
                       <li>Otherwise, set <var>map context</var> to <var>active context</var>.</li>
                     <li>Initialize <var>expanded index</var> to the result of
                       <span class="changed"><a>IRI expanding</a></span> <var>index</var>.</li>
@@ -2862,6 +2869,7 @@
                       <var class="changed">map context</var> as <var>active context</var>,
                       <var>key</var> as <var>active property</var>,
                       <var>index value</var> as <var>element</var>,
+                      <var class="changed">base URL</var>,
                       <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                         and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
@@ -2921,6 +2929,7 @@
             <li>Otherwise, initialize <var>expanded value</var> to the result of
               using this algorithm recursively, passing <var>active context</var>,
               <var>key</var> for <var>active property</var>, <var>value</var> for <var>element</var>,
+              <var class="changed">base URL</var>,
               <span class="changed">and the {{JsonLdOptions/frameExpansion}}
                 and {{JsonLdOptions/ordered}} flags</span>.</li>
             <li>If <var>expanded value</var> is <code>null</code>, ignore <var>key</var>
@@ -3397,14 +3406,17 @@
           and <var>element</var> does not consist of a single <code>@id</code> entry,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
-        <li class="changed">If the <a>term definition</a> for <var>active property</var> has a
-          <a>local context</a>:
+        <li class="changed">If the <a>term definition</a> for <var>active property</var> in <var>active context</var>
+          has a <a>local context</a>:
           <ol>
             <li>Set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-              passing <var>active context</var>, the value of the
-              <var>active property</var>'s <a>local context</a> as <var>local context</var>,
-              <span class="changed">and <code>true</code> for <var>override protected</var></span>.</li>
+              passing <var>active context</var>,
+              the value of the <var>active property</var>'s <a>local context</a> as <var>local context</var>,
+              <span class="changed">
+                <var>base URL</var> from the <a>term definition</a> for <var>active property</var>
+                in <var>active context</var>,
+                and <code>true</code> for <var>override protected</var></span>.</li>
             <li>Set <var>inverse context</var> using the
               <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
               using <var>active context</var>.</li>
@@ -3446,7 +3458,10 @@
                 <li>Set <var>active context</var> to the result of the
                   <a href="#context-processing-algorithm">Context Processing algorithm</a>,
                   passing <var>active context</var> and the value of <var>term</var>'s
-                  <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>.</li>
+                  <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>
+                  <span class="changed">
+                    <var>base URL</var> from the <a>term definition</a> for <var>term</var>
+                    in <var>type-scoped context</var></span>.</li>
                 <li>Set <var>inverse context</var> using the
                   <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
                   using <var>active context</var>.</li>
@@ -5603,10 +5618,10 @@
 
     <p>If the <a data-link-for="JsonLdOptions">documentLoader</a>
       option is specified, it is used to dereference remote documents and contexts.
-      The <a data-link-for="RemoteDocument">documentUrl</a>
+      The {{RemoteDocument/documentUrl}}
       in the returned <a>RemoteDocument</a>
       is used as <a>base IRI</a> and the
-      <a data-link-for="RemoteDocument">contextUrl</a>
+      {{RemoteDocument/contextUrl}}
       is used instead of looking at the HTTP Link Header directly. For the sake of simplicity, none of the algorithms
       in this document mention this directly.</p>
 
@@ -5658,6 +5673,8 @@
             and <a data-lt="jsonldprocessor-compact-options">options</a>,
             <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
             <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>false</code></span>.</li>
+          <li class="changed">Set <var>context base</var> to the {{RemoteDocument/documentUrl}} obtained
+            when loading the document in the previous step.</li>
           <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a>
             having an <code>@context</code> <a>entry</a>,
             set <var>context</var> to that <a data-lt="entry">entry's</a> value,
@@ -5665,7 +5682,8 @@
           <li class="changed">Initialize <var>active context</var>
             to the result of the <a href="#context-processing-algorithm">Context Processing algorithm</a>
             passing a new empty <a>context</a> as <var>active context</var>
-            and <var>context</var> as <var>local context</var>.</li>
+            <var>context</var> as <var>local context</var>,
+            and <var>context base</var> as <var>base URL</var>.</li>
           <li>Initialize <var>inverse context</var> to the result of performing the
             <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>.</li>
           <li>Initialize <a>base IRI</a> to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
@@ -5728,28 +5746,30 @@
             for <a data-link-for="LoadDocumentCallback">url</a>,
             the {{JsonLdOptions/extractAllScripts}} option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
-          <li class="changed">If <a data-link-for="RemoteDocument">document</a>
+          <li class="changed">If {{RemoteDocument/document}}
             from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
-            If <a data-link-for="RemoteDocument">document</a> cannot be transformed to the <a>internal representation</a>,
+            If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Initialize a new empty <var>active context</var>.
-            The <a>base IRI</a> of the <var>active context</var> is set to the <a data-link-for="RemoteDocument">documentUrl</a>
+            The <a>base IRI</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
             from <var>remote document</var>, if available;
             otherwise to <code>null</code>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
           <li>If an {{JsonLdOptions/expandContext}} option has been passed,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-            passing the {{JsonLdOptions/expandContext}} as <var>local context</var>.
+            passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
+            and {{JsonLdOptions/expandContext}} as <var>base URL</var>.
             If {{JsonLdOptions/expandContext}} is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
             pass that <a data-lt="entry">entry's</a> value instead.</li>
-          <li>If <var>remote document</var> has a <a data-link-for="RemoteDocument">contextUrl</a>,
+          <li>If <var>remote document</var> has a {{RemoteDocument/contextUrl}},
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-            passing the <a data-link-for="RemoteDocument">contextUrl</a> as <var>local context</var>.</li>
+            passing the {{RemoteDocument/contextUrl}} as <var>local context</var>,
+            and {{RemoteDocument/contextUrl}} as <var>base URL</var>.</li>
           <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
             passing the <var>active context</var>,
-            and <a data-link-for="RemoteDocument">document</a>
-            from <var>remote document</var>, or <a data-lt="jsonldprocessor-expand-input">input</a>
+            {{RemoteDocument/document}} from <var>remote document</var> or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
+            {{RemoteDocument/documentUrl}} as <var>base URL</var>,
             and if passed, the <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
             <span class="changed">and {{JsonLdOptions/ordered}}</span>
             flags in <a data-lt="jsonldprocessor-compact-options">options</a>.
@@ -6251,7 +6271,7 @@
           <code>+json</code> suffix as defined in [[RFC6839]].
           Reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
         <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using <var>document</var>,
-          the returned <a>Content-Type</a> (without parameters) as <a data-link-for="RemoteDocument">contentType</a>,
+          the returned <a>Content-Type</a> (without parameters) as {{RemoteDocument/contentType}},
           any returned <code>profile</code> parameter,
           and any <var>contextUrl</var>.</li>
         <li>Resolve the <var>promise</var> with <var>remote document</var>.</li>
@@ -6284,7 +6304,7 @@
           unless a specific <a data-cite="RFC3986#section-3.5">fragment identifier</a> is targeted,
           extracts all encountered <a>JSON-LD script elements</a> using an <a>array</a> form, if necessary.</dd>
         <dt><dfn data-dfn-for="LoadDocumentOptions">profile</dfn></dt>
-        <dd>When the resulting <a data-link-for="RemoteDocument">contentType</a> is <code>text/html</code>
+        <dd>When the resulting {{RemoteDocument/contentType}} is <code>text/html</code>
           or <code>application/xhtml+xml</code>,
            this option determines the profile to use for selecting <a>JSON-LD script elements</a>.</dd>
         <dt><dfn data-dfn-for="LoadDocumentOptions">requestProfile</dfn></dt>
@@ -6330,7 +6350,7 @@
           of the loaded document, exclusive of any optional parameters.</dd>
         <dt class="changed"><dfn data-dfn-for="RemoteDocument">profile</dfn></dt>
         <dd class="changed">The value of any <code>profile</code> parameter
-          retrieved as part of the original <a data-link-for="RemoteDocument">contentType</a>.</dd>
+          retrieved as part of the original {{RemoteDocument/contentType}}.</dd>
       </dl>
     </section>
   </section> <!-- end of Remote Document and Context Retrieval -->
@@ -6778,7 +6798,7 @@
       extracting either a specifically targeted <a data-cite="HTML/scripting.html#the-script-element">script element</a>,
       the first found <a>JSON-LD script element</a>,
       or all <a>JSON-LD script elements</a>.</li>
-    <li>Added <a data-link-for="RemoteDocument">contentType</a> field to <a>RemoteDocument</a>.</li>
+    <li>Added {{RemoteDocument/contentType}} field to <a>RemoteDocument</a>.</li>
     <li>Added support for protected <a>contexts</a> and <a>term definitions</a>.</li>
     <li>Because scoped contexts can lead to contexts being reloaded, replace the
       <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
