@@ -6116,14 +6116,14 @@
         USVString?             base;
         boolean                compactArrays = true;
         boolean                compactToRelative = true;
-        LoadDocumentCallback   documentLoader = null;
+        LoadDocumentCallback?  documentLoader = null;
         (JsonLdDictionary? or USVString) expandContext = null;
         boolean                extractAllScripts = false;
         boolean                frameExpansion = false;
         boolean                ordered = false;
-        USVString              processingMode = null;
+        USVString              processingMode = "json-ld-1.1";
         boolean                produceGeneralizedRdf = true;
-        USVString              rdfDirection = null;
+        USVString?             rdfDirection = null;
         boolean                useNativeTypes = false;
         boolean                useRdfType = false;
       };
