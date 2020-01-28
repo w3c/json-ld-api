@@ -4935,8 +4935,13 @@
           <var>item</var> is a <a>value object</a> which is serialized using special rules.
           <ol>
             <li id="alg-obj2rdf-direction-language">
-              Initialize <var>language</var> to the value of `@language` in <var>item</var>,
-              or the empty string (`""`) if there is no such entry.</li>
+              Initialize <var>language</var> to the value of `@language` in <var>item</var>
+              normalized to lower case,
+              or the empty string (`""`) if there is no such entry.
+              <div class="note">Generally, language tags are not normalized,
+                but when creating an `i18n-datatype` or `compound-literal`
+                values are normalized to lower case for improved interoperability.</div>
+            </li>
             <li>If {{JsonLdOptions/rdfDirection}} is `i18n-datatype`,
               set <var>datatype</var> to the result of appending <var>language</var>
               and the value of `@direction` in <var>item</var> separated by an underscore (`"_"`)
@@ -4955,9 +4960,8 @@
                   as the object, and add it to <var>list triples</var>.</li>
                 <li>If the <var>item</var> has an entry for `@language`,
                   create a new triple using <var>literal</var> as the subject,
-                  `rdf:language` as the predicate, and the value of `@language` in <var>item</var>
-                  as the object, and add it to <var>list triples</var>.
-                  <div class="changed note">Processors MAY normalize <a>language tags</a> to lower case.</div></li>
+                  `rdf:language` as the predicate, and <var>language</var>
+                  as the object, and add it to <var>list triples</var>.</li>
                 <li>Create a new triple using <var>literal</var> as the subject,
                   `rdf:direction` as the predicate, and the value of `@direction` in <var>item</var>
                   as the object, and add it to <var>list triples</var>.</li>
@@ -6863,6 +6867,8 @@
       <a href="#node-map-generation" class="sectionRef"></a>,
       and <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>.
     </li>
+    <li>When creating an `i18n` datatype or `rdf:CompoundLiteral`, <a>language tags</a> are
+      normalized to lower case to improve interoperability between implementations.</li>
   </ul>
 </section>
 <!--section class="appendix informative" id="changes-from-cr">
