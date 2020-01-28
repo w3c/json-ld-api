@@ -2378,8 +2378,7 @@
           the {{JsonLdOptions/ordered}} flag, used to order
           <a>map entry</a> keys lexicographically, where noted,
           and the <var>from map</var> flag, used to control reverting
-          previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.
-          If not passed, the both flags are set to <code>false</code></span>.</p>
+          previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.</p>
 
       <p class="changed">The algorithm also performs processing steps specific to expanding
         a <a>JSON-LD Frame</a>. For a <a>frame</a>, the <code>@id</code> and
@@ -3373,8 +3372,7 @@
         <span class="changed">The optional inputs are the
           {{JsonLdOptions/compactArrays}} flag
           and the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted.
-          If not passed, the both flags are set to <code>false</code></span>.</p>
+          <a>map entry</a> keys lexicographically, where noted.</p>
 
       <ol>
         <li class="changed">Initialize <var>type-scoped context</var> to <var>active context</var>.
@@ -4332,8 +4330,7 @@
         The required input is an <var>element</var> to flatten.
         <span class="changed">The optional input is
           the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted.
-        If not passed, the {{JsonLdOptions/ordered}} flag is set to <code>false</code></span>.</p>
+          <a>map entry</a> keys lexicographically, where noted.</p>
 
       <p>This algorithm uses the
         <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
@@ -5706,9 +5703,9 @@
             <var>inverse context</var>,
             <code>null</code> for <var>active property</var>,
             <var>expanded input</var> as <var>element</var>,
-            and if passed, the {{JsonLdOptions/compactArrays}}
+            and the {{JsonLdOptions/compactArrays}}
             <span class="changed">and {{JsonLdOptions/ordered}}</span>
-            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.
+            flags from <a data-lt="jsonldprocessor-compact-options">options</a>.
             <ol id="api-compact-post-processing" class="changed">
               <li>If <var>compacted output</var> is an empty <a>array</a>,
                 replace it with a new <a>map</a>.</li>
@@ -5719,7 +5716,7 @@
                 and value is <var>compacted output</var>.</li>
               <li>If <a data-lt="jsonldprocessor-compact-context">context</a> was not <code>null</code>,
                 add an <code>@context</code> <a>entry</a> to <var>compacted output</var> and set its value
-                to the passed <var>context</var>.</li>
+                to the provided <var>context</var>.</li>
             </ol>
           </li>
           <li>Resolve the <var>promise</var> with <var>compacted output</var>
@@ -5739,7 +5736,9 @@
             or an array consisting of <a class="changed">maps</a> and <a>IRI</a>s.</dd>
           <dt><dfn data-lt="jsonldprocessor-compact-options" data-lt-noDefault>options</dfn></dt>
           <dd>A set of options to configure the algorithms.
-            This allows, e.g., to set the input document's base <a>IRI</a>.</dd>
+            This allows, e.g., to set the input document's base <a>IRI</a>.
+            <span class="changed">The {{JsonLdOptions}} type defines default option values.</span>
+          </dd>
         </dl>
       </dd>
 
@@ -5751,11 +5750,12 @@
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
-          <li>If the passed <a data-lt="jsonldprocessor-expand-input">input</a>
+          <li>If the provided <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
             for <a data-link-for="LoadDocumentCallback">url</a>,
-            the {{JsonLdOptions/extractAllScripts}} option for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
+            the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-expand-options">options</a>
+            for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
           <li class="changed">If {{RemoteDocument/document}}
             from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
@@ -5766,7 +5766,7 @@
             from <var>remote document</var>, if available;
             otherwise to <code>null</code>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
-          <li>If an {{JsonLdOptions/expandContext}} option has been passed,
+          <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set, 
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
             and {{JsonLdOptions/expandContext}} as <var>base URL</var>.
@@ -5781,9 +5781,9 @@
             {{RemoteDocument/document}} from <var>remote document</var> or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
             {{RemoteDocument/documentUrl}} as <var>base URL</var>,
-            and if passed, the <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
-            <span class="changed">and {{JsonLdOptions/ordered}}</span>
-            flags in <a data-lt="jsonldprocessor-compact-options">options</a>.
+            and <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
+            and <span class="changed">and {{JsonLdOptions/ordered}}</span>
+            flags from <a data-lt="jsonldprocessor-compact-options">options</a>.
             <ol id="api-expand-post-processing" class="changed">
               <li>If <var>expanded output</var> is a
                 <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>,
@@ -5806,14 +5806,16 @@
             or an <a>IRI</a> referencing the <a>JSON-LD document</a> to expand.</dd>
           <dt><dfn data-lt="jsonldprocessor-expand-options" data-lt-noDefault>options</dfn></dt>
           <dd>A set of options to configure the used algorithms.
-            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
+            This allows, e.g., to set the input document's <a>base IRI</a>.
+            <span class="changed">The {{JsonLdOptions}} type defines default option values.</span>
+          </dd>
         </dl>
       </dd>
 
       <dt><dfn data-dfn-for="JsonLdProcessor">flatten()</dfn></dt>
       <dd class="algorithm">
         <p><a href="#flattening">Flattens</a> the given <a data-lt="jsonldprocessor-flatten-input">input</a>
-          and optionally <a>compacts</a> it using the passed <a data-lt="jsonldprocessor-flatten-context">context</a>
+          and optionally <a>compacts</a> it using the provided <a data-lt="jsonldprocessor-flatten-context">context</a>
           according to the steps in the <a href="#flattening-algorithm">Flattening algorithm</a>:</p>
 
         <ol>
@@ -5822,8 +5824,7 @@
           <li>Set <var>expanded input</var> to the result of using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-flatten-input">input</a>
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
-            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
-            <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>.</li>
           <li class="changed">Initialize the <a>base IRI</a> to the {{JsonLdOptions/base}} option
             from <a data-lt="jsonldprocessor-flatten-options">options</a>, if set;
             otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
@@ -5832,8 +5833,8 @@
           <li>Initialize an empty <var>identifier map</var>.</li>
           <li>Set <var>flattened output</var> to the result of using the <a href="#flattening-algorithm">Flattening algorithm</a>,
             passing <var>expanded input</var> as <var>element</var>,
-            <span class="changed">and if passed, the {{JsonLdOptions/ordered}} flag
-              in <a data-lt="jsonldprocessor-flatten-options">options</a></span>.
+            <span class="changed">and the {{JsonLdOptions/ordered}} flag
+              from <a data-lt="jsonldprocessor-flatten-options">options</a></span>.
             <ol id="api-flatten-post-processing" class="changed">
               <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is not <code>null</code>,
                 set <var>flattened output</var> to the result of
@@ -5859,11 +5860,12 @@
             it can be specified by using a <a class="changed">map</a>,
             an <a>IRI</a>, or an array consisting of <a class="changed">maps</a>
             and <a>IRI</a>s.
-            If not passed or <code>null</code> is passed,
-            the result will not be compacted but kept in expanded form.</dd>
+            If <code>null</code>, the result will not be compacted but kept in expanded form.</dd>
           <dt><dfn data-lt="jsonldprocessor-flatten-options" data-lt-noDefault>options</dfn></dt>
           <dd>A set of options to configure the used algorithms.
-            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
+            This allows, e.g., to set the input document's <a>base IRI</a>.
+            <span class="changed">The {{JsonLdOptions}} type defines default option values.</span>
+          </dd>
         </dl>
       </dd>
 
@@ -5895,7 +5897,9 @@
              or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-fromRdf-options" data-lt-noDefault>options</dfn></dt>
           <dd>A set of options to configure the used algorithms.
-            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
+            This allows, e.g., to set the input document's <a>base IRI</a>.
+            <span class="changed">The {{JsonLdOptions}} type defines default option values.</span>
+          </dd>
         </dl>
       </dd>
 
@@ -5911,8 +5915,7 @@
             <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>
-            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
-            <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>map</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
@@ -5920,7 +5923,7 @@
             and <var>node map</var>.</li>
           <li>Invoke the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
             passing <var>node map</var>, <var>dataset</var>,
-            and if passed, the {{JsonLdOptions/produceGeneralizedRdf}} flag in <a data-lt="jsonldprocessor-toRdf-options">options</a>.
+            and the {{JsonLdOptions/produceGeneralizedRdf}} flag from <a data-lt="jsonldprocessor-toRdf-options">options</a>.
             <div class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
               and may be removed in a future version of JSON-LD,
               as is the support for <a>generalized RDF Datasets</a>
@@ -5936,7 +5939,9 @@
              or an <a>IRI</a> referencing the JSON-LD document to flatten.</dd>
           <dt><dfn data-lt="jsonldprocessor-toRdf-options" data-lt-noDefault>options</dfn></dt>
           <dd>A set of options to configure the used algorithms.
-            This allows, e.g., to set the input document's <a>base IRI</a>.</dd>
+            This allows, e.g., to set the input document's <a>base IRI</a>.
+            <span class="changed">The {{JsonLdOptions}} type defines default option values.</span>
+          </dd>
         </dl>
       </dd>
     </dl>
