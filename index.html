@@ -3910,8 +3910,8 @@
                   otherwise to `@none`.</li>
               </ol>
             </li>
-            <li class="changed">If `@preserve` is an <a>entry</a> in <var>value</var>, use the first
-              element from the value of <code>@preserve</code> as <var>value</var>.</li>
+            <li class="changed">If <var>value</var> is a <a>map</a> containing an `@preserve` <a>entry</a>,
+              use the first element from the value of <code>@preserve</code> as <var>value</var>.</li>
             <li>Initialize <var>containers</var> to an empty <a>array</a>. This
               <a>array</a> will be used to keep track of an ordered list of
               preferred <a>container mapping</a> for a <a>term</a>,
@@ -3926,9 +3926,9 @@
               variables will keep track of the preferred
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
-            <li>If `@index` is an <a>entry</a> in <var>value</var> is a <a class="changed">map</a>,
-              <span class="changed">and <var>value</var> is not a <a>graph object</a></span>
-              then append the values <code>@index</code> <span class="changed">and <code>@index@set</code></span> to <var>containers</var>.</li>
+            <li class="changed">If <var>value</var> is a <a>map</a> containing an `@index` <a>entry</a> which is also is a <a>map</a>,
+              and <var>value</var> is not a <a>graph object</a>
+              then append the values <code>@index</code> and <code>@index@set</code> to <var>containers</var>.</li>
             <li>If <var>reverse</var> is <code>true</code>, set <var>type/language</var>
               to <code>@type</code>, <var>type/language value</var> to
               <code>@reverse</code>, and append <code>@set</code> to <var>containers</var>.</li>
@@ -4039,7 +4039,7 @@
                       and append <code>@language</code>,
                       <span class="changed">and <code>@language@set</code></span> to
                       <var>containers</var>.</li>
-                    <li>Otherwise, if <var>value</var> contains a
+                    <li>Otherwise, if <var>value</var> contains an
                       <code>@type</code> <a>entry</a>, then set <var>type/language value</var> to
                       its associated value and set <var>type/language</var> to
                       <code>@type</code>.</li>
@@ -4058,13 +4058,13 @@
               be the last <a>container mapping</a> value to be checked as it
               is the most generic.</li>
             <li class="changed">
-              If <a>processing mode</a> is not `json-ld-1.0` and <var>value</var> does not contain an <code>@index</code> <a>entry</a>,
+              If <a>processing mode</a> is not `json-ld-1.0` and <var>value</var> is not a <a>map</a>
+              or does not contain an <code>@index</code> <a>entry</a>,
               append <code>@index</code> and <code>@index@set</code> to <var>containers</var>.
-            </li>
             <li class="changed">
-              If <a>processing mode</a> is not `json-ld-1.0` and `@value` is the only <a>entry</a> in <var>value</var>,
-              append <code>@language</code> and <code>@language@set</code> to <var>containers</var>.
-            </li>
+              If <a>processing mode</a> is not `json-ld-1.0`,
+              <var>value</var> is a <a>map</a> containing only an `@value` <a>entry</a>,
+              append <code>@language</code> and <code>@language@set</code> to <var>containers</var>.</li>
             <li>If <var>type/language value</var> is <code>null</code>,
               set <var>type/language value</var> to <code>@null</code>.
               This is the key under which <code>null</code> values
@@ -4075,8 +4075,8 @@
               <a>language mapping</a>.</li>
             <li>If <var>type/language value</var> is <code>@reverse</code>, append
               <code>@reverse</code> to <var>preferred values</var>.</li>
-            <li>If <var>type/language value</var> is <code>@id</code> or <code>@reverse</code>
-              and `@id` is an <a>entry</a> in <var>value</var>:
+            <li>If <var>type/language value</var> is <code>@id</code> or <code>@reverse</code>,
+              <var>value</var> is a <a>map</a> containing an `@id` <a>entry</a>:
               <ol>
                 <li>If the result of
                   <span class="changed"><a>IRI compacting</a>
