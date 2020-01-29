@@ -1070,6 +1070,7 @@
       <li>the active <a>term definitions</a> which specify how
         keys and values have to be interpreted (<a>array</a> of <a>term definitions</a>),</li>
       <li>the current <a>base IRI</a> (<a>IRI</a>),</li>
+      <li class="changed">the <dfn>original base URL</dfn> (<a>IRI</a>),</li>
       <li>an optional <a>vocabulary mapping</a> (<a>IRI</a>),</li>
       <li>an optional <a>default language</a> (<a>string</a>),</li>
       <li class="changed">an optional <a>default base direction</a>  (`"ltr"` or `"rtl"`),</li>
@@ -1154,6 +1155,15 @@
         it may be rolled back when a new <a>node object</a> is entered.
         By default, all contexts are propagated, other than <a>type-scoped contexts</a>.</p>
 
+      <p class="changed">
+        When an <a>active context</a> is initialized, the value
+        of the <a>original base URL</a>
+        is initialized from the original {{RemoteDocument/documentUrl}}
+        of the document containing the initial <a>context</a>.
+        This is necessary when resetting the <a>active context</a>
+        by setting it to `null`
+        to retain the original default <a>base IRI</a>.</p>
+
       <p>Then, for every other <a>entry</a> in <a>local context</a>, we update
         the <a>term definition</a> in <var>result</var>. Since
         <a>term definitions</a> in a <a>local context</a>
@@ -1211,15 +1221,13 @@
                   contains any <a>protected</a> <a>term definitions</a>,
                   an <a data-link-for="JsonLdErrorCode">invalid context nullification</a>
                   has been detected and processing is aborted.</li>
-                <li>Otherwise, initialize <var>result</var> as a
-                  newly-initialized <var>active context</var>,
+                <li>Initialize <var>result</var> as a
+                  newly-initialized <a>active context</a>,
                   <span class="changed">setting <a>previous context</a> in <var>result</var>
-                    to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code></span>
-                    and <a>base IRI</a> to the value of the {{JsonLdOptions/base}} option
-                    of the <a href="#the-application-programming-interface" class="sectionRef"></a>,
-                    if provided, otherwise to <var>base URL</var>.
-                  Continue with the next <var>context</var>.
-                </li>
+                    to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code>
+                    and both <a>base IRI</a> and <a>original base URL</a> to the value of
+                    <a>original base URL</a> in <var>active context</var></span>.</li>
+                <li>Continue with the next <var>context</var>.</li>
               </ol>
             </li>
             <li id="alg-context-string">If <var>context</var> is a <a>string</a>,
@@ -5750,7 +5758,7 @@
             If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Initialize a new empty <var>active context</var>.
-            The <a>base IRI</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
+            The <a>base IRI</a> and <a>original base URL</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
             from <var>remote document</var>, if available;
             otherwise to <code>null</code>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
