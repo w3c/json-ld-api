@@ -68,6 +68,7 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 <li>Some algorithms, particularly <em>fromRdf</em>, may not preserve the order of statements listed in the input document, and provision should be taken for performing unordered array comparison, for arrays other than values of <code>@list</code>. (This may be difficult for compacted results, where array value ordering is dependent on the associated term definition).</li>
 <li>Some <em>toRdf</em> tests require the use of <a href="https://tools.ietf.org/html/draft-rundgren-json-canonicalization-scheme-05">JSON Canonicalization Scheme</a> to properly generate RDF Literals from JSON literal values. This algorithm is non-normative, but is assumed to be used to properly compare results using <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism">RDF Dataset Isomorphism</a>. These tests are marked using the <code>useJCS</code> option.</li>
 <li>When comparing documents after flattening, framing or generating RDF, blank node identifiers may not be predictable. Implementations using the JSON-LD 1.0 algorithm, where output is always sorted and blank node identifiers are generated sequentially from <code>_:b0</code> may continue to use a simple object comparison. Otherwise, implementations should take this into consideration. (One way to do this may be to reduce both results and <em>expected</em> to datsets to extract a bijective mapping of blank node labels between the two datasets as described in <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism">RDF Dataset Isomorphism</a>).</li>
+<li>Some tests may have a <code>requires</code> property, indicating some optional behavior described by a test vocabulary term.</li>
 </ul>
 
 <h1>Contributing Tests</h1>
@@ -970,6 +971,8 @@ Test t0118 produce generalized RDF flag
 <dd>true</dd>
 </dl>
 </dd>
+<dt>Requires</dt>
+<dd>GeneralizedRdf</dd>
 </dl>
 </dd>
 <dt id='t0119'>
@@ -2444,6 +2447,8 @@ Test tdi09 rdfDirection: i18n-datatype with direction and no language
 <dd>i18n-datatype</dd>
 </dl>
 </dd>
+<dt>Requires</dt>
+<dd>I18nDatatype</dd>
 </dl>
 </dd>
 <dt id='tdi10'>
@@ -2474,6 +2479,8 @@ Test tdi10 rdfDirection: i18n-datatype with direction and language
 <dd>i18n-datatype</dd>
 </dl>
 </dd>
+<dt>Requires</dt>
+<dd>I18nDatatype</dd>
 </dl>
 </dd>
 <dt id='tdi11'>
@@ -2504,6 +2511,8 @@ Test tdi11 rdfDirection: compound-literal with direction and no language
 <dd>compound-literal</dd>
 </dl>
 </dd>
+<dt>Requires</dt>
+<dd>CompoundLiteral</dd>
 </dl>
 </dd>
 <dt id='tdi12'>
@@ -2534,6 +2543,8 @@ Test tdi12 rdfDirection: compound-literal with direction and language
 <dd>compound-literal</dd>
 </dl>
 </dd>
+<dt>Requires</dt>
+<dd>CompoundLiteral</dd>
 </dl>
 </dd>
 <dt id='te001'>
@@ -4188,6 +4199,8 @@ Test te075 @vocab as blank node identifier
 <dd>true</dd>
 </dl>
 </dd>
+<dt>Requires</dt>
+<dd>GeneralizedRdf</dd>
 </dl>
 </dd>
 <dt id='te076'>
