@@ -74,8 +74,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2019-11-16' property='dc:issued'>
-16 November 2019
+<time class='dt-published' datetime='2020-02-12' property='dc:issued'>
+12 February 2020
 </time>
 </h2>
 <dl>
@@ -237,15 +237,31 @@ Report Generation Software
 </ul>
 </section>
 <section id='instructions-for-submitting-implementation-reports'>
-<h2 id="instructions-for-submitting-implementation-reports">Instructions for submitting implementation reports</h2>
-<p>Tests should be run using the test manifests defined in the <a href="#test-manifests">Test Manifests</a> Section.</p>
+<h2>Instructions for submitting implementation reports</h2>
+
+<p>Tests should be run using the test manifests defined in the
+  <a href="#test-manifests">Test Manifests</a> Section.</p>
+
 <p>The assumed base URI for the tests is <code>&lt;http://example/base/&gt;</code> if needed.</p>
-<p>Reports should be submitted in Turtle format to <a href="mailto:public-json-ld-wg@w3.org">Public JSON-LD WG</a> and include an <code>earl:Assertion</code> for each test, referencing the test resource from the associated manifest and the test subject being reported upon. An example test entry is be the following:</p>
-<pre><code>  [ a earl:Assertion;&#x000A;    earl:assertedBy &lt;--your-developer-identifier--&gt;;&#x000A;    earl:subject &lt;--your-software-identifier--&gt;;&#x000A;    earl:test &lt;--uri-of-test-from-manifest&gt;;&#x000A;    earl:result [&#x000A;      a earl:TestResult;&#x000A;      earl:outcome earl:passed;&#x000A;      dc:date &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime];&#x000A;    earl:mode earl:automatic ] .</code></pre>
-<p>The Test Subject should be defined as a <code>doap:Project</code>, including the name, homepage and developer(s) of the software (see <a href="https://github.com/edumbill/doap/wiki">DOAP</a>). Optionally, including the project description and programming language. An example test subject description is the following:</p>
-<pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool JSON-LD Parser&quot; ;&#x000A;    doap:revision      &quot;Software version number&quot; ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .</code></pre>
-<p>The software developer, either an organization or one or more individuals SHOULD be referenced from <code>doap:developer</code> using <a href="http://xmlns.com/foaf/spec">FOAF</a>. For example:</p>
-<pre><code>  &lt;--your-developer-identifier--&gt; a foaf:Person, earl:Assertor;&#x000A;    foaf:name &quot;--My Name--&quot;;&#x000A;    foaf:homepage &lt;--my homepage--&gt; .</code></pre>
+
+<p>Reports should be submitted in Turtle format to
+  <a href="mailto:public-json-ld-wg@w3.org">Public JSON-LD WG</a>
+  and include an <code>earl:Assertion</code>
+  for each test, referencing the test resource from the associated manifest
+  and the test subject being reported upon. An example test entry is be the following:</p>
+
+<pre><code>  [ a earl:Assertion;&#x000A;    earl:assertedBy &lt;--your-developer-identifier--&gt;;&#x000A;    earl:subject &lt;--your-software-identifier--&gt;;&#x000A;    earl:test &lt;--uri-of-test-from-manifest&gt;;&#x000A;    earl:result [&#x000A;      a earl:TestResult;&#x000A;      earl:outcome earl:passed;&#x000A;      dc:date &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime];&#x000A;    earl:mode earl:automatic ] .&#x000A;</code></pre>
+
+<p>The Test Subject should be defined as a <code>doap:Project</code>, including the name,
+  homepage and developer(s) of the software (see <a href="https://github.com/edumbill/doap/wiki">DOAP</a>). Optionally, including the
+  project description and programming language. An example test subject description is the following:</p>
+
+<pre><code>  &lt;&gt; foaf:primaryTopic &lt;--your-software-identifier--&gt; ;&#x000A;    dc:issued &quot;2016-12-26T10:18:04-08:00&quot;^^xsd:dateTime ;&#x000A;    foaf:maker &lt;--your-developer-identifier--&gt; .&#x000A;&#x000A;  &lt;--your-software-identifier--&gt; a doap:Project, earl:TestSubject, earl:Software ;&#x000A;    doap:name          &quot;My Cool JSON-LD Parser&quot; ;&#x000A;    doap:revision      &quot;Software version number&quot; ;&#x000A;    doap:developer     &lt;--your-developer-identifier--&gt; ;&#x000A;    doap:homepage      &lt;--your-software-homepace--&gt; ;&#x000A;    doap:description   &quot;--your-project-description--&quot;@en ;&#x000A;    doap:programming-language &quot;--your-implementation-language--&quot; .&#x000A;</code></pre>
+
+<p>The software developer, either an organization or one or more individuals SHOULD be
+  referenced from <code>doap:developer</code> using <a href="http://xmlns.com/foaf/spec">FOAF</a>. For example:</p>
+
+<pre><code>  &lt;--your-developer-identifier--&gt; a foaf:Person, earl:Assertor;&#x000A;    foaf:name &quot;--My Name--&quot;;&#x000A;    foaf:homepage &lt;--my homepage--&gt; .&#x000A;</code></pre>
 </section>
 <section id='test-manifests'>
 <h2>
@@ -3124,6 +3140,14 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0123'>Test t0123: Value objects including invalid literal datatype IRIs are rejected(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc001'>Test tc001: adding new term(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -3364,6 +3388,30 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc031'>Test tc031: @context resolutions respects relative URLs.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc032'>Test tc032: Unused embedded context with error.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc033'>Test tc033: Unused context with an embedded context error.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi01'>Test tdi01: Expand string using default and term directions(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -3564,7 +3612,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te019'>Test te019: Invalid keyword alias</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te019'>Test te019: Invalid keyword alias (@context)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -3796,6 +3844,14 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#te051'>Test te051: Invalid value object value using a value alias</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tec01'>Test tec01: Invalid keyword in term definition(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -4020,7 +4076,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs08'>Test tjs08: Expand JSON literal without expanding contents(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs08'>Test tjs08: Expand JSON literal with array canonicalization(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4028,7 +4084,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs09'>Test tjs09: Expand JSON literal aleady in expanded form(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs09'>Test tjs09: Transform JSON literal with string canonicalization(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4036,7 +4092,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs10'>Test tjs10: Expand JSON literal aleady in expanded form with aliased keys(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs10'>Test tjs10: Expand JSON literal with structural canonicalization(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4044,7 +4100,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs11'>Test tjs11: Expand JSON literal (string)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs11'>Test tjs11: Expand JSON literal with unicode canonicalization(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4052,7 +4108,95 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs12'>Test tjs12: Expand JSON literal (null)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs12'>Test tjs12: Expand JSON literal with value canonicalization(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs13'>Test tjs13: Expand JSON literal with wierd canonicalization(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs14'>Test tjs14: Expand JSON literal without expanding contents(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs15'>Test tjs15: Expand JSON literal aleady in expanded form(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs16'>Test tjs16: Expand JSON literal aleady in expanded form with aliased keys(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs17'>Test tjs17: Expand JSON literal (string)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs18'>Test tjs18: Expand JSON literal (null)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs19'>Test tjs19: Expand JSON literal with aliased @type(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs20'>Test tjs20: Expand JSON literal with aliased @value(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs21'>Test tjs21: Expand JSON literal with @context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs22'>Test tjs22: Expand JSON literal (null) aleady in expanded form.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs23'>Test tjs23: Expand JSON literal (empty array).(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4244,7 +4388,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm013'>Test tm013: index map with @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm013'>Test tm013: graph index map with @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4252,7 +4396,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm014'>Test tm014: index map with alias @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm014'>Test tm014: graph index map with alias @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4260,7 +4404,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm015'>Test tm015: index map with alias @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm015'>Test tm015: graph id index map with aliased @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4268,7 +4412,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm016'>Test tm016: index map with alias @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm016'>Test tm016: graph id index map with aliased @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4332,7 +4476,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tn004'>Test tn004: Appends nested values from all @nest aliases in term order(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tn004'>Test tn004: Appends nested values from all @nest aliases(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -4876,6 +5020,22 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso12'>Test tso12: @import may not be used in an imported context.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso13'>Test tso13: @import can only reference a single context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ttn01'>Test ttn01: @type: @none is illegal in 1.0.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -4892,7 +5052,7 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 338 Tests
+Percentage passed out of 356 Tests
 </td>
 <td class='passed-all'>
 100.0%
@@ -6092,6 +6252,14 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/html-manifest#tex01'>Test tex01: Expands embedded JSON-LD script element (xhtml)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/html-manifest#te002'>Test te002: Expands first embedded JSON-LD script element(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -6468,7 +6636,7 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 48 Tests
+Percentage passed out of 49 Tests
 </td>
 <td class='passed-all'>
 100.0%
@@ -6980,14 +7148,6 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0118'>Test t0118: produce generalized RDF flag</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0119'>Test t0119: Blank nodes with reverse properties</a>
 </td>
 <td class='PASS'>
@@ -7093,6 +7253,270 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0132'>Test t0132: IRI Resolution (12)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc001'>Test tc001: adding new term(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc002'>Test tc002: overriding a term(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc003'>Test tc003: property and value with different terms mapping to the same expanded property(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc004'>Test tc004: deep @context affects nested nodes(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc005'>Test tc005: scoped context layers on intemediate contexts(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc006'>Test tc006: adding new term(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc007'>Test tc007: overriding a term(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc008'>Test tc008: alias of @type(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc009'>Test tc009: deep @type-scoped @context does NOT affect nested nodes(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc010'>Test tc010: scoped context layers on intemediate contexts(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc011'>Test tc011: orders @type terms when applying scoped contexts(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc012'>Test tc012: deep property-term scoped @context in @type-scoped @context affects nested nodes(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc013'>Test tc013: type maps use scoped context from type index and not scoped context from containing(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc014'>Test tc014: type-scoped context nullification(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc015'>Test tc015: type-scoped base(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc016'>Test tc016: type-scoped vocab(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc017'>Test tc017: multiple type-scoped contexts are properly reverted(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc018'>Test tc018: multiple type-scoped types resolved against previous context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc019'>Test tc019: type-scoped context with multiple property scoped terms(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc020'>Test tc020: type-scoped value(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc021'>Test tc021: type-scoped value mix(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc022'>Test tc022: type-scoped property-scoped contexts including @type:@vocab(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc023'>Test tc023: composed type-scoped property-scoped contexts including @type:@vocab(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc024'>Test tc024: type-scoped + property-scoped + values evaluates against previous context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc025'>Test tc025: type-scoped + graph container(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc026'>Test tc026: @propagate: true on type-scoped context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc027'>Test tc027: @propagate: false on property-scoped context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc028'>Test tc028: @propagate: false on embedded context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc029'>Test tc029: @propagate is invalid in 1.0(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc030'>Test tc030: @propagate must be boolean valued(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc031'>Test tc031: @context resolutions respects relative URLs.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc032'>Test tc032: Unused embedded context with error.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc033'>Test tc033: Unused context with an embedded context error.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -7573,6 +7997,14 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tee50'>Test tee50: Invalid reverse id</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tee51'>Test tee51: Invalid value object value using a value alias</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8132,6 +8564,14 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te123'>Test te123: Value objects including invalid literal datatype IRIs are rejected(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tin01'>Test tin01: Basic Included array(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -8284,7 +8724,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs14'>Test tjs14: Tests transforming property with @type @json to a JSON literal (string)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs14'>Test tjs14: Transform JSON literal without expanding contents(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8292,7 +8732,71 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs15'>Test tjs15: Tests transforming property with @type @json to a JSON literal (null)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs15'>Test tjs15: Transform JSON literal aleady in expanded form(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs16'>Test tjs16: Transform JSON literal aleady in expanded form with aliased keys(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs17'>Test tjs17: Transform JSON literal (string)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs18'>Test tjs18: Transform JSON literal (null)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs19'>Test tjs19: Transform JSON literal with aliased @type(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs20'>Test tjs20: Transform JSON literal with aliased @value(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs21'>Test tjs21: Transform JSON literal with @context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs22'>Test tjs22: Transform JSON literal (null) aleady in expanded form.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs23'>Test tjs23: Transform JSON literal (empty array).(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8412,7 +8916,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm013'>Test tm013: index map with @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm013'>Test tm013: graph index map with @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8420,7 +8924,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm014'>Test tm014: index map with alias @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm014'>Test tm014: graph index map with alias @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8428,7 +8932,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm015'>Test tm015: index map with alias @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm015'>Test tm015: graph id index map with aliased @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -8436,7 +8940,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm016'>Test tm016: index map with alias @none(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tm016'>Test tm016: graph id index map with aliased @none(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -9180,6 +9684,22 @@ PASS
 </tr>
 <tr>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tso12'>Test tso12: @import may not be used in an imported context.(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tso13'>Test tso13: @import can only reference a single context(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#ttn01'>Test ttn01: @type: @none is illegal in 1.0.(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -9236,14 +9756,6 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#twf06'>Test twf06: Triples including invalid literal datatype IRIs are rejected(new in JSON-LD 1.1)</a>
-</td>
-<td class='PASS'>
-PASS
-</td>
-</tr>
-<tr>
-<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#twf07'>Test twf07: Triples including invalid graph name IRIs are rejected(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
@@ -9252,7 +9764,7 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 324 Tests
+Percentage passed out of 367 Tests
 </td>
 <td class='passed-all'>
 100.0%
@@ -9713,7 +10225,7 @@ This report was tested using the following test subjects:
 <dt>Description</dt>
 <dd lang='en' property='doap:description'>RDF.rb extension for parsing/serializing JSON-LD data.</dd>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>3.0.2</span></dd>
+<dd property='doap:release'><span property='doap:revision'>3.1.0</span></dd>
 <dt>Home Page</dt>
 <dd>
 <a href='https://github.com/ruby-rdf/json-ld/' property='doap:homepage'>
@@ -9747,7 +10259,7 @@ Compaction
 Expansion
 </td>
 <td class='passed-all'>
-338/338 (100.0%)
+356/356 (100.0%)
 </td>
 </tr>
 <tr>
@@ -9771,7 +10283,7 @@ Framing
 HTML
 </td>
 <td class='passed-all'>
-48/48 (100.0%)
+49/49 (100.0%)
 </td>
 </tr>
 <tr>
@@ -9787,7 +10299,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-all'>
-324/324 (100.0%)
+367/367 (100.0%)
 </td>
 </tr>
 <tr>
@@ -9819,7 +10331,7 @@ Individual test results used to construct this report are available here:
 </li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
 <h2>
 <span class='secno'>D.</span>
 Report Generation Software
@@ -9833,7 +10345,7 @@ version
 <span property='doap:release' resource='https://github.com/gkellogg/earl-report/tree/0.4.8' typeof='doap:Version'>
 <span property='doap:revision'>0.4.8</span>
 <meta content='earl-report-0.4.8' property='doap:name' />
-<meta content='2019-09-07' datatype='xsd:date' property='doap:created' />
+<meta datatype='xsd:date' property='doap:created' />
 </span>
 an
 <a href='http://unlicense.org' property='doap:license'>Unlicensed</a>

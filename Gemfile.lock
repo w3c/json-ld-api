@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/ruby-rdf/json-ld.git
+  remote: git://github.com/ruby-rdf/json-ld.git
   revision: 241ef57e096cefdff55ef6d39a917049eec04529
   branch: develop
   specs:
@@ -80,7 +80,7 @@ GEM
     nokogumbo (2.0.2)
       nokogiri (~> 1.8, >= 1.8.4)
     public_suffix (4.0.3)
-    rack (2.2.2)
+    rack (2.1.2)
     rake (13.0.1)
     rdf (3.1.1)
       hamster (~> 3.0)
@@ -176,4 +176,4 @@ DEPENDENCIES
   redcarpet
 
 BUNDLED WITH
-   2.1.4
+   1.17.3
