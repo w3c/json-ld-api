@@ -1324,7 +1324,7 @@
       "name": "expandContext option",
       "purpose": "Use of the expandContext option to expand the input document",
       "option": {
-        "expandContext": "e077-context.jsonld"
+        "expandContext": "toRdf/e077-context.jsonld"
       },
       "input": "toRdf/e077-in.jsonld",
       "expect": "toRdf/e077-out.nq"
