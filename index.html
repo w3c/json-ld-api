@@ -6837,6 +6837,11 @@
       explicitly to `json-ld-1.0`.</li>
     <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
     <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
+  </ul>
+</section>
+<section class="appendix informative" id="changes-from-cr">
+  <h2>Changes since Candidate Release of 12 December 2019</h2>
+  <ul>
     <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
       in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
       and as a use of the {{LoadDocumentOptions/profile}} API option.</li>
@@ -6853,13 +6858,15 @@
     </li>
     <li>When creating an `i18n` datatype or `rdf:CompoundLiteral`, <a>language tags</a> are
       normalized to lower case to improve interoperability between implementations.</li>
+    <li>Moved non-recursive portions algorithms
+      into the {{JsonLdProcessor}} processing steps.</li>
+    <li>Fix some {{JsonLdOption}} initializers where defaults are `null`.
+      Set default value for <a data-link-for="JsonLdOptions">processingMode</a> to `json-ld-1.1`.</li>
+    <li>Remove normative text for canonicalizing `rdf:JSON` literals and
+      reference the `rdf:JSON` datatype of the syntax document
+      for the conversion of the <a>JSON Literals</a> in <a href="#data-round-tripping" class="sectionRef"></a>.</li>
   </ul>
 </section>
-<!--section class="appendix informative" id="changes-from-cr">
-  <h2>Changes since Candidate Release of 12 December 2019</h2>
-  <ul>
-  </ul>
-</section-->
 
 <section id="ack"
 class="appendix informative"
