@@ -1159,7 +1159,8 @@
         When an <a>active context</a> is initialized, the value
         of the <a>original base URL</a>
         is initialized from the original {{RemoteDocument/documentUrl}}
-        of the document containing the initial <a>context</a>.
+        of the document containing the initial <a>context</a>, if available,
+        otherwise from the {{JsonLdOptions/base}} API option.
         This is necessary when resetting the <a>active context</a>
         by setting it to `null`
         to retain the original default <a>base IRI</a>.</p>
@@ -5743,7 +5744,7 @@
           <li>Initialize a new empty <var>active context</var>.
             The <a>base IRI</a> and <a>original base URL</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
             from <var>remote document</var>, if available;
-            otherwise to {{JsonLdOptions/base}}.
+            otherwise to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
           <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set, 
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
@@ -6092,7 +6093,7 @@
 
     <pre class="idl">
       dictionary JsonLdOptions {
-        USVString?             base;
+        USVString?             base = null;
         boolean                compactArrays = true;
         boolean                compactToRelative = true;
         LoadDocumentCallback?  documentLoader = null;
