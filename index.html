@@ -1250,7 +1250,10 @@
                 <li class="changed">If <var>context</var> was previously dereferenced,
                   then the processor MUST NOT do a further dereference, and
                   <a>context</a> is set to the
-                  previously established <a>internal representation</a>.
+                  previously established <a>internal representation</a>,
+                  set <var>context document</var> to the previously dereferenced document,
+                  and set <var>loaded context</var> to the value of the `@context`
+                  <a>entry</a> from the document in <var>context document</var>.
                   <div class="note">Only the `@context` <a>entry</a> need be retained.</div>
                 </li>
                 <li class="changed">Otherwise, set <var>context document</var>
