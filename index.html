@@ -1236,7 +1236,10 @@
             <li id="alg-context-string">If <var>context</var> is a <a>string</a>,
               <ol>
                 <li>Initialize <var>context</var> to the result of resolving <var>context</var> against
-                  <var>base URL</var>.
+                  <var>base URL</var>. If <var>base URL</var> is not a valid <a>IRI</a>,
+                  then <var>context</var> MUST be a valid <a>IRI</a>, otherwise
+                  a <a data-link-for="JsonLdErrorCode">loading document failed</a> error
+                  has been detected and processing is aborted.
                   <div class="note">
                     <var>base URL</var> is often not the same as {{JsonLdOptions/base}}
                     or the <a>base IRI</a> of the <var>active context</var>.
@@ -5754,9 +5757,9 @@
           <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set, 
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
-            and {{JsonLdOptions/expandContext}} as <var>base URL</var>.
+            and the <a>original base URL</a> from <var>active context</var> as <var>base URL</var>.
             If {{JsonLdOptions/expandContext}} is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
-            pass that <a data-lt="entry">entry's</a> value instead.</li>
+            pass that <a data-lt="entry">entry's</a> value instead for <var>local context</var>.</li>
           <li>If <var>remote document</var> has a {{RemoteDocument/contextUrl}},
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{RemoteDocument/contextUrl}} as <var>local context</var>,
