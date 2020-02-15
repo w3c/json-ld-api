@@ -1224,10 +1224,12 @@
                   has been detected and processing is aborted.</li>
                 <li>Initialize <var>result</var> as a
                   newly-initialized <a>active context</a>,
-                  <span class="changed">setting <a>previous context</a> in <var>result</var>
-                    to the previous value of <var>result</var> if <var>propagate</var> is <code>false</code>
-                    and both <a>base IRI</a> and <a>original base URL</a> to the value of
-                    <a>original base URL</a> in <var>active context</var></span>.</li>
+                  <span class="changed">
+                    setting both <a>base IRI</a> and <a>original base URL</a> to the value of
+                    <a>original base URL</a> in <var>active context</var></span>,
+                    and, if <var>propagate</var> is <code>false</code>,
+                    <a>previous context</a> in <var>result</var>
+                    to the previous value of <var>result</var>.</li>
                 <li>Continue with the next <var>context</var>.</li>
               </ol>
             </li>
