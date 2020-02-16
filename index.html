@@ -1069,7 +1069,7 @@
     <ul>
       <li>the active <a>term definitions</a> which specify how
         keys and values have to be interpreted (<a>array</a> of <a>term definitions</a>),</li>
-      <li>the current <a>base IRI</a> (<a>IRI</a>),</li>
+      <li>the current <dfn data-lt="context-base-iri" data-lt-noDefault>base IRI</dfn> (<a>IRI</a>),</li>
       <li class="changed">the <dfn>original base URL</dfn> (<a>IRI</a>),</li>
       <li>an optional <a>vocabulary mapping</a> (<a>IRI</a>),</li>
       <li>an optional <a>default language</a> (<a>string</a>),</li>
@@ -1131,7 +1131,7 @@
       <p>If <a>context</a> is a <a class="changed">map</a>,
         it is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.
         We first update
-        the <a>base IRI</a>,
+        the <a class="changed" data-lt="context-base-iri">base IRI</a>,
         <span class="changed">the <a>default base direction</a></span>,
         the <a>default language</a>,
         <span class="changed">context propagation</span>,
@@ -1163,7 +1163,7 @@
         otherwise from the {{JsonLdOptions/base}} API option.
         This is necessary when resetting the <a>active context</a>
         by setting it to `null`
-        to retain the original default <a>base IRI</a>.</p>
+        to retain the original default <a class="changed" data-lt="context-base-iri">base IRI</a>.</p>
 
       <p>Then, for every other <a>entry</a> in <a>local context</a>, we update
         the <a>term definition</a> in <var>result</var>. Since
@@ -1225,7 +1225,7 @@
                 <li>Initialize <var>result</var> as a
                   newly-initialized <a>active context</a>,
                   <span class="changed">
-                    setting both <a>base IRI</a> and <a>original base URL</a> to the value of
+                    setting both <a data-lt="context-base-iri">base IRI</a> and <a>original base URL</a> to the value of
                     <a>original base URL</a> in <var>active context</var></span>,
                     and, if <var>propagate</var> is <code>false</code>,
                     <a>previous context</a> in <var>result</var>
@@ -1242,7 +1242,7 @@
                   has been detected and processing is aborted.
                   <div class="note">
                     <var>base URL</var> is often not the same as {{JsonLdOptions/base}}
-                    or the <a>base IRI</a> of the <var>active context</var>.
+                    or the <a class="changed" data-lt="context-base-iri">base IRI</a> of the <var>active context</var>.
                   </div>
                 </li>
                 <li>If the number of entries in the <var>remote contexts</var> array
@@ -1359,13 +1359,13 @@
                 <li>Initialize <var>value</var> to the value associated with the
                   <code>@base</code> <a>entry</a>.</li>
                 <li>If <var>value</var> is <code>null</code>, remove the
-                  <a>base IRI</a> of <var>result</var>.</li>
+                  <a class="changed" data-lt="context-base-iri">base IRI</a> of <var>result</var>.</li>
                 <li>Otherwise, if <var>value</var> is an <a>IRI</a>,
-                  the <a>base IRI</a> of <var>result</var> is set to <var>value</var>.</li>
+                  the <a class="changed" data-lt="context-base-iri">base IRI</a> of <var>result</var> is set to <var>value</var>.</li>
                 <li>Otherwise, if <var>value</var> is a <a>relative IRI reference</a> and
-                  the <a>base IRI</a> of <var>result</var> is not <code>null</code>,
-                  set the <a>base IRI</a> of <var>result</var> to the result of
-                  resolving <var>value</var> against the current <a>base IRI</a>
+                  the <a class="changed" data-lt="context-base-iri">base IRI</a> of <var>result</var> is not <code>null</code>,
+                  set the <a class="changed" data-lt="context-base-iri">base IRI</a> of <var>result</var> to the result of
+                  resolving <var>value</var> against the current <a class="changed" data-lt="context-base-iri">base IRI</a>
                   of <var>result</var>.</li>
                 <li>Otherwise, an
                   <a data-link-for="JsonLdErrorCode">invalid base IRI</a>
@@ -3215,7 +3215,7 @@
           with <var>value</var>.</li>
         <li>Otherwise, if <var>document relative</var> is <code>true</code>
           set <var>value</var> to the result of resolving <var>value</var> against
-          the <a>base IRI</a> from <var>active context</var>. Only the basic algorithm in
+          the <a class="changed" data-lt="context-base-iri">base IRI</a> from <var>active context</var>. Only the basic algorithm in
           <a data-cite="RFC3986#section-5.2">section 5.2</a>
           of [[RFC3986]] is used; neither
           <a data-cite="RFC3986#section-6.2.2">Syntax-Based Normalization</a> nor
@@ -4187,7 +4187,7 @@
           and processing is aborted.</li>
         <li>If <var>vocab</var> is <code>false</code>,
           transform <var>var</var> to a <a>relative IRI reference</a> using
-          the <span class="changed"><a>base IRI</a> from <var>active context</var>, if it exists</span>.</li>
+          the <span class="changed"><a data-lt="context-base-iri">base IRI</a> from <var>active context</var>, if it exists</span>.</li>
         <li>Finally, return <var>var</var> as is.</li>
       </ol>
     </section>
@@ -5750,10 +5750,10 @@
             If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Initialize a new empty <var>active context</var>.
-            The <a>base IRI</a> and <a>original base URL</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
+            The <a data-lt="context-base-iri">base IRI</a> and <a>original base URL</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
             from <var>remote document</var>, if available;
             otherwise to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a>.
-            If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a>base IRI</a>.</li>
+            If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a data-lt="context-base-iri">base IRI</a>.</li>
           <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set, 
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
