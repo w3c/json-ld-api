@@ -18,6 +18,9 @@ Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [
 * [expand](expand-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 
+  Expansion tests may have a `expandContext` option, which is treated
+  as an IRI relative to the manifest.
+
   For *NegativeEvaluationTests*, the result is a string associated with the expected error code.
 * [html](html.jsonld) tests have _input_ and _expected_ documents and an optional _context_ document.
   The _expected_ results can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output
@@ -45,6 +48,9 @@ Tests driven from a top-level [manifest](manifest.jsonld) and are defined into [
   The _expected_ results  can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 * [toRdf](toRdf-manifest.jsonld) tests have _input_ and _expected_ documents.
   The _expected_ results can be compared using [RDF Dataset Isomorphism](https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism).
+
+  ToRdf tests may have a `expandContext` option, which is treated
+  as an IRI relative to the manifest.
 
 Unless `processingMode` is set explicitly in a test entry, `processingMode` is compatible with both `json-ld-1.0` and `json-ld-1.1`.
 

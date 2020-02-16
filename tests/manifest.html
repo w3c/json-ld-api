@@ -37,6 +37,9 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output.</p>
 
+<p>Expansion tests may have a <code>expandContext</code> option, which is treated
+as an IRI relative to the manifest.</p>
+
 <p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
 <h3><a href="html.jsonld">html</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
 
@@ -70,6 +73,9 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 <p>Some tests require the use of <a href="https://tools.ietf.org/html/draft-rundgren-json-canonicalization-scheme-05">JSON Canonicalization Scheme</a> to properly generate RDF Literals from JSON literal values. This algorithm is non-normative, but is assumed to be used to properly compare results. These tests are marked using the <code>useJCS</code> option.</p>
 
 <p>The <em>expected</em> results can be compared using <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism">RDF Dataset Isomorphism</a>.</p>
+
+<p>ToRdf tests may have a <code>expandContext</code> option, which is treated
+as an IRI relative to the manifest.</p>
 <p>Unless <code>processingMode</code> is set explicitly in a test entry, <code>processingMode</code> is compatible with both <code>json-ld-1.0</code> and <code>json-ld-1.1</code>.</p>
 
 <p>Test results that include a context input presume that the context is provided locally, and not from the referenced location, thus the results will include the content of the context file, rather than a reference.</p>
