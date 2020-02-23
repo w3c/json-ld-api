@@ -3618,6 +3618,62 @@ Test te050 Term definitions with prefix separate from prefix definitions
 </dd>
 </dl>
 </dd>
+<dt id='tec01'>
+Test tec01 Invalid keyword in term definition
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tec01</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid term definition is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ec01-in.jsonld'>toRdf/ec01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tec02'>
+Test tec02 Term definition on @type with empty map
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tec02</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised if @type is defined as a term with an empty map</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ec02-in.jsonld'>toRdf/ec02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+keyword redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tee50'>
 Test tee50 Invalid reverse id
 </dt>
