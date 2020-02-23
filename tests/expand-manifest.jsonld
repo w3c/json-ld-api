@@ -1632,6 +1632,14 @@
       "expectErrorCode": "invalid term definition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tec02",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Term definition on @type with empty map",
+      "purpose": "Verifies that an exception is raised if @type is defined as a term with an empty map",
+      "input": "expand/ec02-in.jsonld",
+      "expectErrorCode": "keyword redefinition",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tem01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid container mapping",

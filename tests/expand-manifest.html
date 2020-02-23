@@ -1765,7 +1765,7 @@ Test t0077 expandContext option
 <dd>
 <dl class='options'>
 <dt>expandContext</dt>
-<dd>0077-context.jsonld</dd>
+<dd>expand/0077-context.jsonld</dd>
 </dl>
 </dd>
 </dl>
@@ -5371,6 +5371,34 @@ Test tec01 Invalid keyword in term definition
 <dt>expect</dt>
 <dd>
 invalid term definition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tec02'>
+Test tec02 Term definition on @type with empty map
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tec02</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised if @type is defined as a term with an empty map</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/ec02-in.jsonld'>expand/ec02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+keyword redefinition
 </dd>
 <dt>Options</dt>
 <dd>
