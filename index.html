@@ -221,10 +221,10 @@
     counter-reset: numsection;
     list-style-type: none;
   }
-  .algorithm li {
+  .algorithm ol>li {
     margin: 0.5em 0;
   }
-  .algorithm li:before {
+  .algorithm ol>li:before {
     font-weight: bold;
     counter-increment: numsection;
     content: counters(numsection, ".") ") ";
@@ -1538,10 +1538,12 @@
           and <a>processing mode</a> is `json-ld-1.0`,
           a <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
           been detected and processing is aborted.
-          At this point, <var>value</var>
-          MUST be a <a>map</a> with only the entry <code>@container</code>
-          and value <code>@set</code>
-          and optional entry `@protected`.
+          At this point,
+          <var>value</var> MUST be a <a>map</a> with either or both of the following <a>entries</a>:
+          <ul>
+            <li>An entry for <code>@container</code> with value <code>@set</code>.</li>
+            <li>An entry for <code>@protected</code>.</li>
+          </ul>
           Any other value means that a
           <a data-link-for="JsonLdErrorCode">keyword redefinition</a> error has
           been detected and processing is aborted.</li>
