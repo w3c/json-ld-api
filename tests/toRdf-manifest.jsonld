@@ -2684,12 +2684,12 @@
       "expectErrorCode": "invalid IRI mapping"
     }, {
       "@id": "#tpr39",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).",
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr39-in.jsonld",
-      "expectErrorCode": "invalid IRI mapping"
+      "expect": "toRdf/pr39-out.nq"
     }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
