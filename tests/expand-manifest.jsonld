@@ -2697,12 +2697,12 @@
       "expect": "expand/pr37-out.jsonld"
     }, {
       "@id": "#tpr38",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "Ignores a term mapping to a value in the form of a keyword (@reverse).",
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr38-in.jsonld",
-      "expectErrorCode": "invalid IRI mapping"
+      "expect": "expand/pr38-out.jsonld"
     }, {
       "@id": "#tpr39",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],

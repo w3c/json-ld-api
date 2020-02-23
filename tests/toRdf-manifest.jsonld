@@ -2676,12 +2676,12 @@
       "expect": "toRdf/pr37-out.nq"
     }, {
       "@id": "#tpr38",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Ignores a term mapping to a value in the form of a keyword (@reverse).",
       "purpose": "Terms in the form of a keyword, which are not keywords, are ignored.",
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr38-in.jsonld",
-      "expectErrorCode": "invalid IRI mapping"
+      "expect": "toRdf/pr38-out.nq"
     }, {
       "@id": "#tpr39",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
