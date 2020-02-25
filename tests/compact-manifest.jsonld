@@ -1787,6 +1787,15 @@
       "expect": "compact/n003-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tn003a",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Nests using alias of @nest (defined with @id)",
+      "purpose": "Compaction using @nest",
+      "input": "compact/n003-in.jsonld",
+      "context": "compact/n003a-context.jsonld",
+      "expect": "compact/n003a-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tn004",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Arrays of nested values",
