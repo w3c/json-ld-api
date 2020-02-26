@@ -5943,23 +5943,40 @@
       which are the result of parsing a <a>JSON Object</a>.
 
     <pre class="idl changed">
-      typedef (JsonLdRecord or sequence&lt;JsonLdRecord> or USVString) JsonLdInput;
+      typedef (JsonLdRecord or sequence&lt;JsonLdRecord> or USVString or RemoteDocument) JsonLdInput;
     </pre>
 
-    <p class="changed">The <dfn>JsonLdInput</dfn> type is used to refer to an input value
-      that that may be a <a>map</a>,
-      an array of <a>maps </a>,
-      or a <a>string</a> representing an <a>IRI</a>
-      which can be dereferenced to retrieve a valid JSON document.</p>
+    <p class="changed">The <dfn>JsonLdInput</dfn> interface is used to refer to an input value
+      that that may be a <a>JsonLdRecord</a>,
+      a `sequence` of <a>JsonLdRecords</a>,
+      a <a>string</a> representing an <a>IRI</a>,
+      which can be dereferenced to retrieve a valid JSON document,
+      <span class="changed">or an already dereferenced <a>RemoteDocument</a></span>.</p>
+
+    <p class="changed">When the value is a <a>JsonLdRecord</a> or sequence of <a>JsonLdRecords</a>,
+      the values are taken as their equivalent internal representation values,
+      where a <a>JsonLdRecord</a> is equivalent to a <a>map</a>,
+      and a sequence of <a>JsonLdRecords</a> is equivalent to an <a>array</a>
+      of <a>maps</a>. The <a>map entries</a> are converted to their equivalents
+      in [[INFRA]].</p>
 
     <pre class="idl">
-      typedef (JsonLdRecord or USVString or sequence&lt;(JsonLdRecord or USVString)>) JsonLdContext;
+      typedef (JsonLdRecord or sequence&lt;(JsonLdRecord or USVString)> or USVString or RemoteDocument) JsonLdContext;
     </pre>
 
-    <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value
-      that may be a <a class="changed">map</a>,
+    <p>The <dfn>JsonLdContext</dfn> interface is used to refer to a value
+      that may be a <a>JsonLdRecord</a>,
+      a `sequence` of <a>JsonLdRecords</a>,
       a <a>string</a> representing an <a>IRI</a>,
-      or an array of <a class="changed">maps</a> and <a>strings</a>.</p>
+      which can be dereferenced to retrieve a valid JSON document,
+      <span class="changed">or an already dereferenced <a>RemoteDocument</a></span>.</p>
+
+    <p class="changed">When the value is a <a>JsonLdRecord</a> or sequence of <a>JsonLdRecords</a>,
+      the values are taken as their equivalent internal representation values,
+      where a <a>JsonLdRecord</a> is equivalent to a <a>map</a>,
+      and a sequence of <a>JsonLdRecords</a> is equivalent to an <a>array</a>
+      of <a>maps</a>. The <a>map entries</a> are converted to their equivalents
+      in [[INFRA]].</p>
   </section>
 
   <section><h3>RDF Dataset Interfaces</h3>
@@ -6275,10 +6292,12 @@
           nor any other media type using a
           <code>+json</code> suffix as defined in [[RFC6839]].
           Reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
-        <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using <var>document</var>,
+        <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using
+          <var>url</var> as {{RemoteDocument/documentUrl}},
+          <var>document</var> as {{RemoteDocument/document}},
           the returned <a>Content-Type</a> (without parameters) as {{RemoteDocument/contentType}},
-          any returned <code>profile</code> parameter,
-          and any <var>contextUrl</var>.</li>
+          any returned <code>profile</code> parameter, or `null` as {{RemoteDocument/profile}},
+          and <var>contextUrl</var>, or `null` as {{RemoteDocument/contextUrl}}.</li>
         <li>Resolve the <var>promise</var> with <var>remote document</var>.</li>
       </ol>
 
@@ -6325,12 +6344,14 @@
         to return information about a remote document or context.</p>
 
       <pre class="idl">
-        dictionary RemoteDocument {
-          USVString contextUrl = null;
-          USVString documentUrl;
-          any       document;
-          USVString contentType;
-          USVString profile = null;
+        [Exposed=(Window,Worker)]
+        interface RemoteDocument {
+          constructor();
+          readonly attribute USVString contentType;
+          readonly attribute USVString contextUrl;
+          readonly attribute USVString documentUrl;
+          readonly attribute any document;
+          readonly attribute USVString profile;
         };
       </pre>
 
