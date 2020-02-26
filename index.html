@@ -4791,8 +4791,8 @@
                     <li>If <var>property</var> is <code>@type</code>, then for each
                       <var>type</var> in <var>values</var>,
                       create a new <a>RdfTriple</a>
-                      composed of <var>subject</var>, <code>rdf:type</code> for <a data-link-for="rdftriple">predicate</a>,
-                      and <var>type</var> for <a data-link-for="rdftriple">object</a>
+                      composed of <var>subject</var>, <code>rdf:type</code> for <a data-link-for="RdfTriple">predicate</a>,
+                      and <var>type</var> for <a data-link-for="RdfTriple">object</a>
                       <span class="changed">and add to <var>triples</var>
                       using its {{RdfGraph/add}} method,
                       unless <var>type</var> is not <a>well-formed</a></span>.</li>
@@ -6050,7 +6050,7 @@
         constructor();
         readonly attribute USVString subject;
         readonly attribute USVString predicate;
-        readonly attribute (USVString or RdfLiteral) obj;
+        readonly attribute (USVString or RdfLiteral) _object;
       };
     </pre>
 
@@ -6065,7 +6065,7 @@
         <div class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
           and may be removed in a future version of JSON-LD, as is the support for <a>generalized RDF Datasets</a>.</div>
         </dd>
-      <dt><dfn data-dfn-for="RdfTriple">obj</dfn></dt>
+      <dt><dfn data-dfn-for="RdfTriple">object</dfn></dt>
       <dd>An absolute <a>IRI</a>, <a>blank node identifier</a>, or <a>literal</a>
         denoting the <a>object</a> of the <a>triple</a>.</dd>
     </dl>
