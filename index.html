@@ -5625,18 +5625,18 @@
       [Exposed=(Window,Worker)]
       interface JsonLdProcessor {
         constructor();
-        static Promise&lt;JsonLdDictionary> compact(
+        static Promise&lt;JsonLdRecord> compact(
           JsonLdInput input,
           optional JsonLdContext context = null,
           optional JsonLdOptions options = {});
-        static Promise&lt;sequence&lt;JsonLdDictionary>> expand(
+        static Promise&lt;sequence&lt;JsonLdRecord>> expand(
           JsonLdInput input,
           optional JsonLdOptions options = {});
-        static Promise&lt;JsonLdDictionary> flatten(
+        static Promise&lt;JsonLdRecord> flatten(
           JsonLdInput input,
           optional JsonLdContext context = null,
           optional JsonLdOptions options = {});
-        static Promise&lt;sequence&lt;JsonLdDictionary>> fromRdf(
+        static Promise&lt;sequence&lt;JsonLdRecord>> fromRdf(
           RdfDataset input,
           optional JsonLdOptions options = {});
         static Promise&lt;RdfDataset> toRdf(
@@ -5936,14 +5936,14 @@
     </dl>
 
     <pre class="idl changed">
-      dictionary JsonLdDictionary {};
+      typedef record&lt;USVString, any> JsonLdRecord;
     </pre>
-    <p class="changed">The <dfn>JsonLdDictionary</dfn> is the definition of a <a>map</a>
+    <p class="changed">The <dfn>JsonLdRecord</dfn> is the definition of a <a>map</a>
       used to contain arbitrary <a>map entries</a>
       which are the result of parsing a <a>JSON Object</a>.
 
     <pre class="idl changed">
-      typedef (JsonLdDictionary or sequence&lt;JsonLdDictionary> or USVString) JsonLdInput;
+      typedef (JsonLdRecord or sequence&lt;JsonLdRecord> or USVString) JsonLdInput;
     </pre>
 
     <p class="changed">The <dfn>JsonLdInput</dfn> type is used to refer to an input value
@@ -5953,7 +5953,7 @@
       which can be dereferenced to retrieve a valid JSON document.</p>
 
     <pre class="idl">
-      typedef (JsonLdDictionary or USVString or sequence&lt;(JsonLdDictionary or USVString)>) JsonLdContext;
+      typedef (JsonLdRecord or USVString or sequence&lt;(JsonLdRecord or USVString)>) JsonLdContext;
     </pre>
 
     <p>The <dfn>JsonLdContext</dfn> type is used to refer to a value
@@ -6106,7 +6106,7 @@
         boolean                compactArrays = true;
         boolean                compactToRelative = true;
         LoadDocumentCallback?  documentLoader = null;
-        (JsonLdDictionary? or USVString) expandContext = null;
+        (JsonLdRecord? or USVString) expandContext = null;
         boolean                extractAllScripts = false;
         boolean                frameExpansion = false;
         boolean                ordered = false;
