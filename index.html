@@ -5672,10 +5672,6 @@
             for <a data-link-for="LoadDocumentCallback">url</a>,
             the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-compact-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.</li>
-          <li class="changed">If {{RemoteDocument/document}}
-            from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
-            If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
-            reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Set <var>expanded input</var> to the result of
             using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using either <var>remote document</var>
@@ -5843,10 +5839,6 @@
             the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-flatten-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
-          <li class="changed">If {{RemoteDocument/document}}
-            from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
-            If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
-            reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
           <li>Set <var>expanded input</var> to the result of
             using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using either <var>remote document</var>
