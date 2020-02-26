@@ -1538,7 +1538,10 @@
           if the value is <code>false</code>, a
           <a data-link-for="JsonLdErrorCode">cyclic IRI mapping</a>
           error has been detected and processing is aborted.</li>
-        <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
+        <li>If <var>term</var> is the empty string (`""`),
+          an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
+          error has been detected and processing is aborted.
+          Otherwise, set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
           <code>false</code>. This indicates that the <a>term definition</a>
           is now being created but is not yet complete.</li>
         <li>Initialize <var>value</var> to a copy of the value associated with the <a>entry</a>
