@@ -5682,7 +5682,8 @@
             <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
             <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>false</code></span>.</li>
           <li class="changed">Set <var>context base</var> to the {{RemoteDocument/documentUrl}}
-            from <var>remote document</var>, if available, otherwise to {{JsonLdOptions/base}}.</li>
+            from <var>remote document</var>, if available, otherwise to the {{JsonLdOptions/base}} option
+            from <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
           <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a>
             having an <code>@context</code> <a>entry</a>,
             set <var>context</var> to that <a data-lt="entry">entry's</a> value,
@@ -5783,10 +5784,12 @@
             {{RemoteDocument/document}} from <var>remote document</var> or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
             `null` as <var>active property</var>,
-            {{RemoteDocument/documentUrl}} as <var>base URL</var>, if available, otherwise to {{JsonLdOptions/base}},
+            {{RemoteDocument/documentUrl}} as <var>base URL</var>, if available,
+            otherwise to the {{JsonLdOptions/base}} option
+            from <a data-lt="jsonldprocessor-expand-options">options</a>,
             and the <span class="changed">{{JsonLdOptions/frameExpansion}}</span>
             and <span class="changed">and {{JsonLdOptions/ordered}}</span>
-            flags from <a data-lt="jsonldprocessor-compact-options">options</a>.
+            flags from <a data-lt="jsonldprocessor-expand-options">options</a>.
             <div class="note changed">If there is no <var>remote document</var>,
               then <a data-lt="jsonldprocessor-expand-input">input</a> is
               a <a>JsonLdRecord</a> or a <code>sequence</code> of
@@ -5980,7 +5983,7 @@
     </pre>
 
     <p class="changed">The <dfn>JsonLdInput</dfn> interface is used to refer to an input value
-      that may be a <a>JsonLdRecord</a>,
+      that that may be a <a>JsonLdRecord</a>,
       a `sequence` of <a>JsonLdRecords</a>,
       a <a>string</a> representing an <a>IRI</a>,
       which can be dereferenced to retrieve a valid JSON document,
