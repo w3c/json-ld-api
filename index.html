@@ -5667,7 +5667,7 @@
             The following steps are then deferred.</li>
           <li class="changed">If the provided <a data-lt="jsonldprocessor-compact-input">input</a>
             is a <a>RemoteDocument</a>,
-            initialize it as <var>remote document</var>.</li>
+            initialize <var>remote document</var> to <a data-lt="jsonldprocessor-compact-input">input</a>.</li>
           <li>Otherwise, if the provided <a data-lt="jsonldprocessor-compact-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-compact-input">input</a>
@@ -5755,7 +5755,7 @@
             The following steps are then deferred.</li>
           <li class="changed">If the provided <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>RemoteDocument</a>,
-            initialize it as <var>remote document</var>.</li>
+            initialize <var>remote document</var> to <a data-lt="jsonldprocessor-expand-input">input</a>.</li>
           <li>Otherwise, if the provided <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
@@ -5836,12 +5836,12 @@
             The following steps are then deferred.</li>
           <li class="changed">If the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
             is a <a>RemoteDocument</a>,
-            initialize it as <var>remote document</var>.</li>
+            initialize <var>remote document</var> to <a data-lt="jsonldprocessor-flatten-input">input</a>.</li>
           <li>Otherwise, if the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-flatten-input">input</a>
             for <a data-link-for="LoadDocumentCallback">url</a>,
-            the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-flatten-options">options</a>
+            and the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-flatten-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
           <li>Set <var>expanded input</var> to the result of
@@ -6387,7 +6387,7 @@
           readonly attribute USVString contentType;
           readonly attribute USVString contextUrl;
           readonly attribute USVString documentUrl;
-          readonly attribute any document;
+         attribute any document;
           readonly attribute USVString profile;
         };
       </pre>
