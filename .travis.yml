@@ -41,4 +41,4 @@ jobs:
         - DECISION="https://www.w3.org/2018/json-ld-wg/Meetings/Minutes/2018/2018-09-28-json-ld#resolution2"
         - secure: "lLdok36PZzMuoXtVGDLtqEPXscvbM/lAg3LUZ9rrFysqflIGZYbA4A19u7J9abB9Z5OLyOlUGbIoTxENbeO8A0lEsEjwYqh+Hg0FL2ZLMR8xHmjfQ+wiO/q8RURogaun1FZXIm1chaYarf2V2QBmyxpzX3+Hqhaw4oji16NrPh+tcdZVRoER24kV6AeDowuS9ZXviZP3fqQhRYG114lUY6H94GdqYWGvVrRjA6z8bpyHB+yDD+8n7ma0MNiufbhBzeq1uz57TJebsr8gSs8rp7VH8w3NI3Gf6Ig5XdhOGcFssZNm5YWY/KaS5aihYoAvMJguKQ5ALARvJzpzmdMBz9KsBRKBgtPW56r2XD1ITlFpo3qVRxLsyGTu8y3hWY6U8SqMdpdYF1dwHLfoL6vO5ATn/CZ3B4POmSW5FepwOcOAluLE6LwBgd35h8Fypt4g5ruceZyFddIcvAYlUBPZPIi/tItQVz6zz+xb8aL7vR2/ekLKFTckbskb/gN60fsIjUumxQeOslw9mGO6jUch67eizzaL2Wob6VKDrxoymb873LbepTgOFFksaUp8lwbtsUPgOtJQ7hWCH2StZmIioh4LMumcRKm0EcIdtn5vh/f1MDETVmLpgKt0HeMkaH6bUCe6km3ZedaRfObLqEV3+tVyo4T4f+u0eo2S/JBFGOU="
       script:
-        - curl "https://labs.w3.org/echidna/api/request" --data "url=$URL" --data "decision=$DECISION" --data "token=$TOKEN"
+        - curl "https://labs.w3.org/echidna/api/request" --data "url=$URL" --data "decision=$DECISION" --data "token=$TOKEN" --data "editorial=true"
