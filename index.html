@@ -1071,6 +1071,7 @@
         keys and values have to be interpreted (<a>array</a> of <a>term definitions</a>),</li>
       <li>the current <dfn data-lt="context-base-iri" data-lt-noDefault>base IRI</dfn> (<a>IRI</a>),</li>
       <li class="changed">the <dfn>original base URL</dfn> (<a>IRI</a>),</li>
+      <li class="changed">an <dfn data-lt="context-inverse" data-lt-noDefault>inverse context</dfn> (<a>inverse context</a>),</li>
       <li>an optional <a>vocabulary mapping</a> (<a>IRI</a>),</li>
       <li>an optional <a>default language</a> (<a>string</a>),</li>
       <li class="changed">an optional <a>default base direction</a>  (`"ltr"` or `"rtl"`),</li>
@@ -1099,6 +1100,7 @@
       in which case it is referred to as a <dfn>keyword alias</dfn>.</p>
 
     <p>When processing, <var>active context</var> is initialized
+      <span class="changed">with a `null` <a data-lt="context-inverse">inverse context</a>,</span>
       without any <a>term definitions</a>,
       <a>vocabulary mapping</a>, <a class="changed">default base direction</a>, or <a>default language</a>.
       If a <a>local context</a> is encountered during processing, a new
@@ -1165,6 +1167,12 @@
         by setting it to `null`
         to retain the original default <a class="changed" data-lt="context-base-iri">base IRI</a>.</p>
 
+      <p class="changed">When initialized, or when any entry of
+        an <a>active context</a> is changed,
+        or any associated <a>term definition</a> is added, changed, or removed,
+        the <a data-lt="context-inverse">inverse context</a> field
+        in <a>active context</a> is set to `null`.</p>
+
       <p>Then, for every other <a>entry</a> in <a>local context</a>, we update
         the <a>term definition</a> in <var>result</var>. Since
         <a>term definitions</a> in a <a>local context</a>
@@ -1202,7 +1210,8 @@
 
       <ol>
         <li>Initialize <var>result</var> to the result of cloning
-          <var>active context</var>.</li>
+          <var>active context</var>,
+          <span class="changed">with <a data-lt="context-inverse">inverse context</a> set to `null`.</span>.</li>
         <li class="changed">If <var>local context</var> is an object containing the member <code>@propagate</code>,
           its value MUST be <a>boolean</a> <code>true</code> or <code>false</code>,
           set <var>propagate</var> to that value.
@@ -2151,16 +2160,25 @@
       <h3>Algorithm</h3>
 
       <p>This algorithm has five required inputs. They are:
-        an <var>inverse context</var>, a <a>keyword</a> or <a>IRI</a>
-        <var>var</var>, an <a>array</a> <var>containers</var> that represents an
+        an <var class="changed">active context</var>,
+        a <a>keyword</a> or <a>IRI</a> <var>var</var>,
+        an <a>array</a> <var>containers</var> that represents an
         ordered list of preferred <a>container mapping</a>,
         a <a>string</a> <var>type/language</var> that indicates whether
         to look for a <a>term</a> with a matching <a>type mapping</a>
-        or <a>language mapping</a>, and an <a>array</a> representing
-        an ordered list of <var>preferred values</var> for the <a>type mapping</a>
-        or <a>language mapping</a> to look for.</p>
+        or <a>language mapping</a>,
+        and an <a>array</a> representing an ordered list of <var>preferred values</var>
+        for the <a>type mapping</a> or <a>language mapping</a> to look for.</p>
 
       <ol>
+        <li class="changed">If the <var>active context</var> has a `null`
+          <a data-lt='context-inverse'>inverse context</a>,
+          set <a data-lt='context-inverse'>inverse context</a> in <var>active context</var>
+          to the result of calling the
+          <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
+          using <var>active context</var>.</li>
+        <li>Initialize <var>inverse context</var> to the value of
+          <a data-lt='context-inverse'>inverse context</a> in <var>active context</var>.</li>
         <li>Initialize <var>container map</var> to the value associated with
           <var>var</var> in the <var>inverse context</var>.</li>
         <li>For each item <var>container</var> in <var>containers</var>:
@@ -3377,9 +3395,9 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm takes <span class="changed">four required and two optional</span> input variables.
+      <p>The algorithm takes <span class="changed">three required and two optional</span> input variables.
         The required inputs are an <var>active context</var>,
-        an <var>inverse context</var>, an <var>active property</var>,
+        an <var>active property</var>,
         and an <var>element</var> to be compacted.
         <span class="changed">The optional inputs are the
           {{JsonLdOptions/compactArrays}} flag
@@ -3400,7 +3418,7 @@
               <ol>
                 <li>Initialize <var>compacted item</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
-                  <var>inverse context</var>, <var>active property</var>,
+                  <var>active property</var>,
                   <var>item</var> for <var>element</var>,
                   <span class="changed">and the {{JsonLdOptions/compactArrays}}
                     and {{JsonLdOptions/ordered}} flags</span>.</li>
@@ -3435,15 +3453,12 @@
                 <var>base URL</var> from the <a>term definition</a> for <var>active property</var>
                 in <var>active context</var>,
                 and <code>true</code> for <var>override protected</var></span>.</li>
-            <li>Set <var>inverse context</var> using the
-              <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
-              using <var>active context</var>.</li>
           </ol>
         </li>
         <li>If <var>element</var> has an <code>@value</code> or <code>@id</code>
           <a>entry</a> and the result of using the
           <a href="#value-compaction">Value Compaction algorithm</a>,
-          passing <var>active context</var>, <var>inverse context</var>,
+          passing <var>active context</var>,
           <var>active property</var>, and <var>element</var> as <var>value</var> is
           a <a>scalar</a>,
           <span class="changed">or the <a>term definition</a> for <var>active property</var>
@@ -3453,7 +3468,7 @@
           <a>list object</a>, and the <a>container mapping</a> for
           <var>active property</var> in <var>active context</var> <span class="changed">includes</span> <code>@list</code>,
           return the result of using this algorithm recursively, passing
-          <var>active context</var>, <var>inverse context</var>,
+          <var>active context</var>,
           <var>active property</var>, value of <code>@list</code>
           in <var>element</var> for <var>element</var>,
           <span class="changed">and the {{JsonLdOptions/compactArrays}}
@@ -3471,19 +3486,14 @@
           in <var>compacted types</var> ordered lexicographically:
           <ol>
             <li>If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
-              <a>local context</a>:
-              <ol>
-                <li>Set <var>active context</var> to the result of the
-                  <a href="#context-processing-algorithm">Context Processing algorithm</a>,
-                  passing <var>active context</var> and the value of <var>term</var>'s
-                  <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>
-                  <span class="changed">
-                    <var>base URL</var> from the <a>term definition</a> for <var>term</var>
-                    in <var>type-scoped context</var></span>.</li>
-                <li>Set <var>inverse context</var> using the
-                  <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
-                  using <var>active context</var>.</li>
-              </ol>
+              <a>local context</a>
+              set <var>active context</var> to the result of the
+              <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+              passing <var>active context</var> and the value of <var>term</var>'s
+              <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>
+              <span class="changed">
+                <var>base URL</var> from the <a>term definition</a> for <var>term</var>
+                in <var>type-scoped context</var></span>.
             </li>
           </ol>
         </li>
@@ -3542,7 +3552,7 @@
               <ol>
                 <li>Initialize <var>compacted value</var> to the result of using this
                   algorithm recursively, passing <var>active context</var>,
-                  <var>inverse context</var>, <code>@reverse</code> for
+                  <code>@reverse</code> for
                   <var>active property</var>, <var>expanded value</var>
                   for <var>element</var>,
                   <span class="changed">and the {{JsonLdOptions/compactArrays}}
@@ -3584,7 +3594,6 @@
                 <li>Initialize <var>compacted value</var> to the result of using this
                   algorithm recursively, passing
                   <var>active context</var>,
-                  <var>inverse context</var>,
                   <var>active property</var>,
                   <var>expanded value</var> for <var>element</var>,
                   <span class="changed">and the {{JsonLdOptions/compactArrays}}
@@ -3670,7 +3679,7 @@
                   otherwise the negation of {{JsonLdOptions/compactArrays}}.</li>
                 <li>Initialize <var>compacted item</var> to the result of using
                   this algorithm recursively, passing
-                  <var>active context</var>, <var>inverse context</var>,
+                  <var>active context</var>,
                   <var>item active property</var> for <var>active property</var>,
                   <var>expanded item</var> for <var>element</var> if it does
                   not contain the <a>entry</a> <code>@list</code>
@@ -3827,7 +3836,7 @@
                           to `@id`, set <var>compacted item</var>
                           to the result of using
                           this algorithm recursively, passing
-                          <var>active context</var>, <var>inverse context</var>,
+                          <var>active context</var>,
                           <var>item active property</var> for <var>active property</var>,
                           and a <a>map</a> composed of the single <a>entry</a> for `@id` from <var>expanded item</var> for <var>element</var>.
                           <!-- Note: This will result in a string value, rather than a node object,
@@ -3913,8 +3922,8 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>This algorithm takes three required inputs and three optional inputs.
-        The required inputs are an <var>active context</var>, an <var>inverse context</var>,
+      <p>This algorithm takes <span class="changed">two</span> required inputs and three optional inputs.
+        The required inputs are an <var>active context</var>,
         and the <var>var</var> to be compacted.
         The optional inputs are a <var>value</var> associated with the <var>var</var>,
         a <var>vocab</var> flag which specifies whether the passed <var>var</var>
@@ -3925,6 +3934,14 @@
 
       <ol>
         <li>If <var>var</var> is <code>null</code>, return <code>null</code>.</li>
+        <li class="changed">If the <var>active context</var> has a `null`
+          <a data-lt='context-inverse'>inverse context</a>,
+          set <a data-lt='context-inverse'>inverse context</a> in <var>active context</var>
+          to the result of calling the
+          <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
+          using <var>active context</var>.</li>
+        <li>Initialize <var>inverse context</var> to the value of
+          <a data-lt='context-inverse'>inverse context</a> in <var>active context</var>.</li>
         <li>If <var>vocab</var> is <code>true</code> and <var>var</var> is an
           <a>entry</a> of <var>inverse context</var>:
           <ol>
@@ -4134,7 +4151,7 @@
               to <var>preferred values</var>.</li>
             <li>Initialize <var>term</var> to the result of the
               <a href="#term-selection">Term Selection algorithm</a>, passing
-              <var>inverse context</var>, <var>var</var>, <var>containers</var>,
+              <var>var</var>, <var>containers</var>,
               <var>type/language</var>, and <var>preferred values</var>.</li>
             <li>If <var>term</var> is not <code>null</code>, return <var>term</var>.</li>
           </ol>
@@ -4238,12 +4255,20 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>This algorithm has four required inputs: an <var>active context</var>, an
-        <var>inverse context</var>,  an <var>active property</var>, and a <var>value</var>
+      <p>This algorithm has <span class="changed">three</span> required inputs: an <var>active context</var>, an
+        an <var>active property</var>, and a <var>value</var>
         to be compacted.</p>
 
       <ol>
         <li>Initialize <var>result</var> to a copy of <var>value</var>.</li>
+        <li class="changed">If the <var>active context</var> has a `null`
+          <a data-lt='context-inverse'>inverse context</a>,
+          set <a data-lt='context-inverse'>inverse context</a> in <var>active context</var>
+          to the result of calling the
+          <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
+          using <var>active context</var>.</li>
+        <li>Initialize <var>inverse context</var> to the value of
+          <a data-lt='context-inverse'>inverse context</a> in <var>active context</var>.</li>
         <li>Initialize <var>language</var> to the <a>language mapping</a> for <var>active property</var>
           in <var>active context</var>, if any, otherwise to the <a>default language</a>
           of <var>active context</var>.</li>
@@ -5695,15 +5720,12 @@
             passing a new empty <a>context</a> as <var>active context</var>
             <var>context</var> as <var>local context</var>,
             and <var>context base</var> as <var>base URL</var>.</li>
-          <li>Initialize <var>inverse context</var> to the result of performing the
-            <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>.</li>
           <li>Initialize <a>base IRI</a> to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
             otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
             to the IRI of the currently being processed document, if available;
             otherwise to <code>null</code>.</li>
           <li>Set <var>compacted output</var> to the result of using the <a href="#compaction-algorithm">Compaction algorithm</a>,
             using <a>active context</a>,
-            <var>inverse context</var>,
             <code>null</code> for <var>active property</var>,
             <var>expanded input</var> as <var>element</var>,
             and the {{JsonLdOptions/compactArrays}}
@@ -6943,7 +6965,20 @@
       as a direct input, which resolves a {{Promise}} boundary issue.</li>
   </ul>
 </section>
-
+<section class="appendix informative" id="changes-from-cr">
+  <h2>Changes since Candidate Release of 05 March 2020</h2>
+  <p class="note">All changes are editorial and do not affect the observable
+    behavior of the API nor the expected test results.</p>
+  <ul>
+    <li>The <a>inverse context</a> is not passed explicitly as a parameter
+      to the <a href="#term-selection">Term Selection</a>,
+      <a href="#iri-compaction">IRI compaction</a>,
+      and <a href="#value-compaction">Value Compaction</a> algorithms,
+      but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
+      within an <a>active context</a>, and initialized as necessary.
+      This simplifies calling sequences and better represents actual implementation experience.
+  </ul>
+</section>
 <section id="ack"
 class="appendix informative"
 data-include="ack-script/acknowledgements.html"
