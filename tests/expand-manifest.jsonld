@@ -1369,13 +1369,6 @@
       "input": "expand/e015-in.jsonld",
       "expectErrorCode": "invalid IRI mapping"
     }, {
-      "@id": "#te016",
-      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-      "name": "Invalid IRI mapping (not an absolute IRI)",
-      "purpose": "Verifies that an exception is raised on expansion when a invalid IRI mapping is found",
-      "input": "expand/e016-in.jsonld",
-      "expectErrorCode": "invalid IRI mapping"
-    }, {
       "@id": "#te017",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid reverse property (invalid @container)",
