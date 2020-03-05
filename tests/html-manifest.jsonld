@@ -55,11 +55,11 @@
     "option": {"specVersion": "json-ld-1.1", "extractAllScripts": true}
   }, {
     "@id": "#te006",
-    "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest", "jld:HtmlTest"],
+    "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest", "jld:HtmlTest"],
     "name": "Expands as empty with no embedded JSON-LD script elements",
     "purpose": "Tests embedded JSON-LD in HTML when none exist",
     "input": "html/e006-in.html",
-    "expect": "html/e006-out.jsonld",
+    "expectErrorCode": "loading document failed",
     "option": {"specVersion": "json-ld-1.1"}
   }, {
     "@id": "#te007",
