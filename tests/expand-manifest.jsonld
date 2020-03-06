@@ -2802,7 +2802,7 @@
       "expectErrorCode": "invalid context entry"
     }, {
       "@id": "#tso13",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@import can only reference a single context",
       "purpose": "@import can only reference a single context.",
       "option": {"specVersion": "json-ld-1.1"},
