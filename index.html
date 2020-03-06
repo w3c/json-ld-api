@@ -3852,8 +3852,8 @@
                       using <var>as array</var>.</li>
                   </ol>
                 </li>
-                <li class="changed">Otherwise, use <a>add value</a> to add <var>compacted item</var>
-                  to the <var>item active property</var> entry in <var>result</var>
+                <li id="alg-compact-12_8_10" class="changed">Otherwise, use <a>add value</a> to add <var>compacted item</var>
+                  to the <var>item active property</var> entry in <var>nest result</var>
                   using <var>as array</var>.</li>
               </ol>
             </li>
@@ -6976,7 +6976,11 @@
       and <a href="#value-compaction">Value Compaction</a> algorithms,
       but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
       within an <a>active context</a>, and initialized as necessary.
-      This simplifies calling sequences and better represents actual implementation experience.
+      This simplifies calling sequences and better represents actual implementation experience.</li>
+    <li>Update step <a href="#alg-compact-12_8_10">12.8.1</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to add values to <var>nest result</var> instead of <var>result</var>
+      as was originally intended.</li>
   </ul>
 </section>
 <section id="ack"
