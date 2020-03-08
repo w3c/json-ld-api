@@ -4085,7 +4085,7 @@
                     <li>Otherwise, if <var>value</var> contains an <code>@language</code> <a>entry</a>
                       and does not contain an <code>@index</code> <a>entry</a>,
                       then set <var>type/language value</var> to
-                      the value of `@langauge` normalized to lower case,
+                      the value of `@language` normalized to lower case,
                       and append <code>@language</code>,
                       <span class="changed">and <code>@language@set</code></span> to
                       <var>containers</var>.</li>
@@ -4255,7 +4255,7 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>This algorithm has <span class="changed">three</span> required inputs: an <var>active context</var>, an
+      <p>This algorithm has <span class="changed">three</span> required inputs: an <var>active context</var>,
         an <var>active property</var>, and a <var>value</var>
         to be compacted.</p>
 
@@ -5817,7 +5817,7 @@
             <div class="note changed">If there is no <var>remote document</var>,
               then <a data-lt="jsonldprocessor-expand-input">input</a> is
               a <a>JsonLdRecord</a> or a <code>sequence</code> of
-              <a>JsonLdRecords</a>, which are implicitly alread in the
+              <a>JsonLdRecords</a>, which are implicitly already in the
               <a>internal representation</a>.</div>
             <ol id="api-expand-post-processing" class="changed">
               <li>If <var>expanded output</var> is a
@@ -6290,7 +6290,7 @@
       <p>The <dfn>LoadDocumentCallback</dfn> defines a callback that custom document loaders
         have to implement to be used to retrieve remote documents and contexts.
         The callback returns a {{Promise}} resolving to a <a>RemoteDocument</a>.
-        On failure, the {{Promise}} with a a <a>JsonLdError</a> having an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
+        On failure, the {{Promise}} with a <a>JsonLdError</a> having an appropriate error <a data-link-for="JsonLdError">code</a>.</p>
 
       <pre class="idl">
         callback LoadDocumentCallback = Promise&lt;RemoteDocument> (
