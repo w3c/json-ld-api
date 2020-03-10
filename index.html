@@ -4647,7 +4647,7 @@
             with a new <a>map</a> consisting of a single <a>entry</a> <code>@id</code> whose value is <var>id</var>, if it does not exist.</li>
           <li>For each <var>property</var> and <var>values</var> in <var>node</var>:
             <ol>
-              <li>If <var>property</var> is a <a>keyword</a>, add <var>property</var> and values to <var>merged node</var>.</li>
+              <li id='alg-merge-node-maps-2_2_1'>If <var>property</var> is a <a>keyword</a> <span class="changed">other than `@type`</span>, add <var>property</var> and values to <var>merged node</var>.</li>
               <li>Otherwise, merge each element from <var>values</var> into the values for <var>property</var>
                 in <var>merged node</var>, initializing it to an empty <a>array</a> if necessary.</li>
             </ol>
@@ -6981,6 +6981,10 @@
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
       as was originally intended.</li>
+    <li>Update step <a href="#alg-merge-node-maps-2_2_1">2.2.1</a>
+      of <a href="#merge-node-maps" class="sectionRef"></a> to
+      exclude `@type`, leaving it to the next step.
+      This could cause type values from a node to be left out of the merge.</li>
   </ul>
 </section>
 <section id="ack"
