@@ -661,6 +661,14 @@
       "expectErrorCode": "invalid scoped context",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc034",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Remote scoped context.",
+      "purpose": "Scoped contexts may be externally loaded.",
+      "input": "toRdf/c034-in.jsonld",
+      "expect": "toRdf/c034-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
