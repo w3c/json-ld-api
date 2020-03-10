@@ -3812,7 +3812,7 @@
                     <li>Otherwise, if <var>container</var> includes <code>@index</code>
                       and <var>index key</var> is <code>@index</code>,
                       set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any.</li>
-                    <li id="alg-compact-2_8_9_6" class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
+                    <li id="alg-compact-12_8_9_6" class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
                       and <var>index key</var> is not <code>@index</code>:
                       <ol>
                         <li>Reinitialize <var>container key</var> by <a>IRI compacting</a>
@@ -6981,6 +6981,7 @@
       but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
       within an <a>active context</a>, and initialized as necessary.
       This simplifies calling sequences and better represents actual implementation experience.</li>
+    <li>Update step <a href="#alg-compact-12_8_9_6">12.8.9.6</a></li>
     <li>Update step <a href="#alg-compact-12_8_10">12.8.1</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
