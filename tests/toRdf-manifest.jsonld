@@ -669,6 +669,22 @@
       "expect": "toRdf/c034-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc035",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "property-scoped contexts which are alias of @nest",
+      "purpose": "Nesting terms may have property-scoped contexts defined.",
+      "input": "toRdf/c035-in.jsonld",
+      "expect": "toRdf/c035-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc036",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Bibframe example (poor-mans inferrence)",
+      "purpose": "Nesting terms may have property-scoped contexts defined.",
+      "input": "toRdf/c036-in.jsonld",
+      "expect": "toRdf/c036-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
