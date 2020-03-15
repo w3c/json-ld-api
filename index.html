@@ -1192,7 +1192,7 @@
 
       <p>This algorithm specifies how a new <a>active context</a> is updated
         with a <a>local context</a>. The algorithm takes three required
-        <span class="changed">and three optional</span>
+        <span class="changed">and four optional</span>
         input variables.
         The required inputs are
         an <var>active context</var>,
@@ -1204,8 +1204,10 @@
         <span class="changed">
           <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
-          and <var>propagate</var>, defaulting to <code>true</code>
-          to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>.</span>.
+          <var>propagate</var>, defaulting to <code>true</code>
+          to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>,
+          and <var>validate scoped context</var> defaulting to <code>true</code>,
+          which is used to limit recursion when validating possibly recusive <a>scoped contexts</a>.</span>.
       </p>
 
       <ol>
@@ -1290,6 +1292,9 @@
                     <li>Set <var>loaded context</var> to the value of that <a>entry</a>.</li>
                   </ol>
                 </li>
+                <li id="alg-context-validate-scoped" class="changed">If <var>validate scoped context</var> is <code>false</code>,
+                  do not process <var>loaded context</var> and continue to any next
+                  <var>context</var> in <var>local context</var>.</li>
                 <li>Set <var>result</var> to the result of recursively calling this algorithm,
                   passing <var>result</var> for <var>active context</var>,
                   <var>loaded context</var> for <var>local context</var>,
@@ -1470,9 +1475,10 @@
               <var>defined</var>,
               <span class="changed">
                 <var>base URL</var>,
-                and the value of the <code>@protected</code>
-                entry from <var>context</var>, if any, for <var>protected</var>
-              </span>.
+                the value of the <code>@protected</code>
+                entry from <var>context</var>, if any, for <var>protected</var>,
+                and <var>validate scoped context</var>.
+              </span>
             </li>
           </ol>
         </li>
@@ -1519,7 +1525,7 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm has four required <span class="changed">and three optional</span> inputs.
+      <p>The algorithm has four required <span class="changed">and four optional</span> inputs.
         The required inputs are
         an <var>active context</var>,
         a <var>local context</var>,
@@ -1529,7 +1535,9 @@
           <var>base URL</var> defaulting to <code>null</code>,
           <var>protected</var> which defaults to <code>false</code>,
           and <var>override protected</var>, defaulting to <code>false</code>,
-          which is used to allow changes to protected terms.</span>.
+          which is used to allow changes to protected terms,
+          and <var>validate scoped context</var> defaulting to <code>true</code>,
+          which is used to limit recursion when validating possibly recusive <a>scoped contexts</a>.</span>.
         </p>
       <ol>
         <li>If <var>defined</var> contains the <a>entry</a> <var>term</var> and the associated
@@ -1805,7 +1813,8 @@
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
               using the <var>active context</var>, <var>context</var> as <var>local context</var>,
               <var>base URL</var>,
-              and <code>true</code> for <var>override protected</var>.
+              <code>true</code> for <var>override protected</var>,
+              and <code>false</code> for <var>validate scoped context</var>.
               If any error is detected, an
               <a data-link-for="JsonLdErrorCode">invalid scoped context</a> error
               has been detected and processing is aborted.
@@ -6641,7 +6650,7 @@
         <dt><dfn>conflicting indexes</dfn></dt>
         <dd>Multiple conflicting indexes have been found for the same node.</dd>
         <dt><dfn>context overflow</dfn></dt>
-        <dd>maximum number of <code>@context</code> URLs exceeded.</dd>
+        <dd>Maximum number of <code>@context</code> URLs exceeded.</dd>
         <dt><dfn>cyclic IRI mapping</dfn></dt>
         <dd>A cycle in <a>IRI mappings</a> has been detected.</dd>
         <dt><dfn>invalid @id value</dfn></dt>
@@ -6985,7 +6994,7 @@
       within an <a>active context</a>, and initialized as necessary.
       This simplifies calling sequences and better represents actual implementation experience.</li>
     <li>Update step <a href="#alg-compact-12_8_9_6">12.8.9.6</a></li>
-    <li>Update step <a href="#alg-compact-12_8_10">12.8.1</a> of the
+    <li>Update step <a href="#alg-compact-12_8_10">12.8.10</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
       as was originally intended.</li>
@@ -6993,6 +7002,14 @@
       of <a href="#merge-node-maps" class="sectionRef"></a> to
       exclude `@type`, leaving it to the next step.
       This could cause type values from a node to be left out of the merge.</li>
+    <li>Added step <a href="#alg-context-validate-scoped">5.2.5</a>
+      to the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+      which is added <var>validate scoped context</var> as a new
+      optional argument, and passed to the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>,
+      which in turn uses it with the value `false` when recursively calling
+      the <a href="#context-processing-algorithm">Context Processing algorithm</a>
+      when validating a <a>scoped context</a>.</li>
   </ul>
 </section>
 <section id="ack"
