@@ -6412,13 +6412,13 @@
           constructor();
           readonly attribute USVString contentType;
           readonly attribute USVString contextUrl;
-          readonly attribute USVString documentUrl;
           attribute any document;
+          readonly attribute USVString documentUrl;
           readonly attribute USVString profile;
         };
       </pre>
 
-      <dl>
+      <dl data-sort>
         <dt class="changed"><dfn data-dfn-for="RemoteDocument">contentType</dfn></dt>
         <dd class="changed">The <dfn data-cite="RFC2045#section-5">Content-Type</dfn>
           of the loaded document, exclusive of any optional parameters.</dd>
@@ -6577,7 +6577,6 @@
 
       <pre class="idl">
         enum JsonLdErrorCode {
-            "IRI confused with prefix",
             "colliding keywords",
             "conflicting indexes",
             "context overflow",
@@ -6592,14 +6591,14 @@
             "invalid @protected value",
             "invalid @reverse value",
             "invalid @version value",
-            "invalid IRI mapping",
-            "invalid JSON literal",
-            "invalid base IRI",
             "invalid base direction",
+            "invalid base IRI",
             "invalid container mapping",
             "invalid context entry",
             "invalid context nullification",
             "invalid default language",
+            "invalid IRI mapping",
+            "invalid JSON literal",
             "invalid keyword alias",
             "invalid language map value",
             "invalid language mapping",
@@ -6620,6 +6619,7 @@
             "invalid value object value",
             "invalid value object",
             "invalid vocab mapping",
+            "IRI confused with prefix",
             "keyword redefinition",
             "loading document failed",
             "loading remote context failed",
@@ -6630,10 +6630,6 @@
       </pre>
 
       <dl data-dfn-for="JsonLdErrorCode" data-sort>
-        <dt class="changed"><dfn>IRI confused with prefix</dfn></dt>
-        <dd>When compacting an <a>IRI</a> would result in an <a>IRI</a>
-          which could be confused with a <a>compact IRI</a>
-          (because its <a data-cite="RFC3986#section-3.1">IRI scheme</a> matches a <a>term definition</a> and it has no <a data-cite="RFC3986#section-3.1">IRI authority</a>).</dd>
         <dt><dfn>colliding keywords</dfn></dt>
         <dd>Two <a>properties</a> which expand to the same keyword have been detected.
           This might occur if a <a>keyword</a>
@@ -6667,17 +6663,12 @@
         <dt><dfn>invalid @version value</dfn></dt>
         <dd>The <code>@version</code> <a>entry</a> was used in a <a>context</a>
           with an out of range value.</dd>
-        <dt><dfn>invalid IRI mapping</dfn></dt>
-        <dd>A <a>local context</a> contains a <a>term</a>
-          that has an invalid or missing <a>IRI mapping</a>.</dd>
-        <dt class="changed"><dfn>invalid JSON literal</dfn></dt>
-        <dd class="changed">An invalid JSON literal was detected.</dd>
-        <dt><dfn>invalid base IRI</dfn></dt>
-        <dd>An invalid <a>base IRI</a> has been detected, i.e.,
-          it is neither an <a>IRI</a> nor <code>null</code>.</dd>
         <dt class="changed"><dfn>invalid base direction</dfn></dt>
         <dd class="changed">The value of `@direction` is not `"ltr"`, `"rtl"`,
           or <code>null</code> and thus invalid.</dd>
+        <dt><dfn>invalid base IRI</dfn></dt>
+        <dd>An invalid <a>base IRI</a> has been detected, i.e.,
+          it is neither an <a>IRI</a> nor <code>null</code>.</dd>
         <dt><dfn>invalid container mapping</dfn></dt>
         <dd>An <code>@container</code> <a>entry</a> was encountered
           whose value was not one of the following <a>strings</a>:
@@ -6692,6 +6683,11 @@
         <dt><dfn>invalid default language</dfn></dt>
         <dd>The value of the <a>default language</a> is not a <a>string</a>
           or <code>null</code> and thus invalid.</dd>
+        <dt><dfn>invalid IRI mapping</dfn></dt>
+        <dt class="changed"><dfn>invalid JSON literal</dfn></dt>
+        <dd class="changed">An invalid JSON literal was detected.</dd>
+        <dd>A <a>local context</a> contains a <a>term</a>
+          that has an invalid or missing <a>IRI mapping</a>.</dd>
         <dt><dfn>invalid keyword alias</dfn></dt>
         <dd>An invalid <a>keyword</a> alias definition has been encountered.</dd>
         <dt><dfn>invalid language map value</dfn></dt>
@@ -6710,6 +6706,8 @@
         <dd>In invalid <a>local context</a> was detected.</dd>
         <dt><dfn>invalid remote context</dfn></dt>
         <dd>No valid context document has been found for a referenced remote context.</dd>
+        <dt><dfn>invalid reverse property</dfn></dt>
+        <dd>An invalid reverse property definition has been detected.</dd>
         <dt><dfn>invalid reverse property map</dfn></dt>
         <dd>An invalid reverse property map has been detected.
           No <a>keywords</a> apart from <code>@context</code>
@@ -6717,8 +6715,6 @@
         <dt><dfn>invalid reverse property value</dfn></dt>
         <dd>An invalid value for a reverse property has been detected.
           The value of an inverse property must be a <a>node object</a>.</dd>
-        <dt><dfn>invalid reverse property</dfn></dt>
-        <dd>An invalid reverse property definition has been detected.</dd>
         <dt class="changed"><dfn>invalid scoped context</dfn></dt>
         <dd class="changed">The <a>local context</a>
           defined within a <a>term definition</a>
@@ -6741,15 +6737,19 @@
           i.e., the value was neither a <a>string</a> nor an <a>array</a> of <a>strings</a>.</dd>
         <dt><dfn>invalid typed value</dfn></dt>
         <dd>A <a>typed value</a> with an invalid type was detected.</dd>
+        <dt><dfn>invalid value object</dfn></dt>
+        <dd>A <a>value object</a> with disallowed <a>entries</a> has been detected.</dd>
         <dt><dfn>invalid value object value</dfn></dt>
         <dd>An invalid value for the <code>@value</code> <a>entry</a> of a <a>value object</a>
           has been detected,
           i.e., it is neither a <a>scalar</a> nor <code>null</code>.</dd>
-        <dt><dfn>invalid value object</dfn></dt>
-        <dd>A <a>value object</a> with disallowed <a>entries</a> has been detected.</dd>
         <dt><dfn>invalid vocab mapping</dfn></dt>
         <dd>An invalid <a>vocabulary mapping</a> has been detected,
           i.e., it is neither an <a>IRI</a> nor <code>null</code>.</dd>
+        <dt class="changed"><dfn>IRI confused with prefix</dfn></dt>
+        <dd>When compacting an <a>IRI</a> would result in an <a>IRI</a>
+          which could be confused with a <a>compact IRI</a>
+          (because its <a data-cite="RFC3986#section-3.1">IRI scheme</a> matches a <a>term definition</a> and it has no <a data-cite="RFC3986#section-3.1">IRI authority</a>).</dd>
         <dt><dfn>keyword redefinition</dfn></dt>
         <dd>A <a>keyword</a> redefinition has been detected.</dd>
         <dt><dfn>loading document failed</dfn></dt>
