@@ -1709,20 +1709,6 @@
       "expectErrorCode": "keyword redefinition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tee50",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
-      "name": "Invalid reverse id",
-      "purpose": "Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.",
-      "input": "toRdf/ee50-in.jsonld",
-      "expectErrorCode": "invalid IRI mapping"
-    }, {
-      "@id": "#tee51",
-      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
-      "name": "Invalid value object value using a value alias",
-      "purpose": "Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias",
-      "input": "toRdf/ee51-in.jsonld",
-      "expectErrorCode": "invalid value object value"
-    }, {
       "@id": "#ter01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
       "name": "Keywords cannot be aliased to other keywords",
@@ -2116,6 +2102,30 @@
       "purpose": "Tests included blocks.",
       "input": "toRdf/in06-in.jsonld",
       "expect": "toRdf/in06-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin07",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Error if @included value is a string",
+      "purpose": "Tests included blocks.",
+      "input": "toRdf/in07-in.jsonld",
+      "expectErrorCode": "invalid @included value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin08",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Error if @included value is a value object",
+      "purpose": "Tests included blocks.",
+      "input": "toRdf/in08-in.jsonld",
+      "expectErrorCode": "invalid @included value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tin09",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Error if @included value is a list object",
+      "purpose": "Tests included blocks.",
+      "input": "toRdf/in09-in.jsonld",
+      "expectErrorCode": "invalid @included value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tjs01",
