@@ -2328,6 +2328,70 @@
       "expect": "toRdf/li02-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tli03",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@list containing @list (with coercion)",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li03-in.jsonld",
+      "expect": "toRdf/li03-out.nq"
+    }, {
+      "@id": "#tli04",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "@list containing empty @list (with coercion)",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li04-in.jsonld",
+      "expect": "toRdf/li04-out.nq"
+    }, {
+      "@id": "#tli05",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "coerced @list containing an array",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li05-in.jsonld",
+      "expect": "toRdf/li05-out.nq"
+    }, {
+      "@id": "#tli06",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "coerced @list containing an empty array",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li06-in.jsonld",
+      "expect": "toRdf/li06-out.nq"
+    }, {
+      "@id": "#tli07",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "coerced @list containing deep arrays",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li07-in.jsonld",
+      "expect": "toRdf/li07-out.nq"
+    }, {
+      "@id": "#tli08",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "coerced @list containing deep empty arrays",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li08-in.jsonld",
+      "expect": "toRdf/li08-out.nq"
+    }, {
+      "@id": "#tli09",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "coerced @list containing multiple lists",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li09-in.jsonld",
+      "expect": "toRdf/li09-out.nq"
+    }, {
+      "@id": "#tli10",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "coerced @list containing mixed list values",
+      "purpose": "List of lists",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li10-in.jsonld",
+      "expect": "toRdf/li10-out.nq"
+    }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Adds @id to object not having an @id",
