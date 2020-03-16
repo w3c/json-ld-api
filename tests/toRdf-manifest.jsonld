@@ -1725,6 +1725,78 @@
       "expectErrorCode": "keyword redefinition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tem01",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Invalid container mapping",
+      "purpose": "Verifies that an exception is raised on expansion when a invalid container mapping is found",
+      "input": "toRdf/em01-in.jsonld",
+      "expectErrorCode": "invalid container mapping",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#ten01",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "@nest MUST NOT have a string value",
+      "purpose": "container: @nest",
+      "input": "toRdf/en01-in.jsonld",
+      "expectErrorCode": "invalid @nest value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#ten02",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "@nest MUST NOT have a boolen value",
+      "purpose": "Transparent Nesting",
+      "input": "toRdf/en02-in.jsonld",
+      "expectErrorCode": "invalid @nest value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#ten03",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "@nest MUST NOT have a numeric value",
+      "purpose": "Transparent Nesting",
+      "input": "toRdf/en03-in.jsonld",
+      "expectErrorCode": "invalid @nest value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#ten04",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "@nest MUST NOT have a value object value",
+      "purpose": "Transparent Nesting",
+      "input": "toRdf/en04-in.jsonld",
+      "expectErrorCode": "invalid @nest value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#ten05",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "does not allow a keyword other than @nest for the value of @nest",
+      "purpose": "Transparent Nesting",
+      "input": "toRdf/en05-in.jsonld",
+      "expectErrorCode": "invalid @nest value",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#ten06",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "does not allow @nest with @reverse",
+      "purpose": "Transparent Nesting",
+      "input": "toRdf/en06-in.jsonld",
+      "expectErrorCode": "invalid reverse property",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tep02",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "processingMode json-ld-1.0 conflicts with @version: 1.1",
+      "purpose": "If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.",
+      "input": "toRdf/ep02-in.jsonld",
+      "expectErrorCode": "processing mode conflict",
+      "option": {"processingMode": "json-ld-1.0", "specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tep03",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "@version must be 1.1",
+      "purpose": "If @version is specified, it must be 1.1",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/ep03-in.jsonld",
+      "expectErrorCode": "invalid @version value"
+    }, {
       "@id": "#ter01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
       "name": "Keywords cannot be aliased to other keywords",
