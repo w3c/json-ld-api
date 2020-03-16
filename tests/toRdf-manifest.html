@@ -2576,7 +2576,7 @@ Test tdi12 rdfDirection: compound-literal with direction and language
 </dl>
 </dd>
 <dt id='te001'>
-Test te001 drop free-floating nodes
+Test te001 drop free-floating nodes (xxx drop, duplicates #te046)
 </dt>
 <dd>
 <dl class='entry'>
@@ -3643,104 +3643,6 @@ Test te050 Term definitions with prefix separate from prefix definitions
 <dt>expect</dt>
 <dd>
 <a href='toRdf/e050-out.nq'>toRdf/e050-out.nq</a>
-</dd>
-</dl>
-</dd>
-<dt id='tec01'>
-Test tec01 Invalid keyword in term definition
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tec01</dd>
-<dt>Type</dt>
-<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
-<dt>Purpose</dt>
-<dd>Verifies that an exception is raised on expansion when a invalid term definition is found</dd>
-<dt>input</dt>
-<dd>
-<a href='toRdf/ec01-in.jsonld'>toRdf/ec01-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-invalid term definition
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tec02'>
-Test tec02 Term definition on @type with empty map
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tec02</dd>
-<dt>Type</dt>
-<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
-<dt>Purpose</dt>
-<dd>Verifies that an exception is raised if @type is defined as a term with an empty map</dd>
-<dt>input</dt>
-<dd>
-<a href='toRdf/ec02-in.jsonld'>toRdf/ec02-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-keyword redefinition
-</dd>
-<dt>Options</dt>
-<dd>
-<dl class='options'>
-<dt>specVersion</dt>
-<dd>json-ld-1.1</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt id='tee50'>
-Test tee50 Invalid reverse id
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tee50</dd>
-<dt>Type</dt>
-<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
-<dt>Purpose</dt>
-<dd>Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.</dd>
-<dt>input</dt>
-<dd>
-<a href='toRdf/ee50-in.jsonld'>toRdf/ee50-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-invalid IRI mapping
-</dd>
-</dl>
-</dd>
-<dt id='tee51'>
-Test tee51 Invalid value object value using a value alias
-</dt>
-<dd>
-<dl class='entry'>
-<dt>id</dt>
-<dd>#tee51</dd>
-<dt>Type</dt>
-<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
-<dt>Purpose</dt>
-<dd>Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias</dd>
-<dt>input</dt>
-<dd>
-<a href='toRdf/ee51-in.jsonld'>toRdf/ee51-in.jsonld</a>
-</dd>
-<dt>expect</dt>
-<dd>
-invalid value object value
 </dd>
 </dl>
 </dd>
@@ -5603,6 +5505,1186 @@ invalid typed value
 </dd>
 </dl>
 </dd>
+<dt id='t0124'>
+Test t0124 compact IRI as @vocab
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0124</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that @vocab defined as a compact IRI expands properly</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e124-in.jsonld'>toRdf/e124-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e124-out.nq'>toRdf/e124-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0125'>
+Test t0125 term as @vocab
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0125</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that @vocab defined as a term expands properly</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e125-in.jsonld'>toRdf/e125-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e125-out.nq'>toRdf/e125-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tec01'>
+Test tec01 Invalid keyword in term definition
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tec01</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid term definition is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ec01-in.jsonld'>toRdf/ec01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tec02'>
+Test tec02 Term definition on @type with empty map
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tec02</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised if @type is defined as a term with an empty map</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ec02-in.jsonld'>toRdf/ec02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+keyword redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter01'>
+Test ter01 Keywords cannot be aliased to other keywords
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter01</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when processing an invalid context aliasing a keyword to another keyword</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er01-in.jsonld'>toRdf/er01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+keyword redefinition
+</dd>
+</dl>
+</dd>
+<dt id='ter02'>
+Test ter02 A context may not include itself recursively (direct)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter02</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when processing a context referencing itself</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er02-in.jsonld'>toRdf/er02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+recursive context inclusion
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter03'>
+Test ter03 A context may not include itself recursively (indirect)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter03</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when processing a context referencing itself indirectly</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er03-in.jsonld'>toRdf/er03-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+recursive context inclusion
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter04'>
+Test ter04 Error dereferencing a remote context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter04</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a context dereference results in an error</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er04-in.jsonld'>toRdf/er04-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+loading remote context failed
+</dd>
+</dl>
+</dd>
+<dt id='ter05'>
+Test ter05 Invalid remote context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter05</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a remote context is not an object containing @context</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er05-in.jsonld'>toRdf/er05-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid remote context
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter06'>
+Test ter06 Invalid local context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter06</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a context is not a string or object</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er06-in.jsonld'>toRdf/er06-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid local context
+</dd>
+</dl>
+</dd>
+<dt id='ter07'>
+Test ter07 Invalid base IRI
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter07</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a context contains an invalid @base</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er07-in.jsonld'>toRdf/er07-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid base IRI
+</dd>
+</dl>
+</dd>
+<dt id='ter08'>
+Test ter08 Invalid vocab mapping
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter08</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a context contains an invalid @vocab mapping</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er08-in.jsonld'>toRdf/er08-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid vocab mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter09'>
+Test ter09 Invalid default language
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter09</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a context contains an invalid @language</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er09-in.jsonld'>toRdf/er09-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid default language
+</dd>
+</dl>
+</dd>
+<dt id='ter10'>
+Test ter10 Cyclic IRI mapping
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter10</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a cyclic IRI mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er10-in.jsonld'>toRdf/er10-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+cyclic IRI mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter11'>
+Test ter11 Invalid term definition
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter11</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid term definition is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er11-in.jsonld'>toRdf/er11-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
+</dd>
+</dl>
+</dd>
+<dt id='ter12'>
+Test ter12 Invalid type mapping (not a string)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter12</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid type mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er12-in.jsonld'>toRdf/er12-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid type mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter13'>
+Test ter13 Invalid type mapping (not absolute IRI)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter13</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid type mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er13-in.jsonld'>toRdf/er13-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid type mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter14'>
+Test ter14 Invalid reverse property (contains @id)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter14</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid reverse property is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er14-in.jsonld'>toRdf/er14-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid reverse property
+</dd>
+</dl>
+</dd>
+<dt id='ter15'>
+Test ter15 Invalid IRI mapping (@reverse not a string)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter15</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid IRI mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er15-in.jsonld'>toRdf/er15-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter17'>
+Test ter17 Invalid reverse property (invalid @container)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter17</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid reverse property is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er17-in.jsonld'>toRdf/er17-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid reverse property
+</dd>
+</dl>
+</dd>
+<dt id='ter18'>
+Test ter18 Invalid IRI mapping (@id not a string)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter18</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid IRI mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er18-in.jsonld'>toRdf/er18-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter19'>
+Test ter19 Invalid keyword alias (@context)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter19</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid keyword alias is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er19-in.jsonld'>toRdf/er19-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid keyword alias
+</dd>
+</dl>
+</dd>
+<dt id='ter20'>
+Test ter20 Invalid IRI mapping (no vocab mapping)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter20</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid IRI mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er20-in.jsonld'>toRdf/er20-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter21'>
+Test ter21 Invalid container mapping
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter21</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid container mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er21-in.jsonld'>toRdf/er21-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid container mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter22'>
+Test ter22 Invalid language mapping
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter22</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid language mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er22-in.jsonld'>toRdf/er22-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid language mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter23'>
+Test ter23 Invalid IRI mapping (relative IRI in @type)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter23</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid type mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er23-in.jsonld'>toRdf/er23-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid type mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter24'>
+Test ter24 List of lists (from array)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter24</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when a list of lists is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er24-in.jsonld'>toRdf/er24-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+list of lists
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter25'>
+Test ter25 Invalid reverse property map
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter25</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when a invalid reverse property map is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er25-in.jsonld'>toRdf/er25-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid reverse property map
+</dd>
+</dl>
+</dd>
+<dt id='ter26'>
+Test ter26 Colliding keywords
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter26</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when colliding keywords are found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er26-in.jsonld'>toRdf/er26-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+colliding keywords
+</dd>
+</dl>
+</dd>
+<dt id='ter27'>
+Test ter27 Invalid @id value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter27</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid @id value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er27-in.jsonld'>toRdf/er27-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @id value
+</dd>
+</dl>
+</dd>
+<dt id='ter28'>
+Test ter28 Invalid type value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter28</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid type value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er28-in.jsonld'>toRdf/er28-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid type value
+</dd>
+</dl>
+</dd>
+<dt id='ter29'>
+Test ter29 Invalid value object value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter29</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid value object value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er29-in.jsonld'>toRdf/er29-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid value object value
+</dd>
+</dl>
+</dd>
+<dt id='ter30'>
+Test ter30 Invalid language-tagged string
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter30</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid language-tagged string value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er30-in.jsonld'>toRdf/er30-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid language-tagged string
+</dd>
+</dl>
+</dd>
+<dt id='ter31'>
+Test ter31 Invalid @index value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter31</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid @index value value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er31-in.jsonld'>toRdf/er31-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @index value
+</dd>
+</dl>
+</dd>
+<dt id='ter32'>
+Test ter32 List of lists (from array)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter32</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when a list of lists is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er32-in.jsonld'>toRdf/er32-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+list of lists
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter33'>
+Test ter33 Invalid @reverse value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter33</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid @reverse value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er33-in.jsonld'>toRdf/er33-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @reverse value
+</dd>
+</dl>
+</dd>
+<dt id='ter34'>
+Test ter34 Invalid reverse property value (in @reverse)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter34</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid reverse property value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er34-in.jsonld'>toRdf/er34-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid reverse property value
+</dd>
+</dl>
+</dd>
+<dt id='ter35'>
+Test ter35 Invalid language map value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter35</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid language map value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er35-in.jsonld'>toRdf/er35-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid language map value
+</dd>
+</dl>
+</dd>
+<dt id='ter36'>
+Test ter36 Invalid reverse property value (through coercion)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter36</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid reverse property value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er36-in.jsonld'>toRdf/er36-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid reverse property value
+</dd>
+</dl>
+</dd>
+<dt id='ter37'>
+Test ter37 Invalid value object (unexpected keyword)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter37</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid value object is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er37-in.jsonld'>toRdf/er37-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid value object
+</dd>
+</dl>
+</dd>
+<dt id='ter38'>
+Test ter38 Invalid value object (@type and @language)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter38</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid value object is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er38-in.jsonld'>toRdf/er38-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid value object
+</dd>
+</dl>
+</dd>
+<dt id='ter39'>
+Test ter39 Invalid language-tagged value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter39</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid language-tagged value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er39-in.jsonld'>toRdf/er39-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid language-tagged value
+</dd>
+</dl>
+</dd>
+<dt id='ter40'>
+Test ter40 Invalid typed value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter40</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid typed value is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er40-in.jsonld'>toRdf/er40-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid typed value
+</dd>
+</dl>
+</dd>
+<dt id='ter41'>
+Test ter41 Invalid set or list object
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter41</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid set or list object is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er41-in.jsonld'>toRdf/er41-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid set or list object
+</dd>
+</dl>
+</dd>
+<dt id='ter42'>
+Test ter42 Keywords may not be redefined in 1.0
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter42</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when processing an invalid context attempting to define @container on a keyword</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er42-in.jsonld'>toRdf/er42-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+keyword redefinition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter43'>
+Test ter43 Term definition with @id: @type
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter43</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Expanding term mapping to @type uses @type syntax now illegal</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er43-in.jsonld'>toRdf/er43-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter44'>
+Test ter44 Redefine terms looking like compact IRIs
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter44</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Term definitions may look like compact IRIs, but must be consistent.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er44-in.jsonld'>toRdf/er44-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter48'>
+Test ter48 Invalid term as relative IRI
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter48</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that a relative IRI cannot be used as a term.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er48-in.jsonld'>toRdf/er48-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter49'>
+Test ter49 A relative IRI cannot be used as a prefix
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter49</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that a relative IRI cannot be used as a term.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er49-in.jsonld'>toRdf/er49-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ter50'>
+Test ter50 Invalid reverse id
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter50</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid IRI is used for @reverse.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er50-in.jsonld'>toRdf/er50-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid IRI mapping
+</dd>
+</dl>
+</dd>
+<dt id='ter51'>
+Test ter51 Invalid value object value using a value alias
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter51</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er51-in.jsonld'>toRdf/er51-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid value object value
+</dd>
+</dl>
+</dd>
 <dt id='tin01'>
 Test tin01 Basic Included array
 </dt>
@@ -5761,6 +6843,90 @@ Test tin06 json.api example
 <dt>expect</dt>
 <dd>
 <a href='toRdf/in06-out.nq'>toRdf/in06-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tin07'>
+Test tin07 Error if @included value is a string
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tin07</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests included blocks.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/in07-in.jsonld'>toRdf/in07-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @included value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tin08'>
+Test tin08 Error if @included value is a value object
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tin08</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests included blocks.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/in08-in.jsonld'>toRdf/in08-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @included value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tin09'>
+Test tin09 Error if @included value is a list object
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tin09</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Tests included blocks.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/in09-in.jsonld'>toRdf/in09-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @included value
 </dd>
 <dt>Options</dt>
 <dd>
@@ -6507,6 +7673,230 @@ Test tli02 @list containing empty @list
 <dt>expect</dt>
 <dd>
 <a href='toRdf/li02-out.nq'>toRdf/li02-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli03'>
+Test tli03 @list containing @list (with coercion)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli03</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li03-in.jsonld'>toRdf/li03-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li03-out.nq'>toRdf/li03-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli04'>
+Test tli04 @list containing empty @list (with coercion)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli04</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li04-in.jsonld'>toRdf/li04-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li04-out.nq'>toRdf/li04-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli05'>
+Test tli05 coerced @list containing an array
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli05</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li05-in.jsonld'>toRdf/li05-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li05-out.nq'>toRdf/li05-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli06'>
+Test tli06 coerced @list containing an empty array
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli06</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li06-in.jsonld'>toRdf/li06-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li06-out.nq'>toRdf/li06-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli07'>
+Test tli07 coerced @list containing deep arrays
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli07</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li07-in.jsonld'>toRdf/li07-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li07-out.nq'>toRdf/li07-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli08'>
+Test tli08 coerced @list containing deep empty arrays
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli08</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li08-in.jsonld'>toRdf/li08-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li08-out.nq'>toRdf/li08-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli09'>
+Test tli09 coerced @list containing multiple lists
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli09</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li09-in.jsonld'>toRdf/li09-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li09-out.nq'>toRdf/li09-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tli10'>
+Test tli10 coerced @list containing mixed list values
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tli10</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>List of lists</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/li10-in.jsonld'>toRdf/li10-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/li10-out.nq'>toRdf/li10-out.nq</a>
 </dd>
 <dt>Options</dt>
 <dd>
