@@ -1693,6 +1693,22 @@
       "expectErrorCode": "invalid typed value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0124",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "compact IRI as @vocab",
+      "purpose": "Verifies that @vocab defined as a compact IRI expands properly",
+      "input": "toRdf/e124-in.jsonld",
+      "expect": "toRdf/e124-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0125",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "term as @vocab",
+      "purpose": "Verifies that @vocab defined as a term expands properly",
+      "input": "toRdf/e125-in.jsonld",
+      "expect": "toRdf/e125-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
       "name": "Invalid keyword in term definition",
