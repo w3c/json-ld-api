@@ -1723,6 +1723,13 @@
       "expectErrorCode": "invalid typed value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#ter52",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Definition for the empty term",
+      "purpose": "Verifies that an exception is raised on expansion when a context contains a definition for the empty term",
+      "input": "toRdf/er52-in.jsonld",
+      "expectErrorCode": "invalid term definition"
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
