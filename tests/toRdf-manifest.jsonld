@@ -771,7 +771,7 @@
     }, {
       "@id": "#te001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "drop free-floating nodes",
+      "name": "drop free-floating nodes (xxx drop, duplicates #te046)",
       "purpose": "Free-floating nodes do not generate RDF triples (from expand-0001)",
       "input": "toRdf/e001-in.jsonld",
       "expect": "toRdf/e001-out.nq"
