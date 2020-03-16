@@ -669,6 +669,14 @@
       "expect": "toRdf/c034-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc035",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Term scoping with embedded contexts.",
+      "purpose": "Terms should make use of @vocab relative to the scope in which the term was defined.",
+      "input": "toRdf/c035-in.jsonld",
+      "expect": "toRdf/c035-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
