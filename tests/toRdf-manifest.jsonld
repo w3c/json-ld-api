@@ -1138,6 +1138,22 @@
       "expectErrorCode": "keyword redefinition",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tec03",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Term definition with alias to @context",
+      "purpose": "Verifies that an exception is raised if a term definition attempts to alias @context",
+      "input": "toRdf/ec03-in.jsonld",
+      "expectErrorCode": "invalid keyword alias",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tec04",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Term definition with alias to @preserve",
+      "purpose": "Verifies that an exception is raised if a term definition attempts to alias @preserve",
+      "input": "toRdf/ec04-in.jsonld",
+      "expectErrorCode": "invalid keyword alias",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tee50",
       "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
       "name": "Invalid reverse id",
