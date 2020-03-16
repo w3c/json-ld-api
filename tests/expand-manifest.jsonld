@@ -1624,13 +1624,6 @@
       "input": "expand/e051-in.jsonld",
       "expectErrorCode": "invalid value object value"
     }, {
-      "@id": "#te052",
-      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-      "name": "Definition for the empty term",
-      "purpose": "Verifies that an exception is raised on expansion when a context contains a definition for the empty term",
-      "input": "expand/e052-in.jsonld",
-      "expectErrorCode": "invalid term definition"
-    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",
@@ -1718,6 +1711,13 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/ep03-in.jsonld",
       "expectErrorCode": "invalid @version value"
+    }, {
+      "@id": "#ter52",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Definition for the empty term",
+      "purpose": "Verifies that an exception is raised on expansion when a context contains a definition for the empty term",
+      "input": "expand/er52-in.jsonld",
+      "expectErrorCode": "invalid term definition"
     }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
