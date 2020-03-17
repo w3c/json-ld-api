@@ -1,5 +1,5 @@
 {
-  "@context": "0124-context.jsonld",
+  "@context": "0126-context.jsonld",
   "@id": "ex:id",
   "prop": {
     "value": "v"

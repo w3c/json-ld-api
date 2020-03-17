@@ -3,7 +3,7 @@
     "@version": 1.1,
     "prop": {
       "@id": "ex:prop",
-      "@context": "0124-context.jsonld"
+      "@context": "e126-context.jsonld"
     },
     "value": {
       "@id": "ex:value"
