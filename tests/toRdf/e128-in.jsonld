@@ -1,7 +1,7 @@
 {
   "@context": [
-    "e126-context-1.jsonld",
-    "e126-context-2.jsonld"
+    "e128-context-1.jsonld",
+    "e128-context-2.jsonld"
   ],
   "@id": "ex:id",
   "prop": {
