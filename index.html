@@ -2020,6 +2020,9 @@
             <li>Reference the value associated with the <code>@type</code>
               <a>entry</a> in <var>type/language map</var> using the variable
               <var>type map</var>.</li>
+            <li id="alg-inv-lang-map">Reference the value associated with the <code>@language</code>
+              <a>entry</a> in <var>type/language map</var> using the variable
+              <var>language map</var>.</li>
             <li>If the <a>term definition</a> indicates that the <a>term</a>
               represents a <a>reverse property</a>:
               <ol>
@@ -2031,9 +2034,6 @@
             <li class="changed">Otherwise, if <a>term definition</a> has a
               <a>type mapping</a> which is <code>@none</code>:
               <ol>
-                <li>Reference the value associated with the <code>@language</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>language map</var>.</li>
                 <li>If <var>language map</var> does not have an <code>@any</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -2051,10 +2051,7 @@
                   being processed.</li>
               </ol>
             </li>
-            <li>Reference the value associated with the <code>@language</code>
-              <a>entry</a> in <var>type/language map</var> using the variable
-              <var>language map</var>.</li>
-            <li class="changed">If <a>term definition</a> has both
+            <li id="alg-inv-lang-dir" class="changed">Otherwise, if <a>term definition</a> has both
               a <a>language mapping</a> and a <a>direction mapping</a>:
               <ol>
                 <li>Create a new variable <var>lang dir</var>.</li>
@@ -7016,6 +7013,9 @@
       which in turn uses it with the value `false` when recursively calling
       the <a href="#context-processing-algorithm">Context Processing algorithm</a>
       when validating a <a>scoped context</a>.</li>
+    <li>Clarified step <a href="#alg-inv-lang-dir">3.13</a> in the
+      <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
+      by moving the preceding step to <a href=#alg-inv-lang-map>3.9</a>.</li>
   </ul>
 </section>
 <section id="ack"
