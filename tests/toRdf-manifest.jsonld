@@ -1709,6 +1709,30 @@
       "expect": "toRdf/e125-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#te126",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
+      "name": "A scoped context may include itself recursively (direct)",
+      "purpose": "Verifies that no exception is raised on expansion when processing a scoped context referencing itself directly",
+      "input": "toRdf/e126-in.jsonld",
+      "expect": "toRdf/e126-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te127",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
+      "name": "A scoped context may include itself recursively (indirect)",
+      "purpose": "Verifies that no exception is raised on expansion when processing a scoped context referencing itself indirectly",
+      "input": "toRdf/e127-in.jsonld",
+      "expect": "toRdf/e127-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#te128",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Two scoped context may include a shared context",
+      "purpose": "Verifies that no exception is raised on expansion when processing two scoped contexts referencing a shared context",
+      "input": "toRdf/e128-in.jsonld",
+      "expect": "toRdf/e128-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
       "name": "Invalid keyword in term definition",

@@ -3086,6 +3086,90 @@ Test t0125 term as @vocab
 </dd>
 </dl>
 </dd>
+<dt id='t0126'>
+Test t0126 A scoped context may include itself recursively (direct)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0126</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that no exception is raised on expansion when processing a scoped context referencing itself directly</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/0126-in.jsonld'>expand/0126-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/0126-out.jsonld'>expand/0126-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0127'>
+Test t0127 A scoped context may include itself recursively (indirect)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0127</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that no exception is raised on expansion when processing a scoped context referencing itself indirectly</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/0127-in.jsonld'>expand/0127-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/0127-out.jsonld'>expand/0127-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='t0128'>
+Test t0128 Two scoped context may include a shared context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#t0128</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that no exception is raised on expansion when processing two scoped contexts referencing a shared context</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/0128-in.jsonld'>expand/0128-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='expand/0128-out.jsonld'>expand/0128-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tc001'>
 Test tc001 adding new term
 </dt>

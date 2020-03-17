@@ -1261,6 +1261,10 @@
                   <a data-link-for="JsonLdErrorCode">context overflow</a>
                   error has been detected and processing is aborted;
                   otherwise, add <var>context</var> to <var>remote contexts</var>.</li>
+                <li id="alg-context-validate-scoped" class="changed">If <var>validate scoped context</var> is <code>false</code>,
+                  and <var>remote contexts</var> already includes <var>context</var>
+                  do not process <var>context</var> further and continue to any next
+                  <var>context</var> in <var>local context</var>.</li>
                 <li class="changed">If <var>context</var> was previously dereferenced,
                   then the processor MUST NOT do a further dereference, and
                   <a>context</a> is set to the
@@ -1292,16 +1296,14 @@
                     <li>Set <var>loaded context</var> to the value of that <a>entry</a>.</li>
                   </ol>
                 </li>
-                <li id="alg-context-validate-scoped" class="changed">If <var>validate scoped context</var> is <code>false</code>,
-                  do not process <var>loaded context</var> and continue to any next
-                  <var>context</var> in <var>local context</var>.</li>
                 <li>Set <var>result</var> to the result of recursively calling this algorithm,
                   passing <var>result</var> for <var>active context</var>,
                   <var>loaded context</var> for <var>local context</var>,
                   <span class="changed">
                     the {{RemoteDocument/documentUrl}} of <var>context document</var> for <var>base URL</var>,
                   </span>
-                  and <span class="changed">a copy of</span> <var>remote contexts</var>.
+                  <span class="changed">a copy of</span> <var>remote contexts</var>,
+                  <span class="changed">and <var>validate scoped context</var></span>.
                   <div class="note">If <var>context</var> was previously dereferenced,
                     <a>processors</a> MUST make provisions for retaining the <var>base URL</var>
                     of that <a>context</a> for this step to enable the resolution of any
@@ -1477,6 +1479,7 @@
                 <var>base URL</var>,
                 the value of the <code>@protected</code>
                 entry from <var>context</var>, if any, for <var>protected</var>,
+                <span class="changed">a copy of</span> <var>remote contexts</var>,
                 and <var>validate scoped context</var>.
               </span>
             </li>
@@ -1525,7 +1528,7 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm has four required <span class="changed">and four optional</span> inputs.
+      <p>The algorithm has four required <span class="changed">and five optional</span> inputs.
         The required inputs are
         an <var>active context</var>,
         a <var>local context</var>,
@@ -1536,6 +1539,8 @@
           <var>protected</var> which defaults to <code>false</code>,
           and <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
+          an <a>array</a> <var>remote contexts</var>,
+          defaulting to a new empty <a>array</a>, which is used to detect cyclical context inclusions,
           and <var>validate scoped context</var> defaulting to <code>true</code>,
           which is used to limit recursion when validating possibly recusive <a>scoped contexts</a>.</span>.
         </p>
@@ -1814,6 +1819,7 @@
               using the <var>active context</var>, <var>context</var> as <var>local context</var>,
               <var>base URL</var>,
               <code>true</code> for <var>override protected</var>,
+              <span class="changed">a copy of</span> <var>remote contexts</var>,
               and <code>false</code> for <var>validate scoped context</var>.
               If any error is detected, an
               <a data-link-for="JsonLdErrorCode">invalid scoped context</a> error
@@ -7002,7 +7008,7 @@
       of <a href="#merge-node-maps" class="sectionRef"></a> to
       exclude `@type`, leaving it to the next step.
       This could cause type values from a node to be left out of the merge.</li>
-    <li>Added step <a href="#alg-context-validate-scoped">5.2.5</a>
+    <li>Added step <a href="#alg-context-validate-scoped">5.2.3</a>
       to the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
       which is added <var>validate scoped context</var> as a new
       optional argument, and passed to the
