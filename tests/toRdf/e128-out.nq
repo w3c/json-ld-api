@@ -1,1 +1,2 @@
-_:b0 <http://example.org/foo> "bar" .
+<ex:id> <ex:prop> _:b0 .
+_:b0 <ex:value> "v" .

@@ -1,8 +1,13 @@
 [
   {
-    "http://example.org/ns/foo": [
+    "@id": "ex:id",
+    "ex:prop": [
       {
-        "@value": "bar"
+        "ex:value": [
+          {
+            "@value": "v"
+          }
+        ]
       }
     ]
   }

@@ -941,6 +941,30 @@
       "expect": "expand/0125-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0126",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "A scoped context may include itself recursively (direct)",
+      "purpose": "Verifies that no exception is raised on expansion when processing a scoped context referencing itself directly",
+      "input": "expand/0126-in.jsonld",
+      "expect": "expand/0126-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0127",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "A scoped context may include itself recursively (indirect)",
+      "purpose": "Verifies that no exception is raised on expansion when processing a scoped context referencing itself indirectly",
+      "input": "expand/0127-in.jsonld",
+      "expect": "expand/0127-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0128",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Two scoped context may include a shared context",
+      "purpose": "Verifies that no exception is raised on expansion when processing two scoped contexts referencing a shared context",
+      "input": "expand/0128-in.jsonld",
+      "expect": "expand/0128-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",

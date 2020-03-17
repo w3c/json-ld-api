@@ -5561,6 +5561,90 @@ Test t0125 term as @vocab
 </dd>
 </dl>
 </dd>
+<dt id='te126'>
+Test te126 A scoped context may include itself recursively (direct)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te126</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that no exception is raised on expansion when processing a scoped context referencing itself directly</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e126-in.jsonld'>toRdf/e126-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e126-out.nq'>toRdf/e126-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te127'>
+Test te127 A scoped context may include itself recursively (indirect)
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te127</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that no exception is raised on expansion when processing a scoped context referencing itself indirectly</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e127-in.jsonld'>toRdf/e127-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e127-out.nq'>toRdf/e127-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='te128'>
+Test te128 Two scoped context may include a shared context
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#te128</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that no exception is raised on expansion when processing two scoped contexts referencing a shared context</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/e128-in.jsonld'>toRdf/e128-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/e128-out.nq'>toRdf/e128-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='tec01'>
 Test tec01 Invalid keyword in term definition
 </dt>
