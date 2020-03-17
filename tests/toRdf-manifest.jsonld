@@ -771,7 +771,7 @@
     }, {
       "@id": "#te001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
-      "name": "drop free-floating nodes (xxx drop, duplicates #te046)",
+      "name": "drop free-floating nodes",
       "purpose": "Free-floating nodes do not generate RDF triples (from expand-0001)",
       "input": "toRdf/e001-in.jsonld",
       "expect": "toRdf/e001-out.nq"
@@ -3223,6 +3223,14 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "toRdf/pr39-in.jsonld",
       "expect": "toRdf/pr39-out.nq"
+    }, {
+      "@id": "#tpr40",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Protected terms and property-scoped contexts",
+      "purpose": "Check overriding of protected term from property-scoped context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr40-in.jsonld",
+      "expect": "toRdf/pr40-out.nq"
     }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
