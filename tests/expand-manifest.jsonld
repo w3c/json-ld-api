@@ -1712,7 +1712,14 @@
       "purpose": "Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias",
       "input": "expand/er51-in.jsonld",
       "expectErrorCode": "invalid value object value"
-    }, {
+     }, {
+      "@id": "#ter52",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Definition for the empty term",
+      "purpose": "Verifies that an exception is raised on expansion when a context contains a definition for the empty term",
+      "input": "expand/er52-in.jsonld",
+      "expectErrorCode": "invalid term definition"
+   }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Using an array value for @context is illegal in JSON-LD 1.0",
@@ -2720,6 +2727,14 @@
       "option": {"specVersion": "json-ld-1.1"},
       "input": "expand/pr39-in.jsonld",
       "expect": "expand/pr39-out.jsonld"
+    }, {
+      "@id": "#tpr40",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Protected terms and property-scoped contexts",
+      "purpose": "Check overriding of protected term from property-scoped context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr40-in.jsonld",
+      "expect": "expand/pr40-out.jsonld"
     }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],

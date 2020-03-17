@@ -2576,7 +2576,7 @@ Test tdi12 rdfDirection: compound-literal with direction and language
 </dl>
 </dd>
 <dt id='te001'>
-Test te001 drop free-floating nodes (xxx drop, duplicates #te046)
+Test te001 drop free-floating nodes
 </dt>
 <dd>
 <dl class='entry'>
@@ -5617,6 +5617,260 @@ keyword redefinition
 </dd>
 </dl>
 </dd>
+<dt id='tem01'>
+Test tem01 Invalid container mapping
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tem01</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a invalid container mapping is found</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/em01-in.jsonld'>toRdf/em01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid container mapping
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ten01'>
+Test ten01 @nest MUST NOT have a string value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ten01</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>container: @nest</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/en01-in.jsonld'>toRdf/en01-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @nest value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ten02'>
+Test ten02 @nest MUST NOT have a boolen value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ten02</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Transparent Nesting</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/en02-in.jsonld'>toRdf/en02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @nest value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ten03'>
+Test ten03 @nest MUST NOT have a numeric value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ten03</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Transparent Nesting</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/en03-in.jsonld'>toRdf/en03-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @nest value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ten04'>
+Test ten04 @nest MUST NOT have a value object value
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ten04</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Transparent Nesting</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/en04-in.jsonld'>toRdf/en04-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @nest value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ten05'>
+Test ten05 does not allow a keyword other than @nest for the value of @nest
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ten05</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Transparent Nesting</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/en05-in.jsonld'>toRdf/en05-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @nest value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='ten06'>
+Test ten06 does not allow @nest with @reverse
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ten06</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Transparent Nesting</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/en06-in.jsonld'>toRdf/en06-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid reverse property
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tep02'>
+Test tep02 processingMode json-ld-1.0 conflicts with @version: 1.1
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tep02</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>If processingMode is explicitly json-ld-1.0, it will conflict with 1.1 features.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ep02-in.jsonld'>toRdf/ep02-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+processing mode conflict
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>processingMode</dt>
+<dd>json-ld-1.0</dd>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tep03'>
+Test tep03 @version must be 1.1
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tep03</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>If @version is specified, it must be 1.1</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/ep03-in.jsonld'>toRdf/ep03-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid @version value
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
 <dt id='ter01'>
 Test ter01 Keywords cannot be aliased to other keywords
 </dt>
@@ -6682,6 +6936,27 @@ Test ter51 Invalid value object value using a value alias
 <dt>expect</dt>
 <dd>
 invalid value object value
+</dd>
+</dl>
+</dd>
+<dt id='ter52'>
+Test ter52 Definition for the empty term
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter52</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Verifies that an exception is raised on expansion when a context contains a definition for the empty term</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/er52-in.jsonld'>toRdf/er52-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid term definition
 </dd>
 </dl>
 </dd>
@@ -10505,6 +10780,34 @@ Test tpr39 Ignores a term mapping to a value in the form of a keyword (@reverse 
 <dt>expect</dt>
 <dd>
 <a href='toRdf/pr39-out.nq'>toRdf/pr39-out.nq</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tpr40'>
+Test tpr40 Protected terms and property-scoped contexts
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tpr40</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:ToRDFTest</dd>
+<dt>Purpose</dt>
+<dd>Check overriding of protected term from property-scoped context.</dd>
+<dt>input</dt>
+<dd>
+<a href='toRdf/pr40-in.jsonld'>toRdf/pr40-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='toRdf/pr40-out.nq'>toRdf/pr40-out.nq</a>
 </dd>
 <dt>Options</dt>
 <dd>
