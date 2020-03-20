@@ -1237,6 +1237,14 @@
       "expect": "expand/c034-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc035",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Term scoping with embedded contexts.",
+      "purpose": "Terms should make use of @vocab relative to the scope in which the term was defined.",
+      "input": "expand/c035-in.jsonld",
+      "expect": "expand/c035-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
       "name": "Expand string using default and term directions",
