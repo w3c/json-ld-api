@@ -6689,7 +6689,11 @@
           whose value was not one of the following <a>strings</a>:
           <code>@list</code>,
           <code>@set</code>,
-          or <code>@index</code>.</dd>
+          <code>@language</code>,
+          <code>@index</code>,
+          <span class="changed"><code>@id</code></span>,
+          <span class="changed"><code>@graph</code></span>, or
+          <span class="changed"><code>@type</code></span>.</dd>
         <dt class="changed"><dfn>invalid context entry</dfn></dt>
         <dd class="changed">An <a>entry</a> in a context is invalid due to processing mode incompatibility.</dd>
         <dt class="changed"><dfn>invalid context nullification</dfn></dt>
@@ -7013,6 +7017,8 @@
       which in turn uses it with the value `false` when recursively calling
       the <a href="#context-processing-algorithm">Context Processing algorithm</a>
       when validating a <a>scoped context</a>.</li>
+    <li>Added missing values for `@container` in the description of
+      <a data-link-for="JsonLdErrorCode">invalid container mapping</a>.</li>
     <li>Clarified step <a href="#alg-inv-lang-dir">3.13</a> in the
       <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
       by moving the preceding step to <a href=#alg-inv-lang-map>3.9</a>.</li>
