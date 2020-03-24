@@ -965,6 +965,20 @@
       "expect": "expand/0128-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0129",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Base without trailing slash, without path",
+      "purpose": "Verify URI resolution relative to base (without trailing slash, without path) according to RFC 3986",
+      "input": "expand/0129-in.jsonld",
+      "expect": "expand/0129-out.jsonld"
+    }, {
+      "@id": "#t0130",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Base without trailing slash, with path",
+      "purpose": "Verify URI resolution relative to base (without trailing slash, without path) according to RFC 3986",
+      "input": "expand/0130-in.jsonld",
+      "expect": "expand/0130-out.jsonld"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
