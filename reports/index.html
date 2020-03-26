@@ -6,6 +6,7 @@
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
 <link href='jsonld-streaming-parser-earl.ttl' rel='related' />
 <link href='ruby-json-ld-earl.ttl' rel='related' />
+<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
 </title>
@@ -75,8 +76,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2020-03-17' property='dc:issued'>
-17 March 2020
+<time class='dt-published' datetime='2020-03-26' property='dc:issued'>
+26 March 2020
 </time>
 </h2>
 <dl>
@@ -218,6 +219,10 @@ Test Subjects
 <li class='tocline'>
 <span class='secno'>A.2</span>
 <a class='tocxref' href='#subj_1'>jsonld-streaming-parser</a>
+</li>
+<li class='tocline'>
+<span class='secno'>A.3</span>
+<a class='tocxref' href='#subj_2'>jsonld-streaming-serializer</a>
 </li>
 </ul>
 </li>
@@ -7419,7 +7424,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -9311,7 +9316,7 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
@@ -11766,10 +11771,16 @@ Test
 <th>
 <a href='#subj_0'>JSON::LD</a>
 </th>
+<th>
+<a href='#subj_2'>jsonld-streaming-serializer</a>
+</th>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0001'>Test t0001: Object Lists</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11782,6 +11793,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
@@ -11789,6 +11803,9 @@ PASS
 </td>
 <td class='PASS'>
 PASS
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 </tr>
 <tr>
@@ -11798,6 +11815,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
@@ -11805,6 +11825,9 @@ PASS
 </td>
 <td class='PASS'>
 PASS
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 </tr>
 <tr>
@@ -11814,10 +11837,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0007'>Test t0007: Graph with multiple named graphs</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11830,10 +11859,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0010'>Test t0010: List pattern without rdf:nil</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11846,10 +11881,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0012'>Test t0012: List pattern with cycles</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11862,6 +11903,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
@@ -11870,10 +11914,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0015'>Test t0015: List pattern with IRI rdf:rest</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11886,6 +11936,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
@@ -11894,10 +11947,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0018'>Test t0018: use native types flag set to true</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11910,10 +11969,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0020'>Test t0020: list with node shared across graphs</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11926,6 +11991,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
@@ -11934,10 +12002,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0023'>Test t0023: triple with RDF nil subject</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11950,10 +12024,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0025'>Test t0025: multiple types for same subject+property+value</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11966,10 +12046,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi01'>Test tdi01: rdfDirection: null with i18n literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11982,10 +12068,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi03'>Test tdi03: rdfDirection: null with compound literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11998,10 +12090,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi05'>Test tdi05: rdfDirection: i18n-datatype with i18n literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12014,10 +12112,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi07'>Test tdi07: rdfDirection: i18n-datatype with compound literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12030,10 +12134,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi09'>Test tdi09: rdfDirection: compound-literal with i18n literal with direction and no language(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12046,6 +12156,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
@@ -12053,6 +12166,9 @@ PASS
 </td>
 <td class='PASS'>
 PASS
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 </tr>
 <tr>
@@ -12062,10 +12178,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs01'>Test tjs01: JSON literal (boolean true)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12078,10 +12200,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs03'>Test tjs03: JSON literal (double)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12094,10 +12222,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs05'>Test tjs05: JSON literal (integer)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12110,10 +12244,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs07'>Test tjs07: JSON literal (array)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12126,10 +12266,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs09'>Test tjs09: Invalid JSON literal (invalid structure)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12142,10 +12288,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs11'>Test tjs11: JSON literal (null)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12158,6 +12310,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr>
 <td>
@@ -12165,6 +12320,9 @@ PASS
 </td>
 <td class='PASS'>
 PASS
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 </tr>
 <tr>
@@ -12174,6 +12332,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 </tr>
 <tr class='summary'>
 <td>
@@ -12181,6 +12342,9 @@ Percentage passed out of 51 Tests
 </td>
 <td class='passed-all'>
 100.0%
+</td>
+<td class='passed-some'>
+64.7%
 </td>
 </tr>
 </table>
@@ -12346,6 +12510,56 @@ Transform JSON-LD to RDF
 </dd>
 </dl>
 </dd>
+<dt id='subj_2'>
+<span class='secno'>A.3</span>
+<a href='https://www.npmjs.com/package/jsonld-streaming-serializer/'>
+<span about='https://www.npmjs.com/package/jsonld-streaming-serializer/' property='doap:name'>jsonld-streaming-serializer</span>
+</a>
+</dt>
+<dd>
+<dl>
+<dt>Description</dt>
+<dd lang='en' property='doap:description'>Streaming JSON-LD serializer</dd>
+<dt>Release</dt>
+<dd property='doap:release'><span property='doap:revision'>1.1.0</span></dd>
+<dt>Programming Language</dt>
+<dd property='doap:programming-language'>JavaScript</dd>
+<dt>Home Page</dt>
+<dd>
+<a href='https://github.com/rubensworks/jsonld-streaming-serializer.js#readme' property='doap:homepage'>
+https://github.com/rubensworks/jsonld-streaming-serializer.js#readme
+</a>
+</dd>
+<dt>Developer</dt>
+<dd rel='doap:developer'>
+<div>
+<a href='https://www.rubensworks.net/#me'>
+<span property='foaf:name'>Ruben Taelman &lt;rubensworks@gmail.com&gt;</span>
+</a>
+<a href='https://www.rubensworks.net/' property='foaf:homepage'>
+https://www.rubensworks.net/
+</a>
+</div>
+</dd>
+<dt>
+Test Suite Compliance
+</dt>
+<dd>
+<table class='report'>
+<tbody>
+<tr>
+<td>
+Transform RDF to JSON-LD
+</td>
+<td class='passed-some'>
+33/51 (64.7%)
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
 </dl>
 </section>
 <section class='appendix' id='individual-test-results' rel='xhv:related earl:assertions'>
@@ -12363,9 +12577,12 @@ Individual test results used to construct this report are available here:
 <li>
 <a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
 </li>
+<li>
+<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
+</li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
 <h2>
 <span class='secno'>D.</span>
 Report Generation Software

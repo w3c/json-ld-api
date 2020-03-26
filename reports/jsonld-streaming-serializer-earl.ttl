@@ -1,0 +1,815 @@
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix earl: <http://www.w3.org/ns/earl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mf: <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdft: <http://www.w3.org/ns/rdftest#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<> foaf:primaryTopic <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    dc:issued "2020-03-26T18:32:38.124Z"^^xsd:dateTime;
+    foaf:maker <https://www.rubensworks.net/#me>.
+<https://www.npmjs.com/package/jsonld-streaming-serializer/> a earl:Software, earl:TestSubject, doap:Project;
+    doap:name "jsonld-streaming-serializer";
+    dc:title "jsonld-streaming-serializer";
+    doap:release _:b_release.
+_:b_release doap:revision "1.1.0".
+<https://www.npmjs.com/package/jsonld-streaming-serializer/> doap:homepage <https://github.com/rubensworks/jsonld-streaming-serializer.js#readme>;
+    doap:license <http://opensource.org/licenses/MIT>;
+    doap:programming-language "JavaScript";
+    doap:implements <https://www.w3.org/TR/json-ld/>;
+    doap:category <http://dbpedia.org/resource/Resource_Description_Framework>;
+    doap:download-page <https://npmjs.org/package/jsonld-streaming-serializer>;
+    doap:bug-database <https://github.com/rubensworks/jsonld-streaming-serializer.js/issues>;
+    doap:developer <https://www.rubensworks.net/#me>;
+    doap:maintainer <https://www.rubensworks.net/#me>;
+    doap:documenter <https://www.rubensworks.net/#me>;
+    doap:maker <https://www.rubensworks.net/#me>;
+    dc:creator <https://www.rubensworks.net/#me>;
+    dc:description "Streaming JSON-LD serializer"@en;
+    doap:description "Streaming JSON-LD serializer"@en.
+<https://www.rubensworks.net/#me> a foaf:Person, earl:Assertor;
+    foaf:name "Ruben Taelman <rubensworks@gmail.com>";
+    foaf:homepage <https://www.rubensworks.net/>.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0001> a earl:TestCriterion, earl:TestCase;
+    dc:title "Object Lists";
+    dc:description "Tests generation using different types of objects.";
+    earl:assertions _:assertions0.
+_:assertions0 rdf:first _:assertion0;
+    rdf:rest rdf:nil.
+_:assertion0 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0001>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result0.
+_:result0 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0002> a earl:TestCriterion, earl:TestCase;
+    dc:title "Native Types";
+    dc:description "Do not use native datatypes for xsd:boolean, xsd:integer, and xsd:double by default.";
+    earl:assertions _:assertions1.
+_:assertions1 rdf:first _:assertion1;
+    rdf:rest rdf:nil.
+_:assertion1 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0002>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result1.
+_:result1 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0003> a earl:TestCriterion, earl:TestCase;
+    dc:title "BNodes and references";
+    dc:description "BNode name generation and references between resources.";
+    earl:assertions _:assertions2.
+_:assertions2 rdf:first _:assertion2;
+    rdf:rest rdf:nil.
+_:assertion2 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0003>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result2.
+_:result2 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0004> a earl:TestCriterion, earl:TestCase;
+    dc:title "Lists";
+    dc:description "Multiple lists with different types of element.";
+    earl:assertions _:assertions3.
+_:assertions3 rdf:first _:assertion3;
+    rdf:rest rdf:nil.
+_:assertion3 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0004>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result3.
+_:result3 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0005> a earl:TestCriterion, earl:TestCase;
+    dc:title "Document with list";
+    dc:description "Uses a named graph containing a list.";
+    earl:assertions _:assertions4.
+_:assertions4 rdf:first _:assertion4;
+    rdf:rest rdf:nil.
+_:assertion4 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0005>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result4.
+_:result4 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0006> a earl:TestCriterion, earl:TestCase;
+    dc:title "Two graphs having same subject but different values";
+    dc:description "Ensure that properties and list elements aren't confused between graphs.";
+    earl:assertions _:assertions5.
+_:assertions5 rdf:first _:assertion5;
+    rdf:rest rdf:nil.
+_:assertion5 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0006>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result5.
+_:result5 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0007> a earl:TestCriterion, earl:TestCase;
+    dc:title "Graph with multiple named graphs";
+    dc:description "Testing @graph recursion.";
+    earl:assertions _:assertions6.
+_:assertions6 rdf:first _:assertion6;
+    rdf:rest rdf:nil.
+_:assertion6 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0007>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result6.
+_:result6 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0008> a earl:TestCriterion, earl:TestCase;
+    dc:title "List conversion";
+    dc:description "Conversion of lists of lists (the triples in the input are only partially ordered on purpose (1.0 semantics)";
+    earl:assertions _:assertions7.
+_:assertions7 rdf:first _:assertion7;
+    rdf:rest rdf:nil.
+_:assertion7 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0008>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result7.
+_:result7 a earl:TestResult;
+    earl:outcome earl:inapplicable;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0009> a earl:TestCriterion, earl:TestCase;
+    dc:title "List conversion with IRI nodes";
+    dc:description "Preserve IRI list nodes (i.e., not blank nodes) when converting to @list";
+    earl:assertions _:assertions8.
+_:assertions8 rdf:first _:assertion8;
+    rdf:rest rdf:nil.
+_:assertion8 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0009>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result8.
+_:result8 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0010> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern without rdf:nil";
+    dc:description "Do not convert lists that are not terminated by rdf:nil to @list.";
+    earl:assertions _:assertions9.
+_:assertions9 rdf:first _:assertion9;
+    rdf:rest rdf:nil.
+_:assertion9 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0010>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result9.
+_:result9 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0011> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern with extra properties";
+    dc:description "If additional properties are associated to a list node, the list is only partially converted to @list.";
+    earl:assertions _:assertions10.
+_:assertions10 rdf:first _:assertion10;
+    rdf:rest rdf:nil.
+_:assertion10 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0011>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result10.
+_:result10 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0012> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern with cycles";
+    dc:description "Detect lists containing cycles and do not convert them to @list.";
+    earl:assertions _:assertions11.
+_:assertions11 rdf:first _:assertion11;
+    rdf:rest rdf:nil.
+_:assertion11 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0012>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result11.
+_:result11 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0013> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern with multiple values of rdf:first";
+    dc:description "Do not convert list nodes to @list if nodes contain more than one value for rdf:first.";
+    earl:assertions _:assertions12.
+_:assertions12 rdf:first _:assertion12;
+    rdf:rest rdf:nil.
+_:assertion12 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0013>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result12.
+_:result12 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0014> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern with multiple values of rdf:rest";
+    dc:description "Do not convert list nodes to @list if nodes contain more than one value for rdf:rest.";
+    earl:assertions _:assertions13.
+_:assertions13 rdf:first _:assertion13;
+    rdf:rest rdf:nil.
+_:assertion13 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0014>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result13.
+_:result13 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0015> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern with IRI rdf:rest";
+    dc:description "Do not convert lists to @list if a list node's rdf:rest is an IRI.";
+    earl:assertions _:assertions14.
+_:assertions14 rdf:first _:assertion14;
+    rdf:rest rdf:nil.
+_:assertion14 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0015>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result14.
+_:result14 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0016> a earl:TestCriterion, earl:TestCase;
+    dc:title "List pattern with type rdf:List";
+    dc:description "List nodes may have a rdf:type rdf:List.";
+    earl:assertions _:assertions15.
+_:assertions15 rdf:first _:assertion15;
+    rdf:rest rdf:nil.
+_:assertion15 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0016>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result15.
+_:result15 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0017> a earl:TestCriterion, earl:TestCase;
+    dc:title "Remove duplicate triples";
+    dc:description "Equivalent triples are used only once";
+    earl:assertions _:assertions16.
+_:assertions16 rdf:first _:assertion16;
+    rdf:rest rdf:nil.
+_:assertion16 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0017>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result16.
+_:result16 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0018> a earl:TestCriterion, earl:TestCase;
+    dc:title "use native types flag set to true";
+    dc:description "Literals with datatype xsd:boolean, xsd:integer, and xsd:double are serialized using native scalar values";
+    earl:assertions _:assertions17.
+_:assertions17 rdf:first _:assertion17;
+    rdf:rest rdf:nil.
+_:assertion17 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0018>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result17.
+_:result17 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0019> a earl:TestCriterion, earl:TestCase;
+    dc:title "use rdf:type flag set to false";
+    dc:description "Setting useRdfType to true causes an rdf:type predicate to be treated like a normal property, not @type";
+    earl:assertions _:assertions18.
+_:assertions18 rdf:first _:assertion18;
+    rdf:rest rdf:nil.
+_:assertion18 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0019>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result18.
+_:result18 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0020> a earl:TestCriterion, earl:TestCase;
+    dc:title "list with node shared across graphs";
+    dc:description "An otherwise conformant list with a node shared across different lists does not serialize using @list";
+    earl:assertions _:assertions19.
+_:assertions19 rdf:first _:assertion19;
+    rdf:rest rdf:nil.
+_:assertion19 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0020>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result19.
+_:result19 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0021> a earl:TestCriterion, earl:TestCase;
+    dc:title "list with node shared across graphs (same triple in different graphs)";
+    dc:description "If a list node is used in different graphs, it isn't removed and converted to @list";
+    earl:assertions _:assertions20.
+_:assertions20 rdf:first _:assertion20;
+    rdf:rest rdf:nil.
+_:assertion20 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0021>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result20.
+_:result20 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0022> a earl:TestCriterion, earl:TestCase;
+    dc:title "list from duplicate triples";
+    dc:description "Duplicate triples for a list node will not prevent @list from being properly generated";
+    earl:assertions _:assertions21.
+_:assertions21 rdf:first _:assertion21;
+    rdf:rest rdf:nil.
+_:assertion21 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0022>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result21.
+_:result21 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0023> a earl:TestCriterion, earl:TestCase;
+    dc:title "triple with RDF nil subject";
+    dc:description "Test triple with RDF nil subject";
+    earl:assertions _:assertions22.
+_:assertions22 rdf:first _:assertion22;
+    rdf:rest rdf:nil.
+_:assertion22 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0023>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result22.
+_:result22 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0024> a earl:TestCriterion, earl:TestCase;
+    dc:title "multiple languages for same subject+property+value";
+    dc:description "Uniqness of triples should include the value language";
+    earl:assertions _:assertions23.
+_:assertions23 rdf:first _:assertion23;
+    rdf:rest rdf:nil.
+_:assertion23 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0024>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result23.
+_:result23 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0025> a earl:TestCriterion, earl:TestCase;
+    dc:title "multiple types for same subject+property+value";
+    dc:description "Uniqness of triples should include the value type";
+    earl:assertions _:assertions24.
+_:assertions24 rdf:first _:assertion24;
+    rdf:rest rdf:nil.
+_:assertion24 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0025>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result24.
+_:result24 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0026> a earl:TestCriterion, earl:TestCase;
+    dc:title "triple with rdf:first property and rdf:nil value";
+    dc:description "Check list generation with rdf:first property and rdf:nil value.";
+    earl:assertions _:assertions25.
+_:assertions25 rdf:first _:assertion25;
+    rdf:rest rdf:nil.
+_:assertion25 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0026>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result25.
+_:result25 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi01> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: null with i18n literal with direction and no language";
+    dc:description "Does not parse i18n datatype without proper option.";
+    earl:assertions _:assertions26.
+_:assertions26 rdf:first _:assertion26;
+    rdf:rest rdf:nil.
+_:assertion26 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi01>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result26.
+_:result26 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi02> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: null with i18n literal with direction and language";
+    dc:description "Does not parse i18n datatype without proper option.";
+    earl:assertions _:assertions27.
+_:assertions27 rdf:first _:assertion27;
+    rdf:rest rdf:nil.
+_:assertion27 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi02>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result27.
+_:result27 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi03> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: null with compound literal with direction and no language";
+    dc:description "Does not parse compound literal without proper option.";
+    earl:assertions _:assertions28.
+_:assertions28 rdf:first _:assertion28;
+    rdf:rest rdf:nil.
+_:assertion28 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi03>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result28.
+_:result28 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi04> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: null with compound literal with direction and language";
+    dc:description "Does not parse compound literal without proper option.";
+    earl:assertions _:assertions29.
+_:assertions29 rdf:first _:assertion29;
+    rdf:rest rdf:nil.
+_:assertion29 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi04>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result29.
+_:result29 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi05> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: i18n-datatype with i18n literal with direction and no language";
+    dc:description "Parses i18n datatype with proper option.";
+    earl:assertions _:assertions30.
+_:assertions30 rdf:first _:assertion30;
+    rdf:rest rdf:nil.
+_:assertion30 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi05>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result30.
+_:result30 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi06> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: i18n-datatype with i18n literal with direction and language";
+    dc:description "Parses i18n datatype with proper option.";
+    earl:assertions _:assertions31.
+_:assertions31 rdf:first _:assertion31;
+    rdf:rest rdf:nil.
+_:assertion31 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi06>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result31.
+_:result31 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi07> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: i18n-datatype with compound literal with direction and no language";
+    dc:description "Does not parse compound literal without proper option.";
+    earl:assertions _:assertions32.
+_:assertions32 rdf:first _:assertion32;
+    rdf:rest rdf:nil.
+_:assertion32 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi07>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result32.
+_:result32 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi08> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: i18n-datatype with compound literal with direction and language";
+    dc:description "Does not parse compound literal without proper option.";
+    earl:assertions _:assertions33.
+_:assertions33 rdf:first _:assertion33;
+    rdf:rest rdf:nil.
+_:assertion33 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi08>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result33.
+_:result33 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi09> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: compound-literal with i18n literal with direction and no language";
+    dc:description "Does not parse i18n datatype without proper option.";
+    earl:assertions _:assertions34.
+_:assertions34 rdf:first _:assertion34;
+    rdf:rest rdf:nil.
+_:assertion34 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi09>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result34.
+_:result34 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi10> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: compound-literal with i18n literal with direction and language";
+    dc:description "Does not parse i18n datatype without proper option.";
+    earl:assertions _:assertions35.
+_:assertions35 rdf:first _:assertion35;
+    rdf:rest rdf:nil.
+_:assertion35 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi10>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result35.
+_:result35 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi11> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: compound-literal with compound literal with direction and no language";
+    dc:description "Parses compound literal with proper option.";
+    earl:assertions _:assertions36.
+_:assertions36 rdf:first _:assertion36;
+    rdf:rest rdf:nil.
+_:assertion36 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi11>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result36.
+_:result36 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi12> a earl:TestCriterion, earl:TestCase;
+    dc:title "rdfDirection: compound-literal with compound literal with direction and language";
+    dc:description "Parses compound literal with proper option.";
+    earl:assertions _:assertions37.
+_:assertions37 rdf:first _:assertion37;
+    rdf:rest rdf:nil.
+_:assertion37 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi12>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result37.
+_:result37 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs01> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (boolean true)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (boolean true).";
+    earl:assertions _:assertions38.
+_:assertions38 rdf:first _:assertion38;
+    rdf:rest rdf:nil.
+_:assertion38 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs01>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result38.
+_:result38 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs02> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (boolean false)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (boolean false).";
+    earl:assertions _:assertions39.
+_:assertions39 rdf:first _:assertion39;
+    rdf:rest rdf:nil.
+_:assertion39 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs02>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result39.
+_:result39 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs03> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (double)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (double).";
+    earl:assertions _:assertions40.
+_:assertions40 rdf:first _:assertion40;
+    rdf:rest rdf:nil.
+_:assertion40 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs03>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result40.
+_:result40 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs04> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (double-zero)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (double-zero).";
+    earl:assertions _:assertions41.
+_:assertions41 rdf:first _:assertion41;
+    rdf:rest rdf:nil.
+_:assertion41 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs04>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result41.
+_:result41 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs05> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (integer)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (integer).";
+    earl:assertions _:assertions42.
+_:assertions42 rdf:first _:assertion42;
+    rdf:rest rdf:nil.
+_:assertion42 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs05>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result42.
+_:result42 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs06> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (object)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (object).";
+    earl:assertions _:assertions43.
+_:assertions43 rdf:first _:assertion43;
+    rdf:rest rdf:nil.
+_:assertion43 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs06>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result43.
+_:result43 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs07> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (array)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (array).";
+    earl:assertions _:assertions44.
+_:assertions44 rdf:first _:assertion44;
+    rdf:rest rdf:nil.
+_:assertion44 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs07>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result44.
+_:result44 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs08> a earl:TestCriterion, earl:TestCase;
+    dc:title "Invalid JSON literal (bare-word)";
+    dc:description "Processors must generate an error when deserializing an invalid JSON literal.";
+    earl:assertions _:assertions45.
+_:assertions45 rdf:first _:assertion45;
+    rdf:rest rdf:nil.
+_:assertion45 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs08>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result45.
+_:result45 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs09> a earl:TestCriterion, earl:TestCase;
+    dc:title "Invalid JSON literal (invalid structure)";
+    dc:description "Processors must generate an error when deserializing an invalid JSON literal.";
+    earl:assertions _:assertions46.
+_:assertions46 rdf:first _:assertion46;
+    rdf:rest rdf:nil.
+_:assertion46 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs09>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result46.
+_:result46 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs10> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (string)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (string).";
+    earl:assertions _:assertions47.
+_:assertions47 rdf:first _:assertion47;
+    rdf:rest rdf:nil.
+_:assertion47 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs10>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result47.
+_:result47 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs11> a earl:TestCriterion, earl:TestCase;
+    dc:title "JSON literal (null)";
+    dc:description "Tests creating property with rdf:type rdf:JSON to a JSON literal (null).";
+    earl:assertions _:assertions48.
+_:assertions48 rdf:first _:assertion48;
+    rdf:rest rdf:nil.
+_:assertion48 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs11>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result48.
+_:result48 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli01> a earl:TestCriterion, earl:TestCase;
+    dc:title "@list containing empty @list";
+    dc:description "List of lists";
+    earl:assertions _:assertions49.
+_:assertions49 rdf:first _:assertion49;
+    rdf:rest rdf:nil.
+_:assertion49 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli01>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result49.
+_:result49 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli02> a earl:TestCriterion, earl:TestCase;
+    dc:title "@list containing multiple lists";
+    dc:description "List of lists";
+    earl:assertions _:assertions50.
+_:assertions50 rdf:first _:assertion50;
+    rdf:rest rdf:nil.
+_:assertion50 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli02>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result50.
+_:result50 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli03> a earl:TestCriterion, earl:TestCase;
+    dc:title "t0008 as interpreted for 1.1. ";
+    dc:description "List of lists";
+    earl:assertions _:assertions51.
+_:assertions51 rdf:first _:assertion51;
+    rdf:rest rdf:nil.
+_:assertion51 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli03>;
+    earl:subject <https://www.npmjs.com/package/jsonld-streaming-serializer/>;
+    earl:mode earl:automatic;
+    earl:result _:result51.
+_:result51 a earl:TestResult;
+    earl:outcome earl:failed;
+    dc:date "2020-03-26T18:32:38.124Z"^^xsd:dateTime.
