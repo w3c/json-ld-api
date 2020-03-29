@@ -3515,7 +3515,7 @@
           Then, for each <var>term</var>
           in <var>compacted types</var> ordered lexicographically:
           <ol>
-            <li>If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
+            <li id="alg-compact-11_1">If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
               <a>local context</a>
               set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
@@ -3523,7 +3523,8 @@
               <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>
               <span class="changed">
                 <var>base URL</var> from the <a>term definition</a> for <var>term</var>
-                in <var>type-scoped context</var></span>.
+                in <var>type-scoped context</var>,
+                and `false` for <var>propagate</var></span>.
             </li>
           </ol>
         </li>
@@ -7016,6 +7017,10 @@
       This simplifies calling sequences and better represents actual implementation experience.</li>
     <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
+    <li>Update step <a href="#alg-compact-11_1">11.1</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to pass `false` for <var>propagate</var> when calling the
+       <a href="#context-processing-algorithm">Context Processing algorithm</a>.</li>
     <li>Updated step <a href="#alg-compact-12_2_4">12.2.4</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to only look for `@set` if <a>processing mode</a> is json-ld-1.1.</li>
