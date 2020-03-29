@@ -4010,7 +4010,7 @@
               variables will keep track of the preferred
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
-            <li class="changed">If <var>value</var> is a <a>map</a> containing an `@index` <a>entry</a> which is also a <a>map</a>,
+            <li id="alg-iric-value-map" class="changed">If <var>value</var> is a <a>map</a> containing an `@index` <a>entry</a>,
               and <var>value</var> is not a <a>graph object</a>
               then append the values <code>@index</code> and <code>@index@set</code> to <var>containers</var>.</li>
             <li>If <var>reverse</var> is <code>true</code>, set <var>type/language</var>
@@ -7015,7 +7015,8 @@
       but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
       within an <a>active context</a>, and initialized as necessary.
       This simplifies calling sequences and better represents actual implementation experience.</li>
-    <li>Update step <a href="#alg-compact-12_8_9_6">12.8.9.6</a></li>
+    <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI compaction algorithm</a>
+      to use `@index` for any value with an `@index` entry.</li>
     <li>Update step <a href="#alg-compact-12_8_10">12.8.10</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
