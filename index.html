@@ -3849,11 +3849,10 @@
                         <li>Reinitialize <var>container key</var> by <a>IRI compacting</a>
                           <var>index key</var>.</li>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
-                        <li>If there are remaining values in <var>compacted item</var>
-                          for <var>container key</var>, set the value of
-                          <var>container key</var> in <var>compacted item</var>
-                          to those remaining values. Otherwise, remove that
-                          <a>entry</a> from <var>compacted item</var>.</li>
+                        <li id="alg-compact-12_8_9_6_3">If there are remaining values in <var>compacted item</var>
+                          for <var>container key</var>, use <a>add value</a> to
+                          add those remaining values to the <var>container key</var> in <var>compacted item</var>.
+                          Otherwise, remove that <a>entry</a> from <var>compacted item</var>.</li>
                       </ol>
                     </li>
                     <li class="changed">Otherwise, if <var>container</var> includes <code>@id</code>, set
@@ -3862,10 +3861,9 @@
                     <li class="changed">Otherwise, if <var>container</var> includes <code>@type</code>:
                       <ol>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
-                        <li>If there are remaining values in <var>compacted item</var>
-                          for <var>container key</var>, set the value of
-                          <var>container key</var> in <var>compacted item</var>
-                          to those remaining values.</li>
+                        <li id="alg-compact-12_8_9_8_2">If there are remaining values in <var>compacted item</var>
+                          for <var>container key</var>, use <a>add value</a> to
+                          add those remaining values to the <var>container key</var> in <var>compacted item</var>.</li>
                         <li>Otherwise, remove that <a>entry</a> from <var>compacted item</var>.</li>
                         <li>If <var>compacted item</var> contains a single <a>entry</a> with a key expanding
                           to `@id`, set <var>compacted item</var>
@@ -7024,6 +7022,10 @@
     <li>Update step <a href="#alg-compact-12_8_6">12.8.6</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to clarify the value passed for <var>element</var>.</li>
+    <li>Update steps <a href="#alg-compact-12_8_9_6_3">12.8.9.6.3</a>
+      and <a href="#alg-compact-12_8_9_8_2">12.8.9.2.2</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to invoke the <a>add value</a> macro for adding remaining values back to <var>compacted item</var>.</li>
     <li>Update step <a href="#alg-compact-12_8_10">12.8.10</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
