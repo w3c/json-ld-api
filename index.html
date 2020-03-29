@@ -3568,8 +3568,9 @@
                 </li>
                 <li>Initialize <var>alias</var>
                   <span class="changed">by <a>IRI compacting</a> <var>expanded property</var></span>.</li>
-                <li class="changed">Initialize <var>as array</var>
-                  to <code>true</code> if the <a>container mapping</a> for <var>alias</var> in the
+                <li id="alg-compact-12_2_4" class="changed">Initialize <var>as array</var>
+                  to <code>true</code> if <a>processing mode</a> is `json-ld-1.1` and
+                  the <a>container mapping</a> for <var>alias</var> in the
                   <var>active context</var> includes <code>@set</code>,
                   otherwise to the negation of {{JsonLdOptions/compactArrays}}.</li>
                 <li class="changed">Use <a>add value</a> to add <var>compacted value</var>
@@ -3707,16 +3708,16 @@
                   to <code>true</code> if <var>container</var> includes <code>@set</code>,
                   or if <var>item active property</var> is <code>@graph</code> or <code>@list</code>,
                   otherwise the negation of {{JsonLdOptions/compactArrays}}.</li>
-                <li>Initialize <var>compacted item</var> to the result of using
+                <li id="alg-compact-12_8_6">Initialize <var>compacted item</var> to the result of using
                   this algorithm recursively, passing
                   <var>active context</var>,
                   <var>item active property</var> for <var>active property</var>,
-                  <var>expanded item</var> for <var>element</var> if it does
-                  not contain the <a>entry</a> <code>@list</code>
-                  <span class="changed">and is not a <a>graph object</a> containing <code>@list</code></span>,
-                  otherwise pass the value of the <a>entry</a> for <var>element</var>.
-                  <span class="changed">Along with the {{JsonLdOptions/compactArrays}}
-                    and {{JsonLdOptions/ordered}} flags</span></li>
+                  <var>expanded item</var> for <var>element</var>,
+                  <span class="changed">along with the {{JsonLdOptions/compactArrays}}
+                    and {{JsonLdOptions/ordered}} flags</span>.
+                  If <var>expanded item</var> is a <a>list object</a> or a <a>graph object</a>,
+                  use the value of the `@list` <span class="changed">or `@graph`</span> entries,
+                  respectively, for <var>element</var> instead of <var>expanded item</var>.</li>
                 <li>If <var>expanded item</var> is a <a>list object</a>:
                   <ol>
                     <li>If <var>compacted item</var> is not an <a>array</a>,
@@ -6932,7 +6933,7 @@
       expand to an <a>IRI</a> other than the expansion of the key itself.</li>
     <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
-    <li>The <a href="#iri-compaction">IRI compaction algorithm</a> may generate an error if the result is an
+    <li>The <a href="#iri-compaction">IRI Compaction algorithm</a> may generate an error if the result is an
       <a>IRI</a> which could be confused with a <a>compact IRI</a> in the
       <a>active context</a>.</li>
     <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
@@ -7015,8 +7016,14 @@
       but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
       within an <a>active context</a>, and initialized as necessary.
       This simplifies calling sequences and better represents actual implementation experience.</li>
-    <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI compaction algorithm</a>
+    <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
+    <li>Updated step <a href="#alg-compact-12_2_4">12.2.4</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to only look for `@set` if <a>processing mode</a> is json-ld-1.1.</li>
+    <li>Update step <a href="#alg-compact-12_8_6">12.8.6</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to clarify the value passed for <var>element</var>.</li>
     <li>Update step <a href="#alg-compact-12_8_10">12.8.10</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
