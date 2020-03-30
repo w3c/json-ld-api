@@ -15,16 +15,11 @@
     to an <a>entry</a> in a <a>map</a> (<var>object</var>) using a specified <var>key</var>.
     The invocation may include an <var>as array</var> flag defaulting to <code>false</code>.
     <ol>
-      <li>If <var>as array</var> is <code>true</code>:
-        <ol>
-          <li>If <var>value</var> is not an <a>array</a>,
-            set it to an <a>array</a> containing <var>value</var>.</li>
-          <li>Use <a>add value</a> recursively to add
-            <var>value</var> to <var>key</var> in <var>entry</var>
-            using the default value of `false` for <var>as array</var>.</li>
-        </ol>
-      </li>
-      <li>Otherwise, if <var>value</var> is an <a>array</a>,
+      <li>If <var>as array</var> is <code>true</code>
+        and the value of <var>key</var> in <var>object</var> does not exist
+        or is not an <a>array</a>, set it to a new <a>array</a>
+        containing any original value.</li>
+      <li>If <var>value</var> is an <a>array</a>,
         then for each element <var>v</var> in <var>value</var>,
         use <a>add value</a> recursively to add <var>v</var> to <var>key</var> in <var>entry</var>.</li>
       <li>Otherwise:
