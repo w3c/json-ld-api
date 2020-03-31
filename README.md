@@ -5,6 +5,10 @@
 
 This is the repository of the W3C’s specification on JSON-LD 1.1 Processing Algorithms and API, developed by the [JSON-LD Working Group](https://www.w3.org/2018/json-ld-wg/). The editors’ draft of the specification can also be [read directly](https://w3c.github.io/json-ld-api/).
 
+## Submitting Implementation Reports
+
+We are actively seeking JSON-LD 1.1 API implementations! Please [read the instructions](https://w3c.github.io/json-ld-api/reports/#instructions-for-submitting-implementation-reports) and submit your report by either emailing it to `public-json-ld-wg@w3.org` or by [sending a Pull Request to this repository](https://github.com/w3c/json-ld-api/pulls).
+
 ## Feature Frozen
 
 We are no longer accepting new feature requests for JSON-LD 1.1 drafts. Please limit
