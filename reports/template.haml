@@ -7,7 +7,7 @@
 
 !!! 5
 %html
-  - subjects = tests['testSubjects'].sort_by {|s| s['name'].to_s.downcase}
+  - subjects = tests['testSubjects']
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
     %link{rel: "alternate", href: "earl.jsonld"}
@@ -339,7 +339,7 @@
                         %span{property: "foaf:name"}<
                       - if dev['foaf:homepage']
                         %a{property: "foaf:homepage", href: dev['foaf:homepage']}
-                          ~ CGI.escapeHTML dev['foaf:homepage']
+                          ~ CGI.escapeHTML dev['foaf:homepage'].is_a?(Hash) ? dev['foaf:homepage']['@id'] : dev['foaf:homepage']
               %dt
                 Test Suite Compliance
               %dd
