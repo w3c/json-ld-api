@@ -2192,6 +2192,13 @@
       "input": "toRdf/er52-in.jsonld",
       "expectErrorCode": "invalid term definition"
     }, {
+      "@id": "#ter53",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Invalid prefix value",
+      "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @prefix value",
+      "input": "toRdf/er53-in.jsonld",
+      "expectErrorCode": "invalid @prefix value"
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
