@@ -189,16 +189,18 @@
       :markdown
         ## Instructions for submitting implementation reports
 
+          Reports should be submitted in Turtle format to
+          [Public JSON-LD WG](mailto:public-json-ld-wg@w3.org) or via a Pull
+          Request to the [w3c/json-ld-api](https://github.com/w3c/json-ld-api/pulls).
+
           Tests should be run using the test manifests defined in the
           [Test Manifests](#test-manifests) Section.
 
           The assumed base URI for the tests is `<http://example/base/>` if needed.
 
-          Reports should be submitted in Turtle format to
-          [Public JSON-LD WG](mailto:public-json-ld-wg@w3.org)
-          and include an `earl:Assertion`
-          for each test, referencing the test resource from the associated manifest
-          and the test subject being reported upon. An example test entry is be the following:
+          Include an `earl:Assertion` for each test, referencing the test
+          resource from the associated manifest and the test subject being
+          reported upon. See the example below:
 
               [ a earl:Assertion;
                 earl:assertedBy <--your-developer-identifier-->;
