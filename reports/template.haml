@@ -382,10 +382,11 @@
           %span{property: "doap:revision"}<=rel['revision']
           %meta{property: "doap:name", content: rel['name']}
           %meta{property: "doap:created", content: rel['created'], datatype: "xsd:date"}
-        an
-        %a{property: "doap:license", href: doap['license']}<="Unlicensed"
+        is a
         %span{property: "doap:programming-language"}<="Ruby"
-        application. More information is available at
+        application freely available under the generous terms of the
+        %a{property: "doap:license", href: doap['license']}<="Unlicense."
+        More information is available at
         %a{property: "doap:homepage", href: doap['homepage']}<=doap['homepage']
         = "."
       %p{property: "doap:developer", resource: "http://greggkellogg.net/foaf#me", typeof: "foaf:Person"}
