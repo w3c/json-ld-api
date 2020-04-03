@@ -1,0 +1,335 @@
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix earl: <http://www.w3.org/ns/earl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix mf: <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdft: <http://www.w3.org/ns/rdftest#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<> foaf:primaryTopic <https://www.npmjs.com/package/rdf-parse/>;
+    dc:issued "2020-03-28T12:40:57.035Z"^^xsd:dateTime;
+    foaf:maker <https://www.rubensworks.net/#me>.
+<https://www.npmjs.com/package/rdf-parse/> a earl:Software, earl:TestSubject, doap:Project;
+    doap:name "rdf-parse";
+    dc:title "rdf-parse";
+    doap:release _:b_release.
+_:b_release doap:revision "1.3.0".
+<https://www.npmjs.com/package/rdf-parse/> doap:homepage <https://github.com/rubensworks/rdf-parse.js#readme>;
+    doap:license <http://opensource.org/licenses/MIT>;
+    doap:programming-language "JavaScript";
+    doap:implements <https://www.w3.org/TR/json-ld/>;
+    doap:category <http://dbpedia.org/resource/Resource_Description_Framework>;
+    doap:download-page <https://npmjs.org/package/rdf-parse>;
+    doap:bug-database <https://github.com/rubensworks/rdf-parse.js/issues>;
+    doap:developer <https://www.rubensworks.net/#me>;
+    doap:maintainer <https://www.rubensworks.net/#me>;
+    doap:documenter <https://www.rubensworks.net/#me>;
+    doap:maker <https://www.rubensworks.net/#me>;
+    dc:creator <https://www.rubensworks.net/#me>;
+    dc:description "Parses RDF from any serialization"@en;
+    doap:description "Parses RDF from any serialization"@en.
+<https://www.rubensworks.net/#me> a foaf:Person, earl:Assertor;
+    foaf:name "Ruben Taelman <rubensworks@gmail.com>";
+    foaf:homepage <https://www.rubensworks.net/>.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr001> a earl:TestCriterion, earl:TestCase;
+    dc:title "Transforms embedded JSON-LD script element";
+    dc:description "Tests embedded JSON-LD in HTML";
+    earl:assertions _:assertions0.
+_:assertions0 rdf:first _:assertion0;
+    rdf:rest rdf:nil.
+_:assertion0 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr001>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result0.
+_:result0 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr002> a earl:TestCriterion, earl:TestCase;
+    dc:title "Transforms first embedded JSON-LD script element";
+    dc:description "Tests embedded JSON-LD in HTML";
+    earl:assertions _:assertions1.
+_:assertions1 rdf:first _:assertion1;
+    rdf:rest rdf:nil.
+_:assertion1 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr002>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result1.
+_:result1 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr003> a earl:TestCriterion, earl:TestCase;
+    dc:title "Transforms targeted JSON-LD script element";
+    dc:description "Tests embedded JSON-LD in HTML with fragment identifier";
+    earl:assertions _:assertions2.
+_:assertions2 rdf:first _:assertion2;
+    rdf:rest rdf:nil.
+_:assertion2 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr003>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result2.
+_:result2 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr004> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands all embedded JSON-LD script elements with extractAllScripts option";
+    dc:description "Tests embedded JSON-LD in HTML extracting all elements";
+    earl:assertions _:assertions3.
+_:assertions3 rdf:first _:assertion3;
+    rdf:rest rdf:nil.
+_:assertion3 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr004>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result3.
+_:result3 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr005> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands multiple embedded JSON-LD script elements where one is an array";
+    dc:description "Tests embedded JSON-LD in HTML extracting all elements with array";
+    earl:assertions _:assertions4.
+_:assertions4 rdf:first _:assertion4;
+    rdf:rest rdf:nil.
+_:assertion4 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr005>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result4.
+_:result4 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr006> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands as empty with no embedded JSON-LD script elements";
+    dc:description "Tests embedded JSON-LD in HTML when none exist";
+    earl:assertions _:assertions5.
+_:assertions5 rdf:first _:assertion5;
+    rdf:rest rdf:nil.
+_:assertion5 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr006>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result5.
+_:result5 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr007> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands as empty with no embedded JSON-LD script elements and extractAllScripts";
+    dc:description "Tests embedded JSON-LD in HTML when none exist extracting all elements";
+    earl:assertions _:assertions6.
+_:assertions6 rdf:first _:assertion6;
+    rdf:rest rdf:nil.
+_:assertion6 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr007>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result6.
+_:result6 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr010> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands embedded JSON-LD script element with HTML character references";
+    dc:description "Tests embedded JSON-LD in HTML with character references";
+    earl:assertions _:assertions7.
+_:assertions7 rdf:first _:assertion7;
+    rdf:rest rdf:nil.
+_:assertion7 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr010>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result7.
+_:result7 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr011> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if no element found at target";
+    dc:description "Tests embedded JSON-LD in HTML with fragment identifier that doesn't exist";
+    earl:assertions _:assertions8.
+_:assertions8 rdf:first _:assertion8;
+    rdf:rest rdf:nil.
+_:assertion8 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr011>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result8.
+_:result8 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr012> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if targeted element is not a script element";
+    dc:description "Tests embedded JSON-LD in HTML which isn't a script element";
+    earl:assertions _:assertions9.
+_:assertions9 rdf:first _:assertion9;
+    rdf:rest rdf:nil.
+_:assertion9 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr012>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result9.
+_:result9 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr013> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if targeted element does not have type application/ld+json";
+    dc:description "Tests embedded JSON-LD in HTML with wrong type";
+    earl:assertions _:assertions10.
+_:assertions10 rdf:first _:assertion10;
+    rdf:rest rdf:nil.
+_:assertion10 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr013>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result10.
+_:result10 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr014> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if uncommented script text contains comment";
+    dc:description "Tests embedded JSON-LD in HTML with comments leftover";
+    earl:assertions _:assertions11.
+_:assertions11 rdf:first _:assertion11;
+    rdf:rest rdf:nil.
+_:assertion11 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr014>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result11.
+_:result11 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr015> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if end comment missing";
+    dc:description "Tests embedded JSON-LD in HTML with unballanced comments";
+    earl:assertions _:assertions12.
+_:assertions12 rdf:first _:assertion12;
+    rdf:rest rdf:nil.
+_:assertion12 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr015>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result12.
+_:result12 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr016> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if start comment missing";
+    dc:description "Tests embedded JSON-LD in HTML with unballanced comments";
+    earl:assertions _:assertions13.
+_:assertions13 rdf:first _:assertion13;
+    rdf:rest rdf:nil.
+_:assertion13 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr016>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result13.
+_:result13 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr017> a earl:TestCriterion, earl:TestCase;
+    dc:title "Errors if uncommented script is not valid JSON";
+    dc:description "Tests embedded JSON-LD in HTML which is invalid JSON";
+    earl:assertions _:assertions14.
+_:assertions14 rdf:first _:assertion14;
+    rdf:rest rdf:nil.
+_:assertion14 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr017>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result14.
+_:result14 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr018> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands embedded JSON-LD script element relative to document base";
+    dc:description "Tests embedded JSON-LD in HTML";
+    earl:assertions _:assertions15.
+_:assertions15 rdf:first _:assertion15;
+    rdf:rest rdf:nil.
+_:assertion15 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr018>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result15.
+_:result15 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr019> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands embedded JSON-LD script element relative to base option";
+    dc:description "Tests embedded JSON-LD in HTML";
+    earl:assertions _:assertions16.
+_:assertions16 rdf:first _:assertion16;
+    rdf:rest rdf:nil.
+_:assertion16 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr019>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result16.
+_:result16 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr020> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands embedded JSON-LD script element relative to HTML base";
+    dc:description "Tests embedded JSON-LD in HTML";
+    earl:assertions _:assertions17.
+_:assertions17 rdf:first _:assertion17;
+    rdf:rest rdf:nil.
+_:assertion17 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr020>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result17.
+_:result17 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr021> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands embedded JSON-LD script element relative to relative HTML base";
+    dc:description "Tests embedded JSON-LD in HTML";
+    earl:assertions _:assertions18.
+_:assertions18 rdf:first _:assertion18;
+    rdf:rest rdf:nil.
+_:assertion18 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr021>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result18.
+_:result18 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
+<https://w3c.github.io/json-ld-api/tests/html-manifest#tr022> a earl:TestCriterion, earl:TestCase;
+    dc:title "Expands targeted JSON-LD script element with fragment and HTML base";
+    dc:description "Tests embedded JSON-LD in HTML with fragment identifier";
+    earl:assertions _:assertions19.
+_:assertions19 rdf:first _:assertion19;
+    rdf:rest rdf:nil.
+_:assertion19 a earl:Assertion;
+    earl:assertedBy <https://www.rubensworks.net/#me>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/html-manifest#tr022>;
+    earl:subject <https://www.npmjs.com/package/rdf-parse/>;
+    earl:mode earl:automatic;
+    earl:result _:result19.
+_:result19 a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2020-03-28T12:40:57.035Z"^^xsd:dateTime.
