@@ -4,13 +4,13 @@
 <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
 <link href='earl.jsonld' rel='alternate' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='ruby-json-ld-earl.ttl' rel='related' />
-<link href='pyld-api-earl.ttl' rel='related' />
-<link href='rdf-parse.ttl' rel='related' />
 <link href='jsonld-gold-earl.ttl' rel='related' />
-<link href='guile-jsonld-earl.ttl' rel='related' />
 <link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
+<link href='pyld-api-earl.ttl' rel='related' />
 <link href='jsonld-streaming-parser-earl.ttl' rel='related' />
+<link href='guile-jsonld-earl.ttl' rel='related' />
+<link href='ruby-json-ld-earl.ttl' rel='related' />
+<link href='rdf-parse.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
 </title>
@@ -80,8 +80,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2020-04-04' property='dc:issued'>
-04 April 2020
+<time class='dt-published' datetime='2020-04-06' property='dc:issued'>
+06 April 2020
 </time>
 </h2>
 <dl>
@@ -11640,12 +11640,18 @@ Percentage passed out of 55 Tests
 Test
 </th>
 <th>
+<a href='#subj_2'>JSON-goLD</a>
+</th>
+<th>
 <a href='#subj_3'>JSON::LD</a>
 </th>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0001'>Test t0001: Library framing example</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11658,10 +11664,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0003'>Test t0003: reframe (null)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11674,10 +11686,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0005'>Test t0005: reframe (explicit)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11690,10 +11708,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0007'>Test t0007: input has multiple types</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11706,6 +11730,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
@@ -11714,10 +11741,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0011'>Test t0011: @embed true/false(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11730,10 +11763,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0013'>Test t0013: Replace existing embed</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11746,10 +11785,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0015'>Test t0015: Replace deeply-nested embed</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11762,10 +11807,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0017'>Test t0017: Non-flat input</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11778,10 +11829,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0019'>Test t0019: Resources can be re-embedded again in each top-level frame match</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11794,10 +11851,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0021'>Test t0021: Blank nodes in @type(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11810,10 +11873,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0023'>Test t0023: No match on [](new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11826,10 +11895,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0025'>Test t0025: @requireAll with missing values and @default(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11839,6 +11914,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0026'>Test t0026: explicitly excludes unframed properties (@explicit: true)(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11846,6 +11924,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0027'>Test t0027: non-existent framed properties create null property(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11855,6 +11936,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0028'>Test t0028: embed matched frames with @reverse(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11862,6 +11946,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0029'>Test t0029: embed matched frames with reversed property(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11871,6 +11958,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0030'>Test t0030: @embed @always/@never(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11879,6 +11969,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0031'>Test t0031: match none @type match(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11886,6 +11979,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0032'>Test t0032: single @id match(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11898,10 +11994,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0034'>Test t0034: wildcard and match none(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11911,6 +12013,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0035'>Test t0035: matches a deep node pattern(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11918,6 +12023,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0036'>Test t0036: matches exact value pattern(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11927,6 +12035,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0037'>Test t0037: matches wildcard @value in value pattern(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11934,6 +12045,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0038'>Test t0038: matches wildcard @type in value pattern(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11943,6 +12057,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0039'>Test t0039: matches wildcard @language in value pattern(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11950,6 +12067,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0040'>Test t0040: matches match none @type in value pattern(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11959,6 +12079,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0041'>Test t0041: matches match none @language in value pattern(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11966,6 +12089,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0042'>Test t0042: matches some @value in value pattern(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -11975,6 +12101,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0043'>Test t0043: matches some @type in value pattern(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11983,6 +12112,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0044'>Test t0044: matches some @language in value pattern(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -11990,6 +12122,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0045'>Test t0045: excludes non-matched values in value pattern(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12002,10 +12137,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0047'>Test t0047: Frame default graph if outer @graph is used(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12014,6 +12155,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0048'>Test t0048: Merge one graph and preserve another(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12026,10 +12170,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0050'>Test t0050: Library example with named graphs(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12038,6 +12188,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0051'>Test t0051: Compacting values of @preserve(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12050,10 +12203,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0053'>Test t0053: @type must not include a blank node identifier(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12066,10 +12225,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0055'>Test t0055: Framing list with mixed values</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12082,6 +12247,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
@@ -12090,10 +12258,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0058'>Test t0058: Frame matching with no matching value in list(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12106,10 +12280,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0060'>Test t0060: @embed: @once only embeds first value with node reference(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12119,6 +12299,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0061'>Test t0061: Matching embedded nodes with @default(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12126,6 +12309,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0062'>Test t0062: An array with a single value remains an array if container is @set.(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12135,6 +12321,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0063'>Test t0063: Using @null in @default.(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12142,6 +12331,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0064'>Test t0064: Using @default in @type.(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12151,6 +12343,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0065'>Test t0065: Match on value(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12158,6 +12353,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0066'>Test t0066: Match on value reference(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12167,6 +12365,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0067'>Test t0067: Match on list value(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12175,6 +12376,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#t0068'>Test t0068: Merge @type from different graphs(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12182,6 +12386,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#teo01'>Test teo01: @embed true/false(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12194,10 +12401,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg002'>Test tg002: Simple embed(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12207,6 +12420,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg003'>Test tg003: Embed with direct circular reference(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12214,6 +12430,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg004'>Test tg004: Embed with indirect circular reference(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12226,10 +12445,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg006'>Test tg006: Embed with nested indirect circular reference via set(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12239,6 +12464,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg007'>Test tg007: Multi-level simple embeds(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12246,6 +12474,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg008'>Test tg008: A tangle of nastiness(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12255,6 +12486,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg009'>Test tg009: Recursive property embed w/o circular reference(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12262,6 +12496,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tg010'>Test tg010: Framing blank node unnamed graphs(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12271,6 +12508,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tin01'>Test tin01: Basic Included array(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12279,6 +12519,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tin02'>Test tin02: Basic Included object(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12286,6 +12529,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tin03'>Test tin03: json.api example(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12298,10 +12544,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tp021'>Test tp021: Blank nodes in @type (prune bnodes)(new in JSON-LD 1.1)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12311,6 +12563,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tp046'>Test tp046: Merge graphs if no outer @graph is used (prune bnodes)(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12318,6 +12573,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tp049'>Test tp049: Merge one graph and deep preserve another (prune bnodes)(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12327,6 +12585,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tp050'>Test tp050: Prune blank nodes with alias of @id(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12334,6 +12595,9 @@ PASS
 <tr>
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tra01'>Test tra01: @requireAll only matches if @type and other properties are present(new in JSON-LD 1.1)</a>
+</td>
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -12343,6 +12607,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tra02'>Test tra02: @requireAll only matches if @id and @type match(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12351,6 +12618,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-framing/tests/frame-manifest#tra03'>Test tra03: @requireAll with type and properties(new in JSON-LD 1.1)</a>
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -12358,6 +12628,9 @@ PASS
 <tr class='summary'>
 <td>
 Percentage passed out of 89 Tests
+</td>
+<td class='passed-some'>
+39.3%
 </td>
 <td class='passed-all'>
 100.0%
@@ -14531,13 +14804,13 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -17472,13 +17745,13 @@ PASS
 </tr>
 <tr>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)(new in JSON-LD 1.1)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab(new in JSON-LD 1.1)</a>
 </td>
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -21286,7 +21559,7 @@ Percentage passed out of 442 Tests
 98.0%
 </td>
 <td class='passed-most'>
-95.5%
+95.0%
 </td>
 <td class='passed-all'>
 100.0%
@@ -22320,7 +22593,7 @@ https://github.com/digitalbazaar/pyld
 <a href='https://github.com/dlongley'>
 <span property='foaf:name'>Dave Longley</span>
 </a>
-<a href-@id='https://github.com/dlongley' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/dlongley' href-foaf:name='Dave Longley' property='foaf:homepage'>
+<a href-@id='https://github.com/dlongley' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://github.com/dlongley' href-foaf:name='Dave Longley' property='foaf:homepage'>
 https://github.com/dlongley
 </a>
 </div>
@@ -22401,7 +22674,7 @@ Transform RDF to JSON-LD
 <dd>
 <dl>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>unknown</span></dd>
+<dd property='doap:release'><span property='doap:revision'>v0.3.0</span></dd>
 <dt>Programming Language</dt>
 <dd property='doap:programming-language'>Go</dd>
 <dt>Home Page</dt>
@@ -22416,7 +22689,7 @@ https://github.com/piprate/json-gold
 <a href='https://github.com/kazarena'>
 <span property='foaf:name'>Stan Nazarenko</span>
 </a>
-<a href-@id='https://github.com/kazarena' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/kazarena' href-foaf:name='Stan Nazarenko' property='foaf:homepage'>
+<a href-@id='https://github.com/kazarena' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://github.com/kazarena' href-foaf:name='Stan Nazarenko' property='foaf:homepage'>
 https://github.com/kazarena
 </a>
 </div>
@@ -22453,6 +22726,14 @@ Flattening
 </tr>
 <tr>
 <td>
+Framing
+</td>
+<td class='passed-some'>
+35/89 (39.3%)
+</td>
+</tr>
+<tr>
+<td>
 Remote document
 </td>
 <td class='passed-some'>
@@ -22464,7 +22745,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-422/442 (95.5%)
+420/442 (95.0%)
 </td>
 </tr>
 <tr>
@@ -22743,25 +23024,25 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='pyld-api-earl.ttl'>pyld-api-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
-</li>
-<li>
 <a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
 </li>
 <li>
+<a class='source' href='pyld-api-earl.ttl'>pyld-api-earl.ttl</a>
+</li>
+<li>
 <a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
 </li>
 </ul>
 </section>
