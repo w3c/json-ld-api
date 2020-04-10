@@ -9,7 +9,7 @@
 @prefix my: <http://purl.org/NET/cpan-uri/dist/JSONLD/> .
 
 <> foaf:primaryTopic my:project ;
-	dct:issued "2020-04-09T22:05:12Z"^^xsd:dateTime ;
+	dct:issued "2020-04-10T03:27:21Z"^^xsd:dateTime ;
 	foaf:maker <http://kasei.us/about/#greg> ;
 	.
 
@@ -21,6 +21,11 @@ my:project
 	doap:developer <http://kasei.us/about/#greg> ;
 	doap:programming-language "Perl" ;
 	doap:release my:v_0-004 ;
+	doap:repository [
+		a doap:GitRepository ;
+		doap:browse <https://github.com/kasei/perl-jsonld/> ;
+		doap:location <https://github.com/kasei/perl-jsonld.git> ;
+	]
 	.
 
 my:v_0-004 a doap:Version ;
@@ -3987,11 +3992,11 @@ my:test-harness
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te028> .
 [] a earl:Assertion;
-	earl:assertedBy my:test-harness ;
+	earl:assertedBy <http://kasei.us/about/#greg> ;
 	earl:result [
 		a earl:TestResult ;
-		earl:outcome earl:failed ;
-		rdfs:comment "timeout at xt/to-rdf.t line 270.\n" ;
+		earl:outcome earl:passed ;
+		rdfs:comment "manually verified" ;
 	] ;
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te029> ;
@@ -4246,11 +4251,11 @@ my:test-harness
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te061> .
 [] a earl:Assertion;
-	earl:assertedBy my:test-harness ;
+	earl:assertedBy <http://kasei.us/about/#greg> ;
 	earl:result [
 		a earl:TestResult ;
-		earl:outcome earl:failed ;
-		rdfs:comment "Failed to compile source because: timeout at xt/to-rdf.t line 270. at /Users/greg/data/prog/git/perlrdf2/lib/Attean/API/Binding.pm line 367.\n" ;
+		earl:outcome earl:passed ;
+		rdfs:comment "manually verified" ;
 	] ;
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te062> ;
@@ -4356,13 +4361,10 @@ my:test-harness
 	earl:assertedBy my:test-harness ;
 	earl:result [
 		a earl:TestResult ;
-		earl:outcome earl:failed ;
-		rdfs:comment "loading remote context failed at lib/JSONLD.pm line 627.\n" ;
+		earl:outcome earl:passed
 	] ;
 	earl:subject my:project ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te077> ;
-	.
-
+	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te077> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -4580,13 +4582,16 @@ my:test-harness
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te104> .
 [] a earl:Assertion;
-	earl:assertedBy my:test-harness ;
+	earl:assertedBy <http://kasei.us/about/#greg> ;
 	earl:result [
 		a earl:TestResult ;
-		earl:outcome earl:passed
+		earl:outcome earl:passed ;
+		rdfs:comment "manually verified" ;
 	] ;
 	earl:subject my:project ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te105> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te105> ;
+	.
+
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -4596,11 +4601,11 @@ my:test-harness
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te106> .
 [] a earl:Assertion;
-	earl:assertedBy my:test-harness ;
+	earl:assertedBy <http://kasei.us/about/#greg> ;
 	earl:result [
 		a earl:TestResult ;
-		earl:outcome earl:failed ;
-		rdfs:comment "timeout at xt/to-rdf.t line 270.\n" ;
+		earl:outcome earl:passed ;
+		rdfs:comment "manually verified" ;
 	] ;
 	earl:subject my:project ;
 	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#te107> ;
@@ -5354,13 +5359,10 @@ my:test-harness
 	earl:assertedBy my:test-harness ;
 	earl:result [
 		a earl:TestResult ;
-		earl:outcome earl:failed ;
-		rdfs:comment "failed to find a graph isomorphism between computed and expected RDF triples" ;
+		earl:outcome earl:passed
 	] ;
 	earl:subject my:project ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs08> ;
-	.
-
+	earl:test <https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tjs08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
