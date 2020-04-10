@@ -15,6 +15,8 @@
         %img{src: "http://www.w3.org/Icons/w3c_home", alt: "W3C", height: 48, width: 72}
     %h1<=manifest['name']
     :markdown
+      #{manifest['description']}
+    :markdown
       This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at
       [#{json_file}](#{json_file}). The manifest vocabulary is described in the [JSON-LD Test Vocabulary](vocab.html) ([JSON-LD](vocab.jsonld), [Turtle](vocab.ttl)) and is based on the [RDF Test Vocabulary](http://www.w3.org/TR/2014/NOTE-rdf11-testcases-20140225/).
 
@@ -155,7 +157,6 @@
       %dl
         %dt="baseIri"
         %dd=manifest['baseIri']
-    %p=manifest['description']
     - if manifest['sequence']
       %section
         %h2

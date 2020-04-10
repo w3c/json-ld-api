@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Remote document",
-  "description": "JSON-LD Remote Document tests.",
+  "description": "These tests implement the requirements for JSON-LD [Remote Document and Context Retrieval](https://www.w3.org/TR/json-ld11-api/#remote-document-and-context-retrieval).",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {

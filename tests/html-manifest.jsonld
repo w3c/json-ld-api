@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "HTML",
-  "description": "JSON-LD HTML tests",
+  "description": "These tests implement the requirements for the JSON-LD [HTML Content Algorithms](https://www.w3.org/TR/json-ld11-api/#html-content-algorithms).",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [{
     "@id": "#te001",
