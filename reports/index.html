@@ -4,14 +4,14 @@
 <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
 <link href='earl.jsonld' rel='alternate' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='perl-jsonld-earl.ttl' rel='related' />
-<link href='ruby-json-ld-earl.ttl' rel='related' />
-<link href='pyld-api-earl.ttl' rel='related' />
 <link href='rdf-parse.ttl' rel='related' />
+<link href='pyld-api-earl.ttl' rel='related' />
+<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
+<link href='perl-jsonld-earl.ttl' rel='related' />
+<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
 <link href='guile-jsonld-earl.ttl' rel='related' />
 <link href='jsonld-gold-earl.ttl' rel='related' />
-<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
-<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
+<link href='ruby-json-ld-earl.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
 </title>
@@ -176,50 +176,50 @@ Test Manifests
 <ul class='toc'>
 <li class='tocline'>
 <span class='secno'>2.1</span>
-<a class='tocxref' href='#JSON-LD-Compaction-tests.'>
-JSON-LD Compaction tests.
+<a class='tocxref' href='#Compaction'>
+Compaction
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.2</span>
-<a class='tocxref' href='#JSON-LD-Expansion-tests.'>
-JSON-LD Expansion tests.
+<a class='tocxref' href='#Expansion'>
+Expansion
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.3</span>
-<a class='tocxref' href='#JSON-LD-Flattening-tests.'>
-JSON-LD Flattening tests.
+<a class='tocxref' href='#Flattening'>
+Flattening
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.4</span>
-<a class='tocxref' href='#JSON-LD-Framing-tests.'>
-JSON-LD Framing tests.
+<a class='tocxref' href='#Framing'>
+Framing
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.5</span>
-<a class='tocxref' href='#JSON-LD-HTML-tests'>
-JSON-LD HTML tests
+<a class='tocxref' href='#HTML'>
+HTML
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.6</span>
-<a class='tocxref' href='#JSON-LD-Remote-Document-tests.'>
-JSON-LD Remote Document tests.
+<a class='tocxref' href='#Remote-document'>
+Remote document
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.7</span>
-<a class='tocxref' href='#JSON-LD-To-RDF-tests.'>
-JSON-LD To RDF tests.
+<a class='tocxref' href='#Transform-JSON-LD-to-RDF'>
+Transform JSON-LD to RDF
 </a>
 </li>
 <li class='tocline'>
 <span class='secno'>2.8</span>
-<a class='tocxref' href='#JSON-LD-From-RDF-tests.'>
-JSON-LD From RDF tests.
+<a class='tocxref' href='#Transform-RDF-to-JSON-LD'>
+Transform RDF to JSON-LD
 </a>
 </li>
 </ul>
@@ -318,11 +318,13 @@ Report Generation Software
 <span class='secno'>2.</span>
 Test Manifests
 </h2>
-<section id='JSON-LD-Compaction-tests.'>
+<section id='Compaction'>
 <h2>
 <span class='secno'>2.1</span>
 <span>Compaction</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#compaction-algorithm">Compaction Algorithm</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -4406,11 +4408,13 @@ Percentage passed out of 238 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-Expansion-tests.'>
+<section id='Expansion'>
 <h2>
 <span class='secno'>2.2</span>
 <span>Expansion</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#expansion-algorithm">Expansion Algorithm</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -11774,11 +11778,13 @@ Percentage passed out of 366 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-Flattening-tests.'>
+<section id='Flattening'>
 <h2>
 <span class='secno'>2.3</span>
 <span>Flattening</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#flattening-algorithm">Flattening Algorithm</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -12751,11 +12757,13 @@ Percentage passed out of 55 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-Framing-tests.'>
+<section id='Framing'>
 <h2>
 <span class='secno'>2.4</span>
 <span>Framing</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-framing/#framing-algorithm">Framing Algorithm</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -13760,11 +13768,13 @@ Percentage passed out of 89 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-HTML-tests'>
+<section id='HTML'>
 <h2>
 <span class='secno'>2.5</span>
 <span>HTML</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#html-content-algorithms">HTML Content Algorithms</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -14788,11 +14798,13 @@ Percentage passed out of 49 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-Remote-Document-tests.'>
+<section id='Remote-document'>
 <h2>
 <span class='secno'>2.6</span>
 <span>Remote document</span>
 </h2>
+<p>These tests implement the requirements for JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#remote-document-and-context-retrieval">Remote Document and Context Retrieval</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -15136,11 +15148,13 @@ Percentage passed out of 18 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-To-RDF-tests.'>
+<section id='Transform-JSON-LD-to-RDF'>
 <h2>
 <span class='secno'>2.7</span>
 <span>Transform JSON-LD to RDF</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -16072,8 +16086,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -16092,8 +16106,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -19532,8 +19546,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -19552,8 +19566,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -24012,8 +24026,8 @@ Percentage passed out of 442 Tests
 <td class='passed-most'>
 98.0%
 </td>
-<td class='passed-most'>
-95.5%
+<td class='passed-some'>
+94.6%
 </td>
 <td class='passed-all'>
 100.0%
@@ -24024,11 +24038,13 @@ Percentage passed out of 442 Tests
 </tr>
 </table>
 </section>
-<section id='JSON-LD-From-RDF-tests.'>
+<section id='Transform-RDF-to-JSON-LD'>
 <h2>
 <span class='secno'>2.8</span>
 <span>Transform RDF to JSON-LD</span>
 </h2>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>.</p>
+
 <table class='report'>
 <tr>
 <th>
@@ -25103,7 +25119,7 @@ https://github.com/digitalbazaar/pyld
 <a href='https://github.com/dlongley'>
 <span property='foaf:name'>Dave Longley</span>
 </a>
-<a href-@id='https://github.com/dlongley' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/dlongley' href-foaf:name='Dave Longley' property='foaf:homepage'>
+<a href-@id='https://github.com/dlongley' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://github.com/dlongley' href-foaf:name='Dave Longley' property='foaf:homepage'>
 https://github.com/dlongley
 </a>
 </div>
@@ -25199,7 +25215,7 @@ https://github.com/piprate/json-gold
 <a href='https://github.com/kazarena'>
 <span property='foaf:name'>Stan Nazarenko</span>
 </a>
-<a href-@id='https://github.com/kazarena' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/kazarena' href-foaf:name='Stan Nazarenko' property='foaf:homepage'>
+<a href-@id='https://github.com/kazarena' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://github.com/kazarena' href-foaf:name='Stan Nazarenko' property='foaf:homepage'>
 https://github.com/kazarena
 </a>
 </div>
@@ -25255,7 +25271,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-422/442 (95.5%)
+418/442 (94.6%)
 </td>
 </tr>
 <tr>
@@ -25534,16 +25550,19 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
+<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
 </li>
 <li>
 <a class='source' href='pyld-api-earl.ttl'>pyld-api-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
+<a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
@@ -25552,10 +25571,7 @@ Individual test results used to construct this report are available here:
 <a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
+<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
 </li>
 </ul>
 </section>

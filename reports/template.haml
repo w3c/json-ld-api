@@ -81,7 +81,6 @@
   %body{prefix: "bibo: http://purl.org/ontology/bibo/ earl: http://www.w3.org/ns/earl# doap: http://usefulinc.com/ns/doap# mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#", vocab: "http://www.w3.org/ns/earl#"}
     - subject_refs = {}
     - passed_tests = []
-    - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each {|m| m['title'] ||= m['rdfs:label'] || m['description'] || m['rdfs:comment']}
     - subjects.each_with_index do |subject, index|
       - subject_refs[subject['@id']] = "subj_#{index}"
     %div.head{role: :contentinfo}
@@ -176,8 +175,8 @@
             - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each_with_index do |manifest, ndx|
               %li.tocline
                 %span.secno="2.#{ndx+1}"
-                %a.tocxref{href: "##{manifest['rdfs:comment'].gsub(' ', '-')}"}
-                  ~ manifest['rdfs:comment']
+                %a.tocxref{href: "##{manifest['title'].gsub(' ', '-')}"}
+                  ~ manifest['title']
         %li.tocline
           %a.tocxref{href: "#test-subjects"}
             %span.secno="A."
@@ -258,15 +257,15 @@
         Test Manifests
       - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each_with_index do |manifest, ndx2|
         - test_cases = manifest['entries']
-        %section{id: manifest['rdfs:comment'].gsub(' ', '-')}
+        %section{id: manifest['title'].gsub(' ', '-')}
           %h2
             %span.secno="2.#{ndx2+1}"
             %span<
               = manifest['title'] ||  'Test Manifest'
-          - Array(manifest['description']).each do |desc|
+          - Array(manifest['rdfs:comment']).each do |desc|
             - desc = desc['@value'] if desc.is_a?(Hash)
-            %p{lang: 'en'}<
-              ~ CGI.escapeHTML desc.to_s
+            :markdown
+              #{desc}
           %table.report
             - skip_subject = {}
             - passed_tests[ndx2] = []
