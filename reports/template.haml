@@ -164,17 +164,21 @@
           Table of Contents
       %ul.toc#respecContents{role: "directory"}
         %li.tocline
-          %a.tocxref{href: "#instructions-for-submitting-implementation-reports"}
+          %a.tocxref{href: "#introduction"}
             %span.secno="1."
+            Introduction
+        %li.tocline
+          %a.tocxref{href: "#instructions-for-submitting-implementation-reports"}
+            %span.secno="2."
             Instructions for submitting implementation reports
         %li.tocline
           %a.tocxref{href: "#test-manifests"}
-            %span.secno="2."
+            %span.secno="3."
             Test Manifests
           %ul.toc
             - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each_with_index do |manifest, ndx|
               %li.tocline
-                %span.secno="2.#{ndx+1}"
+                %span.secno="3.#{ndx+1}"
                 %a.tocxref{href: "##{manifest['title'].gsub(' ', '-')}"}
                   ~ manifest['title']
         %li.tocline
@@ -201,6 +205,28 @@
           %a.tocxref{href: "#report-generation-software"}
             %span.secno="D."
             Report Generation Software
+    %section#introduction
+      :markdown
+        ## Introduction
+
+        This implementation report covers the implementations of the JSON-LD
+        specifications which have submitted test results. It is intended to be
+        maintained by the [JSON for Linking Data Community Group](https://www.w3.org/community/json-ld/),
+        or a JSON-LD Working Group if one is active.
+        The implementation report serves two purposes:
+
+        1. To demonstrate that there are multiple, independent implementations of
+          the specifications. This is a prerequisite for progression of any
+          standard to Recommendation.
+
+        2. To catalog the known, conforming implementations and which features
+          each supports.
+
+        There are other [JSON-LD implementations](http://json-ld.org/#developers) which are not listed in this
+        report, either due to not submitting tests or by not being intended as
+        direct implementations of the specification, but instead layering on
+        top of such libraries. For a broader list of implementations, please
+        see the [JSON-LD Website](https://json-ld.org/).
     %section#instructions-for-submitting-implementation-reports
       :markdown
         ## Instructions for submitting implementation reports
@@ -256,13 +282,13 @@
                 foaf:homepage <--my homepage--> .
     %section#test-manifests
       %h2
-        %span.secno="2."
+        %span.secno="3."
         Test Manifests
       - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each_with_index do |manifest, ndx2|
         - test_cases = manifest['entries']
         %section{id: manifest['title'].gsub(' ', '-')}
           %h2
-            %span.secno="2.#{ndx2+1}"
+            %span.secno="3.#{ndx2+1}"
             %span<
               = manifest['title'] ||  'Test Manifest'
           - Array(manifest['rdfs:comment']).each do |desc|
