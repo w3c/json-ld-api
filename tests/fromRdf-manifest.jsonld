@@ -217,7 +217,6 @@
       "name": "rdfDirection: null with compound literal with direction and no language",
       "purpose": "Does not parse compound literal without proper option.",
       "option": {"specVersion": "json-ld-1.1"},
-      "option": {"specVersion": "json-ld-1.1"},
       "input": "fromRdf/di03-in.nq",
       "expect": "fromRdf/di03-out.jsonld"
     }, {
@@ -233,7 +232,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: i18n-datatype with i18n literal with direction and no language",
       "purpose": "Parses i18n datatype with proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype", "normative": false},
       "input": "fromRdf/di05-in.nq",
       "expect": "fromRdf/di05-out.jsonld"
     }, {
@@ -241,7 +240,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: i18n-datatype with i18n literal with direction and language",
       "purpose": "Parses i18n datatype with proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype", "normative": false},
       "input": "fromRdf/di06-in.nq",
       "expect": "fromRdf/di06-out.jsonld"
     }, {
@@ -249,7 +248,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: i18n-datatype with compound literal with direction and no language",
       "purpose": "Does not parse compound literal without proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype", "normative": false},
       "input": "fromRdf/di07-in.nq",
       "expect": "fromRdf/di07-out.jsonld"
     }, {
@@ -257,7 +256,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: i18n-datatype with compound literal with direction and language",
       "purpose": "Does not parse compound literal without proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype", "normative": false},
       "input": "fromRdf/di08-in.nq",
       "expect": "fromRdf/di08-out.jsonld"
     }, {
@@ -265,7 +264,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: compound-literal with i18n literal with direction and no language",
       "purpose": "Does not parse i18n datatype without proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal", "normative": false},
       "input": "fromRdf/di09-in.nq",
       "expect": "fromRdf/di09-out.jsonld"
     }, {
@@ -273,7 +272,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: compound-literal with i18n literal with direction and language",
       "purpose": "Does not parse i18n datatype without proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal", "normative": false},
       "input": "fromRdf/di10-in.nq",
       "expect": "fromRdf/di10-out.jsonld"
     }, {
@@ -281,7 +280,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: compound-literal with compound literal with direction and no language",
       "purpose": "Parses compound literal with proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal", "normative": false},
       "input": "fromRdf/di11-in.nq",
       "expect": "fromRdf/di11-out.jsonld"
     }, {
@@ -289,7 +288,7 @@
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: compound-literal with compound literal with direction and language",
       "purpose": "Parses compound literal with proper option.",
-      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal"},
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "compound-literal", "normative": false},
       "input": "fromRdf/di12-in.nq",
       "expect": "fromRdf/di12-out.jsonld"
     }, {
