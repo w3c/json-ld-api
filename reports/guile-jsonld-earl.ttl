@@ -14,7 +14,7 @@
      <https://www.w3.org/TR/json-ld11-api/>;
    doap:license <https://www.gnu.org/licenses/gpl-3.0.html>;
    doap:name "guile-jsonld"^^xsd:string;
-   doap:platform "GNU Guile"^^xsd:string;
+   doap:programming-language "GNU Guile"^^xsd:string;
    doap:shortdesc "JSON-LD support for GNU Guile."@en;
    doap:release [
       doap:name "guile-jsonld-1.0-pre1";
