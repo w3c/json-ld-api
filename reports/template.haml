@@ -64,6 +64,20 @@
       pre > code {
         color: #C83500;
       }
+      #test-manifests .report td:last-child::before {
+        position: absolute;
+        left: 1em;
+        content: "X";
+        color: red;
+        font-weight: bold;
+      }
+      #test-manifests .report tr.summary td:last-child::before,
+      #test-manifests .report .PASS ~ td.PASS:last-child::before,
+      #test-manifests .report .PASS ~ .PASS ~ td:last-child::before
+      {
+        display: none;
+      }
+
   %body{prefix: "bibo: http://purl.org/ontology/bibo/ earl: http://www.w3.org/ns/earl# doap: http://usefulinc.com/ns/doap# mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#", vocab: "http://www.w3.org/ns/earl#"}
     - subject_refs = {}
     - passed_tests = []
