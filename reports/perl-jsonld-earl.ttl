@@ -48,7 +48,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0001> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0001> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -56,7 +56,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0002> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0002> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -64,7 +64,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0003> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0003> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -72,7 +72,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0004> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0004> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -80,7 +80,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0005> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0005> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -88,7 +88,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0006> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0006> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -96,7 +96,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0007> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0007> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -104,7 +104,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0008> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0008> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -112,7 +112,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0009> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0009> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -120,7 +120,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0010> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0010> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -128,7 +128,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0011> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0011> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -136,7 +136,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0012> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0012> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -144,7 +144,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0013> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0013> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -152,7 +152,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0014> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0014> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -160,7 +160,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0015> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0015> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -168,7 +168,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0016> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0016> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -176,7 +176,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0017> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0017> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -184,7 +184,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0018> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0018> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -192,7 +192,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0019> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0019> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -200,7 +200,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0020> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0020> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -208,7 +208,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0021> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0021> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -216,7 +216,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0022> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0022> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -224,7 +224,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0023> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0023> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -232,7 +232,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0024> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0024> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -240,7 +240,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0025> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0025> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -248,7 +248,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0027> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0027> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -256,7 +256,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0028> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0028> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -264,7 +264,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0029> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0029> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -272,7 +272,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0030> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0030> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -280,7 +280,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0031> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0031> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -288,7 +288,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0032> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0032> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -296,7 +296,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0033> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0033> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -304,7 +304,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0034> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0034> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -312,7 +312,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0035> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0035> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -320,7 +320,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0036> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0036> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -328,7 +328,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0037> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0037> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -336,7 +336,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0039> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0039> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -344,7 +344,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0040> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0040> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -352,7 +352,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0041> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0041> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -360,7 +360,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0042> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0042> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -368,7 +368,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0043> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0043> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -376,7 +376,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0044> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0044> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -384,7 +384,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0045> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0045> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -392,7 +392,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0046> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0046> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -400,7 +400,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0047> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0047> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -408,7 +408,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0048> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0048> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -416,7 +416,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0049> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0049> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -424,7 +424,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0050> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0050> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -432,7 +432,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0051> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0051> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -440,7 +440,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0052> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0052> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -448,7 +448,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0053> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0053> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -456,7 +456,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0054> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0054> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -464,7 +464,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0055> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0055> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -472,7 +472,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0056> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0056> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -480,7 +480,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0057> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0057> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -488,7 +488,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0058> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0058> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -496,7 +496,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0059> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0059> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -504,7 +504,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0060> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0060> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -512,7 +512,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0061> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0061> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -520,7 +520,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0062> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0062> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -528,7 +528,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0063> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0063> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -536,7 +536,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0064> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0064> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -544,7 +544,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0065> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0065> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -552,7 +552,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0066> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0066> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -560,7 +560,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0067> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0067> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -568,7 +568,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0068> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0068> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -576,7 +576,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0069> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0069> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -584,7 +584,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0070> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0070> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -592,7 +592,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0072> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0072> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -600,7 +600,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0073> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0073> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -608,7 +608,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0074> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0074> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -616,7 +616,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0075> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0075> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -624,7 +624,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0076> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0076> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -632,7 +632,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0077> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0077> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -640,7 +640,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0078> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0078> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -648,7 +648,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0079> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0079> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -656,7 +656,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0080> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0080> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -664,7 +664,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0081> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0081> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -672,7 +672,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0082> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0082> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -680,7 +680,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0083> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0083> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -688,7 +688,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0084> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0084> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -696,7 +696,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0085> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0085> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -704,7 +704,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0086> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0086> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -712,7 +712,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0087> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0087> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -720,7 +720,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0088> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0088> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -728,7 +728,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0089> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0089> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -736,7 +736,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0090> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0090> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -744,7 +744,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0091> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0091> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -752,7 +752,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0092> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0092> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -760,7 +760,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0093> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0093> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -768,7 +768,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0094> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0094> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -776,7 +776,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0095> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0095> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -784,7 +784,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0096> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0096> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -792,7 +792,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0097> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0097> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -800,7 +800,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0098> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0098> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -808,7 +808,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0099> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0099> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -816,7 +816,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0100> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0100> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -824,7 +824,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0101> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0101> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -832,7 +832,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0102> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0102> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -840,7 +840,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0103> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0103> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -848,7 +848,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0104> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0104> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -856,7 +856,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0105> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0105> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -864,7 +864,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0106> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0106> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -872,7 +872,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0107> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0107> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -880,7 +880,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0108> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0108> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -888,7 +888,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0109> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0109> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -896,7 +896,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0110> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0110> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -904,7 +904,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0111> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0111> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -912,7 +912,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0112> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0112> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -920,7 +920,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0113> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0113> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -928,7 +928,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0114> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0114> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -936,7 +936,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0117> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0117> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -944,7 +944,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0118> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0118> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -952,7 +952,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0119> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0119> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -960,7 +960,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0120> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0120> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -968,7 +968,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0121> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0121> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -976,7 +976,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0122> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0122> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -984,7 +984,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0123> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0123> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -992,7 +992,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0124> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0124> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1000,7 +1000,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0125> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0125> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1008,7 +1008,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0126> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0126> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1016,7 +1016,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0127> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0127> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1024,7 +1024,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0128> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0128> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1032,7 +1032,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0129> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0129> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1040,7 +1040,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#t0130> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#t0130> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1048,7 +1048,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc001> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc001> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1056,7 +1056,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc002> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc002> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1064,7 +1064,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc003> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc003> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1072,7 +1072,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc004> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc004> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1080,7 +1080,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc005> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc005> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1088,7 +1088,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc006> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc006> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1096,7 +1096,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc007> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc007> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1104,7 +1104,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc008> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc008> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1112,7 +1112,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc009> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc009> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1120,7 +1120,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc010> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc010> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1128,7 +1128,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc011> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc011> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1136,7 +1136,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc012> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc012> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1144,7 +1144,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc013> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc013> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1152,7 +1152,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc014> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc014> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1160,7 +1160,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc015> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc015> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1168,7 +1168,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc016> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc016> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1176,7 +1176,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc017> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc017> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1184,7 +1184,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc018> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc018> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1192,7 +1192,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc019> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc019> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1200,7 +1200,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc020> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc020> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1208,7 +1208,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc021> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc021> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1216,7 +1216,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc022> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc022> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1224,7 +1224,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc023> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc023> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1232,7 +1232,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc024> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc024> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1240,7 +1240,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc025> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc025> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1248,7 +1248,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc026> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc026> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1256,7 +1256,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc027> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc027> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1264,7 +1264,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc028> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc028> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1272,7 +1272,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc029> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc029> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1280,7 +1280,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc030> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc030> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1288,7 +1288,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc031> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc031> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1296,7 +1296,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc032> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc032> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1304,7 +1304,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc033> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc033> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1312,7 +1312,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc034> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc034> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1320,7 +1320,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tc035> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tc035> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1328,7 +1328,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1336,7 +1336,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1344,7 +1344,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1352,7 +1352,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1360,7 +1360,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1368,7 +1368,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1376,7 +1376,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1384,7 +1384,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1392,7 +1392,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1400,7 +1400,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tec01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tec01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1408,7 +1408,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tec02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tec02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1416,7 +1416,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tem01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tem01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1424,7 +1424,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ten01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ten01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1432,7 +1432,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ten02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ten02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1440,7 +1440,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ten03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ten03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1448,7 +1448,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ten04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ten04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1456,7 +1456,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ten05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ten05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1464,7 +1464,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ten06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ten06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1472,7 +1472,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tep02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tep02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1480,7 +1480,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tep03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tep03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1488,7 +1488,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1496,7 +1496,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1504,7 +1504,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1512,7 +1512,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1520,7 +1520,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1528,7 +1528,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1536,7 +1536,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1544,7 +1544,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter10> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter10> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1552,7 +1552,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter11> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter11> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1560,7 +1560,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter12> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter12> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1568,7 +1568,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter13> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter13> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1576,7 +1576,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter14> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter14> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1584,7 +1584,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter15> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter15> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1592,7 +1592,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter17> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter17> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1600,7 +1600,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter18> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter18> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1608,7 +1608,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter19> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter19> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1616,7 +1616,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter20> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter20> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1624,7 +1624,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter21> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter21> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1632,7 +1632,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter22> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter22> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1640,7 +1640,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter23> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter23> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1648,7 +1648,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter25> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter25> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1656,7 +1656,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter26> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter26> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1664,7 +1664,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter27> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter27> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1672,7 +1672,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter28> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter28> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1680,7 +1680,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter29> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter29> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1688,7 +1688,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter30> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter30> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1696,7 +1696,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter31> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter31> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1704,7 +1704,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter33> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter33> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1712,7 +1712,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter34> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter34> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1720,7 +1720,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter35> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter35> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1728,7 +1728,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter36> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter36> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1736,7 +1736,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter37> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter37> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1744,7 +1744,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter38> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter38> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1752,7 +1752,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter39> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter39> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1760,7 +1760,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter40> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter40> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1768,7 +1768,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter41> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter41> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1776,7 +1776,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter42> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter42> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1784,7 +1784,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter43> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter43> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1792,7 +1792,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter44> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter44> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1800,7 +1800,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter48> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter48> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1808,7 +1808,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter49> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter49> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1816,7 +1816,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter50> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter50> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1824,7 +1824,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter51> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter51> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1832,7 +1832,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter52> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter52> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1840,7 +1840,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ter53> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ter53> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1848,7 +1848,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tes01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tes01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1856,7 +1856,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tes02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tes02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1864,7 +1864,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1872,7 +1872,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1880,7 +1880,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1888,7 +1888,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1896,7 +1896,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1904,7 +1904,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1912,7 +1912,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1920,7 +1920,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1928,7 +1928,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tin09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tin09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1936,7 +1936,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1944,7 +1944,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1952,7 +1952,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1960,7 +1960,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1968,7 +1968,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1976,7 +1976,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1984,7 +1984,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -1992,7 +1992,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2000,7 +2000,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2008,7 +2008,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs10> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs10> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2016,7 +2016,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs11> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs11> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2024,7 +2024,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs12> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs12> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2032,7 +2032,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs13> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs13> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2040,7 +2040,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs14> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs14> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2048,7 +2048,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs15> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs15> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2056,7 +2056,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs16> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs16> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2064,7 +2064,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs17> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs17> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2072,7 +2072,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs18> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs18> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2080,7 +2080,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs19> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs19> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2088,7 +2088,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs20> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs20> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2096,7 +2096,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs21> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs21> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2104,7 +2104,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs22> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs22> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2112,7 +2112,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs23> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs23> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2120,7 +2120,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tl001> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tl001> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2128,7 +2128,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2136,7 +2136,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2144,7 +2144,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2152,7 +2152,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2160,7 +2160,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2168,7 +2168,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2176,7 +2176,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2184,7 +2184,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2192,7 +2192,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2200,7 +2200,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tli10> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tli10> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2208,7 +2208,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm001> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm001> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2216,7 +2216,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm002> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm002> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2224,7 +2224,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm003> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm003> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2232,7 +2232,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm004> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm004> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2240,7 +2240,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm005> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm005> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2248,7 +2248,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm006> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm006> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2256,7 +2256,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm007> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm007> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2264,7 +2264,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm008> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm008> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2272,7 +2272,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm009> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm009> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2280,7 +2280,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm010> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm010> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2288,7 +2288,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm011> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm011> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2296,7 +2296,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm012> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm012> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2304,7 +2304,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm013> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm013> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2312,7 +2312,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm014> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm014> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2320,7 +2320,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm015> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm015> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2328,7 +2328,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm016> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm016> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2336,7 +2336,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm017> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm017> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2344,7 +2344,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm018> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm018> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2352,7 +2352,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm019> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm019> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2360,7 +2360,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tm020> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tm020> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2368,7 +2368,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn001> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn001> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2376,7 +2376,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn002> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn002> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2384,7 +2384,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn003> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn003> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2392,7 +2392,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn004> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn004> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2400,7 +2400,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn005> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn005> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2408,7 +2408,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn006> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn006> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2416,7 +2416,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn007> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn007> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2424,7 +2424,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tn008> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tn008> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2432,7 +2432,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tp001> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tp001> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2440,7 +2440,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tp002> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tp002> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2448,7 +2448,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tp003> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tp003> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2456,7 +2456,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tp004> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tp004> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2464,7 +2464,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2472,7 +2472,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2480,7 +2480,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2488,7 +2488,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2496,7 +2496,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2504,7 +2504,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2512,7 +2512,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2520,7 +2520,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2528,7 +2528,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2536,7 +2536,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi10> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi10> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2544,7 +2544,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi11> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi11> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2552,7 +2552,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2560,7 +2560,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2568,7 +2568,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2576,7 +2576,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr04> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr04> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2584,7 +2584,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2592,7 +2592,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2600,7 +2600,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2608,7 +2608,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2616,7 +2616,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr10> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr10> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2624,7 +2624,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr11> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr11> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2632,7 +2632,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr12> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr12> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2640,7 +2640,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr13> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr13> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2648,7 +2648,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr14> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr14> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2656,7 +2656,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr15> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr15> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2664,7 +2664,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr16> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr16> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2672,7 +2672,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr17> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr17> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2680,7 +2680,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr18> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr18> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2688,7 +2688,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr19> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr19> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2696,7 +2696,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr20> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr20> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2704,7 +2704,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr21> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr21> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2712,7 +2712,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr22> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr22> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2720,7 +2720,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr23> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr23> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2728,7 +2728,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr24> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr24> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2736,7 +2736,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr25> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr25> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2744,7 +2744,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr26> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr26> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2752,7 +2752,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr27> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr27> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2760,7 +2760,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr28> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr28> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2768,7 +2768,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr29> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr29> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2776,7 +2776,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr30> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr30> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2784,7 +2784,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr31> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr31> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2792,7 +2792,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr32> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr32> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2800,7 +2800,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr33> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr33> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2808,7 +2808,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr34> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr34> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2816,7 +2816,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr35> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr35> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2824,7 +2824,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr36> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr36> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2832,7 +2832,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr37> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr37> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2840,7 +2840,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr38> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr38> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2848,7 +2848,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr39> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr39> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2856,7 +2856,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr40> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr40> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2864,7 +2864,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2872,7 +2872,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso02> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2880,7 +2880,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso03> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso03> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2888,7 +2888,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso05> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso05> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2896,7 +2896,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso06> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso06> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2904,7 +2904,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso07> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso07> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2912,7 +2912,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso08> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso08> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2920,7 +2920,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso09> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso09> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2928,7 +2928,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso10> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso10> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2936,7 +2936,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso11> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso11> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2944,7 +2944,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso12> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso12> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2952,7 +2952,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#tso13> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#tso13> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2960,7 +2960,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ttn01> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ttn01> .
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
 	earl:result [
@@ -2968,7 +2968,7 @@ my:test-harness
 		earl:outcome earl:passed
 	] ;
 	earl:subject my:v_0-004 ;
-	earl:test <https://w3c.github.io/json-ld-api/tests/compact-manifest#ttn02> .
+	earl:test <https://w3c.github.io/json-ld-api/tests/expand-manifest#ttn02> .
 
 [] a earl:Assertion;
 	earl:assertedBy my:test-harness ;
