@@ -185,7 +185,10 @@
             - subjects.each_with_index do |subject, ndx|
               %li.tocline
                 %span.secno="A.#{ndx+1}"
-                %a.tocxref{href: "#" + subject_refs[subject['@id']]}= subject['name']
+                %a.tocxref{href: "#" + subject_refs[subject['@id']]}
+                  = subject['name']
+                  - if subject['language']
+                    = " (#{subject['language']})"
         %li.tocline
           %a.tocxref{href: "#individual-test-results"}
             %span.secno="B."
@@ -277,7 +280,11 @@
                 - skip_subject[subject['@id']] = manifest['entries'].all? {|t| t['assertions'][index]['result']['outcome'] == 'earl:untested'}
                 - unless skip_subject[subject['@id']]
                   %th
-                    %a{href: '#' + subject_refs[subject['@id']]}<=subject['name']
+                    %a{href: '#' + subject_refs[subject['@id']]}
+                      = subject['name']
+                      - if subject['language']
+                        %br
+                        = "(#{subject['language']})"
             - test_cases.each do |test|
               - test['title'] ||= test['rdfs:label']
               - test['title'] = Array(test['title']).first
