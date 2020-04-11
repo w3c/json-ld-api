@@ -318,7 +318,7 @@
     "expect": "html/r004-out.nq",
     "option": {
       "specVersion": "json-ld-1.1",
-      "extractAllScripts": false,
+      "extractAllScripts": true,
       "processorFeature": "HTML Script Extraction"
     }
   }, {
@@ -330,7 +330,7 @@
     "expect": "html/r005-out.nq",
     "option": {
       "specVersion": "json-ld-1.1",
-      "extractAllScripts": false,
+      "extractAllScripts": true,
       "processorFeature": "HTML Script Extraction"
     }
   }, {
@@ -350,7 +350,7 @@
     "expect": "html/r007-out.nq",
     "option": {
       "specVersion": "json-ld-1.1",
-      "extractAllScripts": false,
+      "extractAllScripts": true,
       "processorFeature": "HTML Script Extraction"
     }
   }, {
