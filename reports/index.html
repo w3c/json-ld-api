@@ -4,13 +4,13 @@
 <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
 <link href='earl.jsonld' rel='alternate' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='ruby-json-ld-earl.ttl' rel='related' />
-<link href='jsonld-gold-earl.ttl' rel='related' />
 <link href='jsonld-streaming-parser-earl.ttl' rel='related' />
 <link href='pyld-api-earl.ttl' rel='related' />
-<link href='guile-jsonld-earl.ttl' rel='related' />
-<link href='perl-jsonld-earl.ttl' rel='related' />
 <link href='rdf-parse.ttl' rel='related' />
+<link href='ruby-json-ld-earl.ttl' rel='related' />
+<link href='jsonld-gold-earl.ttl' rel='related' />
+<link href='perl-jsonld-earl.ttl' rel='related' />
+<link href='guile-jsonld-earl.ttl' rel='related' />
 <link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
@@ -16783,7 +16783,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -16804,7 +16804,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: term as @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: IRI Resolution (5)</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -20329,7 +20329,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -20350,7 +20350,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: term as @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: IRI Resolution (5)</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -26124,7 +26124,7 @@ https://github.com/digitalbazaar/pyld
 <a href='https://github.com/dlongley'>
 <span property='foaf:name'>Dave Longley</span>
 </a>
-<a href-@id='https://github.com/dlongley' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/dlongley' href-foaf:name='Dave Longley' property='foaf:homepage'>
+<a href-@id='https://github.com/dlongley' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://github.com/dlongley' href-foaf:name='Dave Longley' property='foaf:homepage'>
 https://github.com/dlongley
 </a>
 </div>
@@ -26220,7 +26220,7 @@ https://github.com/piprate/json-gold
 <a href='https://github.com/kazarena'>
 <span property='foaf:name'>Stan Nazarenko</span>
 </a>
-<a href-@id='https://github.com/kazarena' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/kazarena' href-foaf:name='Stan Nazarenko' property='foaf:homepage'>
+<a href-@id='https://github.com/kazarena' href-@type='[&quot;foaf:Person&quot;, &quot;Assertor&quot;]' href-foaf:homepage='https://github.com/kazarena' href-foaf:name='Stan Nazarenko' property='foaf:homepage'>
 https://github.com/kazarena
 </a>
 </div>
@@ -26406,7 +26406,7 @@ Transform RDF to JSON-LD
 <dt>Description</dt>
 <dd lang='en' property='doap:description'>Streaming JSON-LD parser</dd>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>[&quot;2.0.0&quot;, &quot;1.1.0&quot;, &quot;1.3.0&quot;]</span></dd>
+<dd property='doap:release'><span property='doap:revision'>2.0.0</span></dd>
 <dt>Programming Language</dt>
 <dd property='doap:programming-language'>JavaScript</dd>
 <dt>Home Page</dt>
@@ -26456,7 +26456,7 @@ Transform JSON-LD to RDF
 <dt>Description</dt>
 <dd lang='en' property='doap:description'>Streaming JSON-LD serializer</dd>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>[&quot;2.0.0&quot;, &quot;1.1.0&quot;, &quot;1.3.0&quot;]</span></dd>
+<dd property='doap:release'><span property='doap:revision'>1.1.0</span></dd>
 <dt>Programming Language</dt>
 <dd property='doap:programming-language'>JavaScript</dd>
 <dt>Home Page</dt>
@@ -26506,7 +26506,7 @@ Transform RDF to JSON-LD
 <dt>Description</dt>
 <dd lang='en' property='doap:description'>Parses RDF from any serialization</dd>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>[&quot;2.0.0&quot;, &quot;1.1.0&quot;, &quot;1.3.0&quot;]</span></dd>
+<dd property='doap:release'><span property='doap:revision'>1.3.0</span></dd>
 <dt>Programming Language</dt>
 <dd property='doap:programming-language'>JavaScript</dd>
 <dt>Home Page</dt>
@@ -26557,25 +26557,25 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
-</li>
-<li>
 <a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='pyld-api-earl.ttl'>pyld-api-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
+<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
+</li>
+<li>
+<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
+<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
@@ -26593,9 +26593,9 @@ This report generated by
 <meta content='Earl Report summary generator' property='doap:shortdesc' />
 <meta content='EarlReport generates HTML+RDFa rollups of multiple EARL reports' property='doap:description' />
 version
-<span property='doap:release' resource='https://github.com/gkellogg/earl-report/tree/0.5.0' typeof='doap:Version'>
-<span property='doap:revision'>0.5.0</span>
-<meta content='earl-report-0.5.0' property='doap:name' />
+<span property='doap:release' resource='https://github.com/gkellogg/earl-report/tree/0.5.1' typeof='doap:Version'>
+<span property='doap:revision'>0.5.1</span>
+<meta content='earl-report-0.5.1' property='doap:name' />
 <meta datatype='xsd:date' property='doap:created' />
 </span>
 is a
