@@ -64,6 +64,9 @@
       pre > code {
         color: #C83500;
       }
+      .non-normative, .non-normative a:visited, .non-normative a:link {
+        color: gray;
+      }
       #test-manifests .report td:last-child::before {
         position: absolute;
         left: 1em;
@@ -73,8 +76,7 @@
       }
       #test-manifests .report tr.summary td:last-child::before,
       #test-manifests .report .PASS ~ td.PASS:last-child::before,
-      #test-manifests .report .PASS ~ .PASS ~ td:last-child::before
-      {
+      #test-manifests .report .PASS ~ .PASS ~ td:last-child::before {
         display: none;
       }
 
@@ -314,13 +316,21 @@
             - test_cases.each do |test|
               - test['title'] ||= test['rdfs:label']
               - test['title'] = Array(test['title']).first
-              %tr
+              - option = test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})
+              - normative = option.fetch('https://w3c.github.io/json-ld-api/tests/vocab#normative', {"@value" => "true"})['@value'] == 'true'
+              %tr{class: normative ? 'normative' : 'non-normative'}
                 %td
                   %a{href: test['@id']}<
-                    - title = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
-                    - if test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})['https://w3c.github.io/json-ld-api/tests/vocab#specVersion'] == 'json-ld-1.1'
-                      - title += "(new in JSON-LD 1.1)"
-                    ~ title
+                    = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
+                  - other = []
+                  - if option['https://w3c.github.io/json-ld-api/tests/vocab#specVersion'] == 'json-ld-1.1'
+                    - other << "new in JSON-LD 1.1"
+                  - if option['https://w3c.github.io/json-ld-api/tests/vocab#processorFeature']
+                    - other << "feature: #{option['https://w3c.github.io/json-ld-api/tests/vocab#processorFeature']}"
+                  - if !normative
+                    - other << "non-normative"
+                  - unless other.empty?
+                    = "(#{other.join(', ')})"
                 -# Order assertions by subject name
                 - subjects.each_with_index do |subject, ndx|
                   - next if skip_subject[subject['@id']]
