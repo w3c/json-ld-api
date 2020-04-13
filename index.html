@@ -1495,8 +1495,7 @@
                 the value of the <code>@protected</code>
                 entry from <var>context</var>, if any, for <var>protected</var>,
                 <var>override protected</var>,
-                a copy of <var>remote contexts</var>,
-                and <var>validate scoped context</var>.
+                and a copy of <var>remote contexts</var>.
               </span>
             </li>
           </ol>
@@ -7018,8 +7017,9 @@
       This simplifies calling sequences and better represents actual implementation experience.</li>
     <li>Updated step <a href="#alg-context-create-defns">5.13</a></li> of the
       <a href="#context-processing-algorithm">Context Processing algorithm</a>
-      to pass <var>override protected</var> to the
-      <a href="#create-term-definition">Create Term Definition algorithm</a>.</li>
+      to pass <var>override protected</var>
+      and not pass <var>validate scoped context</var>
+      to the <a href="#create-term-definition">Create Term Definition algorithm</a>.</li>
     <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
     <li>Update step <a href="#alg-compact-11_1">11.1</a> of the
