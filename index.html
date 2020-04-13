@@ -5269,19 +5269,19 @@
                 <li>Initialize <var>cl node</var> to the value of <var>cl</var>
                   in <var>graph object</var>, and remove that <a>entry</a> from <var>graph object</var>,
                   continuing to the next <var>cl</var> if <var>cl node</var> is not a <a>map</a>.</li>
-                <li>For each <var>cl reference</var> in the value of <var>property</var> in <var>node</var>
+                <li id="alg-serialize-rdf-cl-reference">For each <var>cl reference</var> in the value of <var>property</var> in <var>node</var>
                   where the value of `@id` in <var>cl reference</var> is <var>cl</var>:
                   <ol>
-                    <li>Delete the `@id` entry in <var>node</var>.</li>
-                    <li>Add an <a>entry</a> to <var>node</var> for `@value` with the value taken
+                    <li>Delete the `@id` entry in <var>cl reference</var>.</li>
+                    <li>Add an <a>entry</a> to <var>cl reference</var> for `@value` with the value taken
                       from the `rdf:value` entry in <var>cl node</var>.</li>
-                    <li>Add an <a>entry</a> to <var>node</var> for `@language` with the value taken
+                    <li>Add an <a>entry</a> to <var>cl reference</var> for `@language` with the value taken
                       from the `rdf:language` entry in <var>cl node</var>, if any.
                       If that value is not <a>well-formed</a> according to
                       <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                       an <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
                       error has been detected and processing is aborted.</li>
-                    <li>Add an <a>entry</a> to <var>node</var> for `@direction` with the value taken
+                    <li>Add an <a>entry</a> to <var>cl reference</var> for `@direction` with the value taken
                       from the `rdf:direction` entry in <var>cl node</var>, if any.
                       If that value is not `"ltr"` or `"rtl"`, an
                       <a data-link-for="JsonLdErrorCode">invalid base direction</a>
@@ -7060,6 +7060,9 @@
     <li>Clarified step <a href="#alg-inv-lang-dir">3.13</a> in the
       <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
       by moving the preceding step to <a href=#alg-inv-lang-map>3.9</a>.</li>
+    <li>Update substeps of <a href="#alg-serialize-rdf-cl-reference">6.1.6</a>
+      in the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
+      to update <var>cl reference</var> and not <var>node</var>.</li>
     <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
       the `preserve` keyword, which is only used for framing.</li>
   </ul>
