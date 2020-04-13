@@ -5151,15 +5151,14 @@
     <section>
       <h2>Algorithm</h2>
 
-      <p>The algorithm takes one required and five optional inputs:
+      <p>The algorithm takes one required and four optional inputs:
         an <a>RDF dataset</a> <var>dataset</var>
-        and the five flags
-        <span class="changed">{{JsonLdOptions/ordered}}, used to order
-          <a>map entry</a> keys lexicographically, where noted</span>,
-        <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
-        <a data-link-for="JsonLdOptions">useNativeTypes</a>,
-        and the <a data-link-for="JsonLdOptions">useRdfType</a>,
-        that all default to <code>false</code>.</p>
+        and the four optional arguments are
+        the <span class="changed">{{JsonLdOptions/ordered}} flag, defaulting to `false`, used to order
+        <a>map entry</a> keys lexicographically, where noted</span>,
+        <span class="changed">{{JsonLdOptions/rdfDirection}}</span> defaulting to `null`,
+        the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag, defaulting to `false`,
+        and the <a data-link-for="JsonLdOptions">useRdfType</a> flag, defaulting to `false`.</p>
 
       <p>The <var>dataset</var> is <a data-link-for="RdfDataset">iterable</a> to iterate over <a>graphs</a> and <a>graph names</a>
         contained within the <a>RdfDataset</a>. Each <a>graph</a> is also <a data-link-for="RdfGraph">iterable</a>
