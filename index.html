@@ -1271,15 +1271,15 @@
                     or the <a class="changed" data-lt="context-base-iri">base IRI</a> of the <var>active context</var>.
                   </div>
                 </li>
+                <li id="alg-context-validate-scoped" class="changed">If <var>validate scoped context</var> is <code>false</code>,
+                  and <var>remote contexts</var> already includes <var>context</var>
+                  do not process <var>context</var> further and continue to any next
+                  <var>context</var> in <var>local context</var>.</li>
                 <li>If the number of entries in the <var>remote contexts</var> array
                   exceeds a processor defined limit, a
                   <a data-link-for="JsonLdErrorCode">context overflow</a>
                   error has been detected and processing is aborted;
                   otherwise, add <var>context</var> to <var>remote contexts</var>.</li>
-                <li id="alg-context-validate-scoped" class="changed">If <var>validate scoped context</var> is <code>false</code>,
-                  and <var>remote contexts</var> already includes <var>context</var>
-                  do not process <var>context</var> further and continue to any next
-                  <var>context</var> in <var>local context</var>.</li>
                 <li class="changed">If <var>context</var> was previously dereferenced,
                   then the processor MUST NOT do a further dereference, and
                   <a>context</a> is set to the
@@ -7015,11 +7015,14 @@
       but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
       within an <a>active context</a>, and initialized as necessary.
       This simplifies calling sequences and better represents actual implementation experience.</li>
-    <li>Updated step <a href="#alg-context-create-defns">5.13</a></li> of the
+    <li>Updated step <a href="#alg-context-validate-scoped">5.13</a></li> of the
       <a href="#context-processing-algorithm">Context Processing algorithm</a>
       to pass <var>override protected</var>
       and not pass <var>validate scoped context</var>
       to the <a href="#create-term-definition">Create Term Definition algorithm</a>.</li>
+    <li>Move step <a href="#alg-context-create-defns">5.2.2</a></li> of the
+      <a href="#context-processing-algorithm">Context Processing algorithm</a>
+      to run before the subsequent step for checking <var>remote contexts</var>.</li>
     <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
     <li>Update step <a href="#alg-compact-11_1">11.1</a> of the
