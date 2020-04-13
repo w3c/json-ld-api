@@ -1816,8 +1816,9 @@
               an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <var>index</var> to the value associated with the
-              <code>@index</code> <a>entry</a>, which MUST a <a>string</a> expanding to an <a>IRI</a>.
-              Otherwise, an
+              <code>@index</code> <a>entry</a>.
+              If the result of <a>IRI expanding</a> that value is not an <a>IRI</a>,
+              an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Set the <a>index mapping</a> of <var>definition</var> to <var>index</var></li>
