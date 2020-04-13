@@ -34,7 +34,7 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output. Additionally, if the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 <h3><a href="expand-manifest.html">expand</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output.</p>
@@ -42,22 +42,22 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 <p>Expansion tests may have a <code>expandContext</code> option, which is treated
 as an IRI relative to the manifest.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 <h3><a href="html-manifest.html">html</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output after potentially remapping blank node identifiers (see below). Additionally, if the result is compacted and the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 <h3><a href="flatten-manifest.html">flatten</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output after potentially remapping blank node identifiers (see below). Additionally, if the result is compacted and the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 <h3><a href="remote-doc-manifest.html">remote-doc</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 
 <p>Options may be present to describe the intended HTTP behavior:</p>
 
@@ -75,6 +75,8 @@ as an IRI relative to the manifest.</p>
 <p>Some tests require the use of <a href="https://tools.ietf.org/html/draft-rundgren-json-canonicalization-scheme-05">JSON Canonicalization Scheme</a> to properly generate RDF Literals from JSON literal values. This algorithm is non-normative, but is assumed to be used to properly compare results. These tests are marked using the <code>useJCS</code> option.</p>
 
 <p>The <em>expected</em> results can be compared using <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-dataset-isomorphism">RDF Dataset Isomorphism</a>.</p>
+
+<p>A <strong>PositiveSyntaxTest</strong> looks specifically for syntax-related issues. A <strong>PositiveSyntaxTest</strong> succeeds when no error is found when processing.</p>
 
 <p>ToRdf tests may have a <code>expandContext</code> option, which is treated
 as an IRI relative to the manifest.</p>
