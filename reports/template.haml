@@ -200,12 +200,8 @@
             %span.secno="B."
             Individual Test Results
         %li.tocline
-          %a.tocxref{href: "#test-definitions"}
-            %span.secno="C."
-            Test Definitions
-        %li.tocline
           %a.tocxref{href: "#report-generation-software"}
-            %span.secno="D."
+            %span.secno="C."
             Report Generation Software
     %section#introduction
       :markdown
@@ -424,7 +420,7 @@
               %a.source{href: file}<= file
     %section.appendix#report-generation-software{property: "earl:generatedBy", resource: tests['generatedBy']['@id'], typeof: tests['generatedBy']['@type'].join(' ')}
       %h2
-        %span.secno="D."
+        %span.secno="C."
         Report Generation Software
       - doap = tests['generatedBy']
       - rel = doap['release']
