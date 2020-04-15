@@ -32,6 +32,6 @@
     "processorFeature":     { "@type": "xsd:string" },
     "produceGeneralizedRdf":{ "@type": "xsd:boolean" },
     "specVersion":          { "@type": "xsd:string" },
-    "useNativeTypes":       { "@type": "xsd:boolean" },
+    "useNativeTypes":       { "@type": "xsd:boolean" }
   }
 }
