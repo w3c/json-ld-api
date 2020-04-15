@@ -84,7 +84,8 @@
     - subject_refs = {}
     - passed_tests = []
     - subjects.each_with_index do |subject, index|
-      - subject_refs[subject['@id']] = "subj_#{index}"
+      - frag_id = "subj_#{subject['name']}-#{subject['language']}".gsub(/[\W_]+/, '_')
+      - subject_refs[subject['@id']] = frag_id
     %div.head{role: :contentinfo}
       %p
         %a{href: "http://www.w3.org/"}
