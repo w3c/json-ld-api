@@ -1612,8 +1612,8 @@
           <span class="changed">initializing <a>prefix flag</a> to `false`,
             <a>protected</a> to <var>protected</var>,
             and <a>reverse property</a> to `false`</span>.</li>
-        <li class="changed">If the <code>@protected</code> entry in <var>value</var>
-          is <code>true</code> set the <a>protected</a> flag in <var>definition</var> to true.
+        <li id="alg-ctd-protected" class="changed">If <var>value</var> has an <code>@protected</code> entry,
+          set the <a>protected</a> flag in <var>definition</var> to the value of this entry.
           If the value of `@protected` is not a <a>boolean</a>,
           an <a data-link-for="JsonLdErrorCode">invalid @protected value</a> error has been detected and processing is aborted.
           If <a>processing mode</a> is `json-ld-1.0`,
@@ -7036,6 +7036,9 @@
     <li>Move step <a href="#alg-context-create-defns">5.2.2</a> of the
       <a href="#context-processing-algorithm">Context Processing algorithm</a>
       to run before the subsequent step for checking <var>remote contexts</var>.</li>
+    <li>Updated step <a href="#alg-ctd-protected">11</a> of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>
+      to use any boolean value of `@protected`, not just `true`.</li>
     <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
     <li>Update step <a href="#alg-compact-11_1">11.1</a> of the
