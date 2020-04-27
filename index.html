@@ -2422,6 +2422,16 @@
 
       <p>Finally, after ensuring <var>result</var> is in an <a>array</a>,
         we return <var>result</var>.</p>
+
+      <p class="note">Although the <a data-cite="JSON-LD11#data-model">data model</a>,
+        based on [[RDF11-CONCEPTS]], does not support multiple unordered property values,
+        this algorithm does not remove duplicates that
+        may be found during expansion within an unordered <a>array</a>.
+        Other algorithms, such as <a href="#compaction-algorithm" class="sectionRef"></a>,
+        and <a href="#flattening-algorithm" class="sectionRef"></a>, do eliminate
+        duplicate values from unordered arrays.
+        A future version of this specification may be updated to remove duplicate
+        array values when the form a set.</p>
     </section>
 
     <section class="algorithm">
