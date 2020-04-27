@@ -2967,9 +2967,11 @@
                               and <var>index</var> as <var>value</var>.</li>
                             <li>Initialize <var>expanded index key</var> to the result of
                               <span class="changed"><a>IRI expanding</a></span> <var>index key</var>.</li>
-                            <li>Initialize <var>index property values</var> to the concatenation of
-                              <var>re-expanded index</var> with any existing values of
-                              <var>expanded index key</var> in <var>item</var>.</li>
+                            <li>Initialize <var>index property values</var> to
+                              an <a>array</a> consisting of <var>re-expanded index</var> followed
+                              by the existing values of 
+                              the concatenation of <var>expanded index key</var> in <var>item</var>,
+                              if any.</li>
                             <li>Add the key-value pair (<var>expanded index key</var>-<var>index property values</var>)
                               to <var>item</var>.</li>
                             <li>If <var>item</var> is a value object,
