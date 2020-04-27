@@ -2941,13 +2941,14 @@
                     <li>If <var>index value</var> is not an <a>array</a>
                       set <var>index value</var> to an <a>array</a> containing only
                       <var>index value</var>.</li>
-                    <li>Initialize <var>index value</var> to the result of
+                    <li id="alg-expand-index-value">Initialize <var>index value</var> to the result of
                       using this algorithm recursively, passing
                       <var class="changed">map context</var> as <var>active context</var>,
                       <var>key</var> as <var>active property</var>,
                       <var>index value</var> as <var>element</var>,
                       <var class="changed">base URL</var>,
-                      <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                      <span class="changed">`true` for <var>from map</var>,
+                        and the {{JsonLdOptions/frameExpansion}}
                         and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
@@ -7043,6 +7044,10 @@
       to use any boolean value of `@protected`, not just `true`.</li>
     <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
+    <li>Update step <a href="#alg-expand-index-value">13.8.3.6</a> of the
+      <a href="#expansion-algorithm">Expansion algorithm</a> to pass
+      `true` for the <var>from map</var> parameter to properly manage reverting
+      <a>active contexts</a>.</li>
     <li>Update step <a href="#alg-compact-11_1">11.1</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to pass `false` for <var>propagate</var> when calling the
