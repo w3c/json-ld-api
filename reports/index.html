@@ -4,15 +4,15 @@
 <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
 <link href='earl.jsonld' rel='alternate' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
+<link href='guile-jsonld-earl.ttl' rel='related' />
+<link href='rust-sophia-earl.ttl' rel='related' />
+<link href='jsonld-gold-earl.ttl' rel='related' />
+<link href='pyld-earl.ttl' rel='related' />
+<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
+<link href='perl-jsonld-earl.ttl' rel='related' />
+<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
 <link href='rdf-parse.ttl' rel='related' />
 <link href='jsonld-js-earl.ttl' rel='related' />
-<link href='guile-jsonld-earl.ttl' rel='related' />
-<link href='pyld-earl.ttl' rel='related' />
-<link href='perl-jsonld-earl.ttl' rel='related' />
-<link href='rust-sophia-earl.ttl' rel='related' />
-<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
-<link href='jsonld-gold-earl.ttl' rel='related' />
-<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
 <link href='ruby-json-ld-earl.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
@@ -98,8 +98,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2020-04-15' property='dc:issued'>
-15 April 2020
+<time class='dt-published' datetime='2020-04-27' property='dc:issued'>
+27 April 2020
 </time>
 </h2>
 <dl>
@@ -8129,10 +8129,10 @@ PASS
 PASS
 </td>
 </tr>
-<tr class='normative'>
+<tr class='non-normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0122'>Test t0122: Ignore some IRIs when that start with @ when expanding.</a>
-(new in JSON-LD 1.1)
+(new in JSON-LD 1.1, non-normative)
 </td>
 <td class='PASS'>
 PASS
@@ -19708,8 +19708,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -19717,8 +19717,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -19735,17 +19735,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='FAIL'>
-FAIL
-</td>
 <td class='PASS'>
 PASS
 </td>
 <td class='PASS'>
 PASS
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -24292,8 +24292,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='FAIL'>
+FAIL
 </td>
 <td class='PASS'>
 PASS
@@ -24301,8 +24301,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -24319,17 +24319,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='FAIL'>
-FAIL
-</td>
 <td class='PASS'>
 PASS
 </td>
 <td class='PASS'>
 PASS
 </td>
-<td class='UNTESTED'>
-UNTESTED
+<td class='PASS'>
+PASS
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -30294,8 +30294,8 @@ Percentage passed out of 442 Tests
 <td class='passed-most'>
 99.5%
 </td>
-<td class='passed-some'>
-94.6%
+<td class='passed-most'>
+95.5%
 </td>
 <td class='passed-all'>
 100.0%
@@ -32239,7 +32239,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-418/442 (94.6%)
+422/442 (95.5%)
 </td>
 </tr>
 <tr>
@@ -32520,38 +32520,38 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
+<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='rust-sophia-earl.ttl'>rust-sophia-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='pyld-earl.ttl'>pyld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
+</li>
+<li>
 <a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
 </li>
 <li>
 <a class='source' href='jsonld-js-earl.ttl'>jsonld-js-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='pyld-earl.ttl'>pyld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='rust-sophia-earl.ttl'>rust-sophia-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
-</li>
-<li>
 <a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
 </li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
 <h2>
 <span class='secno'>C.</span>
 Report Generation Software

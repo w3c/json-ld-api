@@ -2985,7 +2985,7 @@ Test t0122 Ignore some IRIs when that start with @ when expanding.
 <dt>Type</dt>
 <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
 <dt>Purpose</dt>
-<dd>Processors SHOULD generate a warning and MUST ignore IRIs having the form of a keyword.</dd>
+<dd>Processors SHOULD generate a warning and MUST ignore IRIs having the form of a keyword. (Note: the resulting document will not be valid JSON-LD, due to the `null` value for `@id`)</dd>
 <dt>input</dt>
 <dd>
 <a href='expand/0122-in.jsonld'>expand/0122-in.jsonld</a>
@@ -2999,6 +2999,8 @@ Test t0122 Ignore some IRIs when that start with @ when expanding.
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>normative</dt>
+<dd>false</dd>
 </dl>
 </dd>
 </dl>
