@@ -2675,9 +2675,10 @@
                   <ol>
                     <li>If <a>processing mode</a> is `json-ld-1.0`,
                       continue with the next <var>key</var> from <var>element</var>.</li>
-                    <li>Set <var>expanded value</var> to the result of using
+                    <li id="alg-expand-included">Set <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
-                      <var>active property</var>, <var>value</var> for <var>element</var>,
+                      `null` for <var>active property</var>,
+                      <var>value</var> for <var>element</var>,
                       <var>base URL</var>,
                       and the {{JsonLdOptions/frameExpansion}}
                       and {{JsonLdOptions/ordered}} flags,
@@ -7044,6 +7045,11 @@
       to use any boolean value of `@protected`, not just `true`.</li>
     <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
       to use `@index` for any value with an `@index` entry.</li>
+    alg-expand-included
+    <li>Update step <a href="#alg-expand-included">13.4.6.2</a> of the
+      <a href="#expansion-algorithm">Expansion algorithm</a> to pass
+      `null` for <var>active property</var>, as <a>included blocks</a>
+      do not define a relationship to a referencing node.</li>
     <li>Update step <a href="#alg-expand-index-value">13.8.3.6</a> of the
       <a href="#expansion-algorithm">Expansion algorithm</a> to pass
       `true` for the <var>from map</var> parameter to properly manage reverting
