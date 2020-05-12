@@ -9,7 +9,7 @@ Run it as follows:
 
 ```sh
 $ gem install earl-report
-$ rm manifests.nt && (cd ..; rake reports/manifests.nt)
+$ rm -f manifests.nt && (cd ..; rake reports/manifests.nt)
 $ earl-report --format json -o earl.jsonld *.ttl
 $ earl-report --json --format html --template template.haml -o index.html earl.jsonld
 ```
