@@ -4,16 +4,16 @@
 <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
 <link href='earl.jsonld' rel='alternate' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='guile-jsonld-earl.ttl' rel='related' />
-<link href='rust-sophia-earl.ttl' rel='related' />
-<link href='jsonld-gold-earl.ttl' rel='related' />
-<link href='pyld-earl.ttl' rel='related' />
-<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
-<link href='perl-jsonld-earl.ttl' rel='related' />
 <link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
-<link href='rdf-parse.ttl' rel='related' />
+<link href='pyld-earl.ttl' rel='related' />
 <link href='jsonld-js-earl.ttl' rel='related' />
+<link href='perl-jsonld-earl.ttl' rel='related' />
+<link href='rust-sophia-earl.ttl' rel='related' />
+<link href='guile-jsonld-earl.ttl' rel='related' />
+<link href='jsonld-gold-earl.ttl' rel='related' />
+<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
 <link href='ruby-json-ld-earl.ttl' rel='related' />
+<link href='rdf-parse.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
 </title>
@@ -98,8 +98,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2020-04-27' property='dc:issued'>
-27 April 2020
+<time class='dt-published' datetime='2020-05-12' property='dc:issued'>
+12 May 2020
 </time>
 </h2>
 <dl>
@@ -19702,7 +19702,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -19717,8 +19717,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -19729,7 +19729,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: term as @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: IRI Resolution (5)</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -19744,8 +19744,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -24286,7 +24286,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -24301,8 +24301,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -24313,7 +24313,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: term as @vocab</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0125'>Test t0125: IRI Resolution (5)</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -24328,8 +24328,8 @@ PASS
 <td class='PASS'>
 PASS
 </td>
-<td class='PASS'>
-PASS
+<td class='UNTESTED'>
+UNTESTED
 </td>
 <td class='PASS'>
 PASS
@@ -30294,8 +30294,8 @@ Percentage passed out of 442 Tests
 <td class='passed-most'>
 99.5%
 </td>
-<td class='passed-most'>
-95.5%
+<td class='passed-some'>
+94.6%
 </td>
 <td class='passed-all'>
 100.0%
@@ -32123,7 +32123,7 @@ Transform RDF to JSON-LD
 <dt>Description</dt>
 <dd lang='en' property='doap:description'>A Rust toolkit for RDF and Linked Data.</dd>
 <dt>Release</dt>
-<dd property='doap:release'><span property='doap:revision'>0.4.0</span></dd>
+<dd property='doap:release'><span property='doap:revision'>0.5.0</span></dd>
 <dt>Programming Language</dt>
 <dd property='doap:programming-language'>Rust</dd>
 <dt>Home Page</dt>
@@ -32239,7 +32239,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-422/442 (95.5%)
+418/442 (94.6%)
 </td>
 </tr>
 <tr>
@@ -32520,34 +32520,34 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='rust-sophia-earl.ttl'>rust-sophia-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
+<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='pyld-earl.ttl'>pyld-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
+<a class='source' href='jsonld-js-earl.ttl'>jsonld-js-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
+<a class='source' href='rust-sophia-earl.ttl'>rust-sophia-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
+<a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='jsonld-js-earl.ttl'>jsonld-js-earl.ttl</a>
+<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
 </li>
 </ul>
 </section>
