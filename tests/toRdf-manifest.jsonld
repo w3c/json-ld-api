@@ -2199,6 +2199,20 @@
       "input": "toRdf/er53-in.jsonld",
       "expectErrorCode": "invalid @prefix value"
     }, {
+     "@id": "#ter54",
+     "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+     "name": "Invalid value object, multiple values for @type.",
+     "purpose": "The value of @type in a value object MUST be a string or null.",
+     "input": "toRdf/er54-in.jsonld",
+     "expectErrorCode": "invalid typed value"
+    }, {
+     "@id": "#ter55",
+     "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+     "name": "Invalid term definition, multiple values for @type.",
+     "purpose": "The value of @type in an expanded term definition object MUST be a string or null.",
+     "input": "toRdf/er55-in.jsonld",
+     "expectErrorCode": "invalid type mapping"
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
