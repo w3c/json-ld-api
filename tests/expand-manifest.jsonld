@@ -1772,6 +1772,20 @@
      "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @prefix value",
      "input": "expand/er53-in.jsonld",
      "expectErrorCode": "invalid @prefix value"
+    }, {
+     "@id": "#ter54",
+     "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+     "name": "Invalid value object, multiple values for @type.",
+     "purpose": "The value of @type in a value object MUST be a string or null.",
+     "input": "expand/er54-in.jsonld",
+     "expectErrorCode": "invalid typed value"
+    }, {
+     "@id": "#ter55",
+     "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+     "name": "Invalid term definition, multiple values for @type.",
+     "purpose": "The value of @type in an expanded term definition object MUST be a string or null.",
+     "input": "expand/er55-in.jsonld",
+     "expectErrorCode": "invalid type mapping"
    }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],

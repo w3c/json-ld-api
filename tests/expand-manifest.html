@@ -5869,6 +5869,48 @@ invalid @prefix value
 </dd>
 </dl>
 </dd>
+<dt id='ter54'>
+Test ter54 Invalid value object, multiple values for @type.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter54</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>The value of @type in a value object MUST be a string or null.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/er54-in.jsonld'>expand/er54-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid typed value
+</dd>
+</dl>
+</dd>
+<dt id='ter55'>
+Test ter55 Invalid term definition, multiple values for @type.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#ter55</dd>
+<dt>Type</dt>
+<dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+<dt>Purpose</dt>
+<dd>The value of @type in an expanded term definition object MUST be a string or null.</dd>
+<dt>input</dt>
+<dd>
+<a href='expand/er55-in.jsonld'>expand/er55-in.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+invalid type mapping
+</dd>
+</dl>
+</dd>
 <dt id='tes01'>
 Test tes01 Using an array value for @context is illegal in JSON-LD 1.0
 </dt>
