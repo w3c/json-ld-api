@@ -1,13 +1,9 @@
 {
   "@context": {
-    "td": "https://www.w3.org/2019/wot/td#",
-    "dct": "http://purl.org/dc/terms/",
-    "properties": {
-      "@id": "td:hasPropertyAffordance",
-      "@type": "@id",
-      "@container": "@index",
+    "thing": {
+      "@id": "ex:thing",
       "@context": {}
     },
-    "title": "dct:title"
+    "title": "ex:title"
   }
 }
