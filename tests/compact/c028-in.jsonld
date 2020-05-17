@@ -1,6 +1,6 @@
 {
-  "https://www.w3.org/2019/wot/td#hasPropertyAffordance": [{
-    "http://purl.org/dc/terms/title": "Switch"
-  }],
-  "http://purl.org/dc/terms/title": "46203"
+  "ex:title": "top",
+  "ex:thing": {
+    "ex:title": "sub"
+  }
 }

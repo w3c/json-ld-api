@@ -677,6 +677,14 @@
       "expect": "toRdf/c035-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc036",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Expansion with empty property-scoped context.",
+      "purpose": "Adding a minimal/empty property-scoped context should not affect expansion of terms defined in the outer scope.",
+      "input": "toRdf/c036-in.jsonld",
+      "expect": "toRdf/c036-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
