@@ -2557,6 +2557,38 @@
       "input": "toRdf/li10-in.jsonld",
       "expect": "toRdf/li10-out.nq"
     }, {
+      "@id": "#tli11",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "List with good @base.",
+      "purpose": "Tests list elements expanded to IRIs with a good @base.",
+      "option": {"specVersion": "json-ld-1.1", "base": "http://example.com/"},
+      "input": "toRdf/li11-in.jsonld",
+      "expect": "toRdf/li11-out.nq"
+    }, {
+      "@id": "#tli12",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "List with bad @base.",
+      "purpose": "Tests list elements expanded to IRIs with a bad @base.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/li12-in.jsonld",
+      "expect": "toRdf/li12-out.nq"
+    }, {
+      "@id": "#tli13",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "List with empty @base.",
+      "purpose": "Tests list elements expanded to IRIs with an empty @base.",
+      "option": {"specVersion": "json-ld-1.1", "base": "http://example.com/"},
+      "input": "toRdf/li13-in.jsonld",
+      "expect": "toRdf/li13-out.nq"
+    }, {
+      "@id": "#tli14",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "List with null @base.",
+      "purpose": "Tests list elements expanded to IRIs with a null @base.",
+      "option": {"specVersion": "json-ld-1.1", "base": "http://example.com/"},
+      "input": "toRdf/li14-in.jsonld",
+      "expect": "toRdf/li14-out.nq"
+    }, {
       "@id": "#tm001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Adds @id to object not having an @id",
