@@ -4,16 +4,17 @@
 <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
 <link href='earl.jsonld' rel='alternate' />
 <link href='https://www.w3.org/StyleSheets/TR/base' rel='stylesheet' />
-<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
-<link href='pyld-earl.ttl' rel='related' />
-<link href='jsonld-js-earl.ttl' rel='related' />
-<link href='perl-jsonld-earl.ttl' rel='related' />
-<link href='rust-sophia-earl.ttl' rel='related' />
-<link href='guile-jsonld-earl.ttl' rel='related' />
-<link href='jsonld-gold-earl.ttl' rel='related' />
-<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
-<link href='ruby-json-ld-earl.ttl' rel='related' />
 <link href='rdf-parse.ttl' rel='related' />
+<link href='guile-jsonld-earl.ttl' rel='related' />
+<link href='ruby-json-ld-earl.ttl' rel='related' />
+<link href='rust-sophia-earl.ttl' rel='related' />
+<link href='java-jsonp-ld-earl.ttl' rel='related' />
+<link href='jsonld-streaming-parser-earl.ttl' rel='related' />
+<link href='perl-jsonld-earl.ttl' rel='related' />
+<link href='jsonld-js-earl.ttl' rel='related' />
+<link href='pyld-earl.ttl' rel='related' />
+<link href='jsonld-gold-earl.ttl' rel='related' />
+<link href='jsonld-streaming-serializer-earl.ttl' rel='related' />
 <title>
 JSON-LD 1.1 Processor Conformance
 </title>
@@ -98,8 +99,8 @@ JSON-LD 1.1 Processor Conformance
 EARL results from the JSON-LD 1.1 Test Suite
 </h2>
 <h2 id='w3c-document-28-october-2015'>
-<time class='dt-published' datetime='2020-05-12' property='dc:issued'>
-12 May 2020
+<time class='dt-published' datetime='2020-05-30' property='dc:issued'>
+30 May 2020
 </time>
 </h2>
 <dl>
@@ -270,41 +271,48 @@ PyLD
 </li>
 <li class='tocline'>
 <span class='secno'>A.5</span>
+<a class='tocxref' href='#subj_JSONP_LD_Java'>
+JSONP-LD
+ (Java)
+</a>
+</li>
+<li class='tocline'>
+<span class='secno'>A.6</span>
 <a class='tocxref' href='#subj_Sophia_Rust'>
 Sophia
  (Rust)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.6</span>
+<span class='secno'>A.7</span>
 <a class='tocxref' href='#subj_JSON_goLD_Go'>
 JSON-goLD
  (Go)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.7</span>
+<span class='secno'>A.8</span>
 <a class='tocxref' href='#subj_JSON_LD_Ruby'>
 JSON::LD
  (Ruby)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.8</span>
+<span class='secno'>A.9</span>
 <a class='tocxref' href='#subj_jsonld_streaming_parser_JavaScript'>
 jsonld-streaming-parser
  (JavaScript)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.9</span>
+<span class='secno'>A.10</span>
 <a class='tocxref' href='#subj_jsonld_streaming_serializer_JavaScript'>
 jsonld-streaming-serializer
  (JavaScript)
 </a>
 </li>
 <li class='tocline'>
-<span class='secno'>A.10</span>
+<span class='secno'>A.11</span>
 <a class='tocxref' href='#subj_rdf_parse_JavaScript'>
 rdf-parse
  (JavaScript)
@@ -417,6 +425,13 @@ PyLD
 </a>
 </th>
 <th>
+<a href='#subj_JSONP_LD_Java'>
+JSONP-LD
+<br />
+(Java)
+</a>
+</th>
+<th>
 <a href='#subj_JSON_goLD_Go'>
 JSON-goLD
 <br />
@@ -434,6 +449,9 @@ JSON::LD
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0001'>Test t0001: drop free-floating nodes</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -470,10 +488,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0003'>Test t0003: drop null and unmapped properties</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -510,10 +534,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0005'>Test t0005: @type and prefix compaction</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -550,10 +580,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0007'>Test t0007: add context</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -590,10 +626,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0009'>Test t0009: compact @id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -630,10 +672,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0011'>Test t0011: compact date</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -670,10 +718,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0013'>Test t0013: @value with @language</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -710,10 +764,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0015'>Test t0015: best match compaction</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -750,10 +810,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0017'>Test t0017: A term mapping to null removes the mapping</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -790,10 +856,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0019'>Test t0019: Keep duplicate values in @list and @set</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -830,10 +902,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0021'>Test t0021: Compact properties and types using @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -870,10 +948,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0023'>Test t0023: prefer @vocab over compacted IRIs</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -910,10 +994,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0025'>Test t0025: Language maps</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -950,10 +1040,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0027'>Test t0027: @container: @set with multiple values</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -990,10 +1086,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0029'>Test t0029: Simple @index map</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1030,10 +1132,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0031'>Test t0031: Compact @reverse</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1070,10 +1178,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0033'>Test t0033: Compact reverse-map to reverse property</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1110,10 +1224,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0035'>Test t0035: Compact @reverse node references using strings</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1150,10 +1270,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0037'>Test t0037: Compact keys in @reverse using @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1191,10 +1317,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0039'>Test t0039: @graph is array</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1231,10 +1363,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0041'>Test t0041: index rejects term having @list</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1271,10 +1409,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0043'>Test t0043: select term over @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1311,10 +1455,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0045'>Test t0045: @id value uses relative IRI, not term</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1351,10 +1501,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0047'>Test t0047: Round-trip relative URLs</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1391,10 +1547,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0049'>Test t0049: Round tripping of lists that contain just IRIs</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1431,10 +1593,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0051'>Test t0051: Round tripping @list with scalar</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1471,10 +1639,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0053'>Test t0053: Use @type: @vocab if no @type: @id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1511,10 +1685,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0055'>Test t0055: Round tripping @type: @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1551,10 +1731,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0057'>Test t0057: Complex round tripping @type: @vocab and @type: @id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1591,10 +1777,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0059'>Test t0059: Term with @type: @vocab if no @type: @id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1631,10 +1823,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0061'>Test t0061: @type: @vocab/@id with values matching either</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1671,10 +1869,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0063'>Test t0063: Compact IRI round-tripping with @type: @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1711,10 +1915,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0065'>Test t0065: Language-tagged and indexed strings with language-map</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1751,10 +1961,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0067'>Test t0067: Reverse properties with blank nodes</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1791,10 +2007,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0069'>Test t0069: Single value reverse properties with @set</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1831,10 +2053,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0071'>Test t0071: Input has multiple @contexts, output has one</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1871,10 +2099,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0073'>Test t0073: Mapped @id and @type</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1911,6 +2145,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -1931,10 +2168,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0076'>Test t0076: Compacting IRI equivalent to base</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -1972,11 +2215,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0078'>Test t0078: Compact a [@graph, @set] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2014,11 +2263,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0080'>Test t0080: Do not compact a graph having @id with a term having an @graph container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2056,11 +2311,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0082'>Test t0082: Compact a [@graph, @index, @set] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2098,11 +2359,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0084'>Test t0084: Compact a simple graph with a [@graph, @id] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2140,11 +2407,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0086'>Test t0086: Compact a simple graph with a [@graph, @id, @set] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2182,6 +2455,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -2203,10 +2479,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0089'>Test t0089: Language map term selection with complications</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2244,11 +2526,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0091'>Test t0091: Compact input with @graph container to output without @graph container with compactArrays unset</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2286,11 +2574,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0093'>Test t0093: Compact input with [@graph, @set] container to output without [@graph, @set] container with compactArrays unset</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2328,10 +2622,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0095'>Test t0095: Relative propererty IRIs with @vocab: &#39;&#39;</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2369,11 +2669,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0097'>Test t0097: Compact [@graph, @set] container (multiple graphs)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2411,11 +2717,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0099'>Test t0099: Compact [@graph, @index, @set] container (multiple indexed objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2453,11 +2765,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0101'>Test t0101: Compact [@graph, @id, @set] container (multiple indexed objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2495,11 +2813,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0103'>Test t0103: Compact [@graph, @id] container (multiple ids and objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2537,11 +2861,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0105'>Test t0105: Compact @type with @container: @set using an alias of @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2579,6 +2909,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -2599,10 +2932,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0108'>Test t0108: context with JavaScript Object property names</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2640,11 +2979,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#t0110'>Test t0110: Compact [@graph, @set] container (multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2682,11 +3027,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc002'>Test tc002: overriding a term</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2724,11 +3075,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc004'>Test tc004: deep @context affects nested nodes</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2766,11 +3123,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc006'>Test tc006: adding new term</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2808,11 +3171,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc008'>Test tc008: alias of @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2850,11 +3219,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc010'>Test tc010: scoped context layers on intemediate contexts</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2892,11 +3267,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc012'>Test tc012: orders @type terms when applying scoped contexts</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2934,11 +3315,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc014'>Test tc014: type-scoped context nullification</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -2976,11 +3363,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc016'>Test tc016: type-scoped vocab</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3018,11 +3411,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc018'>Test tc018: multiple type-scoped types resolved against previous context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3060,11 +3459,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc020'>Test tc020: type-scoped value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3102,11 +3507,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc022'>Test tc022: type-scoped property-scoped contexts including @type:@vocab</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3144,11 +3555,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc024'>Test tc024: type-scoped + property-scoped + values evaluates against previous context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3186,11 +3603,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc026'>Test tc026: @propagate: true on type-scoped context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3228,11 +3651,41 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tc028'>Test tc028: Empty-property scoped context does not affect term selection.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='PASS'>
+PASS
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi01'>Test tdi01: term direction null</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3270,11 +3723,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi03'>Test tdi03: term selection with lists and direction</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3312,11 +3771,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi05'>Test tdi05: simple language map with overriding term direction</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3354,11 +3819,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tdi07'>Test tdi07: simple language map with mismatching term direction</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3396,11 +3867,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#ten01'>Test ten01: Nest term not defined</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3438,11 +3915,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tep06'>Test tep06: @version must be 1.1</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3480,11 +3963,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tep08'>Test tep08: @prefix must be a boolean</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3522,11 +4011,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tep10'>Test tep10: @nest is not allowed in 1.0</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3564,11 +4059,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tep12'>Test tep12: @container may not be an array in 1.0</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3606,11 +4107,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tep14'>Test tep14: @container may not be @type in 1.0</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3648,11 +4155,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tin01'>Test tin01: Basic Included array</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3684,6 +4197,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -3695,6 +4211,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tin03'>Test tin03: Multiple properties mapping to @included are folded together</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3726,6 +4245,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -3737,6 +4259,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tin05'>Test tin05: Property value with @included</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3774,11 +4299,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs02'>Test tjs02: Compact JSON literal (boolean false)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3816,11 +4347,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs04'>Test tjs04: Compact JSON literal (double-zero)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3858,11 +4395,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs06'>Test tjs06: Compact JSON literal (object)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3900,11 +4443,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs08'>Test tjs08: Compact already expanded JSON literal</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3942,11 +4491,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tjs10'>Test tjs10: Compact JSON literal (string)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -3984,10 +4539,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tla01'>Test tla01: most specific term matching in @list.</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4025,11 +4586,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli02'>Test tli02: coerced @list containing a list</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4067,11 +4634,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tli04'>Test tli04: coerced @list containing multiple lists</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4109,11 +4682,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm001'>Test tm001: Indexes to object not having an @id</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4151,11 +4730,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm003'>Test tm003: Indexes to object not having an @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4193,11 +4778,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm005'>Test tm005: Indexes to object using compact IRI @id</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4235,11 +4826,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm007'>Test tm007: When type is in a type map</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4277,11 +4874,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm009'>Test tm009: @index map with @none value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4319,11 +4922,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm011'>Test tm011: @language map with no @language</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4361,11 +4970,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm013'>Test tm013: id map using @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4403,11 +5018,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm015'>Test tm015: type map using @none with alias</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4445,11 +5066,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm017'>Test tm017: graph index map using @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4487,11 +5114,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm019'>Test tm019: graph id map using alias of @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4529,11 +5162,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tm021'>Test tm021: node reference compacts to string value of type map with @type: @id</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4571,11 +5210,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tn001'>Test tn001: Indexes to @nest for property with @nest</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4613,11 +5258,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tn003'>Test tn003: Nests using alias of @nest</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4655,11 +5306,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tn005'>Test tn005: Nested @container: @list</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4697,11 +5354,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tn007'>Test tn007: Nested @container: @language</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4739,11 +5402,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tn009'>Test tn009: Nested @container: @id</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4781,6 +5450,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -4802,11 +5474,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tp001'>Test tp001: Compact IRI will not use an expanded term definition in 1.0</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4844,11 +5522,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tp003'>Test tp003: Compact IRI does not use simple term that does not end with a gen-delim</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4886,11 +5570,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tp005'>Test tp005: Compact IRI uses term with definition including @prefix: true</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4928,11 +5618,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tp007'>Test tp007: Compact IRI not used as prefix</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -4970,11 +5666,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi01'>Test tpi01: property-valued index indexes property value, instead of property (value)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5012,11 +5714,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi03'>Test tpi03: property-valued index indexes property value, instead of property (node)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5054,11 +5762,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tpi05'>Test tpi05: property-valued index indexes using @none if no property value exists</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5096,11 +5810,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr01'>Test tpr01: Check illegal clearing of context with protected terms</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5138,11 +5858,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr03'>Test tpr03: Check illegal overriding of protected term from type-scoped context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5180,11 +5906,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tpr05'>Test tpr05: Check legal overriding of type-scoped protected term from nested node</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5222,11 +5954,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#tr002'>Test tr002: Expands and does not compact to document base with compactToRelative false</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5264,11 +6002,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#ts002'>Test ts002: @context with array including @set uses array values</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5306,11 +6050,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/compact-manifest#ttn02'>Test ttn02: @type: @none does not use arrays by default</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5348,25 +6098,31 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 238 Tests
+Percentage passed out of 239 Tests
 </td>
-<td class='passed-all'>
-100.0%
+<td class='passed-most'>
+99.6%
 </td>
-<td class='passed-all'>
-100.0%
+<td class='passed-most'>
+99.6%
+</td>
+<td class='passed-most'>
+99.6%
 </td>
 <td class='passed-all'>
 100.0%
 </td>
 <td class='passed-most'>
-97.5%
+97.1%
 </td>
-<td class='passed-all'>
-100.0%
+<td class='passed-most'>
+99.6%
 </td>
 </tr>
 </table>
@@ -5412,6 +6168,13 @@ PyLD
 </a>
 </th>
 <th>
+<a href='#subj_JSONP_LD_Java'>
+JSONP-LD
+<br />
+(Java)
+</a>
+</th>
+<th>
 <a href='#subj_JSON_goLD_Go'>
 JSON-goLD
 <br />
@@ -5429,6 +6192,9 @@ JSON::LD
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0001'>Test t0001: drop free-floating nodes</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5471,10 +6237,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0003'>Test t0003: drop null and unmapped properties</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5517,10 +6289,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0005'>Test t0005: do not expand aliased @id/@type</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5563,10 +6341,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0007'>Test t0007: date type-coercion</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5609,10 +6393,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0009'>Test t0009: @graph with terms</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5655,10 +6445,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0011'>Test t0011: coerced @id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5701,10 +6497,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0013'>Test t0013: expand already expanded</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5747,10 +6549,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0015'>Test t0015: collapse set of sets, keep empty lists</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5793,10 +6601,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0017'>Test t0017: @graph and @id aliased</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5839,10 +6653,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0019'>Test t0019: remove @value = null</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5885,10 +6705,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0021'>Test t0021: do not remove @graph at top-level if not only property</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5931,10 +6757,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0023'>Test t0023: Expanding list/set with coercion</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -5977,10 +6809,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0025'>Test t0025: Problematic IRI expansion tests</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6023,10 +6861,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0028'>Test t0028: Use @vocab in properties and @type but not in @id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6069,10 +6913,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0030'>Test t0030: Language maps</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6115,10 +6965,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0032'>Test t0032: Null term and @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6161,10 +7017,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0034'>Test t0034: Multiple properties expanding to the same IRI</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6207,10 +7069,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0036'>Test t0036: Expanding @index</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6253,10 +7121,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0039'>Test t0039: Using terms in a reverse-maps</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6299,10 +7173,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0041'>Test t0041: @language: null resets the default language</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6345,10 +7225,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0043'>Test t0043: Using reverse properties inside a @reverse-container</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6391,10 +7277,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0045'>Test t0045: Top-level value objects</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6437,10 +7329,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0047'>Test t0047: Free-floating values in sets and free-floating lists</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6483,10 +7381,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0049'>Test t0049: String values of reverse properties</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6529,10 +7433,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0051'>Test t0051: Expansion of keyword aliases in term definitions</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6575,10 +7485,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0053'>Test t0053: Expand absolute IRI with @type: @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6621,10 +7537,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0055'>Test t0055: Expand @vocab-relative term with @type: @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6667,10 +7589,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0057'>Test t0057: Expand relative IRI with @type: @vocab</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6713,10 +7641,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0059'>Test t0059: Reset @vocab by setting it to null</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6759,10 +7693,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0061'>Test t0061: Coercing native types to arbitrary datatypes</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6805,10 +7745,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0063'>Test t0063: Reverse property and index container</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6851,10 +7797,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0065'>Test t0065: Drop unmapped keys in reverse map</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6897,10 +7849,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0067'>Test t0067: prefix://suffix not a compact IRI</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6943,10 +7901,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0069'>Test t0069: Compact IRI as term with type mapping</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -6989,10 +7953,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0072'>Test t0072: Redefine term using @vocab, not itself</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7035,10 +8005,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0074'>Test t0074: @id not first property</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7081,10 +8057,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0076'>Test t0076: base option overrides document location</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7127,10 +8109,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0078'>Test t0078: multiple reverse properties</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7174,11 +8162,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0080'>Test t0080: expand [@graph, @set] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7222,11 +8216,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0082'>Test t0082: expand [@graph, @index] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7270,11 +8270,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0084'>Test t0084: Do not expand [@graph, @index] container if value is a graph</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7318,11 +8324,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0086'>Test t0086: expand [@graph, @id, @set] container</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7366,10 +8378,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0088'>Test t0088: Do not expand native values to IRIs</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7412,6 +8430,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -7435,10 +8456,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0091'>Test t0091: relative and absolute @base overrides base option and document location</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7482,11 +8509,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0093'>Test t0093: expand @graph container (multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7530,11 +8563,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0095'>Test t0095: Creates an @graph container if value is a graph (multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7578,11 +8617,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0097'>Test t0097: expand [@graph, @index, @set] container (multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7626,11 +8671,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0099'>Test t0099: expand [@graph, @id] container (multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7674,11 +8725,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0101'>Test t0101: Do not expand [@graph, @id] container if value is a graph (multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7722,11 +8779,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0103'>Test t0103: Expand @graph container if value is a graph (multiple graphs)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7770,11 +8833,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0105'>Test t0105: Do not expand [@graph, @index] container if value is a graph (mixed graph and object)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7818,11 +8887,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0107'>Test t0107: expand [@graph, @index] container (indexes with multiple objects)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7866,10 +8941,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0109'>Test t0109: IRI expansion of fragments including &#39;:&#39;</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7913,11 +8994,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0111'>Test t0111: Various relative IRIs as properties with with relative @vocab itself relative to an existing vocabulary base</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -7961,10 +9048,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0113'>Test t0113: context with JavaScript Object property names</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8008,11 +9101,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0117'>Test t0117: A term starting with a colon can expand to a different IRI</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8056,11 +9155,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0119'>Test t0119: Ignore some terms with @, allow others.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8104,11 +9209,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0121'>Test t0121: Ignore some values of @reverse with @, allow others.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8149,6 +9260,9 @@ PASS
 <td class='FAIL'>
 FAIL
 </td>
+<td class='FAIL'>
+FAIL
+</td>
 <td class='PASS'>
 PASS
 </td>
@@ -8157,6 +9271,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0123'>Test t0123: Value objects including invalid literal datatype IRIs are rejected</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8200,11 +9317,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0125'>Test t0125: term as @vocab</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8248,11 +9371,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0127'>Test t0127: A scoped context may include itself recursively (indirect)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8296,6 +9425,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -8319,10 +9451,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#t0130'>Test t0130: Base without trailing slash, with path</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8366,11 +9504,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc002'>Test tc002: overriding a term</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8414,11 +9558,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc004'>Test tc004: deep @context affects nested nodes</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8462,11 +9612,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc006'>Test tc006: adding new term</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8510,11 +9666,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc008'>Test tc008: alias of @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8558,11 +9720,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc010'>Test tc010: scoped context layers on intemediate contexts</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8606,11 +9774,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc012'>Test tc012: deep property-term scoped @context in @type-scoped @context affects nested nodes</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8654,11 +9828,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc014'>Test tc014: type-scoped context nullification</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8702,11 +9882,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc016'>Test tc016: type-scoped vocab</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8750,11 +9936,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc018'>Test tc018: multiple type-scoped types resolved against previous context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8798,11 +9990,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc020'>Test tc020: type-scoped value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8846,11 +10044,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc022'>Test tc022: type-scoped property-scoped contexts including @type:@vocab</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8894,11 +10098,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc024'>Test tc024: type-scoped + property-scoped + values evaluates against previous context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8942,11 +10152,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc026'>Test tc026: @propagate: true on type-scoped context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -8990,11 +10206,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc028'>Test tc028: @propagate: false on embedded context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9038,11 +10260,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc030'>Test tc030: @propagate must be boolean valued</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9080,6 +10308,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='UNTESTED'>
 UNTESTED
 </td>
@@ -9104,6 +10335,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 <td class='FAIL'>
 FAIL
 </td>
@@ -9115,6 +10349,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc033'>Test tc033: Unused context with an embedded context error.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9158,6 +10395,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -9182,11 +10422,44 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tc036'>Test tc036: Expansion with empty property-scoped context.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='PASS'>
+PASS
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi01'>Test tdi01: Expand string using default and term directions</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9230,11 +10503,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi03'>Test tdi03: expand list values with @direction</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9278,11 +10557,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi05'>Test tdi05: simple language mapwith overriding term direction</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9326,11 +10611,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi07'>Test tdi07: simple language map with mismatching term direction</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9374,11 +10665,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tdi09'>Test tdi09: @direction is incompatible with @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9422,11 +10719,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tec02'>Test tec02: Term definition on @type with empty map</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9470,11 +10773,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ten01'>Test ten01: @nest MUST NOT have a string value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9518,11 +10827,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ten03'>Test ten03: @nest MUST NOT have a numeric value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9566,11 +10881,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ten05'>Test ten05: does not allow a keyword other than @nest for the value of @nest</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9614,11 +10935,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tep02'>Test tep02: processingMode json-ld-1.0 conflicts with @version: 1.1</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9662,6 +10989,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -9685,10 +11015,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter04'>Test ter04: Error dereferencing a remote context</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9732,10 +11068,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter06'>Test ter06: Invalid local context</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9778,10 +11120,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter08'>Test ter08: Invalid vocab mapping</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9824,10 +11172,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter10'>Test ter10: Cyclic IRI mapping</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9870,10 +11224,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter12'>Test ter12: Invalid type mapping (not a string)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9916,10 +11276,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter14'>Test ter14: Invalid reverse property (contains @id)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -9962,10 +11328,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter17'>Test ter17: Invalid reverse property (invalid @container)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10008,6 +11380,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -10031,10 +11406,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter20'>Test ter20: Invalid IRI mapping (no vocab mapping)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10078,10 +11459,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter22'>Test ter22: Invalid language mapping</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10124,10 +11511,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter25'>Test ter25: Invalid reverse property map</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10170,10 +11563,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter27'>Test ter27: Invalid @id value</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10216,10 +11615,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter29'>Test ter29: Invalid value object value</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10262,10 +11667,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter31'>Test ter31: Invalid @index value</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10308,10 +11719,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter34'>Test ter34: Invalid reverse property value (in @reverse)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10354,10 +11771,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter36'>Test ter36: Invalid reverse property value (through coercion)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10400,10 +11823,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter38'>Test ter38: Invalid value object (@type and @language)</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10446,6 +11875,9 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
@@ -10469,10 +11901,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter41'>Test ter41: Invalid set or list object</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10516,11 +11954,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter43'>Test ter43: Term definition with @id: @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10564,11 +12008,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter48'>Test ter48: Invalid term as relative IRI</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10612,10 +12062,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter50'>Test ter50: Invalid reverse id</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10658,10 +12114,16 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter52'>Test ter52: Definition for the empty term</a>
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10704,11 +12166,69 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter54'>Test ter54: Invalid value object, multiple values for @type.</a>
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='PASS'>
+PASS
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ter55'>Test ter55: Invalid term definition, multiple values for @type.</a>
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='PASS'>
+PASS
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tes01'>Test tes01: Using an array value for @context is illegal in JSON-LD 1.0</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10752,11 +12272,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tin01'>Test tin01: Basic Included array</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10800,11 +12326,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tin03'>Test tin03: Multiple properties mapping to @included are folded together</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10848,11 +12380,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tin05'>Test tin05: Property value with @included</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10896,11 +12434,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tin07'>Test tin07: Error if @included value is a string</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10944,11 +12488,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tin09'>Test tin09: Error if @included value is a list object</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -10992,11 +12542,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs02'>Test tjs02: Expand JSON literal (boolean false)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11040,11 +12596,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs04'>Test tjs04: Expand JSON literal (double-zero)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11088,11 +12650,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs06'>Test tjs06: Expand JSON literal (object)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11136,11 +12704,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs08'>Test tjs08: Expand JSON literal with array canonicalization</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11184,11 +12758,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs10'>Test tjs10: Expand JSON literal with structural canonicalization</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11232,11 +12812,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs12'>Test tjs12: Expand JSON literal with value canonicalization</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11280,11 +12866,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs14'>Test tjs14: Expand JSON literal without expanding contents</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11328,11 +12920,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs16'>Test tjs16: Expand JSON literal aleady in expanded form with aliased keys</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11376,11 +12974,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs18'>Test tjs18: Expand JSON literal (null)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11424,11 +13028,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs20'>Test tjs20: Expand JSON literal with aliased @value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11472,11 +13082,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tjs22'>Test tjs22: Expand JSON literal (null) aleady in expanded form.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11520,11 +13136,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tl001'>Test tl001: Language map with null value</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11568,11 +13190,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tli02'>Test tli02: @list containing empty @list</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11616,11 +13244,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tli04'>Test tli04: @list containing empty @list (with coercion)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11664,11 +13298,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tli06'>Test tli06: coerced @list containing an empty array</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11712,11 +13352,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tli08'>Test tli08: coerced @list containing deep empty arrays</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11760,11 +13406,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tli10'>Test tli10: coerced @list containing mixed list values</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11808,11 +13460,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm002'>Test tm002: Retains @id in object already having an @id</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11856,11 +13514,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm004'>Test tm004: Prepends @type in object already having an @type</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11904,11 +13568,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm006'>Test tm006: Adds vocabulary expanded @type to object</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -11952,11 +13622,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm008'>Test tm008: When type is in a type map</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12000,11 +13676,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm010'>Test tm010: language map with alias of @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12048,11 +13730,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm012'>Test tm012: type map with alias of @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12096,11 +13784,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm014'>Test tm014: graph index map with alias @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12144,11 +13838,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm016'>Test tm016: graph id index map with aliased @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12192,11 +13892,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm018'>Test tm018: string value of type map expands to node reference with @type: @id</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12240,11 +13946,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tm020'>Test tm020: string value of type map must not be a literal</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12288,11 +14000,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tn002'>Test tn002: Expands input using aliased @nest</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12336,11 +14054,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tn004'>Test tn004: Appends nested values from all @nest aliases</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12384,11 +14108,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tn006'>Test tn006: Arrays of nested values</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12432,11 +14162,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tn008'>Test tn008: Multiple keys may mapping to @type when nesting</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12480,11 +14216,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tp002'>Test tp002: @version setting [1.0, 1.1, 1.0]</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12528,11 +14270,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tp004'>Test tp004: @version setting [1.1, 1.0, 1.1]</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12576,11 +14324,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi02'>Test tpi02: error if @container does not include @index for property-valued index</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12624,11 +14378,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi04'>Test tpi04: error if @index is not a string for property-valued index</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12672,11 +14432,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi06'>Test tpi06: property-valued index expands to property value, instead of @index (value)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12720,11 +14486,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi08'>Test tpi08: property-valued index expands to property value, instead of @index (node)</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12768,11 +14540,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpi10'>Test tpi10: property-valued index does not output property for @none</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12816,11 +14594,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr01'>Test tpr01: Protect a term</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12864,11 +14648,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr03'>Test tpr03: Protect all terms in context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12912,11 +14702,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr05'>Test tpr05: Clear active context with protected terms from an embedded context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -12960,11 +14756,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr08'>Test tpr08: Term with protected scoped context.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13008,11 +14810,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr10'>Test tpr10: Simple protected and unprotected terms.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13056,11 +14864,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr12'>Test tpr12: Scoped context fail to override protected term.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13104,11 +14918,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr14'>Test tpr14: Clear protection with null context.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13152,11 +14972,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr16'>Test tpr16: Override protected terms after null.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13200,11 +15026,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr18'>Test tpr18: Fail to override protected terms with type+null+ctx.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13248,11 +15080,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr20'>Test tpr20: Fail with mix of protected and unprotected terms with type+null+ctx.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13296,11 +15134,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr22'>Test tpr22: Check legal overriding of type-scoped protected term from nested node.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13344,11 +15188,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr24'>Test tpr24: Allows redefinition of protected prefix term with same definition.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13392,11 +15242,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr26'>Test tpr26: Fails on redefinition of terms with scoped contexts using different definitions.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13440,11 +15296,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr28'>Test tpr28: Fails if trying to redefine a protected null term.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13488,11 +15350,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr30'>Test tpr30: Keywords may be protected.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13536,11 +15404,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr32'>Test tpr32: Protected @type cannot be overridden.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13584,11 +15458,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr34'>Test tpr34: Ignores a non-keyword term starting with &#39;@&#39;</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13632,11 +15512,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr36'>Test tpr36: Ignores a term mapping to a value in the form of a keyword.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13680,11 +15566,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr38'>Test tpr38: Ignores a term mapping to a value in the form of a keyword (@reverse).</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13709,6 +15601,9 @@ PASS
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tpr39'>Test tpr39: Ignores a term mapping to a value in the form of a keyword (@reverse with @vocab).</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13752,11 +15647,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso01'>Test tso01: @import is invalid in 1.0.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13800,11 +15701,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso03'>Test tso03: @import overflow</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13848,11 +15755,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso06'>Test tso06: @propagate: false on property-scoped context with @import</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13896,11 +15809,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso08'>Test tso08: Override term defined in sourced context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13944,11 +15863,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso10'>Test tso10: Protect terms in sourced context</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -13992,11 +15917,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#tso12'>Test tso12: @import may not be used in an imported context.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -14040,11 +15971,17 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='normative'>
 <td>
 <a href='https://w3c.github.io/json-ld-api/tests/expand-manifest#ttn01'>Test ttn01: @type: @none is illegal in 1.0.</a>
 (new in JSON-LD 1.1)
+</td>
+<td class='PASS'>
+PASS
 </td>
 <td class='PASS'>
 PASS
@@ -14088,28 +16025,34 @@ PASS
 <td class='PASS'>
 PASS
 </td>
+<td class='PASS'>
+PASS
+</td>
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 366 Tests
-</td>
-<td class='passed-all'>
-100.0%
-</td>
-<td class='passed-all'>
-100.0%
-</td>
-<td class='passed-all'>
-100.0%
-</td>
-<td class='passed-all'>
-100.0%
+Percentage passed out of 369 Tests
 </td>
 <td class='passed-most'>
-97.3%
+99.2%
 </td>
-<td class='passed-all'>
-100.0%
+<td class='passed-most'>
+99.2%
+</td>
+<td class='passed-most'>
+99.2%
+</td>
+<td class='passed-most'>
+99.2%
+</td>
+<td class='passed-most'>
+99.7%
+</td>
+<td class='passed-most'>
+96.5%
+</td>
+<td class='passed-most'>
+99.2%
 </td>
 </tr>
 </table>
@@ -19702,7 +21645,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -20879,6 +22822,33 @@ PASS
 </td>
 <td class='PASS'>
 PASS
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tc036'>Test tc036: Expansion with empty property-scoped context.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
 </td>
 </tr>
 <tr class='normative'>
@@ -24286,7 +26256,7 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
-<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: IRI Resolution (4)</a>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#t0124'>Test t0124: compact IRI as @vocab</a>
 (new in JSON-LD 1.1)
 </td>
 <td class='PASS'>
@@ -25949,6 +27919,58 @@ PASS
 </tr>
 <tr class='normative'>
 <td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#ter54'>Test ter54: Invalid value object, multiple values for @type.</a>
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#ter55'>Test ter55: Invalid term definition, multiple values for @type.</a>
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+</tr>
+<tr class='normative'>
+<td>
 <a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tin01'>Test tin01: Basic Included array</a>
 (new in JSON-LD 1.1)
 </td>
@@ -27079,6 +29101,114 @@ PASS
 </td>
 <td class='PASS'>
 PASS
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tli11'>Test tli11: List with good @base.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tli12'>Test tli12: List with bad @base.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tli13'>Test tli13: List with empty @base.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+</tr>
+<tr class='normative'>
+<td>
+<a href='https://w3c.github.io/json-ld-api/tests/toRdf-manifest#tli14'>Test tli14: List with null @base.</a>
+(new in JSON-LD 1.1)
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
+</td>
+<td class='UNTESTED'>
+UNTESTED
 </td>
 </tr>
 <tr class='normative'>
@@ -30280,28 +32410,28 @@ PASS
 </tr>
 <tr class='summary'>
 <td>
-Percentage passed out of 442 Tests
+Percentage passed out of 449 Tests
 </td>
 <td class='passed-most'>
-99.8%
-</td>
-<td class='passed-most'>
-95.9%
-</td>
-<td class='passed-most'>
-98.6%
-</td>
-<td class='passed-most'>
-99.5%
+98.2%
 </td>
 <td class='passed-some'>
-94.6%
+94.4%
 </td>
-<td class='passed-all'>
-100.0%
+<td class='passed-most'>
+97.1%
 </td>
-<td class='passed-all'>
-100.0%
+<td class='passed-most'>
+98.0%
+</td>
+<td class='passed-some'>
+93.1%
+</td>
+<td class='passed-most'>
+98.4%
+</td>
+<td class='passed-most'>
+98.4%
 </td>
 </tr>
 </table>
@@ -31797,8 +33927,8 @@ Test Suite Compliance
 <td>
 Expansion
 </td>
-<td class='passed-all'>
-366/366 (100.0%)
+<td class='passed-most'>
+366/369 (99.2%)
 </td>
 </tr>
 <tr>
@@ -31806,7 +33936,7 @@ Expansion
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-441/442 (99.8%)
+441/449 (98.2%)
 </td>
 </tr>
 </tbody>
@@ -31855,16 +33985,16 @@ Test Suite Compliance
 <td>
 Compaction
 </td>
-<td class='passed-all'>
-238/238 (100.0%)
+<td class='passed-most'>
+238/239 (99.6%)
 </td>
 </tr>
 <tr>
 <td>
 Expansion
 </td>
-<td class='passed-all'>
-366/366 (100.0%)
+<td class='passed-most'>
+366/369 (99.2%)
 </td>
 </tr>
 <tr>
@@ -31896,7 +34026,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-424/442 (95.9%)
+424/449 (94.4%)
 </td>
 </tr>
 <tr>
@@ -31951,16 +34081,16 @@ Test Suite Compliance
 <td>
 Compaction
 </td>
-<td class='passed-all'>
-238/238 (100.0%)
+<td class='passed-most'>
+238/239 (99.6%)
 </td>
 </tr>
 <tr>
 <td>
 Expansion
 </td>
-<td class='passed-all'>
-366/366 (100.0%)
+<td class='passed-most'>
+366/369 (99.2%)
 </td>
 </tr>
 <tr>
@@ -31992,7 +34122,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-436/442 (98.6%)
+436/449 (97.1%)
 </td>
 </tr>
 <tr>
@@ -32047,16 +34177,16 @@ Test Suite Compliance
 <td>
 Compaction
 </td>
-<td class='passed-all'>
-238/238 (100.0%)
+<td class='passed-most'>
+238/239 (99.6%)
 </td>
 </tr>
 <tr>
 <td>
 Expansion
 </td>
-<td class='passed-all'>
-366/366 (100.0%)
+<td class='passed-most'>
+366/369 (99.2%)
 </td>
 </tr>
 <tr>
@@ -32096,7 +34226,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-440/442 (99.5%)
+440/449 (98.0%)
 </td>
 </tr>
 <tr>
@@ -32112,8 +34242,64 @@ Transform RDF to JSON-LD
 </dd>
 </dl>
 </dd>
-<dt id='subj_Sophia_Rust'>
+<dt id='subj_JSONP_LD_Java'>
 <span class='secno'>A.5</span>
+<a href='https://github.com/filip26/jsonp-ld'>
+<span about='https://github.com/filip26/jsonp-ld' property='doap:name'>JSONP-LD</span>
+</a>
+</dt>
+<dd>
+<dl>
+<dt>Release</dt>
+<dd property='doap:release'><span property='doap:revision'>0.2.2</span></dd>
+<dt>Programming Language</dt>
+<dd property='doap:programming-language'>Java</dd>
+<dt>Home Page</dt>
+<dd>
+<a href='https://github.com/filip26/jsonp-ld' property='doap:homepage'>
+https://github.com/filip26/jsonp-ld
+</a>
+</dd>
+<dt>Developer</dt>
+<dd rel='doap:developer'>
+<div>
+<a href='https://github.com/filip26'>
+<span property='foaf:name'>Filip Kolarik</span>
+</a>
+<a href-@id='https://github.com/filip26' href-@type='[&quot;Assertor&quot;, &quot;foaf:Person&quot;]' href-foaf:homepage='https://github.com/filip26' href-foaf:name='Filip Kolarik' property='foaf:homepage'>
+https://github.com/filip26
+</a>
+</div>
+</dd>
+<dt>
+Test Suite Compliance
+</dt>
+<dd>
+<table class='report'>
+<tbody>
+<tr>
+<td>
+Compaction
+</td>
+<td class='passed-all'>
+239/239 (100.0%)
+</td>
+</tr>
+<tr>
+<td>
+Expansion
+</td>
+<td class='passed-most'>
+368/369 (99.7%)
+</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+<dt id='subj_Sophia_Rust'>
+<span class='secno'>A.6</span>
 <a href='https://github.com/pchampin/sophia_rs'>
 <span about='https://github.com/pchampin/sophia_rs' property='doap:name'>Sophia</span>
 </a>
@@ -32160,7 +34346,7 @@ Transform RDF to JSON-LD
 </dl>
 </dd>
 <dt id='subj_JSON_goLD_Go'>
-<span class='secno'>A.6</span>
+<span class='secno'>A.7</span>
 <a href='https://github.com/piprate/json-gold'>
 <span about='https://github.com/piprate/json-gold' property='doap:name'>JSON-goLD</span>
 </a>
@@ -32199,7 +34385,7 @@ Test Suite Compliance
 Compaction
 </td>
 <td class='passed-most'>
-232/238 (97.5%)
+232/239 (97.1%)
 </td>
 </tr>
 <tr>
@@ -32207,7 +34393,7 @@ Compaction
 Expansion
 </td>
 <td class='passed-most'>
-356/366 (97.3%)
+356/369 (96.5%)
 </td>
 </tr>
 <tr>
@@ -32239,7 +34425,7 @@ Remote document
 Transform JSON-LD to RDF
 </td>
 <td class='passed-most'>
-418/442 (94.6%)
+418/449 (93.1%)
 </td>
 </tr>
 <tr>
@@ -32256,7 +34442,7 @@ Transform RDF to JSON-LD
 </dl>
 </dd>
 <dt id='subj_JSON_LD_Ruby'>
-<span class='secno'>A.7</span>
+<span class='secno'>A.8</span>
 <a href='https://rubygems.org/gems/json-ld'>
 <span about='https://rubygems.org/gems/json-ld' property='doap:name'>JSON::LD</span>
 </a>
@@ -32293,16 +34479,16 @@ Test Suite Compliance
 <td>
 Compaction
 </td>
-<td class='passed-all'>
-238/238 (100.0%)
+<td class='passed-most'>
+238/239 (99.6%)
 </td>
 </tr>
 <tr>
 <td>
 Expansion
 </td>
-<td class='passed-all'>
-366/366 (100.0%)
+<td class='passed-most'>
+366/369 (99.2%)
 </td>
 </tr>
 <tr>
@@ -32341,8 +34527,8 @@ Remote document
 <td>
 Transform JSON-LD to RDF
 </td>
-<td class='passed-all'>
-442/442 (100.0%)
+<td class='passed-most'>
+442/449 (98.4%)
 </td>
 </tr>
 <tr>
@@ -32359,7 +34545,7 @@ Transform RDF to JSON-LD
 </dl>
 </dd>
 <dt id='subj_jsonld_streaming_parser_JavaScript'>
-<span class='secno'>A.8</span>
+<span class='secno'>A.9</span>
 <a href='https://www.npmjs.com/package/jsonld-streaming-parser/'>
 <span about='https://www.npmjs.com/package/jsonld-streaming-parser/' property='doap:name'>jsonld-streaming-parser</span>
 </a>
@@ -32399,8 +34585,8 @@ Test Suite Compliance
 <td>
 Transform JSON-LD to RDF
 </td>
-<td class='passed-all'>
-442/442 (100.0%)
+<td class='passed-most'>
+442/449 (98.4%)
 </td>
 </tr>
 </tbody>
@@ -32409,7 +34595,7 @@ Transform JSON-LD to RDF
 </dl>
 </dd>
 <dt id='subj_jsonld_streaming_serializer_JavaScript'>
-<span class='secno'>A.9</span>
+<span class='secno'>A.10</span>
 <a href='https://www.npmjs.com/package/jsonld-streaming-serializer/'>
 <span about='https://www.npmjs.com/package/jsonld-streaming-serializer/' property='doap:name'>jsonld-streaming-serializer</span>
 </a>
@@ -32459,7 +34645,7 @@ Transform RDF to JSON-LD
 </dl>
 </dd>
 <dt id='subj_rdf_parse_JavaScript'>
-<span class='secno'>A.10</span>
+<span class='secno'>A.11</span>
 <a href='https://www.npmjs.com/package/rdf-parse/'>
 <span about='https://www.npmjs.com/package/rdf-parse/' property='doap:name'>rdf-parse</span>
 </a>
@@ -32520,38 +34706,41 @@ Individual test results used to construct this report are available here:
 </p>
 <ul>
 <li>
-<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='pyld-earl.ttl'>pyld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='jsonld-js-earl.ttl'>jsonld-js-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
-</li>
-<li>
-<a class='source' href='rust-sophia-earl.ttl'>rust-sophia-earl.ttl</a>
+<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
 </li>
 <li>
 <a class='source' href='guile-jsonld-earl.ttl'>guile-jsonld-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
+<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='rust-sophia-earl.ttl'>rust-sophia-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='java-jsonp-ld-earl.ttl'>java-jsonp-ld-earl.ttl</a>
 </li>
 <li>
 <a class='source' href='jsonld-streaming-parser-earl.ttl'>jsonld-streaming-parser-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='ruby-json-ld-earl.ttl'>ruby-json-ld-earl.ttl</a>
+<a class='source' href='perl-jsonld-earl.ttl'>perl-jsonld-earl.ttl</a>
 </li>
 <li>
-<a class='source' href='rdf-parse.ttl'>rdf-parse.ttl</a>
+<a class='source' href='jsonld-js-earl.ttl'>jsonld-js-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='pyld-earl.ttl'>pyld-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-gold-earl.ttl'>jsonld-gold-earl.ttl</a>
+</li>
+<li>
+<a class='source' href='jsonld-streaming-serializer-earl.ttl'>jsonld-streaming-serializer-earl.ttl</a>
 </li>
 </ul>
 </section>
-<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='Software doap:Project'>
+<section class='appendix' id='report-generation-software' property='earl:generatedBy' resource='http://rubygems.org/gems/earl-report' typeof='doap:Project Software'>
 <h2>
 <span class='secno'>C.</span>
 Report Generation Software
