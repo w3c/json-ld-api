@@ -196,7 +196,8 @@
   ],
   "id": "https://www.w3.org/TR/json-ld11-api/",
   "type": [
-    "TechArticle"
+    "TechArticle",
+    "w3p:PR"
   ],
   "name": "JSON-LD 1.1 Processing Algorithms and API",
   "inLanguage": "en",
@@ -859,7 +860,7 @@
       "id": "rfc8288"
     }
   },
-  "specStatus": "ED",
+  "specStatus": "PR",
   "copyrightStart": "2010",
   "shortName": "json-ld11-api",
   "prevVersion": "https://www.w3.org/TR/2019/CR-json-ld11-api-20200417/",
@@ -964,20 +965,21 @@
   "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/107714/status",
   "processVersion": 2018,
   "maxTocLevel": 2,
+  "publishDate": "2020-06-11",
   "publishISODate": "2020-06-11T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 11 June 2020"
-}</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
+  "generatedSubtitle": "Proposed Recommendation 11 June 2020"
+}</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-PR"></head>
 
-<body class="h-entry" about="http://localhost:8000/#the-application-programming-interface" data-cite="WebIDL json-ld11 json-ld11-api json-ld11-framing"><div class="head">
+<body class="h-entry" about="http://localhost:8000/?specStatus=PR&amp;publishDate=2020-06-11" data-cite="WebIDL json-ld11 json-ld11-api json-ld11-framing"><div class="head">
     <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">JSON-LD 1.1 Processing Algorithms and API</h1>
     
     <h2>
-      W3C Editor's Draft
+      W3C Proposed Recommendation
       <time class="dt-published" datetime="2020-06-11">11 June 2020</time>
     </h2>
     <dl>
       <dt>This version:</dt><dd>
-              <a class="u-url" href="https://w3c.github.io/json-ld-api/">https://w3c.github.io/json-ld-api/</a>
+              <a class="u-url" href="https://www.w3.org/TR/2020/PR-json-ld11-api-20200611/">https://www.w3.org/TR/2020/PR-json-ld11-api-20200611/</a>
             </dd><dt>Latest published version:</dt><dd>
               <a href="https://www.w3.org/TR/json-ld11-api/">https://www.w3.org/TR/json-ld11-api/</a>
             </dd>
@@ -987,7 +989,7 @@
               <a href="https://w3c.github.io/json-ld-api/reports/">https://w3c.github.io/json-ld-api/reports/</a>
             </dd>
       
-      
+      <dt>Previous version:</dt><dd><a href="https://www.w3.org/TR/2020/CR-json-ld11-api-20200417/">https://www.w3.org/TR/2020/CR-json-ld11-api-20200417/</a></dd>
       <dt>Latest Recommendation:</dt><dd><a href="https://www.w3.org/TR/2014/REC-json-ld-api-20140116/">https://www.w3.org/TR/2014/REC-json-ld-api-20140116/</a></dd>
       <dt>Editors:</dt>
       <dd class="p-author h-card vcard" data-editor-id="44770"><a class="u-url url p-name fn" href="https://greggkellogg.net/">Gregg Kellogg</a> (v1.0 and v1.1)</dd><dd class="p-author h-card vcard" data-editor-id="48025"><a class="u-url url p-name fn" href="https://digitalbazaar.com/author/dlongley/">Dave Longley</a>
@@ -1069,9 +1071,9 @@
 
 
   <p>
-    This document was published by the <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a> as an
-    Editor's Draft.
-    
+    This document was published by the <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a> as a
+    Proposed Recommendation.
+    This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
   </p><p>
     <a href="https://github.com/w3c/json-ld-api/issues/">GitHub Issues</a> are preferred for
           discussion of this specification.
@@ -1082,10 +1084,26 @@
           (<a href="https://lists.w3.org/Archives/Public/public-json-ld-wg/">archives</a>).
         
   </p><p>
+                            
+                            
+                            
+                                  The <abbr title="World Wide Web Consortium">W3C</abbr> Membership and other interested
+                                  parties are invited to review the document and
+                                  send comments to
+                                  <a rel="discussion" href="mailto:public-json-ld-wg@w3.org">public-json-ld-wg@w3.org</a>
+                                  (<a href="mailto:public-json-ld-wg-request@w3.org?subject=subscribe">subscribe</a>,
+                                  <a href="https://lists.w3.org/Archives/Public/public-json-ld-wg/">archives</a>) through 18 June 2020. Advisory
+                                  Committee Representatives should consult their
+                                  <a href="https://www.w3.org/2002/09/wbs/myQuestionnaires">WBS questionnaires</a>. Note that substantive technical comments
+                                  were expected during the Candidate
+                                  Recommendation review period that ended
+                                  03 April 2020.
+                                
+                          </p><p>
     Please see the Working Group's
     <a href="https://w3c.github.io/json-ld-api/reports/">implementation report</a>.
   </p><p>
-    Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+    Publication as a Proposed Recommendation does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
     Membership. This is a draft document and may be updated, replaced or
     obsoleted by other documents at any time. It is inappropriate to cite this
     document as other than work in progress.
