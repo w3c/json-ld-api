@@ -24,9 +24,9 @@
 
       // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
       // and its maturity status
-      prevVersion:          "https://www.w3.org/TR/2019/CR-json-ld11-api-20200417/",
-      previousPublishDate:  "2020-04-17",
-      previousMaturity:     "CR",
+      prevVersion:          "https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/",
+      previousPublishDate:  "2020-05-17",
+      previousMaturity:     "PR",
       prevRecURI:           "https://www.w3.org/TR/2014/REC-json-ld-api-20140116/",
 
       // if there a publicly available Editor's Draft, this is the link
@@ -4778,14 +4778,6 @@
     <p class="changed">If the {{JsonLdOptions/rdfDirection}} option is not `null`, then special processing is used to
       convert from an `i18n-datatype` or `compound-literal` form.</p>
 
-    <p class="issue atrisk">The support for both `i18n-datatype` and `compound-literal`
-      algorithm steps are non-normative, and are AT RISK for JSON-LD 1.1.
-      They may be replaced with normative algorithm steps in a future version.
-      Either or both of these transformation methods may be removed prior to
-      JSON-LD 1.1 being finalized.
-      The JSON-LD Working Group solicits feedback from the community on the
-      usefulness of these transformations.</p>
-
     <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
       <a>triples</a> and <a>graph names</a>:</p>
     <ul>
@@ -5156,14 +5148,6 @@
 
       <p class="changed">If the {{JsonLdOptions/rdfDirection}} option is not `null`, then special processing is used to
         convert from an `i18n-datatype` or `compound-literal` form.</p>
-
-      <p class="issue atrisk">The support for both `i18n-datatype` and `compound-literal`
-        algorithm steps are non-normative, and are AT RISK for JSON-LD 1.1.
-        They may be replaced with normative algorithm steps in a future version.
-        Either or both of these transformation methods may be removed prior to
-        JSON-LD 1.1 being finalized.
-        The JSON-LD Working Group solicits feedback from the community on the
-        usefulness of these transformations.</p>
     </section>
 
     <section>
@@ -5678,8 +5662,11 @@
       as long as they generally use the same methods, arguments, and options
       and return the same results.</span></p>
 
-  <p class="note">Interfaces are marked `[Exposed=(Window,Worker)]`,
-    but the API is also intended for use outside of a browser context.</p>
+  <p class="note">Interfaces are not marked with the `[Exposed]`
+    <a data-cite="WEBIDL#dfn-extended-attribute">extended attribute</a>,
+    as this is currently quite browser specific.
+    The use of WebIDL in JSON-LD, while appropriate for use within browsers,
+    is not limited to such use.</p>
 
   <section><h3>The <dfn>JsonLdProcessor</dfn> Interface</h3>
 
@@ -5701,7 +5688,6 @@
       in this document mention this directly.</p>
 
     <pre class="idl">
-      [Exposed=(Window,Worker)]
       interface JsonLdProcessor {
         constructor();
         static Promise&lt;JsonLdRecord> compact(
@@ -6100,7 +6086,6 @@
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
       interface RdfDataset {
         constructor();
         readonly attribute RdfGraph defaultGraph;
@@ -6144,7 +6129,6 @@
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
       interface RdfGraph {
         constructor();
         void add(RdfTriple triple);
@@ -6173,7 +6157,6 @@
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
       interface RdfTriple {
         constructor();
         readonly attribute USVString subject;
@@ -6201,7 +6184,6 @@
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
       interface RdfLiteral {
         constructor();
         readonly attribute USVString value;
@@ -6455,7 +6437,6 @@
         to return information about a remote document or context.</p>
 
       <pre class="idl">
-        [Exposed=(Window,Worker)]
         interface RemoteDocument {
           constructor();
           readonly attribute USVString contentType;
@@ -7097,6 +7078,9 @@
       to update <var>cl reference</var> and not <var>node</var>.</li>
     <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
       the `preserve` keyword, which is only used for framing.</li>
+    <li>Removed the `[Exposed=(Window,Worker)]`
+      <a data-cite="WEBIDL#dfn-extended-attribute">extended attribute</a>
+      from <a href="#the-application-programming-interface" class="sectionRef"></a> to address review suggestions.</li>
   </ul>
 </section>
 <section id="ack"
