@@ -5662,9 +5662,8 @@
       as long as they generally use the same methods, arguments, and options
       and return the same results.</span></p>
 
-  <p class="note">Interfaces are not marked with the `[Exposed]`
-    <a data-cite="WEBIDL#dfn-extended-attribute">extended attribute</a>,
-    as this is currently quite browser specific.
+  <p class="note">Interfaces are marked `[Exposed=JsonLdProcessor]`,
+    which creates a global interface.
     The use of WebIDL in JSON-LD, while appropriate for use within browsers,
     is not limited to such use.</p>
 
@@ -5688,8 +5687,8 @@
       in this document mention this directly.</p>
 
     <pre class="idl">
+      [Global=JsonLdProcessor, Exposed=JsonLdProcessor]
       interface JsonLdProcessor {
-        constructor();
         static Promise&lt;JsonLdRecord> compact(
           JsonLdInput input,
           optional JsonLdContext context = null,
@@ -6086,6 +6085,7 @@
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed">
+      [Exposed=JsonLdProcessor]
       interface RdfDataset {
         constructor();
         readonly attribute RdfGraph defaultGraph;
@@ -6129,6 +6129,7 @@
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed">
+      [Exposed=JsonLdProcessor]
       interface RdfGraph {
         constructor();
         void add(RdfTriple triple);
@@ -6157,6 +6158,7 @@
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed">
+      [Exposed=JsonLdProcessor]
       interface RdfTriple {
         constructor();
         readonly attribute USVString subject;
@@ -6184,6 +6186,7 @@
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
     <pre class="idl changed">
+      [Exposed=JsonLdProcessor]
       interface RdfLiteral {
         constructor();
         readonly attribute USVString value;
@@ -6437,6 +6440,7 @@
         to return information about a remote document or context.</p>
 
       <pre class="idl">
+        [Exposed=JsonLdProcessor]
         interface RemoteDocument {
           constructor();
           readonly attribute USVString contentType;
