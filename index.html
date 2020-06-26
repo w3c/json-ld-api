@@ -5662,7 +5662,7 @@
       as long as they generally use the same methods, arguments, and options
       and return the same results.</span></p>
 
-  <p class="note">Interfaces are marked `[Exposed=Endpoint]`,
+  <p class="note">Interfaces are marked `[Exposed=JsonLd]`,
     which creates a global interface.
     The use of WebIDL in JSON-LD, while appropriate for use within browsers,
     is not limited to such use.</p>
@@ -5688,12 +5688,12 @@
 
     <pre class="idl">
       /*
-       * The Endpoint interface is created to expose the JsonLdProcessor interface.
+       * The JsonLd interface is created to expose the JsonLdProcessor interface.
        */
-      [Global=Endpoint, Exposed=Endpoint]
-      interface Endpoint {};
+      [Global=JsonLd, Exposed=JsonLd]
+      interface JsonLd {};
 
-      [Exposed=Endpoint]
+      [Exposed=JsonLd]
       interface JsonLdProcessor {
         constructor();
         static Promise&lt;JsonLdRecord> compact(
@@ -6092,7 +6092,7 @@
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed">
-      [Exposed=Endpoint]
+      [Exposed=JsonLd]
       interface RdfDataset {
         constructor();
         readonly attribute RdfGraph defaultGraph;
@@ -6136,7 +6136,7 @@
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed">
-      [Exposed=Endpoint]
+      [Exposed=JsonLd]
       interface RdfGraph {
         constructor();
         void add(RdfTriple triple);
@@ -6165,7 +6165,7 @@
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed">
-      [Exposed=Endpoint]
+      [Exposed=JsonLd]
       interface RdfTriple {
         constructor();
         readonly attribute USVString subject;
@@ -6193,7 +6193,7 @@
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
     <pre class="idl changed">
-      [Exposed=Endpoint]
+      [Exposed=JsonLd]
       interface RdfLiteral {
         constructor();
         readonly attribute USVString value;
@@ -6447,7 +6447,7 @@
         to return information about a remote document or context.</p>
 
       <pre class="idl">
-        [Exposed=Endpoint]
+        [Exposed=JsonLd]
         interface RemoteDocument {
           constructor();
           readonly attribute USVString contentType;
@@ -7089,7 +7089,7 @@
       to update <var>cl reference</var> and not <var>node</var>.</li>
     <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
       the `preserve` keyword, which is only used for framing.</li>
-    <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=Endpoint]`,
+    <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
       which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
       for non-browser usage to address review suggestions.</li>
   </ul>
