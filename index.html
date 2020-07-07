@@ -25,9 +25,10 @@
       // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
       // and its maturity status
       prevVersion:          "https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/",
-      previousPublishDate:  "2020-05-17",
+      previousPublishDate:  "2020-05-07",
       previousMaturity:     "PR",
       prevRecURI:           "https://www.w3.org/TR/2014/REC-json-ld-api-20140116/",
+      errata:               "https://w3c.github.io/json-ld-api/errata/",
 
       // if there a publicly available Editor's Draft, this is the link
       edDraftURI:           "https://w3c.github.io/json-ld-api/",
@@ -7087,10 +7088,16 @@
       to update <var>cl reference</var> and not <var>node</var>.</li>
     <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
       the `preserve` keyword, which is only used for framing.</li>
+  </ul>
+</section>
+<section class="appendix informative" id="changes-from-cr">
+  <h2>Changes since Proposed Recommendation Release of 7 May 2020</h2>
+  <ul>
+    <li>Removed remaining "at-risk" notes.</li>
+    <li>Update bibliographic reference for JCS to [[RFC8785]].</li>
     <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
       which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
       for non-browser usage to address review suggestions.</li>
-    <li>Update bibliographic reference for JCS to [[RFC8785]].</li>
   </ul>
 </section>
 <section id="ack"
