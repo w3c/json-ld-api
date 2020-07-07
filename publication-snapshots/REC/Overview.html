@@ -277,10 +277,10 @@
   ],
   "citation": [
     {
-      "id": "https://tc39.github.io/ecma262/",
+      "id": "https://tc39.es/ecma262/",
       "type": "TechArticle",
       "name": "ECMAScript Language Specification",
-      "url": "https://tc39.github.io/ecma262/",
+      "url": "https://tc39.es/ecma262/",
       "publisher": {
         "name": "Ecma International"
       }
@@ -462,7 +462,13 @@
       "url": "https://www.w3.org/TR/json-ld11-framing/",
       "creator": [
         {
+          "name": "Dave Longley"
+        },
+        {
           "name": "Gregg Kellogg"
+        },
+        {
+          "name": "Pierre-Antoine Champin"
         }
       ],
       "publisher": {
@@ -966,6 +972,12 @@
   "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/107714/status",
   "processVersion": 2018,
   "maxTocLevel": 2,
+  "alternateFormats": [
+    {
+      "uri": "json-ld11-api.epub",
+      "label": "EPUB"
+    }
+  ],
   "publishDate": "2020-07-16",
   "publishISODate": "2020-07-16T00:00:00.000Z",
   "generatedSubtitle": "Recommendation 16 July 2020"
@@ -1034,7 +1046,10 @@
           <a href="http://www.w3.org/2003/03/Translations/byTechnology?technology=json-ld11-api">
             <strong>translations</strong></a>.
         </p>
-    
+    <p>
+          This document is also available in this non-normative format:
+          <a rel="alternate" href="json-ld11-api.epub">EPUB</a>
+        </p>
     <p class="copyright">
     <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
     ©
@@ -1269,18 +1284,87 @@ to show the results of transforming an example into other representations.</pre>
       and defines terms specific to JSON-LD.</p>
 
     <div data-oninclude="restrictReferences"><section><h4 id="terms-imported-from-other-specifications">Terms imported from Other Specifications<a class="self-link" aria-label="§" href="#terms-imported-from-other-specifications"></a></h4>
-<p>Terms imported from <cite><a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-ecmascript" title="ECMAScript Language Specification">ECMASCRIPT</a></cite>], <cite><a href="https://tools.ietf.org/html/rfc8259">The JavaScript Object Notation (JSON) Data Interchange Format</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8259" title="The JavaScript Object Notation (JSON) Data Interchange Format">RFC8259</a></cite>], <cite><a href="https://infra.spec.whatwg.org/">Infra Standard</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-infra" title="Infra Standard">INFRA</a></cite>], and <cite><a href="https://heycam.github.io/webidl/">Web IDL</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-webidl" title="Web IDL">WEBIDL</a></cite>]</p>
-<dl class="termlist" data-sort="" id="terms"></dl>
+<p>Terms imported from <cite><a href="https://tc39.es/ecma262/">ECMAScript Language Specification</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-ecmascript" title="ECMAScript Language Specification">ECMASCRIPT</a></cite>], <cite><a href="https://tools.ietf.org/html/rfc8259">The JavaScript Object Notation (JSON) Data Interchange Format</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8259" title="The JavaScript Object Notation (JSON) Data Interchange Format">RFC8259</a></cite>], <cite><a href="https://infra.spec.whatwg.org/">Infra Standard</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-infra" title="Infra Standard">INFRA</a></cite>], and <cite><a href="https://heycam.github.io/webidl/">Web IDL</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-webidl" title="Web IDL">WEBIDL</a></cite>]</p>
+<dl class="termlist" data-sort="" id="terms"><dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="arrays" id="dfn-array" data-no-export=""><a href="https://infra.spec.whatwg.org/#list">array</a></dfn></dt><dd>
+    In the JSON serialization,
+    an <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list">array</a> structure is represented as square brackets surrounding zero or more values.
+    Values are separated by commas.
+    In the <a href="#dfn-internal-representation" class="internalDFN" data-link-type="dfn">internal representation</a>,
+    a <a data-ld="array" data-link-type="dfn" href="https://www.w3.org/TR/rdf-schema/#ch_collectionvocab">list</a> (also called an <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list">array</a>) is an <em>ordered</em> collection of zero or more values.
+    While JSON-LD uses the same array representation as JSON,
+    the collection is <em>unordered</em> by default.
+    While order is preserved in regular JSON arrays,
+    it is not in regular JSON-LD arrays unless specifically defined
+    (see the <a href="https://www.w3.org/TR/json-ld11/#sets-and-lists">Sets and Lists</a> section of JSON-LD 1.1.</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="booleans" id="dfn-boolean" data-no-export=""><a href="https://infra.spec.whatwg.org/#boolean">boolean</a></dfn></dt><dd>
+    The values <code>true</code> and <code>false</code> that are used
+    to express one of two possible states.</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="json objects" id="dfn-json-object" data-no-export=""><a href="https://tools.ietf.org/html/rfc8259#section-4">JSON object</a></dfn></dt><dd>
+    In the JSON serialization,
+    an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a> structure
+    is represented as a pair of curly brackets surrounding zero or more name/value pairs (or members).
+    A name is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a>.
+    A single colon comes after each name,
+    separating the name from the value.
+    A single comma separates a value from a following name.
+    In JSON-LD the names in an object must be unique.
+    <p>In the <a href="#dfn-internal-representation" class="internalDFN" data-link-type="dfn">internal representation</a> a <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc8259#section-4">JSON object</a> is described as a
+      <dfn class="preserve" data-dfn-type="dfn" data-plurals="maps" id="dfn-map" data-no-export=""><a href="https://infra.spec.whatwg.org/#ordered-map">map</a></dfn> (see [<cite><a class="bibref" data-link-type="biblio" href="#bib-infra" title="Infra Standard">INFRA</a></cite>]),
+      composed of <dfn data-lt="map entry|entry|entries" data-ld-nodefault="" class="preserve" data-dfn-type="dfn" data-plurals="map entries" id="dfn-map-entry" data-no-export=""><a href="https://infra.spec.whatwg.org/#map-entry">entries</a></dfn> with key/value pairs.</p>
+    <p>In the <a href="#the-application-programming-interface">Application Programming Interface</a>,
+      a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">map</a> is described using a [<cite><a class="bibref" data-link-type="biblio" href="#bib-webidl" title="Web IDL">WEBIDL</a></cite>] <a href="https://heycam.github.io/webidl/#idl-record">record</a>.</p></dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-null" data-no-export=""><a href="https://infra.spec.whatwg.org/#nulls">null</a></dfn></dt><dd>
+    The use of the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#nulls">null</a> value within JSON-LD
+    is used to ignore or reset values.
+    A <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">map entry</a> in the <code>@context</code> where the value,
+    or the <code>@id</code> of the value, is <code>null</code>,
+    explicitly decouples a term's association with an <abbr title="Internationalized Resource Identifier">IRI</abbr>.
+    A <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">map entry</a> in the body of a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-document">JSON-LD document</a>
+    whose value is <code>null</code>
+    has the same meaning as if the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">map entry</a> was not defined.
+    If <code>@value</code>, <code>@list</code>, or <code>@set</code> is set to <code>null</code> in expanded form,
+    then the entire <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc8259#section-4">JSON object</a> is ignored.</dd>
+  <dt><dfn data-lt="number|JSON number" class="preserve" data-dfn-type="dfn" data-plurals="numbers|json numbers" id="dfn-number" data-no-export=""><a href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a></dfn></dt><dd>
+    In the JSON serialization, a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>
+    is similar to that used in most programming languages,
+    except that the octal and hexadecimal formats are not used and that leading zeros are not allowed.
+    In the <a href="#dfn-internal-representation" class="internalDFN" data-link-type="dfn">internal representation</a>,
+    a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a> is equivalent to either a <dfn class="preserve" data-dfn-type="dfn" id="dfn-long" data-no-export=""><a href="https://heycam.github.io/webidl/#idl-long">long</a></dfn>
+    or <dfn class="preserve" data-dfn-type="dfn" id="dfn-double" data-no-export=""><a href="https://heycam.github.io/webidl/#idl-double">double</a></dfn>,
+    depending on if the number has a non-zero fractional part (see [<cite><a class="bibref" data-link-type="biblio" href="#bib-webidl" title="Web IDL">WEBIDL</a></cite>]).</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-scalar" data-no-export=""><a href="https://infra.spec.whatwg.org/#primitive-data-types">scalar</a></dfn></dt><dd>
+    A scalar is either a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a>, <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>, <code>true</code>, or <code>false</code>.</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="strings" id="dfn-string" data-no-export=""><a href="https://infra.spec.whatwg.org/#javascript-string">string</a></dfn></dt><dd>
+    A <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a>
+    is a sequence of zero or more Unicode (UTF-8) characters,
+    wrapped in double quotes, using backslash escapes (if necessary).
+    A character is represented as a single character string.</dd></dl>
 
 <p>Terms imported from <cite><a href="https://tools.ietf.org/html/rfc3987">Internationalized Resource Identifiers (IRIs)</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc3987" title="Internationalized Resource Identifiers (IRIs)">RFC3987</a></cite>]</p>
-<dl class="termlist" data-sort=""></dl>
+<dl class="termlist" data-sort=""><dt><dfn data-lt="Internationalized Resource Identifier|IRI" class="preserve" data-dfn-type="dfn" data-plurals="iris" id="dfn-internationalized-resource-identifier" data-no-export=""><a href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a></dfn></dt><dd>
+    The absolute form of an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a> containing a <em>scheme</em> along with a <em>path</em>
+    and optional <em>query</em> and <em>fragment</em> segments.</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-iri-reference" data-no-export=""><a href="https://tools.ietf.org/html/rfc3987#section-1.3"><abbr title="Internationalized Resource Identifier">IRI</abbr> reference</a></dfn></dt><dd>
+    Denotes the common usage of an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2">Internationalized Resource Identifier</a>.
+    An <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-1.3"><abbr title="Internationalized Resource Identifier">IRI</abbr> reference</a> may be absolute or
+    <a data-lt="relative IRI reference" data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-6.5">relative</a>.
+    However, the "<abbr title="Internationalized Resource Identifier">IRI</abbr>" that results from such a reference only includes absolute <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2">IRIs</a>;
+    any <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-6.5">relative <abbr title="Internationalized Resource Identifier">IRI</abbr> references</a> are resolved to their absolute form.</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="relative iri references" id="dfn-relative-iri-reference" data-no-export=""><a href="https://tools.ietf.org/html/rfc3987#section-6.5">relative <abbr title="Internationalized Resource Identifier">IRI</abbr> reference</a></dfn></dt><dd>
+    A relative <abbr title="Internationalized Resource Identifier">IRI</abbr> reference is an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-1.3"><abbr title="Internationalized Resource Identifier">IRI</abbr> reference</a> that is relative to some other <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a>,
+    typically the <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri">base <abbr title="Internationalized Resource Identifier">IRI</abbr></a> of the document.
+    Note that <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">properties</a>,
+    values of <code>@type</code>,
+    and values of <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-term">terms</a> defined to be <em>vocabulary relative</em>
+    are resolved relative to the <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-vocabulary-mapping">vocabulary mapping</a>,
+    not the <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri">base <abbr title="Internationalized Resource Identifier">IRI</abbr></a>.</dd></dl>
 
 <p>Terms imported from <cite><a href="https://www.w3.org/TR/rdf11-concepts/">RDF 1.1 Concepts and Abstract Syntax</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdf11-concepts" title="RDF 1.1 Concepts and Abstract Syntax">RDF11-CONCEPTS</a></cite>], <cite><a href="https://www.w3.org/TR/rdf-schema/">RDF Schema 1.1</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdf-schema" title="RDF Schema 1.1">RDF-SCHEMA</a></cite>], and <cite><a href="https://www.w3.org/DesignIssues/LinkedData.html">Linked Data Design Issues</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-linked-data" title="Linked Data Design Issues">LINKED-DATA</a></cite>]</p>
-<dl class="termlist" data-sort=""><dt><dfn id="dfn-base-iri" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri">base <abbr title="Internationalized Resource Identifier">IRI</abbr></a></dfn></dt><dd>
+<dl class="termlist" data-sort=""><dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-base-iri" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri">base <abbr title="Internationalized Resource Identifier">IRI</abbr></a></dfn></dt><dd>
     The <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri">base <abbr title="Internationalized Resource Identifier">IRI</abbr></a> is an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a> established in the <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-context">context</a>,
     or is based on the <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-document">JSON-LD document</a> location.
     The <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri">base <abbr title="Internationalized Resource Identifier">IRI</abbr></a> is used to turn <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-6.5">relative <abbr title="Internationalized Resource Identifier">IRI</abbr> references</a> into <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2">IRIs</a>.</dd>
-  <dt><dfn id="dfn-blank-node" data-dfn-type="dfn" data-plurals="blank nodes" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="blank nodes" id="dfn-blank-node" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a> in a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">graph</a> that is neither an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a>,
     nor a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>.
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a> does not contain
@@ -1288,22 +1372,22 @@ to show the results of transforming an example into other representations.</pre>
     or does not contain information that needs to be linked to from outside of the <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a>.
     In JSON-LD,
     a blank node is assigned an identifier starting with the prefix <code>_:</code>.</dd>
-  <dt><dfn id="dfn-blank-node-identifier" data-dfn-type="dfn" data-plurals="blank node identifiers" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node-identifier">blank node identifier</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="blank node identifiers" id="dfn-blank-node-identifier" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node-identifier">blank node identifier</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node-identifier">blank node identifier</a>
     is a string that can be used as an identifier for a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a> within the scope of a JSON-LD document.
     Blank node identifiers begin with <code>_:</code>.</dd>
-  <dt><dfn data-lt="RDF dataset|dataset" id="dfn-rdf-dataset" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-dataset">dataset</a></dfn></dt><dd>
+  <dt><dfn data-lt="RDF dataset|dataset" class="preserve" data-dfn-type="dfn" id="dfn-rdf-dataset" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-dataset">dataset</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-dataset">dataset</a>
     representing a collection of <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graphs</a>
     including exactly one <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-default-graph">default graph</a> and zero or more <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph">named graphs</a>.</dd>
-  <dt><dfn id="dfn-datatype-iri" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-datatype-iri" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a> is an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a> identifying a datatype that determines how the lexical form maps to a
     <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal-value">literal value</a>.</dd>
-  <dt><dfn id="dfn-default-graph" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-default-graph">default graph</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-default-graph" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-default-graph">default graph</a></dfn></dt><dd>
     The <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-default-graph">default graph</a> of a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-dataset">dataset</a> is an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graph</a> having no <a data-lt="graph name" data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-graph-name">name</a>, which may be empty.</dd>
-  <dt><dfn id="dfn-graph-name" data-dfn-type="dfn" data-plurals="graph names" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-graph-name">graph name</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="graph names" id="dfn-graph-name" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-graph-name">graph name</a></dfn></dt><dd>
     The <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a> or <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a> identifying a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph">named graph</a>.</dd>
-  <dt><dfn id="dfn-language-tagged-string" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string">language-tagged string</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-language-tagged-string" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string">language-tagged string</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string">language-tagged string</a>
     consists of a string and a non-empty language tag
     as defined by [<cite><a class="bibref" data-link-type="biblio" href="#bib-bcp47" title="Tags for Identifying Languages">BCP47</a></cite>].
@@ -1311,34 +1395,44 @@ to show the results of transforming an example into other representations.</pre>
     according to <a href="https://tools.ietf.org/html/bcp47#section-2.2.9">section 2.2.9 Classes of Conformance</a> of [<cite><a class="bibref" data-link-type="biblio" href="#bib-bcp47" title="Tags for Identifying Languages">BCP47</a></cite>].
     <span class="changed note">Processors may normalize <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag">language tags</a> to lowercase.</span>
   </dd>
-  
-  
-  
-  
-  <dt><dfn id="dfn-named-graph" data-dfn-type="dfn" data-plurals="named graphs" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph">named graph</a></dfn></dt><dd>
+  <dt><dfn data-no-xref="" class="preserve" data-dfn-type="dfn" id="dfn-linked-data" data-no-export=""><cite><a href="https://www.w3.org/DesignIssues/LinkedData.html">Linked Data</a></cite></dfn></dt><dd>
+    A set of documents, each containing a representation of a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a> or <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-dataset">dataset</a>.</dd>
+  <dt><dfn data-lt="collection|RDF collection|list" class="preserve" data-dfn-type="dfn" data-plurals="lists" id="dfn-collection" data-no-export=""><a href="https://www.w3.org/TR/rdf-schema/#ch_collectionvocab">list</a></dfn></dt><dd>
+    A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf-schema/#ch_collectionvocab">list</a> is an ordered sequence of <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2">IRIs</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank nodes</a>, and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literals</a>.</dd>
+  <dt><dfn data-lt="RDF literal|literal" class="preserve" data-dfn-type="dfn" data-plurals="literals|rdf literals" id="dfn-rdf-literal" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a></dfn></dt><dd>
+    An <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a> expressed as a value such as a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a> or <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>.
+    Implicitly or explicitly includes a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a> and, if the datatype is <code>rdf:langString</code>, an optional <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag">language tag</a>.</dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="named graphs" id="dfn-named-graph" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph">named graph</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph">named graph</a>
     is a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a> that is identified by an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a> or <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a>.</dd>
-  <dt><dfn id="dfn-node" data-dfn-type="dfn" data-plurals="nodes" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="nodes" id="dfn-node" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a> in an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graph</a>, either the <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject">subject</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a> of at least one <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-triple">triple</a>.
     Note that a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a> can play both roles (<a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject">subject</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a>) in a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">graph</a>, even in the same <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-triple">triple</a>.</dd>
-  <dt><dfn id="dfn-object" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-object" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a></dfn></dt><dd>
     An <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a> is a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a> in a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a>
     with at least one incoming edge.</dd>
-  <dt><dfn id="dfn-property" data-dfn-type="dfn" data-plurals="properties" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">property</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="properties" id="dfn-property" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">property</a></dfn></dt><dd>
     The name of a directed-arc in a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a>.
     Every <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">property</a> is directional
     and is labeled with an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a> or a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node-identifier">blank node identifier</a>.
     Whenever possible, a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">property</a> should be labeled with an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a>.
     <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="5"><span>Note</span></div><div class="">The use of <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node-identifier">blank node identifiers</a> to label properties is obsolete,
       and may be removed in a future version of JSON-LD.</div></div>
-    Also, see <dfn id="dfn-predicate" data-dfn-type="dfn" data-plurals="predicates" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-predicate">predicate</a></dfn> in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdf11-concepts" title="RDF 1.1 Concepts and Abstract Syntax">RDF11-CONCEPTS</a></cite>].</dd>
-  <dt><dfn id="dfn-resource" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-resource">resource</a></dfn></dt><dd>
+    Also, see <dfn class="preserve" data-dfn-type="dfn" data-plurals="predicates" id="dfn-predicate" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-predicate">predicate</a></dfn> in [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdf11-concepts" title="RDF 1.1 Concepts and Abstract Syntax">RDF11-CONCEPTS</a></cite>].</dd>
+  <dt><dfn data-lt="linked data graph|graph|RDF graph" class="preserve" data-dfn-type="dfn" data-plurals="rdf graphs|graphs" id="dfn-linked-data-graph" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graph</a></dfn></dt><dd>
+    A labeled directed <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">graph</a>,
+    i.e., a set of <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">nodes</a> connected by directed-arcs.
+    Also called <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a>.
+  </dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-resource" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-resource">resource</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-resource">resource</a> denoted by an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a>, a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node">blank node</a> or <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a> representing something in the world (the "universe of discourse").</dd>
-  
-  <dt><dfn id="dfn-subject" data-dfn-type="dfn" data-plurals="subjects" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject">subject</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="subjects" id="dfn-subject" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject">subject</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject">subject</a> is a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-node">node</a> in a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">linked data graph</a>
     with at least one outgoing edge,
-    related to an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a> node through a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">property</a>.</dd></dl>
+    related to an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a> node through a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-property">property</a>.</dd><dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="triples" id="dfn-triple" data-no-export=""><a href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-triple">triple</a></dfn></dt><dd>
+    A component of an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graph</a> including a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-subject">subject</a>, <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-predicate">predicate</a>, and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-object">object</a>, which represents
+    a node-arc-node segment of an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-graph">RDF graph</a>.</dd>
+  </dl>
 </section>
 
 <section><h4 id="json-ld-specific-term-definitions">JSON-LD Specific Term Definitions<a class="self-link" aria-label="§" href="#json-ld-specific-term-definitions"></a></h4>
@@ -1389,7 +1483,7 @@ to show the results of transforming an example into other representations.</pre>
     as the value of a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">map entry</a> within a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-node-object">node object</a>.
     When expanded, a graph object must have an <code>@graph</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a>,
     and may also have <code>@id</code>, and <code>@index</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entries</a>.
-    A <dfn id="dfn-simple-graph-object" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-simple-graph-object">simple graph object</a></dfn>
+    A <dfn class="preserve" data-dfn-type="dfn" id="dfn-simple-graph-object" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-simple-graph-object">simple graph object</a></dfn>
     is a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-graph-object">graph object</a> which does not have an <code>@id</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a>.
     Note that <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-node-object">node objects</a> may have a <code>@graph</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a>,
     but are not considered <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-graph-object">graph objects</a> if they include any other <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entries</a>.
@@ -1418,7 +1512,7 @@ to show the results of transforming an example into other representations.</pre>
     defined with <code>@container</code> set to <code>@index</code>,
     whose values must be any of the following types:
     <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a>,
-    <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>,
+    <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>,
     <code>true</code>,
     <code>false</code>,
     <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#nulls">null</a>,
@@ -1444,14 +1538,14 @@ to show the results of transforming an example into other representations.</pre>
     The JSON-LD internal representation
     is the result of transforming a JSON syntactic structure
     into the core data structures suitable for direct processing:
-    <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list">arrays</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">maps</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a>, <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#boolean">booleans</a>, and <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#nulls">null</a>.</dd>
+    <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list">arrays</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">maps</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a>, <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#boolean">booleans</a>, and <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#nulls">null</a>.</dd>
   <dt><dfn data-lt="json-ld processor|Processors|JSON-LD Processor" id="dfn-json-ld-processor" data-dfn-type="dfn" data-plurals="json-ld processors">JSON-LD Processor</dfn></dt><dd>
     A <a href="#dfn-json-ld-processor" class="internalDFN" data-link-type="dfn">JSON-LD Processor</a> is a system which can perform the algorithms defined in JSON-LD 1.1 Processing Algorithms and API.
     See the <a href="#conformance">Conformance</a> section in JSON-LD 1.1 API for a formal description.
   </dd>
-  <dt><dfn id="dfn-json-ld-value" data-dfn-type="dfn" data-plurals="json-ld values" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-value">JSON-LD value</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="json-ld values" id="dfn-json-ld-value" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-value">JSON-LD value</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-value">JSON-LD value</a> is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a>,
-    a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>,
+    a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>,
     <code>true</code> or <code>false</code>,
     a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-typed-value">typed value</a>,
     or a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string">language-tagged string</a>.
@@ -1511,11 +1605,11 @@ to show the results of transforming an example into other representations.</pre>
     or error if <code>@version</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a> in a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-context">context</a> is explicitly set to <code>1.1</code>.
     This specification extends <cite><a data-no-xref="" href="https://www.w3.org/TR/2014/REC-json-ld-20140116/">JSON-LD 1.0</a></cite>
     via the <code>json-ld-1.1</code> <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-processing-mode">processing mode</a>.</dd>
-  <dt><dfn id="dfn-scoped-context" data-dfn-type="dfn" data-plurals="scoped contexts" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-scoped-context">scoped context</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" data-plurals="scoped contexts" id="dfn-scoped-context" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-scoped-context">scoped context</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-scoped-context">scoped context</a> is part of an <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-expanded-term-definition">expanded term definition</a> using the
     <code>@context</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a>. It has the same form as an <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-embedded-context">embedded context</a>.
-    When the term is used as a type, it defines a <dfn id="dfn-type-scoped-context" data-dfn-type="dfn" data-plurals="type-scoped contexts" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-type-scoped-context">type-scoped context</a></dfn>,
-    when used as a property it defines a <dfn id="dfn-property-scoped-context" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-property-scoped-context">property-scoped context</a></dfn>.
+    When the term is used as a type, it defines a <dfn class="preserve" data-dfn-type="dfn" data-plurals="type-scoped contexts" id="dfn-type-scoped-context" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-type-scoped-context">type-scoped context</a></dfn>,
+    when used as a property it defines a <dfn class="preserve" data-dfn-type="dfn" id="dfn-property-scoped-context" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-property-scoped-context">property-scoped context</a></dfn>.
   </dd>
   <dt><dfn id="dfn-set-object" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-set-object">set object</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-set-object">set object</a> is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">map</a> that has an <code>@set</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a>.
@@ -1546,7 +1640,7 @@ to show the results of transforming an example into other representations.</pre>
     its values are merged with the map value when expanding.
     See the <a href="https://www.w3.org/TR/json-ld11/#type-maps">Type Maps</a> section of JSON-LD 1.1 for a normative description.
   </dd>
-  <dt><dfn id="dfn-typed-value" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-typed-value">typed value</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-typed-value" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-typed-value">typed value</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-typed-value">typed value</a> consists of a value,
     which is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a>,
     and a type,
@@ -1554,7 +1648,7 @@ to show the results of transforming an example into other representations.</pre>
   <dt><dfn id="dfn-value-object" data-dfn-type="dfn" data-plurals="value objects" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-value-object">value object</a></dfn></dt><dd>
     A <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-value-object">value object</a> is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">map</a> that has an <code>@value</code> <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-entry">entry</a>.
     See the <a href="https://www.w3.org/TR/json-ld11/#value-objects">Value Objects</a> section of JSON-LD 1.1 for a normative description.</dd>
-  <dt><dfn id="dfn-vocabulary-mapping" data-dfn-type="dfn" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-vocabulary-mapping">vocabulary mapping</a></dfn></dt><dd>
+  <dt><dfn class="preserve" data-dfn-type="dfn" id="dfn-vocabulary-mapping" data-no-export=""><a href="https://www.w3.org/TR/json-ld11/#dfn-vocabulary-mapping">vocabulary mapping</a></dfn></dt><dd>
     The vocabulary mapping is set in the <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-context">context</a> using the <code>@vocab</code> key
     whose value must be an <a data-link-type="dfn" href="https://tools.ietf.org/html/rfc3987#section-2"><abbr title="Internationalized Resource Identifier">IRI</abbr></a>, a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-compact-iri">compact <abbr title="Internationalized Resource Identifier">IRI</abbr></a>, a <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-term">term</a>, or <code>null</code>.
     See the <a href="https://www.w3.org/TR/json-ld11/#context-definitions">Context Definitions</a> section of JSON-LD 1.1 for a normative description.</dd></dl>
@@ -1634,7 +1728,7 @@ to show the results of transforming an example into other representations.</pre>
     the <var>document relative</var> flag defaults to <code>false</code>,
     and the <var>vocab</var> flag defaults to <code>true</code>.
     <ol>
-      <li>Return the result of using the <a href="JSON-LD11-API#iri-expansion"><abbr title="Internationalized Resource Identifier">IRI</abbr> Expansion algorithm</a>,
+      <li>Return the result of using the <a href="#iri-expansion"><abbr title="Internationalized Resource Identifier">IRI</abbr> Expansion algorithm</a>,
         passing <var>active context</var>,
         <var>value</var>,
         <var>local context</var> (if supplied),
@@ -1721,7 +1815,7 @@ to show the results of transforming an example into other representations.</pre>
     other than JSON, the algorithms operate on the <a href="#dfn-internal-representation" class="internalDFN" data-link-type="dfn">JSON-LD internal representation</a>,
     which uses the generic
     concepts of <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list">arrays</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map">maps</a>,
-    <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a>, <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#boolean">booleans</a>, and <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#nulls">null</a> to describe
+    <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a>, <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a>, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#boolean">booleans</a>, and <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#nulls">null</a> to describe
     the data represented by a JSON document. Algorithms act on this
     <a href="#dfn-internal-representation" class="internalDFN" data-link-type="dfn">internal representation</a> with API entry points responsible for
     transforming between the concrete and internal representations.</p>
@@ -1922,7 +2016,7 @@ to show the results of transforming an example into other representations.</pre>
       <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-compact-iri">compact IRIs</a> and
       <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-value">JSON-LD values</a> expressed in
       <a href="#dfn-expanded-form" class="internalDFN" data-link-type="dfn">expanded form</a> to simple values such as <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a>
-      or <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a>.</p>
+      or <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a>.</p>
 
     <p>For example, assume the following expanded JSON-LD input document:</p>
 
@@ -2495,7 +2589,7 @@ to show the results of transforming an example into other representations.</pre>
                   otherwise adhere to the requirements for <a href="https://semver.org/">Semantic Versioning</a>.
                   Implementations may require
                   <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Minimizing_the_effect_of_accuracy_problems">special consideration</a>
-                  when comparing the values of <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a> with a non-zero fractional part.</div></div>
+                  when comparing the values of <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a> with a non-zero fractional part.</div></div>
                 </li>
                 <li>If <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-processing-mode">processing mode</a>
                   is set to <code>json-ld-1.0</code>,
@@ -4550,7 +4644,7 @@ to show the results of transforming an example into other representations.</pre>
       any applicable <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-value">JSON-LD values</a>
       expressed in <a href="#dfn-expanded-form" class="internalDFN" data-link-type="dfn">expanded form</a> to simple values such as
       <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a> or
-      <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a>.</p>
+      <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a>.</p>
 
     <section class="informative" id="overview-6">
       <h4 id="x6-1-1-overview"><bdi class="secno">6.1.1 </bdi>Overview<a class="self-link" aria-label="§" href="#overview-6"></a></h4><p><em>This section is non-normative.</em></p>
@@ -6114,7 +6208,7 @@ to show the results of transforming an example into other representations.</pre>
           using the result of transforming the <a href="#dfn-internal-representation" class="internalDFN" data-link-type="dfn">internal representation</a> of <var>value</var>
           to JSON and set <var>datatype</var> to <code>rdf:JSON</code>.
           <div class="issue" id="issue-container-generatedID-30"><div role="heading" class="issue-title marker" id="h-issue" aria-level="5"><span>Issue</span></div><div class="">The JSON Canonicalization Scheme (JCS) [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8785" title="JSON Canonicalization Scheme (JCS)">RFC8785</a></cite>]
-            is a standard for JSON canonicalization.
+            is an emerging standard for JSON canonicalization.
             This specification will likely be updated to require such a canonical representation.
             Users are cautioned from depending on the
             <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-json-literal">JSON literal</a> lexical representation as an <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literal</a>,
@@ -6126,10 +6220,10 @@ to show the results of transforming an example into other representations.</pre>
           <a class="sectionRef sec-ref" href="#data-round-tripping">§&nbsp;<bdi class="secno">8.6 </bdi>Data Round Tripping</a>
           If <var>datatype</var> is <code>null</code>,
           set <var>datatype</var> to <code>xsd:boolean</code>.</li>
-        <li id="alg-obj2rdf-double">Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a> with a non-zero fractional
+        <li id="alg-obj2rdf-double">Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a> with a non-zero fractional
           part (the result of a modulo‑1 operation)
           <span class="changed">or an absolute value greater or equal to 10<sup>21</sup></span>,
-          or <var>value</var> is a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>
+          or <var>value</var> is a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>
           and <var>datatype</var> equals <code>xsd:double</code>, convert <var>value</var> to a
           <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a> in <a href="#dfn-canonical-lexical-form" class="internalDFN" data-link-type="dfn">canonical lexical form</a> of
           an <a href="https://www.w3.org/TR/xmlschema11-2/#double"><code>xsd:double</code></a> as defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-xmlschema11-2" title="W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes">XMLSCHEMA11-2</a></cite>]
@@ -6137,7 +6231,7 @@ to show the results of transforming an example into other representations.</pre>
           <a class="sectionRef sec-ref" href="#data-round-tripping">§&nbsp;<bdi class="secno">8.6 </bdi>Data Round Tripping</a>.
           If <var>datatype</var> is <code>null</code>,
           set <var>datatype</var> to <code>xsd:double</code>.</li>
-        <li id="alg-obj2rdf-integer">Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>,
+        <li id="alg-obj2rdf-integer">Otherwise, if <var>value</var> is a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>,
           convert it to a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">string</a> in <a href="#dfn-canonical-lexical-form" class="internalDFN" data-link-type="dfn">canonical lexical form</a> of
           an <a href="https://www.w3.org/TR/xmlschema11-2/#integer"><code>xsd:integer</code></a> as defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-xmlschema11-2" title="W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes">XMLSCHEMA11-2</a></cite>]
           and described in
@@ -6273,7 +6367,7 @@ to show the results of transforming an example into other representations.</pre>
         <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literals</a> with a
         <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a>
         that equals <code>xsd:integer</code> or <code>xsd:double</code> are converted
-        to a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">JSON numbers</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literals</a>
+        to a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">JSON numbers</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literals</a>
         with a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a>
         that equals <code>xsd:boolean</code> are converted to <code>true</code> or
         <code>false</code> based on their
@@ -6540,7 +6634,7 @@ to show the results of transforming an example into other representations.</pre>
         <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literals</a> with a
         <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a>
         that equals <code>xsd:integer</code> or <code>xsd:double</code> are converted
-        to a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">JSON numbers</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literals</a>
+        to a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">JSON numbers</a> and <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">RDF literals</a>
         with a <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-datatype-iri">datatype <abbr title="Internationalized Resource Identifier">IRI</abbr></a>
         that equals <code>xsd:boolean</code> are converted to <code>true</code> or
         <code>false</code> based on their
@@ -6593,7 +6687,7 @@ to show the results of transforming an example into other representations.</pre>
                   according [<cite><a class="bibref" data-link-type="biblio" href="#bib-xmlschema11-2" title="W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes">XMLSCHEMA11-2</a></cite>], set <var>converted value</var>
                   to the result of converting the
                   <a href="#dfn-lexical-form" class="internalDFN" data-link-type="dfn">lexical form</a>
-                  to a JSON <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>.</li>
+                  to a JSON <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>.</li>
               </ol>
             </li>
             <li class="changed">Otherwise, if <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-processing-mode">processing mode</a> is not <code>json-ld-1.0</code>,
@@ -6641,9 +6735,9 @@ to show the results of transforming an example into other representations.</pre>
   <section id="data-round-tripping"><h3 id="x8-6-data-round-tripping"><bdi class="secno">8.6 </bdi>Data Round Tripping<a class="self-link" aria-label="§" href="#data-round-tripping"></a></h3>
 
     <p>When <a href="#deserialize-json-ld-to-rdf-algorithm">deserializing JSON-LD to RDF</a>
-      JSON-native <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a> are automatically
+      JSON-native <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a> are automatically
       type-coerced to <code>xsd:integer</code> or <code>xsd:double</code>
-      depending on whether the <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a> has a non-zero fractional part
+      depending on whether the <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a> has a non-zero fractional part
       or not (the result of a modulo‑1 operation), the boolean values
       <code>true</code> and <code>false</code> are coerced to <code>xsd:boolean</code>,
       and <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#javascript-string">strings</a> are coerced to <code>xsd:string</code>.
@@ -6652,9 +6746,9 @@ to show the results of transforming an example into other representations.</pre>
       representation as defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-xmlschema11-2" title="W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes">XMLSCHEMA11-2</a></cite>].</p>
 
     <p>The <a href="#dfn-canonical-lexical-form" class="internalDFN" data-link-type="dfn">canonical lexical form</a> of an <em>integer</em>, i.e., a
-      <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a> with no non-zero fractional part
+      <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a> with no non-zero fractional part
       <span class="changed">and an absolute value less than 10<sup>21</sup>,</span>
-      or a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a> coerced to <code>xsd:integer</code>,
+      or a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a> coerced to <code>xsd:integer</code>,
       is a finite-length sequence of decimal
       digits (<code>0-9</code>) with an optional leading minus sign; leading
       zeros are prohibited. In JavaScript, implementers can use the following
@@ -6668,9 +6762,9 @@ to show the results of transforming an example into other representations.</pre>
       </div>
 
     <p>The <a href="#dfn-canonical-lexical-form" class="internalDFN" data-link-type="dfn">canonical lexical form</a> of a <em>double</em>, i.e., a
-      <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>
+      <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>
       <span class="changed">with a non-zero fractional part or an absolute value greater or equal to 10<sup>21</sup></span>,
-      or a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>
+      or a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>
       coerced to <code>xsd:double</code>, consists of a mantissa followed by the
       character <code>E</code>, followed by an exponent. The mantissa is a
       decimal number and the exponent is an integer. Leading zeros and a
@@ -6685,7 +6779,7 @@ to show the results of transforming an example into other representations.</pre>
       canonical representation for zero is <code>0.0E0</code>.
       <code>xsd:double</code>'s value space is defined by the IEEE
       double-precision 64-bit floating point type [<cite><a class="bibref" data-link-type="biblio" href="#bib-ieee-754-2008" title="IEEE 754-2008 Standard for Floating-Point Arithmetic">IEEE-754-2008</a></cite>] whereas
-      the value space of JSON <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a> is not
+      the value space of JSON <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a> is not
       specified; when deserializing JSON-LD to RDF the mantissa is rounded to
       15&nbsp;digits after the decimal point. In JavaScript, implementers
       can use the following snippet of code to convert a double to
@@ -6734,7 +6828,7 @@ to show the results of transforming an example into other representations.</pre>
 [ex:json <span class="hl-bold">"""[56,{"1":[],"10":null,"d":true}]"""^^rdf:JSON</span>] .</code></pre>
     </aside>
 
-    <p>When JSON-native <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a> are deserialized
+    <p>When JSON-native <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a> are deserialized
       to RDF, lossless data round-tripping cannot be guaranteed, as rounding
       errors might occur. When
       <a href="#serialize-rdf-as-json-ld-algorithm">serializing RDF as JSON-LD</a>,
@@ -6744,9 +6838,9 @@ to show the results of transforming an example into other representations.</pre>
       with a value of <code>2</code> in <a href="#dfn-canonical-lexical-form" class="internalDFN" data-link-type="dfn">canonical lexical form</a>
       when converted from RDF to JSON-LD and back to RDF. It is important
       to highlight that in practice it might be impossible to losslessly
-      convert an <code>xsd:integer</code> to a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a> because
+      convert an <code>xsd:integer</code> to a <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a> because
       its value space is not limited. While the JSON specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8259" title="The JavaScript Object Notation (JSON) Data Interchange Format">RFC8259</a></cite>]
-      does not limit the value space of <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">numbers</a>
+      does not limit the value space of <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">numbers</a>
       either, concrete implementations typically do have a limited value
       space.</p>
 
@@ -6777,9 +6871,9 @@ to show the results of transforming an example into other representations.</pre>
     JSON-LD data into a variety of output formats that are often easier to
     work with.</p>
 
-  <p>The JSON-LD API uses <a href="https://tc39.github.io/ecma262/#sec-promise-objects">Promises</a> to represent
+  <p>The JSON-LD API uses <a href="https://tc39.es/ecma262/#sec-promise-objects">Promises</a> to represent
     the result of the various deferred operations.
-    <a href="https://tc39.github.io/ecma262/#sec-promise-objects">Promises</a> are defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-ecmascript" title="ECMAScript Language Specification">ECMASCRIPT</a></cite>].
+    <a href="https://tc39.es/ecma262/#sec-promise-objects">Promises</a> are defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-ecmascript" title="ECMAScript Language Specification">ECMASCRIPT</a></cite>].
     General use within specifications can be found in [<cite><a class="bibref" data-link-type="biblio" href="#bib-promises-guide" title="Writing Promise-Using Specifications">promises-guide</a></cite>].
     <span class="changed">Implementations <em class="rfc2119" title="MAY">MAY</em> chose to implement in an appropriate way for their native environments
       as long as they generally use the same methods, arguments, and options
@@ -7828,7 +7922,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-rem
         <dt><dfn data-dfn-type="enum-value" data-export="" id="dom-jsonlderrorcode-invalid-language-tagged-string" data-idl="enum-value" data-title="invalid language-tagged string" data-dfn-for="JsonLdErrorCode"><code>invalid language-tagged string</code></dfn></dt>
         <dd>A <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tagged-string">language-tagged string</a> with an invalid language value was detected.</dd>
         <dt><dfn data-dfn-type="enum-value" data-export="" id="dom-jsonlderrorcode-invalid-language-tagged-value" data-idl="enum-value" data-title="invalid language-tagged value" data-dfn-for="JsonLdErrorCode"><code>invalid language-tagged value</code></dfn></dt>
-        <dd>A <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-terms-and-definitions-number-value">number</a>, <code>true</code>, or <code>false</code>
+        <dd>A <a data-link-type="dfn" href="https://tc39.es/ecma262/#sec-terms-and-definitions-number-value">number</a>, <code>true</code>, or <code>false</code>
           with an associated <a data-link-type="dfn" href="https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag">language tag</a> was detected.</dd>
         <dt><dfn data-dfn-type="enum-value" data-export="" id="dom-jsonlderrorcode-invalid-local-context" data-idl="enum-value" data-title="invalid local context" data-dfn-for="JsonLdErrorCode"><code>invalid local context</code></dfn></dt>
         <dd>In invalid <a data-link-type="dfn" href="https://www.w3.org/TR/json-ld11/#dfn-local-context">local context</a> was detected.</dd>
@@ -8392,7 +8486,7 @@ interface <a class="internalDFN idlID" data-link-type="interface" href="#dom-rem
         Normative references
       <a class="self-link" aria-label="§" href="#normative-references"></a></h3>
     <dl class="bibliography">
-      <dt id="bib-bcp47">[BCP47]</dt><dd><a href="https://tools.ietf.org/html/bcp47"><cite>Tags for Identifying Languages</cite></a>. A. Phillips; M. Davis.  IETF. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.github.io/ecma262/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.github.io/ecma262/">https://tc39.github.io/ecma262/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-ieee-754-2008">[IEEE-754-2008]</dt><dd><a href="http://standards.ieee.org/findstds/standard/754-2008.html"><cite>IEEE 754-2008 Standard for Floating-Point Arithmetic</cite></a>.  Institute of Electrical and Electronics Engineers. 2008. URL: <a href="http://standards.ieee.org/findstds/standard/754-2008.html">http://standards.ieee.org/findstds/standard/754-2008.html</a></dd><dt id="bib-infra">[INFRA]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-json-ld10">[JSON-LD10]</dt><dd><a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Marcus Langhaler.  W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/">https://www.w3.org/TR/2014/REC-json-ld-20140116/</a></dd><dt id="bib-json-ld11">[JSON-LD11]</dt><dd><a href="https://www.w3.org/TR/json-ld11/"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 18 October 2019. W3C Working Draft. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd><dt id="bib-json-ld11-framing">[JSON-LD11-FRAMING]</dt><dd><a href="https://www.w3.org/TR/json-ld11-framing/"><cite>JSON-LD 1.1 Framing</cite></a>. Gregg Kellogg.  W3C. 12 October 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/json-ld11-framing/">https://www.w3.org/TR/json-ld11-framing/</a></dd><dt id="bib-linked-data">[LINKED-DATA]</dt><dd><a href="https://www.w3.org/DesignIssues/LinkedData.html"><cite>Linked Data Design Issues</cite></a>. Tim Berners-Lee.  W3C. 27 July 2006. W3C-Internal Document. URL: <a href="https://www.w3.org/DesignIssues/LinkedData.html">https://www.w3.org/DesignIssues/LinkedData.html</a></dd><dt id="bib-promises-guide">[promises-guide]</dt><dd><a href="https://www.w3.org/2001/tag/doc/promises-guide"><cite>Writing Promise-Using Specifications</cite></a>. Domenic Denicola.  W3C. 16 February 2016. Finding of the W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/promises-guide">https://www.w3.org/2001/tag/doc/promises-guide</a></dd><dt id="bib-rdf-schema">[RDF-SCHEMA]</dt><dd><a href="https://www.w3.org/TR/rdf-schema/"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd><dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd><dt id="bib-rdf11-mt">[RDF11-MT]</dt><dd><a href="https://www.w3.org/TR/rdf11-mt/"><cite>RDF 1.1 Semantics</cite></a>. Patrick Hayes; Peter Patel-Schneider.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-mt/">https://www.w3.org/TR/rdf11-mt/</a></dd><dt id="bib-rfc2045">[RFC2045]</dt><dd><a href="https://tools.ietf.org/html/rfc2045"><cite>Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</cite></a>. N. Freed; N. Borenstein.  IETF. November 1996. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2045">https://tools.ietf.org/html/rfc2045</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc3986">[RFC3986]</dt><dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd><dt id="bib-rfc3987">[RFC3987]</dt><dd><a href="https://tools.ietf.org/html/rfc3987"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. M. Duerst; M. Suignard.  IETF. January 2005. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc3987">https://tools.ietf.org/html/rfc3987</a></dd><dt id="bib-rfc5234">[RFC5234]</dt><dd><a href="https://tools.ietf.org/html/rfc5234"><cite>Augmented BNF for Syntax Specifications: ABNF</cite></a>. D. Crocker, Ed.; P. Overell.  IETF. January 2008. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc5234">https://tools.ietf.org/html/rfc5234</a></dd><dt id="bib-rfc6839">[RFC6839]</dt><dd><a href="https://tools.ietf.org/html/rfc6839"><cite>Additional Media Type Structured Syntax Suffixes</cite></a>. T. Hansen; A. Melnikov.  IETF. January 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc6839">https://tools.ietf.org/html/rfc6839</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://tools.ietf.org/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc8174">https://tools.ietf.org/html/rfc8174</a></dd><dt id="bib-rfc8259">[RFC8259]</dt><dd><a href="https://tools.ietf.org/html/rfc8259"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. T. Bray, Ed..  IETF. December 2017. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc8259">https://tools.ietf.org/html/rfc8259</a></dd><dt id="bib-rfc8288">[RFC8288]</dt><dd><a href="https://tools.ietf.org/html/rfc8288"><cite>Web Linking</cite></a>. M. Nottingham. October 2017. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc8288">https://tools.ietf.org/html/rfc8288</a></dd><dt id="bib-turtle">[Turtle]</dt><dd><a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Boris Zbarsky.  W3C. 15 December 2016. W3C Editor's Draft. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a></dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd><a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a></dd>
+      <dt id="bib-bcp47">[BCP47]</dt><dd><a href="https://tools.ietf.org/html/bcp47"><cite>Tags for Identifying Languages</cite></a>. A. Phillips; M. Davis.  IETF. September 2009. IETF Best Current Practice. URL: <a href="https://tools.ietf.org/html/bcp47">https://tools.ietf.org/html/bcp47</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/">https://tc39.es/ecma262/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-ieee-754-2008">[IEEE-754-2008]</dt><dd><a href="http://standards.ieee.org/findstds/standard/754-2008.html"><cite>IEEE 754-2008 Standard for Floating-Point Arithmetic</cite></a>.  Institute of Electrical and Electronics Engineers. 2008. URL: <a href="http://standards.ieee.org/findstds/standard/754-2008.html">http://standards.ieee.org/findstds/standard/754-2008.html</a></dd><dt id="bib-infra">[INFRA]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-json-ld10">[JSON-LD10]</dt><dd><a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Marcus Langhaler.  W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/2014/REC-json-ld-20140116/">https://www.w3.org/TR/2014/REC-json-ld-20140116/</a></dd><dt id="bib-json-ld11">[JSON-LD11]</dt><dd><a href="https://www.w3.org/TR/json-ld11/"><cite>JSON-LD 1.1</cite></a>. Gregg Kellogg; Pierre-Antoine Champin; Dave Longley.  W3C. 7 May 2020. W3C Proposed Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></dd><dt id="bib-json-ld11-framing">[JSON-LD11-FRAMING]</dt><dd><a href="https://www.w3.org/TR/json-ld11-framing/"><cite>JSON-LD 1.1 Framing</cite></a>. Dave Longley; Gregg Kellogg; Pierre-Antoine Champin.  W3C. 7 May 2020. W3C Proposed Recommendation. URL: <a href="https://www.w3.org/TR/json-ld11-framing/">https://www.w3.org/TR/json-ld11-framing/</a></dd><dt id="bib-linked-data">[LINKED-DATA]</dt><dd><a href="https://www.w3.org/DesignIssues/LinkedData.html"><cite>Linked Data Design Issues</cite></a>. Tim Berners-Lee.  W3C. 27 July 2006. W3C-Internal Document. URL: <a href="https://www.w3.org/DesignIssues/LinkedData.html">https://www.w3.org/DesignIssues/LinkedData.html</a></dd><dt id="bib-promises-guide">[promises-guide]</dt><dd><a href="https://www.w3.org/2001/tag/doc/promises-guide"><cite>Writing Promise-Using Specifications</cite></a>. Domenic Denicola.  W3C. 9 November 2018. TAG Finding. URL: <a href="https://www.w3.org/2001/tag/doc/promises-guide">https://www.w3.org/2001/tag/doc/promises-guide</a></dd><dt id="bib-rdf-schema">[RDF-SCHEMA]</dt><dd><a href="https://www.w3.org/TR/rdf-schema/"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd><dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd><dt id="bib-rdf11-mt">[RDF11-MT]</dt><dd><a href="https://www.w3.org/TR/rdf11-mt/"><cite>RDF 1.1 Semantics</cite></a>. Patrick Hayes; Peter Patel-Schneider.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-mt/">https://www.w3.org/TR/rdf11-mt/</a></dd><dt id="bib-rfc2045">[RFC2045]</dt><dd><a href="https://tools.ietf.org/html/rfc2045"><cite>Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</cite></a>. N. Freed; N. Borenstein.  IETF. November 1996. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2045">https://tools.ietf.org/html/rfc2045</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://tools.ietf.org/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></dd><dt id="bib-rfc3986">[RFC3986]</dt><dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd><dt id="bib-rfc3987">[RFC3987]</dt><dd><a href="https://tools.ietf.org/html/rfc3987"><cite>Internationalized Resource Identifiers (IRIs)</cite></a>. M. Duerst; M. Suignard.  IETF. January 2005. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc3987">https://tools.ietf.org/html/rfc3987</a></dd><dt id="bib-rfc5234">[RFC5234]</dt><dd><a href="https://tools.ietf.org/html/rfc5234"><cite>Augmented BNF for Syntax Specifications: ABNF</cite></a>. D. Crocker, Ed.; P. Overell.  IETF. January 2008. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc5234">https://tools.ietf.org/html/rfc5234</a></dd><dt id="bib-rfc6839">[RFC6839]</dt><dd><a href="https://tools.ietf.org/html/rfc6839"><cite>Additional Media Type Structured Syntax Suffixes</cite></a>. T. Hansen; A. Melnikov.  IETF. January 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc6839">https://tools.ietf.org/html/rfc6839</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://tools.ietf.org/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc8174">https://tools.ietf.org/html/rfc8174</a></dd><dt id="bib-rfc8259">[RFC8259]</dt><dd><a href="https://tools.ietf.org/html/rfc8259"><cite>The JavaScript Object Notation (JSON) Data Interchange Format</cite></a>. T. Bray, Ed..  IETF. December 2017. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc8259">https://tools.ietf.org/html/rfc8259</a></dd><dt id="bib-rfc8288">[RFC8288]</dt><dd><a href="https://tools.ietf.org/html/rfc8288"><cite>Web Linking</cite></a>. M. Nottingham. October 2017. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc8288">https://tools.ietf.org/html/rfc8288</a></dd><dt id="bib-turtle">[Turtle]</dt><dd><a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Boris Zbarsky.  W3C. 15 December 2016. W3C Editor's Draft. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a></dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd><a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a></dd>
     </dl></section><section id="informative-references">
       <h3 id="i-2-informative-references"><bdi class="secno">I.2 </bdi>
         Informative references
