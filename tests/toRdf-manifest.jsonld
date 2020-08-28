@@ -2205,7 +2205,8 @@
       "name": "Invalid prefix value",
       "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @prefix value",
       "input": "toRdf/er53-in.jsonld",
-      "expectErrorCode": "invalid @prefix value"
+      "expectErrorCode": "invalid @prefix value",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
      "@id": "#ter54",
      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
