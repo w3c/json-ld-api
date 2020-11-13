@@ -3,7 +3,7 @@
 <head>
 <title>JSON-LD 1.1 Processing Algorithms and API</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
+<script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 <script type="text/javascript" src="common/common.js" class="remove" defer></script>
 <script type="text/javascript" src="common/jsonld.js" class="remove"></script>
 <script type="text/javascript" class="remove">
@@ -117,22 +117,9 @@
           note:       "v1.0" }
       ],
 
-      // name of the WG
-      wg:                     "JSON-LD Working Group",
-
-      // URI of the public WG page
-      wgURI:                  "https://www.w3.org/2018/json-ld-wg/",
-
-      // name (with the @w3c.org) of the public mailing to which comments are due
+      group: "wg/json-ld",
       wgPublicList:           "public-json-ld-wg",
 
-      // URI of the patent status for this WG, for Rec-track documents
-      // !!!! IMPORTANT !!!!
-      // This is important for Rec-track documents, do not copy a patent URI from a random
-      // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-      // Team Contact.
-      wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/107714/status",
-      processVersion: 2018,
       maxTocLevel:            2,
       alternateFormats: [ {uri: "json-ld11-api.epub", label: "EPUB"} ]
   };
@@ -417,18 +404,14 @@
     <p>This document uses the following terms as defined in external specifications
       and defines terms specific to JSON-LD.</p>
 
-    <div data-include="common/terms.html"
-         data-oninclude="restrictReferences">
-    </div>
+    <div data-include="common/terms.html"></div>
 
   <section>
     <h4>Algorithm Terms</h4>
 
     <p>The Following terms are used within specific algorithms.</p>
 
-    <div data-include="common/algorithm-terms.html"
-         data-oninclude="restrictReferences">
-    </div>
+    <div data-include="common/algorithm-terms.html"></div>
   </section>
   <section id="api-keywords">
     <h2>Syntax Tokens and Keywords</h2>
@@ -553,7 +536,7 @@
         <button data-selects="expanded">Expanded (Result)</button>
         <button data-selects="statements">Statements</button>
         <button data-selects="turtle">Turtle</button>
-        <a class="playground" target="_blank"></a>
+        <a class="playground" target="_blank" href="#">PG</a>
       </div>
       <pre class="compacted selected" data-transform="updateExample">
       <!--
@@ -619,7 +602,7 @@
         <button data-selects="expanded">Expanded (Result)</button>
         <button data-selects="statements">Statements</button>
         <button data-selects="turtle">Turtle</button>
-        <a class="playground" target="_blank"></a>
+        <a class="playground" target="_blank" href="#">PG</a>
       </div>
       <pre class="compacted input selected nohighlight" data-transform="updateExample">
       <!--
@@ -793,7 +776,8 @@
            data-result-for="#sample-document"
            data-context="#sample-document-context"
            data-compact
-           target="_blank"></a>
+           target="_blank"
+           href="#">PG</a>
       </div>
       <pre class="result compacted selected nohighlight" data-transform="updateExample"
            data-result-for="Expanded sample document"
@@ -875,7 +859,8 @@
         <a class="playground"
            data-result-for="#json-ld-document-in-compact-form"
            data-flatten
-           target="_blank"></a>
+           target="_blank"
+           href="#">PG</a>
       </div>
       <pre class="original result selected nohighlight" data-transform="updateExample"
            data-result-for="JSON-LD document in compact form"
@@ -920,7 +905,8 @@
            data-result-for="#json-ld-document-in-compact-form"
            data-context="#json-ld-document-in-compact-form"
            data-flatten
-           target="_blank"></a>
+           target="_blank"
+            href="#">PG</a>
       </div>
       <pre class="result selected nohighlight" data-transform="updateExample"
            data-result-for="JSON-LD document in compact form"
@@ -6095,7 +6081,7 @@
       interface RdfDataset {
         constructor();
         readonly attribute RdfGraph defaultGraph;
-        void add(USVString graphName, RdfGraph graph);
+        undefined add(USVString graphName, RdfGraph graph);
         iterable&lt;USVString?, RdfGraph>;
       };
     </pre>
@@ -6138,7 +6124,7 @@
       [Exposed=JsonLd]
       interface RdfGraph {
         constructor();
-        void add(RdfTriple triple);
+        undefined add(RdfTriple triple);
         iterable&lt;RdfTriple>;
       };
     </pre>
@@ -7098,6 +7084,13 @@
     <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
       which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
       for non-browser usage to address review suggestions.</li>
+  </ul>
+</section>
+<section class="appendix informative" id="changes-from-rec1">
+  <h2>Changes since Recommendation of 16 July 2020</h2>
+  <ul>
+    <li>Regenerated definition list, which does not attempt to filter out unused definitions.</li>
+    <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
   </ul>
 </section>
 <section id="ack"
