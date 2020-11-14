@@ -15,6 +15,8 @@ Compaction
 </a>
 </p>
 <h1>Compaction</h1>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#compaction-algorithm">Compaction Algorithm</a>.</p>
+
 <p>This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at
 <a href="compact-manifest.jsonld">compact-manifest.jsonld</a>. The manifest vocabulary is described in the <a href="vocab.html">JSON-LD Test Vocabulary</a> (<a href="vocab.jsonld">JSON-LD</a>, <a href="vocab.ttl">Turtle</a>) and is based on the <a href="http://www.w3.org/TR/2014/NOTE-rdf11-testcases-20140225/">RDF Test Vocabulary</a>.</p>
 
@@ -28,11 +30,11 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 
 <h2>General instructions for running the JSON-LD Test suites</h2>
 
-<h3><a href="compact-manifest.jsonld">compact</a> tests have <em>input</em>, <em>expected</em> and <em>context</em> documents.</h3>
+<h3><a href="compact-manifest.html">compact</a> tests have <em>input</em>, <em>expected</em> and <em>context</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output. Additionally, if the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 <p>Unless <code>processingMode</code> is set explicitly in a test entry, <code>processingMode</code> is compatible with both <code>json-ld-1.0</code> and <code>json-ld-1.1</code>.</p>
 
 <p>Test results that include a context input presume that the context is provided locally, and not from the referenced location, thus the results will include the content of the context file, rather than a reference.</p>
@@ -102,7 +104,6 @@ to the <a href="mailto:json-ld-wg@w3.org">JSON-LD Working Group mailing list</a>
 <dt>baseIri</dt>
 <dd>https://w3c.github.io/json-ld-api/tests/</dd>
 </dl>
-<p>JSON-LD Compaction tests.</p>
 <section>
 <h2>
 Test sequence:
@@ -3983,6 +3984,38 @@ Test tc027 @propagate: false on property-scoped context
 <dt>expect</dt>
 <dd>
 <a href='compact/c027-out.jsonld'>compact/c027-out.jsonld</a>
+</dd>
+<dt>Options</dt>
+<dd>
+<dl class='options'>
+<dt>specVersion</dt>
+<dd>json-ld-1.1</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt id='tc028'>
+Test tc028 Empty-property scoped context does not affect term selection.
+</dt>
+<dd>
+<dl class='entry'>
+<dt>id</dt>
+<dd>#tc028</dd>
+<dt>Type</dt>
+<dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+<dt>Purpose</dt>
+<dd>Adding a minimal/empty property-scoped context should not affect the using terms defined in outer context.</dd>
+<dt>input</dt>
+<dd>
+<a href='compact/c028-in.jsonld'>compact/c028-in.jsonld</a>
+</dd>
+<dt>context</dt>
+<dd>
+<a href='compact/c028-context.jsonld'>compact/c028-context.jsonld</a>
+</dd>
+<dt>expect</dt>
+<dd>
+<a href='compact/c028-out.jsonld'>compact/c028-out.jsonld</a>
 </dd>
 <dt>Options</dt>
 <dd>

@@ -15,6 +15,8 @@ Remote document
 </a>
 </p>
 <h1>Remote document</h1>
+<p>These tests implement the requirements for JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#remote-document-and-context-retrieval">Remote Document and Context Retrieval</a>.</p>
+
 <p>This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at
 <a href="remote-doc-manifest.jsonld">remote-doc-manifest.jsonld</a>. The manifest vocabulary is described in the <a href="vocab.html">JSON-LD Test Vocabulary</a> (<a href="vocab.jsonld">JSON-LD</a>, <a href="vocab.ttl">Turtle</a>) and is based on the <a href="http://www.w3.org/TR/2014/NOTE-rdf11-testcases-20140225/">RDF Test Vocabulary</a>.</p>
 
@@ -28,19 +30,19 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 
 <h2>General instructions for running the JSON-LD Test suites</h2>
 
-<h3><a href="expand-manifest.jsonld">expand</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
+<h3><a href="expand-manifest.html">expand</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output.</p>
 
 <p>Expansion tests may have a <code>expandContext</code> option, which is treated
 as an IRI relative to the manifest.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
-<h3><a href="remote-doc-manifest.jsonld">remote-doc</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
+<h3><a href="remote-doc-manifest.html">remote-doc</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 
 <p>Options may be present to describe the intended HTTP behavior:</p>
 
@@ -119,7 +121,6 @@ to the <a href="mailto:json-ld-wg@w3.org">JSON-LD Working Group mailing list</a>
 <dt>baseIri</dt>
 <dd>https://w3c.github.io/json-ld-api/tests/</dd>
 </dl>
-<p>JSON-LD Remote Document tests.</p>
 <section>
 <h2>
 Test sequence:
@@ -528,6 +529,8 @@ Test tla02 Does not redirect if type is application/ld+json
 <dl class='options'>
 <dt>httpLink</dt>
 <dd><la02-alternate.jsonld>; rel="alternate"; type="application/ld+json"</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -612,6 +615,8 @@ Test tla05 Base is that of the alternate URL
 <dl class='options'>
 <dt>httpLink</dt>
 <dd><la05-alternate.jsonld>; rel="alternate"; type="application/ld+json"</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>

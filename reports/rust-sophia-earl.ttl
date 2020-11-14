@@ -1,0 +1,565 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix earl: <http://www.w3.org/ns/earl#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://github.com/pchampin/sophia_rs> a doap:Project;
+   dc:creator <http://champin.net/#pa>;
+   doap:blog <http://champin.net/blog>;
+   doap:bug-database <https://github.com/pchampin/sophia_rs/issues>;
+   doap:created "2018-06-07"^^xsd:date;
+   doap:description "A Rust toolkit for RDF and Linked Data."@en;
+   doap:developer <http://champin.net/#pa>;
+   doap:documenter <http://champin.net/#pa>;
+   doap:homepage <https://github.com/pchampin/sophia_rs>;
+   doap:implements <https://www.w3.org/TR/json-ld11/>,
+     <https://www.w3.org/TR/json-ld11-api/>;
+   doap:license <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>;
+   doap:maintainer <http://champin.net/#pa>;
+   doap:name "Sophia";
+   doap:programming-language "Rust";
+   doap:shortdesc "A Rust toolkit for RDF and Linked Data."@en;
+   foaf:maker <http://champin.net/#pa> .
+
+<http://champin.net/#pa> a foaf:Person;
+   rdfs:isDefinedBy <http://champin.net/>;
+   foaf:made <https://github.com/pchampin/sophia_rs>;
+   foaf:mbox <mailto:pchampin@liris.cnrs.fr>;
+   foaf:name "Pierre-Antoine Champin".
+
+<https://github.com/pchampin/sophia_rs> doap:release [
+  doap:name "sophia-0.5.0";
+  doap:revision "0.5.0";
+  doap:created "2020-04-24"^^xsd:date;
+] .
+
+<> foaf:primaryTopic <https://github.com/pchampin/sophia_rs>;
+dc:issued "2020-04-15T14:53:31.646423148+00:00"^^xsd:dateTime;
+foaf:maker <http://champin.net/#pa>.
+
+<http://champin.net/#pa> a earl:Assertor;
+foaf:title "Implementor" .
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0001>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.682524904+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0002>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.710593074+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0003>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.713692649+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0004>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.714787230+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0005>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.715806965+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0006>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.717282551+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0007>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.718812779+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0008>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.720777620+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0009>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.721562825+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0010>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.722277923+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0011>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.723140798+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0012>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.723916038+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0013>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.724763365+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0014>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.725725149+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0015>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.726260878+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0016>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.727293754+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0017>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.728129557+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0018>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.728807183+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0019>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.729462100+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0020>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.730314728+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0021>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.731166269+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0022>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.731954263+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0023>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.732374364+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0024>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.732839358+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0025>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.733297759+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#t0026>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.733789643+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi01>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.734232712+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi02>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.734819718+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi03>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.735400428+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi04>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.735946051+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi05>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.736332584+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi06>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.736703891+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi07>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.737187121+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi08>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.737721610+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi09>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.738093556+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi10>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.738464728+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi11>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.738929314+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tdi12>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.739436307+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs01>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.739817657+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs02>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.740201955+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs03>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.740583602+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs04>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.740972456+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs05>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.741360464+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs06>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.741755769+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs07>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.742144874+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs08>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.742560957+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs09>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.742919517+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs10>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.743319347+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tjs11>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.743735791+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli01>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.744385931+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli02>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.745273858+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+    earl:assertedBy <http://champin.net/#pa>;
+    earl:subject <https://github.com/pchampin/sophia_rs>;
+    earl:test <https://w3c.github.io/json-ld-api/tests/fromRdf-manifest#tli03>;
+    earl:result [
+      a earl:TestResult;
+      earl:outcome earl:passed;
+      dc:date "2020-04-15T14:53:31.746098552+00:00"^^xsd:dateTime];
+    earl:mode earl:automatic ] .
+
+# test result; ok. 52 passed; 0 failed; 0 skipped

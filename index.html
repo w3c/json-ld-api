@@ -3,7 +3,7 @@
 <head>
 <title>JSON-LD 1.1 Processing Algorithms and API</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
+<script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 <script type="text/javascript" src="common/common.js" class="remove" defer></script>
 <script type="text/javascript" src="common/jsonld.js" class="remove"></script>
 <script type="text/javascript" class="remove">
@@ -24,16 +24,18 @@
 
       // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
       // and its maturity status
-      prevVersion:          "https://www.w3.org/TR/2019/CR-json-ld11-api-20191212/",
-      previousPublishDate:  "2019-12-12",
-      previousMaturity:     "CR",
+      prevVersion:          "https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/",
+      previousPublishDate:  "2020-05-07",
+      previousMaturity:     "PR",
       prevRecURI:           "https://www.w3.org/TR/2014/REC-json-ld-api-20140116/",
+      errata:               "https://w3c.github.io/json-ld-api/errata/",
 
       // if there a publicly available Editor's Draft, this is the link
       edDraftURI:           "https://w3c.github.io/json-ld-api/",
       testSuiteURI:         "https://w3c.github.io/json-ld-api/tests/",
       implementationReportURI:"https://w3c.github.io/json-ld-api/reports/",
       crEnd:                "2020-04-03",
+      prEnd:                "2020-06-18",
       github:               {
         repoURL: "https://github.com/w3c/json-ld-api",
         branch: "master",
@@ -115,24 +117,11 @@
           note:       "v1.0" }
       ],
 
-      // name of the WG
-      wg:                     "JSON-LD Working Group",
-
-      // URI of the public WG page
-      wgURI:                  "https://www.w3.org/2018/json-ld-wg/",
-
-      // name (with the @w3c.org) of the public mailing to which comments are due
+      group: "wg/json-ld",
       wgPublicList:           "public-json-ld-wg",
 
-      // URI of the patent status for this WG, for Rec-track documents
-      // !!!! IMPORTANT !!!!
-      // This is important for Rec-track documents, do not copy a patent URI from a random
-      // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-      // Team Contact.
-      wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/107714/status",
-      processVersion: 2018,
-      maxTocLevel:            2
-      ///alternateFormats: [ {uri: "diff-20140116.html", label: "diff to previous version"} ]
+      maxTocLevel:            2,
+      alternateFormats: [ {uri: "json-ld11-api.epub", label: "EPUB"} ]
   };
 //]]>
 </script>
@@ -323,6 +312,9 @@
   <p>There is a
     <a href="https://json-ld.org/playground/">live JSON-LD playground</a> that is capable
     of demonstrating the features described in this document.</p>
+  
+    <p>This specification is intended to <a href='https://www.w3.org/2019/Process-20190301/#rec-rescind'>supersede</a> the [[[JSON-LD10-API]]] [[JSON-LD10-API]] specification. </p>
+
 
   <section>
     <h2>Set of Documents</h2>
@@ -412,18 +404,29 @@
     <p>This document uses the following terms as defined in external specifications
       and defines terms specific to JSON-LD.</p>
 
-    <div data-include="common/terms.html"
-         data-oninclude="restrictReferences">
-    </div>
+    <div data-include="common/terms.html"></div>
 
   <section>
     <h4>Algorithm Terms</h4>
 
     <p>The Following terms are used within specific algorithms.</p>
 
-    <div data-include="common/algorithm-terms.html"
-         data-oninclude="restrictReferences">
-    </div>
+    <div data-include="common/algorithm-terms.html"></div>
+  </section>
+  <section id="api-keywords">
+    <h2>Syntax Tokens and Keywords</h2>
+
+    <p>In addition to the <a>keywords</a> defined in the JSON-LD 1.1 Syntax specification [[JSON-LD11]],
+      this specification adds an additional <a>keyword</a> to support
+      [[[JSON-LD11-FRAMING]]] [[JSON-LD11-FRAMING]]:</p>
+
+    <dl data-sort>
+      <dt><code>@preserve</code></dt>
+      <dd>Used in an expanded document created as the result of the
+        <a data-cite="JSON-LD11-FRAMING#framing-algorithm">Framing algorithm</a>
+        to represent values that might otherwise be removed as part of the
+        <a href="#expansion-algorithm">Expansion algorithm</a>.</dd>
+    </dl>
   </section>
 
   </section>
@@ -533,7 +536,7 @@
         <button data-selects="expanded">Expanded (Result)</button>
         <button data-selects="statements">Statements</button>
         <button data-selects="turtle">Turtle</button>
-        <a class="playground" target="_blank"></a>
+        <a class="playground" target="_blank" href="#">PG</a>
       </div>
       <pre class="compacted selected" data-transform="updateExample">
       <!--
@@ -599,7 +602,7 @@
         <button data-selects="expanded">Expanded (Result)</button>
         <button data-selects="statements">Statements</button>
         <button data-selects="turtle">Turtle</button>
-        <a class="playground" target="_blank"></a>
+        <a class="playground" target="_blank" href="#">PG</a>
       </div>
       <pre class="compacted input selected nohighlight" data-transform="updateExample">
       <!--
@@ -773,7 +776,8 @@
            data-result-for="#sample-document"
            data-context="#sample-document-context"
            data-compact
-           target="_blank"></a>
+           target="_blank"
+           href="#">PG</a>
       </div>
       <pre class="result compacted selected nohighlight" data-transform="updateExample"
            data-result-for="Expanded sample document"
@@ -855,7 +859,8 @@
         <a class="playground"
            data-result-for="#json-ld-document-in-compact-form"
            data-flatten
-           target="_blank"></a>
+           target="_blank"
+           href="#">PG</a>
       </div>
       <pre class="original result selected nohighlight" data-transform="updateExample"
            data-result-for="JSON-LD document in compact form"
@@ -900,7 +905,8 @@
            data-result-for="#json-ld-document-in-compact-form"
            data-context="#json-ld-document-in-compact-form"
            data-flatten
-           target="_blank"></a>
+           target="_blank"
+            href="#">PG</a>
       </div>
       <pre class="result selected nohighlight" data-transform="updateExample"
            data-result-for="JSON-LD document in compact form"
@@ -1192,7 +1198,7 @@
 
       <p>This algorithm specifies how a new <a>active context</a> is updated
         with a <a>local context</a>. The algorithm takes three required
-        <span class="changed">and three optional</span>
+        <span class="changed">and four optional</span>
         input variables.
         The required inputs are
         an <var>active context</var>,
@@ -1204,8 +1210,10 @@
         <span class="changed">
           <var>override protected</var>, defaulting to <code>false</code>,
           which is used to allow changes to protected terms,
-          and <var>propagate</var>, defaulting to <code>true</code>
-          to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>.</span>.
+          <var>propagate</var>, defaulting to <code>true</code>
+          to mark <a>term definitions</a> associated with non-propagated <a>contexts</a>,
+          and <var>validate scoped context</var> defaulting to <code>true</code>,
+          which is used to limit recursion when validating possibly recursive <a>scoped contexts</a>.</span>.
       </p>
 
       <ol>
@@ -1254,6 +1262,10 @@
                     or the <a class="changed" data-lt="context-base-iri">base IRI</a> of the <var>active context</var>.
                   </div>
                 </li>
+                <li id="alg-context-validate-scoped" class="changed">If <var>validate scoped context</var> is <code>false</code>,
+                  and <var>remote contexts</var> already includes <var>context</var>
+                  do not process <var>context</var> further and continue to any next
+                  <var>context</var> in <var>local context</var>.</li>
                 <li>If the number of entries in the <var>remote contexts</var> array
                   exceeds a processor defined limit, a
                   <a data-link-for="JsonLdErrorCode">context overflow</a>
@@ -1296,7 +1308,8 @@
                   <span class="changed">
                     the {{RemoteDocument/documentUrl}} of <var>context document</var> for <var>base URL</var>,
                   </span>
-                  and <span class="changed">a copy of</span> <var>remote contexts</var>.
+                  <span class="changed">a copy of</span> <var>remote contexts</var>,
+                  <span class="changed">and <var>validate scoped context</var></span>.
                   <div class="note">If <var>context</var> was previously dereferenced,
                     <a>processors</a> MUST make provisions for retaining the <var>base URL</var>
                     of that <a>context</a> for this step to enable the resolution of any
@@ -1453,7 +1466,7 @@
             <li>Create a <a class="changed">map</a> <var>defined</var> to keep
               track of whether or not a <a>term</a> has already been defined
               or is currently being defined during recursion.</li>
-            <li>For each <var>key</var>-<var>value</var> pair in <var>context</var> where
+            <li id="alg-context-create-defns">For each <var>key</var>-<var>value</var> pair in <var>context</var> where
               <var>key</var> is not
               <code>@base</code>,
               <code class="changed">@direction</code>,
@@ -1470,9 +1483,11 @@
               <var>defined</var>,
               <span class="changed">
                 <var>base URL</var>,
-                and the value of the <code>@protected</code>
-                entry from <var>context</var>, if any, for <var>protected</var>
-              </span>.
+                the value of the <code>@protected</code>
+                entry from <var>context</var>, if any, for <var>protected</var>,
+                <var>override protected</var>,
+                and a copy of <var>remote contexts</var>.
+              </span>
             </li>
           </ol>
         </li>
@@ -1519,7 +1534,7 @@
     <section class="algorithm">
       <h3>Algorithm</h3>
 
-      <p>The algorithm has four required <span class="changed">and three optional</span> inputs.
+      <p>The algorithm has four required <span class="changed">and five optional</span> inputs.
         The required inputs are
         an <var>active context</var>,
         a <var>local context</var>,
@@ -1529,7 +1544,11 @@
           <var>base URL</var> defaulting to <code>null</code>,
           <var>protected</var> which defaults to <code>false</code>,
           and <var>override protected</var>, defaulting to <code>false</code>,
-          which is used to allow changes to protected terms.</span>.
+          which is used to allow changes to protected terms,
+          an <a>array</a> <var>remote contexts</var>,
+          defaulting to a new empty <a>array</a>, which is used to detect cyclical context inclusions,
+          and <var>validate scoped context</var> defaulting to <code>true</code>,
+          which is used to limit recursion when validating possibly recursive <a>scoped contexts</a>.</span>.
         </p>
       <ol>
         <li>If <var>defined</var> contains the <a>entry</a> <var>term</var> and the associated
@@ -1538,7 +1557,10 @@
           if the value is <code>false</code>, a
           <a data-link-for="JsonLdErrorCode">cyclic IRI mapping</a>
           error has been detected and processing is aborted.</li>
-        <li>Set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
+        <li>If <var>term</var> is the empty string (`""`),
+          an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
+          error has been detected and processing is aborted.
+          Otherwise, set the value associated with <var>defined</var>'s <var>term</var> <a>entry</a> to
           <code>false</code>. This indicates that the <a>term definition</a>
           is now being created but is not yet complete.</li>
         <li>Initialize <var>value</var> to a copy of the value associated with the <a>entry</a>
@@ -1581,8 +1603,8 @@
           <span class="changed">initializing <a>prefix flag</a> to `false`,
             <a>protected</a> to <var>protected</var>,
             and <a>reverse property</a> to `false`</span>.</li>
-        <li class="changed">If the <code>@protected</code> entry in <var>value</var>
-          is <code>true</code> set the <a>protected</a> flag in <var>definition</var> to true.
+        <li id="alg-ctd-protected" class="changed">If <var>value</var> has an <code>@protected</code> entry,
+          set the <a>protected</a> flag in <var>definition</var> to the value of this entry.
           If the value of `@protected` is not a <a>boolean</a>,
           an <a data-link-for="JsonLdErrorCode">invalid @protected value</a> error has been detected and processing is aborted.
           If <a>processing mode</a> is `json-ld-1.0`,
@@ -1785,8 +1807,9 @@
               an <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Initialize <var>index</var> to the value associated with the
-              <code>@index</code> <a>entry</a>, which MUST a <a>string</a> expanding to an <a>IRI</a>.
-              Otherwise, an
+              <code>@index</code> <a>entry</a>.
+              If the result of <a>IRI expanding</a> that value is not an <a>IRI</a>,
+              an
               <a data-link-for="JsonLdErrorCode">invalid term definition</a>
               has been detected and processing is aborted.</li>
             <li>Set the <a>index mapping</a> of <var>definition</var> to <var>index</var></li>
@@ -1802,7 +1825,9 @@
             <li>Invoke the <a href="#context-processing-algorithm">Context Processing algorithm</a>
               using the <var>active context</var>, <var>context</var> as <var>local context</var>,
               <var>base URL</var>,
-              and <code>true</code> for <var>override protected</var>.
+              <code>true</code> for <var>override protected</var>,
+              <span class="changed">a copy of</span> <var>remote contexts</var>,
+              and <code>false</code> for <var>validate scoped context</var>.
               If any error is detected, an
               <a data-link-for="JsonLdErrorCode">invalid scoped context</a> error
               has been detected and processing is aborted.
@@ -2002,6 +2027,9 @@
             <li>Reference the value associated with the <code>@type</code>
               <a>entry</a> in <var>type/language map</var> using the variable
               <var>type map</var>.</li>
+            <li id="alg-inv-lang-map">Reference the value associated with the <code>@language</code>
+              <a>entry</a> in <var>type/language map</var> using the variable
+              <var>language map</var>.</li>
             <li>If the <a>term definition</a> indicates that the <a>term</a>
               represents a <a>reverse property</a>:
               <ol>
@@ -2013,9 +2041,6 @@
             <li class="changed">Otherwise, if <a>term definition</a> has a
               <a>type mapping</a> which is <code>@none</code>:
               <ol>
-                <li>Reference the value associated with the <code>@language</code>
-                  <a>entry</a> in <var>type/language map</var> using the variable
-                  <var>language map</var>.</li>
                 <li>If <var>language map</var> does not have an <code>@any</code>
                   <a>entry</a>, create one and set its value to the <a>term</a>
                   being processed.</li>
@@ -2033,10 +2058,7 @@
                   being processed.</li>
               </ol>
             </li>
-            <li>Reference the value associated with the <code>@language</code>
-              <a>entry</a> in <var>type/language map</var> using the variable
-              <var>language map</var>.</li>
-            <li class="changed">If <a>term definition</a> has both
+            <li id="alg-inv-lang-dir" class="changed">Otherwise, if <a>term definition</a> has both
               a <a>language mapping</a> and a <a>direction mapping</a>:
               <ol>
                 <li>Create a new variable <var>lang dir</var>.</li>
@@ -2391,6 +2413,16 @@
 
       <p>Finally, after ensuring <var>result</var> is in an <a>array</a>,
         we return <var>result</var>.</p>
+
+      <p class="note">Although the <a data-cite="JSON-LD11#data-model">data model</a>,
+        based on [[RDF11-CONCEPTS]], does not support multiple unordered property values,
+        this algorithm does not remove duplicates that
+        may be found during expansion within an unordered <a>array</a>.
+        Other algorithms, such as <a href="#compaction-algorithm" class="sectionRef"></a>,
+        and <a href="#flattening-algorithm" class="sectionRef"></a>, do eliminate
+        duplicate values from unordered arrays.
+        A future version of this specification may be updated to remove duplicate
+        array values when the form a set.</p>
     </section>
 
     <section class="algorithm">
@@ -2634,9 +2666,10 @@
                   <ol>
                     <li>If <a>processing mode</a> is `json-ld-1.0`,
                       continue with the next <var>key</var> from <var>element</var>.</li>
-                    <li>Set <var>expanded value</var> to the result of using
+                    <li id="alg-expand-included">Set <var>expanded value</var> to the result of using
                       this algorithm recursively passing <var>active context</var>,
-                      <var>active property</var>, <var>value</var> for <var>element</var>,
+                      `null` for <var>active property</var>,
+                      <var>value</var> for <var>element</var>,
                       <var>base URL</var>,
                       and the {{JsonLdOptions/frameExpansion}}
                       and {{JsonLdOptions/ordered}} flags,
@@ -2900,13 +2933,14 @@
                     <li>If <var>index value</var> is not an <a>array</a>
                       set <var>index value</var> to an <a>array</a> containing only
                       <var>index value</var>.</li>
-                    <li>Initialize <var>index value</var> to the result of
+                    <li id="alg-expand-index-value">Initialize <var>index value</var> to the result of
                       using this algorithm recursively, passing
                       <var class="changed">map context</var> as <var>active context</var>,
                       <var>key</var> as <var>active property</var>,
                       <var>index value</var> as <var>element</var>,
                       <var class="changed">base URL</var>,
-                      <span class="changed">and the {{JsonLdOptions/frameExpansion}}
+                      <span class="changed">`true` for <var>from map</var>,
+                        and the {{JsonLdOptions/frameExpansion}}
                         and {{JsonLdOptions/ordered}} flags</span>.</li>
                     <li>For each <var>item</var> in <var>index value</var>:
                       <ol class="algorithm changed">
@@ -2926,9 +2960,11 @@
                               and <var>index</var> as <var>value</var>.</li>
                             <li>Initialize <var>expanded index key</var> to the result of
                               <span class="changed"><a>IRI expanding</a></span> <var>index key</var>.</li>
-                            <li>Initialize <var>index property values</var> to the concatenation of
-                              <var>re-expanded index</var> with any existing values of
-                              <var>expanded index key</var> in <var>item</var>.</li>
+                            <li>Initialize <var>index property values</var> to
+                              an <a>array</a> consisting of <var>re-expanded index</var> followed
+                              by the existing values of 
+                              the concatenation of <var>expanded index key</var> in <var>item</var>,
+                              if any.</li>
                             <li>Add the key-value pair (<var>expanded index key</var>-<var>index property values</var>)
                               to <var>item</var>.</li>
                             <li>If <var>item</var> is a value object,
@@ -3496,7 +3532,7 @@
           Then, for each <var>term</var>
           in <var>compacted types</var> ordered lexicographically:
           <ol>
-            <li>If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
+            <li id="alg-compact-11_1">If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
               <a>local context</a>
               set <var>active context</var> to the result of the
               <a href="#context-processing-algorithm">Context Processing algorithm</a>,
@@ -3504,7 +3540,8 @@
               <a>local context</a> in <var>type-scoped context</var> as <var>local context</var>
               <span class="changed">
                 <var>base URL</var> from the <a>term definition</a> for <var>term</var>
-                in <var>type-scoped context</var></span>.
+                in <var>type-scoped context</var>,
+                and `false` for <var>propagate</var></span>.
             </li>
           </ol>
         </li>
@@ -3549,8 +3586,9 @@
                 </li>
                 <li>Initialize <var>alias</var>
                   <span class="changed">by <a>IRI compacting</a> <var>expanded property</var></span>.</li>
-                <li class="changed">Initialize <var>as array</var>
-                  to <code>true</code> if the <a>container mapping</a> for <var>alias</var> in the
+                <li id="alg-compact-12_2_4" class="changed">Initialize <var>as array</var>
+                  to <code>true</code> if <a>processing mode</a> is `json-ld-1.1` and
+                  the <a>container mapping</a> for <var>alias</var> in the
                   <var>active context</var> includes <code>@set</code>,
                   otherwise to the negation of {{JsonLdOptions/compactArrays}}.</li>
                 <li class="changed">Use <a>add value</a> to add <var>compacted value</var>
@@ -3688,16 +3726,16 @@
                   to <code>true</code> if <var>container</var> includes <code>@set</code>,
                   or if <var>item active property</var> is <code>@graph</code> or <code>@list</code>,
                   otherwise the negation of {{JsonLdOptions/compactArrays}}.</li>
-                <li>Initialize <var>compacted item</var> to the result of using
+                <li id="alg-compact-12_8_6">Initialize <var>compacted item</var> to the result of using
                   this algorithm recursively, passing
                   <var>active context</var>,
                   <var>item active property</var> for <var>active property</var>,
-                  <var>expanded item</var> for <var>element</var> if it does
-                  not contain the <a>entry</a> <code>@list</code>
-                  <span class="changed">and is not a <a>graph object</a> containing <code>@list</code></span>,
-                  otherwise pass the value of the <a>entry</a> for <var>element</var>.
-                  <span class="changed">Along with the {{JsonLdOptions/compactArrays}}
-                    and {{JsonLdOptions/ordered}} flags</span></li>
+                  <var>expanded item</var> for <var>element</var>,
+                  <span class="changed">along with the {{JsonLdOptions/compactArrays}}
+                    and {{JsonLdOptions/ordered}} flags</span>.
+                  If <var>expanded item</var> is a <a>list object</a> or a <a>graph object</a>,
+                  use the value of the `@list` <span class="changed">or `@graph`</span> entries,
+                  respectively, for <var>element</var> instead of <var>expanded item</var>.</li>
                 <li>If <var>expanded item</var> is a <a>list object</a>:
                   <ol>
                     <li>If <var>compacted item</var> is not an <a>array</a>,
@@ -3829,11 +3867,10 @@
                         <li>Reinitialize <var>container key</var> by <a>IRI compacting</a>
                           <var>index key</var>.</li>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
-                        <li>If there are remaining values in <var>compacted item</var>
-                          for <var>container key</var>, set the value of
-                          <var>container key</var> in <var>compacted item</var>
-                          to those remaining values. Otherwise, remove that
-                          <a>entry</a> from <var>compacted item</var>.</li>
+                        <li id="alg-compact-12_8_9_6_3">If there are remaining values in <var>compacted item</var>
+                          for <var>container key</var>, use <a>add value</a> to
+                          add those remaining values to the <var>container key</var> in <var>compacted item</var>.
+                          Otherwise, remove that <a>entry</a> from <var>compacted item</var>.</li>
                       </ol>
                     </li>
                     <li class="changed">Otherwise, if <var>container</var> includes <code>@id</code>, set
@@ -3842,10 +3879,9 @@
                     <li class="changed">Otherwise, if <var>container</var> includes <code>@type</code>:
                       <ol>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
-                        <li>If there are remaining values in <var>compacted item</var>
-                          for <var>container key</var>, set the value of
-                          <var>container key</var> in <var>compacted item</var>
-                          to those remaining values.</li>
+                        <li id="alg-compact-12_8_9_8_2">If there are remaining values in <var>compacted item</var>
+                          for <var>container key</var>, use <a>add value</a> to
+                          add those remaining values to the <var>container key</var> in <var>compacted item</var>.</li>
                         <li>Otherwise, remove that <a>entry</a> from <var>compacted item</var>.</li>
                         <li>If <var>compacted item</var> contains a single <a>entry</a> with a key expanding
                           to `@id`, set <var>compacted item</var>
@@ -3991,7 +4027,7 @@
               variables will keep track of the preferred
               <a>type mapping</a> or <a>language mapping</a> for
               a <a>term</a>, based on what is compatible with <var>value</var>.</li>
-            <li class="changed">If <var>value</var> is a <a>map</a> containing an `@index` <a>entry</a> which is also a <a>map</a>,
+            <li id="alg-iric-value-map" class="changed">If <var>value</var> is a <a>map</a> containing an `@index` <a>entry</a>,
               and <var>value</var> is not a <a>graph object</a>
               then append the values <code>@index</code> and <code>@index@set</code> to <var>containers</var>.</li>
             <li>If <var>reverse</var> is <code>true</code>, set <var>type/language</var>
@@ -4740,14 +4776,6 @@
     <p class="changed">If the {{JsonLdOptions/rdfDirection}} option is not `null`, then special processing is used to
       convert from an `i18n-datatype` or `compound-literal` form.</p>
 
-    <p class="issue atrisk">The support for both `i18n-datatype` and `compound-literal`
-      algorithm steps are non-normative, and are AT RISK for JSON-LD 1.1.
-      They may be replaced with normative algorithm steps in a future version.
-      Either or both of these transformation methods may be removed prior to
-      JSON-LD 1.1 being finalized.
-      The JSON-LD Working Group solicits feedback from the community on the
-      usefulness of these transformations.</p>
-
     <p class="changed">Implementations MUST generate only <dfn>well-formed</dfn>
       <a>triples</a> and <a>graph names</a>:</p>
     <ul>
@@ -4872,7 +4900,7 @@
                           that has to be ignored.</li>
                         <li class="changed">Add all <a>RdfTriple</a> instances from
                           <var>list triples</var> to <var>triples</var> using
-                          its using its {{RdfGraph/add}} method.</li>
+                          its {{RdfGraph/add}} method.</li>
                       </ol>
                     </li>
                   </ol>
@@ -4943,11 +4971,9 @@
           convert <var>value</var> to the <a>canonical lexical form</a>
           using the result of transforming the <a>internal representation</a> of <var>value</var>
           to JSON and set <var>datatype</var> to <code>rdf:JSON</code>.
-          <div class="issue">The JSON Canonicalization Scheme [[?JCS]]
-            is an emerging standard for JSON canonicalization
-            not yet ready to be referenced.
-            When a JSON canonicalization standard becomes available,
-            this specification will likely be updated to require such a canonical representation.
+          <div class="issue">The JSON Canonicalization Scheme (JCS) [[?RFC8785]]
+            is an emerging standard for JSON canonicalization.
+            This specification will likely be updated to require such a canonical representation.
             Users are cautioned from depending on the
             <a>JSON literal</a> lexical representation as an <a>RDF literal</a>,
             as the specifics of serialization may change in a future revision of this document.</div></li>
@@ -5118,28 +5144,19 @@
 
       <p class="changed">If the {{JsonLdOptions/rdfDirection}} option is not `null`, then special processing is used to
         convert from an `i18n-datatype` or `compound-literal` form.</p>
-
-      <p class="issue atrisk">The support for both `i18n-datatype` and `compound-literal`
-        algorithm steps are non-normative, and are AT RISK for JSON-LD 1.1.
-        They may be replaced with normative algorithm steps in a future version.
-        Either or both of these transformation methods may be removed prior to
-        JSON-LD 1.1 being finalized.
-        The JSON-LD Working Group solicits feedback from the community on the
-        usefulness of these transformations.</p>
     </section>
 
     <section>
       <h2>Algorithm</h2>
 
-      <p>The algorithm takes one required and five optional inputs:
+      <p>The algorithm takes one required and four optional inputs:
         an <a>RDF dataset</a> <var>dataset</var>
-        and the five flags
-        <span class="changed">{{JsonLdOptions/ordered}}, used to order
-          <a>map entry</a> keys lexicographically, where noted</span>,
-        <span class="changed">{{JsonLdOptions/rdfDirection}}</span>,
-        <a data-link-for="JsonLdOptions">useNativeTypes</a>,
-        and the <a data-link-for="JsonLdOptions">useRdfType</a>,
-        that all default to <code>false</code>.</p>
+        and the four optional arguments are
+        the <span class="changed">{{JsonLdOptions/ordered}} flag, defaulting to `false`, used to order
+        <a>map entry</a> keys lexicographically, where noted</span>,
+        <span class="changed">{{JsonLdOptions/rdfDirection}}</span> defaulting to `null`,
+        the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag, defaulting to `false`,
+        and the <a data-link-for="JsonLdOptions">useRdfType</a> flag, defaulting to `false`.</p>
 
       <p>The <var>dataset</var> is <a data-link-for="RdfDataset">iterable</a> to iterate over <a>graphs</a> and <a>graph names</a>
         contained within the <a>RdfDataset</a>. Each <a>graph</a> is also <a data-link-for="RdfGraph">iterable</a>
@@ -5250,19 +5267,19 @@
                 <li>Initialize <var>cl node</var> to the value of <var>cl</var>
                   in <var>graph object</var>, and remove that <a>entry</a> from <var>graph object</var>,
                   continuing to the next <var>cl</var> if <var>cl node</var> is not a <a>map</a>.</li>
-                <li>For each <var>cl reference</var> in the value of <var>property</var> in <var>node</var>
+                <li id="alg-serialize-rdf-cl-reference">For each <var>cl reference</var> in the value of <var>property</var> in <var>node</var>
                   where the value of `@id` in <var>cl reference</var> is <var>cl</var>:
                   <ol>
-                    <li>Delete the `@id` entry in <var>node</var>.</li>
-                    <li>Add an <a>entry</a> to <var>node</var> for `@value` with the value taken
+                    <li>Delete the `@id` entry in <var>cl reference</var>.</li>
+                    <li>Add an <a>entry</a> to <var>cl reference</var> for `@value` with the value taken
                       from the `rdf:value` entry in <var>cl node</var>.</li>
-                    <li>Add an <a>entry</a> to <var>node</var> for `@language` with the value taken
+                    <li>Add an <a>entry</a> to <var>cl reference</var> for `@language` with the value taken
                       from the `rdf:language` entry in <var>cl node</var>, if any.
                       If that value is not <a>well-formed</a> according to
                       <a data-cite="BCP47#section-2.2.9">section 2.2.9</a> of [[BCP47]],
                       an <a data-link-for="JsonLdErrorCode">invalid language-tagged string</a>
                       error has been detected and processing is aborted.</li>
-                    <li>Add an <a>entry</a> to <var>node</var> for `@direction` with the value taken
+                    <li>Add an <a>entry</a> to <var>cl reference</var> for `@direction` with the value taken
                       from the `rdf:direction` entry in <var>cl node</var>, if any.
                       If that value is not `"ltr"` or `"rtl"`, an
                       <a data-link-for="JsonLdErrorCode">invalid base direction</a>
@@ -5641,8 +5658,10 @@
       as long as they generally use the same methods, arguments, and options
       and return the same results.</span></p>
 
-  <p class="note">Interfaces are marked `[Exposed=(Window,Worker)]`,
-    but the API is also intended for use outside of a browser context.</p>
+  <p class="note">Interfaces are marked `[Exposed=JsonLd]`,
+    which creates a global interface.
+    The use of WebIDL in JSON-LD, while appropriate for use within browsers,
+    is not limited to such use.</p>
 
   <section><h3>The <dfn>JsonLdProcessor</dfn> Interface</h3>
 
@@ -5664,7 +5683,13 @@
       in this document mention this directly.</p>
 
     <pre class="idl">
-      [Exposed=(Window,Worker)]
+      /*
+       * The JsonLd interface is created to expose the JsonLdProcessor interface.
+       */
+      [Global=JsonLd, Exposed=JsonLd]
+      interface JsonLd {};
+
+      [Exposed=JsonLd]
       interface JsonLdProcessor {
         constructor();
         static Promise&lt;JsonLdRecord> compact(
@@ -6063,11 +6088,11 @@
       which has a <a>default graph</a> accessible via the <a data-link-for="RdfDataset">defaultGraph</a> attribute.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
+      [Exposed=JsonLd]
       interface RdfDataset {
         constructor();
         readonly attribute RdfGraph defaultGraph;
-        void add(USVString graphName, RdfGraph graph);
+        undefined add(USVString graphName, RdfGraph graph);
         iterable&lt;USVString?, RdfGraph>;
       };
     </pre>
@@ -6107,10 +6132,10 @@
       which is composed of zero or more <a>RdfTriple</a> instances.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
+      [Exposed=JsonLd]
       interface RdfGraph {
         constructor();
-        void add(RdfTriple triple);
+        undefined add(RdfTriple triple);
         iterable&lt;RdfTriple>;
       };
     </pre>
@@ -6136,7 +6161,7 @@
     <p>The <dfn>RdfTriple</dfn> interface describes an <a>triple</a>.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
+      [Exposed=JsonLd]
       interface RdfTriple {
         constructor();
         readonly attribute USVString subject;
@@ -6164,7 +6189,7 @@
     <p>The <dfn>RdfLiteral</dfn> interface describes an <a>RDF Literal</a>.</p>
 
     <pre class="idl changed">
-      [Exposed=(Window,Worker)]
+      [Exposed=JsonLd]
       interface RdfLiteral {
         constructor();
         readonly attribute USVString value;
@@ -6418,18 +6443,21 @@
         to return information about a remote document or context.</p>
 
       <pre class="idl">
-        [Exposed=(Window,Worker)]
+        [Exposed=JsonLd]
         interface RemoteDocument {
           constructor();
           readonly attribute USVString contentType;
           readonly attribute USVString contextUrl;
-          readonly attribute USVString documentUrl;
           attribute any document;
+          readonly attribute USVString documentUrl;
           readonly attribute USVString profile;
         };
       </pre>
 
-      <dl>
+      <dl data-sort>
+        <dt class="changed"><dfn data-dfn-for="RemoteDocument">contentType</dfn></dt>
+        <dd class="changed">The <dfn data-cite="RFC2045#section-5">Content-Type</dfn>
+          of the loaded document, exclusive of any optional parameters.</dd>
         <dt><dfn data-dfn-for="RemoteDocument">contextUrl</dfn></dt>
         <dd>If available, the value of the HTTP Link Header [[RFC8288]]
           using the <code>http://www.w3.org/ns/json-ld#context</code> link relation
@@ -6445,9 +6473,6 @@
         <dt><dfn data-dfn-for="RemoteDocument">document</dfn></dt>
         <dd>The retrieved document.
           This can either be the raw payload or the already parsed document.</dd>
-        <dt class="changed"><dfn data-dfn-for="RemoteDocument">contentType</dfn></dt>
-        <dd class="changed">The <dfn data-cite="RFC2045#section-5">Content-Type</dfn>
-          of the loaded document, exclusive of any optional parameters.</dd>
         <dt class="changed"><dfn data-dfn-for="RemoteDocument">profile</dfn></dt>
         <dd class="changed">The value of any <code>profile</code> parameter
           retrieved as part of the original {{RemoteDocument/contentType}}.</dd>
@@ -6588,7 +6613,6 @@
 
       <pre class="idl">
         enum JsonLdErrorCode {
-            "IRI confused with prefix",
             "colliding keywords",
             "conflicting indexes",
             "context overflow",
@@ -6603,14 +6627,14 @@
             "invalid @protected value",
             "invalid @reverse value",
             "invalid @version value",
-            "invalid IRI mapping",
-            "invalid JSON literal",
-            "invalid base IRI",
             "invalid base direction",
+            "invalid base IRI",
             "invalid container mapping",
             "invalid context entry",
             "invalid context nullification",
             "invalid default language",
+            "invalid IRI mapping",
+            "invalid JSON literal",
             "invalid keyword alias",
             "invalid language map value",
             "invalid language mapping",
@@ -6631,6 +6655,7 @@
             "invalid value object value",
             "invalid value object",
             "invalid vocab mapping",
+            "IRI confused with prefix",
             "keyword redefinition",
             "loading document failed",
             "loading remote context failed",
@@ -6648,14 +6673,18 @@
           are used at the same time.</dd>
         <dt><dfn>conflicting indexes</dfn></dt>
         <dd>Multiple conflicting indexes have been found for the same node.</dd>
+        <dt><dfn>context overflow</dfn></dt>
+        <dd>Maximum number of <code>@context</code> URLs exceeded.</dd>
         <dt><dfn>cyclic IRI mapping</dfn></dt>
         <dd>A cycle in <a>IRI mappings</a> has been detected.</dd>
         <dt><dfn>invalid @id value</dfn></dt>
         <dd>An <code>@id</code> <a>entry</a> was encountered whose value was not a <a>string</a>.</dd>
+        <dt class="changed"><dfn>invalid @import value</dfn></dt>
+        <dd class="changed">An invalid value for <code>@import</code> has been found.</dd>
+        <dt class="changed"><dfn>invalid @included value</dfn></dt>
+        <dd class="changed">An <a>included block</a> contains an invalid value.</dd>
         <dt><dfn>invalid @index value</dfn></dt>
         <dd>An <code>@index</code> <a>entry</a> was encountered whose value was not a <a>string</a>.</dd>
-        <dt class="changed"><dfn>invalid JSON literal</dfn></dt>
-        <dd class="changed">An invalid JSON literal was detected.</dd>
         <dt class="changed"><dfn>invalid @nest value</dfn></dt>
         <dd class="changed">An invalid value for <code>@nest</code> has been found.</dd>
         <dt class="changed"><dfn>invalid @prefix value</dfn></dt>
@@ -6667,11 +6696,12 @@
         <dt><dfn>invalid @reverse value</dfn></dt>
         <dd>An invalid value for an <code>@reverse</code> <a>entry</a> has been detected,
           i.e., the value was not a <a class="changed">map</a>.</dd>
-        <dt class="changed"><dfn>invalid @import value</dfn></dt>
-        <dd class="changed">An invalid value for <code>@import</code> has been found.</dd>
         <dt><dfn>invalid @version value</dfn></dt>
         <dd>The <code>@version</code> <a>entry</a> was used in a <a>context</a>
           with an out of range value.</dd>
+        <dt class="changed"><dfn>invalid base direction</dfn></dt>
+        <dd class="changed">The value of `@direction` is not `"ltr"`, `"rtl"`,
+          or <code>null</code> and thus invalid.</dd>
         <dt><dfn>invalid base IRI</dfn></dt>
         <dd>An invalid <a>base IRI</a> has been detected, i.e.,
           it is neither an <a>IRI</a> nor <code>null</code>.</dd>
@@ -6680,13 +6710,24 @@
           whose value was not one of the following <a>strings</a>:
           <code>@list</code>,
           <code>@set</code>,
-          or <code>@index</code>.</dd>
+          <code>@language</code>,
+          <code>@index</code>,
+          <span class="changed"><code>@id</code></span>,
+          <span class="changed"><code>@graph</code></span>, or
+          <span class="changed"><code>@type</code></span>.</dd>
+        <dt class="changed"><dfn>invalid context entry</dfn></dt>
+        <dd class="changed">An <a>entry</a> in a context is invalid due to processing mode incompatibility.</dd>
+        <dt class="changed"><dfn>invalid context nullification</dfn></dt>
+        <dd class="changed">An attempt was made to nullify a context
+          containing <a>protected</a> <a>term definitions</a>.</dd>
         <dt><dfn>invalid default language</dfn></dt>
         <dd>The value of the <a>default language</a> is not a <a>string</a>
           or <code>null</code> and thus invalid.</dd>
         <dt><dfn>invalid IRI mapping</dfn></dt>
         <dd>A <a>local context</a> contains a <a>term</a>
           that has an invalid or missing <a>IRI mapping</a>.</dd>
+        <dt class="changed"><dfn>invalid JSON literal</dfn></dt>
+        <dd class="changed">An invalid JSON literal was detected.</dd>
         <dt><dfn>invalid keyword alias</dfn></dt>
         <dd>An invalid <a>keyword</a> alias definition has been encountered.</dd>
         <dt><dfn>invalid language map value</dfn></dt>
@@ -6762,20 +6803,8 @@
         <dt><dfn>processing mode conflict</dfn></dt>
         <dd>An attempt was made to change the <a>processing mode</a>
           which is incompatible with the previous specified version.</dd>
-        <dt><dfn>context overflow</dfn></dt>
-        <dd>maximum number of <code>@context</code> URLs exceeded.</dd>
-        <dt class="changed"><dfn>invalid context entry</dfn></dt>
-        <dd class="changed">An <a>entry</a> in a context is invalid due to processing mode incompatibility.</dd>
-        <dt class="changed"><dfn>invalid context nullification</dfn></dt>
-        <dd class="changed">An attempt was made to nullify a context
-          containing <a>protected</a> <a>term definitions</a>.</dd>
         <dt class="changed"><dfn>protected term redefinition</dfn></dt>
         <dd class="changed">An attempt was made to redefine a <a>protected</a> term.</dd>
-        <dt class="changed"><dfn>invalid @included value</dfn></dt>
-        <dd class="changed">An <a>included block</a> contains an invalid value.</dd>
-        <dt class="changed"><dfn>invalid base direction</dfn></dt>
-        <dd class="changed">The value of `@direction` is not `"ltr"`, `"rtl"`,
-          or <code>null</code> and thus invalid.</dd>
       </dl>
     </section>
   </section> <!-- end of Error Handling -->
@@ -6801,6 +6830,9 @@
   <p class="issue" data-number="76">More compact @prefix.</p>
   <p class="issue" data-number="94">Expansion concept "key's term definition" is unclear with compact IRI keys.</p>
   <p class="issue" data-number="166">Relationship to the RDF/JS Dataset interface(s).</p>
+  <p class="issue" data-number="380">Expansion does not take property-scoped contexts for nested properties into account.</p>
+  <p class="issue" data-number="391">Recursively nested properties and compaction.</p>
+  <p class="issue" data-number="435">relative iri compaction.</p>
 </section>
 
 <section class="appendix informative"><h2>Changes since 1.0 Recommendation of 16 January 2014</h2>
@@ -6909,7 +6941,7 @@
       expand to an <a>IRI</a> other than the expansion of the key itself.</li>
     <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
       including variations on HTML processing.</li>
-    <li>The <a href="#iri-compaction">IRI compaction algorithm</a> may generate an error if the result is an
+    <li>The <a href="#iri-compaction">IRI Compaction algorithm</a> may generate an error if the result is an
       <a>IRI</a> which could be confused with a <a>compact IRI</a> in the
       <a>active context</a>.</li>
     <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
@@ -6992,8 +7024,42 @@
       but is retrieved from the <a data-lt="context-inverse">inverse context</a> field
       within an <a>active context</a>, and initialized as necessary.
       This simplifies calling sequences and better represents actual implementation experience.</li>
-    <li>Update step <a href="#alg-compact-12_8_9_6">12.8.9.6</a></li>
-    <li>Update step <a href="#alg-compact-12_8_10">12.8.1</a> of the
+    <li>Updated step <a href="#alg-context-validate-scoped">5.13</a> of the
+      <a href="#context-processing-algorithm">Context Processing algorithm</a>
+      to pass <var>override protected</var>
+      and not pass <var>validate scoped context</var>
+      to the <a href="#create-term-definition">Create Term Definition algorithm</a>.</li>
+    <li>Move step <a href="#alg-context-create-defns">5.2.2</a> of the
+      <a href="#context-processing-algorithm">Context Processing algorithm</a>
+      to run before the subsequent step for checking <var>remote contexts</var>.</li>
+    <li>Updated step <a href="#alg-ctd-protected">11</a> of the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>
+      to use any boolean value of `@protected`, not just `true`.</li>
+    <li>Updated step <a href="#alg-iric-value-map">4.5</a> of the <a href="#iri-compaction">IRI Compaction algorithm</a>
+      to use `@index` for any value with an `@index` entry.</li>
+    <li>Update step <a href="#alg-expand-included">13.4.6.2</a> of the
+      <a href="#expansion-algorithm">Expansion algorithm</a> to pass
+      `null` for <var>active property</var>, as <a>included blocks</a>
+      do not define a relationship to a referencing node.</li>
+    <li>Update step <a href="#alg-expand-index-value">13.8.3.6</a> of the
+      <a href="#expansion-algorithm">Expansion algorithm</a> to pass
+      `true` for the <var>from map</var> parameter to properly manage reverting
+      <a>active contexts</a>.</li>
+    <li>Update step <a href="#alg-compact-11_1">11.1</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to pass `false` for <var>propagate</var> when calling the
+       <a href="#context-processing-algorithm">Context Processing algorithm</a>.</li>
+    <li>Updated step <a href="#alg-compact-12_2_4">12.2.4</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to only look for `@set` if <a>processing mode</a> is json-ld-1.1.</li>
+    <li>Update step <a href="#alg-compact-12_8_6">12.8.6</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to clarify the value passed for <var>element</var>.</li>
+    <li>Update steps <a href="#alg-compact-12_8_9_6_3">12.8.9.6.3</a>
+      and <a href="#alg-compact-12_8_9_8_2">12.8.9.2.2</a> of the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      to invoke the <a>add value</a> macro for adding remaining values back to <var>compacted item</var>.</li>
+    <li>Update step <a href="#alg-compact-12_8_10">12.8.10</a> of the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       to add values to <var>nest result</var> instead of <var>result</var>
       as was originally intended.</li>
@@ -7001,6 +7067,41 @@
       of <a href="#merge-node-maps" class="sectionRef"></a> to
       exclude `@type`, leaving it to the next step.
       This could cause type values from a node to be left out of the merge.</li>
+    <li>Added step <a href="#alg-context-validate-scoped">5.2.3</a>
+      to the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
+      which is added <var>validate scoped context</var> as a new
+      optional argument, and passed to the
+      <a href="#create-term-definition">Create Term Definition algorithm</a>,
+      which in turn uses it with the value `false` when recursively calling
+      the <a href="#context-processing-algorithm">Context Processing algorithm</a>
+      when validating a <a>scoped context</a>.</li>
+    <li>Added missing values for `@container` in the description of
+      <a data-link-for="JsonLdErrorCode">invalid container mapping</a>.</li>
+    <li>Clarified step <a href="#alg-inv-lang-dir">3.13</a> in the
+      <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
+      by moving the preceding step to <a href=#alg-inv-lang-map>3.9</a>.</li>
+    <li>Update substeps of <a href="#alg-serialize-rdf-cl-reference">6.1.6</a>
+      in the <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a>
+      to update <var>cl reference</var> and not <var>node</var>.</li>
+    <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
+      the `preserve` keyword, which is only used for framing.</li>
+  </ul>
+</section>
+<section class="appendix informative" id="changes-from-pr">
+  <h2>Changes since Proposed Recommendation Release of 7 May 2020</h2>
+  <ul>
+    <li>Removed remaining "at-risk" notes.</li>
+    <li>Update bibliographic reference for JCS to [[RFC8785]].</li>
+    <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
+      which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
+      for non-browser usage to address review suggestions.</li>
+  </ul>
+</section>
+<section class="appendix informative" id="changes-from-rec1">
+  <h2>Changes since Recommendation of 16 July 2020</h2>
+  <ul>
+    <li>Regenerated definition list, which does not attempt to filter out unused definitions.</li>
+    <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
   </ul>
 </section>
 <section id="ack"

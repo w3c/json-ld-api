@@ -15,6 +15,8 @@ HTML
 </a>
 </p>
 <h1>HTML</h1>
+<p>These tests implement the requirements for the JSON-LD <a href="https://www.w3.org/TR/json-ld11-api/#html-content-algorithms">HTML Content Algorithms</a>.</p>
+
 <p>This is an HTML version of a test manifest. The JSON-LD version of this manifest may be found at
 <a href="html-manifest.jsonld">html-manifest.jsonld</a>. The manifest vocabulary is described in the <a href="vocab.html">JSON-LD Test Vocabulary</a> (<a href="vocab.jsonld">JSON-LD</a>, <a href="vocab.ttl">Turtle</a>) and is based on the <a href="http://www.w3.org/TR/2014/NOTE-rdf11-testcases-20140225/">RDF Test Vocabulary</a>.</p>
 
@@ -28,29 +30,29 @@ comprehensive JSON-LD testing solution for developers creating JSON-LD Processor
 
 <h2>General instructions for running the JSON-LD Test suites</h2>
 
-<h3><a href="compact-manifest.jsonld">compact</a> tests have <em>input</em>, <em>expected</em> and <em>context</em> documents.</h3>
+<h3><a href="compact-manifest.html">compact</a> tests have <em>input</em>, <em>expected</em> and <em>context</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output. Additionally, if the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
-<h3><a href="expand-manifest.jsonld">expand</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
+<h3><a href="expand-manifest.html">expand</a> tests have <em>input</em> and <em>expected</em> documents.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output.</p>
 
 <p>Expansion tests may have a <code>expandContext</code> option, which is treated
 as an IRI relative to the manifest.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
-<h3><a href="html.jsonld">html</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
+<h3><a href="html-manifest.html">html</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output after potentially remapping blank node identifiers (see below). Additionally, if the result is compacted and the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
-<h3><a href="flatten-manifest.jsonld">flatten</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
+<h3><a href="flatten-manifest.html">flatten</a> tests have <em>input</em> and <em>expected</em> documents and an optional <em>context</em> document.</h3>
 
 <p>The <em>expected</em> results can be compared using <a href="#json-ld-object-comparison">JSON-LD object comparison</a> with the processor output after potentially remapping blank node identifiers (see below). Additionally, if the result is compacted and the <code>ordered</code> option is not set, result should be expanded and compared with the expanded <em>expected</em> document also using <a href="#json-ld-object-comparison">JSON-LD object comparison</a>.</p>
 
-<p>For <em>NegativeEvaluationTests</em>, the result is a string associated with the expected error code.</p>
+<p>For <strong>NegativeEvaluationTests</strong>, the result is a string associated with the expected error code.</p>
 <p>Unless <code>processingMode</code> is set explicitly in a test entry, <code>processingMode</code> is compatible with both <code>json-ld-1.0</code> and <code>json-ld-1.1</code>.</p>
 
 <p>Test results that include a context input presume that the context is provided locally, and not from the referenced location, thus the results will include the content of the context file, rather than a reference.</p>
@@ -120,7 +122,6 @@ to the <a href="mailto:json-ld-wg@w3.org">JSON-LD Working Group mailing list</a>
 <dt>baseIri</dt>
 <dd>https://w3c.github.io/json-ld-api/tests/</dd>
 </dl>
-<p>JSON-LD HTML tests</p>
 <section>
 <h2>
 Test sequence:
@@ -150,6 +151,8 @@ Test te001 Expands embedded JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -180,6 +183,8 @@ Test tex01 Expands embedded JSON-LD script element (xhtml)
 <dd>json-ld-1.1</dd>
 <dt>contentType</dt>
 <dd>application/xhtml+xml</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -208,6 +213,8 @@ Test te002 Expands first embedded JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -236,6 +243,8 @@ Test te003 Expands targeted JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -266,6 +275,8 @@ Test te004 Expands all embedded JSON-LD script elements with extractAllScripts o
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -296,6 +307,8 @@ Test te005 Expands multiple embedded JSON-LD script elements where one is an arr
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -324,6 +337,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -354,6 +369,8 @@ Test te007 Expands as empty with no embedded JSON-LD script elements and extract
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -382,6 +399,8 @@ Test te010 Expands embedded JSON-LD script element with HTML character reference
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -410,6 +429,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -438,6 +459,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -466,6 +489,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -494,6 +519,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -522,6 +549,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -550,6 +579,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -578,6 +609,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -606,6 +639,8 @@ Test te018 Expands embedded JSON-LD script element relative to document base
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -636,6 +671,8 @@ Test te019 Expands embedded JSON-LD script element relative to base option
 <dd>json-ld-1.1</dd>
 <dt>base</dt>
 <dd>http://a.example.com/doc</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -666,6 +703,8 @@ Test te020 Expands embedded JSON-LD script element relative to HTML base
 <dd>json-ld-1.1</dd>
 <dt>base</dt>
 <dd>http://a.example.com/doc</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -696,6 +735,8 @@ Test te021 Expands embedded JSON-LD script element relative to relative HTML bas
 <dd>json-ld-1.1</dd>
 <dt>base</dt>
 <dd>http://a.example.com/doc</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -724,6 +765,8 @@ Test te022 Expands targeted JSON-LD script element with fragment and HTML base
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -756,6 +799,8 @@ Test tc001 Compacts embedded JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -788,6 +833,8 @@ Test tc002 Compacts first embedded JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -820,6 +867,8 @@ Test tc003 Compacts targeted JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -854,6 +903,8 @@ Test tc004 Compacts all embedded JSON-LD script elements with extractAllScripts 
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -886,6 +937,8 @@ Test tf001 Flattens embedded JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -920,6 +973,8 @@ Test tf002 Flattens first embedded JSON-LD script element
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>false</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -952,6 +1007,8 @@ Test tf003 Flattens targeted JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -984,6 +1041,8 @@ Test tf004 Flattens all script elements by default
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1012,6 +1071,8 @@ Test tr001 Transforms embedded JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1042,6 +1103,8 @@ Test tr002 Transforms first embedded JSON-LD script element
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>false</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1070,6 +1133,8 @@ Test tr003 Transforms targeted JSON-LD script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1100,6 +1165,8 @@ Test tr004 Expands all embedded JSON-LD script elements with extractAllScripts o
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1130,6 +1197,8 @@ Test tr005 Expands multiple embedded JSON-LD script elements where one is an arr
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1158,6 +1227,8 @@ Test tr006 Expands as empty with no embedded JSON-LD script elements
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1188,6 +1259,8 @@ Test tr007 Expands as empty with no embedded JSON-LD script elements and extract
 <dd>json-ld-1.1</dd>
 <dt>extractAllScripts</dt>
 <dd>true</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1216,6 +1289,8 @@ Test tr010 Expands embedded JSON-LD script element with HTML character reference
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1244,6 +1319,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1272,6 +1349,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1300,6 +1379,8 @@ loading document failed
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1328,6 +1409,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1356,6 +1439,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1384,6 +1469,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1412,6 +1499,8 @@ invalid script element
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1440,6 +1529,8 @@ Test tr018 Expands embedded JSON-LD script element relative to document base
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1470,6 +1561,8 @@ Test tr019 Expands embedded JSON-LD script element relative to base option
 <dd>json-ld-1.1</dd>
 <dt>base</dt>
 <dd>http://a.example.com/doc</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1500,6 +1593,8 @@ Test tr020 Expands embedded JSON-LD script element relative to HTML base
 <dd>json-ld-1.1</dd>
 <dt>base</dt>
 <dd>http://a.example.com/doc</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1530,6 +1625,8 @@ Test tr021 Expands embedded JSON-LD script element relative to relative HTML bas
 <dd>json-ld-1.1</dd>
 <dt>base</dt>
 <dd>http://a.example.com/doc</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>
@@ -1558,6 +1655,8 @@ Test tr022 Expands targeted JSON-LD script element with fragment and HTML base
 <dl class='options'>
 <dt>specVersion</dt>
 <dd>json-ld-1.1</dd>
+<dt>processorFeature</dt>
+<dd>HTML Script Extraction</dd>
 </dl>
 </dd>
 </dl>

@@ -3,7 +3,7 @@
   "@id": "",
   "@type": "mf:Manifest",
   "name": "Compaction",
-  "description": "JSON-LD Compaction tests.",
+  "description": "These tests implement the requirements for the JSON-LD [Compaction Algorithm](https://www.w3.org/TR/json-ld11-api/#compaction-algorithm).",
   "baseIri": "https://w3c.github.io/json-ld-api/tests/",
   "sequence": [
     {
@@ -1174,6 +1174,15 @@
       "input": "compact/c027-in.jsonld",
       "context": "compact/c027-context.jsonld",
       "expect": "compact/c027-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc028",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Empty-property scoped context does not affect term selection.",
+      "purpose": "Adding a minimal/empty property-scoped context should not affect the using terms defined in outer context.",
+      "input": "compact/c028-in.jsonld",
+      "context": "compact/c028-context.jsonld",
+      "expect": "compact/c028-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tdi01",

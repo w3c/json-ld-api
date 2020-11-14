@@ -7,7 +7,7 @@
 
 !!! 5
 %html
-  - subjects = tests['testSubjects'].sort_by {|s| s['name'].to_s.downcase}
+  - subjects = tests['testSubjects']
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html;charset=utf-8"}
     %link{rel: "alternate", href: "earl.jsonld"}
@@ -64,12 +64,28 @@
       pre > code {
         color: #C83500;
       }
+      .non-normative, .non-normative a:visited, .non-normative a:link {
+        color: gray;
+      }
+      #test-manifests .report td:last-child::before {
+        position: absolute;
+        left: 1em;
+        content: "X";
+        color: red;
+        font-weight: bold;
+      }
+      #test-manifests .report tr.summary td:last-child::before,
+      #test-manifests .report .PASS ~ td.PASS:last-child::before,
+      #test-manifests .report .PASS ~ .PASS ~ td:last-child::before {
+        display: none;
+      }
+
   %body{prefix: "bibo: http://purl.org/ontology/bibo/ earl: http://www.w3.org/ns/earl# doap: http://usefulinc.com/ns/doap# mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#", vocab: "http://www.w3.org/ns/earl#"}
     - subject_refs = {}
     - passed_tests = []
-    - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each {|m| m['title'] ||= m['rdfs:label'] || m['description'] || m['rdfs:comment']}
     - subjects.each_with_index do |subject, index|
-      - subject_refs[subject['@id']] = "subj_#{index}"
+      - frag_id = "subj_#{subject['name']}-#{subject['language']}".gsub(/[\W_]+/, '_')
+      - subject_refs[subject['@id']] = frag_id
     %div.head{role: :contentinfo}
       %p
         %a{href: "http://www.w3.org/"}
@@ -151,19 +167,23 @@
           Table of Contents
       %ul.toc#respecContents{role: "directory"}
         %li.tocline
-          %a.tocxref{href: "#instructions-for-submitting-implementation-reports"}
+          %a.tocxref{href: "#introduction"}
             %span.secno="1."
+            Introduction
+        %li.tocline
+          %a.tocxref{href: "#instructions-for-submitting-implementation-reports"}
+            %span.secno="2."
             Instructions for submitting implementation reports
         %li.tocline
           %a.tocxref{href: "#test-manifests"}
-            %span.secno="2."
+            %span.secno="3."
             Test Manifests
           %ul.toc
             - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each_with_index do |manifest, ndx|
               %li.tocline
-                %span.secno="2.#{ndx+1}"
-                %a.tocxref{href: "##{manifest['rdfs:comment'].gsub(' ', '-')}"}
-                  ~ manifest['rdfs:comment']
+                %span.secno="3.#{ndx+1}"
+                %a.tocxref{href: "##{manifest['title'].gsub(' ', '-')}"}
+                  ~ manifest['title']
         %li.tocline
           %a.tocxref{href: "#test-subjects"}
             %span.secno="A."
@@ -172,33 +192,56 @@
             - subjects.each_with_index do |subject, ndx|
               %li.tocline
                 %span.secno="A.#{ndx+1}"
-                %a.tocxref{href: "#" + subject_refs[subject['@id']]}= subject['name']
+                %a.tocxref{href: "#" + subject_refs[subject['@id']]}
+                  = subject['name']
+                  - if subject['language']
+                    = " (#{subject['language']})"
         %li.tocline
           %a.tocxref{href: "#individual-test-results"}
             %span.secno="B."
             Individual Test Results
         %li.tocline
-          %a.tocxref{href: "#test-definitions"}
-            %span.secno="C."
-            Test Definitions
-        %li.tocline
           %a.tocxref{href: "#report-generation-software"}
-            %span.secno="D."
+            %span.secno="C."
             Report Generation Software
+    %section#introduction
+      :markdown
+        ## Introduction
+
+        This implementation report covers the implementations of the JSON-LD
+        specifications which have submitted test results. It is intended to be
+        maintained by the [JSON for Linking Data Community Group](https://www.w3.org/community/json-ld/),
+        or a JSON-LD Working Group if one is active.
+        The implementation report serves two purposes:
+
+        1. To demonstrate that there are multiple, independent implementations of
+          the specifications. This is a prerequisite for progression of any
+          standard to Recommendation.
+
+        2. To catalog the known, conforming implementations and which features
+          each supports.
+
+        There are other [JSON-LD implementations](http://json-ld.org/#developers) which are not listed in this
+        report, either due to not submitting tests or by not being intended as
+        direct implementations of the specification, but instead layering on
+        top of such libraries. For a broader list of implementations, please
+        see the [JSON-LD Website](https://json-ld.org/).
     %section#instructions-for-submitting-implementation-reports
       :markdown
         ## Instructions for submitting implementation reports
+
+          Reports should be submitted in Turtle format to
+          [Public JSON-LD WG](mailto:public-json-ld-wg@w3.org) or via a Pull
+          Request to the [w3c/json-ld-api](https://github.com/w3c/json-ld-api/pulls).
 
           Tests should be run using the test manifests defined in the
           [Test Manifests](#test-manifests) Section.
 
           The assumed base URI for the tests is `<http://example/base/>` if needed.
 
-          Reports should be submitted in Turtle format to
-          [Public JSON-LD WG](mailto:public-json-ld-wg@w3.org)
-          and include an `earl:Assertion`
-          for each test, referencing the test resource from the associated manifest
-          and the test subject being reported upon. An example test entry is be the following:
+          Include an `earl:Assertion` for each test, referencing the test
+          resource from the associated manifest and the test subject being
+          reported upon. See the example below:
 
               [ a earl:Assertion;
                 earl:assertedBy <--your-developer-identifier-->;
@@ -220,7 +263,11 @@
 
               <--your-software-identifier--> a doap:Project, earl:TestSubject, earl:Software ;
                 doap:name          "My Cool JSON-LD Parser" ;
-                doap:revision      "Software version number" ;
+                doap:release [
+                  doap:name     "--short name wih version number--";
+                  doap:revision "--Software version number--" ;
+                  doap:created  "2020-02-19"^^xsd:date;
+                ] ;
                 doap:developer     <--your-developer-identifier--> ;
                 doap:homepage      <--your-software-homepace--> ;
                 doap:description   "--your-project-description--"@en ;
@@ -234,19 +281,19 @@
                 foaf:homepage <--my homepage--> .
     %section#test-manifests
       %h2
-        %span.secno="2."
+        %span.secno="3."
         Test Manifests
       - tests['entries'].sort_by {|m| m['title'].to_s.downcase}.each_with_index do |manifest, ndx2|
         - test_cases = manifest['entries']
-        %section{id: manifest['rdfs:comment'].gsub(' ', '-')}
+        %section{id: manifest['title'].gsub(' ', '-')}
           %h2
-            %span.secno="2.#{ndx2+1}"
+            %span.secno="3.#{ndx2+1}"
             %span<
               = manifest['title'] ||  'Test Manifest'
-          - Array(manifest['description']).each do |desc|
+          - Array(manifest['rdfs:comment']).each do |desc|
             - desc = desc['@value'] if desc.is_a?(Hash)
-            %p{lang: 'en'}<
-              ~ CGI.escapeHTML desc.to_s
+            :markdown
+              #{desc}
           %table.report
             - skip_subject = {}
             - passed_tests[ndx2] = []
@@ -258,17 +305,29 @@
                 - skip_subject[subject['@id']] = manifest['entries'].all? {|t| t['assertions'][index]['result']['outcome'] == 'earl:untested'}
                 - unless skip_subject[subject['@id']]
                   %th
-                    %a{href: '#' + subject_refs[subject['@id']]}<=subject['name']
+                    %a{href: '#' + subject_refs[subject['@id']]}
+                      = subject['name']
+                      - if subject['language']
+                        %br
+                        = "(#{subject['language']})"
             - test_cases.each do |test|
               - test['title'] ||= test['rdfs:label']
               - test['title'] = Array(test['title']).first
-              %tr
+              - option = test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})
+              - normative = option.fetch('https://w3c.github.io/json-ld-api/tests/vocab#normative', {"@value" => "true"})['@value'] == 'true'
+              %tr{class: normative ? 'normative' : 'non-normative'}
                 %td
                   %a{href: test['@id']}<
-                    - title = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
-                    - if test.fetch('https://w3c.github.io/json-ld-api/tests/vocab#option', {})['https://w3c.github.io/json-ld-api/tests/vocab#specVersion'] == 'json-ld-1.1'
-                      - title += "(new in JSON-LD 1.1)"
-                    ~ title
+                    = "Test #{test['@id'].split("#").last}: #{CGI.escapeHTML test['title'].to_s}"
+                  - other = []
+                  - if option['https://w3c.github.io/json-ld-api/tests/vocab#specVersion'] == 'json-ld-1.1'
+                    - other << "new in JSON-LD 1.1"
+                  - if option['https://w3c.github.io/json-ld-api/tests/vocab#processorFeature']
+                    - other << "feature: #{option['https://w3c.github.io/json-ld-api/tests/vocab#processorFeature']}"
+                  - if !normative
+                    - other << "non-normative"
+                  - unless other.empty?
+                    = "(#{other.join(', ')})"
                 -# Order assertions by subject name
                 - subjects.each_with_index do |subject, ndx|
                   - next if skip_subject[subject['@id']]
@@ -333,7 +392,7 @@
                         %span{property: "foaf:name"}<
                       - if dev['foaf:homepage']
                         %a{property: "foaf:homepage", href: dev['foaf:homepage']}
-                          ~ CGI.escapeHTML dev['foaf:homepage']
+                          ~ CGI.escapeHTML dev['foaf:homepage'].is_a?(Hash) ? dev['foaf:homepage']['@id'] : dev['foaf:homepage']
               %dt
                 Test Suite Compliance
               %dd
@@ -362,7 +421,7 @@
               %a.source{href: file}<= file
     %section.appendix#report-generation-software{property: "earl:generatedBy", resource: tests['generatedBy']['@id'], typeof: tests['generatedBy']['@type'].join(' ')}
       %h2
-        %span.secno="D."
+        %span.secno="C."
         Report Generation Software
       - doap = tests['generatedBy']
       - rel = doap['release']
@@ -378,10 +437,13 @@
           %span{property: "doap:revision"}<=rel['revision']
           %meta{property: "doap:name", content: rel['name']}
           %meta{property: "doap:created", content: rel['created'], datatype: "xsd:date"}
-        an
-        %a{property: "doap:license", href: doap['license']}<="Unlicensed"
+        is a
         %span{property: "doap:programming-language"}<="Ruby"
-        application. More information is available at
+        application freely available under the generous terms of the
+        = " "
+        %a{property: "doap:license", href: doap['license']}<>="Unlicense"
+        = "."
+        More information is available at
         %a{property: "doap:homepage", href: doap['homepage']}<=doap['homepage']
         = "."
       %p{property: "doap:developer", resource: "http://greggkellogg.net/foaf#me", typeof: "foaf:Person"}
