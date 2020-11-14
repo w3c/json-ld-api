@@ -669,20 +669,20 @@
       "expect": "toRdf/c034-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tc035",
+      "@id": "#tc037",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "property-scoped contexts which are alias of @nest",
       "purpose": "Nesting terms may have property-scoped contexts defined.",
-      "input": "toRdf/c035-in.jsonld",
-      "expect": "toRdf/c035-out.nq",
+      "input": "toRdf/c037-in.jsonld",
+      "expect": "toRdf/c037-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#tc036",
+      "@id": "#tc038",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Bibframe example (poor-mans inferrence)",
       "purpose": "Nesting terms may have property-scoped contexts defined.",
-      "input": "toRdf/c036-in.jsonld",
-      "expect": "toRdf/c036-out.nq",
+      "input": "toRdf/c038-in.jsonld",
+      "expect": "toRdf/c038-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tdi01",
