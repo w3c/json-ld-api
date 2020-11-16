@@ -2476,7 +2476,7 @@
         <li>If <var>element</var> is <code>null</code>, return <code>null</code>.</li>
         <li class="changed">If <var>active property</var> is <code>@default</code>,
           initialize the {{JsonLdOptions/frameExpansion}} flag to <code>false</code>.</li>
-        <li class="changed">If <var>active property</var> has a <a>term definition</a> in <var>active context</var>
+        <li id="alg-expand-property-scoped-context" class="changed">If <var>active property</var> has a <a>term definition</a> in <var>active context</var>
           with a <a>local context</a>, initialize <var>property-scoped context</var> to that <a>local context</a>.</li>
         <li>If <var>element</var> is a <a>scalar</a>,
           <ol>
@@ -2530,7 +2530,7 @@
           (where <a>entries</a> are <span class="changed"><a data-lt="IRI expanding">IRI expanded</a></span>,
           set <var>active context</var> to <a>previous context</a> from <var>active context</var>,
           as the scope of a term-scoped <a>context</a> does not apply when processing new <a>node objects</a>.</li>
-        <li id="alg-expand-property-scoped-context" class="changed">If <var>property-scoped context</var> is defined,
+        <li id="alg-expand-property-scoped-context2" class="changed">If <var>property-scoped context</var> is defined,
           set <var>active context</var> to the result of the
           <a href="#context-processing-algorithm">Context Processing algorithm</a>,
           passing <var>active context</var>, <var>property-scoped context</var> as <var>local context</var>,
@@ -3069,9 +3069,20 @@
                   <var>nested value</var> expands to <code>@value</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                   has been detected and processing is aborted.</li>
-                <li>Recursively repeat steps <a href="#alg-expand-each-key-value">13</a>
+                <li>Recursively repeat steps
+                  <a href="#alg-expand-property-scoped-context">3</a>,
+                  <a href="#alg-expand-property-scoped-context2">8</a>,
+                  <a href="#alg-expand-each-key-value">13</a>,
                   and <a href="#alg-expand-resolve-nest">14</a>
-                  using <var>nested value</var> for <var>element</var>.
+                  using <var>nesting-key</var> for <var>active property</var>, and
+                  <var>nested value</var> for <var>element</var>.
+                  <div class="note">Steps <a href="#alg-expand-property-scoped-context">3</a>
+                    and <a href="#alg-expand-property-scoped-context2">8</a>
+                    may update the <var>active context</var> based on a
+                    property-scoped context associated with <var>nesting-key</var>.
+                    Updates to <var>active context</var> are restricted to the
+                    recursive operation, and do not propogate to subsequent iterations
+                    on <var>nested values</var> and <var>nesting-key</var>.</div>
                   <div class="note">By invoking steps <a href="#alg-expand-each-key-value">13</a>
                     and <a href="#alg-expand-resolve-nest">14</a> on <var>nested value</var>
                     we are able to unfold arbitrary levels of nesting, with results being merged into
