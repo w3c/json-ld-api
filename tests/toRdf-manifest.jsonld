@@ -668,6 +668,7 @@
       "input": "toRdf/c034-in.jsonld",
       "expect": "toRdf/c034-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc035",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Term scoping with embedded contexts.",
