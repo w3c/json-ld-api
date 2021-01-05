@@ -4471,7 +4471,7 @@
     </section>
   </section> <!-- end of Flattening Algorithm -->
 
-  <section><h2>Node Map Generation</h2>
+  <section id="node-map-generation"><h2>Node Map Generation</h2>
 
     <p>This algorithm creates a <a class="changed">map</a> <var>node map</var> holding an indexed
       representation of the <a>graphs</a> and <a>nodes</a>
@@ -4526,7 +4526,7 @@
         <li>Otherwise <var>element</var> is a <a class="changed">map</a>. Reference the
           <a class="changed">map</a> which is the value of the <a>active graph</a>
           <a>entry</a> of <var>node map</var> using the variable <var>graph</var>. If the
-          <var>active subject</var> is <code>null</code>, set <var>node</var> to <code>null</code>
+          <var>active subject</var> is <code>null</code> <span class="changed">or a <a>map</a></span>, set <var>subject node</var> to <code>null</code>
           otherwise reference the <var>active subject</var> <a>entry</a> of <var>graph</var> using the
           variable <var>subject node</var>.</li>
         <li id="alg-nmg-each-type">For each <var>item</var> in the `@type` <a>entry</a> of <var>element</var>,
@@ -4541,7 +4541,7 @@
           <ol>
             <li>If <var>list</var> is <code>null</code>:
               <ol>
-                <li>If <var>subject node</var> does not have an <var>active property</var> <a>entry</a>,
+                <li>If <var>subject node</var> <span class="changed">(which must necessarily be a <a>map</a>)</span> does not have an <var>active property</var> <a>entry</a>,
                   create one and initialize its value to an <a>array</a>
                   containing <var>element</var>.</li>
                 <li>Otherwise, compare <var>element</var> against every item in the
@@ -4566,7 +4566,7 @@
               <var>result</var> for <var>list</var>.</li>
             <li class="changed">If <var>list</var> is <code>null</code>,
               append <var>result</var> to the value of the <var>active property</var> <a>entry</a>
-              of <var>subject node</var>.</li>
+              of <var>subject node</var> <span class="changed">(which must necessarily be a <a>map</a>)</span>.</li>
             <li class="changed">Otherwise, append <var>result</var> to the <code>@list</code> <a>entry</a> of <var>list</var>.</li>
           </ol>
         </li>
@@ -7102,6 +7102,7 @@
   <ul>
     <li>Regenerated definition list, which does not attempt to filter out unused definitions.</li>
     <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
+    <li>Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li>
   </ul>
 </section>
 <section id="ack"
