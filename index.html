@@ -4254,7 +4254,11 @@
           and processing is aborted.</li>
         <li>If <var>vocab</var> is <code>false</code>,
           transform <var>var</var> to a <a>relative IRI reference</a> using
-          the <span class="changed"><a data-lt="context-base-iri">base IRI</a> from <var>active context</var>, if it exists</span>.</li>
+          the <span class="changed"><a data-lt="context-base-iri">base IRI</a> from <var>active context</var>, if it exists</span>.
+          <span class="changed">To avoid confusion with a <a>keyword</a>, if <var>var</var> has the form of a keyword
+          (i.e., it matches the ABNF rule `"@"1*ALPHA` from [[RFC5234]]),
+          prepend to it a colon followed by a a slash (`./`).</span>
+        </li>
         <li>Finally, return <var>var</var> as is.</li>
       </ol>
     </section>
@@ -7100,6 +7104,7 @@
     <li>Regenerated definition list, which does not attempt to filter out unused definitions.</li>
     <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
     <li>Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li>
+    <li>Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li>
   </ul>
 </section>
 <section id="ack"
