@@ -933,6 +933,15 @@
       "expect": "compact/0110-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0111",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Keyword-like relative IRIs",
+      "purpose": "Relative IRIs must not have the form a of keyword",
+      "input": "compact/0111-in.jsonld",
+      "context": "compact/0111-context.jsonld",
+      "expect": "compact/0111-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "adding new term",
