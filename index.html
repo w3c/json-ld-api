@@ -3861,8 +3861,8 @@
                     <li id="alg-compact-12_8_9_6" class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
                       and <var>index key</var> is not <code>@index</code>:
                       <ol>
-                        <li>Reinitialize <var>container key</var> by <a>IRI compacting</a>
-                          <var>index key</var>.</li>
+                        <li id="alg-compact-12_8_9_6_1">Reinitialize <var>container key</var> by <a>IRI compacting</a>
+                          <var>index key</var> after first <a>IRI expanding</a> it.</li>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
                         <li id="alg-compact-12_8_9_6_3">If there are remaining values in <var>compacted item</var>
                           for <var>container key</var>, use <a>add value</a> to
@@ -7105,6 +7105,10 @@
     <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
     <li>Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li>
     <li>Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li>
+    <li>Added additional language to the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      step <a href="#alg-compact-12_8_9_6_1 ">12.8.9.6.1</a> to first expand
+      <var>container key</var> before compacting it.</li>
   </ul>
 </section>
 <section id="ack"
