@@ -1281,7 +1281,7 @@
                   to the {{RemoteDocument}} obtained
                   by dereferencing <var>context</var> using
                   the <a>LoadDocumentCallback</a>, passing <var>context</var>
-                  for <a data-link-for="LoadDocumentCallback">url</a>,
+                  for {{LoadDocumentCallback/url}},
                   and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a>
                   and for <a data-link-for="LoadDocumentOptions">requestProfile</a>.
                   <ol>
@@ -1350,7 +1350,7 @@
                   <var>base URL</var>.</li>
                 <li>Dereference <var>import</var> using
                   the <a>LoadDocumentCallback</a>, passing <var>import</var>
-                  for <a data-link-for="LoadDocumentCallback">url</a>,
+                  for {{LoadDocumentCallback/url}},
                   and <code>http://www.w3.org/ns/json-ld#context</code> for <a data-link-for="LoadDocumentOptions">profile</a>
                   and for <a data-link-for="LoadDocumentOptions">requestProfile</a>.</li>
                 <li>If <var>import</var> cannot be dereferenced,
@@ -5737,7 +5737,7 @@
           <li>Otherwise, if the provided <a data-lt="jsonldprocessor-compact-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-compact-input">input</a>
-            for <a data-link-for="LoadDocumentCallback">url</a>,
+            for {{LoadDocumentCallback/url}},
             and the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-compact-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.</li>
           <li>Set <var>expanded input</var> to the result of
@@ -5822,7 +5822,7 @@
           <li>Otherwise, if the provided <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
-            for <a data-link-for="LoadDocumentCallback">url</a>,
+            for {{LoadDocumentCallback/url}},
             the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-expand-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.</li>
           <li class="changed">If {{RemoteDocument/document}}
@@ -5903,7 +5903,7 @@
           <li>Otherwise, if the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-flatten-input">input</a>
-            for <a data-link-for="LoadDocumentCallback">url</a>,
+            for {{LoadDocumentCallback/url}},
             and the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-flatten-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
@@ -6355,8 +6355,8 @@
         <li>Create a new {{Promise}} <var>promise</var> and return it.
           The following steps are then deferred.</li>
         <li id="LoadDocumentCallback-step-2">Set <var>document</var> to the body retrieved from
-          the resource identified by <a data-link-for="LoadDocumentCallback">url</a>,
-          or by otherwise locating a resource associated with <a data-link-for="LoadDocumentCallback">url</a>.
+          the resource identified by {{LoadDocumentCallback/url}},
+          or by otherwise locating a resource associated with {{LoadDocumentCallback/url}}.
           When requesting remote documents the request MUST prefer <a>Content-Type</a> <code>application/ld+json</code>
           followed by <code>application/json</code>.
 
@@ -6502,10 +6502,10 @@
         or <code>application/xhtml+xml</code>:</p>
       <ol>
         <li>Set <var>documentUrl</var> to the <a data-cite="HTML/urls-and-fetching.html#document-base-url">Document Base URL</a>
-          of <a data-link-for="LoadDocumentCallback">url</a>, as defined in [[HTML]],
+          of {{LoadDocumentCallback/url}}, as defined in [[HTML]],
           using the existing <var>documentUrl</var> as the document's URL.
         </li>
-        <li>If the <a data-link-for="LoadDocumentCallback">url</a> parameter
+        <li>If the {{LoadDocumentCallback/url}} parameter
           contains a <a data-cite="RFC3986#section-3.5">fragment identifier</a>,
           set <var>source</var> to the <a data-cite="DOM#dom-node-textcontent">textContent</a>
           of the <a data-cite="HTML/scripting.html#the-script-element">script element</a> in <var>document</var>
