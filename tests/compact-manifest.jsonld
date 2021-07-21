@@ -942,14 +942,6 @@
       "expect": "compact/0111-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-      "@id": "#t0113",
-      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
-      "name": "Compact property index using Absolute IRI index",
-      "purpose": "With @container: @index and @index an absolute IRI, ensure round-tripping of compacted representation",
-      "input": "compact/0113-in.jsonld",
-      "context": "compact/0113-context.jsonld",
-      "expect": "compact/0113-out.jsonld"
-    }, {
       "@id": "#t0112",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Compact property index using Compact IRI index",
@@ -957,6 +949,14 @@
       "input": "compact/0112-in.jsonld",
       "context": "compact/0112-context.jsonld",
       "expect": "compact/0112-out.jsonld"
+    }, {
+      "@id": "#t0113",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact property index using Absolute IRI index",
+      "purpose": "With @container: @index and @index an absolute IRI, ensure round-tripping of compacted representation",
+      "input": "compact/0113-in.jsonld",
+      "context": "compact/0113-context.jsonld",
+      "expect": "compact/0113-out.jsonld"
     }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
