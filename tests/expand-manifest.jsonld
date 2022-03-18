@@ -1782,7 +1782,7 @@
       "purpose": "Verifies that an exception is raised in Expansion when an invalid value object value is found using a value alias",
       "input": "expand/er51-in.jsonld",
       "expectErrorCode": "invalid value object value"
-     }, {
+    }, {
       "@id": "#ter52",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Definition for the empty term",
@@ -1790,28 +1790,28 @@
       "input": "expand/er52-in.jsonld",
       "expectErrorCode": "invalid term definition"
     }, {
-     "@id": "#ter53",
-     "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-     "name": "Invalid prefix value",
-     "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @prefix value",
-     "input": "expand/er53-in.jsonld",
-     "expectErrorCode": "invalid @prefix value",
+      "@id": "#ter53",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid prefix value",
+      "purpose": "Verifies that an exception is raised on expansion when a context contains an invalid @prefix value",
+      "input": "expand/er53-in.jsonld",
+      "expectErrorCode": "invalid @prefix value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-     "@id": "#ter54",
-     "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-     "name": "Invalid value object, multiple values for @type.",
-     "purpose": "The value of @type in a value object MUST be a string or null.",
-     "input": "expand/er54-in.jsonld",
-     "expectErrorCode": "invalid typed value"
+      "@id": "#ter54",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid value object, multiple values for @type.",
+      "purpose": "The value of @type in a value object MUST be a string or null.",
+      "input": "expand/er54-in.jsonld",
+      "expectErrorCode": "invalid typed value"
     }, {
-     "@id": "#ter55",
-     "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
-     "name": "Invalid term definition, multiple values for @type.",
-     "purpose": "The value of @type in an expanded term definition object MUST be a string or null.",
-     "input": "expand/er55-in.jsonld",
-     "expectErrorCode": "invalid type mapping"
-   }, {
+      "@id": "#ter55",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid term definition, multiple values for @type.",
+      "purpose": "The value of @type in an expanded term definition object MUST be a string or null.",
+      "input": "expand/er55-in.jsonld",
+      "expectErrorCode": "invalid type mapping"
+    }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Using an array value for @context is illegal in JSON-LD 1.0",
