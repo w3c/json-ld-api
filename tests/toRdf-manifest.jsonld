@@ -2252,6 +2252,20 @@
       "input": "expand/er56-in.jsonld",
       "expectErrorCode": "keyword redefinition"
     }, {
+     "@id": "#ter56",
+     "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+     "name": "Array not found for @json @list.",
+     "purpose": "The value for a @json @list term MUST be an array.",
+     "input": "toRdf/er57-in.jsonld",
+     "expectErrorCode": "invalid set or list object"
+    }, {
+     "@id": "#ter57",
+     "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+     "name": "Array not found for @json @set.",
+     "purpose": "The value for a @json @set term MUST be an array.",
+     "input": "toRdf/er56-in.jsonld",
+     "expectErrorCode": "invalid set or list object"
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
@@ -2507,6 +2521,62 @@
       "input": "toRdf/js23-in.jsonld",
       "expect": "toRdf/js23-out.nq",
       "option": {"specVersion": "json-ld-1.1", "useJCS": true}
+    }, {
+      "@id": "#tjs24",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal (one JSON literal).",
+      "purpose": "Tests transforming property with @type @json to a JSON literal (one JSON literal).",
+      "input": "toRdf/js24-in.jsonld",
+      "expect": "toRdf/js24-out.nq",
+      "option": {"specVersion": "json-ld-1.1", "useJCS": true}
+    }, {
+      "@id": "#tjs25",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal (two JSON literals).",
+      "purpose": "Tests transforming property with @type @json to a JSON literal (two JSON literals).",
+      "input": "toRdf/js25-in.jsonld",
+      "expect": "toRdf/js25-out.nq",
+      "option": {"specVersion": "json-ld-1.1", "useJCS": true}
+    }, {
+      "@id": "#tjs26",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal (JSON literal and non-JSON).",
+      "purpose": "Tests transforming property with @type @json to a JSON literal (JSON literal and non-JSON).",
+      "input": "toRdf/js26-in.jsonld",
+      "expect": "toRdf/js26-out.nq",
+      "option": {"specVersion": "json-ld-1.1", "useJCS": true}
+    }, {
+      "@id": "#tjs27",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform JSON literal (duplicate JSON literals).",
+      "purpose": "Tests transforming property with @type @json to a JSON literal (duplicate JSON literals).",
+      "input": "toRdf/js27-in.jsonld",
+      "expect": "toRdf/js27-out.nq",
+      "option": {"specVersion": "json-ld-1.1", "useJCS": true}
+    }, {
+      "@id": "#tjs28",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform array-like value with @json and no @set/@list in @context.",
+      "purpose": "Tests transforming array-like value with @json and no @set/@list in @context.",
+      "input": "toRdf/js28-in.jsonld",
+      "expect": "toRdf/js28-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs29",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform array-like value with @json and @set in @context.",
+      "purpose": "Tests transforming array-like value with @json and @set in @context.",
+      "input": "toRdf/js29-in.jsonld",
+      "expect": "toRdf/js29-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs30",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Transform array-like value with @json and @list in @context.",
+      "purpose": "Tests transforming array-like value with @json and @list in @context.",
+      "input": "toRdf/js30-in.jsonld",
+      "expect": "toRdf/js30-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],

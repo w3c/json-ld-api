@@ -1,0 +1,9 @@
+[{
+  "http://example.org/vocab#value": [{
+    "@value": ["JSON1"],
+    "@type": "@json"
+  }, {
+    "@value": ["JSON2"],
+    "@type": "@json"
+  }]
+}]

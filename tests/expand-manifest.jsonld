@@ -1827,6 +1827,20 @@
       "input": "expand/er56-in.jsonld",
       "expectErrorCode": "keyword redefinition"
     }, {
+      "@id": "#ter57",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Array not found for @json @set.",
+      "purpose": "The value for a @json @set term MUST be an array.",
+      "input": "expand/er57-in.jsonld",
+      "expectErrorCode": "invalid set or list object"
+    }, {
+      "@id": "#ter58",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Array not found for @json @list.",
+      "purpose": "The value for a @json @list term MUST be an array.",
+      "input": "expand/er58-in.jsonld",
+      "expectErrorCode": "invalid set or list object"
+    }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Using an array value for @context is illegal in JSON-LD 1.0",
@@ -2097,6 +2111,62 @@
       "purpose": "Tests expanding property with @type @json to a JSON literal (empty array).",
       "input": "expand/js23-in.jsonld",
       "expect": "expand/js23-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs24",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (one JSON literal).",
+      "purpose": "Tests expanding property with @type @json (one JSON literal).",
+      "input": "expand/js24-in.jsonld",
+      "expect": "expand/js24-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs25",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (two JSON literals).",
+      "purpose": "Tests expanding property with @type @json (two JSON literals).",
+      "input": "expand/js25-in.jsonld",
+      "expect": "expand/js25-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs26",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (JSON literal and non-JSON).",
+      "purpose": "Tests expanding property with @type @json (JSON literal and non-JSON).",
+      "input": "expand/js26-in.jsonld",
+      "expect": "expand/js26-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs27",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand JSON literal (duplicate JSON literals).",
+      "purpose": "Tests expanding property with @type @json (dupcliate JSON literals).",
+      "input": "expand/js27-in.jsonld",
+      "expect": "expand/js27-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs28",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand array-like value with @json and no @set/@list in @context.",
+      "purpose": "Tests expanding array-like value with @json and no @set/@list in @context.",
+      "input": "expand/js28-in.jsonld",
+      "expect": "expand/js28-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs29",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand array-like value with @json and @set in @context.",
+      "purpose": "Tests expanding array-like value with @json and @set in @context.",
+      "input": "expand/js29-in.jsonld",
+      "expect": "expand/js29-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs30",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Expand array-like value with @json and @list in @context.",
+      "purpose": "Tests expanding array-like value with @json and @list in @context.",
+      "input": "expand/js30-in.jsonld",
+      "expect": "expand/js30-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tl001",
