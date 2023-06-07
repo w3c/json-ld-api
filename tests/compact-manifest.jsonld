@@ -958,6 +958,15 @@
       "context": "compact/0113-context.jsonld",
       "expect": "compact/0113-out.jsonld"
     }, {
+      "@id": "#t0114",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Reverse term with property based indexed container",
+      "purpose": "With reverse term using @container: @index and @index set to a property, ensure round-tripping from expaned form",
+      "input": "expand/0131-out.jsonld",
+      "context": "expand/0131-in.jsonld",
+      "expect": "expand/0131-in.jsonld",
+      "option": {"base": "https://example.org/", "specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "adding new term",
