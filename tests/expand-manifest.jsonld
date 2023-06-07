@@ -979,6 +979,14 @@
       "input": "expand/0130-in.jsonld",
       "expect": "expand/0130-out.jsonld"
     }, {
+      "@id": "#t0131",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Reverse term with property based indexed container",
+      "purpose": "Expanding a reverse term using @container: @index and @index set to a property",
+      "input": "expand/0131-in.jsonld",
+      "expect": "expand/0131-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
