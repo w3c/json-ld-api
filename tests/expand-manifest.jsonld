@@ -2828,6 +2828,14 @@
       "input": "expand/pr40-in.jsonld",
       "expect": "expand/pr40-out.jsonld"
     }, {
+      "@id": "#tpr41",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Allows protected redefinition of equivalent id terms",
+      "purpose": "Check protected redefinition of equivalent id terms in different forms.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr41-in.jsonld",
+      "expect": "expand/pr41-out.jsonld"
+    }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@import is invalid in 1.0.",

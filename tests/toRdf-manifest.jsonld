@@ -3358,6 +3358,14 @@
       "input": "toRdf/pr40-in.jsonld",
       "expect": "toRdf/pr40-out.nq"
     }, {
+      "@id": "#tpr41",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Allows protected redefinition of equivalent id terms",
+      "purpose": "Check protected redefinition of equivalent id terms in different forms.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr41-in.jsonld",
+      "expect": "toRdf/pr41-out.nq"
+    }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Representing numbers >= 1e21",
