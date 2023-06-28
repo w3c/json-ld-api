@@ -397,6 +397,13 @@
       "input": "toRdf/0132-in.jsonld",
       "expect": "toRdf/0132-out.nq"
     }, {
+      "@id": "#t0133",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Reverse term with property based indexed container",
+      "purpose": "Expanding a reverse term using @container: @index and @index set to a property (from expand#t0131)",
+      "input": "toRdf/0133-in.jsonld",
+      "expect": "toRdf/0133-out.nq"
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "adding new term",
