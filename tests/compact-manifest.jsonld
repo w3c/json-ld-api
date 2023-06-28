@@ -961,10 +961,10 @@
       "@id": "#t0114",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Reverse term with property based indexed container",
-      "purpose": "With reverse term using @container: @index and @index set to a property, ensure round-tripping from expaned form",
-      "input": "expand/0131-out.jsonld",
-      "context": "expand/0131-in.jsonld",
-      "expect": "expand/0131-in.jsonld",
+      "purpose": "Compaction using a reverse term with @container indexed on a property (round-trip test of expand#t0131)",
+      "input": "compact/0114-in.jsonld",
+      "context": "compact/0114-context.jsonld",
+      "expect": "compact/0114-out.jsonld",
       "option": {"base": "https://example.org/", "specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tc001",
