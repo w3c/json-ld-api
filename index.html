@@ -816,7 +816,7 @@
     <h2>Flattening</h2>
 
     <p>While expansion ensures that a document is in a uniform structure,
-      <dfn data-lt="flattened">flattening</dfn> goes a step further to ensure that the shape of the data
+      <dfn data-lt="flattened" class="lint-ignore">flattening</dfn> goes a step further to ensure that the shape of the data
       is deterministic. In expanded documents, the <a>properties</a> of a single
       <a>node</a> may be spread across a number of different
       <a class="changed">node objects</a>. By flattening a
@@ -6112,11 +6112,11 @@
             <a href="#dfn-rdfdataset-add-graphname">`graphName`</a> MUST be a
             <a>well-formed</a> <a>IRI</a> or <a>blank node identifier</a>.
           </dd>
-          <dt><dfn data-lt="RdfDataset-add-graph" data-lt-noDefault>graph</dfn></dt>
+          <dt><dfn data-lt="RdfDataset-add-graph" data-lt-noDefault class="lint-ignore">graph</dfn></dt>
           <dd>The <a>RdfGraph</a> to add to the <a>RdfDataset</a>.</dd>
         </dl>
       </dd>
-      <dt><dfn data-dfn-for="RdfDataset"><code>iterable</code></dfn></dt>
+      <dt><dfn data-dfn-for="RdfDataset" class="lint-ignore"><code>iterable</code></dfn></dt>
       <dd>The <a data-cite="WEBIDL#dfn-value-pairs-to-iterate-over">value pairs to iterate over</a>
         are the list of <var>graph name</var>-<var>graph</var> pairs,
         with the <var>graph name</var> being <code>null</code>
@@ -6148,11 +6148,11 @@
           Used by the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>.</p>
 
         <dl class="parameters">
-          <dt><dfn data-lt="RdfGraph-add-triple" data-lt-noDefault>triple</dfn></dt>
+          <dt><dfn data-lt="RdfGraph-add-triple" data-lt-noDefault class="lint-ignore">triple</dfn></dt>
           <dd>The <a>RdfTriple</a> to add to the <a>RdfGraph</a>.</dd>
         </dl>
       </dd>
-      <dt><dfn data-dfn-for="RdfGraph"><code>iterable</code></dfn></dt>
+      <dt><dfn data-dfn-for="RdfGraph" class="lint-ignore"><code>iterable</code></dfn></dt>
       <dd>A <a data-cite="WEBIDL#dfn-value-iterator">value iterator</a>
         over the <a>RdfTriple</a> instances associated with the graph.
         Note that a given <a>RdfTriple</a> instance may appear in more than one graph
@@ -6343,7 +6343,7 @@
       <dl>
         <dt><dfn data-dfn-for="LoadDocumentCallback">url</dfn></dt>
         <dd>The URL of the remote document or context to load.</dd>
-        <dt class="changed"><dfn data-lt="LoadDocumentCallback-options" data-lt-noDefault>options</dfn></dt>
+        <dt class="changed"><dfn data-lt="LoadDocumentCallback-options" data-lt-noDefault class="lint-ignore">options</dfn></dt>
         <dd class="changed">A set of options to determine
           the behavior of the callback. See <a href="#loaddocumentoptions" class="sectionRef"></a>.</dd>
       </dl>
