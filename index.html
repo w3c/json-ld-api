@@ -1955,7 +1955,7 @@
         <a>active context</a>, each <a>term</a> in the
         <a>active context</a> is visited, ordered by length, shortest
         first (ties are broken by choosing the lexicographically least
-        <a>term</a>, using <a>unicode codepoint order</a>.).
+        <a>term</a>, using <a>code point order</a>.).
         For each <a>term</a>, an entry is added to
         the <a>inverse context</a> for each possible combination of
         <a>container mapping</a> and <a>type mapping</a>
@@ -7118,6 +7118,7 @@
       possible features for reverse term definitions are processed. The change
       was to remove <q>and return</q> from the end of step 13, and revise step
       14 to begin with <q>Otherwise</q>.</li>
+    <li>Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li>
   </ul>
 </section>
 <section id="ack"
