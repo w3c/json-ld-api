@@ -1955,7 +1955,8 @@
         <a>active context</a>, each <a>term</a> in the
         <a>active context</a> is visited, ordered by length, shortest
         first (ties are broken by choosing the lexicographically least
-        <a>term</a>). For each <a>term</a>, an entry is added to
+        <a>term</a>, using <a>unicode codepoint order</a>.).
+        For each <a>term</a>, an entry is added to
         the <a>inverse context</a> for each possible combination of
         <a>container mapping</a> and <a>type mapping</a>
         or <a>language mapping</a> that would legally match the
@@ -1992,7 +1993,7 @@
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
           first (breaking ties by choosing the lexicographically least
-          <a>term</a>):
+          <a>term</a> using <a>code point order</a>):
           <ol>
             <li>If the <a>term definition</a> is <code>null</code>,
               <a>term</a> cannot be selected during <a>compaction</a>,
@@ -2001,7 +2002,7 @@
               <span class="changed">
                 If the <a>container mapping</a> is not empty, set <var>container</var>
                 to the concatenation of all values of the <a>container mapping</a>
-                in lexicographical order
+                in <a>code point order</a>
               </span>.</li>
             <li>Initialize <var>var</var> to the value of the <a>IRI mapping</a>
               for the <a>term definition</a>.</li>
@@ -2169,7 +2170,8 @@
         has a conflicting <a>type mapping</a> or <a>language mapping</a>.
         Ties between <a>terms</a> that have the same
         mappings are resolved by first choosing the shortest terms, and then by
-        choosing the lexicographically least term. Note that these ties are
+        choosing the lexicographically least term using <a>code point order</a>.
+        Note that these ties are
         resolved automatically because they were previously resolved when the
         <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
         was used to create the <a>inverse context</a>.</p>
@@ -2434,7 +2436,7 @@
           {{JsonLdOptions/frameExpansion}}
           flag allowing special forms of input used for <a data-cite="JSON-LD11-FRAMING#dfn-framing">frame expansion</a>,
           the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted,
+          <a>map entry</a> keys in <a>code point order</a>, where noted,
           and the <var>from map</var> flag, used to control reverting
           previous <a>term definitions</a> in the <a>active context</a> associated with non-propagated <a>contexts</a>.
           If not passed, the optional flags are set to <code>false</code></span>.</p>
@@ -2544,11 +2546,11 @@
           This is used for expanding values that may be relevant to any previous
           <a>type-scoped context</a>.</li>
         <li class="changed">For each <var>key</var> and <var>value</var> in <var>element</var>
-          ordered lexicographically by <var>key</var>
+          in <a>code point order</a> by <var>key</var>
           where <var>key</var> <span class="changed"><a data-lt="IRI expanding">IRI expands</a></span> to <code>@type</code>:
           <ol>
             <li>Convert <var>value</var> into an <a>array</a>, if necessary.</li>
-            <li id="expand-type-scoped-context">For each <var>term</var> which is a value of <var>value</var> ordered lexicographically,
+            <li id="expand-type-scoped-context">For each <var>term</var> which is a value of <var>value</var> in <a>code point order</a>,
               if <var>term</var> is a <a>string</a>,
               and <var>term</var>'s <a>term definition</a> in <var>type-scoped context</var>
               has a <a>local context</a>, set <var>active context</var> to the result
@@ -2564,13 +2566,13 @@
         <li id="alg-expand-initialize-vars">Initialize two empty <a class="changed">maps</a>, <var>result</var>
           <span class="changed">and <var>nests</var>.
             Initialize <var>input type</var> to expansion of the last value of the first <a>entry</a> in <var>element</var>
-            expanding to <code>@type</code> (if any), ordering <a>entries</a> lexicographically by key</span>.
+            expanding to <code>@type</code> (if any), in <a>code point order</a> <a>entries</a> by key</span>.
             Both the key and value of the matched entry are
             <span class="changed"><a data-lt="IRI expanding">IRI expanded</a></span>.
         </li>
         <li id="alg-expand-each-key-value">
           For each <var>key</var> and <var>value</var> in <var>element</var>,
-          ordered lexicographically by <var>key</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
+          in <a>code point order</a> by <var>key</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
           <ol>
             <li>If <var>key</var> is <code>@context</code>, continue to
               the next <var>key</var>.</li>
@@ -2862,7 +2864,7 @@
                   has a <a>direction mapping</a>,
                   update <var>direction</var> with that value.</li>
                 <li>For each key-value pair <var>language</var>-<var>language value</var>
-                  in <var>value</var>, ordered lexicographically by <var>language</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
+                  in <var>value</var>, in <a>code point order</a> by <var>language</var> <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
                     <li>If <var>language value</var> is not an <a>array</a>
                       set <var>language value</var> to an <a>array</a> containing only
@@ -2907,7 +2909,7 @@
                   the <var>key</var>'s <a>index mapping</a> in <a>active context</a>,
                   or <code>@index</code>, if it does not exist.</li>
                 <li>For each key-value pair <var>index</var>-<var>index value</var>
-                  in <var>value</var>, ordered lexicographically by <var>index</var>
+                  in <var>value</var>, in <a>code point order</a> by <var>index</var>
                   <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
                   <ol>
                     <li class="changed">If <var>container mapping</var> includes `@id` or `@type`,
@@ -3056,7 +3058,7 @@
           </ol>
         </li>
         <li id="alg-expand-resolve-nest" class="changed">For each key <var>nesting-key</var> in <var>nests</var>,
-          ordered lexicographically if {{JsonLdOptions/ordered}} is <code>true</code>:
+          in <a>code point order</a> if {{JsonLdOptions/ordered}} is <code>true</code>:
           <ol>
             <li>Initialize <var>nested values</var> to the value of <var>nesting-key</var>
               in <var>element</var>, ensuring that it is an <a>array</a>.</li>
@@ -3445,8 +3447,8 @@
         and an <var>element</var> to be compacted.
         <span class="changed">The optional inputs are the
           {{JsonLdOptions/compactArrays}} flag
-          and the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted.
+          and the {{JsonLdOptions/ordered}} flag, used to place
+          <a>map entry</a> keys in <a>code point order</a>, where noted.
           If not passed, both flags are set to <code>false</code></span>.</p>
 
       <ol>
@@ -3527,7 +3529,7 @@
           into its compacted form
           <span class="changed">by <a>IRI compacting</a> <var>expanded type</var></span>.
           Then, for each <var>term</var>
-          in <var>compacted types</var> ordered lexicographically:
+          in <var>compacted types</var> in <a>code point order</a>:
           <ol>
             <li id="alg-compact-11_1">If the <a>term definition</a> for <var>term</var> in <var>type-scoped context</var> has a
               <a>local context</a>
@@ -3543,7 +3545,7 @@
           </ol>
         </li>
         <li>For each key <var>expanded property</var> and value <var>expanded value</var>
-          in <var>element</var>, ordered lexicographically by <var>expanded property</var>
+          in <var>element</var>, in <a>code point order</a> by <var>expanded property</var>
           <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
           <ol>
             <li>If <var>expanded property</var> is <code>@id</code>:
@@ -4237,7 +4239,8 @@
               <var>definition</var>'s <a>IRI mapping</a>.</li>
             <li>If either <var>compact IRI</var> is <code>null</code>, <var>candidate</var> is
               shorter or the same length but lexicographically less than
-              <var>compact IRI</var> and <var>candidate</var> does not have a
+              <var>compact IRI</var>, using <a>code point order</a>,
+              and <var>candidate</var> does not have a
               <a>term definition</a> in <var>active context</var>, or if that
               <a>term definition</a> has an <a>IRI mapping</a>
               that equals <var>var</var> and <var>value</var> is <code>null</code>,
@@ -4419,8 +4422,8 @@
       <p>The algorithm takes <span class="changed">one required and one optional</span> input variables.
         The required input is an <var>element</var> to flatten.
         <span class="changed">The optional input is
-          the {{JsonLdOptions/ordered}} flag, used to order
-          <a>map entry</a> keys lexicographically, where noted.
+          the {{JsonLdOptions/ordered}} flag, used to place
+          <a>map entry</a> keys in <a>code point order</a>, where noted.
         If not passed, the {{JsonLdOptions/ordered}} flag is set to <code>false</code></span>.</p>
 
       <p>This algorithm uses the
@@ -4445,7 +4448,7 @@
           the <a>default graph</a>.</li>
         <li>For each key-value pair <var>graph name</var>-<var>graph</var> in <var>node map</var>
           where <var>graph name</var> is not <code>@default</code>,
-          <span class="changed">ordered lexicographically by <var>graph name</var>
+          <span class="changed">in <a>code point order</a> by <var>graph name</var>
           if {{JsonLdOptions/ordered}} is <code>true</code></span>,
           perform the following steps:
           <ol>
@@ -4456,14 +4459,14 @@
               <var>default graph</var> using the variable <var>entry</var>.</li>
             <li>Add an <code>@graph</code> <a>entry</a> to <var>entry</var> and set it to an
               empty <a>array</a>.</li>
-            <li>For each <var>id</var>-<var>node</var> pair in <var>graph</var> ordered lexicographically by <var>id</var>
+            <li>For each <var>id</var>-<var>node</var> pair in <var>graph</var> in <a>code point order</a> by <var>id</var>
               <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
               add <var>node</var> to the <code>@graph</code> <a>entry</a> of <var>entry</var>,
               unless the only <a>entry</a> of <var>node</var> is <code>@id</code>.</li>
           </ol>
         </li>
         <li>Initialize an empty <a>array</a> <var>flattened</var>.</li>
-        <li>For each <var>id</var>-<var>node</var> pair in <var>default graph</var> ordered lexicographically by <var>id</var>
+        <li>For each <var>id</var>-<var>node</var> pair in <var>default graph</var> in <a>code point order</a> by <var>id</var>
           <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
           add <var>node</var> to <var>flattened</var>,
           unless the only <a>entry</a> of <var>node</var> is <code>@id</code>.</li>
@@ -5153,8 +5156,8 @@
       <p>The algorithm takes one required and four optional inputs:
         an <a>RDF dataset</a> <var>dataset</var>
         and the four optional arguments are
-        the <span class="changed">{{JsonLdOptions/ordered}} flag, defaulting to `false`, used to order
-        <a>map entry</a> keys lexicographically, where noted</span>,
+        the <span class="changed">{{JsonLdOptions/ordered}} flag, defaulting to `false`, used to place
+        <a>map entry</a> keys in <a>code point order</a>, where noted</span>,
         <span class="changed">{{JsonLdOptions/rdfDirection}}</span> defaulting to `null`,
         the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag, defaulting to `false`,
         and the <a data-link-for="JsonLdOptions">useRdfType</a> flag, defaulting to `false`.</p>
@@ -5345,7 +5348,7 @@
         </li>
         <li>Initialize an empty <a>array</a> <var>result</var>.</li>
         <li>For each <var>subject</var> and <var>node</var> in <var>default graph</var>
-          ordered lexicographically by <var>subject</var>
+          in <a>code point order</a> by <var>subject</var>
           <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>:
           <ol>
             <li>If <var>graph map</var> has a <var>subject</var> <a>entry</a>:
@@ -5353,7 +5356,7 @@
                 <li>Add an <code>@graph</code> <a>entry</a> to <var>node</var> and initialize
                   its value to an empty <a>array</a>.</li>
                 <li>For each key-value pair <var>s</var>-<var>n</var> in the <var>subject</var>
-                  <a>entry</a> of <var>graph map</var> ordered lexicographically by <var>s</var>
+                  <a>entry</a> of <var>graph map</var> in <a>code point order</a> by <var>s</var>
                   <span class="changed">if {{JsonLdOptions/ordered}} is <code>true</code></span>,
                   append <var>n</var> to the <code>@graph</code> <a>entry</a> of <var>node</var> after
                   removing its <code>usages</code> <a>entry</a>, unless the only
@@ -5593,7 +5596,7 @@
       <p>The example shows the value of "e" as a native JSON array including
         unnecessary whitespace, a number and an object. The result
         eliminates the whitespace, uses a canonical number representation,
-        and reorders the <a>map entries</a> lexicographically:</p>
+        and reorders the <a>map entries</a> by <a data-cite="INFRA#code-point">code point</a>:</p>
 
       <pre class="turtle result"
            data-content-type="text/turtle"
@@ -6297,7 +6300,7 @@
         causing <code>rdf:type</code> properties to be kept as <a>IRIs</a> in the output, rather than use <code>@type</code>.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">ordered</dfn></dt>
       <dd class="changed">If set to <code>true</code>,
-        certain algorithm processing steps where indicated are ordered lexicographically.
+        certain algorithm processing steps where indicated are placed in <a>code point order</a>.
         If <code>false</code>, order is not considered in processing.</dd>
       <dt class="changed"><dfn data-dfn-for="JsonLdOptions">rdfDirection</dfn></dt>
       <dd class="changed">Determines how <a>value objects</a> containing a <a data-cite="JSON-LD11#dfn-base-direction">base direction</a>
