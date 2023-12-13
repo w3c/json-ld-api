@@ -987,6 +987,38 @@
       "expect": "expand/0131-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0200",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand @graph @container with plain literals",
+      "purpose": "Expanding a @graph @container containing plain literals.",
+      "input": "expand/0200-in.jsonld",
+      "expect": "expand/0200-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0201",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand @type:@id @graph @container with IRIs",
+      "purpose": "Expanding a @type:@id @graph @container containing IRIs.",
+      "input": "expand/0201-in.jsonld",
+      "expect": "expand/0201-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0202",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand @graph @container with nullified @context with plain literals",
+      "purpose": "Expanding a @graph @container with nullified @context containing plain literals.",
+      "input": "expand/0202-in.jsonld",
+      "expect": "expand/0202-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#t0203",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand @type:@id @graph @container with nullified @context with IRIs",
+      "purpose": "Expanding a @type:@id @graph @container with nullified @context containing IRIs.",
+      "input": "expand/0203-in.jsonld",
+      "expect": "expand/0203-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
