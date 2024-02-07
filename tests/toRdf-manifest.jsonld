@@ -2231,19 +2231,19 @@
       "expectErrorCode": "invalid @prefix value",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
-     "@id": "#ter54",
-     "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
-     "name": "Invalid value object, multiple values for @type.",
-     "purpose": "The value of @type in a value object MUST be a string or null.",
-     "input": "toRdf/er54-in.jsonld",
-     "expectErrorCode": "invalid typed value"
+      "@id": "#ter54",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Invalid value object, multiple values for @type.",
+      "purpose": "The value of @type in a value object MUST be a string or null.",
+      "input": "toRdf/er54-in.jsonld",
+      "expectErrorCode": "invalid typed value"
     }, {
-     "@id": "#ter55",
-     "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
-     "name": "Invalid term definition, multiple values for @type.",
-     "purpose": "The value of @type in an expanded term definition object MUST be a string or null.",
-     "input": "toRdf/er55-in.jsonld",
-     "expectErrorCode": "invalid type mapping"
+      "@id": "#ter55",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Invalid term definition, multiple values for @type.",
+      "purpose": "The value of @type in an expanded term definition object MUST be a string or null.",
+      "input": "toRdf/er55-in.jsonld",
+      "expectErrorCode": "invalid type mapping"
     }, {
       "@id": "#ter56",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
