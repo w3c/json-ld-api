@@ -1820,6 +1820,13 @@
       "input": "expand/er55-in.jsonld",
       "expectErrorCode": "invalid type mapping"
     }, {
+      "@id": "#ter56",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
+      "name": "Invalid redefinition of @context keyword.",
+      "purpose": "Verifies that an exception is raise when attempting to redefine @context.",
+      "input": "expand/er56-in.jsonld",
+      "expectErrorCode": "keyword redefinition"
+    }, {
       "@id": "#tes01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Using an array value for @context is illegal in JSON-LD 1.0",

@@ -2245,6 +2245,13 @@
      "input": "toRdf/er55-in.jsonld",
      "expectErrorCode": "invalid type mapping"
     }, {
+      "@id": "#ter56",
+      "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Invalid redefinition of @context keyword.",
+      "purpose": "Verifies that an exception is raise when attempting to redefine @context.",
+      "input": "expand/er56-in.jsonld",
+      "expectErrorCode": "keyword redefinition"
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Basic Included array",
