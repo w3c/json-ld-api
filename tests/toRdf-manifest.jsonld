@@ -3373,6 +3373,14 @@
       "input": "toRdf/pr41-in.jsonld",
       "expect": "toRdf/pr41-out.nq"
     }, {
+      "@id": "#tpr42",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest"],
+      "name": "Fail if protected flag not retained during redefinition",
+      "purpose": "Check protected redefinition retains protected flag.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr42-in.jsonld",
+      "expectErrorCode": "protected term redefinition"
+    }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Representing numbers >= 1e21",
