@@ -2844,6 +2844,14 @@
       "input": "expand/pr41-in.jsonld",
       "expect": "expand/pr41-out.jsonld"
     }, {
+      "@id": "#tpr42",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Fail if protected flag not retained during redefinition",
+      "purpose": "Check protected redefinition retains protected flag.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr42-in.jsonld",
+      "expectErrorCode": "protected term redefinition"
+    }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@import is invalid in 1.0.",
