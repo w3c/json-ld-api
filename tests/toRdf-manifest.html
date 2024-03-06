@@ -7289,6 +7289,27 @@
             </dd>
           </dl>
         </dd>
+        <dt id='ter56'>
+          Test ter56 Invalid redefinition of @context keyword.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#ter56</dd>
+            <dt>Type</dt>
+            <dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+            <dt>Purpose</dt>
+            <dd>Verifies that an exception is raised when attempting to redefine @context.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/er56-in.jsonld'>expand/er56-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              keyword redefinition
+            </dd>
+          </dl>
+        </dd>
         <dt id='tin01'>
           Test tin01 Basic Included array
         </dt>
@@ -11283,6 +11304,34 @@
             <dt>expect</dt>
             <dd>
               <a href='toRdf/pr41-out.nq'>toRdf/pr41-out.nq</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tpr42'>
+          Test tpr42 Fail if protected flag not retained during redefinition
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tpr42</dd>
+            <dt>Type</dt>
+            <dd>jld:NegativeEvaluationTest, jld:ToRDFTest</dd>
+            <dt>Purpose</dt>
+            <dd>Check protected redefinition retains protected flag.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='toRdf/pr42-in.jsonld'>toRdf/pr42-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              protected term redefinition
             </dd>
             <dt>Options</dt>
             <dd>
