@@ -2248,7 +2248,7 @@
       "@id": "#ter56",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
       "name": "Invalid redefinition of @context keyword.",
-      "purpose": "Verifies that an exception is raise when attempting to redefine @context.",
+      "purpose": "Verifies that an exception is raised when attempting to redefine @context.",
       "input": "expand/er56-in.jsonld",
       "expectErrorCode": "keyword redefinition"
     }, {
