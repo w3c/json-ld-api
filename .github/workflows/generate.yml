@@ -1,0 +1,33 @@
+name: Automatic Report and Test Manifest Generation
+on:
+  push:
+    branches: [main]
+    paths: ["reports/**", "tests/**"]
+  pull_request:
+    branches: [ main ]
+    paths: ["reports/**", "tests/**"]
+
+jobs:
+  build:
+    name: Generate Reports using Ruby
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+      - name: Install dependencies
+        run:  bundle install
+      - name: Generate Test Manifests
+        run:  (cd tests; bundle exec rake)
+      #- name: Generate Report
+      #  run:  (cd reports; rake)
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated report generation
+          commit_user_name: Report generation bot
+          commit_user_email: <>
+
