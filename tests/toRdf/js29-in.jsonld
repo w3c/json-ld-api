@@ -1,0 +1,7 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "e": {"@id": "ex:e", "@type": "@json", "@container": "@set"}
+  },
+  "e": ["v1", "v2"]
+}
