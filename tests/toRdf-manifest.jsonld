@@ -3388,6 +3388,14 @@
       "input": "toRdf/pr42-in.jsonld",
       "expectErrorCode": "protected term redefinition"
     }, {
+      "@id": "#tpr43",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Clear protection in @graph @container with null context.",
+      "purpose": "Clear protection in @graph @container with null context.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr43-in.jsonld",
+      "expect": "toRdf/pr43-out.nq"
+    }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Representing numbers >= 1e21",
