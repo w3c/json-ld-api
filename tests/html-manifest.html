@@ -982,7 +982,7 @@
           </dl>
         </dd>
         <dt id='tf004'>
-          Test tf004 Flattens all script elements by default
+          Test tf004 Flattens first script element by default
         </dt>
         <dd>
           <dl class='entry'>
@@ -1011,6 +1011,42 @@
                 <dd>json-ld-1.1</dd>
                 <dt>processorFeature</dt>
                 <dd>HTML Script Extraction</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tf005'>
+          Test tf005 Flattens all script elements if extractAllScripts set to true
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tf005</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:FlattenTest, jld:HtmlTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests embedded JSON-LD in HTML multiple script elements</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='html/f005-in.html'>html/f005-in.html</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='html/f005-context.jsonld'>html/f005-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='html/f005-out.jsonld'>html/f005-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+                <dt>processorFeature</dt>
+                <dd>HTML Script Extraction</dd>
+                <dt>extractAllScripts</dt>
+                <dd>true</dd>
               </dl>
             </dd>
           </dl>
