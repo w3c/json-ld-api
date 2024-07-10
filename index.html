@@ -6008,7 +6008,8 @@
             <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>
-            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code>,
+              and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>map</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
@@ -7118,6 +7119,12 @@
       14 to begin with <q>Otherwise</q>.</li>
     <li>Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li>
     <li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li>
+    <li>Specify that the default value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
+      in <a data-link-for="JsonLdProcessor">toRdf()</a>
+      defaults to `true`, rather than `false`.
+      This is consistent with wording in
+      <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
+      for teating script elements as a single document.</li>
   </ul>
 </section>
 <section id="ack"
