@@ -433,7 +433,7 @@
     <p>Note that in the examples used in this document, output
       is of necessity shown in serialized form as JSON. While the algorithms
       describe operations on the <a>JSON-LD internal representation</a>, when
-      they as displayed as examples, the JSON serialization is used. In particular,
+      they as displayed as examples, the Object Representation is used. In particular,
       the internal representation use of <a>maps</a> are represented using
       <a>JSON objects</a>.</p>
 
@@ -458,7 +458,7 @@
     <p>In the <a>internal representation</a>, the example above would be of a
       <a>map</a> containing <code>@context</code>, <code>@id</code>, <code>name</code>, and <code>knows</code> <a>entries</a>,
       with either <a>maps</a>, <a>strings</a>, or <a>arrays</a> of
-      maps or strings values. In the JSON serialization, <a>JSON objects</a> are used
+      maps or strings values. In the Object Representation, <a>JSON objects</a> are used
       for maps, while arrays and strings are serialized using a
       convention common to many programming languages.</p>
   </section>
@@ -5790,7 +5790,7 @@
           </li>
           <li>Resolve the <var>promise</var> with <var>compacted output</var>
             <span class="changed">transforming <var>compacted output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+              <a>internal representation</a> to an object representation</span>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5875,7 +5875,7 @@
           </li>
           <li>Resolve the <var>promise</var> with <var>expanded output</var>
             <span class="changed">transforming <var>expanded output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+              <a>internal representation</a> to an Object Representation</span>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5939,7 +5939,7 @@
           </li>
           <li>Resolve the <var>promise</var> with <var>flattened output</var>
             <span class="changed">transforming <var>flattened output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>,
+              <a>internal representation</a> to an Object Representation</span>,
               if necessary.</li>
         </ol>
 
@@ -5980,7 +5980,7 @@
             and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
           <li>Resolve the <var>promise</var> with <var>expanded result</var>
             <span class="changed">transforming <var>expanded result</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+              <a>internal representation</a> to an Object Representation</span>.</li>
         </ol>
 
         <dl class="parameters">
