@@ -485,7 +485,9 @@
     <a>strings</a>, <a>numbers</a>, <a>booleans</a>, and <a>null</a> to describe
     the data represented by a JSON document. Algorithms act on this
     <a>internal representation</a> with API entry points responsible for
-    transforming between the concrete and internal representations.</p>
+    transforming between concrete representations and the <a>internal representation</a>.
+    See <a href="#internal-representation-in-implementations" class="sectionRef"></a>
+    for more details on transforming to or from the <a>internal representation</a>.</p>
 
   <p>JSON-LD uses <a>contexts</a> to allow Linked Data
     to be expressed in a way that is specifically tailored to a particular
@@ -5711,6 +5713,30 @@
       is used instead of looking at the HTTP Link Header directly. For the sake of simplicity, none of the algorithms
       in this document mention this directly.</p>
 
+    <div class="candidate correction" id="change_5">
+      <span class="marker">Candidate Correction 5</span>
+      <p>Details about transforming to and from a given serialization format
+        have been abstracted so that other specifications can define
+        serialization and deserialization requirements for their specific formats.
+        The algorithm is now more explicit about serializing and deserializing
+        to the <a>internal representation</a>.
+        See marked changes here and in the following locations:</p>
+      <ul>
+        <li><a data-link-for="JsonLdProcessor">compact()</a> <a href="#idl-compact-step-10">step 10</a></li>
+        <li><a data-link-for="JsonLdProcessor">expand()</a> <a href="#idl-expand-step-9">step 9</a></li>
+        <li><a data-link-for="JsonLdProcessor">flatten()</a> <a href="#idl-flatten-step-7">step 7</a></li>
+        <li><a data-link-for="JsonLdProcessor">fromRdf()</a> <a href="#idl-fromRdf-step-3">step 3</a></li>
+        <li><a href="#serialization-and-deserialization" class="sectionRef"></a></li>
+      </ul>
+      <p>For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/605">issue 605</a>.</p>
+    </div>
+
+    <ins cite="#change_5"><p>Methods resolving a {{Promise}} with the <a>internal representation</a>
+      MUST either
+      map it to the datatype used by the implementation, as described in <a href="#internal-representation-in-implementations" class="sectionRef"></a>,
+      or serialize it to JSON (or another appropriate serialization format)
+      as described in <a href="#serialization-and-deserialization" class="sectionRef"></a>.</p></ins>
+
     <pre class="idl">
       /*
        * The JsonLd interface is created to expose the JsonLdProcessor interface.
@@ -5757,18 +5783,18 @@
           an <code>@context</code> entry is added to the <a>map</a> result.</p>
 
         <ol>
-          <li>Create a new {{Promise}} <var>promise</var> and return it.
+          <li id="idl-compact-step-1">Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
-          <li class="changed">If the provided <a data-lt="jsonldprocessor-compact-input">input</a>
+          <li id="idl-compact-step-2" class="changed">If the provided <a data-lt="jsonldprocessor-compact-input">input</a>
             is a <a>RemoteDocument</a>,
             initialize <var>remote document</var> to <a data-lt="jsonldprocessor-compact-input">input</a>.</li>
-          <li>Otherwise, if the provided <a data-lt="jsonldprocessor-compact-input">input</a>
+          <li id="idl-compact-step-3">Otherwise, if the provided <a data-lt="jsonldprocessor-compact-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-compact-input">input</a>
             for {{LoadDocumentCallback/url}},
             and the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-compact-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.</li>
-          <li>Set <var>expanded input</var> to the result of
+          <li id="idl-compact-step-4">Set <var>expanded input</var> to the result of
             using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using either <var>remote document</var>
             or <a data-lt="jsonldprocessor-compact-input">input</a>
@@ -5777,45 +5803,47 @@
             and <a data-lt="jsonldprocessor-compact-options">options</a>,
             <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>,
             <span class="changed">and {{JsonLdOptions/extractAllScripts}} defaulting to <code>false</code></span>.</li>
-          <li class="changed">Set <var>context base</var> to the {{RemoteDocument/documentUrl}}
+          <li id="idl-compact-step-5" class="changed">Set <var>context base</var> to the {{RemoteDocument/documentUrl}}
             from <var>remote document</var>, if available, otherwise to the {{JsonLdOptions/base}} option
             from <a data-lt="jsonldprocessor-compact-options">options</a>.</li>
-          <li>If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a>
+          <li id="idl-compact-step-6">If <a data-lt="jsonldprocessor-compact-context">context</a> is a <a class="changed">map</a>
             having an <code>@context</code> <a>entry</a>,
             set <var>context</var> to that <a data-lt="entry">entry's</a> value,
             otherwise to <a data-lt="jsonldprocessor-compact-context">context</a>.</li>
-          <li class="changed">Initialize <var>active context</var>
+          <li id="idl-compact-step-7" class="changed">Initialize <var>active context</var>
             to the result of the <a href="#context-processing-algorithm">Context Processing algorithm</a>
             passing a new empty <a>context</a> as <var>active context</var>
             <var>context</var> as <var>local context</var>,
             and <var>context base</var> as <var>base URL</var>.</li>
-          <li>Set <a data-lt="context-base-iri">base IRI</a> in <var>active context</var> to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
+          <li id="idl-compact-step-8">Set <a data-lt="context-base-iri">base IRI</a> in <var>active context</var>
+          to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-compact-options">options</a>, if set;
             otherwise, if the <a data-link-for="JsonLdOptions">compactToRelative</a> option is <strong>true</strong>,
             to the IRI of the currently being processed document, if available;
             otherwise to <code>null</code>.</li>
-          <li>Set <var>compacted output</var> to the result of using the <a href="#compaction-algorithm">Compaction algorithm</a>,
-            using <a>active context</a>,
+          <li id="idl-compact-step-9">Set <var>compacted output</var> to the result of
+            using the <a href="#compaction-algorithm">Compaction algorithm</a>,
+            with <a>active context</a>,
             <code>null</code> for <var>active property</var>,
             <var>expanded input</var> as <var>element</var>,
             and the {{JsonLdOptions/compactArrays}}
             <span class="changed">and {{JsonLdOptions/ordered}}</span>
             flags from <a data-lt="jsonldprocessor-compact-options">options</a>.
             <ol id="api-compact-post-processing" class="changed">
-              <li>If <var>compacted output</var> is an empty <a>array</a>,
+              <li id="idl-compact-step-9.1">If <var>compacted output</var> is an empty <a>array</a>,
                 replace it with a new <a>map</a>.</li>
-              <li>Otherwise, if <var>compacted output</var> is an <a>array</a>,
+              <li id="idl-compact-step-9.2">Otherwise, if <var>compacted output</var> is an <a>array</a>,
                 replace it with a new <a>map</a> with a single <a>entry</a>
                 whose key is the result of
                 <span class="changed"><a>IRI compacting</a> `@graph`</span>
                 and value is <var>compacted output</var>.</li>
-              <li>If <a data-lt="jsonldprocessor-compact-context">context</a> was not <code>null</code>,
+              <li id="idl-compact-step-9.3">If <a data-lt="jsonldprocessor-compact-context">context</a> was not <code>null</code>,
                 add an <code>@context</code> <a>entry</a> to <var>compacted output</var> and set its value
                 to the provided <var>context</var>.</li>
             </ol>
           </li>
-          <li>Resolve the <var>promise</var> with <var>compacted output</var>
-            <span class="changed">transforming <var>compacted output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+          <li id="idl-compact-step-10">Resolve the <var>promise</var> with <var>compacted output</var><del cite="#change_5">
+            transforming <var>compacted output</var> from the
+            <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5842,37 +5870,40 @@
           according to the steps in the <a href="#expansion-algorithm">Expansion algorithm</a>:</p>
 
         <ol>
-          <li>Create a new {{Promise}} <var>promise</var> and return it.
+          <li id="idl-expand-step-1">Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
-          <li class="changed">If the provided <a data-lt="jsonldprocessor-expand-input">input</a>
+          <li id="idl-expand-step-2" class="changed">If the provided <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>RemoteDocument</a>,
             initialize <var>remote document</var> to <a data-lt="jsonldprocessor-expand-input">input</a>.</li>
-          <li>Otherwise, if the provided <a data-lt="jsonldprocessor-expand-input">input</a>
+          <li id="idl-expand-step-3">Otherwise, if the provided <a data-lt="jsonldprocessor-expand-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-expand-input">input</a>
             for {{LoadDocumentCallback/url}},
             the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-expand-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.</li>
-          <li class="changed">If {{RemoteDocument/document}}
-            from <var>remote document</var> is a <a>string</a>, transform into the <a>internal representation</a>.
+          <li id="idl-expand-step-4" class="changed">If {{RemoteDocument/document}}
+            from <var>remote document</var> is a <a>string</a>, transform it into the <a>internal representation</a>
+            based on {{RemoteDocument/contentType}} from <var>remote document</a>,
+            (see <a href="#serialization-and-deserialization" class="sectionRef"></a>).
             If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
-          <li>Initialize a new empty <var>active context</var>.
+          <li id="idl-expand-step-5">Initialize a new empty <var>active context</var>.
             The <a data-lt="context-base-iri">base IRI</a> and <a>original base URL</a> of the <var>active context</var> is set to the {{RemoteDocument/documentUrl}}
             from <var>remote document</var>, if available;
             otherwise to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a data-lt="context-base-iri">base IRI</a>.</li>
-          <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set,
+          <li id="idl-expand-step-6">If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
             and the <a>original base URL</a> from <var>active context</var> as <var>base URL</var>.
             If {{JsonLdOptions/expandContext}} is a <a class="changed">map</a> having an <code>@context</code> <a>entry</a>,
             pass that <a data-lt="entry">entry's</a> value instead for <var>local context</var>.</li>
-          <li>If <var>remote document</var> has a {{RemoteDocument/contextUrl}},
+          <li id="idl-expand-step-7">If <var>remote document</var> has a {{RemoteDocument/contextUrl}},
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{RemoteDocument/contextUrl}} as <var>local context</var>,
             and {{RemoteDocument/contextUrl}} as <var>base URL</var>.</li>
-          <li>Set <var>expanded output</var> to the result of using the <a href="#expansion-algorithm">Expansion algorithm</a>,
+          <li id="idl-expand-step-8">Set <var>expanded output</var> to the result of
+            using the <a href="#expansion-algorithm">Expansion algorithm</a>,
             passing the <var>active context</var>,
             {{RemoteDocument/document}} from <var>remote document</var> or <a data-lt="jsonldprocessor-expand-input">input</a>
             if there is no <var>remote document</var> as <var>element</var>,
@@ -5889,18 +5920,18 @@
               <a>JsonLdRecords</a>, which are implicitly already in the
               <a>internal representation</a>.</div>
             <ol id="api-expand-post-processing" class="changed">
-              <li>If <var>expanded output</var> is a
+              <li id="idl-expand-step-8.1">If <var>expanded output</var> is a
                 <a class="changed">map</a> that contains only an <code>@graph</code> <a>entry</a>,
                 set <var>expanded output</var> that value.</li>
-              <li>If <var>expanded output</var> is <code>null</code>,
+              <li id="idl-expand-step-8.2">If <var>expanded output</var> is <code>null</code>,
                 set <var>expanded output</var> to an empty <a>array</a>.</li>
-              <li>If <var>expanded output</var> is not an <a>array</a>,
+              <li id="idl-expand-step-8.3">If <var>expanded output</var> is not an <a>array</a>,
                 set <var>expanded output</var> to an <a>array</a> containing only <var>expanded output</var>.</li>
             </ol>
           </li>
-          <li>Resolve the <var>promise</var> with <var>expanded output</var>
-            <span class="changed">transforming <var>expanded output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+          <li id="idl-expand-step-9">Resolve the <var>promise</var> with <var>expanded output</var><del cite="#change_5">
+            transforming <var>expanded output</var> from the
+            <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5923,19 +5954,19 @@
           according to the steps in the <a href="#flattening-algorithm">Flattening algorithm</a>:</p>
 
         <ol>
-          <li>Create a new {{Promise}} <var>promise</var> and return it.
+          <li id="idl-flatten-step-1">Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
-          <li class="changed">If the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
+          <li id="idl-flatten-step-2" class="changed">If the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
             is a <a>RemoteDocument</a>,
             initialize <var>remote document</var> to <a data-lt="jsonldprocessor-flatten-input">input</a>.</li>
-          <li>Otherwise, if the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
+          <li id="idl-flatten-step-3">Otherwise, if the provided <a data-lt="jsonldprocessor-flatten-input">input</a>
             is a <a>string</a> representing the <a>IRI</a> of a remote document, await and dereference it as <var>remote document</var>
             using <a>LoadDocumentCallback</a>, passing <a data-lt="jsonldprocessor-flatten-input">input</a>
             for {{LoadDocumentCallback/url}},
             and the {{JsonLdOptions/extractAllScripts}} option from <a data-lt="jsonldprocessor-flatten-options">options</a>
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.
           </li>
-          <li>Set <var>expanded input</var> to the result of
+          <li id="idl-flatten-step-4">Set <var>expanded input</var> to the result of
             using the <a data-link-for="JsonLdProcessor">expand()</a> method
             using either <var>remote document</var>
             or <a data-lt="jsonldprocessor-flatten-input">input</a>
@@ -5943,13 +5974,13 @@
             for <a data-lt="jsonldprocessor-expand-input">input</a>,
             and <a data-lt="jsonldprocessor-flatten-options">options</a>
             <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code></span>.</li>
-          <li>Initialize an empty <var>identifier map</var>.</li>
-          <li>Set <var>flattened output</var> to the result of using the <a href="#flattening-algorithm">Flattening algorithm</a>,
+          <li id="idl-flatten-step-5">Initialize an empty <var>identifier map</var>.</li>
+          <li id="idl-flatten-step-6">Set <var>flattened output</var> to the result of using the <a href="#flattening-algorithm">Flattening algorithm</a>,
             passing <var>expanded input</var> as <var>element</var>,
             <span class="changed">and the {{JsonLdOptions/ordered}} flag
               from <a data-lt="jsonldprocessor-flatten-options">options</a></span>.
             <ol id="api-flatten-post-processing" class="changed">
-              <li>If <a data-lt="jsonldprocessor-flatten-context">context</a> is not <code>null</code>,
+              <li id="idl-flatten-step-6.1">If <a data-lt="jsonldprocessor-flatten-context">context</a> is not <code>null</code>,
                 set <var>flattened output</var> to the result of
                 using the <a data-link-for="JsonLdProcessor">compact()</a> method
                 using <var>flattened output</var> for <a data-lt="jsonldprocessor-compact-input">input</a>,
@@ -5962,10 +5993,9 @@
                 otherwise to <code>null</code>.</li>
             </ol>
           </li>
-          <li>Resolve the <var>promise</var> with <var>flattened output</var>
-            <span class="changed">transforming <var>flattened output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>,
-              if necessary.</li>
+          <li id="idl-flatten-step-7">Resolve the <var>promise</var> with <var>flattened output</var><del cite="#change_5">
+            transforming <var>flattened output</var> from the
+            <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5997,15 +6027,15 @@
           from an arbitrary input, other than the <a data-link-for="JsonLdProcessor">toRdf()</a> method.</p>
 
         <ol>
-          <li>Create a new {{Promise}} <var>promise</var> and return it.
+          <li id="idl-fromRdf-step-1">Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
-          <li>Set <var>expanded result</var> to the result of invoking the
+          <li id="idl-fromRdf-step-2">Set <var>expanded result</var> to the result of invoking the
             <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
             using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
             and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
-          <li>Resolve the <var>promise</var> with <var>expanded result</var>
-            <span class="changed">transforming <var>expanded result</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+          <li id="idl-fromRdf-step-3">Resolve the <var>promise</var> with <var>expanded result</var><del cite="#change_5">
+            transforming <var>expanded output</var> from the
+            <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
 
         <dl class="parameters">
@@ -6091,7 +6121,7 @@
       <span class="changed">or an already dereferenced <a>RemoteDocument</a></span>.</p>
 
     <p class="changed">When the value is a <a>JsonLdRecord</a> or sequence of <a>JsonLdRecords</a>,
-      the values are taken as their equivalent internal representation values,
+      the values are taken as their equivalent <a>internal representation</a> values,
       where a <a>JsonLdRecord</a> is equivalent to a <a>map</a>,
       and a sequence of <a>JsonLdRecords</a> is equivalent to an <a>array</a>
       of <a>maps</a>. The <a>map entries</a> are converted to their equivalents
@@ -6108,11 +6138,127 @@
       which can be dereferenced to retrieve a valid JSON document.</p>
 
     <p class="changed">When the value is a <a>JsonLdRecord</a> or sequence of <a>JsonLdRecords</a>,
-      the values are taken as their equivalent internal representation values,
+      the values are taken as their equivalent <a>internal representation</a> values,
       where a <a>JsonLdRecord</a> is equivalent to a <a>map</a>,
       and a sequence of <a>JsonLdRecords</a> is equivalent to an <a>array</a>
       of <a>maps</a>. The <a>map entries</a> are converted to their equivalents
       in [[INFRA]].</p>
+
+    <section id="internal-representation-in-implementations" class="informative">
+      <h4>Internal Representation in Implementations</h4>
+
+      <p>
+        <a data-cite="WebIDL#idl-USVString">USVString</a>,
+        <a>JsonLdRecord</a>,
+        <a data-cite="WebIDL#idl-sequence">sequence</a>,
+        and other types defined in [[WebIDL]] and [[INFRA]], and used above as input and output types for
+        <a>JsonLdProcessor</a> functions, comprise the data structure known
+        as the <a>internal representation</a>.
+        JSON-LD algorithms are defined against those types.
+      </p>
+
+      <p>
+        Implementations map [[WebIDL]] and [[INFRA]] types to types specific to the
+        programming language in use. For instance:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>WebIDL Type</th>
+            <th>INFRA Type</th>
+            <th>JavaScript Type</th>
+            <th>Python Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><code><a data-cite="WebIDL#idl-USVString">USVString</a></code></th>
+            <th><code><a data-cite="INFRA#string">String</a></code></th>
+            <td><code>String</code></td>
+            <td><code>str</code></td>
+          </tr>
+          <tr>
+            <th><a>JsonLdRecord</a></th>
+            <th><code><a data-cite="INFRA#ordered-map">Map</a></code></th>
+            <td><code>Object</code></td>
+            <td><code>dict</code></td>
+          </tr>
+          <tr>
+            <th><a data-cite="WebIDL#idl-sequence">sequence</a></th>
+            <th><code><a data-cite="INFRA#list">list</a></code></th>
+            <td><code>Array</code></td>
+            <td><code>list</code></td>
+          </tr>
+          <tr>
+            <th><code><a data-cite="WebIDL#idl-long">long</a></code></th>
+            <th><code><a data-cite="XMLSCHEMA11-2#integer">integer</a></code> [[?XMLSCHEMA11-2]]</th>
+            <td><code>Number</code></td>
+            <td><code>int</code></td>
+          </tr>
+          <tr>
+            <th><code><a data-cite="WebIDL#idl-double">double</a></code></th>
+            <th><code><a data-cite="XMLSCHEMA11-2#double">double</a></code> [[?XMLSCHEMA11-2]]</th>
+            <td><code>Number</code></td>
+            <td><code>float</code></td>
+          </tr>
+          <tr>
+            <th><code><a data-cite="WebIDL#idl-boolean">boolean</a></code></th>
+            <th><code><a data-cite="INFRA#boolean">boolean</a></code></th>
+            <td><code>Boolean</code></td>
+            <td><code>bool</code></td>
+          </tr>
+          <tr>
+            <th><code><strong>null</strong></code></th>
+            <th><code><a data-cite="INFRA#nulls">null</a></code></th>
+            <td><code>Null</code></td>
+            <td><code>None</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+      The table above is only provided as an example.
+        The mappings used for a particular implementation are out of scope for
+        this specification.
+      </p>
+    </section>
+
+    <section id="serialization-and-deserialization">
+      <h4>Serialization and Deserialization</h4>
+    <ins cite="#change_5">
+
+      <p>This section defines the requirements for serializing and deserializing
+        JSON from and to the <a>internal representation</a>, as appropriate,
+        based on the provided or requested <a>Content-Type</a>.
+        A <a>Content-Type</a> of <code>application/json</code>,
+        or media type with a <code>+json</code> suffix as defined in [[RFC6839]]
+        MUST serialize or deserialize to a format consistent with the JSON Grammar
+        as specified in [[RFC8259]].</p>
+
+      <p class="note">This specification does not define serializations of the <a>internal representation</a>
+        for other media types, which may be defined by other specifications.</p>
+
+      <p class="note">See <a href="#html-content-algorithms" class="sectionRef"></a>
+        for details on extracting JSON from HTML.</p>
+
+      <dl>
+        <dt>To transform a JSON-conforming string [[RFC8259]],</dt>
+        <dd>
+          deserialize into the
+          <a>internal representation</a> as described in {{LoadDocumentCallback}};
+        </dd>
+
+        <dt>To transform the <a>internal representation</a> to a JSON-LD document
+        </dt>
+        <dd>
+          serialize to JSON [[RFC8259]] using an appropriate serializer (e.g.,
+          [[ECMASCRIPT]] <code>[=ToString=]</code>);
+        </dd>
+      </dl>
+    </ins>
+    <del cite="#change_5">This section left intentially blank.</del>
+    </section>
   </section>
 
   <section><h3>RDF Dataset Interfaces</h3>
@@ -6416,7 +6562,8 @@
           <p>If multiple HTTP Link Headers using the <code>http://www.w3.org/ns/json-ld#context</code> link relation are found,
             the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">multiple context link headers</a>
             and processing is terminated.</p>
-          <p>Processors MAY transform <var>document</var> to the <a>internal representation</a>.</p>
+          <p>Processors MAY transform a <var>document</var> to the <a>internal representation</a>,
+            as described in <a href="#internal-representation-in-implementations" class="sectionRef"></a>.</p>
           <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>,
             <code>text/html</code>, or <code>application/xhtml+xml</code>.</p>
         </li>
@@ -6903,6 +7050,9 @@
       <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
       for treating script elements as a single document,
       as described in <a href="#change_4">Candidate Correction 4</a>.</li>
+    <li>2024-10-31: Abstract JSON serialization from WebIDL interfaces to allow
+      for alternative formats,
+      as described in <a href="#change_5">Candidate Correction 5</a></li>
   </ul>
   </details>
 
