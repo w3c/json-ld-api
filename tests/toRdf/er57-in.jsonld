@@ -3,7 +3,7 @@
     "prop": {
       "@id": "ex:prop", 
       "@type": "@json",
-      "@container": "@list"
+      "@container": "@set"
     }
   },
   "prop": "value"

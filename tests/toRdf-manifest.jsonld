@@ -2252,19 +2252,19 @@
       "input": "expand/er56-in.jsonld",
       "expectErrorCode": "keyword redefinition"
     }, {
-     "@id": "#ter56",
-     "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
-     "name": "Array not found for @json @list.",
-     "purpose": "The value for a @json @list term MUST be an array.",
-     "input": "toRdf/er57-in.jsonld",
-     "expectErrorCode": "invalid set or list object"
+      "@id": "#ter57",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Array not found for @json @list.",
+      "purpose": "The value for a @json @list term MUST be an array.",
+      "input": "toRdf/er57-in.jsonld",
+      "expectErrorCode": "invalid set or list object"
     }, {
-     "@id": "#ter57",
-     "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
-     "name": "Array not found for @json @set.",
-     "purpose": "The value for a @json @set term MUST be an array.",
-     "input": "toRdf/er56-in.jsonld",
-     "expectErrorCode": "invalid set or list object"
+      "@id": "#ter58",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ToRDFTest" ],
+      "name": "Array not found for @json @set.",
+      "purpose": "The value for a @json @set term MUST be an array.",
+      "input": "toRdf/er58-in.jsonld",
+      "expectErrorCode": "invalid set or list object"
     }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],

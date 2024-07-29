@@ -1836,6 +1836,13 @@
     }, {
       "@id": "#ter58",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
+      "name": "Array not found for @json @set.",
+      "purpose": "The value for a @json @set term MUST be an array.",
+      "input": "expand/er57-in.jsonld",
+      "expectErrorCode": "invalid set or list object"
+    }, {
+      "@id": "#ter58",
+      "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "Array not found for @json @list.",
       "purpose": "The value for a @json @list term MUST be an array.",
       "input": "expand/er58-in.jsonld",

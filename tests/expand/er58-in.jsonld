@@ -3,8 +3,9 @@
     "prop": {
       "@id": "ex:prop", 
       "@type": "@json",
-      "@container": "@set"
+      "@container": "@list"
     }
   },
   "prop": "value"
 }
+
