@@ -6071,6 +6071,105 @@
       and a sequence of <a>JsonLdRecords</a> is equivalent to an <a>array</a>
       of <a>maps</a>. The <a>map entries</a> are converted to their equivalents
       in [[INFRA]].</p>
+
+    <section class="informative">
+      <h4>Internal Representation in Implementations</h4>
+
+      <p>
+        <code>USVString</code>, <a>JsonLdRecord</a>, <code>sequence</code>
+        and other types defined above in WebIDL as input and output types for
+        <a>JsonLdProcessor</a> functions comprise the data structure known
+        as <a>internal representation</a>. JSON-LD algorithms are defined
+        against those types.
+      </p>
+
+      <p>
+        Each implementation would map WebIDL types to types specific to the
+        programming language in use. For instance:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>WebIDL Type</th>
+            <th>JavaScript</th>
+            <th>Python</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><a>UVString</a></th>
+            <td><code>String</code></td>
+            <td><code>str</code></td>
+          </tr>
+          <tr>
+            <th><a>JsonLdRecord</a></th>
+            <td><code>Object</code></td>
+            <td><code>dict</code></td>
+          </tr>
+          <tr>
+            <th><code>sequence</code></th>
+            <td><code>array</code></td>
+            <td><code>list</code></td>
+          </tr>
+          <tr>
+            <td>…</td>
+            <td>…</td>
+            <td>…</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The mappings used in a particular implementation are out of scope for
+        this specification.
+      </p>
+    </section>
+
+    <section class="informative">
+      <h4>Serialization and Deserialization</h4>
+
+      <dl>
+        <dt>
+          When resolving a <a>RemoteDocument</a> or a URL expressed as
+          <code>USVString</code>,
+        </dt>
+        <dd>
+            an implementation has to deserialize a JSON-LD file into
+          <a>internal representation</a>;
+        </dd>
+
+        <dt>
+          To save a JSON-LD document in <a>internal representation</a>
+          to a file,
+        </dt>
+        <dd>
+          a user of an implementation has to serialize that data structure
+          to JSON;
+        </dd>
+
+        <dt>
+          A web service providing Linked Data as JSON-LD and supporting content negotiation
+        </dt>
+        <dd>
+          has to take HTTP headers in account to choose the serialization format
+          and its parameters to serve the client appropriately.
+        </dd>
+      </dl>
+
+      <p>
+        There are many other use cases where an implementation, and/or a system
+        based on one, has to perform serialization and deserialization of
+        JSON-LD documents expressed in <a>internal representation</a> to and
+        from JSON character streams.
+      </p>
+
+      <p>
+        Such serialization and deserialization procedures are dependent on the
+        programming language, platform, and libraries in use, and are out of
+        scope for this specification.
+      </p>
+    </section>
   </section>
 
   <section><h3>RDF Dataset Interfaces</h3>
