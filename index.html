@@ -5788,9 +5788,7 @@
                 to the provided <var>context</var>.</li>
             </ol>
           </li>
-          <li>Resolve the <var>promise</var> with <var>compacted output</var>
-            <span class="changed">transforming <var>compacted output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+          <li>Resolve the <var>promise</var> with <var>compacted output</var>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5873,9 +5871,7 @@
                 set <var>expanded output</var> to an <a>array</a> containing only <var>expanded output</var>.</li>
             </ol>
           </li>
-          <li>Resolve the <var>promise</var> with <var>expanded output</var>
-            <span class="changed">transforming <var>expanded output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+          <li>Resolve the <var>promise</var> with <var>expanded output</var>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5937,10 +5933,7 @@
                 otherwise to <code>null</code>.</li>
             </ol>
           </li>
-          <li>Resolve the <var>promise</var> with <var>flattened output</var>
-            <span class="changed">transforming <var>flattened output</var> from the
-              <a>internal representation</a> to a JSON serialization</span>,
-              if necessary.</li>
+          <li>Resolve the <var>promise</var> with <var>flattened output</var>.</li>
         </ol>
 
         <dl class="parameters">
@@ -5978,9 +5971,7 @@
             <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
             using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
             and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
-          <li>Resolve the <var>promise</var> with <var>expanded result</var>
-            <span class="changed">transforming <var>expanded result</var> from the
-              <a>internal representation</a> to a JSON serialization</span>.</li>
+          <li>Resolve the <var>promise</var> with <var>expanded result</var>.</li>
         </ol>
 
         <dl class="parameters">
@@ -6081,6 +6072,105 @@
       and a sequence of <a>JsonLdRecords</a> is equivalent to an <a>array</a>
       of <a>maps</a>. The <a>map entries</a> are converted to their equivalents
       in [[INFRA]].</p>
+
+    <section class="informative">
+      <h4>Internal Representation in Implementations</h4>
+
+      <p>
+        <code>USVString</code>, <a>JsonLdRecord</a>, <code>sequence</code>,
+        and other types defined above in WebIDL as input and output types for
+        <a>JsonLdProcessor</a> functions comprise the data structure known
+        as the <a>internal representation</a>. JSON-LD algorithms are defined
+        against those types.
+      </p>
+
+      <p>
+        Each implementation would map WebIDL types to types specific to the
+        programming language in use. For instance:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>WebIDL Type</th>
+            <th>JavaScript</th>
+            <th>Python</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><a>UVString</a></th>
+            <td><code>String</code></td>
+            <td><code>str</code></td>
+          </tr>
+          <tr>
+            <th><a>JsonLdRecord</a></th>
+            <td><code>Object</code></td>
+            <td><code>dict</code></td>
+          </tr>
+          <tr>
+            <th><code>sequence</code></th>
+            <td><code>array</code></td>
+            <td><code>list</code></td>
+          </tr>
+          <tr>
+            <td>…</td>
+            <td>…</td>
+            <td>…</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The mappings used in a particular implementation are out of scope for
+        this specification.
+      </p>
+    </section>
+
+    <section class="informative">
+      <h4>Serialization and Deserialization</h4>
+
+      <dl>
+        <dt>
+          When resolving a <a>RemoteDocument</a> or a URL expressed as
+          <code>USVString</code>,
+        </dt>
+        <dd>
+          an implementation deserializes a JSON-LD file into the
+          <a>internal representation</a>;
+        </dd>
+
+        <dt>
+          To save a JSON-LD document in <a>internal representation</a>
+          to a file,
+        </dt>
+        <dd>
+          a user of an implementation has to serialize that data structure
+          to JSON;
+        </dd>
+
+        <dt>
+          A web service providing Linked Data as JSON-LD and supporting content negotiation
+        </dt>
+        <dd>
+          uses HTTP headers to determine the appropriate serialization format
+          to provide a suitable result.
+        </dd>
+      </dl>
+
+      <p>
+        There are many other use cases where an implementation, and/or a system
+        based on one, has to serialize and deserialize 
+        JSON-LD documents expressed in the <a>internal representation</a> to and
+        from JSON character streams.
+      </p>
+
+      <p>
+        Such serialization and deserialization procedures are dependent on the
+        programming language, platform, and libraries in use, and are out of
+        scope for this specification.
+      </p>
+    </section>
   </section>
 
   <section><h3>RDF Dataset Interfaces</h3>
