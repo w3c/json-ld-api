@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "p": {
+      "@id": "ex:p",
+      "@type": "@id",
+      "@container": "@graph",
+      "@context": null
+    }
+  },
+  "@id": "ex:outer",
+  "p": [
+    "ex:test1",
+    "ex:test2"
+  ]
+}
