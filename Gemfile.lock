@@ -156,7 +156,7 @@ GEM
       rdf (~> 3.3)
       rexml (~> 3.2)
     redcarpet (3.6.0)
-    rexml (3.3.3)
+    rexml (3.3.6)
       strscan
     scanf (1.0.0)
     shacl (0.4.1)
