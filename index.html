@@ -302,7 +302,7 @@
     with documents created using [[[JSON-LD10]]] [[JSON-LD10]].</p>
 </section>
 
-<section id="sotd">
+<section id="sotd" class="updateable-rec">
   <p>This document has been developed by the
     <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a> and was derived from the <a href="https://www.w3.org/community/json-ld/">JSON-LD Community Group's</a> <a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld-api/">Final Report</a>.</p>
 
@@ -312,6 +312,9 @@
   
     <p>This specification is intended to <a href='https://www.w3.org/2019/Process-20190301/#rec-rescind'>supersede</a> the [[[JSON-LD10-API]]] [[JSON-LD10-API]] specification. </p>
 
+    <p><span hidden="hidden" class="candidate-correction"></span>
+      This document includes Candidate Corrections to the current
+      <a href="https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/">W3C Recommendation dated 16 July 2020</a>.</p>
 
   <section>
     <h2>Set of Documents</h2>
@@ -3068,12 +3071,23 @@
                   <var>nested value</var> expands to <code>@value</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                   has been detected and processing is aborted.</li>
-                <li>Recursively repeat steps
-                  <a href="#alg-expand-property-scoped-context">3</a>,
-                  <a href="#alg-expand-property-scoped-context2">8</a>,
+                <li>
+                  <div class="candidate correction" id="change_1">
+                    <span class="marker">Candidate Correction 1</span>
+                    <p>This algorithm step omitted two additional steps
+                      which include <var>nesting-key</var> in addition to <var>nested value</var>.
+                      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/380">issue 380</a>.</p>
+                  </div>
+                  Recursively repeat steps
+                  <ins cite="#change_1">
+                    <a href="#alg-expand-property-scoped-context">3</a>,
+                    <a href="#alg-expand-property-scoped-context2">8</a>,
+                  </ins>
                   <a href="#alg-expand-each-key-value">13</a>,
                   and <a href="#alg-expand-resolve-nest">14</a>
-                  using <var>nesting-key</var> for <var>active property</var>, and
+                    <ins cite="#change_1">
+                    using <var>nesting-key</var> for <var>active property</var>, and
+                  </ins>
                   <var>nested value</var> for <var>element</var>.
                   <div class="note">Steps <a href="#alg-expand-property-scoped-context">3</a>
                     and <a href="#alg-expand-property-scoped-context2">8</a>
@@ -7107,6 +7121,8 @@
     <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
     <li>Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li>
     <li>Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li>
+    <li>Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>
+      as described in <a href="#change_1">CANDIDATE CORRECTION 1</a>.</li>
     <li>Added additional language to the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
