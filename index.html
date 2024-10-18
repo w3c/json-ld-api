@@ -312,7 +312,7 @@
   
     <p>This specification is intended to <a href='https://www.w3.org/2019/Process-20190301/#rec-rescind'>supersede</a> the [[[JSON-LD10-API]]] [[JSON-LD10-API]] specification. </p>
 
-    <p><span hidden="hidden" class="candidate-correction"></span>
+    <p class="correction">
       This document includes Candidate Corrections to the current
       <a href="https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/">W3C Recommendation dated 16 July 2020</a>.</p>
 
@@ -6852,7 +6852,12 @@
   <p class="issue" data-number="435">relative iri compaction.</p>
 </section>
 
-<section class="appendix informative"><h2>Changes since 1.0 Recommendation of 16 January 2014</h2>
+<section class="appendix informative">
+  <h2>Change log</h2>
+  <p>Note that this change log only identifies substantive changes since [[[JSON-LD10-API]]].</p>
+
+  <details id="changes-from-10">
+  <summary>Substantive changes since the <a href="https://www.w3.org/TR/2014/REC-json-ld-api-20140116/">Recommendation</a> of 16 January 2014</summary>
   <ul>
     <li>The <a href="#expansion-algorithm">Expansion Algorithm</a>
       has a special <a>processing mode</a>, based on
@@ -6913,10 +6918,10 @@
       href="#expansion-algorithm">Expansion Algorithm</a> removes this indexing
       transparently.</li>
   </ul>
-  <p>Additionally, see <a href="#changes-from-cg" class="sectionRef"></a>.</p>
-</section>
+</details>
 
-<section class="appendix informative" id="changes-from-cg"><h2>Changes since JSON-LD Community Group Final Report</h2>
+  <details id="changes-from-cg">
+<summary>Substantive changes since the <a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld-api/">Community Group Final Report</a> of 16 January 2014</summary>
   <ul>
     <li><a>Lists</a> may now have items which are themselves <a>lists</a>.</li>
     <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
@@ -6993,17 +6998,16 @@
     <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
     <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-cr">
-  <h2>Changes since Candidate Release of 12 December 2019</h2>
-  <p class="note">All changes are editorial and do not affect the observable
-    behavior of the API nor the expected test results.</p>
+  </details>
+
+  <details id="changes-from-cr">
+  <summary>Substantive changes since <a href="https://www.w3.org/TR/2019/CR-json-ld11-api-20191212/">Candidate Recommendation</a> of 12 December 2019</summary>
   <ul>
     <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
       in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
       and as a use of the {{LoadDocumentOptions/profile}} API option.</li>
-    <li>Added <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
-      macros to reduce boilerplate in algorithmic language.</li>
+    <!--li>Added <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
+      macros to reduce boilerplate in algorithmic language.</li-->
     <li>Improved algorithms in
       <a href="#context-processing-algorithm" class="sectionRef"></a>,
       <a href="#create-term-definition" class="sectionRef"></a>,
@@ -7028,11 +7032,10 @@
       and to allow <a>RemoteDocument</a> to be used
       as a direct input, which resolves a {{Promise}} boundary issue.</li>
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-cr2">
-  <h2>Changes since Candidate Release of 05 March 2020</h2>
-  <p class="note">All changes are editorial and do not affect the observable
-    behavior of the API nor the expected test results.</p>
+  </details>
+
+  <details id="changes-from-cr2">
+  <summary>Substantive changes since <a href="https://www.w3.org/TR/2020/CR-json-ld11-api-20200305/">Candidate Recommendation</a> of 05 March 2020</summary>
   <ul>
     <li>The <a>inverse context</a> is not passed explicitly as a parameter
       to the <a href="#term-selection">Term Selection</a>,
@@ -7103,46 +7106,51 @@
     <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
       the `preserve` keyword, which is only used for framing.</li>
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-pr">
-  <h2>Changes since Proposed Recommendation Release of 7 May 2020</h2>
+  </details>
+
+  <details id="changes-from-pr">
+  <summary>Changes since <a href="https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/">Proposed Recommendation</a> Release of 7 May 2020</summary>
+  <p class="note">All changes are editorial and do not affect the observable
+    behavior of the API nor the expected test results.</p>
   <ul>
-    <li>Removed remaining "at-risk" notes.</li>
-    <li>Update bibliographic reference for JCS to [[RFC8785]].</li>
-    <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
+    <!--li>Removed remaining "at-risk" notes.</li-->
+    <!--li>Update bibliographic reference for JCS to [[RFC8785]].</li-->
+    <!--li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
       which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
-      for non-browser usage to address review suggestions.</li>
+      for non-browser usage to address review suggestions.</li-->
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-rec1">
-  <h2>Changes since Recommendation of 16 July 2020</h2>
+  </details>
+
+  <details id="changes-from-rec1">
+  <summary>Substantive changes since <a href="https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/">Recommendation</a> of 16 July 2020</summary>
   <ul>
-    <li>Regenerated definition list, which does not attempt to filter out unused definitions.</li>
-    <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
-    <li>Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li>
-    <li>Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li>
-    <li>Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>
-      as described in <a href="#change_1">CANDIDATE CORRECTION 1</a>.</li>
-    <li>Added additional language to the
+    <!--li>Regenerated definition list, which does not attempt to filter out unused definitions.</li-->
+    <!--li>Changed obsolete use of `void` in WebIDL to `undefined`.</li-->
+    <li>2021-01-05: Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.<!-- From issue 519--></li>
+    <li>2020-02-23: Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>
+      as described in <a href="#change_1">Candidate Correction 1</a>.</li>
+    <li>2021-02-25: Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li>
+    <li>2021-05-15: Added additional language to the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
       <var>container key</var> before compacting it.</li>
-    <li>
-      Changed the <a href="#create-term-definition">Create Term Definition</a>
+    <li>2023-06-28: Changed the <a href="#create-term-definition">Create Term Definition</a>
       in section 4.2 of the Context Processing Algorithms, to ensure that all
       possible features for reverse term definitions are processed. The change
       was to remove <q>and return</q> from the end of step 13, and revise step
       14 to begin with <q>Otherwise</q>.</li>
-    <li>Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li>
-    <li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li>
-    <li>Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
+    <li>2023-08-06: Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li>
+    <!--li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li-->
+    <li>2024-07-10: Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
       in <a data-link-for="JsonLdProcessor">toRdf()</a>
       defaults to `true`, rather than `false`.
       This is consistent with wording in
       <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
       for treating script elements as a single document.</li>
   </ul>
+  </details>
 </section>
+
 <section id="ack"
 class="appendix informative"
 data-include="ack-script/acknowledgements.html"
