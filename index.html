@@ -3876,9 +3876,15 @@
                       set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any.</li>
                     <li id="alg-compact-12_8_9_6" class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
                       and <var>index key</var> is not <code>@index</code>:
+                      <div class="candidate correction" id="change_2">
+                        <span class="marker">Candidate Correction 2</span>
+                        <p>The value of `@index` on a property map can be a <a>Compact IRI</a> in addition to an <a>IRI</a>.
+                          The Compaction Algorithm is updated to first expand this value before re-compacting it.
+                          For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/514">issue 380</a>.</p>
+                      </div>
                       <ol>
                         <li id="alg-compact-12_8_9_6_1">Reinitialize <var>container key</var> by <a>IRI compacting</a>
-                          <var>index key</var> after first <a>IRI expanding</a> it.</li>
+                          <var>index key</var> <ins cite="#change_2">after first <a>IRI expanding</a> it</ins>.</li>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
                         <li id="alg-compact-12_8_9_6_3">If there are remaining values in <var>compacted item</var>
                           for <var>container key</var>, use <a>add value</a> to
@@ -6868,7 +6874,8 @@
     <li>2021-05-15: Added additional language to the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
-      <var>container key</var> before compacting it.</li> <!-- From issue 525 commit: faddb4288947f56cbc6e1019f8d628b5316a91ab -->
+      <var>container key</var> before compacting it,
+      as described in <a href="#change_2">Candidate Correction 2</a>.</li>
     <li>2023-06-28: Changed the <a href="#create-term-definition">Create Term Definition</a>
       in section 4.2 of the Context Processing Algorithms, to ensure that all
       possible features for reverse term definitions are processed. The change
