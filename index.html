@@ -3072,20 +3072,20 @@
                   <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                   has been detected and processing is aborted.</li>
                 <li>
-                  <div class="candidate correction" id="change_2">
-                    <span class="marker">Candidate Correction 2</span>
+                  <div class="candidate correction" id="change_1">
+                    <span class="marker">Candidate Correction 1</span>
                     <p>This algorithm step omitted two additional steps
                       which include <var>nesting-key</var> in addition to <var>nested value</var>.
                       For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/380">issue 380</a>.</p>
                   </div>
                   Recursively repeat steps
-                  <ins cite="#change_2">
+                  <ins cite="#change_1">
                     <a href="#alg-expand-property-scoped-context">3</a>,
                     <a href="#alg-expand-property-scoped-context2">8</a>,
                   </ins>
                   <a href="#alg-expand-each-key-value">13</a>,
                   and <a href="#alg-expand-resolve-nest">14</a>
-                    <ins cite="#change_2">
+                    <ins cite="#change_1">
                     using <var>nesting-key</var> for <var>active property</var>, and
                   </ins>
                   <var>nested value</var> for <var>element</var>.
@@ -6861,10 +6861,10 @@
   <ul>
     <!--li>Regenerated definition list, which does not attempt to filter out unused definitions.</li-->
     <!--li>Changed obsolete use of `void` in WebIDL to `undefined`.</li-->
-    <li>2021-01-05: Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.<!-- From issue 519--></li>
+    <!--li>2021-01-05: Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li--><!-- From issue 519-->
     <li>2020-02-23: Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>
-      as described in <a href="#change_2">Candidate Correction 2</a>.</li>
-    <li>2021-02-25: Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li> <!-- From issue 524, commit: 027da2879ebe658c2f8609d164586d0e23be68a5 -->
+      as described in <a href="#change_1">Candidate Correction 1</a>.</li>
+    <!--li>2021-02-25: Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li--> <!-- From issue 524, commit: 027da2879ebe658c2f8609d164586d0e23be68a5 -->
     <li>2021-05-15: Added additional language to the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
