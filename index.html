@@ -309,7 +309,7 @@
   <p>There is a
     <a href="https://json-ld.org/playground/">live JSON-LD playground</a> that is capable
     of demonstrating the features described in this document.</p>
-  
+
     <p>This specification is intended to <a href='https://www.w3.org/2019/Process-20190301/#rec-rescind'>supersede</a> the [[[JSON-LD10-API]]] [[JSON-LD10-API]] specification. </p>
 
     <p class="correction">
@@ -1626,7 +1626,7 @@
             <li id="ctd-invalid-type">Otherwise, if the expanded <var>type</var> is
               neither <code>@id</code>, nor <code>@json</code>,
               nor <code>@none</code>,
-              nor <code>@vocab</code>, 
+              nor <code>@vocab</code>,
               nor an <a>IRI</a>,
               an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1638,7 +1638,7 @@
             <span class="marker">Candidate Correction 3</span>
             <p>This changes the algorithm for processing a reverse term so that it doesn't return early.
               For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/565">issue 565</a>.</p>
-          </div>        
+          </div>
           <ol>
             <li>If <var>value</var> contains <code>@id</code> or <code>@nest</code>, <a>entries</a>, an
               <a data-link-for="JsonLdErrorCode">invalid reverse property</a>
@@ -1672,10 +1672,10 @@
             <li>Set the <a>term definition</a> of <var>term</var> in
               <var>active context</var> to <var>definition</var> and the
               value associated with <var>defined</var>'s <a>entry</a> <var>term</var> to
-              <code>true</code> <del cite="#change_3">and return</del>.</li>
+              <code>true</code><del cite="#change_3"> and return</del>.</li>
           </ol>
         </li>
-        <li><ins cite="#change_3">Otherwise,</ins> if <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
+        <li><ins cite="#change_3">Otherwise, if</ins><del cite="#change_3">If</del> <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
             <li id="ctd-id-null">If the <code>@id</code> <a>entry</a> of <var>value</var>
@@ -1902,7 +1902,7 @@
         </li>
         <li id="ctd-invalid-entries">If <var>value</var> contains any <a>entry</a> other than <code>@id</code>,
           <code>@reverse</code>, <code>@container</code>,
-          <code class="changed">@context</code>, 
+          <code class="changed">@context</code>,
           <code class="changed">@direction</code>,
           <code class="changed">@index</code>,
           <code>@language</code>,
@@ -2969,7 +2969,7 @@
                               <span class="changed"><a>IRI expanding</a></span> <var>index key</var>.</li>
                             <li>Initialize <var>index property values</var> to
                               an <a>array</a> consisting of <var>re-expanded index</var> followed
-                              by the existing values of 
+                              by the existing values of
                               the concatenation of <var>expanded index key</var> in <var>item</var>,
                               if any.</li>
                             <li>Add the key-value pair (<var>expanded index key</var>-<var>index property values</var>)
@@ -3089,9 +3089,9 @@
                     <a href="#alg-expand-property-scoped-context2">8</a>,
                   </ins>
                   <a href="#alg-expand-each-key-value">13</a>,
-                  and <a href="#alg-expand-resolve-nest">14</a>
-                    <ins cite="#change_1">
-                    using <var>nesting-key</var> for <var>active property</var>, and
+                  and <a href="#alg-expand-resolve-nest">14</a> using
+                  <ins cite="#change_1">
+                    <var>nesting-key</var> for <var>active property</var>, and
                   </ins>
                   <var>nested value</var> for <var>element</var>.
                   <div class="note">Steps <a href="#alg-expand-property-scoped-context">3</a>
@@ -3829,7 +3829,7 @@
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> entry in <var>nest result</var>
                           using <var>as array</var>.</li>
-                      </ol>                      
+                      </ol>
                     </li>
                     <li>Otherwise, <var>container</var> does not include <code>@graph</code>
                       or otherwise does not match one of the previous cases.
@@ -3889,7 +3889,7 @@
                       </div>
                       <ol>
                         <li id="alg-compact-12_8_9_6_1">Reinitialize <var>container key</var> by <a>IRI compacting</a>
-                          <var>index key</var> <ins cite="#change_2">after first <a>IRI expanding</a> it</ins>.</li>
+                          <var>index key</var><ins cite="#change_2"> after first <a>IRI expanding</a> it</ins>.</li>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
                         <li id="alg-compact-12_8_9_6_3">If there are remaining values in <var>compacted item</var>
                           for <var>container key</var>, use <a>add value</a> to
@@ -5862,7 +5862,7 @@
             from <var>remote document</var>, if available;
             otherwise to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a data-lt="context-base-iri">base IRI</a>.</li>
-          <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set, 
+          <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
             and the <a>original base URL</a> from <var>active context</var> as <var>base URL</var>.
@@ -6026,6 +6026,13 @@
         <p>Transforms the given <a data-lt="jsonldprocessor-toRdf-input">input</a> into an <a>RdfDataset</a>
           according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
 
+        <div class="candidate correction" id="change_4">
+          <span class="marker">Candidate Correction 4</span>
+          <p>This changes the default for <a data-link-for="LoadDocumentOptions">extractAllScripts</a> to be `false`,
+            which is consistent with the wording in <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> in [[JSON-LD11]].
+            For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/603">issue 603</a>.</p>
+        </div>
+
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
@@ -6033,8 +6040,8 @@
             <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>
-            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code>,
-              and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code><ins cite="#change_4">,
+              and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></ins></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>map</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
@@ -6569,7 +6576,7 @@
           <ol>
             <li>If the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
               the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
-              and processing is terminated.</li>              
+              and processing is terminated.</li>
             <li>Otherwise, the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is <code>true</code>.
               Set <var>document</var> to a new empty <a>array</a>.
               For each <a>JSON-LD script element</a> in <var>input</var>:
@@ -6887,14 +6894,15 @@
       was to remove <q>and return</q> from the end of step 13, and revise step
       14 to begin with <q>Otherwise</q>,
       as described in <a href="#change_3">Candidate Correction 3</a>.</li>
-    <li>2023-08-06: Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li> <!-- From issue 552 commit df655351d96116a9b9f6768ff56a5e7596bb1bfe -->
+    <!--li>2023-08-06: Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li--> <!-- From issue 552 commit df655351d96116a9b9f6768ff56a5e7596bb1bfe -->
     <!--li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li-->
     <li>2024-07-10: Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
       in <a data-link-for="JsonLdProcessor">toRdf()</a>
       defaults to `true`, rather than `false`.
       This is consistent with wording in
       <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
-      for treating script elements as a single document.</li> <!-- From issue 606 commit ff4a92ffe2f05c0038b57b0014e243cdba033a54 -->
+      for treating script elements as a single document,
+      as described in <a href="#change_4">Candidate Correction 4</a>.</li>
   </ul>
   </details>
 
@@ -7087,7 +7095,7 @@
     <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not any JSON media type
       and there is a link header with `rel=alternate` and `type=application/ld+json`, redirect
       to that content.</li>
-    <li><a>Value objects</a>, and associated <a>context</a> and <a>term definitions</a> have been updated to 
+    <li><a>Value objects</a>, and associated <a>context</a> and <a>term definitions</a> have been updated to
       support `@direction` for setting the <a>base direction</a> of strings.</li>
     <li>It is no longer required that language tags be normalized to lower case,
       other than for testing considerations.
