@@ -302,16 +302,19 @@
     with documents created using [[[JSON-LD10]]] [[JSON-LD10]].</p>
 </section>
 
-<section id="sotd">
+<section id="sotd" class="updateable-rec">
   <p>This document has been developed by the
     <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a> and was derived from the <a href="https://www.w3.org/community/json-ld/">JSON-LD Community Group's</a> <a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld-api/">Final Report</a>.</p>
 
   <p>There is a
     <a href="https://json-ld.org/playground/">live JSON-LD playground</a> that is capable
     of demonstrating the features described in this document.</p>
-  
+
     <p>This specification is intended to <a href='https://www.w3.org/2019/Process-20190301/#rec-rescind'>supersede</a> the [[[JSON-LD10-API]]] [[JSON-LD10-API]] specification. </p>
 
+    <p class="correction">
+      This document includes <a href="#changes-from-rec1">Candidate Corrections</a> to the current
+      <a href="https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/">W3C Recommendation dated 16 July 2020</a>.</p>
 
   <section>
     <h2>Set of Documents</h2>
@@ -1623,7 +1626,7 @@
             <li id="ctd-invalid-type">Otherwise, if the expanded <var>type</var> is
               neither <code>@id</code>, nor <code>@json</code>,
               nor <code>@none</code>,
-              nor <code>@vocab</code>, 
+              nor <code>@vocab</code>,
               nor an <a>IRI</a>,
               an <a data-link-for="JsonLdErrorCode">invalid type mapping</a>
               error has been detected and processing is aborted.</li>
@@ -1631,6 +1634,11 @@
           </ol>
         </li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@reverse</code>:
+          <div class="candidate correction" id="change_3">
+            <span class="marker">Candidate Correction 3</span>
+            <p>This changes the algorithm for processing a reverse term so that it doesn't return early.
+              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/565">issue 565</a>.</p>
+          </div>
           <ol>
             <li>If <var>value</var> contains <code>@id</code> or <code>@nest</code>, <a>entries</a>, an
               <a data-link-for="JsonLdErrorCode">invalid reverse property</a>
@@ -1664,10 +1672,10 @@
             <li>Set the <a>term definition</a> of <var>term</var> in
               <var>active context</var> to <var>definition</var> and the
               value associated with <var>defined</var>'s <a>entry</a> <var>term</var> to
-              <code>true</code>.</li>
+              <code>true</code><del cite="#change_3"> and return</del>.</li>
           </ol>
         </li>
-        <li>Otherwise, if <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
+        <li><ins cite="#change_3">Otherwise, if</ins><del cite="#change_3">If</del> <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
             <li id="ctd-id-null">If the <code>@id</code> <a>entry</a> of <var>value</var>
@@ -1894,7 +1902,7 @@
         </li>
         <li id="ctd-invalid-entries">If <var>value</var> contains any <a>entry</a> other than <code>@id</code>,
           <code>@reverse</code>, <code>@container</code>,
-          <code class="changed">@context</code>, 
+          <code class="changed">@context</code>,
           <code class="changed">@direction</code>,
           <code class="changed">@index</code>,
           <code>@language</code>,
@@ -2961,7 +2969,7 @@
                               <span class="changed"><a>IRI expanding</a></span> <var>index key</var>.</li>
                             <li>Initialize <var>index property values</var> to
                               an <a>array</a> consisting of <var>re-expanded index</var> followed
-                              by the existing values of 
+                              by the existing values of
                               the concatenation of <var>expanded index key</var> in <var>item</var>,
                               if any.</li>
                             <li>Add the key-value pair (<var>expanded index key</var>-<var>index property values</var>)
@@ -3068,12 +3076,23 @@
                   <var>nested value</var> expands to <code>@value</code>, an
                   <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                   has been detected and processing is aborted.</li>
-                <li>Recursively repeat steps
-                  <a href="#alg-expand-property-scoped-context">3</a>,
-                  <a href="#alg-expand-property-scoped-context2">8</a>,
+                <li>
+                  <div class="candidate correction" id="change_1">
+                    <span class="marker">Candidate Correction 1</span>
+                    <p>This algorithm step omitted two additional steps
+                      which include <var>nesting-key</var> in addition to <var>nested value</var>.
+                      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/380">issue 380</a>.</p>
+                  </div>
+                  Recursively repeat steps
+                  <ins cite="#change_1">
+                    <a href="#alg-expand-property-scoped-context">3</a>,
+                    <a href="#alg-expand-property-scoped-context2">8</a>,
+                  </ins>
                   <a href="#alg-expand-each-key-value">13</a>,
-                  and <a href="#alg-expand-resolve-nest">14</a>
-                  using <var>nesting-key</var> for <var>active property</var>, and
+                  and <a href="#alg-expand-resolve-nest">14</a> using
+                  <ins cite="#change_1">
+                    <var>nesting-key</var> for <var>active property</var>, and
+                  </ins>
                   <var>nested value</var> for <var>element</var>.
                   <div class="note">Steps <a href="#alg-expand-property-scoped-context">3</a>
                     and <a href="#alg-expand-property-scoped-context2">8</a>
@@ -3810,7 +3829,7 @@
                         <li class="changed">Use <a>add value</a> to add <var>compacted item</var>
                           to the <var>item active property</var> entry in <var>nest result</var>
                           using <var>as array</var>.</li>
-                      </ol>                      
+                      </ol>
                     </li>
                     <li>Otherwise, <var>container</var> does not include <code>@graph</code>
                       or otherwise does not match one of the previous cases.
@@ -3862,9 +3881,15 @@
                       set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any.</li>
                     <li id="alg-compact-12_8_9_6" class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
                       and <var>index key</var> is not <code>@index</code>:
+                      <div class="candidate correction" id="change_2">
+                        <span class="marker">Candidate Correction 2</span>
+                        <p>The value of `@index` on a property map can be a <a>Compact IRI</a> in addition to an <a>IRI</a>.
+                          The Compaction Algorithm is updated to first expand this value before re-compacting it.
+                          For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/514">issue 380</a>.</p>
+                      </div>
                       <ol>
                         <li id="alg-compact-12_8_9_6_1">Reinitialize <var>container key</var> by <a>IRI compacting</a>
-                          <var>index key</var> after first <a>IRI expanding</a> it.</li>
+                          <var>index key</var><ins cite="#change_2"> after first <a>IRI expanding</a> it</ins>.</li>
                         <li>Set <var>map key</var> to the first value of <var>container key</var> in <var>compacted item</var>, if any.</li>
                         <li id="alg-compact-12_8_9_6_3">If there are remaining values in <var>compacted item</var>
                           for <var>container key</var>, use <a>add value</a> to
@@ -5837,7 +5862,7 @@
             from <var>remote document</var>, if available;
             otherwise to the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a>.
             If set, the {{JsonLdOptions/base}} option from <a data-lt="jsonldprocessor-expand-options">options</a> overrides the <a data-lt="context-base-iri">base IRI</a>.</li>
-          <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set, 
+          <li>If the {{JsonLdOptions/expandContext}} option in <a data-lt="jsonldprocessor-expand-options">options</a> is set,
             update the <var>active context</var> using the <a href="#context-processing-algorithm">Context Processing algorithm</a>,
             passing the {{JsonLdOptions/expandContext}} as <var>local context</var>
             and the <a>original base URL</a> from <var>active context</var> as <var>base URL</var>.
@@ -6001,6 +6026,13 @@
         <p>Transforms the given <a data-lt="jsonldprocessor-toRdf-input">input</a> into an <a>RdfDataset</a>
           according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
 
+        <div class="candidate correction" id="change_4">
+          <span class="marker">Candidate Correction 4</span>
+          <p>This changes the default for <a data-link-for="LoadDocumentOptions">extractAllScripts</a> to be `false`,
+            which is consistent with the wording in <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> in [[JSON-LD11]].
+            For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/603">issue 603</a>.</p>
+        </div>
+
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
             The following steps are then deferred.</li>
@@ -6008,8 +6040,8 @@
             <a data-link-for="JsonLdProcessor">expand()</a> method
             using <a data-lt="jsonldprocessor-toRdf-input">input</a>
             and <a data-lt="jsonldprocessor-toRdf-options">options</a>
-            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code>,
-              and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></span>.</li>
+            <span class="changed">with {{JsonLdOptions/ordered}} set to <code>false</code><ins cite="#change_4">,
+              and {{JsonLdOptions/extractAllScripts}} defaulting to <code>true</code></ins></span>.</li>
           <li>Create a new <a>RdfDataset</a> <var>dataset</var>.</li>
           <li>Create a new <a>map</a> <var>node map</var>.</li>
           <li>Invoke the <a href="#node-map-generation">Node Map Generation algorithm</a>,
@@ -6544,7 +6576,7 @@
           <ol>
             <li>If the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is not present, or <code>false</code>,
               the <var>promise</var> is rejected with a <a>JsonLdError</a> whose {{JsonLdError/code}} is set to <a data-link-for="JsonLdErrorCode">loading document failed</a>
-              and processing is terminated.</li>              
+              and processing is terminated.</li>
             <li>Otherwise, the <a data-link-for="LoadDocumentOptions">extractAllScripts</a> option is <code>true</code>.
               Set <var>document</var> to a new empty <a>array</a>.
               For each <a>JSON-LD script element</a> in <var>input</var>:
@@ -6838,187 +6870,57 @@
   <p class="issue" data-number="435">relative iri compaction.</p>
 </section>
 
-<section class="appendix informative"><h2>Changes since 1.0 Recommendation of 16 January 2014</h2>
-  <ul>
-    <li>The <a href="#expansion-algorithm">Expansion Algorithm</a>
-      has a special <a>processing mode</a>, based on
-      the {{JsonLdOptions/frameExpansion}} flag, to enable content associated with JSON-LD
-      frames, which may not otherwise be valid <a>JSON-LD documents</a>.</li>
-    <li>An <a>expanded term definition</a> can now have an
-      <code>@context</code> <a>entry</a>, which defines a context used for values of
-      a <a>property</a> identified with such a <a>term</a>. This context is used
-      in both the <a href="#expansion-algorithm">Expansion Algorithm</a> and
-      <a href="#compaction-algorithm">Compaction Algorithm</a>.</li>
-    <li>A new <a href="#merge-node-maps" class="sectionRef"></a> is required
-      for framing, to create a single graph from the <a data-lt="default graph">default</a>
-      and <a>named graphs</a>.</li>
-    <li>An <a>expanded term definition</a> can now have an
-      <code>@nest</code> <a>entry</a>, which identifies a term expanding to
-      <code>@nest</code> which is used for containing <a>properties</a> using the same
-      <code>@nest</code> mapping. When expanding, the values of an <a>entry</a>
-      expanding to <code>@nest</code> are treated as if they were contained
-      within the enclosing <a>node object</a> directly.</li>
-    <li><code>@container</code> values within an <a>expanded term definition</a> may now
-      include <code>@id</code> and <code>@type</code>, corresponding to <a>id maps</a> and <a>type maps</a>.</li>
-    <li>Both <a>language maps</a> and <a>index maps</a> may legitimately have an <code>@none</code> value, but
-      JSON-LD 1.0 only allowed <a>string</a> values. This has been updated
-      to allow (and ignore) <code>@none</code> values.</li>
-    <li>The JSON syntax has been abstracted into an <a>internal representation</a>
-      to allow for other serialization formats that are functionally equivalent
-      to JSON.</li>
-    <li>Preserved values are compacted using the <a>properties</a> of the referencing term.</li>
-    <li>The value for <code>@container</code> in an <a>expanded term definition</a>
-      can also be an <a>array</a> containing any appropriate container
-      keyword along with <code>@set</code> (other than <code>@list</code>).
-      This allows a way to ensure that such <a>entry</a> values will always
-      be expressed in <a>array</a> form.</li>
-    <li>Added support for the <a data-link-for="JsonLdOptions">compactToRelative</a> option to allow IRI compaction (<a href="#iri-compaction" class="sectionRef"></a>)
-      to document-relative IRIs to be disabled.</li>
-    <li>In JSON-LD 1.1, terms will be used as <a>compact IRI</a> prefixes
-      when compacting only if
-      a <a>simple term definition</a> is used where the value ends with a URI <a data-cite="RFC3986#section-2.2">gen-delim</a> character,
-      or if their <a>expanded term definition</a> contains
-      an <code>@prefix</code> <a>entry</a> with the value <code>true</code>. The 1.0 algorithm has
-      been updated to only consider terms that map to a value that ends with a URI
-      <a data-cite="RFC3986#section-2.2">gen-delim</a> character.</li>
-    <li>Term definitions now allow <code>@container</code> to include <code>@graph</code>,
-      along with <code>@id</code>, <code>@index</code> and <code>@set</code>.
-      In the <a href="#expansion-algorithm">Expansion Algorithm</a>, this is
-      used to create a <a>named graph</a> from either a <a>node object</a>, or
-      objects which are values of <a>entries</a> in an <a>id map</a> or <a>index map</a>.
-      The <a href="#compaction-algorithm">Compaction Algorithm</a> allows
-      specific forms of graph objects to be compacted back to a set of <a>node objects</a>,
-      or maps of <a>node objects</a>.</li>
-    <li><a href="#value-expansion">Value Expansion</a> will not turn native values
-      into <a>node objects</a>.</li>
-    <li>The <a href="#term-selection">Term Selection algorithm</a> has been
-      updated to allow uses of containers for values which would otherwise not
-      match. This is used in the <a href="#expansion-algorithm">Compaction
-      Algorithm</a> to use the <code>@none</code> keyword, or an alias, for
-      values of maps for which there is no natural index. The <a
-      href="#expansion-algorithm">Expansion Algorithm</a> removes this indexing
-      transparently.</li>
-  </ul>
-  <p>Additionally, see <a href="#changes-from-cg" class="sectionRef"></a>.</p>
-</section>
+<section class="appendix informative">
+  <h2>Change log</h2>
+  <p>Note that this change log only identifies substantive changes since [[[JSON-LD10-API]]].</p>
 
-<section class="appendix informative" id="changes-from-cg"><h2>Changes since JSON-LD Community Group Final Report</h2>
+  <details id="changes-from-rec1">
+  <summary>Substantive changes since <a href="https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/">Recommendation</a> of 16 July 2020</summary>
   <ul>
-    <li><a>Lists</a> may now have items which are themselves <a>lists</a>.</li>
-    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
-      has been updated to ensure that only <a>well-formed</a> <a>triples</a>
-      are emitted; previously, it only ensured that <a>triples</a> containing
-      <a>relative IRI references</a> were excluded.</li>
-    <li>The API now adds an {{JsonLdOptions/ordered}}
-       option, defaulting to <code>false</code> This is used in algorithms to
-       control iteration of <a>map entry</a> keys. Previously, the
-       algorithms always required such an order. The instructions for
-       evaluating test results have been updated accordingly.</li>
-    <li>The <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
-      has been updated to remove the specifics of how new blank node
-      identifiers are created.</li>
-    <li>Values of <code>@type</code>, or an alias of <code>@type</code>, may now have their <code>@container</code> set to <code>@set</code>
-      to ensure that <code>@type</code> entries are always represented as an array. This
-      also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>map</a>
-      with <code>@container</code> set to <code>@set</code>.</li>
-    <li>Updated the <a href="#iri-expansion">IRI Expansion algorithm</a> so that
-      if <var>value</var> contains a colon (<code>:</code>), but
-      <var>prefix</var> is not a <a>term</a>, to only return <var>value</var>
-      if it has the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a>, otherwise fall through to
-      the rest of the algorithm.</li>
-    <li>The use of <a>blank node identifiers</a> to label properties is obsolete,
-      and may be removed in a future version of JSON-LD,
-      as is the support for <a>generalized RDF Datasets</a>
-      and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</li>
-    <li>Added API steps to accept <code>text/html</code> as input,
-      extracting either a specifically targeted <a data-cite="HTML/scripting.html#the-script-element">script element</a>,
-      the first found <a>JSON-LD script element</a>,
-      or all <a>JSON-LD script elements</a>.</li>
-    <li>Added {{RemoteDocument/contentType}} field to <a>RemoteDocument</a>.</li>
-    <li>Added support for protected <a>contexts</a> and <a>term definitions</a>.</li>
-    <li>Because scoped contexts can lead to contexts being reloaded, replace the
-      <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
-    <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
-    <li>Added support for <a>JSON literals</a>.</li>
-    <li><a>Term definitions</a> with keys which are of the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a> or a <a>compact IRI</a> MUST NOT
-      expand to an <a>IRI</a> other than the expansion of the key itself.</li>
-    <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
-      including variations on HTML processing.</li>
-    <li>The <a href="#iri-compaction">IRI Compaction algorithm</a> may generate an error if the result is an
-      <a>IRI</a> which could be confused with a <a>compact IRI</a> in the
-      <a>active context</a>.</li>
-    <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
-      <a>type-scoped contexts</a>. This can be controlled using the <code>@propagate</code>
-      <a>entry</a> in a <a>local context</a>.</li>
-    <li>A context may contain a <code>@import</code> <a>entry</a> used to reference a remote context
-      within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
-      authored for <code>JSON-LD 1.0</code>.</li>
-    <li>The <a data-link-for="JsonLdErrorCode">colliding keywords</a> error is not issued for `@type`;
-      instead, previous values of `@type` are prepended to any new values, when expanding.</li>
-    <li>A <a>node object</a> may include an <a>included block</a>,
-      which is used to contain a set of <a>node objects</a> which are treated
-      exactly as if they were <a>node objects</a> defined in an <a>array</a> including the containing
-      <a>node object</a>.
-      This allows the use of the object form of a JSON-LD document when there is more
-      than one <a>node object</a> being defined, and where those <a>node objects</a>
-      are not embedded as values of the containing <a>node object</a>.</li>
-    <li>A <a>relative IRI reference</a> has been added as a possible value for <code>@vocab</code> in
-      a context. When this is set, vocabulary-relative IRI references, such as the
-      <a>entries</a> of <a>node objects</a>, are expanded or compacted relative
-      to the <a>base IRI</a> and the <a>vocabulary mapping</a> using string concatenation.</li>
-    <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not any JSON media type
-      and there is a link header with `rel=alternate` and `type=application/ld+json`, redirect
-      to that content.</li>
-    <li><a>Value objects</a>, and associated <a>context</a> and <a>term definitions</a> have been updated to 
-      support `@direction` for setting the <a>base direction</a> of strings.</li>
-    <li>It is no longer required that language tags be normalized to lower case,
-      other than for testing considerations.
-      Language tags that are not valid according to [[BCP47]] are rejected.</li>
-    <li>The <a>processing mode</a> is now implicitly `json-ld-1.1`, unless set
-      explicitly to `json-ld-1.0`.</li>
-    <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
-    <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
+    <!--li>Regenerated definition list, which does not attempt to filter out unused definitions.</li-->
+    <!--li>Changed obsolete use of `void` in WebIDL to `undefined`.</li-->
+    <!--li>2021-01-05: Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li--><!-- From issue 519-->
+    <li>2020-02-23: Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>
+      as described in <a href="#change_1">Candidate Correction 1</a>.</li>
+    <!--li>2021-02-25: Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li--> <!-- From issue 524, commit: 027da2879ebe658c2f8609d164586d0e23be68a5 -->
+    <li>2021-05-15: Added additional language to the
+      <a href="#compaction-algorithm">Compaction Algorithm</a>
+      step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
+      <var>container key</var> before compacting it,
+      as described in <a href="#change_2">Candidate Correction 2</a>.</li>
+    <li>2023-06-28: Changed the <a href="#create-term-definition">Create Term Definition</a>
+      in section 4.2 of the Context Processing Algorithms, to ensure that all
+      possible features for reverse term definitions are processed. The change
+      was to remove <q>and return</q> from the end of step 13, and revise step
+      14 to begin with <q>Otherwise</q>,
+      as described in <a href="#change_3">Candidate Correction 3</a>.</li>
+    <!--li>2023-08-06: Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li--> <!-- From issue 552 commit df655351d96116a9b9f6768ff56a5e7596bb1bfe -->
+    <!--li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li-->
+    <li>2024-07-10: Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
+      in <a data-link-for="JsonLdProcessor">toRdf()</a>
+      defaults to `true`, rather than `false`.
+      This is consistent with wording in
+      <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
+      for treating script elements as a single document,
+      as described in <a href="#change_4">Candidate Correction 4</a>.</li>
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-cr">
-  <h2>Changes since Candidate Release of 12 December 2019</h2>
+  </details>
+
+  <details id="changes-from-pr">
+  <summary>Changes since <a href="https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/">Proposed Recommendation</a> Release of 7 May 2020</summary>
   <p class="note">All changes are editorial and do not affect the observable
     behavior of the API nor the expected test results.</p>
   <ul>
-    <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
-      in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
-      and as a use of the {{LoadDocumentOptions/profile}} API option.</li>
-    <li>Added <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
-      macros to reduce boilerplate in algorithmic language.</li>
-    <li>Improved algorithms in
-      <a href="#context-processing-algorithm" class="sectionRef"></a>,
-      <a href="#create-term-definition" class="sectionRef"></a>,
-      <a href="#expansion" class="sectionRef"></a>,
-      <a href="#compaction" class="sectionRef"></a>,
-      <a href="#value-compaction" class="sectionRef"></a>,
-      <a href="#node-map-generation" class="sectionRef"></a>,
-      and <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>.
-    </li>
-    <li>When creating an `i18n` datatype or `rdf:CompoundLiteral`, <a>language tags</a> are
-      normalized to lower case to improve interoperability between implementations.</li>
-    <li>Moved non-recursive portions algorithms
-      into the {{JsonLdProcessor}} processing steps.</li>
-    <li>Fix some {{JsonLdOption}} initializers where defaults are `null`.
-      Set default value for <a data-link-for="JsonLdOptions">processingMode</a> to `json-ld-1.1`.</li>
-    <li>Remove normative text for canonicalizing `rdf:JSON` literals and
-      reference the `rdf:JSON` datatype of the syntax document
-      for the conversion of the <a>JSON Literals</a> in <a href="#data-round-tripping" class="sectionRef"></a>.</li>
-    <li>Updated interfaces in <a href="#the-application-programming-interface" class="sectionRef"></a>
-      to use <a data-cite="WEBIDL#idl-record">record</a>,
-      instead of <a data-cite="WEBIDL#dfn-dictionary">dictionary</a>,
-      and to allow <a>RemoteDocument</a> to be used
-      as a direct input, which resolves a {{Promise}} boundary issue.</li>
+    <!--li>Removed remaining "at-risk" notes.</li-->
+    <!--li>Update bibliographic reference for JCS to [[RFC8785]].</li-->
+    <!--li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
+      which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
+      for non-browser usage to address review suggestions.</li-->
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-cr2">
-  <h2>Changes since Candidate Release of 05 March 2020</h2>
-  <p class="note">All changes are editorial and do not affect the observable
-    behavior of the API nor the expected test results.</p>
+  </details>
+
+  <details id="changes-from-cr2">
+  <summary>Substantive changes since <a href="https://www.w3.org/TR/2020/CR-json-ld11-api-20200305/">Candidate Recommendation</a> of 05 March 2020</summary>
   <ul>
     <li>The <a>inverse context</a> is not passed explicitly as a parameter
       to the <a href="#term-selection">Term Selection</a>,
@@ -7089,44 +6991,187 @@
     <li>Added <a href="#api-keywords" class="sectionRef"></a> to describe
       the `preserve` keyword, which is only used for framing.</li>
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-pr">
-  <h2>Changes since Proposed Recommendation Release of 7 May 2020</h2>
+  </details>
+
+  <details id="changes-from-cr">
+  <summary>Substantive changes since <a href="https://www.w3.org/TR/2019/CR-json-ld11-api-20191212/">Candidate Recommendation</a> of 12 December 2019</summary>
   <ul>
-    <li>Removed remaining "at-risk" notes.</li>
-    <li>Update bibliographic reference for JCS to [[RFC8785]].</li>
-    <li>Changed `[Exposed=(Window,Worker)]` to `[Exposed=JsonLd]`,
-      which is declared as a global interface in order to expose the {{JsonLdProcessor}} interface
-      for non-browser usage to address review suggestions.</li>
+    <li>Add `application/xhtml+xml` as an allowed media type in <a href="#process-html" class="sectionRef"></a>,
+      in the note in <a href="#loaddocumentcallback" class="sectionRef"></a>,
+      and as a use of the {{LoadDocumentOptions/profile}} API option.</li>
+    <!--li>Added <a>add value</a>, <a>IRI expanding</a>, and <a>IRI compacting</a>
+      macros to reduce boilerplate in algorithmic language.</li-->
+    <li>Improved algorithms in
+      <a href="#context-processing-algorithm" class="sectionRef"></a>,
+      <a href="#create-term-definition" class="sectionRef"></a>,
+      <a href="#expansion" class="sectionRef"></a>,
+      <a href="#compaction" class="sectionRef"></a>,
+      <a href="#value-compaction" class="sectionRef"></a>,
+      <a href="#node-map-generation" class="sectionRef"></a>,
+      and <a href="#deserialize-json-ld-to-rdf-algorithm" class="sectionRef"></a>.
+    </li>
+    <li>When creating an `i18n` datatype or `rdf:CompoundLiteral`, <a>language tags</a> are
+      normalized to lower case to improve interoperability between implementations.</li>
+    <li>Moved non-recursive portions algorithms
+      into the {{JsonLdProcessor}} processing steps.</li>
+    <li>Fix some {{JsonLdOption}} initializers where defaults are `null`.
+      Set default value for <a data-link-for="JsonLdOptions">processingMode</a> to `json-ld-1.1`.</li>
+    <li>Remove normative text for canonicalizing `rdf:JSON` literals and
+      reference the `rdf:JSON` datatype of the syntax document
+      for the conversion of the <a>JSON Literals</a> in <a href="#data-round-tripping" class="sectionRef"></a>.</li>
+    <li>Updated interfaces in <a href="#the-application-programming-interface" class="sectionRef"></a>
+      to use <a data-cite="WEBIDL#idl-record">record</a>,
+      instead of <a data-cite="WEBIDL#dfn-dictionary">dictionary</a>,
+      and to allow <a>RemoteDocument</a> to be used
+      as a direct input, which resolves a {{Promise}} boundary issue.</li>
   </ul>
-</section>
-<section class="appendix informative" id="changes-from-rec1">
-  <h2>Changes since Recommendation of 16 July 2020</h2>
+  </details>
+
+  <details id="changes-from-cg">
+  <summary>Substantive changes since the <a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld-api/">Community Group Final Report</a> of 07 June 2018</summary>
   <ul>
-    <li>Regenerated definition list, which does not attempt to filter out unused definitions.</li>
-    <li>Changed obsolete use of `void` in WebIDL to `undefined`.</li>
-    <li>Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li>
-    <li>Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li>
-    <li>Added additional language to the
-      <a href="#compaction-algorithm">Compaction Algorithm</a>
-      step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
-      <var>container key</var> before compacting it.</li>
-    <li>
-      Changed the <a href="#create-term-definition">Create Term Definition</a>
-      in section 4.2 of the Context Processing Algorithms, to ensure that all
-      possible features for reverse term definitions are processed. The change
-      was to remove <q>and return</q> from the end of step 13, and revise step
-      14 to begin with <q>Otherwise</q>.</li>
-    <li>Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li>
-    <li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li>
-    <li>Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
-      in <a data-link-for="JsonLdProcessor">toRdf()</a>
-      defaults to `true`, rather than `false`.
-      This is consistent with wording in
-      <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
-      for treating script elements as a single document.</li>
+    <li><a>Lists</a> may now have items which are themselves <a>lists</a>.</li>
+    <li>The <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>
+      has been updated to ensure that only <a>well-formed</a> <a>triples</a>
+      are emitted; previously, it only ensured that <a>triples</a> containing
+      <a>relative IRI references</a> were excluded.</li>
+    <li>The API now adds an {{JsonLdOptions/ordered}}
+       option, defaulting to <code>false</code> This is used in algorithms to
+       control iteration of <a>map entry</a> keys. Previously, the
+       algorithms always required such an order. The instructions for
+       evaluating test results have been updated accordingly.</li>
+    <li>The <a href="#generate-blank-node-identifier">Generate Blank Node Identifier algorithm</a>
+      has been updated to remove the specifics of how new blank node
+      identifiers are created.</li>
+    <li>Values of <code>@type</code>, or an alias of <code>@type</code>, may now have their <code>@container</code> set to <code>@set</code>
+      to ensure that <code>@type</code> entries are always represented as an array. This
+      also allows a term to be defined for <code>@type</code>, where the value MUST be a <a>map</a>
+      with <code>@container</code> set to <code>@set</code>.</li>
+    <li>Updated the <a href="#iri-expansion">IRI Expansion algorithm</a> so that
+      if <var>value</var> contains a colon (<code>:</code>), but
+      <var>prefix</var> is not a <a>term</a>, to only return <var>value</var>
+      if it has the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a>, otherwise fall through to
+      the rest of the algorithm.</li>
+    <li>The use of <a>blank node identifiers</a> to label properties is obsolete,
+      and may be removed in a future version of JSON-LD,
+      as is the support for <a>generalized RDF Datasets</a>
+      and thus the {{JsonLdOptions/produceGeneralizedRdf}} option may be also be removed.</li>
+    <li>Added API steps to accept <code>text/html</code> as input,
+      extracting either a specifically targeted <a data-cite="HTML/scripting.html#the-script-element">script element</a>,
+      the first found <a>JSON-LD script element</a>,
+      or all <a>JSON-LD script elements</a>.</li>
+    <li>Added {{RemoteDocument/contentType}} field to <a>RemoteDocument</a>.</li>
+    <li>Added support for protected <a>contexts</a> and <a>term definitions</a>.</li>
+    <li>Because scoped contexts can lead to contexts being reloaded, replace the
+      <strong>recursive context inclusion</strong> error with a <a data-link-for="JsonLdErrorCode">context overflow</a> error.</li>
+    <li>Added support for <code>"@type": "@none"</code> in a <a>term definition</a> to prevent value compaction.</li>
+    <li>Added support for <a>JSON literals</a>.</li>
+    <li><a>Term definitions</a> with keys which are of the <a href="https://tools.ietf.org/html/rfc3987#section-2.2">form</a> of an <a>IRI</a> or a <a>compact IRI</a> MUST NOT
+      expand to an <a>IRI</a> other than the expansion of the key itself.</li>
+    <li>Consolidate <a>RemoteDocument</a> processing into the <a>LoadDocumentCallback</a>
+      including variations on HTML processing.</li>
+    <li>The <a href="#iri-compaction">IRI Compaction algorithm</a> may generate an error if the result is an
+      <a>IRI</a> which could be confused with a <a>compact IRI</a> in the
+      <a>active context</a>.</li>
+    <li>By default, all contexts are propagated when traversing <a>node objects</a>, other than
+      <a>type-scoped contexts</a>. This can be controlled using the <code>@propagate</code>
+      <a>entry</a> in a <a>local context</a>.</li>
+    <li>A context may contain a <code>@import</code> <a>entry</a> used to reference a remote context
+      within a context, allowing <code>JSON-LD 1.1</code> features to be added to contexts originally
+      authored for <code>JSON-LD 1.0</code>.</li>
+    <li>The <a data-link-for="JsonLdErrorCode">colliding keywords</a> error is not issued for `@type`;
+      instead, previous values of `@type` are prepended to any new values, when expanding.</li>
+    <li>A <a>node object</a> may include an <a>included block</a>,
+      which is used to contain a set of <a>node objects</a> which are treated
+      exactly as if they were <a>node objects</a> defined in an <a>array</a> including the containing
+      <a>node object</a>.
+      This allows the use of the object form of a JSON-LD document when there is more
+      than one <a>node object</a> being defined, and where those <a>node objects</a>
+      are not embedded as values of the containing <a>node object</a>.</li>
+    <li>A <a>relative IRI reference</a> has been added as a possible value for <code>@vocab</code> in
+      a context. When this is set, vocabulary-relative IRI references, such as the
+      <a>entries</a> of <a>node objects</a>, are expanded or compacted relative
+      to the <a>base IRI</a> and the <a>vocabulary mapping</a> using string concatenation.</li>
+    <li>In the <a>LoadDocumentCallback</a>, if the retrieved content is not any JSON media type
+      and there is a link header with `rel=alternate` and `type=application/ld+json`, redirect
+      to that content.</li>
+    <li><a>Value objects</a>, and associated <a>context</a> and <a>term definitions</a> have been updated to
+      support `@direction` for setting the <a>base direction</a> of strings.</li>
+    <li>It is no longer required that language tags be normalized to lower case,
+      other than for testing considerations.
+      Language tags that are not valid according to [[BCP47]] are rejected.</li>
+    <li>The <a>processing mode</a> is now implicitly `json-ld-1.1`, unless set
+      explicitly to `json-ld-1.0`.</li>
+    <li>Improve notation using <a>IRI</a>, <a>IRI reference</a>, and <a>relative IRI reference</a>.</li>
+    <li>Ignore terms and IRIs that have the form of a keyword (`"@"1*ALPHA`).</li>
   </ul>
+  </details>
+
+  <details id="changes-from-10">
+  <summary>Substantive changes since the <a href="https://www.w3.org/TR/2014/REC-json-ld-api-20140116/">Recommendation</a> of 16 January 2014</summary>
+  <ul>
+    <li>The <a href="#expansion-algorithm">Expansion Algorithm</a>
+      has a special <a>processing mode</a>, based on
+      the {{JsonLdOptions/frameExpansion}} flag, to enable content associated with JSON-LD
+      frames, which may not otherwise be valid <a>JSON-LD documents</a>.</li>
+    <li>An <a>expanded term definition</a> can now have an
+      <code>@context</code> <a>entry</a>, which defines a context used for values of
+      a <a>property</a> identified with such a <a>term</a>. This context is used
+      in both the <a href="#expansion-algorithm">Expansion Algorithm</a> and
+      <a href="#compaction-algorithm">Compaction Algorithm</a>.</li>
+    <li>A new <a href="#merge-node-maps" class="sectionRef"></a> is required
+      for framing, to create a single graph from the <a data-lt="default graph">default</a>
+      and <a>named graphs</a>.</li>
+    <li>An <a>expanded term definition</a> can now have an
+      <code>@nest</code> <a>entry</a>, which identifies a term expanding to
+      <code>@nest</code> which is used for containing <a>properties</a> using the same
+      <code>@nest</code> mapping. When expanding, the values of an <a>entry</a>
+      expanding to <code>@nest</code> are treated as if they were contained
+      within the enclosing <a>node object</a> directly.</li>
+    <li><code>@container</code> values within an <a>expanded term definition</a> may now
+      include <code>@id</code> and <code>@type</code>, corresponding to <a>id maps</a> and <a>type maps</a>.</li>
+    <li>Both <a>language maps</a> and <a>index maps</a> may legitimately have an <code>@none</code> value, but
+      JSON-LD 1.0 only allowed <a>string</a> values. This has been updated
+      to allow (and ignore) <code>@none</code> values.</li>
+    <li>The JSON syntax has been abstracted into an <a>internal representation</a>
+      to allow for other serialization formats that are functionally equivalent
+      to JSON.</li>
+    <li>Preserved values are compacted using the <a>properties</a> of the referencing term.</li>
+    <li>The value for <code>@container</code> in an <a>expanded term definition</a>
+      can also be an <a>array</a> containing any appropriate container
+      keyword along with <code>@set</code> (other than <code>@list</code>).
+      This allows a way to ensure that such <a>entry</a> values will always
+      be expressed in <a>array</a> form.</li>
+    <li>Added support for the <a data-link-for="JsonLdOptions">compactToRelative</a> option to allow IRI compaction (<a href="#iri-compaction" class="sectionRef"></a>)
+      to document-relative IRIs to be disabled.</li>
+    <li>In JSON-LD 1.1, terms will be used as <a>compact IRI</a> prefixes
+      when compacting only if
+      a <a>simple term definition</a> is used where the value ends with a URI <a data-cite="RFC3986#section-2.2">gen-delim</a> character,
+      or if their <a>expanded term definition</a> contains
+      an <code>@prefix</code> <a>entry</a> with the value <code>true</code>. The 1.0 algorithm has
+      been updated to only consider terms that map to a value that ends with a URI
+      <a data-cite="RFC3986#section-2.2">gen-delim</a> character.</li>
+    <li>Term definitions now allow <code>@container</code> to include <code>@graph</code>,
+      along with <code>@id</code>, <code>@index</code> and <code>@set</code>.
+      In the <a href="#expansion-algorithm">Expansion Algorithm</a>, this is
+      used to create a <a>named graph</a> from either a <a>node object</a>, or
+      objects which are values of <a>entries</a> in an <a>id map</a> or <a>index map</a>.
+      The <a href="#compaction-algorithm">Compaction Algorithm</a> allows
+      specific forms of graph objects to be compacted back to a set of <a>node objects</a>,
+      or maps of <a>node objects</a>.</li>
+    <li><a href="#value-expansion">Value Expansion</a> will not turn native values
+      into <a>node objects</a>.</li>
+    <li>The <a href="#term-selection">Term Selection algorithm</a> has been
+      updated to allow uses of containers for values which would otherwise not
+      match. This is used in the <a href="#expansion-algorithm">Compaction
+      Algorithm</a> to use the <code>@none</code> keyword, or an alias, for
+      values of maps for which there is no natural index. The <a
+      href="#expansion-algorithm">Expansion Algorithm</a> removes this indexing
+      transparently.</li>
+    </ul>
+  </details>
 </section>
+
 <section id="ack"
 class="appendix informative"
 data-include="ack-script/acknowledgements.html"
