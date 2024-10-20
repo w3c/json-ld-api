@@ -1634,6 +1634,11 @@
           </ol>
         </li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@reverse</code>:
+          <div class="candidate correction" id="change_3">
+            <span class="marker">Candidate Correction 3</span>
+            <p>This changes the algorithm for processing a reverse term so that it doesn't return early.
+              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/565">issue 565</a>.</p>
+          </div>        
           <ol>
             <li>If <var>value</var> contains <code>@id</code> or <code>@nest</code>, <a>entries</a>, an
               <a data-link-for="JsonLdErrorCode">invalid reverse property</a>
@@ -1667,10 +1672,10 @@
             <li>Set the <a>term definition</a> of <var>term</var> in
               <var>active context</var> to <var>definition</var> and the
               value associated with <var>defined</var>'s <a>entry</a> <var>term</var> to
-              <code>true</code>.</li>
+              <code>true</code> <del cite="#change_3">and return</del>.</li>
           </ol>
         </li>
-        <li>Otherwise, if <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
+        <li><ins cite="#change_3">Otherwise,</ins> if <var>value</var> contains the <a>entry</a> <code>@id</code> and its value
           does not equal <var>term</var>:
           <ol>
             <li id="ctd-id-null">If the <code>@id</code> <a>entry</a> of <var>value</var>
@@ -6880,7 +6885,8 @@
       in section 4.2 of the Context Processing Algorithms, to ensure that all
       possible features for reverse term definitions are processed. The change
       was to remove <q>and return</q> from the end of step 13, and revise step
-      14 to begin with <q>Otherwise</q>.</li> <!-- From issue 565 commit: 5d34a26af658046c72a79d1f72133d8a56d6168e -->
+      14 to begin with <q>Otherwise</q>,
+      as described in <a href="#change_3">Candidate Correction 3</a>.</li>
     <li>2023-08-06: Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li> <!-- From issue 552 commit df655351d96116a9b9f6768ff56a5e7596bb1bfe -->
     <!--li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li-->
     <li>2024-07-10: Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
