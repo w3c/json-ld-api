@@ -29,12 +29,16 @@ jobs:
     - name: Verify examples are consistent
       run: bundle exec rake test
 
-    - name: Checks HTML5
-      run: bundle exec rake check_html
-
-    # See https://github.com/w3c/spec-prod/blob/main/docs/examples.md
-    #- name: ReSpec Checker
-    #  uses: w3c/spec-prod@v1
-    #  with:
-    #    VALIDATE_LINKS: true
-    #    VALIDATE_MARKUP: true
+    - name: Echidna Auto-publish WD
+      uses: w3c/spec-prod@v2
+      with:
+        TOOLCHAIN: respec
+        SOURCE: index.html
+        VALIDATE_LINKS: false
+        VALIDATE_MARKUP: true
+        ACTIONS_STEP_DEBUG: true
+        W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN }}
+        #W3C_WG_DECISION_URL: https://www.w3.org/2023/04/20-rdf-star-minutes.html#r03
+        W3C_BUILD_OVERRIDE: |
+          specStatus: WD
+          shortName: json-ld11-concepts
