@@ -5156,17 +5156,30 @@
         and generating a JSON-LD document in expanded form for all
         <a>RDF literals</a>, <a>IRIs</a>
         and <a>blank node identifiers</a>.
+
         If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
         <a>RDF literals</a> with a
         <a>datatype IRI</a>
-        that equals <code>xsd:integer</code> or <code>xsd:double</code> are converted
-        to a <a>JSON numbers</a> and <a>RDF literals</a>
+        that equals
+
+        <ul>
+          <li>
+            <code>xsd:integer</code> or <code>xsd:double</code> are converted
+        to <a>JSON numbers</a>,
+          </li>
+          <li>and <a>RDF literals</a>
         with a <a>datatype IRI</a>
         that equals <code>xsd:boolean</code> are converted to <code>true</code> or
-        <code>false</code> based on their
+        <code>false</code>,</li>
+        </ul>
+
+        based on their
         <a>lexical form</a>
         as described in
         <a class="sectionRef" href="#data-round-tripping"></a>.
+
+
+
         Unless the <a data-link-for="JsonLdOptions">useRdfType</a> flag is set to true, <code>rdf:type</code>
         predicates will be serialized as <code>@type</code> as long as the associated object is
         either an <a>IRI</a> or <a>blank node identifier</a>.</p>
