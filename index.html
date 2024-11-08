@@ -5166,6 +5166,14 @@
           <li>
             <code>xsd:integer</code> or <code>xsd:double</code> are converted
         to <a>JSON numbers</a>,
+            <ul>
+              <li>
+                unless such a conversion is impossible, for instance, in cases like
+                <code>"+INF"^^xsd:double</code>, in which instance <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is ignored,
+                and the literal value is kept in string form,
+                in accordance with <a data-cite="RFC8785#section-appendix.d">RFC 8785, Appendix D. Dealing with Big Numbers</a>.
+              </li>
+            </ul>
           </li>
           <li>and <a>RDF literals</a>
         with a <a>datatype IRI</a>
