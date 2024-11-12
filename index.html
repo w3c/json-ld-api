@@ -5157,37 +5157,88 @@
         <a>RDF literals</a>, <a>IRIs</a>
         and <a>blank node identifiers</a>.
 
-        If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set to <code>true</code>,
-        <a>RDF literals</a> with a
-        <a>datatype IRI</a>
-        that equals
+        If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set
+        to <code>true</code>, <a>RDF literals</a> are converted to JSON values
+        based on their <a>datatype IRI</a> and <a>lexical form</a> as described
+        in <a class="sectionRef" href="#data-round-tripping"></a>.
+      </p>
 
-        <ul>
-          <li>
-            <code>xsd:integer</code> or <code>xsd:double</code> are converted
-        to <a>JSON numbers</a>,
-            <ul>
-              <li>
-                unless such a conversion is impossible, for instance, in cases like
-                <code>"+INF"^^xsd:double</code>, in which instance <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is ignored,
-                and the literal value is kept in string form,
-                in accordance with <a data-cite="RFC8785#section-appendix.d">RFC 8785, Appendix D. Dealing with Big Numbers</a>.
-              </li>
-            </ul>
-          </li>
-          <li>and <a>RDF literals</a>
-        with a <a>datatype IRI</a>
-        that equals <code>xsd:boolean</code> are converted to <code>true</code> or
-        <code>false</code>,</li>
-        </ul>
+      <table class="simple">
+        <thead>
+          <th>RDF datatype</th>
+          <th>Values</th>
+          <th>JSON</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th>(<em>None</em>, implying <code>xsd:string</code>)</th>
+            <td rowspan="2">An RDF string literal</td>
+            <td rowspan="2">JSON string literal</td>
+          </tr>
+          <tr>
+            <th><code>xsd:string</code></th>
+          </tr>
 
-        based on their
-        <a>lexical form</a>
-        as described in
-        <a class="sectionRef" href="#data-round-tripping"></a>.
+          <tr>
+            <th rowspan="3"><code>xsd:integer</code></th>
+            <td>Whole number in the <code>[-2<sup>53</sup> + 1, 2<sup>53</sup> + 1]</code> range, representable as per [[IEEE-754-2008]]</td>
+            <td><a>JSON Number</a></td>
+          </tr>
 
+          <tr>
+            <td>Whole number out of that range</td>
+            <td>JSON string literal</td>
+          </tr>
 
+          <tr>
+            <td>Any other value</td>
+            <td>Raise an error</td>
+          </tr>
 
+          <tr>
+            <th rowspan="3"><code>xsd:double</code></th>
+            <td>Real number in the <code>[-2<sup>53</sup> + 1, 2<sup>53</sup> + 1]</code> range, representable as per [[IEEE-754-2008]]</td>
+            <td><a>JSON Number</a></td>
+          </tr>
+
+          <tr>
+            <td>Real number out of that range</td>
+            <td>JSON string literal</td>
+          </tr>
+
+          <tr>
+            <td>
+              Non-numeric values:
+
+              <ul>
+                <li><code>"NaN"^^xsd:double</code>,</li>
+                <li><code>"+INF"^^xsd:double</code>,</li>
+                <li><code>"-INF"^^xsd:double</code></li>
+              </ul>
+            </td>
+            <td rowspan="2">Raise an error</td>
+          </tr>
+          <tr>
+            <td>Any other value</td>
+          </tr>
+
+          <tr>
+            <th rowspan="3"><code>xsd:boolean</code></th>
+            <td><code>true</code></td>
+            <td><code>true</code></td>
+          </tr>
+          <tr>
+            <td><code>false</code></td>
+            <td><code>false</code></td>
+          </tr>
+          <tr>
+            <td>Any other value</td>
+            <td>Raise an error</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
         Unless the <a data-link-for="JsonLdOptions">useRdfType</a> flag is set to true, <code>rdf:type</code>
         predicates will be serialized as <code>@type</code> as long as the associated object is
         either an <a>IRI</a> or <a>blank node identifier</a>.</p>
