@@ -6,7 +6,7 @@
       { "@value": false },
       { "@value": 1 },
       { "@value": "1.1", "@type": "http://www.w3.org/2001/XMLSchema#decimal"},
-      { "@value": "+INF", "@type": "http://www.w3.org/2001/XMLSchema#double"}
+      { "@value": "0.1e999999999999999", "@type": "http://www.w3.org/2001/XMLSchema#double"}
     ]
   }
 ]

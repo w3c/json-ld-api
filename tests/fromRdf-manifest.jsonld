@@ -206,6 +206,16 @@
       "input": "fromRdf/0027-in.nq",
       "expect": "fromRdf/0027-out.jsonld"
     }, {
+      "@id": "#t0028",
+      "@type": ["jld:NegativeEvaluationTest", "jld:FromRDFTest"],
+      "name": "native types flag set to true is ignored if the number provided is invalid in JSON",
+      "purpose": "+INF^^xsd:double causes a failure to serialize in JSON.",
+      "option": {
+        "useNativeTypes": true
+      },
+      "input": "fromRdf/0028-in.nq",
+      "expectErrorCode": "invalid JSON literal"
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:FromRDFTest" ],
       "name": "rdfDirection: null with i18n literal with direction and no language",
