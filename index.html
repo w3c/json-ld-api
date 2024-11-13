@@ -5202,7 +5202,7 @@
         If the <a data-link-for="JsonLdOptions">useNativeTypes</a> flag is set
         to <code>true</code>, <a>RDF literals</a> are converted to JSON values
         based on their <a>datatype IRI</a> and <a>lexical form</a> as described
-        in <a class="sectionRef" href="#data-round-tripping"></a>.
+        in <a class="sectionRef" href="#algorithm"></a>.
       </p>
 
       <table class="simple">
@@ -5591,10 +5591,24 @@
                   <code>xsd:double</code> and its
                   <a>lexical form</a>
                   is a valid <code>xsd:integer</code> or <code>xsd:double</code>
-                  according [[XMLSCHEMA11-2]], set <var>converted value</var>
+                  according to [[XMLSCHEMA11-2]], and if it is a numeric value
+                  conformant to [[IEEE-754-2008]], then set <var>converted value</var>
                   to the result of converting the
                   <a>lexical form</a>
-                  to a JSON <a>number</a>.</li>
+                  to a JSON <a>number</a>.
+                </li>
+                <li>
+                  Otherwise, if <a>lexical form</a> expresses a numerical value
+                  outside of the range mandated by [[IEEE-754-2008]], then set
+                  <var>converted value</var> to a JSON string literal containing
+                  said lexical form.
+                </li>
+                <li>
+                  Otherwise, if <a>lexical form</a> expresses a non-numeric value,
+                  such as <code>"+INF"^^xsd:double</code>, an
+                  <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
+                  error has been detected and processing is aborted.
+                </li>
               </ol>
             </li>
             <li class="changed">Otherwise, if <a>processing mode</a> is not `json-ld-1.0`,
