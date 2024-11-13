@@ -284,6 +284,48 @@
     text-decoration: none;
     color: #666;
   }
+
+  table.simple {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+  }
+
+  table.simple th,
+  table.simple td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      vertical-align: top; /* Align text to the top */
+  }
+
+  table.simple th {
+      background-color: #f2f2f2; /* Light gray for headers */
+      font-weight: bold;
+      text-align: left;
+  }
+
+  table.simple tr:nth-child(even) {
+      background-color: #f9f9f9; /* Alternating row colors */
+  }
+
+  table.simple tr:hover {
+      background-color: #e9e9e9; /* Highlight on hover */
+  }
+
+  table.simple a {
+      color: #1a73e8; /* Make links a visible color */
+      text-decoration: none;
+  }
+
+  table.simple a:hover {
+      text-decoration: underline;
+  }
+
+  table.simple td.error {
+    background-color: #FFA500;
+    color: #000;
+    font-weight: bold;
+  }
 </style>
 </head>
 
@@ -5166,7 +5208,7 @@
       <table class="simple">
         <thead>
           <th>RDF datatype</th>
-          <th>Values</th>
+          <th>RDF Literal</th>
           <th>JSON</th>
         </thead>
         <tbody>
@@ -5192,11 +5234,11 @@
 
           <tr>
             <td>Any other value</td>
-            <td>Raise an error</td>
+            <td class="error">Raise an error</td>
           </tr>
 
           <tr>
-            <th rowspan="3"><code>xsd:double</code></th>
+            <th rowspan="4"><code>xsd:double</code></th>
             <td>Real number in the <code>[-2<sup>53</sup> + 1, 2<sup>53</sup> + 1]</code> range, representable as per [[IEEE-754-2008]]</td>
             <td><a>JSON Number</a></td>
           </tr>
@@ -5216,7 +5258,7 @@
                 <li><code>"-INF"^^xsd:double</code></li>
               </ul>
             </td>
-            <td rowspan="2">Raise an error</td>
+            <td class="error" rowspan="2">Raise an error</td>
           </tr>
           <tr>
             <td>Any other value</td>
@@ -5233,7 +5275,7 @@
           </tr>
           <tr>
             <td>Any other value</td>
-            <td>Raise an error</td>
+            <td class="error">Raise an error</td>
           </tr>
         </tbody>
       </table>
