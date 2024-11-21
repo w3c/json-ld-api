@@ -1801,6 +1801,15 @@
       "expect": "compact/m022-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tm023",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "compact IRI with container: @type",
+      "purpose": "Uses @none when compacted item is an IRI string",
+      "input": "compact/m023-in.jsonld",
+      "context": "compact/m023-context.jsonld",
+      "expect": "compact/m023-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tn001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Indexes to @nest for property with @nest",
