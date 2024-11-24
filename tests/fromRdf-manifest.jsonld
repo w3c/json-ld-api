@@ -199,7 +199,7 @@
       "@id": "#t0027",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "native types flag set to true is ignored if the number provided is invalid in JSON",
-      "purpose": "Literals with datatype xsd:boolean, xsd:integer, and xsd:double are serialized using native scalar values if possible",
+      "purpose": "Literals with datatype xsd:boolean, xsd:integer, and xsd:double are serialized using native scalar values, if possible",
       "option": {
         "useNativeTypes": true
       },
