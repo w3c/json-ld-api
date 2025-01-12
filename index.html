@@ -5477,13 +5477,23 @@
                   <code>xsd:double</code> and its
                   <a>lexical form</a>
                   is a valid <code>xsd:integer</code> or <code>xsd:double</code>
-                  according [[XMLSCHEMA11-2]], set <var>converted value</var>
-                  to the result of converting the
-                  <a>lexical form</a>
-                  to a JSON <a>number</a>.</li>
+                  according to [[XMLSCHEMA11-2]],
+                  <ol>
+                    <li>attempt to convert the <a>lexical form</a> to a <a>JSON number</a>
+                      according to
+                      [[RFC8785]] <a data-cite="RFC8785#name-serialization-of-numbers">
+                        JSON Serialization Scheme (JCS) 3.2.2.3 Serialization of Numbers
+                      </a> procedure;
+                    </li>
+                    <li>
+                      If the conversion is successful, set <var>converted value</var>
+                      to its result.
+                    </li>
+                  </ol>
+                </li>
               </ol>
             </li>
-            <li class="changed">Otherwise, if <a>processing mode</a> is not `json-ld-1.0`,
+            <li class="changed">If <a>processing mode</a> is not `json-ld-1.0`,
               and <var>value</var> is a <a>JSON literal</a>,
               set <var>converted value</var> to the result of
               turning the lexical value of <var>value</var>
