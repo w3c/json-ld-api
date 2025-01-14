@@ -5487,13 +5487,16 @@
                     </li>
                     <li>
                       If the conversion is successful, set <var>converted value</var>
-                      to its result.
+                      to its result;
+                    </li>
+                    <li>
+                      Otherwise, set <var>type</var> to <a>datatype IRI</a> of <var>value</var>.
                     </li>
                   </ol>
                 </li>
               </ol>
             </li>
-            <li class="changed">If <a>processing mode</a> is not `json-ld-1.0`,
+            <li class="changed">Otherwise, if <a>processing mode</a> is not `json-ld-1.0`,
               and <var>value</var> is a <a>JSON literal</a>,
               set <var>converted value</var> to the result of
               turning the lexical value of <var>value</var>
