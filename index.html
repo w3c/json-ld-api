@@ -5456,6 +5456,12 @@
             <li>Initialize <var>converted value</var> to <var>value</var>.</li>
             <li>Initialize <var>type</var> to <code>null</code></li>
             <li>If <a data-link-for="JsonLdOptions">useNativeTypes</a> is <code>true</code>
+              <div class="candidate correction" id="change_5">
+                <span class="marker">Candidate Correction 5</span>
+                <p>This changes the behavior of using native numbers when <a data-link-for="JsonLdOptions">useNativeTypes</a> is `true`.
+                  For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/555">issue 555</a>.
+                </p>
+              </div>
               <ol>
                 <li>If the
                   <a>datatype IRI</a>
@@ -5477,30 +5483,30 @@
                   <code>xsd:double</code> and its
                   <a>lexical form</a>
                   is a valid <code>xsd:integer</code> or <code>xsd:double</code>
-                  according to [[XMLSCHEMA11-2]]:
-                  <ol>
-                    <li>
-                      <ins>
+                  according to [[XMLSCHEMA11-2]]<del cite="#change_5">,
+                    set <var>converted value</var>
+                    to the result of converting the
+                    <a>lexical form</a>
+                    to a JSON <a>number</a>.
+                  </del><ins cite="#change_5">:
+                    <ol>
+                      <li>
                         Attempt to convert the <a>lexical form</a> to a <a>JSON number</a>
                         according to
                         [[RFC8785]] <a data-cite="RFC8785#name-serialization-of-numbers">
                           JSON Serialization Scheme (JCS) 3.2.2.3 Serialization of Numbers
                         </a> procedure.
-                      </ins>
-                    </li>
-                    <li>
-                      <ins>
+                      </li>
+                      <li>
                         If the conversion is successful, set <var>converted value</var>
                         to its result.
-                      </ins>
-                    </li>
-                    <li>
-                      <ins>
+                      </li>
+                      <li>
                         Otherwise, set <var>type</var> to <a>datatype IRI</a>
                         of <var>value</var>.
-                      </ins>
-                    </li>
-                  </ol>
+                      </li>
+                    </ol>
+                  </ins>
                 </li>
               </ol>
             </li>
@@ -7077,6 +7083,9 @@
       <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
       for treating script elements as a single document,
       as described in <a href="#change_4">Candidate Correction 4</a>.</li>
+    <li>2025-01-25: Correct some corner cases in transforming RDF Number Literals
+      to JSON numbers when <a data-link-for="JsonLdOptions">useNativeTypes</a> is `true`,
+      as described in <a href="#change_5">Candidate Correction 5</a>.</li>
     <li>2024-01-25: Change processing step for <a>LoadDocumentCallback</a>
       to not presume that the content type is for JSON,
       as described in <a href="#change_6">Candidate Correction 6</a></li>
