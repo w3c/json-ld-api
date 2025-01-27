@@ -5713,7 +5713,7 @@
       is used instead of looking at the HTTP Link Header directly. For the sake of simplicity, none of the algorithms
       in this document mention this directly.</p>
 
-    <div class="candidate correction" id="change_6">
+    <div class="candidate correction" id="change_7">
       <span class="marker">Candidate Correction 6</span>
       <p>Details about transforming to and from a given serialization format
         have been abstracted so that other specifications can define
@@ -5731,7 +5731,7 @@
       <p>For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/605">issue 605</a>.</p>
     </div>
 
-    <ins cite="#change_6"><p>Methods resolving a {{Promise}} with the <a>internal representation</a>
+    <ins cite="#change_7"><p>Methods resolving a {{Promise}} with the <a>internal representation</a>
       MUST either
       map it to the datatype used by the implementation, as described in <a href="#internal-representation-in-implementations" class="sectionRef"></a>,
       or serialize it to JSON (or another appropriate serialization format)
@@ -5841,7 +5841,7 @@
                 to the provided <var>context</var>.</li>
             </ol>
           </li>
-          <li id="idl-compact-step-10">Resolve the <var>promise</var> with <var>compacted output</var><del cite="#change_6">
+          <li id="idl-compact-step-10">Resolve the <var>promise</var> with <var>compacted output</var><del cite="#change_7">
             transforming <var>compacted output</var> from the
             <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
@@ -5929,7 +5929,7 @@
                 set <var>expanded output</var> to an <a>array</a> containing only <var>expanded output</var>.</li>
             </ol>
           </li>
-          <li id="idl-expand-step-9">Resolve the <var>promise</var> with <var>expanded output</var><del cite="#change_6">
+          <li id="idl-expand-step-9">Resolve the <var>promise</var> with <var>expanded output</var><del cite="#change_7">
             transforming <var>expanded output</var> from the
             <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
@@ -5993,7 +5993,7 @@
                 otherwise to <code>null</code>.</li>
             </ol>
           </li>
-          <li id="idl-flatten-step-7">Resolve the <var>promise</var> with <var>flattened output</var><del cite="#change_6">
+          <li id="idl-flatten-step-7">Resolve the <var>promise</var> with <var>flattened output</var><del cite="#change_7">
             transforming <var>flattened output</var> from the
             <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
@@ -6033,7 +6033,7 @@
             <a href="#serialize-rdf-as-json-ld-algorithm">Serialize RDF as JSON-LD Algorithm</a> method
             using <a data-lt="jsonldprocessor-fromRdf-input">dataset</a>
             and <a data-lt="jsonldprocessor-fromRdf-options">options</a>.</li>
-          <li id="idl-fromRdf-step-3">Resolve the <var>promise</var> with <var>expanded result</var><del cite="#change_6">
+          <li id="idl-fromRdf-step-3">Resolve the <var>promise</var> with <var>expanded result</var><del cite="#change_7">
             transforming <var>expanded output</var> from the
             <a>internal representation</a> to a JSON serialization</del>.</li>
         </ol>
@@ -6226,7 +6226,7 @@
 
     <section id="serialization-and-deserialization">
       <h4>Serialization and Deserialization</h4>
-    <ins cite="#change_6">
+    <ins cite="#change_7">
 
       <p>This section defines the requirements for serializing and deserializing
         JSON from and to the <a>internal representation</a>, as appropriate,
@@ -6257,7 +6257,7 @@
         </dd>
       </dl>
     </ins>
-    <del cite="#change_6">This section left intentially blank.</del>
+    <del cite="#change_7">This section left intentially blank.</del>
     </section>
   </section>
 
@@ -7052,7 +7052,7 @@
       as described in <a href="#change_4">Candidate Correction 4</a>.</li>
     <li>2024-10-31: Abstract JSON serialization from WebIDL interfaces to allow
       for alternative formats,
-      as described in <a href="#change_6">Candidate Correction 5</a></li>
+      as described in <a href="#change_7">Candidate Correction 7</a></li>
   </ul>
   </details>
 
