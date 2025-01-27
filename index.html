@@ -485,9 +485,7 @@
     <a>strings</a>, <a>numbers</a>, <a>booleans</a>, and <a>null</a> to describe
     the data represented by a JSON document. Algorithms act on this
     <a>internal representation</a> with API entry points responsible for
-    transforming between concrete representations and the <a>internal representation</a>.
-    See <a href="#internal-representation-in-implementations" class="sectionRef"></a>
-    for more details on transforming to or from the <a>internal representation</a>.</p>
+    transforming between concrete <a>internal representations</a>.</p>
 
   <p>JSON-LD uses <a>contexts</a> to allow Linked Data
     to be expressed in a way that is specifically tailored to a particular
@@ -6566,12 +6564,21 @@
           <p class="note">The HTTP Link Header is ignored for documents served as <code>application/ld+json</code>,
             <code>text/html</code>, or <code>application/xhtml+xml</code>.</p>
         </li>
-        <li>Otherwise, the retrieved document's <a>Content-Type</a> is neither
+        <li>Otherwise, <ins cite="#change_6">if</ins> the retrieved document's <a>Content-Type</a> is neither
           <code>application/json</code>,
           <code>application/ld+json</code>,
           nor any other media type using a
-          <code>+json</code> suffix as defined in [[RFC6839]].
-          Reject the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
+          <code>+json</code> suffix as defined in [[RFC6839]]<del cite="#change_6">.
+            Reject</del><ins cite="#change_6">, then reject</ins>
+          the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.
+          <div class="candidate correction" id="change_6">
+            <span class="marker">Candidate Correction 6</span>
+            <p>This changes corrects the processing by not assuming that the
+              <a>Content-Type</a> is for JSON, but making processing conditional
+              on that <a>Content-Type</a>.
+              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/622">issue 622</a>.</p>
+          </div>
+        </li>
         <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using
           <var>url</var> as {{RemoteDocument/documentUrl}},
           <var>document</var> as {{RemoteDocument/document}},
@@ -7049,10 +7056,13 @@
       <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
       for treating script elements as a single document,
       as described in <a href="#change_4">Candidate Correction 4</a>.</li>
-    <li>2024-10-31: Abstract JSON serialization from WebIDL interfaces to allow
+    <li>2024-01-25: Change processing step for <a>LoadDocumentCallback</a>
+      to not presume that the content type is for JSON,
+      as described in <a href="#change_6">Candidate Correction 6</a></li>
+     <li>2024-10-31: Abstract JSON serialization from WebIDL interfaces to allow
       for alternative formats,
       as described in <a href="#change_7">Candidate Correction 7</a></li>
-  </ul>
+ </ul>
   </details>
 
   <details id="changes-from-pr">
