@@ -32,10 +32,6 @@
         {
           "@type": "http://www.w3.org/2001/XMLSchema#integer",
           "@value": 1
-        },
-        {
-          "@type": "http://www.w3.org/2001/XMLSchema#decimal",
-          "@value": 1.1
         }
       ]
     },
