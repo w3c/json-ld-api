@@ -648,6 +648,34 @@
             </dd>
           </dl>
         </dd>
+        <dt id='t0027'>
+          Test t0027 use native types flag with values that cannot be serialized to JSON
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#t0027</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+            <dt>Purpose</dt>
+            <dd>useNativeTypes flag being true is disregarded for a value that cannot be serialized into a native JSON value.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='fromRdf/0027-in.nq'>fromRdf/0027-in.nq</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='fromRdf/0027-out.jsonld'>fromRdf/0027-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>useNativeTypes</dt>
+                <dd>true</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
         <dt id='tdi01'>
           Test tdi01 rdfDirection: null with i18n literal with direction and no language
         </dt>
