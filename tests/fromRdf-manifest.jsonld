@@ -390,6 +390,22 @@
       "expect": "fromRdf/js11-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tjs12",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "JSON literals (strings)",
+      "purpose": "Tests creating property with multiple rdf:type rdf:JSON to a JSON literal (null).",
+      "input": "fromRdf/js12-in.nq",
+      "expect": "fromRdf/js12-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs13",
+      "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
+      "name": "Mixed JSON literals and non-JSON",
+      "purpose": "Tests creating property with mixed rdf:type rdf:JSON and non-JSON.",
+      "input": "fromRdf/js13-in.nq",
+      "expect": "fromRdf/js13-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tli01",
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "@list containing empty @list",
