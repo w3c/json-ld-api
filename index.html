@@ -1994,10 +1994,20 @@
 
       <ol>
         <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
-        <li>Initialize <var>default language</var> to <code>@none</code>.
-          If the <var>active context</var> has a <a>default language</a>,
-          set <var>default language</var> to the <a>default language</a> from the <var>active context</var>
-          <span class="changed">normalized to lower case</span>.</li>
+        <li class="changed">Initialize <var>default lang dir</var> as follows:<ul>
+          <li>If the <var>active context</var> has a <a>default language</a> and a <a>default base direction</a>,
+            set <var>default lang dir</var> to
+            the concatenation of those <a>default language</a> and <a>default base direction</a>,
+            separated by an underscore (`"_"`),
+            normalized to lower case.</li>
+          <li>Otherwise, if the <var>active context</var> has a <a>default language</a>,
+            set <var>default lang dir</var> to that <a>default language</a>
+            normalized to lower case.</li>
+          <li>Otherwise, if the <var>active context</var> has a <a>default base direction</a>,
+            set <var>default lang dir</var> to the <a>default base direction</a> from the <var>active context</var>
+            preceded by an underscore (`"_"`).</li>
+          <li>Otherwise, set <var>default lang dir</var> to <code>@none</code>.</li>
+        </ul></li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
           first (breaking ties by choosing the lexicographically least
@@ -2097,39 +2107,9 @@
                   being processed.</li>
               </ol>
             </li>
-            <li class="changed">Otherwise, if <a>term definition</a> has a
-              <a>direction mapping</a> (might be <code>null</code>):
-              <ol>
-                <li>If the <a>direction mapping</a> equals <code>null</code>,
-                  set <var>direction</var> to <code>@none</code>; otherwise
-                  to <a>direction mapping</a> preceded by an underscore (`"_"`).</li>
-                <li>If <var>language map</var> does not have a <var>direction</var> <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
-            <li class="changed">Otherwise, if <var>active context</var> has a
-              <a>default base direction</a>:
-              <ol>
-                <li>Initialize a variable <var>lang dir</var>
-                  with the concatenation of <var>default language</var> and <a>default base direction</a>,
-                  separate by an underscore (`"_"`),
-                  normalized to lower case.</li>
-                <li>If <var>language map</var> does not have a <var>lang dir</var> <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>language map</var> does not have an `@none` <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-                <li>If <var>type map</var> does not have an `@none` <a>entry</a>,
-                  create one and set its value to the <a>term</a>
-                  being processed.</li>
-              </ol>
-            </li>
             <li>Otherwise:
               <ol>
-                <li>If <var>language map</var> does not have a <var>default language</var> <a>entry</a>
-                  <span class="changed">(after being normalized to lower case)</span>,
+                <li>If <var>language map</var> does not have a <var>default lang dir</var> <a>entry</a>,
                   create one and set its value to the <a>term</a>
                   being processed.</li>
                 <li>If <var>language map</var> does not have an <code>@none</code>
