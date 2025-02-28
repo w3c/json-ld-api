@@ -3,10 +3,10 @@
 <head>
 <title>JSON-LD 1.1 Processing Algorithms and API</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<script type="text/javascript" src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
-<script type="text/javascript" src="common/common.js" class="remove" defer></script>
-<script type="text/javascript" src="common/jsonld.js" class="remove"></script>
-<script type="text/javascript" class="remove">
+<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+<script src="common/common.js" class="remove" defer></script>
+<script src="common/jsonld.js" class="remove"></script>
+<script class="remove">
 //<![CDATA[
   var respecConfig = {
       // extend the bibliography entries
@@ -5908,7 +5908,7 @@
             for <a data-link-for="LoadDocumentOptions">extractAllScripts</a>.</li>
           <li id="idl-expand-step-4" class="changed">If {{RemoteDocument/document}}
             from <var>remote document</var> is a <a>string</a>, transform it into the <a>internal representation</a>
-            based on {{RemoteDocument/contentType}} from <var>remote document</a>,
+            based on {{RemoteDocument/contentType}} from <var>remote document</var>,
             (see <a href="#serialization-and-deserialization" class="sectionRef"></a>).
             If {{RemoteDocument/document}} cannot be transformed to the <a>internal representation</a>,
             reject <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.</li>
