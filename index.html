@@ -1071,10 +1071,19 @@
       using information provided by the <a>active context</a>. This
       section describes how to produce an <a>active context</a>.</p>
 
+    <div id="change_api_638" class="candidate correction">
+      <span class="marker">Candidate Correction 8</span>
+      <p>Change the type of <a>term definition</a> from <a>array</a> to <a>map</a> in <a>active context</a>,
+        to be consistent with the way it is used in the algorithms.
+        Clarify the notion <a>term definition</a>.
+        For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/630">issue 630</a>.
+      </p>
+    </div>
+
     <p>The <a>active context</a> consists of:</p>
     <ul>
       <li>the active <a>term definitions</a> which specify how
-        keys and values have to be interpreted (<a class="changed">map</a> of <a>term definitions</a>),</li>
+        keys and values have to be interpreted (<del cite="#change_api_638"><a>array</a></del><ins cite="#change_api_638"><a>map</a></ins> of <a>term definitions</a>),</li>
       <li>the current <dfn data-lt="context-base-iri" data-lt-noDefault>base IRI</dfn> (<a>IRI</a>),</li>
       <li class="changed">the <dfn>original base URL</dfn> (<a>IRI</a>),</li>
       <li class="changed">an <dfn data-lt="context-inverse" data-lt-noDefault>inverse context</dfn> (<a>inverse context</a>),</li>
@@ -1085,7 +1094,7 @@
         used when a non-propagated <a>context</a> is defined.</li>
     </ul>
 
-    <p>Each <a>term definition</a><span class="changed">'s value</span> consists of:</p>
+    <p>Each <a>term definition</a><ins cite="#change_api_638">'s value</ins> consists of:</p>
     <ul>
       <li>an <dfn>IRI mapping</dfn> (<a>IRI</a>),</li>
       <li class="changed">a <dfn>prefix flag</dfn> (<a>boolean</a>),</li>
@@ -7092,6 +7101,8 @@
      <li>2024-10-31: Abstract JSON serialization from WebIDL interfaces to allow
       for alternative formats,
       as described in <a href="#change_7">Candidate Correction 7</a></li>
+     <li>2025-02-28: Clarifiy language about <a>term definitions</a>,
+      as described in <a href="#change_api_638">Candidate Correction 8</a></li>
  </ul>
   </details>
 
