@@ -2003,10 +2003,25 @@
 
       <ol>
         <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
-        <li>Initialize <var>default language</var> to <code>@none</code>.
+        <li>
+          <div id="change_pr639" class="candidate correction">
+            <span class="marker">Candidate Correction 8</span>
+            <p>Simplify the algorithm by handling the <a>default base direction</a>
+              once and for all in this step, rather than in each iteration at the end of the next step.
+              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/633">issue 633</a>. 
+            </p>
+          </div>
+
+          Initialize <var>default language</var> to <code>@none</code>.
           If the <var>active context</var> has a <a>default language</a>,
           set <var>default language</var> to the <a>default language</a> from the <var>active context</var>
-          <span class="changed">normalized to lower case</span>.</li>
+          <span class="changed">normalized to lower case</span>.
+          <ins cite="#change_pr639">
+            If the <var>active context</var> has a <a>default base direction</a>,
+            concatenate its value to <var>default language</var>,
+            separated by an underscore (`"_"`).
+          </ins>
+        </li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
           first (breaking ties by choosing the lexicographically least
@@ -2117,6 +2132,7 @@
                   being processed.</li>
               </ol>
             </li>
+            <del cite="#change_pr639">
             <li class="changed">Otherwise, if <var>active context</var> has a
               <a>default base direction</a>:
               <ol>
@@ -2135,10 +2151,12 @@
                   being processed.</li>
               </ol>
             </li>
+            </del>
             <li>Otherwise:
               <ol>
-                <li>If <var>language map</var> does not have a <var>default language</var> <a>entry</a>
+                <li>If <var>language map</var> does not have a <var>default language</var> <a>entry</a>,<del cite="#change_pr639">
                   <span class="changed">(after being normalized to lower case)</span>,
+                  </del>
                   create one and set its value to the <a>term</a>
                   being processed.</li>
                 <li>If <var>language map</var> does not have an <code>@none</code>
@@ -7103,6 +7121,8 @@
       as described in <a href="#change_7">Candidate Correction 7</a></li>
      <li>2025-02-28: Clarifiy language about <a>term definitions</a>,
       as described in <a href="#change_api_638">Candidate Correction 8</a></li>
+    <li>2025-02-28: Simplify the <a href="#algorithm-1">Inverse Context Creation algorithm</a>
+      as described in <a href="#change_pr639">Candidate Correction 8</a></li>
  </ul>
   </details>
 
