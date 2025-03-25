@@ -410,8 +410,8 @@
       "@type": ["jld:PositiveEvaluationTest", "jld:FromRDFTest"],
       "name": "t0008 as interpreted for 1.1. ",
       "purpose": "List of lists",
-      "input": "fromRdf/li02-in.nq",
-      "expect": "fromRdf/li02-out.jsonld",
+      "input": "fromRdf/li03-in.nq",
+      "expect": "fromRdf/li03-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }
   ]
