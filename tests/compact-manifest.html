@@ -4805,6 +4805,38 @@
             </dd>
           </dl>
         </dd>
+        <dt id='tej01'>
+          Test tej01 Multiple JSON values for a JSON literal properties
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tej01</dd>
+            <dt>Type</dt>
+            <dd>jld:NegativeEvaluationTest, jld:CompactTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests compacting multiple JSON values for a JSON literal property.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='compact/ej01-in.jsonld'>compact/ej01-in.jsonld</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='compact/ej01-context.jsonld'>compact/ej01-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              multiple JSON literals
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
         <dt id='tin01'>
           Test tin01 Basic Included array
         </dt>
@@ -5307,6 +5339,166 @@
             <dt>expect</dt>
             <dd>
               <a href='compact/js11-out.jsonld'>compact/js11-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs12'>
+          Test tjs12 Compact JSON literal (empty array)
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs12</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests compacting property with @type @json to a JSON literal (empty array).</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='compact/js12-in.jsonld'>compact/js12-in.jsonld</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='compact/js12-context.jsonld'>compact/js12-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='compact/js12-out.jsonld'>compact/js12-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs13'>
+          Test tjs13 Compact JSON literal (array with string)
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs13</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests compacting property with @type @json to a JSON literal (array with string).</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='compact/js13-in.jsonld'>compact/js13-in.jsonld</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='compact/js13-context.jsonld'>compact/js13-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='compact/js13-out.jsonld'>compact/js13-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs14'>
+          Test tjs14 Compact JSON literal and non-JSON with @json property
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs14</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests compacting property with @type @json with JSON literal and non-JSON.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='compact/js14-in.jsonld'>compact/js14-in.jsonld</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='compact/js14-context.jsonld'>compact/js14-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='compact/js14-out.jsonld'>compact/js14-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs15'>
+          Test tjs15 Compact JSON literal and non-JSON without @json property
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs15</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests compacting property without @type @json with JSON literal and non-JSON.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='compact/js15-in.jsonld'>compact/js15-in.jsonld</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='compact/js15-context.jsonld'>compact/js15-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='compact/js15-out.jsonld'>compact/js15-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs16'>
+          Test tjs16 Compact JSON literal and non-JSON with and without @json property
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs16</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:CompactTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests compacting property with and without @type @json with JSON literal and non-JSON.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='compact/js16-in.jsonld'>compact/js16-in.jsonld</a>
+            </dd>
+            <dt>context</dt>
+            <dd>
+              <a href='compact/js16-context.jsonld'>compact/js16-context.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='compact/js16-out.jsonld'>compact/js16-out.jsonld</a>
             </dd>
             <dt>Options</dt>
             <dd>
