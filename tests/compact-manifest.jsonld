@@ -946,7 +946,8 @@
       "purpose": "With @container: @index and @index a compact IRI, ensure round-tripping of compacted representation",
       "input": "compact/0112-in.jsonld",
       "context": "compact/0112-context.jsonld",
-      "expect": "compact/0112-out.jsonld"
+      "expect": "compact/0112-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0113",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
@@ -954,7 +955,8 @@
       "purpose": "With @container: @index and @index an absolute IRI, ensure round-tripping of compacted representation",
       "input": "compact/0113-in.jsonld",
       "context": "compact/0113-context.jsonld",
-      "expect": "compact/0113-out.jsonld"
+      "expect": "compact/0113-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#t0114",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
