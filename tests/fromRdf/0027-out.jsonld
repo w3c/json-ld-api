@@ -2,8 +2,8 @@
   {
     "@id": "http://example.com/boolean-native",
     "http://example.com/example": [
-      true,
-      false
+      {"@value": true},
+      {"@value": false}
     ]
   },
   {
@@ -22,7 +22,7 @@
   {
     "@id": "http://example.com/number-native",
     "http://example.com/example": [
-      1
+      {"@value": 1}
     ]
   },
   {
