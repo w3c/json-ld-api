@@ -7,6 +7,13 @@
     ]
   },
   {
+    "@id": "http://example.com/boolean-number",
+    "http://example.com/example": [
+      {"@value": true},
+      {"@value": false}
+    ]
+  },
+  {
     "@id": "http://example.com/boolean-object",
     "http://example.com/example": [
       {
