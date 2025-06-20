@@ -5503,8 +5503,11 @@
                   of <var>value</var> equals <code>xsd:boolean</code>, set
                   <var>converted value</var> to <code>true</code> if the
                   <a>lexical form</a>
-                  of <var>value</var> matches <code>true</code>, or <code>false</code>
-                  if it matches <code>false</code>. If it matches neither,
+                  
+                    of <var>value</var> matches <code>"true"</code><ins cite="#change_5"> or <code>"1"</code></ins>, or <code>false</code>
+                    if it matches <code>"false"</code><ins cite="#change_5"> or <code>"0"</code></ins>.
+                  </ins>
+                  If it matches neither,
                   set <var>type</var> to <code>xsd:boolean</code>.</li>
                 <li>Otherwise, if the
                   <a>datatype IRI</a>
