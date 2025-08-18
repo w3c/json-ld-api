@@ -14,7 +14,7 @@
     "input":           { "@id": "mf:action", "@type": "@id" },
     "option":          { "@type": "@id"},
     "sequence":        { "@id": "mf:entries", "@type": "@id", "@container": "@list" },
-    "inclusion":        { "@id": "mf:includes", "@type": "@id", "@container": "@list" },
+    "inclusion":        { "@id": "mf:include", "@type": "@id", "@container": "@list" },
     "redirectTo":      { "@type": "@id"},
 
     "name":                 "mf:name",
