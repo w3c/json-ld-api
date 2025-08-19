@@ -30,7 +30,7 @@
 
       ## General instructions for running the JSON-LD Test suites
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['sequence'].any? {|te| te['@type'].include?('jld:CompactTest')}
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['sequence'] && manifest['sequence'].any? {|te| te['@type'].include?('jld:CompactTest')} )
       :markdown
         ### [compact](compact-manifest.html) tests have _input_, _expected_ and _context_ documents.
 
@@ -38,7 +38,7 @@
 
         For **NegativeEvaluationTests**, the result is a string associated with the expected error code.
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['sequence'].any? {|te| te['@type'].include?('jld:ExpandTest')}
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['sequence'] && manifest['sequence'].any? {|te| te['@type'].include?('jld:ExpandTest')} )
       :markdown
         ### [expand](expand-manifest.html) tests have _input_ and _expected_ documents.
 
@@ -49,7 +49,7 @@
 
         For **NegativeEvaluationTests**, the result is a string associated with the expected error code.
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['sequence'].any? {|te| te['@type'].include?('jld:HtmlTest')}
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['sequence'] && manifest['sequence'].any? {|te| te['@type'].include?('jld:HtmlTest')} )
       :markdown
         ### [html](html-manifest.html) tests have _input_ and _expected_ documents and an optional _context_ document.
 
@@ -57,7 +57,7 @@
 
         For **NegativeEvaluationTests**, the result is a string associated with the expected error code.
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['sequence'].any? {|te| te['@type'].include?('jld:FlattenTest')}
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['sequence'] && manifest['sequence'].any? {|te| te['@type'].include?('jld:FlattenTest')} )
       :markdown
         ### [flatten](flatten-manifest.html) tests have _input_ and _expected_ documents and an optional _context_ document.
 
@@ -65,7 +65,7 @@
 
         For **NegativeEvaluationTests**, the result is a string associated with the expected error code.
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['name'].include?('Remote')
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['name'].include?('Remote') )
       :markdown
         ### [remote-doc](remote-doc-manifest.html) tests have _input_ and _expected_ documents.
 
@@ -80,13 +80,13 @@
         * _redirectTo_: The HTTP _Content-Location_ header value.
         * _httpLink_: The HTTP _Link_ header value.
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['sequence'].any? {|te| te['@type'].include?('jld:FromRdfTest')}
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['sequence'] && manifest['sequence'].any? {|te| te['@type'].include?('jld:FromRdfTest')} )
       :markdown
         ### [fromRdf](fromRdf-manifest.html) tests have _input_ and _expected_ documents.
 
         The _expected_ results  can be compared using [JSON-LD object comparison](#json-ld-object-comparison) with the processor output.
 
-    - if manifest['sequence'].first.is_a?(String) || manifest['sequence'].any? {|te| te['@type'].include?('jld:ToRdfTest')}
+    - if ( manifest['inclusion'] && manifest['inclusion'].first.is_a?(String) ) || ( manifest['sequence'] && manifest['sequence'].any? {|te| te['@type'].include?('jld:ToRdfTest')} )
       :markdown
         ### [toRdf](toRdf-manifest.html) tests have _input_ and _expected_ documents.
 
@@ -159,53 +159,53 @@
       %dl
         %dt="baseIri"
         %dd=manifest['baseIri']
-    - if manifest['sequence']
+    - if manifest['inclusion']
       %section
         %h2
           Test sequence:
-        - if manifest['sequence'].first.is_a?(String)
+        - if manifest['inclusion'].first.is_a?(String)
           %ul
-            - manifest['sequence'].each do |man|
+            - manifest['inclusion'].each do |man|
               - man_name = man.sub('.jsonld', '')
               %li
                 %a{href: "#{man_name}.html"}<=man_name
-        - else
-          %dl.entries
-            - manifest['sequence'].each do |entry|
-              %dt{id: entry['@id'][1..-1]}
-                ="Test #{entry['@id'][1..-1]} #{entry['name']}"
+    - if manifest['sequence']
+      %dl.entries
+        - manifest['sequence'].each do |entry|
+          %dt{id: entry['@id'][1..-1]}
+            ="Test #{entry['@id'][1..-1]} #{entry['name']}"
+          %dd
+            %dl.entry
+              %dt="id"
+              %dd=entry['@id']
+              %dt="Type"
+              %dd="#{Array(entry['@type']).join(', ')}"
+              %dt="Purpose"
+              %dd=entry['purpose']
+              %dt="input"
               %dd
-                %dl.entry
-                  %dt="id"
-                  %dd=entry['@id']
-                  %dt="Type"
-                  %dd="#{Array(entry['@type']).join(', ')}"
-                  %dt="Purpose"
-                  %dd=entry['purpose']
-                  %dt="input"
-                  %dd
-                    %a{href: entry['input']}=entry['input']
-                  - if entry['context']
-                    %dt="context"
-                    %dd
-                      %a{href: entry['context']}=entry['context']
-                  - if entry['frame']
-                    %dt="frame"
-                    %dd
-                      %a{href: entry['frame']}=entry['frame']
-                  %dt="expect"
-                  %dd
-                    - if entry['@type'].to_s.include?('Negative')
-                      =entry['expectErrorCode']
-                    - else
-                      %a{href: entry['expect']}=entry['expect']
-                  - if entry['option']
-                    %dt="Options"
-                    %dd
-                      %dl.options
-                        - entry['option'].each do |k, v|
-                          %dt=k
-                          %dd=v
-                  - if entry['requires']
-                    %dt="Requires"
-                    %dd= entry['requires']
+                %a{href: entry['input']}=entry['input']
+              - if entry['context']
+                %dt="context"
+                %dd
+                  %a{href: entry['context']}=entry['context']
+              - if entry['frame']
+                %dt="frame"
+                %dd
+                  %a{href: entry['frame']}=entry['frame']
+              %dt="expect"
+              %dd
+                - if entry['@type'].to_s.include?('Negative')
+                  =entry['expectErrorCode']
+                - else
+                  %a{href: entry['expect']}=entry['expect']
+              - if entry['option']
+                %dt="Options"
+                %dd
+                  %dl.options
+                    - entry['option'].each do |k, v|
+                      %dt=k
+                      %dd=v
+              - if entry['requires']
+                %dt="Requires"
+                %dd= entry['requires']
