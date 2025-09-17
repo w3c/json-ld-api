@@ -174,7 +174,7 @@ GEM
     redcarpet (3.6.1)
     reline (0.6.2)
       io-console (~> 0.5)
-    rexml (3.4.1)
+    rexml (3.4.2)
     scanf (1.0.0)
     shacl (0.4.3)
       json-ld (~> 3.3)
