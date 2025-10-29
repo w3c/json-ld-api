@@ -18,6 +18,14 @@
     "http://example.com/example": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "True"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "@value": "False"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
         "@value": "notnative"
       }
     ]
