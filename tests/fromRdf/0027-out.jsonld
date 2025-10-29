@@ -18,11 +18,7 @@
     "http://example.com/example": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#boolean",
-        "@value": "True"
-      },
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#boolean",
-        "@value": "False"
+        "@value": "notnative"
       }
     ]
   },
@@ -46,6 +42,14 @@
       {
         "@type": "http://www.w3.org/2001/XMLSchema#double",
         "@value": "-INF"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": "notnative"
+      },
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": "notnative"
       }
     ]
   }
