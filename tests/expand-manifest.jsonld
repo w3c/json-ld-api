@@ -991,7 +991,7 @@
       "@id": "#t0132",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
       "name": "@base does not expand property keys",
-      "purpose": "Property keys are expanded vocabulary-relative (@vocab, term definitions, compact IRIs with a defined prefix). @base is for document-relative IRI resolution where the algorithms pass that flag (e.g. certain @id and @type values), not for unmapped simple keys. With only @base set, an unmapped key like name has no vocabulary mapping and must be dropped; a relative @type token still resolves against the base. See IRI Expansion in the JSON-LD 1.1 Processing Algorithms and API.",
+      "purpose": "Property keys are expanded vocabulary-relative (`@vocab`, term definitions, compact IRIs with a defined prefix). `@base` is for document-relative IRI resolution where the algorithms pass that flag (e.g., certain `@id` and `@type` values), not for unmapped simple keys. With only `@base` set, an unmapped key like `name` has no vocabulary mapping and must be dropped; a relative `@type` token still resolves against the base. See IRI Expansion in the JSON-LD 1.1 Processing Algorithms and API.",
       "input": "expand/0132-in.jsonld",
       "expect": "expand/0132-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
