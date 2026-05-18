@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "@vocab": "http://example.org/outer#",
+    "p1": {
+      "@id": "@nest",
+      "@context": {
+        "Type": {
+          "@id": "http://example.org/ns#Type",
+          "@context": {
+            "p2": "http://example.org/ns#P2"
+          }
+        }
+      }
+    }
+  },
+  "p1": {
+    "@type": "Type",
+    "p2": "foo"
+  }
+}

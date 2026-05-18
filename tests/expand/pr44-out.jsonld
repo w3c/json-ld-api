@@ -1,0 +1,12 @@
+[
+  {
+    "@type": [
+      "http://example.org/ns#Type"
+    ],
+    "http://example.org/ns#P2": [
+      {
+        "@value": "foo"
+      }
+    ]
+  }
+]
