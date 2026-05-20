@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>JSON-LD 1.1 Processing Algorithms and API</title>
+<title>JSON-LD 1.2 Processing Algorithms and API</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 <script src="common/common.js" class="remove" defer></script>
@@ -20,14 +20,14 @@
       copyrightStart:       "2010",
 
       // the specification's short name, as in http://www.w3.org/TR/short-name/
-      shortName:            "json-ld11-api",
+      shortName:            "json-ld12-api",
 
       // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
       // and its maturity status
-      prevVersion:          "https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/",
-      previousPublishDate:  "2020-05-07",
-      previousMaturity:     "PR",
-      prevRecURI:           "https://www.w3.org/TR/2014/REC-json-ld-api-20140116/",
+      // prevVersion:          "https://www.w3.org/TR/2020/PR-json-ld11-api-20200507/",
+      // previousPublishDate:  "2020-05-07",
+      // previousMaturity:     "PR",
+      prevRecURI:           "https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/",
       errata:               "https://w3c.github.io/json-ld-api/errata/",
 
       // if there a publicly available Editor's Draft, this is the link
@@ -68,7 +68,7 @@
           company:    "LIRIS - Université de Lyon",
           companyURL: "https://liris.cnrs.fr/",
           w3cid:      "42931",
-          note:       "v1.1" },
+          note:       "v1.1 and v1.2" },
       ],
 
       // editors, add as many as you like
@@ -318,12 +318,16 @@
 
   <section>
     <h2>Set of Documents</h2>
-    <p>This document is one of three JSON-LD 1.1 Recommendations produced by the
+    <p>This document is one of three JSON-LD 1.2 Recommendations produced by the
       <a href="https://www.w3.org/2018/json-ld-wg/">JSON-LD Working Group</a>:</p>
+
+    <p class=issue>
+      TODO: update all references JSON-LD11 and JSON-LD11-FRAMING to JSON-LD12 and JSON-LD12-FRAMING when those are effectively published.
+    </p>
 
     <ul>
       <li>[[[JSON-LD11]]]</li>
-      <li><a href="">JSON-LD 1.1 Processing Algorithms and API</a></li>
+      <li><a href="">JSON-LD 1.2 Processing Algorithms and API</a></li>
       <li>[[[JSON-LD11-FRAMING]]]</li>
     </ul>
   </section>
@@ -346,12 +350,12 @@
 
   <p>To understand the basics in this specification you must first be familiar with
     <a data-cite="RFC8259" data-no-xref="">JSON</a>, which is detailed in [[RFC8259]]. You must also understand the
-    JSON-LD syntax defined in the <a data-cite="JSON-LD11" data-no-xref="">JSON-LD 1.1 Syntax specification</a> [[JSON-LD11]], which is the base syntax used by all
+    JSON-LD syntax defined in the <a data-cite="JSON-LD11" data-no-xref="">JSON-LD 1.2 Syntax specification</a> [[JSON-LD11]], which is the base syntax used by all
     of the algorithms in this document. To understand the API and how it is
     intended to operate in a programming environment, it is useful to have working
     knowledge of the JavaScript programming language [[ECMASCRIPT]] and
     WebIDL [[WEBIDL]]. To understand how JSON-LD maps to RDF, it is helpful to be
-    familiar with the basic RDF concepts [[RDF11-CONCEPTS]].</p>
+    familiar with the basic RDF concepts [[RDF12-CONCEPTS]].</p>
 
   <section class="informative">
     <h2>How to Read this Document</h2>
@@ -364,7 +368,7 @@
         JSON-LD</li>
     </ul>
 
-    <p>A companion document, the JSON-LD 1.1 specification
+    <p>A companion document, the JSON-LD 1.2 specification
       [[JSON-LD11]], specifies the grammar of JSON-LD documents.</p>
 
     <p>To understand the basics in this specification you must first be familiar with
@@ -416,7 +420,7 @@
   <section id="api-keywords">
     <h2>Syntax Tokens and Keywords</h2>
 
-    <p>In addition to the <a>keywords</a> defined in the JSON-LD 1.1 Syntax specification [[JSON-LD11]],
+    <p>In addition to the <a>keywords</a> defined in the JSON-LD 1.2 Syntax specification [[JSON-LD11]],
       this specification adds an additional <a>keyword</a> to support
       [[[JSON-LD11-FRAMING]]] [[JSON-LD11-FRAMING]]:</p>
 
@@ -472,7 +476,7 @@
 <section class="informative">
   <h1>Features</h1>
 
-  <p>The JSON-LD 1.1 Syntax specification [[JSON-LD11]] defines a syntax to
+  <p>The JSON-LD 1.2 Syntax specification [[JSON-LD11]] defines a syntax to
     express Linked Data in JSON. Because there is more than one way to
     express Linked Data using this syntax, it is often useful to be able to
     transform JSON-LD documents so that they may be more easily consumed by
@@ -504,14 +508,14 @@
     transformations of JSON-LD documents. They are referred to as
     <a>expansion</a> and <a>compaction</a>, respectively.</p>
 
-  <p class="changed">JSON-LD 1.1 introduces new features that are
+  <p class="changed">JSON-LD 1.2 introduces new features that are
     compatible with [[[JSON-LD10]]] [[JSON-LD10]],
     but if processed by a JSON-LD 1.0 processor may produce different results.
-    Processors default to `json-ld-1.1`, unless the
+    Processors default to `json-ld-1.2`, unless the
     <a data-link-for="JsonLdOptions">processingMode</a> API option
-    is explicitly set to `json-ld-1.0`.
+    is explicitly set to `json-ld-1.0` or `json-ld-1.1`.
     Publishers are encouraged to use the <code>@version</code> <a>map entry</a> within a <a>context</a>
-    set to `1.1` to ensure that JSON-LD 1.0 processors will not misinterpret JSON-LD 1.1 features.</p>
+    set to `1.2` to ensure that older processors will not misinterpret JSON-LD 1.2 features.</p>
 
   <p>There are four major types of transformation that are discussed in this
     document: expansion, compaction, flattening, and RDF serialization/deserialization.</p>
@@ -943,7 +947,7 @@
     <h2>RDF Serialization/Deserialization</h2>
 
     <p>JSON-LD can be used to serialize RDF data as described in
-      [[RDF11-CONCEPTS]]. This ensures that data can be round-tripped to and from
+      [[RDF12-CONCEPTS]]. This ensures that data can be round-tripped to and from
       any RDF syntax without any loss in fidelity.</p>
 
     <p>For example, assume the following RDF input serialized in Turtle [[TURTLE]]:</p>
@@ -1164,7 +1168,7 @@
         These are handled before any other <a>entries</a> in the <a>local context</a> because
         they affect how the other <a>entries</a> are processed.
         <span class="changed">If <a>context</a> contains <code>@import</code>, it is retrieved and is reverse-merged
-          into the containing context, allowing JSON-LD 1.0 contexts to be upgraded to JSON-LD 1.1.</span>
+          into the containing context, allowing JSON-LD 1.0 or JSON-LD-1.1 contexts to be upgraded to JSON-LD 1.2.</span>
         Please note that <code>@base</code> is ignored when processing remote contexts.</p>
 
       <p class="changed">If <a>context</a> is not to be propagated,
@@ -1333,12 +1337,12 @@
             <li>Otherwise, <var>context</var> is a <a data-cite="JSON-LD11#dfn-context-definition">context definition</a>.</li>
             <li class="changed">If <var>context</var> has an <code>@version</code> <a>entry</a>:
               <ol>
-                <li>If the associated value is not <code>1.1</code>,
+                <li>If the associated value is not <code>1.1</code> or <code>1.2</code>,
                   an <a data-link-for="JsonLdErrorCode">invalid @version value</a>
                   has been detected, and processing is aborted.
-                <div class="note">The use of `1.1` for the value of `@version` is intended to
+                <div class="note">The use of `1.1` or `1.2` for the value of `@version` is intended to
                   cause a JSON-LD 1.0 processor to stop processing.
-                  Although it is clearly meant to be related to JSON-LD 1.1, it does not
+                  Although it is clearly meant to be related to JSON-LD 1.1 and JSON-LD 1.2, respectively, it does not
                   otherwise adhere to the requirements for <a href="https://semver.org/">Semantic Versioning</a>.
                   Implementations may require
                   <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Minimizing_the_effect_of_accuracy_problems">special consideration</a>
@@ -2451,7 +2455,7 @@
         we return <var>result</var>.</p>
 
       <p class="note">Although the <a data-cite="JSON-LD11#data-model">data model</a>,
-        based on [[RDF11-CONCEPTS]], does not support multiple unordered property values,
+        based on [[RDF12-CONCEPTS]], does not support multiple unordered property values,
         this algorithm does not remove duplicates that
         may be found during expansion within an unordered <a>array</a>.
         Other algorithms, such as <a href="#compaction-algorithm" class="sectionRef"></a>,
@@ -3634,7 +3638,7 @@
                 <li>Initialize <var>alias</var>
                   <span class="changed">by <a>IRI compacting</a> <var>expanded property</var></span>.</li>
                 <li id="alg-compact-12_2_4" class="changed">Initialize <var>as array</var>
-                  to <code>true</code> if <a>processing mode</a> is `json-ld-1.1` and
+                  to <code>true</code> if <a>processing mode</a> is `json-ld-1.1` or greater and
                   the <a>container mapping</a> for <var>alias</var> in the
                   <var>active context</var> includes <code>@set</code>,
                   otherwise to the negation of {{JsonLdOptions/compactArrays}}.</li>
@@ -5118,7 +5122,7 @@
     <p>List Conversion is the process of taking a <a>list object</a>
       and transforming it into an
       <a>RDF collection</a>
-      as defined in RDF Semantics [[RDF11-MT]].</p>
+      as defined in RDF Schema[[RDF12-SCHEMA]].</p>
 
     <section class="informative">
       <h3>Overview</h3>
@@ -5174,8 +5178,8 @@
       <a>named graphs</a> into a JSON-LD document.</p>
 
     <p>In the RDF abstract syntax, <a>RDF literals</a> have a
-      <a data-cite="RDF11-CONCEPTS#dfn-lexical-form"><dfn>lexical form</dfn></a>, as defined
-      in [[RDF11-CONCEPTS]]. The form of these literals is used when creating <a>JSON-LD values</a> based on these literals.</p>
+      <a data-cite="RDF12-CONCEPTS#dfn-lexical-form"><dfn>lexical form</dfn></a>, as defined
+      in [[RDF12-CONCEPTS]]. The form of these literals is used when creating <a>JSON-LD values</a> based on these literals.</p>
 
     <section class="informative">
       <h3>Overview</h3>
@@ -5662,7 +5666,7 @@
       <!--
       {
         "@context": {
-          "@version": 1.1,
+          "@version": 1.2,
           "e": {"@id": "http://example.org/vocab#json", ****"@type": "@json"****}
         },
         "e": ****[
@@ -6441,7 +6445,7 @@
       <dt><dfn data-dfn-for="RdfLiteral">value</dfn></dt>
       <dd>The lexical value of the <a>literal</a>.</dd>
       <dt><dfn data-dfn-for="RdfLiteral">datatype</dfn></dt>
-      <dd>An absolute <a>IRI</a> denoting the <a data-lt="RDF11-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of the <a>literal</a>.
+      <dd>An absolute <a>IRI</a> denoting the <a data-lt="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of the <a>literal</a>.
         If the value is <code>rdf:langString</code>,
         <a data-link-for="RdfLiteral">language</a> MUST be specified.</dd>
       <dt><dfn data-dfn-for="RdfLiteral">language</dfn></dt>
@@ -6465,7 +6469,7 @@
         boolean                extractAllScripts = false;
         boolean                frameExpansion = false;
         boolean                ordered = false;
-        USVString              processingMode = "json-ld-1.1";
+        USVString              processingMode = "json-ld-1.2";
         boolean                produceGeneralizedRdf = true;
         USVString?             rdfDirection = null;
         boolean                useNativeTypes = false;
@@ -6499,8 +6503,8 @@
       <dd>If set to <code>true</code>, the JSON-LD processor may emit
         <a>blank nodes</a> for <a>triple</a> <a>predicates</a>,
         otherwise they will be omitted.
-        <dfn data-cite="RDF11-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
-          are defined in [[RDF11-CONCEPTS]].
+        <dfn data-cite="RDF12-CONCEPTS#dfn-generalized-rdf-dataset" data-lt="generalized rdf dataset">Generalized RDF Datasets</dfn>
+          are defined in [[RDF12-CONCEPTS]].
         <div class="note">The use of <a>blank node identifiers</a> to label properties is obsolete,
           and may be removed in a future version of JSON-LD,
           as is the support for <a>generalized RDF Datasets</a>
@@ -6508,7 +6512,7 @@
       </dd>
       <dt><dfn data-dfn-for="JsonLdOptions">processingMode</dfn></dt>
       <dd>Sets the <a>processing mode</a>.
-        If set to `json-ld-1.0` or `json-ld-1.1`,
+        If set to `json-ld-1.0`, `json-ld-1.1`, or `json-ld-1.2`,
         the implementation must produce exactly the same results as the
         algorithms defined in this specification.
         If set to another value,
