@@ -6025,6 +6025,69 @@
             </dd>
           </dl>
         </dd>
+        <dt id='ter57'>
+          Test ter57 Array not found for @json @set.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#ter57</dd>
+            <dt>Type</dt>
+            <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>The value for a @json @set term MUST be an array.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/er57-in.jsonld'>expand/er57-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              invalid set or list object
+            </dd>
+          </dl>
+        </dd>
+        <dt id='ter58'>
+          Test ter58 Array not found for @json @set.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#ter58</dd>
+            <dt>Type</dt>
+            <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>The value for a @json @set term MUST be an array.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/er57-in.jsonld'>expand/er57-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              invalid set or list object
+            </dd>
+          </dl>
+        </dd>
+        <dt id='ter58'>
+          Test ter58 Array not found for @json @list.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#ter58</dd>
+            <dt>Type</dt>
+            <dd>jld:NegativeEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>The value for a @json @list term MUST be an array.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/er58-in.jsonld'>expand/er58-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              invalid set or list object
+            </dd>
+          </dl>
+        </dd>
         <dt id='tes01'>
           Test tes01 Using an array value for @context is illegal in JSON-LD 1.0
         </dt>
@@ -6969,6 +7032,202 @@
             <dt>expect</dt>
             <dd>
               <a href='expand/js23-out.jsonld'>expand/js23-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs24'>
+          Test tjs24 Expand JSON literal (one JSON literal).
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs24</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding property with @type @json (one JSON literal).</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js24-in.jsonld'>expand/js24-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js24-out.jsonld'>expand/js24-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs25'>
+          Test tjs25 Expand JSON literal (two JSON literals).
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs25</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding property with @type @json (two JSON literals).</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js25-in.jsonld'>expand/js25-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js25-out.jsonld'>expand/js25-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs26'>
+          Test tjs26 Expand JSON literal (JSON literal and non-JSON).
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs26</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding property with @type @json (JSON literal and non-JSON).</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js26-in.jsonld'>expand/js26-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js26-out.jsonld'>expand/js26-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs27'>
+          Test tjs27 Expand JSON literal (duplicate JSON literals).
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs27</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding property with @type @json (dupcliate JSON literals).</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js27-in.jsonld'>expand/js27-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js27-out.jsonld'>expand/js27-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs28'>
+          Test tjs28 Expand array-like value with @json and no @set/@list in @context.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs28</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding array-like value with @json and no @set/@list in @context.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js28-in.jsonld'>expand/js28-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js28-out.jsonld'>expand/js28-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs29'>
+          Test tjs29 Expand array-like value with @json and @set in @context.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs29</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding array-like value with @json and @set in @context.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js29-in.jsonld'>expand/js29-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js29-out.jsonld'>expand/js29-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tjs30'>
+          Test tjs30 Expand array-like value with @json and @list in @context.
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tjs30</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Tests expanding array-like value with @json and @list in @context.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/js30-in.jsonld'>expand/js30-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/js30-out.jsonld'>expand/js30-out.jsonld</a>
             </dd>
             <dt>Options</dt>
             <dd>

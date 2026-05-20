@@ -1,0 +1,5 @@
+_:b0 <ex:e> _:b1 .
+_:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "\"v1\""^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON> .
+_:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b2 .
+_:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "\"v2\""^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON> .
+_:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
