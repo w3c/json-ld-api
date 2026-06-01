@@ -3217,6 +3217,34 @@
             </dd>
           </dl>
         </dd>
+        <dt id='t0132'>
+          Test t0132 @base does not expand property keys
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#t0132</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Property keys are expanded vocabulary-relative (`@vocab`, term definitions, compact IRIs with a defined prefix). `@base` is for document-relative IRI resolution where the algorithms pass that flag (e.g., certain `@id` and `@type` values), not for unmapped simple keys. With only `@base` set, an unmapped key like `name` has no vocabulary mapping and must be dropped; a relative `@type` token still resolves against the base. See IRI Expansion in the JSON-LD 1.1 Processing Algorithms and API.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/0132-in.jsonld'>expand/0132-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/0132-out.jsonld'>expand/0132-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
         <dt id='tc001'>
           Test tc001 adding new term
         </dt>
