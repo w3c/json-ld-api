@@ -312,10 +312,6 @@ companyURL: "https://www.inria.fr/",
 
     <p>This specification is intended to <a href='https://www.w3.org/2019/Process-20190301/#rec-rescind'>supersede</a> the [[[JSON-LD10-API]]] [[JSON-LD10-API]] specification. </p>
 
-    <p class="correction">
-      This document includes <a href="#changes-from-rec1">Candidate Corrections</a> to the current
-      <a href="https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/">W3C Recommendation dated 16 July 2020</a>.</p>
-
   <section>
     <h2>Set of Documents</h2>
     <p>This document is one of three JSON-LD 1.2 Recommendations produced by the
@@ -1075,15 +1071,6 @@ companyURL: "https://www.inria.fr/",
       using information provided by the <a>active context</a>. This
       section describes how to produce an <a>active context</a>.</p>
 
-    <div id="change_api_638" class="candidate correction">
-      <span class="marker">Candidate Correction 8</span>
-      <p>Change the type of <a>term definition</a> from <a>array</a> to <a>map</a> in <a>active context</a>,
-        to be consistent with the way it is used in the algorithms.
-        Clarify the notion of "<a>term definition</a>".
-        For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/630">issue 630</a>.
-      </p>
-    </div>
-
     <p>The <a>active context</a> consists of:</p>
     <ul>
       <li>the active <a>term definitions</a> which specify how
@@ -1647,11 +1634,6 @@ companyURL: "https://www.inria.fr/",
           </ol>
         </li>
         <li>If <var>value</var> contains the <a>entry</a> <code>@reverse</code>:
-          <div class="candidate correction" id="change_3">
-            <span class="marker">Candidate Correction 3</span>
-            <p>This changes the algorithm for processing a reverse term so that it doesn't return early.
-              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/565">issue 565</a>.</p>
-          </div>
           <ol>
             <li>If <var>value</var> contains <code>@id</code> or <code>@nest</code>, <a>entries</a>, an
               <a data-link-for="JsonLdErrorCode">invalid reverse property</a>
@@ -2008,14 +1990,6 @@ companyURL: "https://www.inria.fr/",
       <ol>
         <li>Initialize <var>result</var> to an empty <a class="changed">map</a>.</li>
         <li>
-          <div id="change_pr639" class="candidate correction">
-            <span class="marker">Candidate Correction 8</span>
-            <p>Simplify the algorithm by handling the <a>default base direction</a>
-              once and for all in this step, rather than <a href="#alg-inv-defaul-base-dir">in each iteration</a>.
-              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/633">issue 633</a>. 
-            </p>
-          </div>
-
           Initialize <var>default language</var> to <code>@none</code>.
           If the <var>active context</var> has a <a>default language</a>,
           set <var>default language</var> to the <a>default language</a> from the <var>active context</var>
@@ -2133,9 +2107,6 @@ companyURL: "https://www.inria.fr/",
                   create one and set its value to the <a>term</a>
                   being processed.</li>
               </ol>
-            </li>
-            <li id="alg-inv-defaul-base-dir" class="changed">
-              <em>(this step was removed by a <a href="#change_pr639">candidate correction</a>)</em>
             </li>
             <li>Otherwise:
               <ol>
@@ -3087,12 +3058,6 @@ companyURL: "https://www.inria.fr/",
                   <a data-link-for="JsonLdErrorCode">invalid @nest value</a> error
                   has been detected and processing is aborted.</li>
                 <li>
-                  <div class="candidate correction" id="change_1">
-                    <span class="marker">Candidate Correction 1</span>
-                    <p>This algorithm step omitted two additional steps
-                      which include <var>nesting-key</var> in addition to <var>nested value</var>.
-                      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/380">issue 380</a>.</p>
-                  </div>
                   Recursively repeat steps
                   <a href="#alg-expand-property-scoped-context">3</a>,
                   <a href="#alg-expand-property-scoped-context2">8</a>,
@@ -3887,12 +3852,6 @@ companyURL: "https://www.inria.fr/",
                       set <var>map key</var> to the value of <code>@index</code> in <var>expanded item</var>, if any.</li>
                     <li id="alg-compact-12_8_9_6" class="changed">Otherwise, if <var>container</var> includes <code>@index</code>
                       and <var>index key</var> is not <code>@index</code>:
-                      <div class="candidate correction" id="change_2">
-                        <span class="marker">Candidate Correction 2</span>
-                        <p>The value of `@index` on a property map can be a <a>Compact IRI</a> in addition to an <a>IRI</a>.
-                          The Compaction Algorithm is updated to first expand this value before re-compacting it.
-                          For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/514">issue 380</a>.</p>
-                      </div>
                       <ol>
                         <li id="alg-compact-12_8_9_6_1">Reinitialize <var>container key</var> by <a>IRI compacting</a>
                           <var>index key</var> after first <a>IRI expanding</a> it.</li>
@@ -5462,12 +5421,6 @@ companyURL: "https://www.inria.fr/",
             <li>Initialize <var>converted value</var> to <var>value</var>.</li>
             <li>Initialize <var>type</var> to <code>null</code></li>
             <li>If <a data-link-for="JsonLdOptions">useNativeTypes</a> is <code>true</code>
-              <div class="candidate correction" id="change_5">
-                <span class="marker">Candidate Correction 5</span>
-                <p>This changes behavior when using native numbers where <a data-link-for="JsonLdOptions">useNativeTypes</a> is `true`.
-                  For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/555">issue 555</a>.
-                </p>
-              </div>
               <ol>
                 <li>If the
                   <a>datatype IRI</a>
@@ -5741,24 +5694,6 @@ companyURL: "https://www.inria.fr/",
       {{RemoteDocument/contextUrl}}
       is used instead of looking at the HTTP Link Header directly. For the sake of simplicity, none of the algorithms
       in this document mention this directly.</p>
-
-    <div class="candidate correction" id="change_7">
-      <span class="marker">Candidate Correction 7</span>
-      <p>Details about transforming to and from a given serialization format
-        have been abstracted so that other specifications can define
-        serialization and deserialization requirements for their specific formats.
-        The algorithm is now more explicit about serializing and deserializing
-        to the <a>internal representation</a>.
-        See marked changes here and in the following locations:</p>
-      <ul>
-        <li><a data-link-for="JsonLdProcessor">compact()</a> <a href="#idl-compact-step-10">step 10</a></li>
-        <li><a data-link-for="JsonLdProcessor">expand()</a> <a href="#idl-expand-step-9">step 9</a></li>
-        <li><a data-link-for="JsonLdProcessor">flatten()</a> <a href="#idl-flatten-step-7">step 7</a></li>
-        <li><a data-link-for="JsonLdProcessor">fromRdf()</a> <a href="#idl-fromRdf-step-3">step 3</a></li>
-        <li><a href="#serialization-and-deserialization" class="sectionRef"></a></li>
-      </ul>
-      <p>For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/605">issue 605</a>.</p>
-    </div>
 
     <p>Methods resolving a {{Promise}} with the <a>internal representation</a>
       MUST either
@@ -6076,13 +6011,6 @@ companyURL: "https://www.inria.fr/",
       <dd class="algorithm changed">
         <p>Transforms the given <a data-lt="jsonldprocessor-toRdf-input">input</a> into an <a>RdfDataset</a>
           according to the steps in the <a href="#deserialize-json-ld-to-rdf-algorithm">Deserialize JSON-LD to RDF Algorithm</a>:</p>
-
-        <div class="candidate correction" id="change_4">
-          <span class="marker">Candidate Correction 4</span>
-          <p>This changes the default for <a data-link-for="LoadDocumentOptions">extractAllScripts</a> to be `false`,
-            which is consistent with the wording in <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> in [[JSON-LD11]].
-            For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/603">issue 603</a>.</p>
-        </div>
 
         <ol>
           <li>Create a new {{Promise}} <var>promise</var> and return it.
@@ -6590,13 +6518,6 @@ companyURL: "https://www.inria.fr/",
           nor any other media type using a
           <code>+json</code> suffix as defined in [[RFC6839]], then reject
           the <var>promise</var> passing a <a data-link-for="JsonLdErrorCode">loading document failed</a> error.
-          <div class="candidate correction" id="change_6">
-            <span class="marker">Candidate Correction 6</span>
-            <p>This changes corrects the processing by not assuming that the
-              <a>Content-Type</a> is for JSON, but making processing conditional
-              on that <a>Content-Type</a>.
-              For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/622">issue 622</a>.</p>
-          </div>
         </li>
         <li>Create a new <a>RemoteDocument</a> <var>remote document</var> using
           <var>url</var> as {{RemoteDocument/documentUrl}},
@@ -7052,20 +6973,23 @@ companyURL: "https://www.inria.fr/",
     <!--li>Regenerated definition list, which does not attempt to filter out unused definitions.</li-->
     <!--li>Changed obsolete use of `void` in WebIDL to `undefined`.</li-->
     <!--li>2021-01-05: Added some clarifications to the algorithm of <a href="#node-map-generation"></a>.</li--><!-- From issue 519-->
-    <li>2020-02-23: Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>
-      as described in <a href="#change_1">Candidate Correction 1</a>.</li>
+    <li>2020-02-23: Added some clarifications to <a href="#expansion-algorithm" class="sectionRef"></a>.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/380">issue 380</a>.
+    </li>
     <!--li>2021-02-25: Added some clarifications to the algorithm of <a href="#iri-compaction"></a>.</li--> <!-- From issue 524, commit: 027da2879ebe658c2f8609d164586d0e23be68a5 -->
     <li>2021-05-15: Added additional language to the
       <a href="#compaction-algorithm">Compaction Algorithm</a>
       step <a href="#alg-compact-12_8_9_6_1">12.8.9.6.1</a> to first expand
-      <var>container key</var> before compacting it,
-      as described in <a href="#change_2">Candidate Correction 2</a>.</li>
-    <li>2023-06-28: Changed the <a href="#create-term-definition">Create Term Definition</a>
+      <var>container key</var> before compacting it (as it can be a <a>Compact IRI</a>).
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/514">issue 380</a>.
+    </li>
+    <li>2023-06-28: Changed <a href="#create-term-definition">Create Term Definition</a>
       in section 4.2 of the Context Processing Algorithms, to ensure that all
       possible features for reverse term definitions are processed. The change
       was to remove <q>and return</q> from the end of step 13, and revise step
-      14 to begin with <q>Otherwise</q>,
-      as described in <a href="#change_3">Candidate Correction 3</a>.</li>
+      14 to begin with <q>Otherwise</q>.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/565">issue 565</a>.
+    </li>
     <!--li>2023-08-06: Use <a>code point order</a> as a better definition for the more vague "lexicographical order".</li--> <!-- From issue 552 commit df655351d96116a9b9f6768ff56a5e7596bb1bfe -->
     <!--li>Remove spurious paragraph in the description of {{JsonLdOptions/frameExpansion}}</li-->
     <li>2024-07-10: Specify that the value of <a data-link-for="LoadDocumentOptions">extractAllScripts</a>
@@ -7073,21 +6997,43 @@ companyURL: "https://www.inria.fr/",
       defaults to `true`, rather than `false`.
       This is consistent with wording in
       <a data-cite="JSON-LD11#embedding-json-ld-in-html-documents">Embedding JSON-LD in HTML Documents</a> [[JSON-LD11]]
-      for treating script elements as a single document,
-      as described in <a href="#change_4">Candidate Correction 4</a>.</li>
+      for treating script elements as a single document.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/603">issue 603</a>.
+    </li>
     <li>2025-01-25: Correct some corner cases in transforming RDF Number Literals
-      to JSON numbers when <a data-link-for="JsonLdOptions">useNativeTypes</a> is `true`,
-      as described in <a href="#change_5">Candidate Correction 5</a>.</li>
+      to JSON numbers when <a data-link-for="JsonLdOptions">useNativeTypes</a> is `true`.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/555">issue 555</a>.
+    </li>
     <li>2024-01-25: Change processing step for <a>LoadDocumentCallback</a>
       to not presume that the content type is for JSON,
-      as described in <a href="#change_6">Candidate Correction 6</a></li>
-     <li>2024-10-31: Abstract JSON serialization from WebIDL interfaces to allow
-      for alternative formats,
-      as described in <a href="#change_7">Candidate Correction 7</a></li>
-     <li>2025-02-28: Clarifiy language about <a>term definitions</a>,
-      as described in <a href="#change_api_638">Candidate Correction 8</a></li>
+      but making processing conditional on the content type.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/622">issue 622</a>.
+    </li>
+    <li>2024-10-31: Details about transforming to and from a given serialization format
+      have been abstracted so that other specifications can define
+      serialization and deserialization requirements for their specific formats.
+      The algorithm is now more explicit about serializing and deserializing
+      to the <a>internal representation</a>.
+      This impacts
+      <a data-link-for="JsonLdProcessor">compact()</a> <a href="#idl-compact-step-10">step 10</a>,
+      <a data-link-for="JsonLdProcessor">expand()</a> <a href="#idl-expand-step-9">step 9</a>,
+      <a data-link-for="JsonLdProcessor">flatten()</a> <a href="#idl-flatten-step-7">step 7</a>,
+      <a data-link-for="JsonLdProcessor">fromRdf()</a> <a href="#idl-fromRdf-step-3">step 3</a>, and
+      <a href="#serialization-and-deserialization" class="sectionRef"></a>.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/605">issue 605</a>.
+    </li>
+    <li>2025-02-28: Clarifiy language about <a>term definitions</a>:
+      change how they are represented in the <a href="#context-processing-algorithm">Context Processing Algorithm</a>
+      (as a <a>map</a> rather than an <a>array</a>),
+      to be consistent with the way they are used in the algorithms,
+      and clarify the definition of "<a>term definition</a>" in Section <a href="#terminology"></a>.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/630">issue 630</a>.
+    </li>
     <li>2025-02-28: Simplify the <a href="#algorithm-1">Inverse Context Creation algorithm</a>
-      as described in <a href="#change_pr639">Candidate Correction 8</a></li>
+      by handling the <a>default base direction</a>
+      once and for all in this step, rather than in each iteration.
+      For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/633">issue 633</a>.
+    </li>
  </ul>
   </details>
 
