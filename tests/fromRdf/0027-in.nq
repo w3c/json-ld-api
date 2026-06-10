@@ -6,6 +6,7 @@
 
 <http://example.com/boolean-object> <http://example.com/example> "True"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 <http://example.com/boolean-object> <http://example.com/example> "False"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+# NB: the two values above ("True" and "False") are *not* in the lexical space of xsd:bool, so they should be treated as any other invalid lexical form (like "notnative" below)
 <http://example.com/boolean-object> <http://example.com/example> "notnative"^^<http://www.w3.org/2001/XMLSchema#boolean> .
 
 <http://example.com/number-native> <http://example.com/example> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
