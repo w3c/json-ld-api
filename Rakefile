@@ -9,7 +9,7 @@ end
 desc "Extract Examples"
 task :examples  do
   sh %(rm -rf examples yaml)
-  sh %(wget w3c.github.io/json-ld-wg/common/extract-examples.rb)
+  sh %(wget https://w3c.github.io/json-ld-wg/common/extract-examples.rb)
   sh %(bundle exec extract-examples.rb --example-dir examples --yaml-dir yaml index.html)
 end
 
