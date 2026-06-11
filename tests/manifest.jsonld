@@ -4,7 +4,7 @@
   "@type": "mf:Manifest",
   "name": "JSON-LD Test Suite",
   "description": "This manifest loads additional manifests for specific behavior tests for [JSON-LD 1.1 API](https://www.w3.org/TR/json-ld11-api/)",
-  "sequence": [
+  "inclusion": [
     "compact-manifest.jsonld",
     "expand-manifest.jsonld",
     "flatten-manifest.jsonld",
