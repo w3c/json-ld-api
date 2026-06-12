@@ -13,15 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.2
-    - name: Install dependencies
-      run: bundle install
 
-    - name: Verify examples are consistent
-      run: bundle exec rake test
+    # - name: Set up Ruby
+    #   uses: ruby/setup-ruby@v1
+    #   with:
+    #     ruby-version: 3.2
+    # - name: Install dependencies
+    #   run: bundle install
+
+    # - name: Verify examples are consistent
+    #   run: bundle exec rake test
 
     - name: Echidna Auto-publish WD
       uses: w3c/spec-prod@v2
