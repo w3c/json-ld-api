@@ -3,7 +3,8 @@ task default: :test
 
 desc "Test examples in spec files"
 task :test do
-  sh %(bundle exec common/extract-examples.rb index.html)
+  sh %(wget https://w3c.github.io/json-ld-wg/common/extract-examples.rb)
+  sh %(bundle exec extract-examples.rb index.html)
 end
 
 desc "Extract Examples"
