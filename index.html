@@ -7037,14 +7037,14 @@ companyURL: "https://www.inria.fr/",
       2026-06-06:
       Fix the
       <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
-      which unconditionally skipped else clauses when
+      which unconditionally skipped `else` clauses when
       <a data-link-for="JsonLdOptions">useNativeTypes</a> was `true`, even if a
       native type couldn't be used. This resulted in plain strings where, e.g.,
       language-tagged string literals were the source.
       Instead, let <var>converted value</var> be initially unset, and only
       actively set if a native type can be used. Then group the other cases
-      in an else block, defaulting to use the lexical form of
-      <var>value</var>. Since <var>type</var> is set in the final else clause
+      in an `else` block, defaulting to use the lexical form of
+      <var>value</var>. Since <var>type</var> is set in the final `else` clause
       (unless it equals <var>xsd:string</var>), there is no need to set it in
       the clause for <var>useNativeTypes</var>.
       For more information, refer to
