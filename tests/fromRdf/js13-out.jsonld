@@ -1,0 +1,9 @@
+[{
+  "@id": "http://example.org/vocab#id",
+  "http://example.org/vocab#mixed": [{
+    "@value": null,
+    "@type": "@json"
+  }, {
+    "@id": "http://example.org/vocab#value"
+  }]
+}]
