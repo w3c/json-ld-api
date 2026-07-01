@@ -5417,8 +5417,10 @@ companyURL: "https://www.inria.fr/",
         <li>Otherwise <var>value</var> is an
           <a>RDF literal</a>:
           <ol>
-            <li>Initialize a new empty <a class="changed">map</a> result.</li>
-            <li>Initialize <var>converted value</var> to <var>value</var>.</li>
+            <li>Initialize a new empty <a class="changed">map</a> <var>result</var>.</li>
+            <li>
+              Initialize <var>converted value</var> to <var>null</var>.
+            </li>
             <li>Initialize <var>type</var> to <code>null</code></li>
             <li>If <a data-link-for="JsonLdOptions">useNativeTypes</a> is <code>true</code>
               <ol>
@@ -5433,12 +5435,8 @@ companyURL: "https://www.inria.fr/",
                   of <var>value</var> equals <code>xsd:boolean</code>, set
                   <var>converted value</var> to <code>true</code> if the
                   <a>lexical form</a>
-                  
-                    of <var>value</var> matches <code>"true"</code> or <code>"1"</code>, or <code>false</code>
-                    if it matches <code>"false"</code> or <code>"0"</code>.
-                  
-                  If it matches neither,
-                  set <var>type</var> to <code>xsd:boolean</code>.</li>
+                  of <var>value</var> matches <code>"true"</code> or <code>"1"</code>, or <code>false</code>
+                  if it matches <code>"false"</code> or <code>"0"</code>.</li>
                 <li>Otherwise, if the
                   <a>datatype IRI</a>
                   of <var>value</var> equals <code>xsd:integer</code> or
@@ -5458,46 +5456,47 @@ companyURL: "https://www.inria.fr/",
                       If the conversion is successful, set <var>converted value</var>
                       to its result.
                     </li>
-                    <li>
-                      Otherwise, set <var>type</var> to <a>datatype IRI</a>
-                      of <var>value</var>.
-                    </li>
                   </ol>
 
                 </li>
               </ol>
             </li>
-            <li class="changed">Otherwise, if <a>processing mode</a> is not `json-ld-1.0`,
-              and <var>value</var> is a <a>JSON literal</a>,
-              set <var>converted value</var> to the result of
-              turning the lexical value of <var>value</var>
-              into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.
-              If the lexical value of <var>value</var> is not valid JSON according to
-              the <a data-cite="RFC8259#section-2">JSON Grammar</a> [[RFC8259]],
-              an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
-              error has been detected and processing is aborted.</li>
-            <li class="changed">Otherwise, if the <a>datatype IRI</a> of <var>value</var> starts with `https://www.w3.org/ns/i18n#`,
-              and {{JsonLdOptions/rdfDirection}} is `i18n-datatype`:
-              <ol>
+            <li class="changed">
+              If <var>converted value</var> is <code>null</code>,
+              <ol class="changed">
                 <li>Set <var>converted value</var> to the <a>lexical form</a> of <var>value</var>.</li>
-                <li>If the string prefix of the <a data-cite="RFC3986#section-3.5">fragment identifier</a>
-                  of the <a>datatype IRI</a> up until the underscore (`"_"`) is not empty,
-                  add an <a>entry</a> `@language` to <var>result</var> and set its value to that prefix.
-                  <div class="note">As `@direction` may be used without `@language`,
-                    it is possible, and legitimate, to create a datatype IRI
-                    such as `http://w3.org/ns/i18n#_ltr`, which does not encode a language tag.</div></li>
-                <li>Add an <a>entry</a> `@direction` to <var>result</var> and set its value to the substring of the
-                  <a data-cite="RFC3986#section-3.5">fragment identifier</a> following
-                  the underscore (`"_"`).</li>
+                <li>If <a>processing mode</a> is not `json-ld-1.0`,
+                  and <var>value</var> is a <a>JSON literal</a>,
+                  set <var>converted value</var> to the result of
+                  turning the lexical value of <var>value</var>
+                  into the <a>JSON-LD internal representation</a>, and set <var>type</var> to <code>@json</code>.
+                  If the lexical value of <var>value</var> is not valid JSON according to
+                  the <a data-cite="RFC8259#section-2">JSON Grammar</a> [[RFC8259]],
+                  an <a data-link-for="JsonLdErrorCode">invalid JSON literal</a>
+                  error has been detected and processing is aborted.</li>
+                <li>Otherwise, if the <a>datatype IRI</a> of <var>value</var> starts with `https://www.w3.org/ns/i18n#`,
+                  and {{JsonLdOptions/rdfDirection}} is `i18n-datatype`:
+                  <ol>
+                    <li>If the string prefix of the <a data-cite="RFC3986#section-3.5">fragment identifier</a>
+                      of the <a>datatype IRI</a> up until the underscore (`"_"`) is not empty,
+                      add an <a>entry</a> `@language` to <var>result</var> and set its value to that prefix.
+                      <div class="note">As `@direction` may be used without `@language`,
+                        it is possible, and legitimate, to create a datatype IRI
+                        such as `http://w3.org/ns/i18n#_ltr`, which does not encode a language tag.</div></li>
+                    <li>Add an <a>entry</a> `@direction` to <var>result</var> and set its value to the substring of the
+                      <a data-cite="RFC3986#section-3.5">fragment identifier</a> following
+                      the underscore (`"_"`).</li>
+                  </ol>
+                </li>
+                <li>Otherwise, if <var>value</var> is a
+                  <a>language-tagged string</a>
+                  add an <a>entry</a> <code>@language</code> to <var>result</var> and set its value to the
+                  <a>language tag</a> of <var>value</var>.</li>
+                <li>Otherwise, set <var>type</var> to the
+                  <a>datatype IRI</a>
+                  of <var>value</var>, unless it equals <code>xsd:string</code> which is ignored.</li>
               </ol>
             </li>
-            <li>Otherwise, if <var>value</var> is a
-              <a>language-tagged string</a>
-              add an <a>entry</a> <code>@language</code> to <var>result</var> and set its value to the
-              <a>language tag</a> of <var>value</var>.</li>
-            <li>Otherwise, set <var>type</var> to the
-              <a>datatype IRI</a>
-              of <var>value</var>, unless it equals <code>xsd:string</code> which is ignored.</li>
             <li>Add an <a>entry</a> <code>@value</code> to <var>result</var> whose value
               is set to <var>converted value</var>.</li>
             <li>If <var>type</var> is not <code>null</code>, add an <a>entry</a> <code>@type</code>
@@ -7033,6 +7032,23 @@ companyURL: "https://www.inria.fr/",
       by handling the <a>default base direction</a>
       once and for all in this step, rather than in each iteration.
       For more information, refer to <a href="https://github.com/w3c/json-ld-api/issues/633">issue 633</a>.
+    </li>
+    <li>
+      2026-06-06:
+      Fix the
+      <a href="#rdf-to-object-conversion">RDF to Object Conversion algorithm</a>,
+      which unconditionally skipped `else` clauses when
+      <a data-link-for="JsonLdOptions">useNativeTypes</a> was `true`, even if a
+      native type couldn't be used. This resulted in plain strings where, e.g.,
+      language-tagged string literals were the source.
+      Instead, let <var>converted value</var> be initially unset, and only
+      actively set if a native type can be used. Then group the other cases
+      in an `else` block, defaulting to use the lexical form of
+      <var>value</var>. Since <var>type</var> is set in the final `else` clause
+      (unless it equals <var>xsd:string</var>), there is no need to set it in
+      the clause for <var>useNativeTypes</var>.
+      For more information, refer to
+      <a href="https://github.com/w3c/json-ld-api/issues/670">issue 670</a>.
     </li>
  </ul>
   </details>
