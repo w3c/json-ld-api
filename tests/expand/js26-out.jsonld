@@ -1,0 +1,10 @@
+[{
+  "http://example.org/vocab#value": [{
+    "@type": "@json",
+    "@value": [
+      "JSON"
+    ]
+  }, {
+    "@value": "non-JSON"
+  }]
+}]

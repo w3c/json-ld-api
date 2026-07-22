@@ -1,0 +1,10 @@
+[{
+  "@id": "http://example.org/vocab#id",
+  "http://example.org/vocab#multi": [{
+    "@value": ["string1"],
+    "@type": "@json"
+  }, {
+    "@value": ["string2"],
+    "@type": "@json"
+  }]
+}]
