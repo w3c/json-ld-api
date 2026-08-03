@@ -988,6 +988,14 @@
       "expect": "expand/0131-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0133",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "String value with type mapping and default @language",
+      "purpose": "Verify that in the presence of a type mapping a string value does not receive the default @language from context",
+      "input": "expand/0133-in.jsonld",
+      "expect": "expand/0133-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
