@@ -1,0 +1,7 @@
+{
+  "@context": {
+    "typed": { "@id": "https://example.org/typed", "@type": "https://example.com/dt" },
+    "@language": "und"
+  },
+  "typed": "v"
+}
