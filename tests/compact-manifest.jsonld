@@ -967,6 +967,15 @@
       "expect": "compact/0114-out.jsonld",
       "option": {"base": "https://example.org/", "specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0115",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Empty array is significant for candidate selection",
+      "purpose": "Candidate selection in IRI compaction is influenced by the presence of the empty array value",
+      "input": "compact/0115-in.jsonld",
+      "context": "compact/0115-context.jsonld",
+      "expect": "compact/0115-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "adding new term",
