@@ -26,8 +26,8 @@ jobs:
       #- name: Generate Report
       #  run:  (cd reports; rake)
       - uses: stefanzweifel/git-auto-commit-action@v4
+        if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         with:
           commit_message: Automated report generation
           commit_user_name: Report generation bot
           commit_user_email: <>
-
