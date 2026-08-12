@@ -1,4 +1,6 @@
 {
-  "ex": "http://example.org/",
-  "ex:prop": { "@id": "http://example.org/prop", "@container": "@list" }
+  "@context": {
+    "ex": "http://example.org/",
+    "ex:prop": { "@id": "http://example.org/prop", "@container": "@list" }
+  }
 }
