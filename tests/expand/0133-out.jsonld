@@ -1,0 +1,10 @@
+[
+  {
+    "https://example.org/typed": [
+      {
+        "@type": "https://example.com/dt",
+        "@value": "v"
+      }
+    ]
+  }
+]
