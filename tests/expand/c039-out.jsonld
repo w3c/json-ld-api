@@ -1,0 +1,8 @@
+[{
+  "@id": "http://example.com/alice",
+  "http://example.com/knows": [{
+    "@id": "http://example.com/jane",
+    "@type": ["http://example.com/Person"],
+    "http://example.com/name": [{"@value": "Jane"}]
+  }]
+}]
