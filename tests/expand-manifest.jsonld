@@ -2868,6 +2868,14 @@
       "input": "expand/pr43-in.jsonld",
       "expect": "expand/pr43-out.jsonld"
     }, {
+      "@id": "#tpr44",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
+      "name": "Property-scoped context on @nest applies before nested type-scoped context.",
+      "purpose": "A property-scoped context on an @nest term applies before expanding @type and type-scoped terms in the nested node.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/pr44-in.jsonld",
+      "expect": "expand/pr44-out.jsonld"
+    }, {
       "@id": "#tso01",
       "@type": ["jld:NegativeEvaluationTest", "jld:ExpandTest"],
       "name": "@import is invalid in 1.0.",
