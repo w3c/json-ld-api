@@ -40,6 +40,10 @@ class SparqlSelectResponse(BaseModel):
     results: SparqlResults
 
 
+class SparqlComparisonResponses(BaseModel):
+    responses: list[SparqlSelectResponse]
+
+
 class SparqlAskResponse(BaseModel):
     boolean: bool
 
@@ -56,8 +60,13 @@ class AffectedTest(BaseModel):
         return f"{Path(parsed.path).name}#{parsed.fragment}"
 
 
+class Implementation(BaseModel):
+    name: str
+    commit: str
+
+
 class ComparisonReport(BaseModel):
-    implementation_commit: str
+    implementation: Implementation
     affected_tests: list[AffectedTest]
 
     @property
@@ -80,8 +89,9 @@ CATEGORY_ORDER = {category: index for index, category in enumerate(ChangeCategor
 
 
 def read_comparison(
-    comparison_path: Path,
+    comparisons_directory: Path,
     populated_path: Path,
+    implementation_name: str,
     implementation_commit: str,
 ) -> ComparisonReport:
     populated = SparqlAskResponse.model_validate_json(
@@ -90,8 +100,14 @@ def read_comparison(
     if not populated.boolean:
         raise ValueError("The published or candidate EARL report has no assertions")
 
-    response = SparqlSelectResponse.model_validate_json(
-        comparison_path.read_text(encoding="utf-8")
+    response_paths = sorted(comparisons_directory.glob("*.json"))
+    if not response_paths:
+        raise ValueError(f"No comparison responses in {comparisons_directory}")
+    comparisons = SparqlComparisonResponses(
+        responses=[
+            SparqlSelectResponse.model_validate_json(path.read_text(encoding="utf-8"))
+            for path in response_paths
+        ]
     )
     affected_tests = [
         AffectedTest(
@@ -100,12 +116,16 @@ def read_comparison(
             published_outcome=binding.baselineOutcome.value,
             candidate_outcome=binding.candidateOutcome.value,
         )
+        for response in comparisons.responses
         for binding in response.results.bindings
     ]
     affected_tests.sort(
         key=lambda change: (CATEGORY_ORDER[change.category], str(change.test))
     )
     return ComparisonReport(
-        implementation_commit=implementation_commit,
+        implementation=Implementation(
+            name=implementation_name,
+            commit=implementation_commit,
+        ),
         affected_tests=affected_tests,
     )
