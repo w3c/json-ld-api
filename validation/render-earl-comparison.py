@@ -30,9 +30,9 @@ def markdown_row(change: AffectedTest) -> str:
 
 def render_markdown(report: ComparisonReport) -> str:
     lines = [
-        "## Ruby RDF JSON-LD conformance",
+        f"## {report.implementation.name} conformance",
         "",
-        f"Implementation commit: `{report.implementation_commit}`",
+        f"Implementation commit: `{report.implementation.commit}`",
         "",
     ]
     if report.affected_tests:
@@ -51,23 +51,24 @@ def render_markdown(report: ComparisonReport) -> str:
 def main() -> int:
     if len(sys.argv) != 4:
         raise SystemExit(
-            "usage: render-earl-comparison.py COMPARISON.json POPULATED.json SUMMARY.md"
+            "usage: render-earl-comparison.py COMPARISONS_DIR POPULATED.json SUMMARY.md"
         )
 
-    comparison_path, populated_path, summary_path = map(Path, sys.argv[1:])
+    comparisons_directory, populated_path, summary_path = map(Path, sys.argv[1:])
     report = read_comparison(
-        comparison_path,
+        comparisons_directory,
         populated_path,
+        os.environ["IMPLEMENTATION_NAME"],
         os.environ["IMPLEMENTATION_COMMIT"],
     )
 
     with summary_path.open("a", encoding="utf-8") as summary:
         summary.write(render_markdown(report))
 
-    for regression in report.regressions:
+    if report.has_regressions:
         print(
-            "::error title=Ruby RDF JSON-LD regression::"
-            f"{regression.test} changed from passed to failed"
+            f"::error title={report.implementation.name} regression::"
+            "See the job summary for affected tests."
         )
     return int(report.has_regressions)
 
