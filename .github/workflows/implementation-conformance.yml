@@ -15,6 +15,7 @@ jobs:
     outputs:
       report: ${{ steps.publish.outputs.report }}
       status: ${{ steps.publish.outputs.status }}
+      summary: ${{ steps.publish.outputs.summary }}
       commit: ${{ steps.implementation.outputs.commit }}
     steps:
       - name: Check out pull request
@@ -86,13 +87,15 @@ jobs:
           python3 "$GITHUB_WORKSPACE/candidate/validation/render-earl-comparison.py" \
             "$RUNNER_TEMP/comparisons" \
             "$RUNNER_TEMP/reports-populated.json" \
-            "$RUNNER_TEMP/ruby-rdf-json-ld.md"
+            "$RUNNER_TEMP/ruby-rdf-json-ld.md" \
+            "$RUNNER_TEMP/ruby-rdf-json-ld-summary.json"
 
       - name: Export report
         id: publish
         if: always()
         run: |
           report="$RUNNER_TEMP/ruby-rdf-json-ld.md"
+          summary="$RUNNER_TEMP/ruby-rdf-json-ld-summary.json"
           if [[ ! -s "$report" ]]; then
             cat > "$report" <<'EOF'
           ## Ruby RDF JSON-LD conformance
@@ -100,11 +103,15 @@ jobs:
           The EARL report could not be generated; inspect the Ruby RDF JSON-LD job log.
           EOF
           fi
+          if [[ ! -s "$summary" ]]; then
+            printf '%s' '{"implementation":{"name":"Ruby RDF JSON-LD","commit":"${{ steps.implementation.outputs.commit }}"},"available":false}' > "$summary"
+          fi
           delimiter=$(uuidgen)
           {
             echo "report<<$delimiter"
             cat "$report"
             echo "$delimiter"
+            echo "summary=$(cat "$summary")"
             echo "status=${{ steps.comparison.outcome }}"
           } >> "$GITHUB_OUTPUT"
 
@@ -114,6 +121,7 @@ jobs:
     outputs:
       report: ${{ steps.publish.outputs.report }}
       status: ${{ steps.publish.outputs.status }}
+      summary: ${{ steps.publish.outputs.summary }}
       commit: ${{ steps.implementation.outputs.commit }}
     steps:
       - name: Check out pull request
@@ -189,13 +197,15 @@ jobs:
           python "$GITHUB_WORKSPACE/candidate/validation/render-earl-comparison.py" \
             "$RUNNER_TEMP/comparisons" \
             "$RUNNER_TEMP/reports-populated.json" \
-            "$RUNNER_TEMP/pyld.md"
+            "$RUNNER_TEMP/pyld.md" \
+            "$RUNNER_TEMP/pyld-summary.json"
 
       - name: Export report
         id: publish
         if: always()
         run: |
           report="$RUNNER_TEMP/pyld.md"
+          summary="$RUNNER_TEMP/pyld-summary.json"
           if [[ ! -s "$report" ]]; then
             cat > "$report" <<'EOF'
           ## PyLD conformance
@@ -203,11 +213,15 @@ jobs:
           The EARL report could not be generated; inspect the PyLD job log.
           EOF
           fi
+          if [[ ! -s "$summary" ]]; then
+            printf '%s' '{"implementation":{"name":"PyLD","commit":"${{ steps.implementation.outputs.commit }}"},"available":false}' > "$summary"
+          fi
           delimiter=$(uuidgen)
           {
             echo "report<<$delimiter"
             cat "$report"
             echo "$delimiter"
+            echo "summary=$(cat "$summary")"
             echo "status=${{ steps.comparison.outcome }}"
           } >> "$GITHUB_OUTPUT"
 
@@ -217,14 +231,25 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install validation dependencies
+        run: python -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
       - name: Combine implementation reports
         env:
           RUBY_REPORT: ${{ needs.ruby_rdf_json_ld.outputs.report }}
           PYLD_REPORT: ${{ needs.pyld.outputs.report }}
-          RUBY_STATUS: ${{ needs.ruby_rdf_json_ld.outputs.status }}
-          PYLD_STATUS: ${{ needs.pyld.outputs.status }}
-          RUBY_COMMIT: ${{ needs.ruby_rdf_json_ld.outputs.commit }}
-          PYLD_COMMIT: ${{ needs.pyld.outputs.commit }}
+          RUBY_SUMMARY: ${{ needs.ruby_rdf_json_ld.outputs.summary }}
+          PYLD_SUMMARY: ${{ needs.pyld.outputs.summary }}
         run: |
           report="$RUNNER_TEMP/implementation-conformance.md"
           comment="$RUNNER_TEMP/implementation-conformance-comment.md"
@@ -237,20 +262,13 @@ jobs:
           cat "$report" >> "$GITHUB_STEP_SUMMARY"
           echo "report=$report" >> "$GITHUB_ENV"
 
-          ruby_status="❌ Needs attention"
-          if [[ "$RUBY_STATUS" = success ]]; then ruby_status="✅ No regression"; fi
-          pyld_status="❌ Needs attention"
-          if [[ "$PYLD_STATUS" = success ]]; then pyld_status="✅ No regression"; fi
-          {
-            echo "# JSON-LD implementation conformance"
-            echo
-            echo "[Open the full test-by-test report in this workflow run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
-            echo
-            echo "| Implementation | Commit | Result |"
-            echo "| --- | --- | --- |"
-            echo "| Ruby RDF JSON-LD | \`$RUBY_COMMIT\` | $ruby_status |"
-            echo "| PyLD | \`$PYLD_COMMIT\` | $pyld_status |"
-          } > "$comment"
+          printf '%s' "$RUBY_SUMMARY" > "$RUNNER_TEMP/ruby-summary.json"
+          printf '%s' "$PYLD_SUMMARY" > "$RUNNER_TEMP/pyld-summary.json"
+          WORKFLOW_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            python "$GITHUB_WORKSPACE/candidate/validation/render-conformance-comment.py" \
+              "$RUNNER_TEMP/ruby-summary.json" \
+              "$RUNNER_TEMP/pyld-summary.json" \
+              "$comment"
           echo "comment=$comment" >> "$GITHUB_ENV"
 
       - name: Publish conformance report comment
