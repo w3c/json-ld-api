@@ -64,18 +64,6 @@ def main() -> int:
     with summary_path.open("a", encoding="utf-8") as summary:
         summary.write(render_markdown(report))
 
-    run_url = "/".join(
-        [
-            os.environ["GITHUB_SERVER_URL"],
-            os.environ["GITHUB_REPOSITORY"],
-            "actions/runs",
-            os.environ["GITHUB_RUN_ID"],
-        ]
-    )
-    print(
-        "::notice title=EARL comparison report::"
-        f"View the full report in the run Summary: {run_url}"
-    )
     for regression in report.regressions:
         print(
             "::error title=Ruby RDF JSON-LD regression::"
