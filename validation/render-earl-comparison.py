@@ -49,12 +49,15 @@ def render_markdown(report: ComparisonReport) -> str:
 
 
 def main() -> int:
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         raise SystemExit(
-            "usage: render-earl-comparison.py COMPARISONS_DIR POPULATED.json SUMMARY.md"
+            "usage: render-earl-comparison.py COMPARISONS_DIR POPULATED.json "
+            "SUMMARY.md SUMMARY.json"
         )
 
-    comparisons_directory, populated_path, summary_path = map(Path, sys.argv[1:])
+    comparisons_directory, populated_path, summary_path, summary_json_path = map(
+        Path, sys.argv[1:]
+    )
     report = read_comparison(
         comparisons_directory,
         populated_path,
@@ -64,6 +67,7 @@ def main() -> int:
 
     with summary_path.open("a", encoding="utf-8") as summary:
         summary.write(render_markdown(report))
+    summary_json_path.write_text(report.summary.model_dump_json(), encoding="utf-8")
 
     if report.has_regressions:
         print(
