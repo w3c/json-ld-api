@@ -34,6 +34,9 @@ jobs:
         working-directory: ${{ steps.implementation.outputs.directory }}
         run: bundle install --jobs 4 --retry 3
 
+      - name: Install Python dependencies
+        run: python3 -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
       - name: Generate candidate EARL report
         run: |
           candidate_report="$RUNNER_TEMP/ruby-rdf-json-ld-candidate.ttl"
@@ -47,9 +50,6 @@ jobs:
         run: |
           cargo install sparqld --version 0.1.4
           cargo install --git https://github.com/ktk/sq
-
-      - name: Install Python dependencies
-        run: python3 -m pip install "$GITHUB_WORKSPACE/candidate/validation"
 
       - name: Compare EARL reports with SPARQL
         env:
