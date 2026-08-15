@@ -1,0 +1,318 @@
+name: JSON-LD implementation conformance
+
+on:
+  pull_request:
+    branches: ['**']
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ruby_rdf_json_ld:
+    name: Ruby RDF JSON-LD
+    runs-on: ubuntu-latest
+    outputs:
+      report: ${{ steps.publish.outputs.report }}
+      status: ${{ steps.publish.outputs.status }}
+      summary: ${{ steps.publish.outputs.summary }}
+      commit: ${{ steps.implementation.outputs.commit }}
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Clone Ruby RDF JSON-LD
+        id: implementation
+        run: |
+          implementation_dir="$RUNNER_TEMP/ruby-rdf-json-ld"
+          git clone --depth 1 --branch develop https://github.com/ruby-rdf/json-ld.git "$implementation_dir"
+          echo "directory=$implementation_dir" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git -C "$implementation_dir" rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Install Ruby RDF JSON-LD dependencies
+        working-directory: ${{ steps.implementation.outputs.directory }}
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Install Python dependencies
+        run: python3 -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
+      - name: Generate candidate EARL report
+        run: |
+          candidate_report="$RUNNER_TEMP/ruby-rdf-json-ld-candidate.ttl"
+          python3 candidate/validation/run-ruby-rdf-json-ld-earl.py \
+            "${{ steps.implementation.outputs.directory }}" \
+            "$GITHUB_WORKSPACE/candidate/tests" \
+            "$candidate_report"
+          echo "candidate_report=$candidate_report" >> "$GITHUB_ENV"
+
+      - name: Install SPARQL tools
+        run: |
+          cargo install sparqld --version 0.1.4
+          cargo install --git https://github.com/ktk/sq
+
+      - name: Compare EARL reports with SPARQL
+        id: comparison
+        continue-on-error: true
+        env:
+          IMPLEMENTATION_NAME: Ruby RDF JSON-LD
+          IMPLEMENTATION_COMMIT: ${{ steps.implementation.outputs.commit }}
+        run: |
+          reports_dir="$RUNNER_TEMP/earl-reports"
+          mkdir "$reports_dir"
+          cp "$GITHUB_WORKSPACE/candidate/reports/ruby-json-ld-earl.ttl" "$reports_dir/baseline.ttl"
+          cp "$candidate_report" "$reports_dir/candidate.ttl"
+
+          sparqld --no-watch "$reports_dir" > "$RUNNER_TEMP/sparqld.log" 2>&1 &
+          sparqld_pid=$!
+          trap 'kill "$sparqld_pid" || true' EXIT
+          sleep 1
+
+          (
+            cd "$GITHUB_WORKSPACE/candidate/validation"
+            comparisons_dir="$RUNNER_TEMP/comparisons"
+            mkdir "$comparisons_dir"
+            for query in earl/comparisons/*.rq; do
+              name=$(basename "$query" .rq)
+              sq --json -f "$query" > "$comparisons_dir/$name.json"
+            done
+            sq --json -f earl/reports-populated.rq > "$RUNNER_TEMP/reports-populated.json"
+          )
+          python3 "$GITHUB_WORKSPACE/candidate/validation/render-earl-comparison.py" \
+            "$RUNNER_TEMP/comparisons" \
+            "$RUNNER_TEMP/reports-populated.json" \
+            "$RUNNER_TEMP/ruby-rdf-json-ld.md" \
+            "$RUNNER_TEMP/ruby-rdf-json-ld-summary.json"
+
+      - name: Export report
+        id: publish
+        if: always()
+        run: |
+          report="$RUNNER_TEMP/ruby-rdf-json-ld.md"
+          summary="$RUNNER_TEMP/ruby-rdf-json-ld-summary.json"
+          if [[ ! -s "$report" ]]; then
+            cat > "$report" <<'EOF'
+          ## Ruby RDF JSON-LD conformance
+
+          The EARL report could not be generated; inspect the Ruby RDF JSON-LD job log.
+          EOF
+          fi
+          if [[ ! -s "$summary" ]]; then
+            printf '%s' '{"implementation":{"name":"Ruby RDF JSON-LD","commit":"${{ steps.implementation.outputs.commit }}"},"available":false}' > "$summary"
+          fi
+          delimiter=$(uuidgen)
+          {
+            echo "report<<$delimiter"
+            cat "$report"
+            echo "$delimiter"
+            echo "summary=$(cat "$summary")"
+            echo "status=${{ steps.comparison.outcome }}"
+          } >> "$GITHUB_OUTPUT"
+
+  pyld:
+    name: PyLD
+    runs-on: ubuntu-latest
+    outputs:
+      report: ${{ steps.publish.outputs.report }}
+      status: ${{ steps.publish.outputs.status }}
+      summary: ${{ steps.publish.outputs.summary }}
+      commit: ${{ steps.implementation.outputs.commit }}
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Clone PyLD
+        id: implementation
+        run: |
+          implementation_dir="$RUNNER_TEMP/pyld"
+          git clone --depth 1 --branch master https://github.com/digitalbazaar/pyld.git "$implementation_dir"
+          echo "directory=$implementation_dir" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git -C "$implementation_dir" rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Install PyLD dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            "${{ steps.implementation.outputs.directory }}" \
+            -r "${{ steps.implementation.outputs.directory }}/requirements.txt" \
+            -r "${{ steps.implementation.outputs.directory }}/requirements-test.txt"
+
+      - name: Install validation dependencies
+        run: python -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
+      - name: Generate candidate EARL report
+        run: |
+          candidate_report="$RUNNER_TEMP/pyld-candidate.jsonld"
+          python candidate/validation/run-pyld-earl.py \
+            "${{ steps.implementation.outputs.directory }}" \
+            "$GITHUB_WORKSPACE/candidate/tests" \
+            "$candidate_report"
+          echo "candidate_report=$candidate_report" >> "$GITHUB_ENV"
+
+      - name: Install SPARQL tools
+        run: |
+          cargo install sparqld --version 0.1.4
+          cargo install --git https://github.com/ktk/sq
+
+      - name: Compare EARL reports with SPARQL
+        id: comparison
+        continue-on-error: true
+        env:
+          IMPLEMENTATION_NAME: PyLD
+          IMPLEMENTATION_COMMIT: ${{ steps.implementation.outputs.commit }}
+        run: |
+          reports_dir="$RUNNER_TEMP/earl-reports"
+          mkdir "$reports_dir"
+          cp "$GITHUB_WORKSPACE/candidate/reports/pyld-earl.ttl" "$reports_dir/baseline.ttl"
+          cp "$candidate_report" "$reports_dir/candidate.jsonld"
+
+          sparqld --no-watch "$reports_dir" > "$RUNNER_TEMP/sparqld.log" 2>&1 &
+          sparqld_pid=$!
+          trap 'kill "$sparqld_pid" || true' EXIT
+          sleep 1
+
+          (
+            cd "$GITHUB_WORKSPACE/candidate/validation"
+            comparisons_dir="$RUNNER_TEMP/comparisons"
+            mkdir "$comparisons_dir"
+            for query in earl/comparisons/*.rq; do
+              name=$(basename "$query" .rq)
+              sq --json -f "$query" > "$comparisons_dir/$name.json"
+            done
+            sq --json -f earl/reports-populated.rq > "$RUNNER_TEMP/reports-populated.json"
+          )
+          python "$GITHUB_WORKSPACE/candidate/validation/render-earl-comparison.py" \
+            "$RUNNER_TEMP/comparisons" \
+            "$RUNNER_TEMP/reports-populated.json" \
+            "$RUNNER_TEMP/pyld.md" \
+            "$RUNNER_TEMP/pyld-summary.json"
+
+      - name: Export report
+        id: publish
+        if: always()
+        run: |
+          report="$RUNNER_TEMP/pyld.md"
+          summary="$RUNNER_TEMP/pyld-summary.json"
+          if [[ ! -s "$report" ]]; then
+            cat > "$report" <<'EOF'
+          ## PyLD conformance
+
+          The EARL report could not be generated; inspect the PyLD job log.
+          EOF
+          fi
+          if [[ ! -s "$summary" ]]; then
+            printf '%s' '{"implementation":{"name":"PyLD","commit":"${{ steps.implementation.outputs.commit }}"},"available":false}' > "$summary"
+          fi
+          delimiter=$(uuidgen)
+          {
+            echo "report<<$delimiter"
+            cat "$report"
+            echo "$delimiter"
+            echo "summary=$(cat "$summary")"
+            echo "status=${{ steps.comparison.outcome }}"
+          } >> "$GITHUB_OUTPUT"
+
+  report:
+    name: Conformance report
+    needs: [ruby_rdf_json_ld, pyld]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install validation dependencies
+        run: python -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
+      - name: Combine implementation reports
+        env:
+          RUBY_REPORT: ${{ needs.ruby_rdf_json_ld.outputs.report }}
+          PYLD_REPORT: ${{ needs.pyld.outputs.report }}
+          RUBY_SUMMARY: ${{ needs.ruby_rdf_json_ld.outputs.summary }}
+          PYLD_SUMMARY: ${{ needs.pyld.outputs.summary }}
+        run: |
+          report="$RUNNER_TEMP/implementation-conformance.md"
+          comment="$RUNNER_TEMP/implementation-conformance-comment.md"
+          {
+            echo "# JSON-LD implementation conformance"
+            echo
+            printf '%s\n\n' "$RUBY_REPORT"
+            printf '%s\n' "$PYLD_REPORT"
+          } > "$report"
+          cat "$report" >> "$GITHUB_STEP_SUMMARY"
+          echo "report=$report" >> "$GITHUB_ENV"
+
+          printf '%s' "$RUBY_SUMMARY" > "$RUNNER_TEMP/ruby-summary.json"
+          printf '%s' "$PYLD_SUMMARY" > "$RUNNER_TEMP/pyld-summary.json"
+          WORKFLOW_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            python "$GITHUB_WORKSPACE/candidate/validation/render-conformance-comment.py" \
+              "$RUNNER_TEMP/ruby-summary.json" \
+              "$RUNNER_TEMP/pyld-summary.json" \
+              "$comment"
+          echo "comment=$comment" >> "$GITHUB_ENV"
+
+      - name: Publish conformance report comment
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        env:
+          COMMENT_PATH: ${{ env.comment }}
+        with:
+          script: |
+            const fs = require("node:fs");
+            const marker = "<!-- implementation-conformance -->";
+            const report = fs.readFileSync(process.env.COMMENT_PATH, "utf8");
+            const body = `${marker}\n${report}`;
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find(
+              (comment) =>
+                comment.user.login === "github-actions[bot]" &&
+                comment.body.includes(marker),
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Fail for conformance regressions
+        env:
+          RUBY_STATUS: ${{ needs.ruby_rdf_json_ld.outputs.status }}
+          PYLD_STATUS: ${{ needs.pyld.outputs.status }}
+        run: |
+          test "$RUBY_STATUS" = success
+          test "$PYLD_STATUS" = success
