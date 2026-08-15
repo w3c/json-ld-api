@@ -84,6 +84,33 @@ class ComparisonReport(BaseModel):
             if change.category is ChangeCategory.REGRESSED
         ]
 
+    @property
+    def summary(self) -> "ComparisonSummary":
+        summary = ComparisonSummary(implementation=self.implementation)
+        for change in self.affected_tests:
+            if change.category is ChangeCategory.REGRESSED:
+                summary.regressed += 1
+            elif change.category is ChangeCategory.IMPROVED:
+                summary.improved += 1
+            elif change.category is ChangeCategory.NEW_ASSERTION:
+                if change.candidate_outcome is Outcome.PASSED:
+                    summary.new_passed += 1
+                else:
+                    summary.new_failed += 1
+            elif change.category is ChangeCategory.NO_LONGER_ASSERTED:
+                summary.no_longer_asserted += 1
+        return summary
+
+
+class ComparisonSummary(BaseModel):
+    implementation: Implementation
+    available: bool = True
+    regressed: int = 0
+    improved: int = 0
+    new_passed: int = 0
+    new_failed: int = 0
+    no_longer_asserted: int = 0
+
 
 CATEGORY_ORDER = {category: index for index, category in enumerate(ChangeCategory)}
 
