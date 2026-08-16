@@ -43,6 +43,8 @@ def main() -> None:
     server_thread.start()
     port = server.server_address[1]
     try:
+        # jsonld.js returns nonzero when an individual assertion fails; the
+        # generated report below is the result used for conformance comparison.
         sh.Command("npm")(
             "test",
             _cwd=str(implementation_dir),
@@ -53,7 +55,7 @@ def main() -> None:
             },
             _out=sys.stdout,
             _err=sys.stderr,
-            _ok_code=[0, 1],
+            _ok_code=range(256),
         )
     finally:
         server.shutdown()
