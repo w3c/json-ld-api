@@ -43,15 +43,16 @@ def render_markdown(summaries: list[ComparisonSummary], workflow_url: str) -> st
 
 
 def main() -> None:
-    if len(sys.argv) != 4:
+    if len(sys.argv) < 3:
         raise SystemExit(
-            "usage: render-conformance-comment.py RUBY.json PYLD.json COMMENT.md"
+            "usage: render-conformance-comment.py COMMENT.md SUMMARY.json [SUMMARY.json ...]"
         )
 
-    ruby_path, pyld_path, comment_path = map(Path, sys.argv[1:])
+    comment_path = Path(sys.argv[1])
+    summary_paths = map(Path, sys.argv[2:])
     summaries = [
         ComparisonSummary.model_validate_json(path.read_text(encoding="utf-8"))
-        for path in [ruby_path, pyld_path]
+        for path in summary_paths
     ]
     comment_path.write_text(
         render_markdown(summaries, os.environ["WORKFLOW_URL"]), encoding="utf-8"
