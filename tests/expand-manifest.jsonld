@@ -988,6 +988,14 @@
       "expect": "expand/0131-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0134",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Some expanded properties that become keywords are dropped",
+      "purpose": "Keywords without document-level semantics are dropped during expansion",
+      "input": "expand/0134-in.jsonld",
+      "expect": "expand/0134-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    },{
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
