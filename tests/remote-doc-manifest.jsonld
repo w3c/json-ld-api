@@ -130,7 +130,8 @@
       "name": "load JSON document with link to HTML document",
       "purpose": "If a context is specified in a link header, it is used for JSON, extracting from HTML.",
       "option": {
-        "httpLink": "<0013-context.html>; rel=\"http://www.w3.org/ns/json-ld#context\""
+        "httpLink": "<0013-context.html>; rel=\"http://www.w3.org/ns/json-ld#context\"",
+        "processorFeature": "HTML Script Extraction"
       },
       "input": "remote-doc/0013-in.json",
       "expect": "remote-doc/0013-out.jsonld"
