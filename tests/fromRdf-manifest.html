@@ -676,6 +676,34 @@
             </dd>
           </dl>
         </dd>
+        <dt id='t0028'>
+          Test t0028 use native types flag with non-native values
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#t0028</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:FromRDFTest</dd>
+            <dt>Purpose</dt>
+            <dd>Ensure that useNativeTypes flag being true does not interfere with values that cannot be serialized into a native value.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='fromRdf/0028-in.nq'>fromRdf/0028-in.nq</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='fromRdf/0028-out.jsonld'>fromRdf/0028-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>useNativeTypes</dt>
+                <dd>true</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
         <dt id='tdi01'>
           Test tdi01 rdfDirection: null with i18n literal with direction and no language
         </dt>
