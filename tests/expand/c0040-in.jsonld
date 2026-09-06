@@ -1,0 +1,16 @@
+{
+  "@context": [
+    {
+      "@version": 1.1,
+      "child": "http://example.org/child"
+    },
+    {
+      "@propagate": false,
+      "foo": "http://example.org/foo"
+    }
+  ],
+  "foo": "a",
+  "child": {
+    "foo": "b"
+  }
+}

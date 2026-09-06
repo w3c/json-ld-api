@@ -1,0 +1,10 @@
+[
+  {
+    "http://example.org/foo": [{"@value": "a"}],
+    "http://example.org/child": [
+      {
+        "http://example.org/foo": [{"@value": "b"}]
+      }
+    ]
+  }
+]
