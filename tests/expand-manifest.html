@@ -4283,6 +4283,90 @@
             </dd>
           </dl>
         </dd>
+        <dt id='tc039'>
+          Test tc039 Propagate is honoured on first map of context array
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tc039</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Terms don&#39;t propagate into nested nodes when the root context is an array and the first element sets propagate to false.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/c039-in.jsonld'>expand/c039-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/c039-out.jsonld'>expand/c039-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tc040'>
+          Test tc040 Propagate is ignored on non-first map of context array
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tc040</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Terms do propagate into nested nodes when the root context is an array and a non-first element sets propagate to false.</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/c040-in.jsonld'>expand/c040-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/c040-out.jsonld'>expand/c040-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
+        <dt id='tc041'>
+          Test tc041 Propagate is honoured when the root context document is a map
+        </dt>
+        <dd>
+          <dl class='entry'>
+            <dt>id</dt>
+            <dd>#tc041</dd>
+            <dt>Type</dt>
+            <dd>jld:PositiveEvaluationTest, jld:ExpandTest</dd>
+            <dt>Purpose</dt>
+            <dd>Terms do not propagate into nested nodes when context is a map with propagate set to false</dd>
+            <dt>input</dt>
+            <dd>
+              <a href='expand/c041-in.jsonld'>expand/c041-in.jsonld</a>
+            </dd>
+            <dt>expect</dt>
+            <dd>
+              <a href='expand/c041-out.jsonld'>expand/c041-out.jsonld</a>
+            </dd>
+            <dt>Options</dt>
+            <dd>
+              <dl class='options'>
+                <dt>specVersion</dt>
+                <dd>json-ld-1.1</dd>
+              </dl>
+            </dd>
+          </dl>
+        </dd>
         <dt id='tdi01'>
           Test tdi01 Expand string using default and term directions
         </dt>
