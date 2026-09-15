@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@language": "en",
+    "@direction": "rtl",
+    "publisher": {
+      "@id": "http://example.com/publisher",
+      "@context": {"name": "http://example.com/name"}
+    }
+  },
+  "@id": "http://example.com/doc",
+  "http://example.com/title": "outer",
+  "publisher": {
+    "@id": "http://example.com/org",
+    "name": "inner"
+  }
+}

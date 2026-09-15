@@ -1364,6 +1364,14 @@
       "input": "expand/di09-in.jsonld",
       "expectErrorCode": "invalid value object"
     }, {
+      "@id": "#tdi13",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Default @direction is inherited by a scoped context",
+      "purpose": "The active context's default base direction persists through processing of a context with no @direction entry; a value inside a property-scoped context inherits it like the default language.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "expand/di13-in.jsonld",
+      "expect": "expand/di13-out.jsonld"
+    }, {
       "@id": "#tec01",
       "@type": [ "jld:NegativeEvaluationTest", "jld:ExpandTest" ],
       "name": "Invalid keyword in term definition",
