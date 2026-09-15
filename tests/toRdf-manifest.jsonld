@@ -3396,6 +3396,14 @@
       "input": "toRdf/pr43-in.jsonld",
       "expect": "toRdf/pr43-out.nq"
     }, {
+      "@id": "#tpr44",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Allows protected redefinition of equivalent terms across IRI spellings",
+      "purpose": "Term definitions are compared after IRI expansion: redefining a protected term with absolute-IRI @id and @type equivalent to its previous compact-IRI definition is not an error.",
+      "option": {"specVersion": "json-ld-1.1"},
+      "input": "toRdf/pr44-in.jsonld",
+      "expect": "toRdf/pr44-out.nq"
+    }, {
       "@id": "#trt01",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "Representing numbers >= 1e21",
