@@ -1408,6 +1408,15 @@
       "context": "compact/ep15-context.jsonld",
       "expectErrorCode": "invalid container mapping"
     }, {
+      "@id": "#tej01",
+      "@type": ["jld:NegativeEvaluationTest", "jld:CompactTest"],
+      "name": "Multiple JSON values for a JSON literal properties",
+      "purpose": "Tests compacting multiple JSON values for a JSON literal property.",
+      "input": "compact/ej01-in.jsonld",
+      "context": "compact/ej01-context.jsonld",
+      "expectErrorCode": "multiple JSON literals",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tin01",
       "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
       "name": "Basic Included array",
@@ -1550,6 +1559,51 @@
       "input": "compact/js11-in.jsonld",
       "context": "compact/js11-context.jsonld",
       "expect": "compact/js11-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs12",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal (empty array)",
+      "purpose": "Tests compacting property with @type @json to a JSON literal (empty array).",
+      "input": "compact/js12-in.jsonld",
+      "context": "compact/js12-context.jsonld",
+      "expect": "compact/js12-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs13",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal (array with string)",
+      "purpose": "Tests compacting property with @type @json to a JSON literal (array with string).",
+      "input": "compact/js13-in.jsonld",
+      "context": "compact/js13-context.jsonld",
+      "expect": "compact/js13-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs14",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal and non-JSON with @json property",
+      "purpose": "Tests compacting property with @type @json with JSON literal and non-JSON.",
+      "input": "compact/js14-in.jsonld",
+      "context": "compact/js14-context.jsonld",
+      "expect": "compact/js14-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs15",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal and non-JSON without @json property",
+      "purpose": "Tests compacting property without @type @json with JSON literal and non-JSON.",
+      "input": "compact/js15-in.jsonld",
+      "context": "compact/js15-context.jsonld",
+      "expect": "compact/js15-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tjs16",
+      "@type": ["jld:PositiveEvaluationTest", "jld:CompactTest"],
+      "name": "Compact JSON literal and non-JSON with and without @json property",
+      "purpose": "Tests compacting property with and without @type @json with JSON literal and non-JSON.",
+      "input": "compact/js16-in.jsonld",
+      "context": "compact/js16-context.jsonld",
+      "expect": "compact/js16-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
       "@id": "#tla01",

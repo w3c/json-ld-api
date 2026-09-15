@@ -1,0 +1,10 @@
+{
+  "@context": {
+    "prop": {
+      "@id": "ex:prop", 
+      "@type": "@json",
+      "@container": "@set"
+    }
+  },
+  "prop": "value"
+}

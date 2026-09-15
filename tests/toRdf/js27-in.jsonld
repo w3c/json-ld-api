@@ -1,0 +1,6 @@
+{
+  "http://example.org/vocab#value": [
+    {"@value": [{"dup": true}], "@type": "@json"},
+    {"@value": [{"dup": true}], "@type": "@json"}
+  ]
+}
