@@ -1,0 +1,9 @@
+{
+  "@context": {
+    "property": {
+      "@id": "http://example.com/property",
+      "@type": "http://www.w3.org/2001/XMLSchema#string"
+    }
+  },
+  "property": "value"
+}
