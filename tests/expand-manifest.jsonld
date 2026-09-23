@@ -988,6 +988,14 @@
       "expect": "expand/0131-out.jsonld",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#t0132",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ExpandTest" ],
+      "name": "Expand string with explicit xsd:string type coercion",
+      "purpose": "An explicit xsd:string type mapping is added to the expanded value object like any other datatype; xsd:string has no special treatment in value expansion.",
+      "input": "expand/0132-in.jsonld",
+      "expect": "expand/0132-out.jsonld",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tc001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ExpandTest"],
       "name": "adding new term",
