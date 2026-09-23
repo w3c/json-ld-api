@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "isolated": {"@id": "http://example.com/isolated", "@context": null},
+    "Thing": {
+      "@id": "http://example.com/Thing",
+      "@context": {"label": "http://example.com/outer-label"}
+    }
+  },
+  "@id": "http://example.com/outer",
+  "isolated": {
+    "@context": {
+      "Thing": {
+        "@id": "http://example.com/Thing",
+        "@context": {"label": "http://example.com/inner-label"}
+      }
+    },
+    "@id": "http://example.com/inner",
+    "@type": "Thing",
+    "label": "x"
+  }
+}

@@ -1,0 +1,3 @@
+<http://example.com/inner> <http://example.com/inner-label> "x" .
+<http://example.com/inner> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Thing> .
+<http://example.com/outer> <http://example.com/isolated> <http://example.com/inner> .
