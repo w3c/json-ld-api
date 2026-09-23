@@ -1,0 +1,1 @@
+<http://example.com/subject> <http://example.com/vocab#issued> "2020-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
