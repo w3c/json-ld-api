@@ -1,0 +1,3 @@
+<http://example.com/alice> <http://example.com/knows> <http://example.com/jane> .
+<http://example.com/jane> <http://example.com/name> "Jane" .
+<http://example.com/jane> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.com/Person> .

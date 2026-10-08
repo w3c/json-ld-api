@@ -1,0 +1,15 @@
+{
+  "@context": {"knows": "http://example.com/knows"},
+  "@id": "http://example.com/alice",
+  "knows": {
+    "@context": {
+      "Person": {
+        "@id": "http://example.com/Person",
+        "@context": {"name": "http://example.com/name"}
+      }
+    },
+    "@id": "http://example.com/jane",
+    "@type": "Person",
+    "name": "Jane"
+  }
+}
