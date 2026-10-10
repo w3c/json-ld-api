@@ -225,9 +225,120 @@ jobs:
             echo "status=${{ steps.comparison.outcome }}"
           } >> "$GITHUB_OUTPUT"
 
+  jsonld_js:
+    name: jsonld.js
+    runs-on: ubuntu-latest
+    outputs:
+      report: ${{ steps.publish.outputs.report }}
+      status: ${{ steps.publish.outputs.status }}
+      summary: ${{ steps.publish.outputs.summary }}
+      commit: ${{ steps.implementation.outputs.commit }}
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Clone jsonld.js
+        id: implementation
+        run: |
+          implementation_dir="$RUNNER_TEMP/jsonld.js"
+          git clone --depth 1 --branch main https://github.com/digitalbazaar/jsonld.js.git "$implementation_dir"
+          echo "directory=$implementation_dir" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git -C "$implementation_dir" rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Install jsonld.js dependencies
+        working-directory: ${{ steps.implementation.outputs.directory }}
+        run: npm install
+
+      - name: Install validation dependencies
+        run: python -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
+      - name: Generate candidate EARL report
+        run: |
+          candidate_report="$RUNNER_TEMP/jsonld-js-candidate.jsonld"
+          python candidate/validation/run-jsonld-js-earl.py \
+            "${{ steps.implementation.outputs.directory }}" \
+            "$GITHUB_WORKSPACE/candidate/tests" \
+            "$candidate_report"
+          echo "candidate_report=$candidate_report" >> "$GITHUB_ENV"
+
+      - name: Install SPARQL tools
+        run: |
+          cargo install sparqld --version 0.1.4
+          cargo install --git https://github.com/ktk/sq
+
+      - name: Compare EARL reports with SPARQL
+        id: comparison
+        continue-on-error: true
+        env:
+          IMPLEMENTATION_NAME: jsonld.js
+          IMPLEMENTATION_COMMIT: ${{ steps.implementation.outputs.commit }}
+        run: |
+          reports_dir="$RUNNER_TEMP/earl-reports"
+          mkdir "$reports_dir"
+          cp "$GITHUB_WORKSPACE/candidate/reports/jsonld-js-earl.ttl" "$reports_dir/baseline.ttl"
+          cp "$candidate_report" "$reports_dir/candidate.jsonld"
+
+          sparqld --no-watch "$reports_dir" > "$RUNNER_TEMP/sparqld.log" 2>&1 &
+          sparqld_pid=$!
+          trap 'kill "$sparqld_pid" || true' EXIT
+          sleep 1
+
+          (
+            cd "$GITHUB_WORKSPACE/candidate/validation"
+            comparisons_dir="$RUNNER_TEMP/comparisons"
+            mkdir "$comparisons_dir"
+            for query in earl/comparisons/*.rq; do
+              name=$(basename "$query" .rq)
+              sq --json -f "$query" > "$comparisons_dir/$name.json"
+            done
+            sq --json -f earl/reports-populated.rq > "$RUNNER_TEMP/reports-populated.json"
+          )
+          python "$GITHUB_WORKSPACE/candidate/validation/render-earl-comparison.py" \
+            "$RUNNER_TEMP/comparisons" \
+            "$RUNNER_TEMP/reports-populated.json" \
+            "$RUNNER_TEMP/jsonld-js.md" \
+            "$RUNNER_TEMP/jsonld-js-summary.json"
+
+      - name: Export report
+        id: publish
+        if: always()
+        run: |
+          report="$RUNNER_TEMP/jsonld-js.md"
+          summary="$RUNNER_TEMP/jsonld-js-summary.json"
+          if [[ ! -s "$report" ]]; then
+            cat > "$report" <<'EOF'
+          ## jsonld.js conformance
+
+          The EARL report could not be generated; inspect the jsonld.js job log.
+          EOF
+          fi
+          if [[ ! -s "$summary" ]]; then
+            printf '%s' '{"implementation":{"name":"jsonld.js","commit":"${{ steps.implementation.outputs.commit }}"},"available":false}' > "$summary"
+          fi
+          delimiter=$(uuidgen)
+          {
+            echo "report<<$delimiter"
+            cat "$report"
+            echo "$delimiter"
+            echo "summary=$(cat "$summary")"
+            echo "status=${{ steps.comparison.outcome }}"
+          } >> "$GITHUB_OUTPUT"
+
   report:
     name: Conformance report
-    needs: [ruby_rdf_json_ld, pyld]
+    needs: [ruby_rdf_json_ld, pyld, jsonld_js]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -248,8 +359,10 @@ jobs:
         env:
           RUBY_REPORT: ${{ needs.ruby_rdf_json_ld.outputs.report }}
           PYLD_REPORT: ${{ needs.pyld.outputs.report }}
+          JSONLD_JS_REPORT: ${{ needs.jsonld_js.outputs.report }}
           RUBY_SUMMARY: ${{ needs.ruby_rdf_json_ld.outputs.summary }}
           PYLD_SUMMARY: ${{ needs.pyld.outputs.summary }}
+          JSONLD_JS_SUMMARY: ${{ needs.jsonld_js.outputs.summary }}
         run: |
           report="$RUNNER_TEMP/implementation-conformance.md"
           comment="$RUNNER_TEMP/implementation-conformance-comment.md"
@@ -257,18 +370,21 @@ jobs:
             echo "# JSON-LD implementation conformance"
             echo
             printf '%s\n\n' "$RUBY_REPORT"
-            printf '%s\n' "$PYLD_REPORT"
+            printf '%s\n\n' "$PYLD_REPORT"
+            printf '%s\n' "$JSONLD_JS_REPORT"
           } > "$report"
           cat "$report" >> "$GITHUB_STEP_SUMMARY"
           echo "report=$report" >> "$GITHUB_ENV"
 
           printf '%s' "$RUBY_SUMMARY" > "$RUNNER_TEMP/ruby-summary.json"
           printf '%s' "$PYLD_SUMMARY" > "$RUNNER_TEMP/pyld-summary.json"
+          printf '%s' "$JSONLD_JS_SUMMARY" > "$RUNNER_TEMP/jsonld-js-summary.json"
           WORKFLOW_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
             python "$GITHUB_WORKSPACE/candidate/validation/render-conformance-comment.py" \
+              "$comment" \
               "$RUNNER_TEMP/ruby-summary.json" \
               "$RUNNER_TEMP/pyld-summary.json" \
-              "$comment"
+              "$RUNNER_TEMP/jsonld-js-summary.json"
           echo "comment=$comment" >> "$GITHUB_ENV"
 
       - name: Publish conformance report comment
@@ -313,6 +429,8 @@ jobs:
         env:
           RUBY_STATUS: ${{ needs.ruby_rdf_json_ld.outputs.status }}
           PYLD_STATUS: ${{ needs.pyld.outputs.status }}
+          JSONLD_JS_STATUS: ${{ needs.jsonld_js.outputs.status }}
         run: |
           test "$RUBY_STATUS" = success
           test "$PYLD_STATUS" = success
+          test "$JSONLD_JS_STATUS" = success
