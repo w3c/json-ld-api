@@ -1,0 +1,10 @@
+PREFIX earl: <http://www.w3.org/ns/earl#>
+
+ASK {
+  GRAPH <sparqld:ruby-json-ld-earl.ttl> {
+    [] a earl:Assertion .
+  }
+  GRAPH <sparqld:candidate.ttl> {
+    [] a earl:Assertion .
+  }
+}

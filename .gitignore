@@ -3,3 +3,6 @@
 
 # pyenv version file
 .python-version
+
+# Python bytecode
+__pycache__/
