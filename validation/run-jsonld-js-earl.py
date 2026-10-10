@@ -52,6 +52,7 @@ def main() -> None:
                 **os.environ,
                 "TESTS": f"http://127.0.0.1:{port}/manifest.jsonld",
                 "EARL": str(output_file),
+                "TEST_ENV": "auto",
             },
             _out=sys.stdout,
             _err=sys.stderr,
