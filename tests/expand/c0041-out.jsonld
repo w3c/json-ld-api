@@ -1,0 +1,6 @@
+[
+  {
+    "http://example.org/foo": [{"@value": "a"}],
+    "http://example.org/child": [{}]
+  }
+]
