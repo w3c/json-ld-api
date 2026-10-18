@@ -1957,8 +1957,8 @@ companyURL: "https://www.inria.fr/",
       <p>To create an <a>inverse context</a> for a given
         <a>active context</a>, each <a>term</a> in the
         <a>active context</a> is visited, ordered by length, shortest
-        first (ties are broken by choosing the lexicographically least
-        <a>term</a>, using <a>code point order</a>.).
+        first (ties are broken by choosing the <a>term</a> that comes
+        first in <a>code point order</a>).
         For each <a>term</a>, an entry is added to
         the <a>inverse context</a> for each possible combination of
         <a>container mapping</a> and <a>type mapping</a>
@@ -2000,8 +2000,8 @@ companyURL: "https://www.inria.fr/",
         </li>
         <li>For each key <a>term</a> and value <a>term definition</a> in
           the <var>active context</var>, ordered by shortest <a>term</a>
-          first (breaking ties by choosing the lexicographically least
-          <a>term</a> using <a>code point order</a>):
+          first (breaking ties by choosing the <a>term</a> that comes
+          first in <a>code point order</a>):
           <ol>
             <li>If the <a>term definition</a> is <code>null</code>,
               <a>term</a> cannot be selected during <a>compaction</a>,
@@ -2159,7 +2159,7 @@ companyURL: "https://www.inria.fr/",
         has a conflicting <a>type mapping</a> or <a>language mapping</a>.
         Ties between <a>terms</a> that have the same
         mappings are resolved by first choosing the shortest terms, and then by
-        choosing the lexicographically least term using <a>code point order</a>.
+        choosing the term that comes first in <a>code point order</a>.
         Note that these ties are
         resolved automatically because they were previously resolved when the
         <a href="#inverse-context-creation">Inverse Context Creation algorithm</a>
@@ -4228,8 +4228,8 @@ companyURL: "https://www.inria.fr/",
               that follows after the value of the
               <var>definition</var>'s <a>IRI mapping</a>.</li>
             <li>If either <var>compact IRI</var> is <code>null</code>, <var>candidate</var> is
-              shorter or the same length but lexicographically less than
-              <var>compact IRI</var>, using <a>code point order</a>,
+              shorter or the same length but comes before
+              <var>compact IRI</var> in <a>code point order</a>,
               and <var>candidate</var> does not have a
               <a>term definition</a> in <var>active context</var>, or if that
               <a>term definition</a> has an <a>IRI mapping</a>
