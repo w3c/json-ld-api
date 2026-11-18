@@ -1,0 +1,4 @@
+[{
+  "@id": "http://example.com/subject",
+  "http://example.com/vocab#issued": [{"@value": "2020-01-01T00:00:00Z", "@type": "http://www.w3.org/2001/XMLSchema#dateTime"}]
+}]

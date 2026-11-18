@@ -1,0 +1,20 @@
+{
+  "@context": [
+    {
+      "@version": 1.1,
+      "@protected": true,
+      "ex": "http://example.com/vocab#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "issued": {"@id": "ex:issued", "@type": "xsd:dateTime"}
+    },
+    {
+      "@protected": true,
+      "issued": {
+        "@id": "http://example.com/vocab#issued",
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    }
+  ],
+  "@id": "http://example.com/subject",
+  "issued": "2020-01-01T00:00:00Z"
+}
