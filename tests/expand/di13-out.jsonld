@@ -1,0 +1,8 @@
+[{
+  "@id": "http://example.com/doc",
+  "http://example.com/publisher": [{
+    "@id": "http://example.com/org",
+    "http://example.com/name": [{"@value": "inner", "@language": "en", "@direction": "rtl"}]
+  }],
+  "http://example.com/title": [{"@value": "outer", "@language": "en", "@direction": "rtl"}]
+}]

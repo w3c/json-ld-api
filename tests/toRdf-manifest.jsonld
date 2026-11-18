@@ -808,6 +808,15 @@
       "input": "toRdf/di12-in.jsonld",
       "expect": "toRdf/di12-out.nq"
     }, {
+      "@id": "#tdi13",
+      "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
+      "name": "rdfDirection: i18n-datatype with direction inherited by a scoped context",
+      "purpose": "A literal inside a property-scoped context inherits the default base direction and generates the i18n datatype.",
+      "option": {"specVersion": "json-ld-1.1", "rdfDirection": "i18n-datatype", "normative": false},
+      "requires": "I18nDatatype",
+      "input": "toRdf/di13-in.jsonld",
+      "expect": "toRdf/di13-out.nq"
+    }, {
       "@id": "#te001",
       "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
       "name": "drop free-floating nodes",

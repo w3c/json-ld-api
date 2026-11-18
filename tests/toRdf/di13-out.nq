@@ -1,0 +1,3 @@
+<http://example.com/doc> <http://example.com/publisher> <http://example.com/org> .
+<http://example.com/doc> <http://example.com/title> "outer"^^<https://www.w3.org/ns/i18n#en_rtl> .
+<http://example.com/org> <http://example.com/name> "inner"^^<https://www.w3.org/ns/i18n#en_rtl> .
