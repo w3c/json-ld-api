@@ -1,0 +1,8 @@
+[{
+  "@id": "http://example.com/outer",
+  "http://example.com/isolated": [{
+    "@id": "http://example.com/inner",
+    "@type": ["http://example.com/Thing"],
+    "http://example.com/inner-label": [{"@value": "x"}]
+  }]
+}]

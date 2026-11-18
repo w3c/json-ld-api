@@ -708,6 +708,22 @@
       "expect": "toRdf/c038-out.nq",
       "option": {"specVersion": "json-ld-1.1"}
     }, {
+      "@id": "#tc039",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Type-scoped context defined in an embedded context",
+      "purpose": "A type defined by a node object's embedded context activates its type-scoped context: types resolve against the type-scoped context (the active context after step 9), not the initial document context.",
+      "input": "toRdf/c039-in.jsonld",
+      "expect": "toRdf/c039-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
+      "@id": "#tc040",
+      "@type": ["jld:PositiveEvaluationTest", "jld:ToRDFTest"],
+      "name": "Outer type-scoped context does not survive a property-scoped context null reset",
+      "purpose": "After a property-scoped @context null reset, a type-scoped context defined in the outer document context must not activate; the node's own embedded definition of the same type applies instead.",
+      "input": "toRdf/c040-in.jsonld",
+      "expect": "toRdf/c040-out.nq",
+      "option": {"specVersion": "json-ld-1.1"}
+    }, {
       "@id": "#tdi01",
       "@type": [ "jld:PositiveEvaluationTest", "jld:ToRDFTest" ],
       "name": "Expand string using default and term directions",
