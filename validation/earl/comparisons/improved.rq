@@ -1,0 +1,32 @@
+PREFIX earl: <http://www.w3.org/ns/earl#>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+
+SELECT ?category ?test ?baselineOutcome ?candidateOutcome WHERE {
+  GRAPH <sparqld:> {
+    ?baselineGraph a nfo:FileDataObject;
+      nfo:fileName ?baselineFileName .
+    FILTER(STRSTARTS(STR(?baselineFileName), "baseline."))
+
+    ?candidateGraph a nfo:FileDataObject;
+      nfo:fileName ?candidateFileName .
+    FILTER(STRSTARTS(STR(?candidateFileName), "candidate."))
+  }
+  GRAPH ?baselineGraph {
+    [] a earl:Assertion;
+      earl:test ?test;
+      earl:result [ earl:outcome ?baselineEarlOutcome ] .
+    VALUES ?baselineEarlOutcome { earl:failed earl:untested }
+  }
+  GRAPH ?candidateGraph {
+    [] a earl:Assertion;
+      earl:test ?test;
+      earl:result [ earl:outcome earl:passed ] .
+  }
+  BIND("Improved" AS ?category)
+  BIND(
+    STRAFTER(STR(?baselineEarlOutcome), "http://www.w3.org/ns/earl#")
+    AS ?baselineOutcome
+  )
+  BIND("passed" AS ?candidateOutcome)
+  FILTER STRSTARTS(STR(?test), "https://w3c.github.io/json-ld-api/tests/")
+}

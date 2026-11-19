@@ -1,10 +1,20 @@
 PREFIX earl: <http://www.w3.org/ns/earl#>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
 
 ASK {
-  GRAPH <sparqld:ruby-json-ld-earl.ttl> {
+  GRAPH <sparqld:> {
+    ?baselineGraph a nfo:FileDataObject;
+      nfo:fileName ?baselineFileName .
+    FILTER(STRSTARTS(STR(?baselineFileName), "baseline."))
+
+    ?candidateGraph a nfo:FileDataObject;
+      nfo:fileName ?candidateFileName .
+    FILTER(STRSTARTS(STR(?candidateFileName), "candidate."))
+  }
+  GRAPH ?baselineGraph {
     [] a earl:Assertion .
   }
-  GRAPH <sparqld:candidate.ttl> {
+  GRAPH ?candidateGraph {
     [] a earl:Assertion .
   }
 }
