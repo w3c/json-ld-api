@@ -1,10 +1,22 @@
 require 'bundler/setup'
+require 'shellwords'
+require 'tmpdir'
 task default: :test
 
 desc "Test examples in spec files"
 task :test do
-  sh %(wget https://w3c.github.io/json-ld-wg/common/extract-examples.rb)
-  sh %(bundle exec extract-examples.rb index.html)
+  # Ruby RDF supports JSON-LD 1.1, so validate a temporary 1.1-compatible copy.
+  Dir.mktmpdir('json-ld-api-examples') do |directory|
+    source = File.read('index.html')
+    document = File.join(directory, 'index.html')
+    compatible_source = source.gsub(/("@version"\s*:\s*)1\.2\b/) { "#{$1}1.1" }
+    abort 'No JSON-LD 1.2 version entry found in index.html' if compatible_source == source
+    File.write(document, compatible_source)
+
+    extractor = File.join(directory, 'extract-examples.rb')
+    sh "wget -q -O #{Shellwords.escape(extractor)} https://w3c.github.io/json-ld-wg/common/extract-examples.rb"
+    sh "bundle exec ruby #{Shellwords.escape(extractor)} #{Shellwords.escape(document)}"
+  end
 end
 
 desc "Extract Examples"
