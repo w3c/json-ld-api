@@ -1,0 +1,79 @@
+PREFIX earl: <http://www.w3.org/ns/earl#>
+
+SELECT ?category ?test ?baselineOutcome ?candidateOutcome WHERE {
+  {
+    BIND("Regressed" AS ?category)
+    GRAPH <sparqld:ruby-json-ld-earl.ttl> {
+      [] a earl:Assertion;
+        earl:test ?test;
+        earl:result [ earl:outcome earl:passed ] .
+    }
+    GRAPH <sparqld:candidate.ttl> {
+      [] a earl:Assertion;
+        earl:test ?test;
+        earl:result [ earl:outcome earl:failed ] .
+    }
+    BIND("passed" AS ?baselineOutcome)
+    BIND("failed" AS ?candidateOutcome)
+  }
+  UNION
+  {
+    BIND("Improved" AS ?category)
+    GRAPH <sparqld:ruby-json-ld-earl.ttl> {
+      [] a earl:Assertion;
+        earl:test ?test;
+        earl:result [ earl:outcome ?baselineEarlOutcome ] .
+      VALUES ?baselineEarlOutcome { earl:failed earl:untested }
+    }
+    GRAPH <sparqld:candidate.ttl> {
+      [] a earl:Assertion;
+        earl:test ?test;
+        earl:result [ earl:outcome earl:passed ] .
+    }
+    BIND(
+      STRAFTER(STR(?baselineEarlOutcome), "http://www.w3.org/ns/earl#")
+      AS ?baselineOutcome
+    )
+    BIND("passed" AS ?candidateOutcome)
+  }
+  UNION
+  {
+    BIND("New assertion" AS ?category)
+    GRAPH <sparqld:candidate.ttl> {
+      [] a earl:Assertion;
+        earl:test ?test;
+        earl:result [ earl:outcome ?candidateEarlOutcome ] .
+    }
+    FILTER NOT EXISTS {
+      GRAPH <sparqld:ruby-json-ld-earl.ttl> {
+        [] a earl:Assertion; earl:test ?test .
+      }
+    }
+    BIND("Not asserted" AS ?baselineOutcome)
+    BIND(
+      STRAFTER(STR(?candidateEarlOutcome), "http://www.w3.org/ns/earl#")
+      AS ?candidateOutcome
+    )
+  }
+  UNION
+  {
+    BIND("No longer asserted" AS ?category)
+    GRAPH <sparqld:ruby-json-ld-earl.ttl> {
+      [] a earl:Assertion;
+        earl:test ?test;
+        earl:result [ earl:outcome ?baselineEarlOutcome ] .
+    }
+    FILTER NOT EXISTS {
+      GRAPH <sparqld:candidate.ttl> {
+        [] a earl:Assertion; earl:test ?test .
+      }
+    }
+    BIND(
+      STRAFTER(STR(?baselineEarlOutcome), "http://www.w3.org/ns/earl#")
+      AS ?baselineOutcome
+    )
+    BIND("Not asserted" AS ?candidateOutcome)
+  }
+  FILTER STRSTARTS(STR(?test), "https://w3c.github.io/json-ld-api/tests/")
+}
+ORDER BY ?category ?test

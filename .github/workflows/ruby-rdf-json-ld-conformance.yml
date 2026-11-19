@@ -1,0 +1,123 @@
+name: Ruby RDF JSON-LD conformance
+
+on:
+  pull_request:
+    branches: ['**']
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  conformance:
+    name: JSON-LD API compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Clone Ruby RDF JSON-LD
+        id: implementation
+        run: |
+          implementation_dir="$RUNNER_TEMP/ruby-rdf-json-ld"
+          git clone --depth 1 --branch develop https://github.com/ruby-rdf/json-ld.git "$implementation_dir"
+          echo "directory=$implementation_dir" >> "$GITHUB_OUTPUT"
+          echo "commit=$(git -C "$implementation_dir" rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Install Ruby RDF JSON-LD dependencies
+        working-directory: ${{ steps.implementation.outputs.directory }}
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Install Python dependencies
+        run: python3 -m pip install "$GITHUB_WORKSPACE/candidate/validation"
+
+      - name: Generate candidate EARL report
+        run: |
+          candidate_report="$RUNNER_TEMP/ruby-rdf-json-ld-candidate.ttl"
+          python3 candidate/validation/run-ruby-rdf-json-ld-earl.py \
+            "${{ steps.implementation.outputs.directory }}" \
+            "$GITHUB_WORKSPACE/candidate/tests" \
+            "$candidate_report"
+          echo "candidate_report=$candidate_report" >> "$GITHUB_ENV"
+
+      - name: Install SPARQL tools
+        run: |
+          cargo install sparqld --version 0.1.4
+          cargo install --git https://github.com/ktk/sq
+
+      - name: Compare EARL reports with SPARQL
+        env:
+          IMPLEMENTATION_COMMIT: ${{ steps.implementation.outputs.commit }}
+        run: |
+          reports_dir="$RUNNER_TEMP/earl-reports"
+          mkdir "$reports_dir"
+          cp "$GITHUB_WORKSPACE"/candidate/reports/*.ttl "$reports_dir"
+          cp "$candidate_report" "$reports_dir/candidate.ttl"
+
+          sparqld --no-watch "$reports_dir" > "$RUNNER_TEMP/sparqld.log" 2>&1 &
+          sparqld_pid=$!
+          trap 'kill "$sparqld_pid" || true' EXIT
+          sleep 1
+
+          (
+            cd "$GITHUB_WORKSPACE/candidate/validation"
+            sq --json -f earl/affected-tests.rq > "$RUNNER_TEMP/affected-tests.json"
+            sq --json -f earl/reports-populated.rq > "$RUNNER_TEMP/reports-populated.json"
+          )
+          set +e
+          python3 "$GITHUB_WORKSPACE/candidate/validation/render-earl-comparison.py" \
+            "$RUNNER_TEMP/affected-tests.json" \
+            "$RUNNER_TEMP/reports-populated.json" \
+            "$RUNNER_TEMP/earl-comparison.md"
+          comparison_status=$?
+          set -e
+          cat "$RUNNER_TEMP/earl-comparison.md" >> "$GITHUB_STEP_SUMMARY"
+          exit "$comparison_status"
+
+      - name: Publish EARL report comment
+        if: always() && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        env:
+          REPORT_PATH: ${{ runner.temp }}/earl-comparison.md
+        with:
+          script: |
+            const fs = require("node:fs");
+            const marker = "<!-- ruby-rdf-json-ld-conformance -->";
+            const report = fs.existsSync(process.env.REPORT_PATH)
+              ? fs.readFileSync(process.env.REPORT_PATH, "utf8")
+              : "The EARL report could not be generated; inspect the workflow log.";
+            const runUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+            const body = `${marker}\n[View workflow run](${runUrl})\n\n${report}`;
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find(
+              (comment) =>
+                comment.user.login === "github-actions[bot]" &&
+                comment.body.includes(marker),
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
