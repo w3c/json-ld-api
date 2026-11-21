@@ -1,0 +1,14 @@
+{
+  "@any": "any",
+  "@base": "base",
+  "@container": "@language",
+  "@import": "import",
+  "@json": {},
+  "@none": "none",
+  "@null": "null",
+  "@prefix": "prefix",
+  "@preserve": "preserve",
+  "@propagate": "propagate",
+  "@version": "1.1",
+  "@vocab": "hello"
+}
